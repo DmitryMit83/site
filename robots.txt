@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://loguapkope.lv/sitemap.xml

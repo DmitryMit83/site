@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apkopes padomi — SIA Logu Apkope | Logi, durvis, moskītu tīkli</title>
+<meta name="description" content="Praktiski padomi logu, durvju un moskītu tīklu apkopei un kopšanai. Uzziniet, kā pagarināt konstrukciju kalpošanas laiku un uzturēt tās labā stāvoklī.">
+<link rel="canonical" href="/lv/padomi.html">
+<link rel="alternate" hreflang="lv" href="/lv/padomi.html">
+<link rel="icon" href="../assets/img/logo-white.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+  /* ── Tips page specific styles ── */
+  .tips-hero{
+    background:linear-gradient(135deg,var(--green) 0%,#163325 100%);
+    color:#fff;padding:80px 0 70px;
+  }
+  .tips-hero .eyebrow{
+    display:inline-block;background:var(--accent);color:#fff;
+    font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    padding:4px 14px;border-radius:99px;margin-bottom:18px;
+  }
+  .tips-hero h1{color:#fff;margin-bottom:14px}
+  .tips-hero p{color:#D9D4C7;max-width:640px;font-size:1.05rem}
+
+  .tips-nav{
+    background:var(--paper);border-bottom:1px solid var(--line);
+    position:sticky;top:64px;z-index:10;
+  }
+  .tips-nav .container{
+    display:flex;gap:0;overflow-x:auto;scrollbar-width:none;
+  }
+  .tips-nav a{
+    display:flex;align-items:center;gap:8px;
+    padding:16px 22px;
+    font-size:.88rem;font-weight:600;color:var(--text-2);
+    border-bottom:3px solid transparent;white-space:nowrap;
+    text-decoration:none;transition:color .2s,border-color .2s;
+  }
+  .tips-nav a:hover,.tips-nav a.active{color:var(--green);border-bottom-color:var(--green)}
+  .tips-nav a svg{flex-shrink:0}
+
+  .tips-section{padding:72px 0}
+  .tips-section.alt{background:var(--paper-2)}
+
+  .tips-section-head{
+    display:flex;align-items:center;gap:16px;margin-bottom:40px;
+  }
+  .tips-section-head .icon{
+    width:52px;height:52px;border-radius:14px;
+    background:var(--green);color:#fff;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .tips-section-head h2{margin:0}
+  .tips-section-head p{margin:6px 0 0;color:var(--text-2);font-size:.95rem}
+
+  .tip-cards{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  .tip-card{
+    background:var(--paper);border-radius:16px;padding:28px 24px;
+    border:1px solid var(--line);
+    display:flex;flex-direction:column;gap:12px;
+    transition:box-shadow .2s,transform .2s;
+  }
+  .tip-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+  .tip-card .tip-num{
+    width:36px;height:36px;border-radius:10px;
+    background:var(--green);color:#fff;
+    font-size:.8rem;font-weight:700;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .tip-card h3{font-size:1rem;margin:0;color:var(--text)}
+  .tip-card p{font-size:.9rem;color:var(--text-2);margin:0;line-height:1.6}
+  .tip-card .tip-tag{
+    margin-top:auto;display:inline-flex;align-items:center;gap:5px;
+    font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:99px;
+    width:fit-content;
+  }
+  .tip-tag.seasonal{background:#FFF3E0;color:#E65100}
+  .tip-tag.regular{background:#E8F5E9;color:#1B5E20}
+  .tip-tag.onetime{background:#E3F2FD;color:#0D47A1}
+
+  .warning-box{
+    background:#FFF8F0;border:1px solid #FFD8B0;border-radius:14px;
+    padding:20px 24px;display:flex;gap:16px;align-items:flex-start;
+    margin-top:32px;
+  }
+  .warning-box svg{flex-shrink:0;margin-top:2px;color:var(--accent)}
+  .warning-box p{margin:0;font-size:.9rem;color:var(--text);line-height:1.6}
+  .warning-box strong{color:var(--accent)}
+
+  @media(max-width:900px){
+    .tip-cards{grid-template-columns:1fr 1fr}
+    .tips-nav a{padding:14px 16px}
+  }
+  @media(max-width:560px){
+    .tip-cards{grid-template-columns:1fr}
+    .tips-hero{padding:60px 0 50px}
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html"><img src="../assets/img/logo-white.svg" alt="SIA Logu Apkope logo"></a>
+    <nav class="nav">
+      <a href="index.html">Sākums</a>
+      <div class="has-dropdown">
+        <a href="#">Pakalpojumi</a>
+        <div class="dropdown"><div class="dropdown-inner">
+          <div class="has-dropdown-sub">
+            <a href="remonts.html">Logu un durvju remonts <span class="dd-arrow">›</span></a>
+            <div class="dropdown-sub"><div class="dropdown-inner">
+              <a href="remonts-regulesana.html">Regulēšana</a>
+              <a href="remonts-stiklu-paketes.html">Stikla paketes maiņa</a>
+              <a href="remonts-blivgumija.html">Blīvgumijas maiņa</a>
+              <a href="remonts-furnitura.html">Furnitūras maiņa</a>
+              <a href="remonts-durvis.html">Durvju remonts</a>
+            </div></div>
+          </div>
+          <div class="has-dropdown-sub">
+            <a href="moskitu-tikli.html">Moskītu tīkli <span class="dd-arrow">›</span></a>
+            <div class="dropdown-sub"><div class="dropdown-inner">
+              <a href="moskitu-tikli-rama.html">Rāmju tīkli</a>
+              <a href="moskitu-tikli-rullu.html">Rullu tīkli</a>
+              <a href="moskitu-tikli-plise.html">Plisē tīkli</a>
+              <a href="moskitu-tikli-magnetiskie.html">Magnētiskie tīkli</a>
+            </div></div>
+          </div>
+          <div class="has-dropdown-sub">
+            <a href="zaluzijas.html">Žalūzijas <span class="dd-arrow">›</span></a>
+            <div class="dropdown-sub"><div class="dropdown-inner">
+              <a href="zaluzijas-horizontalas.html">Horizontālās</a>
+              <a href="zaluzijas-rullu.html">Rullu</a>
+              <a href="zaluzijas-dienas-nakts.html">Dienas–Nakts</a>
+              <a href="zaluzijas-romiesu.html">Romiešu</a>
+            </div></div>
+          </div>
+          <a href="aksesuari.html">Aksesuāri</a>
+        </div></div>
+      </div>
+      <div class="has-dropdown">
+        <a href="#">Mūsu darbi</a>
+        <div class="dropdown"><div class="dropdown-inner">
+          <a href="darbi-logu-remonts.html">Logu remonts</a>
+          <a href="darbi-durvis.html">Durvju remonts</a>
+          <a href="darbi-moskitu-tikli.html">Moskītu tīkli</a>
+          <a href="darbi-zaluzijas.html">Žalūzijas</a>
+          <a href="darbi-aksesuari.html">Aksesuāri</a>
+        </div></div>
+      </div>
+      <a href="padomi.html" class="active">Padomi</a>
+      <a href="kontakti.html">Kontakti</a>
+      <div class="has-dropdown lang-dd">
+        <a href="#">LV</a>
+        <div class="dropdown"><div class="dropdown-inner">
+          <a href="../lv/padomi.html" class="active">LV — Latviski</a>
+          <a href="../ru/sovety.html">RU — Русский</a>
+          <a href="../en/tips.html">EN — English</a>
+        </div></div>
+      </div>
+      <div class="has-dropdown social-dd">
+        <a href="#" class="social-trigger" aria-label="Sociālie tīkli"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></a>
+        <div class="dropdown"><div class="dropdown-inner social-links">
+          <a href="https://www.facebook.com/LoguApkope.lv/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.446 18.627 0 12 0S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+          <a href="https://www.instagram.com/logu_apkope_/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</a>
+          <a href="https://www.tiktok.com/@logu.apkope" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg> TikTok</a>
+          <a href="https://www.linkedin.com/company/logu-apkope-sia/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
+          <a href="https://x.com/LoguApkope" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg> X (Twitter)</a>
+        </div></div>
+      </div>
+    </nav>    <div class="header-right">
+      <button class="nav-util-btn" id="infoToggle" aria-label="Kontaktinformācija" title="Tālrūņi un e-pasts"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg></button>
+      <button class="nav-util-btn" id="searchToggle" aria-label="Meklēt vietnē" title="Meklēt vietnē"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></button>
+      <button class="hamburger" aria-label="Izvēlne">☰</button>
+    </div>
+  </div>
+  <!-- ══ Utility panel: contacts + search ══ -->
+  <div class="util-panel" id="utilPanel" aria-hidden="true">
+    <div class="container util-panel-inner">
+      <!-- Tab sidebar -->
+      <div class="util-tabs">
+        <button class="util-tab active" data-pane="utilPaneInfo">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
+          Tālrūņi un e-pasts
+        </button>
+        <button class="util-tab" data-pane="utilPaneSearch">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          Meklēt vietnē
+        </button>
+      </div>
+      <!-- Contacts pane -->
+      <div class="util-pane" id="utilPaneInfo">
+        <div class="util-contacts">
+          <a class="util-clink" href="tel:+37128950055">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
+            <span>+371 28 950 055</span>
+          </a>
+          <a class="util-clink" href="tel:+37129825477">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
+            <span>+371 29 825 477</span>
+          </a>
+          <a class="util-clink" href="mailto:info@loguapkope.lv">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@loguapkope.lv</span>
+          </a>
+          <a class="util-clink util-clink--more" href="kontakti.html">Visi kontakti →</a>
+        </div>
+      </div>
+      <!-- Search pane -->
+      <div class="util-pane hidden" id="utilPaneSearch">
+        <div class="util-search-wrap">
+          <svg class="util-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input class="util-search-input" id="siteSearchInput" type="text"
+                 placeholder="Meklēt vietnē… (vismaz 4 burti)" autocomplete="off" spellcheck="false">
+          <div class="util-search-results" id="searchResults"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ── Hero ── -->
+<section class="tips-hero">
+  <div class="container">
+    <span class="eyebrow">No mūsu speciālistiem</span>
+    <h1>Apkopes padomi</h1>
+    <p>Praktiski ieteikumi, kā pareizi kopat logus, durvis un moskītu tīklus — lai tie kalpo ilgi un darbotos nevainojami.</p>
+  </div>
+</section>
+
+<!-- ── Sticky tab nav ── -->
+<nav class="tips-nav" aria-label="Padomi pa kategorijām">
+  <div class="container">
+    <a href="#logi" class="active">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+      Logi
+    </a>
+    <a href="#durvis">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><circle cx="12" cy="13" r="1"/></svg>
+      Durvis
+    </a>
+    <a href="#moskitu-tikli">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+      Moskītu tīkli
+    </a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     LOGI
+══════════════════════════════════════════ -->
+<section id="logi" class="tips-section">
+  <div class="container">
+    <div class="tips-section-head">
+      <div class="icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+      </div>
+      <div>
+        <h2>Logu apkope un kopšana</h2>
+        <p>Regulāra apkope pagarina logu kalpošanas laiku un ietaupa naudu remontam.</p>
+      </div>
+    </div>
+
+    <div class="tip-cards">
+
+      <div class="tip-card">
+        <div class="tip-num">01</div>
+        <h3>Tīriet rāmjus 2× gadā</h3>
+        <p>Mazgājiet PVC vai alumīnija rāmjus ar siltu ūdeni un maigu mazgāšanas līdzekli. Nekādā gadījumā nelietojiet abrazīvus vai šķīdinātājus — tie bojā virsmu un paātrina novecošanos.</p>
+        <span class="tip-tag seasonal">🍂 Sezonāli</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">02</div>
+        <h3>Eļļojiet furnitūru katru gadu</h3>
+        <p>Slēdzenes, eņģes un šarnīri jāeļļo ar īpašu logu eļļu vai baltu tehnisko vazelīnu. Sausa furnitūra nolietojas ātrāk un var sabojāt logu rāmi.</p>
+        <span class="tip-tag regular">🔄 Regulāri</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">03</div>
+        <h3>Pārbaudiet blīvgumijas rudenī</h3>
+        <p>Pirms apkures sezonas pārbaudiet blīvgumiju stāvokli — tās nedrīkst būt cietušas, plaisājušas vai atslābušas. Nolietota blīvgumija ir galvenais caurvēja un siltuma zuduma cēlonis.</p>
+        <span class="tip-tag seasonal">🍂 Sezonāli</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">04</div>
+        <h3>Regulējiet logu divreiz gadā</h3>
+        <p>Pavasarī pārejiet uz vasaras regulēšanu (vērtne tiek nospiesta mazliet vairāk, lai nodrošinātu ventilāciju), rudenī — uz ziemas (cieša piegulšana). Tas samazina siltuma zudumus par līdz 30%.</p>
+        <span class="tip-tag seasonal">🍂 Sezonāli</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">05</div>
+        <h3>Tīriet noteces rievās</h3>
+        <p>Logu apakšējo profilu noteces rievas bieži aizsērē ar netīrumiem un lapām. Tīriet tās katru pavasari — citādi ūdens var iekļūt konstrucijā un radīt mitrumu un pelējumu.</p>
+        <span class="tip-tag regular">🔄 Regulāri</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">06</div>
+        <h3>Nekrāsojiet PVC rāmjus</h3>
+        <p>PVC logi nav paredzēti krāsošanai — krāsa atslāņojas un bojā materiālu. Ja vēlaties mainīt krāsu, konsultējieties par profesionālu folēšanu vai rāmju nomaiņu.</p>
+        <span class="tip-tag onetime">ℹ️ Zināt</span>
+      </div>
+
+    </div>
+
+    <div class="warning-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p><strong>Svarīgi:</strong> ja logs griežoties nedaudz pietuvojas rāmim no augšas vai apakšas nevienmērīgi — tas ir regulēšanas, nevis nomaiņas jautājums. Sazinieties ar mums pirms plānojat dārgāku risinājumu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     DURVIS
+══════════════════════════════════════════ -->
+<section id="durvis" class="tips-section alt">
+  <div class="container">
+    <div class="tips-section-head">
+      <div class="icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><circle cx="12" cy="13" r="1"/></svg>
+      </div>
+      <div>
+        <h2>Durvju apkope un kopšana</h2>
+        <p>Pareizi koptas durvis darbojas bez troksņiem, cieši aizver un nodrošina drošību gadu desmitiem.</p>
+      </div>
+    </div>
+
+    <div class="tip-cards">
+
+      <div class="tip-card">
+        <div class="tip-num">01</div>
+        <h3>Eļļojiet eņģes reizi gadā</h3>
+        <p>Čīkstošas durvis liecina par sausām eņģēm. Uzklājiet pāris pilienus eļļas uz katras eņģes un vairākas reizes atveriet/aizveriet durvis, lai eļļa izdalītos vienmērīgi.</p>
+        <span class="tip-tag regular">🔄 Regulāri</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">02</div>
+        <h3>Pārbaudiet slēdzeni</h3>
+        <p>Ja atslēga griezās ar pretestību vai durvis aizveras ar grūtībām — ieeļļojiet slēdzenes cilindru ar grafīta pulveri vai speciālu aerosolu. Nekādā gadījumā nelietojiet WD-40 — tas bojā slēdzenes mehānismu.</p>
+        <span class="tip-tag regular">🔄 Regulāri</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">03</div>
+        <h3>Regulējiet durvju vērtni</h3>
+        <p>Ja durvis pašas neatveras vai nesaslēdzas pareizi — tās var būt izliekušās vai noregulētas nepareizi. Lielākoties to var novērst, regulējot eņģes — bez nomaiņas nepieciešamības.</p>
+        <span class="tip-tag seasonal">🍂 Sezonāli</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">04</div>
+        <h3>Tīriet blīvgumijas ar silikonu</h3>
+        <p>Reizi gadā apstrādājiet durvju blīvgumijas ar silikona aerosolu — tās paliks elastīgas, nekļūs trauslas un nodrošinās labāku siltumizolāciju. Tas ir lētāks risinājums nekā nomaiņa.</p>
+        <span class="tip-tag regular">🔄 Regulāri</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">05</div>
+        <h3>Vērojiet spraugu pie sliekšņa</h3>
+        <p>Ja zem durvīm ir redzama gaismas strīpa no āras — ventilācija ir nepietiekama un gaiss iekļūst. Pārbaudiet sliekšņa blīvējumu un, ja nepieciešams, nomainiet to.</p>
+        <span class="tip-tag seasonal">🍂 Sezonāli</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">06</div>
+        <h3>Aizsargājiet durvis no mitruma</h3>
+        <p>Koka durvis īpaši jutīgas pret mitrumu — tās var izplesties. Regulāri pārkrāsojiet vai lakojiet koka virsmu, īpaši no ārpuses. Arī PVC durvis jāmazgā, lai novērstu netīrumu uzkrāšanos šarnīru tuvumā.</p>
+        <span class="tip-tag seasonal">🍂 Sezonāli</span>
+      </div>
+
+    </div>
+
+    <div class="warning-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p><strong>Uzmanību:</strong> ja durvis neslēdzas pat pēc eņģu regulēšanas — iespējams, ir nobrukuši sliekšņi vai rāmja struktūra. Šādos gadījumos nepieciešama profesionāla apskate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     MOSKĪTU TĪKLI
+══════════════════════════════════════════ -->
+<section id="moskitu-tikli" class="tips-section">
+  <div class="container">
+    <div class="tips-section-head">
+      <div class="icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+      </div>
+      <div>
+        <h2>Moskītu tīklu apkope un kopšana</h2>
+        <p>Pareiza kopšana nodrošina, ka tīkls saglabā formu, aizsardzību un estētisko izskatu gadiem ilgi.</p>
+      </div>
+    </div>
+
+    <div class="tip-cards">
+
+      <div class="tip-card">
+        <div class="tip-num">01</div>
+        <h3>Nomazgājiet tīklu katru pavasari</h3>
+        <p>Pirms sezonas nomazgājiet moskītu tīklu ar siltu ūdeni un maigu ziepju šķīdumu. Izmantojiet mīkstu sūkli — neberiet un nekasiet, lai nesabojātu tīkla šķiedras.</p>
+        <span class="tip-tag seasonal">🍂 Sezonāli</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">02</div>
+        <h3>Noņemiet rāmju tīklus ziemai</h3>
+        <p>Rāmju moskītu tīklus ieteicams noņemt pirms ziemas — sniega svars un sals var sabojāt profilu un izstiept tīklu. Uzglabājiet sausā vietā bez taisnas saules gaismas.</p>
+        <span class="tip-tag seasonal">🍂 Sezonāli</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">03</div>
+        <h3>Eļļojiet rullu tīkla mehānismu</h3>
+        <p>Rullu tīkla kasetes mehānisms jāieeļļo reizi gadā ar silikona aerosolu. Tas nodrošina vienmērīgu ritināšanu un novērš kasetes ievārīšanos.</p>
+        <span class="tip-tag regular">🔄 Regulāri</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">04</div>
+        <h3>Pārbaudiet magnētus magnētiskajos tīklos</h3>
+        <p>Ja magnētiskais tīkls vairs necieši aizver — magnēti var būt nobīdīti vai vājinājušies. Regulāri pārbaudiet stiprinājumu un nepieciešamības gadījumā uzlīmējiet atpakaļ ar dubultlīmlenti.</p>
+        <span class="tip-tag regular">🔄 Regulāri</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">05</div>
+        <h3>Nelabojiet caurumus pats</h3>
+        <p>Mazs caurums tīklā ātri paplašinās. Ja tīklā ir bojājums, labāk nomainiet tīkla audumu pilnībā — tas ir lēts risinājums, kas saglabā rāmi un nodrošina pilnīgu aizsardzību.</p>
+        <span class="tip-tag onetime">ℹ️ Zināt</span>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">06</div>
+        <h3>Glabājiet plisē tīklu pareizi</h3>
+        <p>Plisē moskītu tīklus nevajag salocīt — noglabājiet tos izplestā stāvoklī vai uzmanīgi norullētus. Nekārtīga glabāšana rada pastāvīgus salokus, kas ietekmē tīkla darbību un izskatu.</p>
+        <span class="tip-tag onetime">ℹ️ Zināt</span>
+      </div>
+
+    </div>
+
+    <div class="warning-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p><strong>Atcerieties:</strong> moskītu tīkls, kas nepareizi iederējas — ielaiž kukaiņus no malām. Ja tīkls tika uzstādīts citur vai logu izmēri mainījušies — sazinieties ar mums precīzai pārmērīšanai un nomaiņai.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Nepieciešams logu meistars?</h2>
+    <p>Atstājiet pieprasījumu un mēs sazināsimies ar Jums 12 stundu laikā, lai vienotos par bezmaksas tāmi.</p>
+    <a class="btn btn-outline" href="kontakti.html">Sazināties</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div><img src="../assets/img/logo-white.svg" alt="SIA Logu Apkope"><p>Profesionāla logu un durvju apkope Latvijā.</p></div>
+    <div><h4>Pakalpojumi</h4><a href="remonts.html">Logu remonts</a><a href="moskitu-tikli.html">Moskītu tīkli</a><a href="zaluzijas.html">Žalūzijas</a><a href="aksesuari.html">Aksesuāri</a></div>
+    <div><h4>Uzņēmums</h4><a href="index.html#par-mums">Par mums</a><a href="kontakti.html">Kontakti</a><a href="padomi.html">Padomi</a></div>
+    <div><h4>Valoda</h4><a href="../lv/index.html">Latviski</a><a href="../ru/index.html">Русский</a><a href="../en/index.html">English</a></div>
+  </div>
+  <div class="container copyright">© <span id="yr"></span> SIA Logu Apkope. Visas tiesības aizsargātas.</div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script>
+  // Highlight active tab on scroll
+  const sections = ['logi','durvis','moskitu-tikli'];
+  const links = document.querySelectorAll('.tips-nav a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.tips-nav a[href="#${e.target.id}"]`);
+        if(active) active.classList.add('active');
+      }
+    });
+  },{rootMargin:'-30% 0px -60% 0px'});
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) observer.observe(el);
+  });
+</script>
+<script src="../js/main.js"></script>
+</body>
+</html>
