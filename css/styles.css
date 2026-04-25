@@ -86,6 +86,8 @@ p{margin-bottom:1rem;color:var(--text-2)}
 .nav-util-btn svg{width:15px;height:15px;display:block;}
 .nav-util-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.4);color:#fff}
 .nav-util-btn.is-active{background:rgba(255,255,255,.14);border-color:var(--accent);color:#fff}
+.nav-util-btn.shop-btn{border-color:var(--accent);border-width:1.5px;box-shadow:0 0 0 2px rgba(208,77,26,.18)}
+.nav-util-btn.shop-btn:hover{background:rgba(255,255,255,.1);border-color:var(--accent)}
 .util-panel{
   background:rgba(8,26,16,.97);
   border-top:1px solid rgba(255,255,255,.09);
@@ -221,6 +223,9 @@ p{margin-bottom:1rem;color:var(--text-2)}
 .hero-text-block{
   flex:1;
   padding:60px 0;
+}
+.hero-slide-text{
+  will-change:opacity,transform;
 }
 
 /* ══ Right: auto-cycling card gallery ══ */

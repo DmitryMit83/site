@@ -122,7 +122,7 @@
     </nav>    <div class="header-right">
       <button class="nav-util-btn" id="infoToggle" aria-label="Kontaktinformācija" title="Tālrūņi un e-pasts"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg></button>
       <button class="nav-util-btn" id="searchToggle" aria-label="Meklēt vietnē" title="Meklēt vietnē"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></button>
-      <a class="nav-util-btn" href="interneta-veikals.html" aria-label="Interneta veikals" title="Interneta veikals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></a>
+      <a class="nav-util-btn shop-btn" href="interneta-veikals.html" aria-label="Interneta veikals" title="Interneta veikals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></a>
       <button class="hamburger" aria-label="Izvēlne">☰</button>
     </div>
   </div>
@@ -176,8 +176,10 @@
 
     <!-- Kreisā puse: virsraksts + teksts + pogas -->
     <div class="hero-text-block">
-      <h1>Logu un durvju apkope, kurai var uzticēties</h1>
-      <p class="lead">SIA Logu Apkope ir specializēts uzņēmums Latvijā: PVC, koka un alumīnija logu remonts un apkope, durvju regulēšana, moskītu tīklu ražošana un žalūziju uzstādīšana.</p>
+      <div class="hero-slide-text" id="heroSlideText">
+        <h1 id="heroSlideH1">Logu un durvju apkope, kurai var uzticēties</h1>
+        <p class="lead" id="heroSlideLead">SIA Logu Apkope — specializēts uzņēmums Latvijā: PVC, koka un alumīnija logu remonts un apkope, durvju regulēšana, moskītu tīklu ražošana un žalūziju uzstādīšana.</p>
+      </div>
       <div class="cta-row">
         <a class="btn btn-primary" href="kontakti.html">Bezmaksas konsultācija</a>
         <a class="btn btn-outline" href="#pakalpojumi">Mūsu pakalpojumi</a>
@@ -186,27 +188,39 @@
 
     <!-- Labā puse: automātiski mainīgas fotogrāfijas (kā karšu kaudzīte) -->
     <div class="hero-gallery" id="heroGallery">
-      <div class="gallery-card">
+      <div class="gallery-card"
+           data-title="Logu un durvju apkope, kurai var uzticēties"
+           data-desc="SIA Logu Apkope — specializēts uzņēmums Latvijā: PVC, koka un alumīnija logu remonts un apkope, durvju regulēšana, moskītu tīklu ražošana un žalūziju uzstādīšana.">
         <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=600&auto=format&q=80&fit=crop" alt="Logu remonts" loading="eager">
         <span class="gallery-label">Logu remonts</span>
       </div>
-      <div class="gallery-card">
+      <div class="gallery-card"
+           data-title="Moskītu tīkli pēc pasūtījuma"
+           data-desc="Ražojam un uzstādām rāmju, rullu, plisē un magnētiskos moskītu tīklus precīzi Jūsu logu izmēriem. Aizsardzība pret kukaiņiem bez kompromisiem.">
         <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=900&h=600&auto=format&q=80&fit=crop" alt="Moskītu tīkli" loading="lazy">
         <span class="gallery-label">Moskītu tīkli</span>
       </div>
-      <div class="gallery-card">
+      <div class="gallery-card"
+           data-title="Žalūzijas jebkuram interjerim"
+           data-desc="Horizontālās, rullu, dienas-nakts un romiešu žalūzijas. Stilīgs risinājums gaismas regulēšanai — precīzi izmēri un profesionāla uzstādīšana.">
         <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&h=600&auto=format&q=80&fit=crop" alt="Žalūzijas" loading="lazy">
         <span class="gallery-label">Žalūzijas</span>
       </div>
-      <div class="gallery-card">
+      <div class="gallery-card"
+           data-title="Blīvgumijas maiņa — siltums mājās"
+           data-desc="Nolietota blīvgumija ir galvenais caurvēja un siltuma zudumu cēlonis. Nomainām ātri un kvalitatīvi — ar 2 gadu garantiju visiem darbiem.">
         <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&h=600&auto=format&q=80&fit=crop" alt="Blīvgumija" loading="lazy">
         <span class="gallery-label">Blīvgumija</span>
       </div>
-      <div class="gallery-card">
+      <div class="gallery-card"
+           data-title="Logu furnitūras maiņa un regulēšana"
+           data-desc="Rokturi, eņģes, slēgšanas mehānismi — atjaunojam pilnīgu funkcionalitāti. Logs atkal aizveras hermētiski un darbojas nevainojami.">
         <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&h=600&auto=format&q=80&fit=crop" alt="Furnitūra" loading="lazy">
         <span class="gallery-label">Furnitūra</span>
       </div>
-      <div class="gallery-card">
+      <div class="gallery-card"
+           data-title="Stikla paketes maiņa bez rāmja nomaiņas"
+           data-desc="Miglainas vai saplaisājušas stikla paketes mainām, saglabājot oriģinālo rāmi. Ātrāk un lētāk nekā jauns logs — ar uzlabotu siltumizolāciju.">
         <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&h=600&auto=format&q=80&fit=crop" alt="Stikla paketes" loading="lazy">
         <span class="gallery-label">Stikla paketes</span>
       </div>
@@ -773,6 +787,29 @@
   place(false);
   updatePeek();
 
+  /* ── Hero text update ── */
+  var heroText = document.getElementById('heroSlideText');
+  var heroH1   = document.getElementById('heroSlideH1');
+  var heroLead = document.getElementById('heroSlideLead');
+
+  function updateHeroText(card) {
+    var t = card.getAttribute('data-title');
+    var d = card.getAttribute('data-desc');
+    if (!t || !d || !heroText) return;
+    /* Fade out */
+    heroText.style.transition = 'opacity 220ms ease, transform 220ms ease';
+    heroText.style.opacity = '0';
+    heroText.style.transform = 'translateY(8px)';
+    setTimeout(function() {
+      heroH1.textContent   = t;
+      heroLead.textContent = d;
+      /* Fade in */
+      heroText.style.transition = 'opacity 280ms ease, transform 280ms ease';
+      heroText.style.opacity = '1';
+      heroText.style.transform = 'translateY(0)';
+    }, 230);
+  }
+
   function next() {
     if (busy) return;
     busy = true;
@@ -794,6 +831,9 @@
       c.style.zIndex = N - i;
       c.style.transform = 'translateY(' + (i * SLOT) + 'px)';
     });
+
+    /* Update left-side text to match the incoming top card */
+    updateHeroText(cards[1]);
 
     setTimeout(function() {
       cards = cards.slice(1).concat([first]);
