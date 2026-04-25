@@ -429,12 +429,37 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   padding:52px 0 24px;color:#C9C4B7;font-size:.92rem;
 }
 .site-footer h4{color:#fff;font-size:1rem;margin-bottom:12px}
+.footer-sub-h4{margin-top:20px !important}
 .site-footer a{color:#C9C4B7}
+/* ── Mūsu darbi home grid ──────────────────────────────────────────── */
+.darbi-home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.darbi-home-card{display:block;text-decoration:none;color:inherit;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 2px 14px rgba(0,0,0,.07);transition:transform .25s,box-shadow .25s}
+.darbi-home-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(30,58,46,.14)}
+.darbi-home-img{position:relative;overflow:hidden;height:220px}
+.darbi-home-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.darbi-home-card:hover .darbi-home-img img{transform:scale(1.06)}
+.darbi-home-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(30,58,46,.75) 0%,transparent 60%);display:flex;align-items:flex-end;padding:18px 20px;opacity:0;transition:opacity .3s}
+.darbi-home-card:hover .darbi-home-overlay{opacity:1}
+.darbi-home-overlay span{color:#fff;font-weight:600;font-size:.9rem;letter-spacing:.02em}
+.darbi-home-body{padding:18px 20px 20px}
+.darbi-home-body h3{font-size:1.05rem;font-weight:600;margin-bottom:.35rem;color:var(--text)}
+.darbi-home-body p{font-size:.88rem;color:var(--text-2);line-height:1.55;margin:0}
+@media(max-width:860px){.darbi-home-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.darbi-home-grid{grid-template-columns:1fr}.darbi-home-img{height:190px}}
+/* ─────────────────────────────────────────────────────────────────── */
 .site-footer a:hover{color:#fff}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;margin-bottom:30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:30px}
+.footer-brand p{color:#C9C4B7;line-height:1.6;margin-top:2px}
+.footer-lang{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.footer-lang a{display:inline-block;margin-bottom:0;padding:4px 10px;border:1px solid rgba(255,255,255,.2);border-radius:4px;font-size:.8rem;font-weight:600;letter-spacing:.04em;color:#C9C4B7;transition:border-color .2s,color .2s}
+.footer-lang a:hover{border-color:#fff;color:#fff}
+.footer-social{display:flex;gap:12px;margin-top:14px;align-items:center;flex-wrap:wrap}
 .footer-grid img{height:44px;margin-bottom:14px;display:block;border:none}
 .footer-grid p{color:#C9C4B7}
+.footer-address{color:#C9C4B7;font-size:.85rem;line-height:1.7;margin-top:12px}
 .footer-grid a{display:block;margin-bottom:6px}
+.footer-social a{display:flex !important;align-items:center;justify-content:center;width:34px;height:34px;margin-bottom:0 !important;border-radius:50%;border:1px solid rgba(255,255,255,.2);color:#C9C4B7;transition:border-color .2s,color .2s,background .2s}
+.footer-social a:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.08)}
 .copyright{border-top:1px solid rgba(255,255,255,.15);padding-top:20px;text-align:center;font-size:.85rem;color:#A39F92}
 
 /* ---------- Dropdown nav ---------- */
@@ -878,8 +903,8 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 @media (max-width:900px){
   .hero-inner{flex-direction:column;gap:0;min-height:auto;padding:0 16px}
   .hero-text-block{padding:36px 0 24px}
-  .hero-gallery{flex:none;width:100%;height:220px;border-radius:12px;margin-bottom:8px}
-  .gallery-card{height:180px}
+  .hero-gallery{flex:none;width:100%;height:380px;border-radius:12px;margin-bottom:8px}
+  .gallery-card{height:320px}
   .hero-img-thumb{height:100px}
   .grid.cols-3,.grid.cols-2,.sub-grid,.contact-grid{grid-template-columns:1fr}
   .why{grid-template-columns:repeat(2,1fr)}
@@ -1343,6 +1368,10 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 }
 
 /* ── Footer ───────────────────────────────────────────────────────── */
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .footer-brand{grid-column:1/-1}
+}
 @media(max-width:640px){
   .site-footer{padding:36px 0 20px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:20px;margin-bottom:22px}
@@ -1350,6 +1379,7 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   .footer-grid p{font-size:.85rem}
   .footer-grid a{font-size:.88rem;margin-bottom:4px}
   .site-footer h4{font-size:.92rem;margin-bottom:8px}
+  .footer-sub-h4{margin-top:16px !important}
   .copyright{font-size:.78rem}
 }
 @media(max-width:380px){

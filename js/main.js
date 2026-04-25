@@ -24,7 +24,9 @@ const SEARCH_IDX = [
   { t:'Aksesuāri',               u:'aksesuari.html',                 k:'aksesuari piederumi rokturis tapas starplikas blivgumija' },
   { t:'Palodzes',               u:'palodzes.html',                   k:'palodzes logu palodze pvc koka marmors uzstadisana' },
   { t:'Ventilācija',            u:'ventilacija.html',                k:'ventilacija piepludes varts logs durvis svaigs gaiss' },
-  { t:'Interneta veikals',       u:'interneta-veikals.html',          k:'interneta veikals tirdznieciba aksesuari pirkums pasutijums' },
+  { t:'Plēve',                   u:'pleve.html',                      k:'pleve logu pleve saules aizsargpleve siltuma izolacija mateta dekorativa uv aizsardziba' },
+  { t:'Raksti',                 u:'raksti.html',                     k:'raksti blogs padomi kondensats regulesana blivgumija palodze ventilacija' },
+  { t:'Interneta veikals',      u:'interneta-veikals.html',          k:'interneta veikals tirdznieciba aksesuari pirkums pasutijums' },
   { t:'Padomi un ieteikumi',    u:'padomi.html',                     k:'padomi ieteikumi kopšana trisana siltums kondensats' },
   { t:'Kontakti',               u:'kontakti.html',                   k:'kontakti talrunis epasts adrese riga latgales iela' },
 ];
