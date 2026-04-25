@@ -21,7 +21,10 @@ const SEARCH_IDX = [
   { t:'Mūsu darbi — Durvju remonts',u:'#',                          k:'musu darbi durvis remonts galerija' },
   { t:'Mūsu darbi — Moskītu tīkli', u:'#',                          k:'musu darbi moskitu tikli galerija' },
   { t:'Mūsu darbi — Žalūzijas',     u:'#',                          k:'musu darbi zaluzijas galerija' },
-  { t:'Aksesuāri',               u:'aksesuari.html',                 k:'aksesuari piederumi rokturis tapas starplikas' },
+  { t:'Aksesuāri',               u:'aksesuari.html',                 k:'aksesuari piederumi rokturis tapas starplikas blivgumija' },
+  { t:'Palodzes',               u:'palodzes.html',                   k:'palodzes logu palodze pvc koka marmors uzstadisana' },
+  { t:'Ventilācija',            u:'ventilacija.html',                k:'ventilacija piepludes varts logs durvis svaigs gaiss' },
+  { t:'Interneta veikals',       u:'interneta-veikals.html',          k:'interneta veikals tirdznieciba aksesuari pirkums pasutijums' },
   { t:'Padomi un ieteikumi',    u:'padomi.html',                     k:'padomi ieteikumi kopšana trisana siltums kondensats' },
   { t:'Kontakti',               u:'kontakti.html',                   k:'kontakti talrunis epasts adrese riga latgales iela' },
 ];
@@ -206,7 +209,9 @@ document.addEventListener('DOMContentLoaded', () => {
       'moskitu-tikli-plise', 'moskitu-tikli-magnetiskie',
       'zaluzijas', 'zaluzijas-horizontalas', 'zaluzijas-rullu',
       'zaluzijas-dienas-nakts', 'zaluzijas-romiesu',
-      'aksesuari'
+      'aksesuari',
+      'palodzes',
+      'ventilacija'
     ];
 
     const isService = servicePages.some(p => page === p + '.html');
