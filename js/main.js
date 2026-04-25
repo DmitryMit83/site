@@ -133,8 +133,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isOpen && isSame) { closePanel(); } else { openPane(paneId); }
   }
 
-  infoBtn?.addEventListener('click',   () => togglePane('utilPaneInfo',   infoBtn));
-  searchBtn?.addEventListener('click', () => togglePane('utilPaneSearch', searchBtn));
+  function closeNav() {
+    nav.classList.remove('open');
+    nav.querySelectorAll('.dropdown.open, .dropdown-sub.open')
+       .forEach(d => d.classList.remove('open'));
+  }
+
+  infoBtn?.addEventListener('click', () => {
+    closeNav();
+    togglePane('utilPaneInfo', infoBtn);
+  });
+  searchBtn?.addEventListener('click', () => {
+    closeNav();
+    togglePane('utilPaneSearch', searchBtn);
+  });
 
   // Tab buttons inside the panel
   document.querySelectorAll('.util-tab').forEach(tab =>
