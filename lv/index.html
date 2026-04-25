@@ -58,6 +58,9 @@
           <a href="remonts-blivgumija.html">Blīvgumijas maiņa</a>
           <a href="remonts-furnitura.html">Furnitūras maiņa</a>
           <a href="remonts-durvis.html">Durvju remonts</a>
+          <a href="remonts-siltinasana.html">Logu siltināšana</a>
+          <a href="remonts-modernizacija.html">Logu modernizācija</a>
+          <a href="remonts-termokamera.html">Termokamera</a>
           </div></div>
         </div>
       <div class="has-dropdown-sub">
@@ -231,9 +234,10 @@
   <div class="container">
     <div class="section-head">
       <h2>Mūsu pakalpojumi</h2>
-      <p>Visi logu un durvju apkopes risinājumi vienuviet — remonts, moskītu tīkli, žalūzijas, aksesuāri, palodzes un ventilācijas vārsti.</p>
+      <p>Visi logu un durvju apkopes risinājumi vienuviet — remonts, siltināšana, modernizācija, moskītu tīkli, žalūzijas, aksesuāri un vēl vairāk.</p>
     </div>
-    <div class="grid cols-3">
+    <div class="grid cols-3" id="pakalpojumiGrid">
+      <!-- ── Visible by default (first 3) ── -->
       <a class="card" href="remonts.html">
         <div class="card-img"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=80&auto=format&fit=crop" alt="Logu un durvju remonts" loading="lazy"></div>
         <div class="card-body">
@@ -258,7 +262,8 @@
           <span class="more">Uzzināt vairāk →</span>
         </div>
       </a>
-      <a class="card" href="aksesuari.html">
+      <!-- ── Hidden cards (shown on button click) ── -->
+      <a class="card pak-hidden" href="aksesuari.html">
         <div class="card-img"><img src="https://images.unsplash.com/photo-1558618047-3c0b3b6726a8?w=700&q=80&auto=format&fit=crop" alt="Logu un durvju aksesuāri" loading="lazy"></div>
         <div class="card-body">
           <h3>Aksesuāri</h3>
@@ -266,7 +271,7 @@
           <span class="more">Uzzināt vairāk →</span>
         </div>
       </a>
-      <a class="card" href="palodzes.html">
+      <a class="card pak-hidden" href="palodzes.html">
         <div class="card-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80&auto=format&fit=crop" alt="Logu palodzes uzstādīšana" loading="lazy"></div>
         <div class="card-body">
           <h3>Palodzes</h3>
@@ -274,7 +279,7 @@
           <span class="more">Uzzināt vairāk →</span>
         </div>
       </a>
-      <a class="card" href="ventilacija.html">
+      <a class="card pak-hidden" href="ventilacija.html">
         <div class="card-img"><img src="https://images.unsplash.com/photo-1504307651908-5e7d7e5b91fa?w=700&q=80&auto=format&fit=crop" alt="Logu ventilācijas pieplūdes vārsti" loading="lazy"></div>
         <div class="card-body">
           <h3>Ventilācija</h3>
@@ -282,9 +287,47 @@
           <span class="more">Uzzināt vairāk →</span>
         </div>
       </a>
+      <a class="card pak-hidden" href="remonts-siltinasana.html">
+        <div class="card-img"><img src="https://images.unsplash.com/photo-1604079628040-94301bb21b91?w=700&q=80&auto=format&fit=crop" alt="Logu siltināšana" loading="lazy"></div>
+        <div class="card-body">
+          <h3>Logu siltināšana</h3>
+          <p>Blīvgumiju maiņa, šuvju hermētizācija un siltumizolācija — likvidējam caurvēju un aukstumu uz visiem.</p>
+          <span class="more">Uzzināt vairāk →</span>
+        </div>
+      </a>
+      <a class="card pak-hidden" href="remonts-modernizacija.html">
+        <div class="card-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&auto=format&fit=crop" alt="Logu modernizācija" loading="lazy"></div>
+        <div class="card-body">
+          <h3>Logu modernizācija</h3>
+          <p>Energoefektīvas stikla paketes, moderna furnitūra — uzlabojiet siltumizolāciju bez pilnas logu maiņas.</p>
+          <span class="more">Uzzināt vairāk →</span>
+        </div>
+      </a>
+      <a class="card pak-hidden" href="remonts-termokamera.html">
+        <div class="card-img"><img src="https://images.unsplash.com/photo-1504307651908-5e7d7e5b91fa?w=700&q=80&auto=format&fit=crop" alt="Pārbaude ar termokameru" loading="lazy"></div>
+        <div class="card-body">
+          <h3>Pārbaude ar termokameru</h3>
+          <p>Precīza siltuma zudumu un mitruma diagnostika — atklājam problēmas pirms tās kļūst dārgas.</p>
+          <span class="more">Uzzināt vairāk →</span>
+        </div>
+      </a>
+    </div>
+    <!-- Show all button -->
+    <div style="text-align:center;margin-top:2rem;" id="pakShowWrap">
+      <button id="pakShowBtn" class="btn btn-outline-dark" style="display:inline-flex;flex-direction:column;align-items:center;gap:.25rem;line-height:1.3;" onclick="(function(){
+        document.querySelectorAll('.pak-hidden').forEach(function(el){el.classList.remove('pak-hidden')});
+        document.getElementById('pakShowWrap').style.display='none';
+      })()">
+        <span>Rādīt visus pakalpojumus</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
     </div>
   </div>
 </section>
+<style>
+.pak-hidden{display:none}
+.faq-hidden{display:none}
+</style>
 
 <!-- ══ PROMO: Plissēti moskītu tīkli ══════════════════════════════ -->
 <section class="promo-plise">
@@ -417,7 +460,7 @@
         </div>
       </div>
 
-      <div class="faq-card">
+      <div class="faq-card faq-hidden">
         <span class="faq-q-tag">Jautājums</span>
         <h3>Kāda garantija uz veikto darbu?</h3>
         <p class="faq-teaser">Uz visiem mūsu veiktajiem darbiem nodrošinām 2 gadu garantiju.</p>
@@ -434,7 +477,7 @@
         </div>
       </div>
 
-      <div class="faq-card">
+      <div class="faq-card faq-hidden">
         <span class="faq-q-tag">Jautājums</span>
         <h3>Cik maksā logu apkope?</h3>
         <p class="faq-teaser">Regulēšana no €15, blīvgumija no €20, stikla pakete no €80. Tāme — bez maksas.</p>
@@ -452,7 +495,7 @@
         </div>
       </div>
 
-      <div class="faq-card">
+      <div class="faq-card faq-hidden">
         <span class="faq-q-tag">Jautājums</span>
         <h3>Vai maināt arī stikla paketes?</h3>
         <p class="faq-teaser">Jā — mainām stikla paketes, saglabājot oriģinālo rāmi. Ātrāk un lētāk nekā jauns logs.</p>
@@ -467,7 +510,7 @@
         </div>
       </div>
 
-      <div class="faq-card">
+      <div class="faq-card faq-hidden">
         <span class="faq-q-tag">Jautājums</span>
         <h3>Kā pieteikt meistaru?</h3>
         <p class="faq-teaser">Zvaniet, rakstiet e-pastu vai aizpildiet formu. Atbildam 12 stundu laikā.</p>
@@ -483,6 +526,18 @@
       </div>
 
     </div><!-- /.faq-grid -->
+
+    <!-- Show all FAQ button -->
+    <div style="text-align:center;margin-top:2rem;" id="faqShowWrap">
+      <button class="btn btn-outline-dark" style="display:inline-flex;flex-direction:column;align-items:center;gap:.25rem;line-height:1.3;" onclick="(function(){
+        document.querySelectorAll('.faq-hidden').forEach(function(el){el.classList.remove('faq-hidden')});
+        document.getElementById('faqShowWrap').style.display='none';
+      })()">
+        <span>Rādīt visus jautājumus</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+    </div>
+
   </div>
 </section>
 <!-- FAQ overlay -->
