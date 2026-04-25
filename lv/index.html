@@ -263,7 +263,7 @@
         </div>
       </a>
       <!-- ── Hidden cards (shown on button click) ── -->
-      <a class="card pak-hidden" href="aksesuari.html">
+      <a class="card pak-hidden pak-show-mobile" href="aksesuari.html">
         <div class="card-img"><img src="https://images.unsplash.com/photo-1558618047-3c0b3b6726a8?w=700&q=80&auto=format&fit=crop" alt="Logu un durvju aksesuāri" loading="lazy"></div>
         <div class="card-body">
           <h3>Aksesuāri</h3>
@@ -327,6 +327,9 @@
 <style>
 .pak-hidden{display:none}
 .faq-hidden{display:none}
+@media(max-width:900px){
+  .pak-show-mobile{display:block !important}
+}
 </style>
 
 <!-- ══ PROMO: Plissēti moskītu tīkli ══════════════════════════════ -->
