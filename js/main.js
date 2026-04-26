@@ -1,3 +1,13 @@
+// ── Chrome mobile: reduce font size by 3px ───────────────────────────────
+(function(){
+  var ua = navigator.userAgent;
+  var isChrome = /Chrome\//.test(ua) && /Google Inc/.test(navigator.vendor);
+  var isMobile = window.innerWidth <= 900;
+  if(isChrome && isMobile){
+    document.documentElement.classList.add('chrome-ua');
+  }
+})();
+
 // ── Site search index (all LV pages) ─────────────────────────────────────
 const SEARCH_IDX = [
   { t:'Sākumlapa',              u:'index.html',                      k:'logu remonts apkope latvija pvc koka aluminja moskitu tikli zaluzijas' },

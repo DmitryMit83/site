@@ -1533,3 +1533,28 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   .card .card-img{aspect-ratio:16/10}
   .work-info-grid img{max-height:280px;object-fit:cover}
 }
+
+
+/* ── Service detail grid: image on top, content below on mobile ──── */
+@media(max-width:900px){
+  .service-detail-grid{
+    grid-template-columns:1fr !important;
+    gap:1.5rem !important;
+  }
+  .service-detail-grid > div:first-child{
+    order:-1;
+  }
+  .service-detail-grid > div:first-child img{
+    width:100%;
+    border-radius:12px;
+    object-fit:cover;
+    max-height:260px;
+  }
+}
+
+/* ── Chrome mobile: reduce font size by 3px ─────────────────────── */
+@media(max-width:900px){
+  html.chrome-ua{
+    font-size:13px; /* browser default 16px − 3px */
+  }
+}
