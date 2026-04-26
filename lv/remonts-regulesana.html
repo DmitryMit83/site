@@ -146,56 +146,270 @@
     </div>
   </div>
 </header>
+<style>
+/* ── Pricing tabs ── */
+.price-tabs{display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap;}
+.price-tab-btn{padding:8px 20px;border-radius:99px;border:2px solid var(--primary);background:transparent;color:var(--primary);font-weight:600;font-size:.88rem;cursor:pointer;transition:background .18s,color .18s;}
+.price-tab-btn.active{background:var(--green)!important;color:#fff!important;border-color:var(--green)!important;}
+.price-tab-btn:hover:not(.active){background:rgba(0,0,0,.05);}
+.price-panel{display:none;}
+.price-panel.active{display:block;}
+.price-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;}
+.price-table thead tr{background:var(--primary);color:#fff;}
+.price-table th{padding:.85rem 1rem;text-align:left;font-weight:600;}
+.price-table th:last-child{text-align:right;}
+.price-table tbody tr{border-bottom:1px solid #e8e8e8;}
+.price-table tbody tr:last-child{border-bottom:none;}
+.price-table td{padding:.8rem 1rem;font-size:.93rem;}
+.price-table td:last-child{text-align:right;font-weight:700;color:var(--accent);}
+.price-note{margin-top:.9rem;color:var(--muted);font-size:.82rem;}
+
+/* ── FAQ accordion ── */
+.faq-list{display:flex;flex-direction:column;gap:0;}
+.faq-item{border-bottom:1px solid #e0e0e0;}
+.faq-item:first-child{border-top:1px solid #e0e0e0;}
+.faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:1.1rem 0;background:none;border:none;cursor:pointer;text-align:left;font-size:.97rem;font-weight:600;color:var(--text);line-height:1.4;}
+.faq-trigger:hover{color:var(--primary);}
+.faq-icon{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;font-weight:400;line-height:1;transition:background .18s,color .18s,transform .25s;}
+.faq-item.open .faq-icon{background:var(--primary);color:#fff;transform:rotate(45deg);}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.4,0,.2,1);}
+.faq-body-inner{padding:.1rem 0 1.1rem 0;color:var(--muted);font-size:.93rem;line-height:1.7;}
+
+/* ── Blog/tip card ── */
+.tip-card{background:var(--surface);border-radius:16px;padding:2rem 2.2rem;border-left:5px solid var(--accent);display:flex;gap:1.4rem;align-items:flex-start;}
+.tip-icon{flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;}
+.tip-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
+.tip-card h3{margin:0 0 .6rem;font-size:1.05rem;}
+.tip-card p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.7;}
+</style>
+
 <main>
 <section class="page-hero">
   <div class="container">
-    <a href="remonts.html" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;">← Atpakaļ uz remontiem</a>
-    <span class="eyebrow">Logu un durvju remonts</span>
+    <div class="page-hero-text">
+      <a href="remonts.html" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;">← Atpakaļ uz remontiem</a>
+      <span class="eyebrow">Logu un durvju remonts</span>
+    </div>
     <h1>Logu un durvju regulēšana</h1>
     <p>Precīza logu un durvju regulēšana novērš caurvēju, mitrumu un nolietojumu. Apkalpojam PVC, koka un alumīnija konstrukcijas.</p>
     <a class="btn btn-outline-dark" href="kontakti.html">Pasūtīt pakalpojumu</a>
   </div>
 </section>
 
+<!-- Pakalpojuma apraksts -->
 <section class="container" style="padding-top:3rem;padding-bottom:3rem;">
   <div class="service-detail-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
     <div>
       <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80&auto=format&fit=crop" alt="Logu un durvju regulēšana" style="width:100%;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);" loading="lazy">
     </div>
     <div>
-      <div class="price-badge-lg" style="display:inline-block;background:var(--accent);color:#fff;padding:.5rem 1.5rem;border-radius:99px;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;">Cena: no €15</div>
+      <div style="display:inline-block;background:var(--accent);color:#fff;padding:.5rem 1.5rem;border-radius:99px;font-weight:700;font-size:1.05rem;margin-bottom:1.5rem;">Cena: no €15</div>
       <h2 style="margin-top:0">Iekļauts pakalpojumā</h2>
-      <ul class="feature-list" style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;">
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.55rem;font-size:.95rem;">
         <li>✓ Augšas, apakšas un sānu regulēšana</li>
-<li>✓ Blīvgumijas stāvokļa pārbaude</li>
-<li>✓ Eņģu un šarnīru nostiprināšana</li>
-<li>✓ Slēgšanas mehānisma pārbaude</li>
-<li>✓ Rezultāta pārbaude uz vietas</li>
+        <li>✓ Blīvgumijas stāvokļa pārbaude</li>
+        <li>✓ Eņģu un šarnīru nostiprināšana</li>
+        <li>✓ Slēgšanas mehānisma pārbaude</li>
+        <li>✓ Rezultāta pārbaude uz vietas</li>
+        <li>✓ Garantija 2 gadi</li>
       </ul>
     </div>
   </div>
 </section>
 
+<!-- Cenrādis pēc materiāla -->
 <section class="alt">
   <div class="container">
-    <h2>Cenrādis</h2>
-    <table class="price-table" style="width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden;">
-      <thead><tr style="background:var(--primary);color:#fff;"><th style="padding:1rem;text-align:left">Pakalpojums</th><th style="padding:1rem;text-align:right">Cena</th></tr></thead>
-      <tbody style="font-size:.95rem;">
-        <tr><td>Loga regulēšana (1 vērtne)</td><td><strong>€15–25</strong></td></tr>
-<tr><td>Durvju regulēšana</td><td><strong>€20–35</strong></td></tr>
-<tr><td>Visi logi dzīvoklī (līdz 6)</td><td><strong>€80</strong></td></tr>
-<tr><td>Komerciālie objekti</td><td><strong>pēc tāmes</strong></td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:1rem;color:var(--muted);font-size:.85rem;">* Cenas ir indikatīvas. Precīza cena tiek noteikta pēc apskates.</p>
+    <h2>Cenrādis pēc loga veida</h2>
+    <p style="color:var(--muted);margin-bottom:1.5rem;">Cenas atšķiras atkarībā no loga materiāla un konstrukcijas sarežģītības. Izvēlieties savu logu veidu:</p>
+
+    <div class="price-tabs">
+      <button class="price-tab-btn active" data-tab="pvc">PVC logi un durvis</button>
+      <button class="price-tab-btn" data-tab="koks">Koka logi un durvis</button>
+      <button class="price-tab-btn" data-tab="alu">Alumīnija logi un durvis</button>
+    </div>
+
+    <!-- PVC -->
+    <div class="price-panel active" id="tab-pvc">
+      <table class="price-table">
+        <thead><tr><th>Pakalpojums</th><th>Cena</th></tr></thead>
+        <tbody>
+          <tr><td>Loga regulēšana (1 vērtne)</td><td>€15–20</td></tr>
+          <tr><td>Durvju regulēšana (1 vērtne)</td><td>€20–30</td></tr>
+          <tr><td>Visi logi dzīvoklī (līdz 6)</td><td>€70–90</td></tr>
+          <tr><td>Balkona vārtus / lielformāta logi</td><td>€25–35</td></tr>
+          <tr><td>Komerciālie objekti</td><td>pēc tāmes</td></tr>
+        </tbody>
+      </table>
+      <p class="price-note">* PVC — visizplatītākais logu veids. Regulēšana ir ātra un pieejama.</p>
+    </div>
+
+    <!-- Koks -->
+    <div class="price-panel" id="tab-koks">
+      <table class="price-table">
+        <thead><tr><th>Pakalpojums</th><th>Cena</th></tr></thead>
+        <tbody>
+          <tr><td>Loga regulēšana (1 vērtne)</td><td>€20–30</td></tr>
+          <tr><td>Durvju regulēšana (1 vērtne)</td><td>€25–40</td></tr>
+          <tr><td>Visi logi dzīvoklī (līdz 6)</td><td>€100–130</td></tr>
+          <tr><td>Eļļošana + regulēšana</td><td>€30–45</td></tr>
+          <tr><td>Komerciālie objekti</td><td>pēc tāmes</td></tr>
+        </tbody>
+      </table>
+      <p class="price-note">* Koka logi prasa rūpīgāku pieeju — bieži nepieciešama eļļošana un sezonāla kompensācija.</p>
+    </div>
+
+    <!-- Alumīnijs -->
+    <div class="price-panel" id="tab-alu">
+      <table class="price-table">
+        <thead><tr><th>Pakalpojums</th><th>Cena</th></tr></thead>
+        <tbody>
+          <tr><td>Loga regulēšana (1 vērtne)</td><td>€25–35</td></tr>
+          <tr><td>Durvju regulēšana (1 vērtne)</td><td>€30–50</td></tr>
+          <tr><td>Sistēmas durvis / fasādes konstrukcijas</td><td>pēc tāmes</td></tr>
+          <tr><td>Komerciālie un biroju objekti</td><td>pēc tāmes</td></tr>
+        </tbody>
+      </table>
+      <p class="price-note">* Alumīnija sistēmas prasa speciālu instrumentu. Cena ir atkarīga no profila sistēmas ražotāja.</p>
+    </div>
+
+    <div style="margin-top:1.4rem;padding:1rem 1.4rem;background:rgba(var(--accent-rgb, 208,77,26),.08);border-radius:10px;font-size:.9rem;">
+      💡 <strong>Bezmaksas apskate</strong> — pirms darbu uzsākšanas speciālists novērtē stāvokli un apstiprina galīgo cenu. <em style="font-size:.88em;opacity:.75;">Tikai Rīgā. Ārpus Rīgas — transporta izdevumi.</em>
+    </div>
   </div>
 </section>
+
+<!-- FAQ -->
+<section class="container" style="padding-top:3rem;padding-bottom:3rem;">
+  <h2>Biežāk uzdotie jautājumi</h2>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span>Kā zināt, ka logam nepieciešama regulēšana?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">Ja logs aizveras ar grūtībām, ir manāma caurvēja sajūta, uz stikliem veidojas kondensāts vai ir dzirdamas šķindošas skaņas — tā ir skaidra pazīme, ka nepieciešama regulēšana. Arī redzama spraugstiņa starp rāmi un vērtni liecina par neprecīzu eņģu novietojumu.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span>Cik bieži jāregulē PVC logi?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">Ieteicams regulēt reizi gadā — parasti pirms apkures sezonas (rudenī), lai nodrošinātu ciešu piespiešanu un siltumu ziemā. Jaunāki logi var prasīt regulēšanu retāk, bet logiem, kas vecāki par 5–7 gadiem, regulāra pārbaude ir ļoti svarīga.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span>Vai regulēšana palīdz ietaupīt siltumu?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">Jā, un ievērojami. Pat neliela eņģu noregulēšana var samazināt siltuma zudumus par 15–20%, jo logs tiek cieši piespiests pie blīvgumijas visā perimetrā. Tas nozīmē zemākus komunālos rēķinus un lielāku komfortu mājās visa gada garumā.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span>Cik ilgi aizņem viena loga regulēšana?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">Vidēji 10–20 minūtes vienam logam atkarībā no tā stāvokļa un veida. Dzīvoklis ar 5–6 logiem parasti aizņem apmēram 1–1.5 stundas kopā ar pārbaudi. Koka logu regulēšana var aizņemt nedaudz ilgāk, ja nepieciešama eļļošana.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span>Vai koka logu regulēšana atšķiras no PVC?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">Jā. Koka logiem bieži nepieciešama eļļošana, ūdens uzbrieduma kompensēšana un blīvgumiju nomaiņa, kas padara procesu sarežģītāku. PVC regulēšana ir standartizētāka — lielākā daļa logu izmanto universālu eņģu sistēmu ar trim regulēšanas asīm.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span>Vai var veikt regulēšanu bez speciālista?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">Nelielu PVC loga regulēšanu var mēģināt paveikt pašu spēkiem ar sešstūra atslēgu, taču nepareiza regulēšana var sabojāt eņģes vai pasliktināt blīvēšanu. Koka un alumīnija logiem vienmēr ieteicam vērsties pie speciālista, lai izvairītos no dārga bojājuma.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Padoms / Blog -->
+<section class="alt">
+  <div class="container" style="padding-top:2.5rem;padding-bottom:2.5rem;">
+    <h2>Speciālista padoms</h2>
+    <div class="tip-card">
+      <div class="tip-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div>
+        <p class="tip-label">Ziniet pirms zvana speciālistam</p>
+        <h3>Kā pārbaudīt loga regulēšanas nepieciešamību 30 sekundēs</h3>
+        <p>Paņemiet papīra lapu un iespiediet to starp logu un rāmi. Ja lapu var viegli izbīdīt, slēgšanas spiediens ir par zemu — logs vairs neturas cieši pie blīvgumijas. Tas nozīmē, ka aukstā laikā caur šo vietu nāk auksts gaiss. Šis tests darbojas gan PVC, gan koka logiem un ļauj noteikt, kuras vērtnes prasa uzmanību, pirms zvani meistaram.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
+
+<script>
+// ── Pricing tabs ──────────────────────────────────────────────────────────
+(function(){
+  var btns = document.querySelectorAll('.price-tab-btn');
+  var panels = document.querySelectorAll('.price-panel');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      var panel = document.getElementById('tab-' + btn.dataset.tab);
+      if(panel) panel.classList.add('active');
+    });
+  });
+})();
+
+// ── FAQ accordion ─────────────────────────────────────────────────────────
+(function(){
+  document.querySelectorAll('.faq-trigger').forEach(function(trigger){
+    trigger.addEventListener('click', function(){
+      var item   = trigger.closest('.faq-item');
+      var body   = item.querySelector('.faq-body');
+      var isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(function(o){
+        o.classList.remove('open');
+        o.querySelector('.faq-body').style.maxHeight = '0';
+        o.querySelector('.faq-trigger').setAttribute('aria-expanded','false');
+      });
+      // Open clicked (if was closed)
+      if(!isOpen){
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        trigger.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+</script>
 <section class="cta-band">
   <div class="container">
     <h2>Nepieciešams logu meistars?</h2>
     <p>Atstājiet pieprasījumu un mēs sazināsimies ar Jums 12 stundu laikā, lai vienotos par bezmaksas tāmi.</p>
+    <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.4rem;margin-bottom:0;">* Bezmaksas apskate un tāme — tikai Rīgā. Ārpus Rīgas tiek piemēroti transporta izdevumi.</p>
     <a class="btn btn-outline" href="kontakti.html">Sazināties</a>
   </div>
 </section>

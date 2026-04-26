@@ -146,6 +146,38 @@
     </div>
   </div>
 </header>
+<style>
+.price-tabs{display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap;}
+.price-tab-btn{padding:8px 20px;border-radius:99px;border:2px solid var(--primary);background:transparent;color:var(--primary);font-weight:600;font-size:.88rem;cursor:pointer;transition:background .18s,color .18s;}
+.price-tab-btn.active{background:var(--green)!important;color:#fff!important;border-color:var(--green)!important;}
+.price-tab-btn:hover:not(.active){background:rgba(0,0,0,.05);}
+.price-panel{display:none;}
+.price-panel.active{display:block;}
+.price-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;}
+.price-table thead tr{background:var(--primary);color:#fff;}
+.price-table th{padding:.85rem 1rem;text-align:left;font-weight:600;}
+.price-table th:last-child{text-align:right;}
+.price-table tbody tr{border-bottom:1px solid #e8e8e8;}
+.price-table tbody tr:last-child{border-bottom:none;}
+.price-table td{padding:.8rem 1rem;font-size:.93rem;}
+.price-table td:last-child{text-align:right;font-weight:700;color:var(--accent);}
+.price-note{margin-top:.9rem;color:var(--muted);font-size:.82rem;}
+.faq-list{display:flex;flex-direction:column;gap:0;}
+.faq-item{border-bottom:1px solid #e0e0e0;}
+.faq-item:first-child{border-top:1px solid #e0e0e0;}
+.faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:1.1rem 0;background:none;border:none;cursor:pointer;text-align:left;font-size:.97rem;font-weight:600;color:var(--text);line-height:1.4;}
+.faq-trigger:hover{color:var(--primary);}
+.faq-icon{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;font-weight:400;line-height:1;transition:background .18s,color .18s,transform .25s;}
+.faq-item.open .faq-icon{background:var(--primary);color:#fff;transform:rotate(45deg);}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.4,0,.2,1);}
+.faq-body-inner{padding:.1rem 0 1.1rem 0;color:var(--muted);font-size:.93rem;line-height:1.7;}
+.tip-card{background:var(--surface);border-radius:16px;padding:2rem 2.2rem;border-left:5px solid var(--accent);display:flex;gap:1.4rem;align-items:flex-start;}
+.tip-icon{flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;}
+.tip-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
+.tip-card h3{margin:0 0 .6rem;font-size:1.05rem;}
+.tip-card p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.7;}
+</style>
+
 <main>
 <section class="page-hero">
   <div class="container">
@@ -176,26 +208,127 @@
   </div>
 </section>
 
+
 <section class="alt">
   <div class="container">
-    <h2>Cenrādis</h2>
-    <table class="price-table" style="width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden;">
-      <thead><tr style="background:var(--primary);color:#fff;"><th style="padding:1rem;text-align:left">Pakalpojums</th><th style="padding:1rem;text-align:right">Cena</th></tr></thead>
-      <tbody style="font-size:.95rem;">
-        <tr><td>Blīvgumijas maiņa (1 logs)</td><td><strong>€20–35</strong></td></tr>
-<tr><td>Šuvju hermētizācija (1 logs)</td><td><strong>€15–25</strong></td></tr>
-<tr><td>Pilna siltināšana (dzīvoklis līdz 6 logiem)</td><td><strong>€120</strong></td></tr>
-<tr><td>Komerciālie objekti</td><td><strong>pēc tāmes</strong></td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:1rem;color:var(--muted);font-size:.85rem;">* Cenas ir indikatīvas. Precīza cena tiek noteikta pēc apskates.</p>
+    <h2>Cenrādis pēc materiāla</h2>
+    <p style="color:var(--muted);margin-bottom:1.5rem;">Cenas atšķiras atkarībā no loga materiāla. Izvēlieties savu veidu:</p>
+    <div class="price-tabs">
+      <button class="price-tab-btn active" data-tab="pvc">PVC logi</button>
+      <button class="price-tab-btn" data-tab="koks">Koka logi</button>
+      <button class="price-tab-btn" data-tab="alu">Alumīnija logi</button>
+    </div>
+    <div class="price-panel active" id="tab-pvc">
+      <table class="price-table">
+        <thead><tr><th>Pakalpojums</th><th>Cena</th></tr></thead>
+        <tbody>
+          <tr><td>Blīvgumijas maiņa (1 logs)</td><td>€20–30</td></tr>
+          <tr><td>Šuvju hermētizācija (1 logs)</td><td>€15–25</td></tr>
+          <tr><td>Pilna siltināšana — 1 logs</td><td>€30–50</td></tr>
+          <tr><td>Pilna siltināšana (dzīvoklis līdz 6 logiem)</td><td>€110–145</td></tr>
+          <tr><td>Komerciālie objekti</td><td>pēc tāmes</td></tr>
+        </tbody>
+      </table>
+      <p class="price-note">* PVC logiem siltināšana parasti ietver blīvgumiju + hermētizāciju + regulēšanu.</p>
+    </div>
+    <div class="price-panel " id="tab-koks">
+      <table class="price-table">
+        <thead><tr><th>Pakalpojums</th><th>Cena</th></tr></thead>
+        <tbody>
+          <tr><td>Blīvgumijas maiņa (1 logs)</td><td>€25–40</td></tr>
+          <tr><td>Šuvju hermētizācija (1 logs)</td><td>€20–35</td></tr>
+          <tr><td>Pilna siltināšana — 1 logs</td><td>€40–70</td></tr>
+          <tr><td>Pilna siltināšana (dzīvoklis līdz 6 logiem)</td><td>€140–185</td></tr>
+          <tr><td>Komerciālie objekti</td><td>pēc tāmes</td></tr>
+        </tbody>
+      </table>
+      <p class="price-note">* Koka logiem bieži nepieciešama arī eļļošana un putuplasta papilduzpilde starp rāmi un sienu.</p>
+    </div>
+    <div class="price-panel " id="tab-alu">
+      <table class="price-table">
+        <thead><tr><th>Pakalpojums</th><th>Cena</th></tr></thead>
+        <tbody>
+          <tr><td>Blīvgumijas maiņa (1 logs)</td><td>€30–45</td></tr>
+          <tr><td>Šuvju hermētizācija (1 logs)</td><td>€25–40</td></tr>
+          <tr><td>Pilna siltināšana — 1 logs</td><td>€50–80</td></tr>
+          <tr><td>Komerciālie objekti</td><td>pēc tāmes</td></tr>
+        </tbody>
+      </table>
+      <p class="price-note">* Alumīnija profiliem izmanto speciālas temperatūras kompensācijas blīvgumijas.</p>
+    </div>
+    <div style="margin-top:1.4rem;padding:1rem 1.4rem;background:rgba(208,77,26,.08);border-radius:10px;font-size:.9rem;">💡 <strong>Bezmaksas apskate</strong> — tikai Rīgā. Ārpus Rīgas tiek piemēroti transporta izdevumi.</div>
   </div>
 </section>
+<section class="container" style="padding-top:3rem;padding-bottom:3rem;">
+  <h2>Biežāk uzdotie jautājumi</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span>Kāpēc logi kļūst auksti ziemā?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">Galvenie iemesli: nolietota blīvgumija (visbiežāk), neprecīza loga regulēšana (logs neguļ cieši pret rāmi), bojāta stikla pakete (zaudēts hermētisms), vai nepietiekama hermētizācija starp rāmi un sienu. Speciālists diagnosticē cēloni un novērš tieši to — bez liekiem izdevumiem.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span>Kā pats var noteikt, no kurienes nāk caurvējs?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">Vienkārši tests: uzturiet aizdegtu sveci vai šķiltavu pie loga perimetra aukstā dienā — ja liesma sāk svārstīties, tieši tur ir caurvējs. Vēl precīzāk: izmantojiet termokameru, ko mēs piedāvājam kā atsevišķu pakalpojumu, lai redzētu precīzu siltuma zudumu karti.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span>Vai siltināšana var aizstāt jaunu logu uzstādīšanu?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">Daudzos gadījumos — jā. Ja rāmis un stikla pakete ir labā stāvoklī, pilna siltināšana var dot tuvu rezultātu jauniem logiem par daļu no cenas. Tomēr, ja logi ir vecāki par 25 gadiem vai rāmis ir deformēts, labāks ieguldījums ir pilna nomaiņa.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span>Cik var ietaupīt uz apkuri pēc siltināšanas?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">Atkarīgs no sākotnējā stāvokļa, taču vidēji klienti atzīmē 10–25% apkures izmaksu samazinājumu. Dzīvoklim ar 5–6 veciem logiem tas var nozīmēt €80–200 ietaupījumu gadā — siltināšanas izmaksas atmaksājas 1–2 sezonās.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span>Ko ietver "pilna siltināšana" vienam logam?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-body-inner">Pilna siltināšana: blīvgumijas pārbaude un maiņa, loga regulēšana (precīza piegulšana), šuvju hermētizācija ar silikonu ap rāmi, caurvēja pārbaude pēc darba. Ja nepieciešams, arī putuplasta papilduzpilde un ārējā apdare.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="alt">
+  <div class="container" style="padding-top:2.5rem;padding-bottom:2.5rem;">
+    <h2>Speciālista padoms</h2>
+    <div class="tip-card">
+      <div class="tip-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div>
+        <p class="tip-label">Ātrā diagnostika pirms sezonas</p>
+        <h3>Sveces tests — atrodiet caurvēju 2 minūtēs bez speciāliem instrumentiem</h3>
+        <p>Aizdedziniet sveci vai izmantojiet šķiltavu un lēnām pavelciet to gar visu loga perimetru — starp vērtni un rāmi, ap visu apkārtmēru, arī ap palodzes savienojumu ar sienu. Ja liesma sāk svārstīties vai nodziest — tieši tur ir caurvējs. Atzīmējiet vietas un zvaniet speciālistam, lai saņemtu precīzu diagnostiku un risinājumu pirms aukstā laika iestāšanās.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 <section class="cta-band">
   <div class="container">
     <h2>Nepieciešams logu meistars?</h2>
     <p>Atstājiet pieprasījumu un mēs sazināsimies ar Jums 12 stundu laikā, lai vienotos par bezmaksas tāmi.</p>
+    <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.4rem;margin-bottom:0;">* Bezmaksas apskate un tāme — tikai Rīgā. Ārpus Rīgas tiek piemēroti transporta izdevumi.</p>
     <a class="btn btn-outline" href="kontakti.html">Sazināties</a>
   </div>
 </section>
@@ -260,6 +393,41 @@
 <script src="../js/main.js"></script>
 
 
+
+<script>
+(function(){
+  var btns = document.querySelectorAll('.price-tab-btn');
+  var panels = document.querySelectorAll('.price-panel');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      var panel = document.getElementById('tab-' + btn.dataset.tab);
+      if(panel) panel.classList.add('active');
+    });
+  });
+})();
+(function(){
+  document.querySelectorAll('.faq-trigger').forEach(function(trigger){
+    trigger.addEventListener('click', function(){
+      var item = trigger.closest('.faq-item');
+      var body = item.querySelector('.faq-body');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(o){
+        o.classList.remove('open');
+        o.querySelector('.faq-body').style.maxHeight = '0';
+        o.querySelector('.faq-trigger').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        trigger.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+</script>
 
 <!-- ── Mobile contact widget ── -->
 <div class="mob-cw" id="mobContactWidget">
