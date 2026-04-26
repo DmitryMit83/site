@@ -171,7 +171,7 @@
 .faq-item.open .faq-icon{background:var(--primary);color:#fff;transform:rotate(45deg);}
 .faq-body{max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.4,0,.2,1);}
 .faq-body-inner{padding:.1rem 0 1.1rem 0;color:var(--muted);font-size:.93rem;line-height:1.7;}
-.tip-card{background:var(--surface);border-radius:16px;padding:2rem 2.2rem;border-left:5px solid var(--accent);display:flex;gap:1.4rem;align-items:flex-start;}
+.tip-heading{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem;}.tip-heading h2{margin:0;}.tip-card{background:var(--surface);border-radius:16px;padding:2rem 2.2rem;border-left:5px solid var(--accent);}
 .tip-icon{flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;}
 .tip-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
 .tip-card h3{margin:0 0 .6rem;font-size:1.05rem;}
@@ -311,9 +311,11 @@
 </section>
 <section class="alt">
   <div class="container" style="padding-top:2.5rem;padding-bottom:2.5rem;">
-    <h2>Speciālista padoms</h2>
-    <div class="tip-card">
+    <div class="tip-heading">
       <div class="tip-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <h2>Speciālista padoms</h2>
+    </div>
+    <div class="tip-card">
       <div>
         <p class="tip-label">Vienkāršs veids pagarināt furnitūras mūžu</p>
         <h3>Eļļojiet logu furnitūru reizi gadā — tas ietaupa simtus eiro</h3>
