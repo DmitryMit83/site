@@ -1159,8 +1159,8 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 .mob-cw{
   position:fixed;
   right:0;
-  bottom:25%;          /* 1/4 from bottom */
-  z-index:250;
+  top:56px;            /* fallback; JS overrides with real header height */
+  z-index:40;          /* below header(50), dropdowns(200), util-panel(500) */
   display:none;        /* hidden on desktop */
   -webkit-flex-direction:row;
   flex-direction:row;

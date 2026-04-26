@@ -271,6 +271,17 @@ document.addEventListener('DOMContentLoaded', () => {
     var tab    = document.getElementById('mobContactTab');
     if (!widget || !tab) return;
 
+    // Position widget exactly below the header (updates on resize too)
+    var siteHeader = document.querySelector('.site-header');
+    function placeWidget() {
+      if (window.innerWidth >= 1200) return;
+      if (siteHeader) {
+        widget.style.top = siteHeader.offsetHeight + 'px';
+      }
+    }
+    placeWidget();
+    window.addEventListener('resize', placeWidget);
+
     // justOpened flag prevents Chrome's document-click from closing immediately
     var justOpened = false;
 
