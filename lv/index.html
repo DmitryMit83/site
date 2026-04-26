@@ -37,6 +37,16 @@
   </div>
 </div>
 
+<!-- ══ Mobile splash (covers full screen on first load, <1200px only) ══ -->
+<div class="mobile-splash gone" id="mobileSplash" role="presentation">
+  <img src="../assets/img/logo-white.svg" alt="SIA Logu Apkope" class="mobile-splash-logo">
+  <p class="mobile-splash-tagline">Profesionāla apkope un remonts</p>
+  <div class="mobile-splash-hint">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    Pieskarties vai ritināt
+  </div>
+</div>
+
 <header class="site-header hero-header">
   <div class="header-inner">
     <div class="hero-brand-wrap">
@@ -737,12 +747,6 @@
       </div>
     </div>
 
-    <!-- ── Mobilā poga: rādīt/slēpt detaļas ──────────────────────── -->
-    <button class="map-toggle-btn" id="mapToggleBtn" aria-expanded="false">
-      <span class="map-toggle-label">Rādīt vizītkarti un norādes</span>
-      <svg class="map-toggle-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </button>
-
     <!-- ── Kā mūs atrast ──────────────────────────────────────────── -->
     <div class="map-directions" id="mapDetails">
       <div class="map-directions-img">
@@ -755,6 +759,12 @@
         <p style="margin-top:12px;"><a href="kontakti.html" style="color:var(--accent);font-weight:600;text-decoration:none;">Jautājumi par atrašanās vietu? Sazinieties ar mums →</a></p>
       </div>
     </div>
+
+    <!-- ── Mobilā poga: rādīt/slēpt detaļas ──────────────────────── -->
+    <button class="map-toggle-btn" id="mapToggleBtn" aria-expanded="false">
+      <span class="map-toggle-label">Rādīt vizītkarti un norādes</span>
+      <svg class="map-toggle-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
   </div>
 </section>
 
@@ -1336,6 +1346,75 @@
       dismiss();
     }
   });
+})();
+
+/* ── Mobile splash (<1200px) ────────────────────────────────────── */
+(function () {
+  var splash = document.getElementById('mobileSplash');
+  if (!splash) return;
+
+  /* Only on mobile screens */
+  if (window.innerWidth >= 1200) return;
+  /* Skip if already scrolled */
+  if (window.scrollY > 0) return;
+
+  var dismissed  = false;
+  var touchStartY = 0;
+
+  /* Show splash */
+  splash.classList.remove('gone');
+  document.body.style.overflow = 'hidden';
+
+  /* Typewriter for tagline */
+  var tagline  = splash.querySelector('.mobile-splash-tagline');
+  var fullText = tagline ? tagline.textContent.trim() : '';
+  if (tagline && fullText) {
+    tagline.textContent = '';
+    var charIdx = 0;
+    /* Start typing after logo begins to appear (~0.6s) */
+    setTimeout(function () {
+      tagline.classList.add('typing');
+      var timer = setInterval(function () {
+        tagline.textContent = fullText.slice(0, ++charIdx);
+        if (charIdx >= fullText.length) {
+          clearInterval(timer);
+          tagline.classList.remove('typing');
+          tagline.classList.add('typed');
+          /* Auto-dismiss 2 s after typing finishes */
+          setTimeout(dismiss, 2000);
+        }
+      }, 65);
+    }, 600);
+  }
+
+  /* Dismiss */
+  function dismiss() {
+    if (dismissed) return;
+    dismissed = true;
+    document.body.style.overflow = '';
+    splash.classList.add('dismissing');
+    splash.addEventListener('animationend', function () {
+      splash.classList.add('gone');
+    }, { once: true });
+  }
+
+  /* Click / tap */
+  splash.addEventListener('click', dismiss);
+
+  /* Touch swipe up */
+  window.addEventListener('touchstart', function (e) {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  window.addEventListener('touchmove', function (e) {
+    if (dismissed) return;
+    if (touchStartY - e.touches[0].clientY >= 40) dismiss();
+  }, { passive: true });
+
+  /* Wheel scroll */
+  window.addEventListener('wheel', function (e) {
+    if (dismissed) return;
+    if (e.deltaY > 0) dismiss();
+  }, { passive: true });
 })();
 </script>
 </body>
