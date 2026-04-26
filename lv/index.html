@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/styles.css?v=4">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"SIA Logu Apkope","image":"/assets/img/logo-white.svg","description":"Logu un durvju remonts, moskītu tīklu ražošana, žalūziju uzstādīšana visā Latvijā.","telephone":["+37128950055","+37129825477"],"address":{"@type":"PostalAddress","streetAddress":"Latgales iela 130a","addressLocality":"Rīga","postalCode":"LV-1003","addressCountry":"LV"},"areaServed":"Latvija","serviceType":["Logu remonts","Moskītu tīkli","Žalūzijas","Aksesuāri","Palodzes","Ventilācija"]}
 </script>
@@ -1370,12 +1370,8 @@
 
   /* Only on mobile/tablet screens */
   if (window.innerWidth >= 1200) return;
-  /* Show only once per session (Chrome back-nav fix) */
-  if (sessionStorage.getItem('mSplashSeen3')) return;
   /* Skip if page already scrolled */
   if (window.scrollY > 0) return;
-
-  sessionStorage.setItem('mSplashSeen3', '1');
 
   var dismissed   = false;
   var touchStartY = 0;
