@@ -1408,6 +1408,13 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 }
 
 /* ── Work info grid (darbi pages) ────────────────────────────────── */
+@media(max-width:768px){
+  /* Text div: add horizontal padding when it wraps under the image */
+  .work-info-grid > div:last-child{
+    padding-left:1rem;
+    padding-right:1rem;
+  }
+}
 @media(max-width:640px){
   .work-info-grid{padding:40px 0;gap:1.5rem}
   .work-info-grid img{border-radius:10px}
