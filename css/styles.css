@@ -1155,75 +1155,77 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 @media(min-width:1200px){.mobile-splash{display:none!important}}
 
 /* ── Mobile contact widget (right bookmark, <1200px only) ───────────────────── */
+/* Safari-safe: NO transform on the fixed container, flex-row layout */
 .mob-cw{
   position:fixed;
   right:0;
-  top:50%;
-  -webkit-transform:translateY(-50%);
-  transform:translateY(-50%);
+  bottom:25%;          /* 1/4 from bottom */
   z-index:250;
+  display:none;        /* hidden on desktop */
+  -webkit-flex-direction:row;
+  flex-direction:row;
+  -webkit-align-items:stretch;
+  align-items:stretch;
 }
-@media(min-width:1200px){.mob-cw{display:none!important}}
+@media(max-width:1199px){.mob-cw{display:-webkit-flex;display:flex}}
 
-/* The tab handle — always visible on the right edge */
+/* Tab handle — always at the right edge */
 .mob-cw-tab{
+  -webkit-flex-shrink:0;
+  flex-shrink:0;
   width:44px;
   min-height:120px;
   background:var(--green);
   border:none;
   border-radius:14px 0 0 14px;
   cursor:pointer;
+  display:-webkit-flex;
   display:flex;
+  -webkit-align-items:center;
   align-items:center;
+  -webkit-justify-content:center;
   justify-content:center;
-  box-shadow:-4px 0 18px rgba(0,0,0,.22);
-  position:relative;
-  z-index:2;
+  box-shadow:-4px 0 18px rgba(0,0,0,.24);
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
 }
 .mob-cw-tab svg{color:var(--accent);flex-shrink:0}
-.mob-cw-tab:active{opacity:.85}
+.mob-cw-tab:active{opacity:.8}
 
-/* The sliding panel — appears to the left of the tab */
+/* Panel — grows leftward from 0 width (Safari-safe width animation) */
 .mob-cw-panel{
-  position:absolute;
-  right:44px;   /* = tab width */
-  top:0;bottom:0;
+  width:0;
+  overflow:hidden;
   background:#fff;
   border-radius:14px 0 0 14px;
-  box-shadow:-5px 0 22px rgba(0,0,0,.2);
+  box-shadow:-5px 0 22px rgba(0,0,0,.18);
+  display:-webkit-flex;
   display:flex;
+  -webkit-flex-direction:column;
   flex-direction:column;
+  -webkit-justify-content:center;
   justify-content:center;
-  min-width:175px;
-  overflow:hidden;
-  /* hidden: slid behind the tab */
-  -webkit-transform:translateX(100%);
-  transform:translateX(100%);
-  opacity:0;
-  pointer-events:none;
-  -webkit-transition:-webkit-transform .3s cubic-bezier(.4,0,.2,1), opacity .25s;
-  transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .25s;
-  will-change:transform;
+  -webkit-transition:width .3s cubic-bezier(.4,0,.2,1);
+  transition:width .3s cubic-bezier(.4,0,.2,1);
 }
 .mob-cw.open .mob-cw-panel{
-  -webkit-transform:translateX(0);
-  transform:translateX(0);
-  opacity:1;
-  pointer-events:auto;
+  width:182px;
 }
 
 /* Contact option rows */
 .mob-cw-item{
+  display:-webkit-flex;
   display:flex;
+  -webkit-align-items:center;
   align-items:center;
   gap:11px;
-  padding:15px 16px 15px 14px;
+  padding:16px 16px 16px 13px;
   text-decoration:none;
   color:#1a1a1a;
   font-size:.875rem;
   font-weight:600;
+  white-space:nowrap;
+  min-width:182px;     /* prevents reflow during width animation */
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
 }
@@ -1233,14 +1235,18 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 .mob-cw-ico{
   width:36px;height:36px;
   border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-align-items:center;
+  align-items:center;
+  -webkit-justify-content:center;
+  justify-content:center;
   flex-shrink:0;
 }
 .mob-cw-ico--phone{background:var(--green)}
 .mob-cw-ico--phone svg{color:var(--accent)}
 .mob-cw-ico--wa{background:#25D366}
 .mob-cw-ico--wa svg{color:#fff}
-.mob-cw-label{white-space:nowrap}
 
 /* ── Hero header (index.html only, ≥1200px) ─────────────────────────────────── */
 

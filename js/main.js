@@ -279,9 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
       widget.classList.toggle('open');
       tab.setAttribute('aria-expanded', wasOpen ? 'false' : 'true');
       if (!wasOpen) {
+        // Block the document-click handler briefly so it can't close immediately
+        // (needed for Chrome and Safari mobile where tap fires click on document too)
         justOpened = true;
-        // Clear flag after current event loop tick (RAF = reliable cross-browser)
-        requestAnimationFrame(function () { justOpened = false; });
+        setTimeout(function () { justOpened = false; }, 120);
       }
     });
 
