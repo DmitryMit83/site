@@ -1154,62 +1154,55 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 /* Only show on mobile — hide on desktop */
 @media(min-width:1200px){.mobile-splash{display:none!important}}
 
-/* ── Mobile contact widget (right bookmark, <1200px only) ───────────────────── */
-/* Safari-safe: NO transform on the fixed container, flex-row layout */
+/* ── Mobile contact widget (horizontal tab under header, <1200px only) ─────── */
 .mob-cw{
   position:fixed;
-  right:0;
+  right:18px;
   top:56px;            /* fallback; JS overrides with real header height */
-  z-index:40;          /* below header(50), dropdowns(200), util-panel(500) */
-  display:none;        /* hidden on desktop */
-  -webkit-flex-direction:row;
-  flex-direction:row;
-  -webkit-align-items:stretch;
-  align-items:stretch;
+  z-index:40;          /* below header(50), nav(50), dropdowns(200), util-panel(500) */
+  display:none;
+  -webkit-flex-direction:column;
+  flex-direction:column;
+  -webkit-align-items:flex-end;
+  align-items:flex-end;
 }
 @media(max-width:1199px){.mob-cw{display:-webkit-flex;display:flex}}
 
-/* Tab handle — always at the right edge */
+/* Horizontal tab — hangs from the header bottom */
 .mob-cw-tab{
-  -webkit-flex-shrink:0;
-  flex-shrink:0;
-  width:44px;
-  min-height:120px;
+  height:34px;
+  padding:0 13px;
   background:var(--green);
   border:none;
-  border-radius:14px 0 0 14px;
+  border-radius:0 0 10px 10px;
   cursor:pointer;
   display:-webkit-flex;
   display:flex;
   -webkit-align-items:center;
   align-items:center;
-  -webkit-justify-content:center;
-  justify-content:center;
-  box-shadow:-4px 0 18px rgba(0,0,0,.24);
+  gap:7px;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
+  white-space:nowrap;
 }
 .mob-cw-tab svg{color:var(--accent);flex-shrink:0}
+.mob-cw-tab-label{color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.01em}
 .mob-cw-tab:active{opacity:.8}
 
-/* Panel — grows leftward from 0 width (Safari-safe width animation) */
+/* Panel — drops down below the tab */
 .mob-cw-panel{
-  width:0;
-  overflow:hidden;
   background:#fff;
-  border-radius:14px 0 0 14px;
-  box-shadow:-5px 0 22px rgba(0,0,0,.18);
-  display:-webkit-flex;
-  display:flex;
-  -webkit-flex-direction:column;
-  flex-direction:column;
-  -webkit-justify-content:center;
-  justify-content:center;
-  -webkit-transition:width .3s cubic-bezier(.4,0,.2,1);
-  transition:width .3s cubic-bezier(.4,0,.2,1);
+  border-radius:0 0 12px 12px;
+  box-shadow:0 8px 24px rgba(0,0,0,.18);
+  overflow:hidden;
+  max-height:0;
+  -webkit-transition:max-height .3s cubic-bezier(.4,0,.2,1);
+  transition:max-height .3s cubic-bezier(.4,0,.2,1);
+  width:100%;
 }
 .mob-cw.open .mob-cw-panel{
-  width:182px;
+  max-height:200px;
 }
 
 /* Contact option rows */
@@ -1218,22 +1211,21 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   display:flex;
   -webkit-align-items:center;
   align-items:center;
-  gap:11px;
-  padding:16px 16px 16px 13px;
+  gap:10px;
+  padding:13px 16px;
   text-decoration:none;
   color:#1a1a1a;
   font-size:.875rem;
   font-weight:600;
   white-space:nowrap;
-  min-width:182px;     /* prevents reflow during width animation */
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
 }
 .mob-cw-item+.mob-cw-item{border-top:1px solid #ebebeb}
-.mob-cw-item:active{background:#f4f4f4}
+.mob-cw-item:active{background:#f5f5f5}
 
 .mob-cw-ico{
-  width:36px;height:36px;
+  width:32px;height:32px;
   border-radius:50%;
   display:-webkit-flex;
   display:flex;
