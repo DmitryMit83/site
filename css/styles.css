@@ -257,7 +257,7 @@ p{margin-bottom:1rem;color:var(--text-2)}
   background:var(--green);
   cursor:pointer;
 }
-.gallery-card--shop img{display:none}
+.gallery-card--shop img:not(.gallery-shop-logo){display:none}
 /* Noņem tumšo gradientu tieši no veikala kartes */
 .gallery-card--shop::before{display:none}
 .gallery-shop-inner{
@@ -268,7 +268,7 @@ p{margin-bottom:1rem;color:var(--text-2)}
   z-index:2;
 }
 .gallery-shop-logo{
-  height:40px;width:auto;
+  height:10px;width:auto;
   margin-bottom:4px;
 }
 .gallery-shop-name{
@@ -1394,8 +1394,8 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 @media(max-width:900px){
   .hero h1{font-size:clamp(1.4rem,5vw,2rem)}
   .hero p.lead{font-size:.94rem}
-  .hero-gallery{height:200px;margin-bottom:0}
-  .gallery-card{height:170px}
+  .hero-gallery{height:310px;margin-bottom:0}
+  .gallery-card{height:265px}
 }
 @media(max-width:640px){
   .hero-text-block{padding:28px 0 18px}
@@ -1403,13 +1403,13 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   .hero p.lead{font-size:.9rem;max-width:100%}
   .cta-row{flex-direction:column;gap:10px}
   .cta-row .btn{text-align:center;width:100%}
-  .hero-gallery{height:190px;border-radius:10px}
-  .gallery-card{height:155px}
+  .hero-gallery{height:290px;border-radius:10px}
+  .gallery-card{height:245px}
 }
 @media(max-width:360px){
   .hero h1{font-size:1.3rem}
-  .hero-gallery{height:170px}
-  .gallery-card{height:138px}
+  .hero-gallery{height:260px}
+  .gallery-card{height:218px}
 }
 
 /* ── Page hero (inner pages) ──────────────────────────────────────── */
