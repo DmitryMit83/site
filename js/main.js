@@ -265,22 +265,31 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pakTrigger) pakTrigger.classList.add('active');
   })();
 
-  // ── Mobile contact widget ───────────────────────────────────────────────
+  // ── Mobile contact widget (bookmark tab) ───────────────────────────────
   (function () {
     var widget = document.getElementById('mobContactWidget');
-    var fab    = document.getElementById('mobContactFab');
-    if (!widget || !fab) return;
+    var tab    = document.getElementById('mobContactTab');
+    if (!widget || !tab) return;
 
-    fab.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var open = widget.classList.toggle('open');
-      fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+    // justOpened flag prevents Chrome's document-click from closing immediately
+    var justOpened = false;
+
+    tab.addEventListener('click', function () {
+      var wasOpen = widget.classList.contains('open');
+      widget.classList.toggle('open');
+      tab.setAttribute('aria-expanded', wasOpen ? 'false' : 'true');
+      if (!wasOpen) {
+        justOpened = true;
+        // Clear flag after current event loop tick (RAF = reliable cross-browser)
+        requestAnimationFrame(function () { justOpened = false; });
+      }
     });
 
     document.addEventListener('click', function (e) {
-      if (!widget.contains(e.target)) {
+      if (justOpened) return;
+      if (widget.classList.contains('open') && !widget.contains(e.target)) {
         widget.classList.remove('open');
-        fab.setAttribute('aria-expanded', 'false');
+        tab.setAttribute('aria-expanded', 'false');
       }
     });
   })();

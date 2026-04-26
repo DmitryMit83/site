@@ -469,25 +469,27 @@ function filterArticles(cat) {
 </script>
 <script src="../js/main.js"></script>
 
+
 <!-- ── Mobile contact widget ── -->
 <div class="mob-cw" id="mobContactWidget">
-  <div class="mob-cw-menu">
+  <div class="mob-cw-panel">
+    <a href="tel:+37128950055" class="mob-cw-item">
+      <span class="mob-cw-ico mob-cw-ico--phone">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.77 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.68 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.18 6.18l1.28-1.02a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </span>
+      <span class="mob-cw-label">Zvanīt</span>
+    </a>
     <a href="https://wa.me/37128950055" class="mob-cw-item" target="_blank" rel="noopener noreferrer">
       <span class="mob-cw-ico mob-cw-ico--wa">
         <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.833.738 5.494 2.031 7.8L0 32l8.432-2.009A15.938 15.938 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.267 13.267 0 01-6.797-1.87l-.487-.29-5.007 1.194 1.258-4.874-.317-.5A13.267 13.267 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.886c-.398-.199-2.355-1.163-2.72-1.296-.364-.133-.63-.199-.896.2-.266.398-1.03 1.295-1.262 1.56-.232.266-.465.3-.863.1-.398-.2-1.68-.619-3.2-1.977-1.183-1.056-1.982-2.36-2.214-2.758-.232-.398-.025-.613.175-.81.179-.178.398-.465.597-.698.2-.233.266-.399.399-.665.133-.267.066-.499-.033-.698-.1-.2-.896-2.16-1.228-2.958-.323-.776-.65-.671-.896-.683l-.764-.013c-.266 0-.697.1-1.063.499-.365.398-1.394 1.362-1.394 3.32s1.427 3.85 1.626 4.116c.2.266 2.808 4.286 6.803 6.013.951.41 1.693.655 2.272.839.955.304 1.824.261 2.51.158.766-.114 2.355-.963 2.688-1.893.333-.93.333-1.727.233-1.893-.099-.166-.365-.266-.763-.465z"/></svg>
       </span>
-      WhatsApp
-    </a>
-    <a href="tel:+37128950055" class="mob-cw-item">
-      <span class="mob-cw-ico mob-cw-ico--phone">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.77 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.68 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.18 6.18l1.28-1.02a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      </span>
-      Zvanīt
+      <span class="mob-cw-label">WhatsApp</span>
     </a>
   </div>
-  <button class="mob-cw-fab" id="mobContactFab" aria-label="Sazināties ar mums" aria-expanded="false">
-    <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.77 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.68 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.18 6.18l1.28-1.02a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  <button class="mob-cw-tab" id="mobContactTab" aria-label="Sazināties ar mums" aria-expanded="false">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.77 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.68 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.18 6.18l1.28-1.02a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
   </button>
 </div>
+
 </body>
 </html>
