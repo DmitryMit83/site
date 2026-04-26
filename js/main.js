@@ -265,3 +265,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pakTrigger) pakTrigger.classList.add('active');
   })();
 });
+
+// ── Mobile contact widget ─────────────────────────────────────────────────
+(function () {
+  var widget = document.getElementById('mobContactWidget');
+  var fab    = document.getElementById('mobContactFab');
+  if (!widget || !fab) return;
+
+  fab.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = widget.classList.toggle('open');
+    fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!widget.contains(e.target)) {
+      widget.classList.remove('open');
+      fab.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();

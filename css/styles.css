@@ -1154,6 +1154,65 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 /* Only show on mobile — hide on desktop */
 @media(min-width:1200px){.mobile-splash{display:none!important}}
 
+/* ── Mobile contact widget (floating, <1200px only) ─────────────────────────── */
+.mob-cw{
+  display:none;
+  position:fixed;
+  bottom:28px;right:20px;
+  z-index:250;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:10px;
+}
+@media(max-width:1199px){.mob-cw{display:flex}}
+.mob-cw-fab{
+  width:58px;height:58px;
+  border-radius:50%;
+  background:var(--green);
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 18px rgba(0,0,0,.28);
+  transition:transform .2s,box-shadow .2s;
+  position:relative;z-index:2;
+  -webkit-tap-highlight-color:transparent;
+}
+.mob-cw-fab:active{transform:scale(.94)}
+.mob-cw-fab svg{color:var(--accent);flex-shrink:0}
+.mob-cw-menu{
+  display:flex;flex-direction:column;gap:8px;
+  align-items:flex-end;
+  opacity:0;pointer-events:none;
+  transform:translateY(12px) scale(.96);
+  transition:opacity .22s,transform .22s;
+}
+.mob-cw.open .mob-cw-menu{
+  opacity:1;pointer-events:auto;
+  transform:translateY(0) scale(1);
+}
+.mob-cw-item{
+  display:flex;align-items:center;gap:10px;
+  background:#fff;
+  border-radius:32px;
+  padding:8px 18px 8px 8px;
+  text-decoration:none;
+  color:#1a1a1a;
+  font-size:.875rem;font-weight:600;
+  box-shadow:0 3px 14px rgba(0,0,0,.18);
+  white-space:nowrap;
+  transition:transform .15s,box-shadow .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.mob-cw-item:active{transform:scale(.97);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.mob-cw-ico{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.mob-cw-ico--phone{background:var(--green)}
+.mob-cw-ico--phone svg{color:var(--accent)}
+.mob-cw-ico--wa{background:#25D366}
+.mob-cw-ico--wa svg{color:#fff}
+
 /* ── Hero header (index.html only, ≥1200px) ─────────────────────────────────── */
 
 /* Transitions always available (no-op on small screens) */
