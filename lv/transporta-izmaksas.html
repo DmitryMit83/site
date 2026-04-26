@@ -3,17 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Durvju moskītu tīkli Rīgā | SIA Logu Apkope</title>
-<meta name="description" content="Durvju moskītu tīkli uz eņģēm ar magnētisko aizvēršanu Rīgā. Uzstādīšana 1–3 dienās. Piemēroti balkona un terases durvīm. Cena no €55.">
-<link rel="canonical" href="/lv/moskitu-tikli-durvis.html">
-<link rel="alternate" hreflang="lv" href="/lv/moskitu-tikli-durvis.html">
-<link rel="alternate" hreflang="ru" href="/ru/moskitnye-setki-dvernye.html">
-<link rel="alternate" hreflang="en" href="/en/mosquito-nets-door.html">
+<title>Transporta izmaksas ārpus Rīgas | SIA Logu Apkope</title>
+<meta name="description" content="Transporta izmaksas logu un durvju remontam ārpus Rīgas. Cenas pēc pilsētām un attāluma. Salaspils €15, Jūrmala €25, Valmiera €45, Daugavpils €75.">
+<link rel="canonical" href="/lv/transporta-izmaksas.html">
+<link rel="alternate" hreflang="lv" href="/lv/transporta-izmaksas.html">
 <link rel="icon" href="../assets/img/logo-white.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/styles.css">
+<style>
+.transport-intro{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+@media(max-width:760px){.transport-intro{grid-template-columns:1fr;gap:2rem;}}
+.zone-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;margin-top:2rem;}
+.zone-card{background:#fff;border-radius:14px;border:1px solid var(--line);overflow:hidden;}
+.zone-card-head{padding:.8rem 1.2rem;display:flex;align-items:center;justify-content:space-between;}
+.zone-price{font-size:1.3rem;font-weight:700;color:#fff;}
+.zone-label{font-size:.75rem;color:rgba(255,255,255,.8);font-weight:500;}
+.zone-cities{padding:.7rem 1.2rem 1rem;}
+.zone-cities ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.35rem;}
+.zone-cities li{font-size:.88rem;color:var(--text);background:var(--surface);padding:.25rem .65rem;border-radius:99px;border:1px solid var(--line);}
+.zone-special .zone-card-head{background:var(--accent);}
+.zone-1 .zone-card-head{background:#4a9c6a;}
+.zone-2 .zone-card-head{background:#3d8a5c;}
+.zone-3 .zone-card-head{background:#2e6e49;}
+.zone-4 .zone-card-head{background:#245a3c;}
+.zone-5 .zone-card-head{background:#1a4730;}
+.zone-6 .zone-card-head{background:#113320;}
+.zone-7 .zone-card-head{background:#0a2018;}
+.map-wrap{border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.12);}
+.map-wrap img{width:100%;display:block;}
+.info-box{background:var(--surface);border-radius:14px;padding:1.5rem 1.8rem;border-left:4px solid var(--accent);margin-bottom:1.5rem;}
+.info-box p{margin:0;font-size:.95rem;line-height:1.7;color:var(--text);}
+.info-box strong{color:var(--primary);}
+.dist-note{font-size:.8rem;color:var(--muted);margin-top:.3rem;font-style:italic;}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -21,7 +45,7 @@
     <a class="brand" href="index.html"><img src="../assets/img/logo-white.svg" alt="SIA Logu Apkope logo"></a>
     <nav class="nav">
       <a href="index.html">Sākums</a>
-      <div class="has-dropdown" class="active">
+      <div class="has-dropdown">
         <a href="#">Pakalpojumi</a>
         <div class="dropdown"><div class="dropdown-inner">
       <div class="has-dropdown-sub">
@@ -61,7 +85,7 @@
           <a href="palodzes.html">Palodzes</a>
           <a href="ventilacija.html">Ventilācija</a>
           <a href="pleve.html">Plēve</a>
-          <a href="transporta-izmaksas.html">Transporta izmaksas</a>
+          <a href="transporta-izmaksas.html" class="active">Transporta izmaksas</a>
         </div></div>
       </div>
       <div class="has-dropdown">
@@ -81,9 +105,9 @@
       <div class="has-dropdown lang-dd">
         <a href="#">LV</a>
         <div class="dropdown"><div class="dropdown-inner">
-          <a href="../lv/moskitu-tikli-durvis.html" class="active">LV — Latviski</a>
-          <a href="../ru/moskitnye-setki-dvernye.html">RU — Русский</a>
-          <a href="../en/mosquito-nets-door.html">EN — English</a>
+          <a href="../lv/transporta-izmaksas.html" class="active">LV — Latviski</a>
+          <a href="../ru/index.html">RU — Русский</a>
+          <a href="../en/index.html">EN — English</a>
         </div></div>
       </div>
       <div class="has-dropdown social-dd">
@@ -118,104 +142,234 @@
       </div>
       <div class="util-pane" id="utilPaneInfo">
         <div class="util-contacts">
-          <a class="util-clink" href="tel:+37128950055"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg><span>+371 28 950 055</span></a>
-          <a class="util-clink" href="tel:+37129825477"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg><span>+371 29 825 477</span></a>
-          <a class="util-clink" href="mailto:info@loguapkope.lv"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>info@loguapkope.lv</span></a>
+          <a class="util-clink" href="tel:+37128950055">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
+            <span>+371 28 950 055</span>
+          </a>
+          <a class="util-clink" href="tel:+37129825477">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
+            <span>+371 29 825 477</span>
+          </a>
+          <a class="util-clink" href="mailto:info@loguapkope.lv">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@loguapkope.lv</span>
+          </a>
+          <a class="util-clink" href="mailto:sales@loguapkope.lv">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>sales@loguapkope.lv</span>
+          </a>
           <a class="util-clink util-clink--more" href="kontakti.html">Visi kontakti →</a>
         </div>
       </div>
       <div class="util-pane hidden" id="utilPaneSearch">
         <div class="util-search-wrap">
-          <svg class="util-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          <input class="util-search-input" id="siteSearchInput" type="text" placeholder="Meklēt vietnē… (vismaz 4 burti)" autocomplete="off" spellcheck="false">
-          <div class="util-search-results" id="searchResults"></div>
+          <svg class="util-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="search" id="siteSearchInput" class="util-search-input" placeholder="Meklēt pakalpojumus…" autocomplete="off">
+          <div id="searchResults" class="search-results"></div>
         </div>
       </div>
     </div>
   </div>
 </header>
+
 <main>
-<section class="page-hero page-hero--with-anim">
+
+<!-- Hero -->
+<section class="page-hero">
   <div class="container">
     <div class="page-hero-text">
-    <a href="moskitu-tikli.html" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;">← Atpakaļ uz moskītu tīkliem</a>
-    <span class="eyebrow">Moskītu tīkli</span>
-    <h1>Durvju moskītu tīkli</h1>
-    <p>Eņģu sistēmas tīkls ar magnētisko aizvēršanu — ērti jebkuram durvju atvērumam. Atveras uz āru un pats aizveras.</p>
-    <a class="btn btn-outline-dark" href="kontakti.html">Pasūtīt pakalpojumu</a>
+      <span class="eyebrow">Pakalpojumi</span>
     </div>
-    <div class="page-hero-anim">
-      <div class="mosquito-stage mosquito-stage--sm">
-        <canvas id="mosquitoCanvas" width="204" height="204"></canvas>
-        <div class="no-bug-sign no-bug-sign--sm">
-          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="60" r="50" fill="rgba(229,57,53,.12)" stroke="#e53935" stroke-width="7"/>
-            <line x1="95" y1="25" x2="25" y2="95" stroke="#e53935" stroke-width="7" stroke-linecap="round"/>
-          </svg>
+    <h1>Transporta izmaksas ārpus Rīgas</h1>
+    <p>Rīgā brauciens ir iekļauts pakalpojuma cenā. Ārpus Rīgas tiek piemērota transporta maksa — vienreizējs brauciens tur un atpakaļ.</p>
+    <a class="btn btn-outline-dark" href="kontakti.html">Noskaidrot cenu</a>
+  </div>
+</section>
+
+<!-- Info + map -->
+<section class="container" style="padding-top:3rem;padding-bottom:3rem;">
+  <div class="transport-intro">
+    <div>
+      <div class="info-box">
+        <p><strong>Rīgā</strong> — transports iekļauts pakalpojuma cenā. Papildu maksa netiek piemērota.</p>
+      </div>
+      <div class="info-box">
+        <p><strong>Jūrmala</strong> — speciālā caurlaides zona. Transporta maksa <strong>€25</strong> neatkarīgi no attāluma.</p>
+      </div>
+      <div class="info-box">
+        <p><strong>Pārējās pilsētas</strong> — maksa tiek aprēķināta pēc attāluma no Rīgas. Cena par <strong>vienu vizīti abās virzienās</strong> ir norādīta zemāk.</p>
+      </div>
+      <p style="color:var(--muted);font-size:.88rem;line-height:1.7;margin-top:1rem;">Ja darba apjoms ir liels (piemēram, nomaiņa visā dzīvoklī vai birojā), transporta maksa var tikt sadalīta starp pakalpojumiem vai pielāgota individuāli — sazinieties ar mums.</p>
+    </div>
+    <div class="map-wrap">
+      <img src="../photo/Latvia.gif" alt="Latvijas karte ar attālumiem no Rīgas" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- Price zones -->
+<section class="alt">
+  <div class="container" style="padding-top:3rem;padding-bottom:3rem;">
+    <h2>Transporta maksa pēc pilsētas</h2>
+    <p style="color:var(--muted);margin-bottom:.5rem;">Cena par vienu vizīti — brauciens tur un atpakaļ. Norādītas aptuvenie attālumi no Rīgas centra.</p>
+
+    <div class="zone-grid">
+
+      <!-- Jūrmala — special -->
+      <div class="zone-card zone-special">
+        <div class="zone-card-head">
+          <div>
+            <div class="zone-price">€25</div>
+            <div class="zone-label">Jūrmala · caurlaides zona</div>
+          </div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <div class="promo-badge promo-badge--tl">
-          <div class="promo-badge-icon">🛡️</div>
-          <div class="promo-badge-text">
-            <span class="promo-badge-label">Aizsardzība</span>
-            <span class="promo-badge-value">100% no kukaiņiem</span>
-          </div>
-        </div>
-        <div class="promo-badge promo-badge--br">
-          <div class="promo-badge-icon">
-            <svg viewBox="0 0 40 26" xmlns="http://www.w3.org/2000/svg" width="28" height="18" style="border-radius:2px"><rect width="40" height="10.4" fill="#9E1B32"/><rect y="10.4" width="40" height="5.2" fill="#ffffff"/><rect y="15.6" width="40" height="10.4" fill="#9E1B32"/></svg>
-          </div>
-          <div class="promo-badge-text">
-            <span class="promo-badge-label">Izcelsme</span>
-            <span class="promo-badge-value">Ražots Latvijā</span>
-          </div>
+        <div class="zone-cities">
+          <ul><li>Jūrmala</li><li>Jūrmalas pilsēta</li></ul>
+          <p class="dist-note">~25 km · piemaksā caurlaides zona</p>
         </div>
       </div>
+
+      <!-- Zone 1 — €15 -->
+      <div class="zone-card zone-1">
+        <div class="zone-card-head">
+          <div>
+            <div class="zone-price">€15</div>
+            <div class="zone-label">līdz 30 km</div>
+          </div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="zone-cities">
+          <ul>
+            <li>Salaspils</li><li>Mārupe</li><li>Ķekava</li>
+            <li>Ādaži</li><li>Carnikava</li><li>Olaine</li>
+          </ul>
+          <p class="dist-note">~13–30 km no Rīgas centra</p>
+        </div>
+      </div>
+
+      <!-- Zone 2 — €20 -->
+      <div class="zone-card zone-2">
+        <div class="zone-card-head">
+          <div>
+            <div class="zone-price">€25</div>
+            <div class="zone-label">30–60 km</div>
+          </div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="zone-cities">
+          <ul>
+            <li>Ogre</li><li>Jelgava</li><li>Sigulda</li>
+            <li>Saulkrasti</li><li>Ķegums</li><li>Baldone</li>
+          </ul>
+          <p class="dist-note">~37–58 km no Rīgas centra</p>
+        </div>
+      </div>
+
+      <!-- Zone 3 — €30 -->
+      <div class="zone-card zone-3">
+        <div class="zone-card-head">
+          <div>
+            <div class="zone-price">€35</div>
+            <div class="zone-label">60–90 km</div>
+          </div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="zone-cities">
+          <ul>
+            <li>Tukums</li><li>Bauska</li><li>Dobele</li>
+            <li>Aizkraukle</li><li>Limbaži</li>
+          </ul>
+          <p class="dist-note">~64–83 km no Rīgas centra</p>
+        </div>
+      </div>
+
+      <!-- Zone 4 — €40 -->
+      <div class="zone-card zone-4">
+        <div class="zone-card-head">
+          <div>
+            <div class="zone-price">€45</div>
+            <div class="zone-label">90–125 km</div>
+          </div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="zone-cities">
+          <ul>
+            <li>Cēsis</li><li>Valmiera</li><li>Talsi</li><li>Jēkabpils</li>
+          </ul>
+          <p class="dist-note">~90–120 km no Rīgas centra</p>
+        </div>
+      </div>
+
+      <!-- Zone 5 — €50 -->
+      <div class="zone-card zone-5">
+        <div class="zone-card-head">
+          <div>
+            <div class="zone-price">€55</div>
+            <div class="zone-label">125–165 km</div>
+          </div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="zone-cities">
+          <ul>
+            <li>Madona</li><li>Gulbene</li><li>Saldus</li>
+            <li>Kuldīga</li>
+          </ul>
+          <p class="dist-note">~130–160 km no Rīgas centra</p>
+        </div>
+      </div>
+
+      <!-- Zone 6 — €60 -->
+      <div class="zone-card zone-6">
+        <div class="zone-card-head">
+          <div>
+            <div class="zone-price">€65</div>
+            <div class="zone-label">165–205 km</div>
+          </div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="zone-cities">
+          <ul>
+            <li>Alūksne</li><li>Ventspils</li>
+          </ul>
+          <p class="dist-note">~170–190 km no Rīgas centra</p>
+        </div>
+      </div>
+
+      <!-- Zone 7 — €70 -->
+      <div class="zone-card zone-7">
+        <div class="zone-card-head">
+          <div>
+            <div class="zone-price">€75</div>
+            <div class="zone-label">205+ km</div>
+          </div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="zone-cities">
+          <ul>
+            <li>Liepāja</li><li>Daugavpils</li><li>Rēzekne</li>
+          </ul>
+          <p class="dist-note">~220–240 km no Rīgas centra</p>
+        </div>
+      </div>
+
     </div>
+
+    <p style="margin-top:2rem;font-size:.85rem;color:var(--muted);">* Norādītās cenas ir par transportu vienā vizītē (brauciens tur un atpakaļ). Liela apjoma pasūtījumiem cena tiek pielāgota individuāli. Precīzu cenu noskaidrojiet pa tālruni vai rakstot uz e-pastu.</p>
   </div>
 </section>
 
-<section class="container" style="padding-top:3rem;padding-bottom:3rem;">
-  <div class="service-detail-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
-    <div>
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format&fit=crop" alt="Durvju moskītu tīkli" style="width:100%;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);" loading="lazy">
-    </div>
-    <div>
-      <div class="price-badge-lg" style="display:inline-block;background:var(--accent);color:#fff;padding:.5rem 1.5rem;border-radius:99px;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;">Cena: no €55</div>
-      <h2 style="margin-top:0">Iekļauts pakalpojumā</h2>
-      <ul class="feature-list" style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;">
-        <li>✓ Alumīnija rāmis ar eņģu sistēmu</li>
-        <li>✓ Magnētiskā automātiskā aizvēršana</li>
-        <li>✓ Piemērots balkona un terases durvīm</li>
-        <li>✓ Ražots pēc pasūtījuma — precīzi Jūsu atvēruma izmēriem</li>
-        <li>✓ Uzstādīšana un garantija iekļauta</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="container">
-    <h2>Cenrādis</h2>
-    <table class="price-table" style="width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden;">
-      <thead><tr style="background:var(--primary);color:#fff;"><th style="padding:1rem;text-align:left">Pakalpojums</th><th style="padding:1rem;text-align:right">Cena</th></tr></thead>
-      <tbody style="font-size:.95rem;">
-        <tr><td>Durvju tīkls (standarta izmērs)</td><td><strong>€55–90</strong></td></tr>
-        <tr><td>Durvju tīkls (lielizmēra)</td><td><strong>€90–140</strong></td></tr>
-        <tr><td>Divvērtņu durvis</td><td><strong>pēc tāmes</strong></td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:1rem;color:var(--muted);font-size:.85rem;">* Cenas ir indikatīvas. Precīza cena tiek noteikta pēc apskates.</p>
-  </div>
-</section>
-</main>
+<!-- CTA -->
 <section class="cta-band">
   <div class="container">
-    <h2>Nepieciešams logu meistars?</h2>
-    <p>Atstājiet pieprasījumu un mēs sazināsimies ar Jums 12 stundu laikā, lai vienotos par bezmaksas tāmi.</p>
-    <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.4rem;margin-bottom:1.4rem;">* Bezmaksas apskate un tāme — tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" style="color:rgba(255,255,255,.85);text-decoration:underline;">transporta izdevumi</a>.</p>
+    <h2>Jautājumi par piegādi?</h2>
+    <p>Sazinieties ar mums — precizēsim transporta izmaksas Jūsu konkrētajai adresei un vienosimies par ērtāko vizītes laiku.</p>
     <a class="btn btn-outline" href="kontakti.html">Sazināties</a>
   </div>
 </section>
+
+</main>
+
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
@@ -243,6 +397,7 @@
       <a href="palodzes.html">Palodzes</a>
       <a href="ventilacija.html">Ventilācija</a>
       <a href="pleve.html">Plēve</a>
+      <a href="transporta-izmaksas.html">Transporta izmaksas</a>
     </div>
     <div>
       <h4>Uzņēmums</h4>
@@ -266,47 +421,22 @@
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 <script src="../js/main.js"></script>
-<script>
-(function(){
-  var canvas = document.getElementById('mosquitoCanvas');
-  if (!canvas || !canvas.getContext) return;
-  var ctx = canvas.getContext('2d');
-  var W = canvas.width, H = canvas.height;
-  var MQ = [];
-  for (var i = 0; i < 18; i++) {
-    MQ.push({x:20+Math.random()*(W-40),y:20+Math.random()*(H-40),vx:(Math.random()-.5)*1.8,vy:(Math.random()-.5)*1.8,sz:2.5+Math.random()*1.5,ang:Math.random()*Math.PI*2,jt:Math.random()*Math.PI*2});
-  }
-  function drawMq(m){var s=m.sz;ctx.save();ctx.translate(m.x,m.y);ctx.rotate(m.ang);ctx.beginPath();ctx.ellipse(0,0,s*.38,s,0,0,Math.PI*2);ctx.fillStyle='rgba(160,230,160,0.88)';ctx.fill();ctx.beginPath();ctx.moveTo(0,-s);ctx.lineTo(0,-s*2.2);ctx.strokeStyle='rgba(160,230,160,0.6)';ctx.lineWidth=.7;ctx.stroke();var wx=s*1.5,wy=s*.55,wo=-s*.3;ctx.globalAlpha=.35;ctx.fillStyle='rgba(200,255,200,1)';ctx.beginPath();ctx.ellipse(-wx*.75,wo,wx*.75,wy,-.25,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.ellipse(wx*.75,wo,wx*.75,wy,.25,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;ctx.restore();}
-  var t=0;
-  function animate(){ctx.clearRect(0,0,W,H);t+=.04;MQ.forEach(function(m){m.vx+=(Math.random()-.5)*.18+Math.sin(t+m.jt)*.06;m.vy+=(Math.random()-.5)*.18+Math.cos(t+m.jt*1.3)*.06;var sp=Math.sqrt(m.vx*m.vx+m.vy*m.vy);if(sp>2.2){m.vx*=2.2/sp;m.vy*=2.2/sp;}m.x+=m.vx;m.y+=m.vy;var p=10;if(m.x<p){m.x=p;m.vx=Math.abs(m.vx);}if(m.x>W-p){m.x=W-p;m.vx=-Math.abs(m.vx);}if(m.y<p){m.y=p;m.vy=Math.abs(m.vy);}if(m.y>H-p){m.y=H-p;m.vy=-Math.abs(m.vy);}m.ang=Math.atan2(m.vx,-m.vy);drawMq(m);});requestAnimationFrame(animate);}
-  animate();
-})();
-</script>
-
-
-
 <!-- ── Mobile contact widget ── -->
 <div class="mob-cw" id="mobContactWidget">
   <button class="mob-cw-tab" id="mobContactTab" aria-label="Sazināties ar mums" aria-expanded="false">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.77 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.68 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.18 6.18l1.28-1.02a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
     <span class="mob-cw-tab-label">Sazināties</span>
   </button>
   <div class="mob-cw-panel">
     <a href="tel:+37128950055" class="mob-cw-item">
-      <span class="mob-cw-ico mob-cw-ico--phone">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.77 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.68 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.18 6.18l1.28-1.02a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      </span>
+      <span class="mob-cw-ico mob-cw-ico--phone"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg></span>
       <span>Zvanīt</span>
     </a>
     <a href="https://wa.me/37128950055" class="mob-cw-item" target="_blank" rel="noopener noreferrer">
-      <span class="mob-cw-ico mob-cw-ico--wa">
-        <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.833.738 5.494 2.031 7.8L0 32l8.432-2.009A15.938 15.938 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.267 13.267 0 01-6.797-1.87l-.487-.29-5.007 1.194 1.258-4.874-.317-.5A13.267 13.267 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.886c-.398-.199-2.355-1.163-2.72-1.296-.364-.133-.63-.199-.896.2-.266.398-1.03 1.295-1.262 1.56-.232.266-.465.3-.863.1-.398-.2-1.68-.619-3.2-1.977-1.183-1.056-1.982-2.36-2.214-2.758-.232-.398-.025-.613.175-.81.179-.178.398-.465.597-.698.2-.233.266-.399.399-.665.133-.267.066-.499-.033-.698-.1-.2-.896-2.16-1.228-2.958-.323-.776-.65-.671-.896-.683l-.764-.013c-.266 0-.697.1-1.063.499-.365.398-1.394 1.362-1.394 3.32s1.427 3.85 1.626 4.116c.2.266 2.808 4.286 6.803 6.013.951.41 1.693.655 2.272.839.955.304 1.824.261 2.51.158.766-.114 2.355-.963 2.688-1.893.333-.93.333-1.727.233-1.893-.099-.166-.365-.266-.763-.465z"/></svg>
-      </span>
+      <span class="mob-cw-ico mob-cw-ico--wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
       <span>WhatsApp</span>
     </a>
   </div>
 </div>
-
-
 </body>
 </html>

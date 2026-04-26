@@ -55,6 +55,7 @@ const SEARCH_IDX = [
   { t:'Raksti',                 u:'raksti.html',                     k:'raksti blogs padomi kondensats regulesana blivgumija palodze ventilacija' },
   { t:'Interneta veikals',      u:'interneta-veikals.html',          k:'interneta veikals tirdznieciba aksesuari pirkums pasutijums' },
   { t:'Padomi un ieteikumi',    u:'padomi.html',                     k:'padomi ieteikumi kopšana trisana siltums kondensats' },
+  { t:'Transporta izmaksas',     u:'transporta-izmaksas.html',        k:'transports brauciens cena arpus rigas pilsetas attālums salaspils jurmala valmiera daugavpils' },
   { t:'Kontakti',               u:'kontakti.html',                   k:'kontakti talrunis epasts adrese riga latgales iela' },
 ];
 
