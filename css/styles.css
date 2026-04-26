@@ -462,6 +462,8 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 .footer-grid img{height:44px;margin-bottom:14px;display:block;border:none}
 .footer-grid p{color:#C9C4B7}
 .footer-address{color:#C9C4B7;font-size:.85rem;line-height:1.7;margin-top:12px}
+.footer-shop-link{color:var(--accent) !important;font-weight:600;margin-top:14px !important}
+.footer-shop-link:hover{color:#fff !important}
 .footer-grid a{display:block;margin-bottom:6px}
 .footer-social a{display:flex !important;align-items:center;justify-content:center;width:34px;height:34px;margin-bottom:0 !important;border-radius:50%;border:1px solid rgba(255,255,255,.2);color:#C9C4B7;transition:border-color .2s,color .2s,background .2s}
 .footer-social a:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.08)}
@@ -816,10 +818,34 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   background:linear-gradient(135deg,var(--green) 0%,#163325 100%);
   color:#fff;padding:80px 0 70px;
 }
+/* ── "Atpakaļ" saite varoņa sekcijā — jābūt savā rindā ──────────── */
+.page-hero-text > a:first-child{
+  display:block;
+  margin-bottom:8px;
+}
 .page-hero .eyebrow{
   display:inline-block;background:var(--accent);color:#fff;
   font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
   padding:4px 14px;border-radius:99px;margin-bottom:18px;
+}
+/* ── "Pasūtīt pakalpojumu" — minimāla ovāla kontūra varoņa sekcijā ── */
+.page-hero .btn.btn-outline-dark{
+  display:inline-block;
+  padding:4px 16px;
+  font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  border-radius:99px;
+  border:1.5px solid rgba(255,255,255,.6);
+  color:#fff;
+  background:transparent;
+  line-height:1.6;
+  margin-top:18px;
+  transform:none;
+}
+.page-hero .btn.btn-outline-dark:hover{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#fff;
+  transform:none;
 }
 .page-hero h1{color:#fff;margin-bottom:14px;font-size:clamp(1.8rem,3vw,2.6rem)}
 .page-hero p{color:#D9D4C7;max-width:640px;font-size:1.05rem;margin:0;line-height:1.65}
@@ -1564,6 +1590,37 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   html.chrome-ua{
     font-size:11px; /* browser default 16px − 5px */
   }
+}
+
+/* ── Google Maps bloks ───────────────────────────────────────────── */
+.map-wrap{
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,.1);
+}
+.map-info{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:20px;
+  margin-top:24px;
+  padding:20px 24px;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+}
+.map-info-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:.95rem;
+  color:var(--text);
+}
+@media(max-width:640px){
+  #atrašanās-vieta{padding:48px 0}
+  .map-wrap iframe{height:280px}
+  .map-info{flex-direction:column;align-items:flex-start;gap:14px;padding:16px}
+  .map-info .btn{width:100%;text-align:center}
 }
 
 /* ── Mobile: padding on installation (alt) and works (darbi) blocks ── */
