@@ -200,37 +200,57 @@
 
     <!-- Labā puse: automātiski mainīgas fotogrāfijas (kā karšu kaudzīte) -->
     <div class="hero-gallery" id="heroGallery">
+      <div class="gallery-card gallery-card--shop"
+           data-href="interneta-veikals.html"
+           data-title="Interneta veikals — aksesuāri un piederumi"
+           data-desc="Iegādājieties logu roktures, blīvgumijas, tapas, starplikas un citus piederumus tiešsaistē. Ātra piegāde visā Latvijā.">
+        <div class="gallery-shop-inner">
+          <img src="../assets/img/logo-white.svg" alt="SIA Logu Apkope" class="gallery-shop-logo">
+          <span class="gallery-shop-name">Interneta veikals</span>
+          <span class="gallery-shop-desc">Aksesuāri un piederumi logiem</span>
+          <div class="gallery-shop-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          </div>
+        </div>
+        <span class="gallery-label">Interneta veikals</span>
+      </div>
       <div class="gallery-card"
+           data-href="remonts.html"
            data-title="Logu un durvju apkope, kurai var uzticēties"
            data-desc="SIA Logu Apkope — specializēts uzņēmums Latvijā: PVC, koka un alumīnija logu remonts un apkope, durvju regulēšana, moskītu tīklu ražošana un žalūziju uzstādīšana.">
         <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=600&auto=format&q=80&fit=crop" alt="Logu remonts" loading="eager">
         <span class="gallery-label">Logu remonts</span>
       </div>
       <div class="gallery-card"
+           data-href="moskitu-tikli.html"
            data-title="Moskītu tīkli pēc pasūtījuma"
            data-desc="Ražojam un uzstādām rāmju, rullu, plisē un bīdāmos un durvju moskītu tīklus precīzi Jūsu logu izmēriem. Aizsardzība pret kukaiņiem bez kompromisiem.">
         <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=900&h=600&auto=format&q=80&fit=crop" alt="Moskītu tīkli" loading="lazy">
         <span class="gallery-label">Moskītu tīkli</span>
       </div>
       <div class="gallery-card"
+           data-href="zaluzijas.html"
            data-title="Žalūzijas jebkuram interjerim"
            data-desc="Kasešu, rullu, plisē, vertikālās un horizontālās žalūzijas. Stilīgs risinājums gaismas regulēšanai — precīzi izmēri un profesionāla uzstādīšana.">
         <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&h=600&auto=format&q=80&fit=crop" alt="Žalūzijas" loading="lazy">
         <span class="gallery-label">Žalūzijas</span>
       </div>
       <div class="gallery-card"
+           data-href="remonts-blivgumija.html"
            data-title="Blīvgumijas maiņa — siltums mājās"
            data-desc="Nolietota blīvgumija ir galvenais caurvēja un siltuma zudumu cēlonis. Nomainām ātri un kvalitatīvi — ar 2 gadu garantiju visiem darbiem.">
         <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&h=600&auto=format&q=80&fit=crop" alt="Blīvgumija" loading="lazy">
         <span class="gallery-label">Blīvgumija</span>
       </div>
       <div class="gallery-card"
+           data-href="remonts-furnitura.html"
            data-title="Logu furnitūras maiņa un regulēšana"
            data-desc="Rokturi, eņģes, slēgšanas mehānismi — atjaunojam pilnīgu funkcionalitāti. Logs atkal aizveras hermētiski un darbojas nevainojami.">
         <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&h=600&auto=format&q=80&fit=crop" alt="Furnitūra" loading="lazy">
         <span class="gallery-label">Furnitūra</span>
       </div>
       <div class="gallery-card"
+           data-href="remonts-stiklu-paketes.html"
            data-title="Stikla paketes maiņa bez rāmja nomaiņas"
            data-desc="Miglainas vai saplaisājušas stikla paketes mainām, saglabājot oriģinālo rāmi. Ātrāk un lētāk nekā jauns logs — ar uzlabotu siltumizolāciju.">
         <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&h=600&auto=format&q=80&fit=crop" alt="Stikla paketes" loading="lazy">
@@ -967,21 +987,23 @@
   }
   startTimer();
 
-  /* Click on the peeking card (bottom part of gallery) → advance immediately */
+  /* Click handler: peek zone → advance; top card zone → navigate */
   el.addEventListener('click', function(e) {
     var rect = el.getBoundingClientRect();
     var clickY = e.clientY - rect.top;
-    /* Peek zone starts after the full card height */
-    if (clickY > CARD_H && !busy) {
-      next();
-      startTimer(); /* reset timer so next auto-advance is PAUSE ms from now */
+    if (clickY > CARD_H) {
+      /* Peek zone → advance card */
+      if (!busy) { next(); startTimer(); }
+    } else {
+      /* Top card → navigate to its page */
+      var href = cards[0].getAttribute('data-href');
+      if (href) window.location.href = href;
     }
   });
 
-  /* Cursor: pointer only when hovering the peek zone */
+  /* Cursor: pointer everywhere (top card = link, peek = advance) */
   el.addEventListener('mousemove', function(e) {
-    var rect = el.getBoundingClientRect();
-    el.style.cursor = (e.clientY - rect.top > CARD_H) ? 'pointer' : 'default';
+    el.style.cursor = 'pointer';
   });
   el.addEventListener('mouseleave', function() {
     el.style.cursor = '';
@@ -1353,17 +1375,37 @@
   var splash = document.getElementById('mobileSplash');
   if (!splash) return;
 
-  /* Only on mobile screens */
+  /* Only on mobile/tablet screens */
   if (window.innerWidth >= 1200) return;
-  /* Skip if already scrolled */
+  /* Show only once per session (Chrome back-nav fix) */
+  if (sessionStorage.getItem('mSplashSeen')) return;
+  /* Skip if page already scrolled */
   if (window.scrollY > 0) return;
 
-  var dismissed  = false;
+  sessionStorage.setItem('mSplashSeen', '1');
+
+  var dismissed   = false;
   var touchStartY = 0;
+  var scrollBefore = window.scrollY;
+
+  /* ── Body scroll lock (robust Chrome fix) ── */
+  function lockScroll() {
+    document.body.style.overflow    = 'hidden';
+    document.body.style.position    = 'fixed';
+    document.body.style.width       = '100%';
+    document.body.style.top         = '-' + scrollBefore + 'px';
+  }
+  function unlockScroll() {
+    document.body.style.overflow    = '';
+    document.body.style.position    = '';
+    document.body.style.width       = '';
+    document.body.style.top         = '';
+    window.scrollTo(0, scrollBefore);
+  }
 
   /* Show splash */
   splash.classList.remove('gone');
-  document.body.style.overflow = 'hidden';
+  lockScroll();
 
   /* Typewriter for tagline */
   var tagline  = splash.querySelector('.mobile-splash-tagline');
@@ -1371,7 +1413,6 @@
   if (tagline && fullText) {
     tagline.textContent = '';
     var charIdx = 0;
-    /* Start typing after logo begins to appear (~0.6s) */
     setTimeout(function () {
       tagline.classList.add('typing');
       var timer = setInterval(function () {
@@ -1391,7 +1432,7 @@
   function dismiss() {
     if (dismissed) return;
     dismissed = true;
-    document.body.style.overflow = '';
+    unlockScroll();
     splash.classList.add('dismissing');
     splash.addEventListener('animationend', function () {
       splash.classList.add('gone');

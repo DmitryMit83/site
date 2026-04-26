@@ -252,6 +252,43 @@ p{margin-bottom:1rem;color:var(--text-2)}
   object-fit:cover;
   display:block;
 }
+/* ── Veikala karte ── */
+.gallery-card--shop{
+  background:var(--green);
+  cursor:pointer;
+}
+.gallery-card--shop img{display:none}
+/* Noņem tumšo gradientu tieši no veikala kartes */
+.gallery-card--shop::before{display:none}
+.gallery-shop-inner{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:8px;padding:24px;
+  z-index:2;
+}
+.gallery-shop-logo{
+  height:40px;width:auto;
+  margin-bottom:4px;
+}
+.gallery-shop-name{
+  color:#fff;font-weight:700;
+  font-size:1rem;letter-spacing:.02em;
+  text-align:center;
+}
+.gallery-shop-desc{
+  color:rgba(255,255,255,.75);
+  font-size:.78rem;text-align:center;line-height:1.4;
+  margin-bottom:4px;
+}
+.gallery-shop-icon{
+  color:#fff;
+  background:rgba(255,255,255,.15);
+  border-radius:50%;
+  width:48px;height:48px;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:2px;
+}
 /* Dark gradient at card top — makes label readable over any photo */
 .gallery-card::before{
   content:'';
@@ -1109,10 +1146,18 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 
 /* ── Mobile splash screen (<1200px) ─────────────────────────────────────────── */
 .mobile-splash{
-  position:fixed;inset:0;z-index:300;
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  width:100%;
+  height:100vh;
+  height:100dvh; /* Chrome dynamic viewport */
+  z-index:300;
   background:var(--green);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:16px;cursor:pointer;
+  -webkit-overflow-scrolling:none;
+  overscroll-behavior:none;
+  will-change:transform;
 }
 .mobile-splash.gone{display:none}
 .mobile-splash.dismissing{
