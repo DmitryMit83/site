@@ -204,14 +204,7 @@
            data-href="interneta-veikals.html"
            data-title="Interneta veikals — aksesuāri un piederumi"
            data-desc="Iegādājieties logu roktures, blīvgumijas, tapas, starplikas un citus piederumus tiešsaistē. Ātra piegāde visā Latvijā.">
-        <div class="gallery-shop-inner">
-          <img src="../assets/img/logo-white.svg" alt="SIA Logu Apkope" class="gallery-shop-logo">
-          <span class="gallery-shop-name">Interneta veikals</span>
-          <span class="gallery-shop-desc">Aksesuāri un piederumi logiem</span>
-          <div class="gallery-shop-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-          </div>
-        </div>
+        <img src="../photo/EVeikalsLoguApkope.gif" alt="Interneta veikals" loading="eager">
         <span class="gallery-label">Interneta veikals</span>
       </div>
       <div class="gallery-card"
@@ -1378,11 +1371,11 @@
   /* Only on mobile/tablet screens */
   if (window.innerWidth >= 1200) return;
   /* Show only once per session (Chrome back-nav fix) */
-  if (sessionStorage.getItem('mSplashSeen')) return;
+  if (sessionStorage.getItem('mSplashSeen3')) return;
   /* Skip if page already scrolled */
   if (window.scrollY > 0) return;
 
-  sessionStorage.setItem('mSplashSeen', '1');
+  sessionStorage.setItem('mSplashSeen3', '1');
 
   var dismissed   = false;
   var touchStartY = 0;
