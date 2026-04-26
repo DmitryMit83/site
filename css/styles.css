@@ -1552,9 +1552,22 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   }
 }
 
-/* ── Chrome mobile: reduce font size by 3px ─────────────────────── */
+/* ── Chrome mobile: reduce font size by 5px ─────────────────────── */
 @media(max-width:900px){
   html.chrome-ua{
-    font-size:13px; /* browser default 16px − 3px */
+    font-size:11px; /* browser default 16px − 5px */
+  }
+}
+
+/* ── Mobile: padding on installation (alt) and works (darbi) blocks ── */
+@media(max-width:640px){
+  section.alt > .container{
+    padding-left:1.25rem;
+    padding-right:1.25rem;
+  }
+  #musu-darbi > .container,
+  .darbi-home-grid{
+    padding-left:4px;
+    padding-right:4px;
   }
 }

@@ -1,10 +1,24 @@
-// ── Chrome mobile: reduce font size by 3px ───────────────────────────────
+// ── Chrome mobile: reduce font size + fix service-detail-grid ────────────
 (function(){
   var ua = navigator.userAgent;
   var isChrome = /Chrome\//.test(ua) && /Google Inc/.test(navigator.vendor);
   var isMobile = window.innerWidth <= 900;
   if(isChrome && isMobile){
     document.documentElement.classList.add('chrome-ua');
+    // Force single-column layout for service detail grids (overrides inline style)
+    function fixGrids(){
+      document.querySelectorAll('.service-detail-grid').forEach(function(g){
+        g.style.setProperty('grid-template-columns','1fr','important');
+        g.style.setProperty('gap','1.5rem','important');
+        var first = g.querySelector('div:first-child');
+        if(first) first.style.order = '-1';
+      });
+    }
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', fixGrids);
+    } else {
+      fixGrids();
+    }
   }
 })();
 
