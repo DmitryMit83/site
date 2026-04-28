@@ -830,7 +830,173 @@ var MESH_DATA={
 })();
 </script>
 
+<!-- ══ Mosquito Easter Egg — mobile only ══ -->
+<style>
+@keyframes mqWingFlap{0%,100%{transform:scaleY(1);opacity:.7}50%{transform:scaleY(.12);opacity:.25}}
+@keyframes mqFadeIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+@keyframes mqSplatPop{0%{transform:scale(0) rotate(var(--mq-rot))}60%{transform:scale(1.25) rotate(var(--mq-rot))}100%{transform:scale(1) rotate(var(--mq-rot))}}
+#mq-bug{position:fixed;z-index:9997;pointer-events:auto;touch-action:none;user-select:none;will-change:transform,left,top;filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));animation:mqFadeIn .5s cubic-bezier(.3,1.4,.5,1) both;}
+#mq-bug .mq-wings{transform-box:fill-box;transform-origin:50% 60%;animation:mqWingFlap .1s linear infinite;}
+#mq-splat{position:fixed;z-index:9996;pointer-events:none;animation:mqSplatPop .22s cubic-bezier(.15,1.5,.4,1) both;}
+</style>
+<script>
+(function(){
+  if(window.innerWidth>900)return;
+  var W=window.innerWidth,H=window.innerHeight;
+  var SZ=52;      /* mosquito element size px */
+  var raf,x,y,vx,vy,ang=0,frame=0,alive=false;
 
+  /* ── SVG mosquito ── */
+  function bugSVG(){
+    return '<svg viewBox="0 0 60 62" xmlns="http://www.w3.org/2000/svg" width="'+SZ+'" height="'+SZ+'">'
+      +'<g class="mq-wings">'
+        +'<ellipse cx="21" cy="24" rx="15" ry="6.5" fill="rgba(200,235,255,.72)" stroke="#8aaabb" stroke-width=".6" transform="rotate(-28,21,24)"/>'
+        +'<ellipse cx="39" cy="24" rx="15" ry="6.5" fill="rgba(200,235,255,.72)" stroke="#8aaabb" stroke-width=".6" transform="rotate(28,39,24)"/>'
+      +'</g>'
+      /* body */
+      +'<ellipse cx="30" cy="40" rx="5.5" ry="11.5" fill="#3b3b18"/>'
+      +'<line x1="25" y1="35.5" x2="35" y2="35.5" stroke="#5c5c28" stroke-width="1.1"/>'
+      +'<line x1="24.8" y1="39.5" x2="35.2" y2="39.5" stroke="#5c5c28" stroke-width="1.1"/>'
+      +'<line x1="25.2" y1="44" x2="34.8" y2="44" stroke="#5c5c28" stroke-width="1.1"/>'
+      /* head */
+      +'<circle cx="30" cy="24" r="5" fill="#2a2a0d"/>'
+      +'<circle cx="27.8" cy="23" r="1.4" fill="#dd1100"/>'
+      +'<circle cx="32.2" cy="23" r="1.4" fill="#dd1100"/>'
+      /* proboscis */
+      +'<line x1="30" y1="19" x2="30" y2="7" stroke="#2a2a0d" stroke-width="1.2" stroke-linecap="round"/>'
+      /* antennae */
+      +'<line x1="27.3" y1="20" x2="20" y2="12" stroke="#2a2a0d" stroke-width=".7"/>'
+      +'<circle cx="20" cy="12" r="1.3" fill="#2a2a0d"/>'
+      +'<line x1="32.7" y1="20" x2="40" y2="12" stroke="#2a2a0d" stroke-width=".7"/>'
+      +'<circle cx="40" cy="12" r="1.3" fill="#2a2a0d"/>'
+      /* legs L */
+      +'<line x1="25" y1="36" x2="11" y2="41" stroke="#2a2a0d" stroke-width="1"/>'
+      +'<line x1="24.8" y1="40" x2="10" y2="46" stroke="#2a2a0d" stroke-width="1"/>'
+      +'<line x1="25.2" y1="45" x2="12" y2="54" stroke="#2a2a0d" stroke-width="1"/>'
+      /* legs R */
+      +'<line x1="35" y1="36" x2="49" y2="41" stroke="#2a2a0d" stroke-width="1"/>'
+      +'<line x1="35.2" y1="40" x2="50" y2="46" stroke="#2a2a0d" stroke-width="1"/>'
+      +'<line x1="34.8" y1="45" x2="48" y2="54" stroke="#2a2a0d" stroke-width="1"/>'
+      +'</svg>';
+  }
+
+  /* ── SVG splat ── */
+  function splatSVG(){
+    return '<svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" width="76" height="76">'
+      +'<path d="M45,10 C58,2 75,11 79,25 C85,40 76,57 63,60 C68,72 60,82 47,82 C35,83 24,73 22,62 C10,67 2,57 3,44 C3,31 14,21 27,23 C22,10 34,2 45,10Z" fill="#4a1805" opacity=".9"/>'
+      +'<circle cx="12" cy="24" r="4" fill="#4a1805" opacity=".72"/>'
+      +'<circle cx="76" cy="17" r="3" fill="#4a1805" opacity=".68"/>'
+      +'<circle cx="74" cy="76" r="3.5" fill="#4a1805" opacity=".72"/>'
+      +'<circle cx="16" cy="78" r="3" fill="#4a1805" opacity=".68"/>'
+      +'<circle cx="82" cy="48" r="2.5" fill="#4a1805" opacity=".6"/>'
+      +'<circle cx="8" cy="58" r="2.5" fill="#4a1805" opacity=".6"/>'
+      /* wing remnants */
+      +'<ellipse cx="30" cy="38" rx="11" ry="4.5" fill="rgba(200,235,255,.38)" transform="rotate(-22,30,38)"/>'
+      +'<ellipse cx="58" cy="34" rx="10" ry="4" fill="rgba(200,235,255,.32)" transform="rotate(18,58,34)"/>'
+      +'</svg>';
+  }
+
+  /* ── Flight logic ── */
+  function launch(){
+    W=window.innerWidth; H=window.innerHeight;
+    x=Math.random()*(W-SZ-20)+10;
+    y=Math.random()*(H-SZ-20)+10;
+    vx=(Math.random()-.5)*3;
+    vy=(Math.random()-.5)*3;
+    ang=0; frame=0; alive=true;
+
+    var el=document.createElement('div');
+    el.id='mq-bug';
+    el.innerHTML=bugSVG();
+    el.style.cssText='position:fixed;z-index:9997;width:'+SZ+'px;height:'+SZ+'px;left:'+x+'px;top:'+y+'px;';
+    document.body.appendChild(el);
+
+    /* pick a random target to steer toward */
+    var tx=Math.random()*(W-80)+20, ty=Math.random()*(H-80)+20;
+
+    function fly(){
+      if(!alive)return;
+      frame++;
+
+      /* new waypoint every ~2.5 s */
+      if(frame%150===0){
+        tx=Math.random()*(W-80)+20;
+        ty=Math.random()*(H-80)+20;
+      }
+
+      /* steer toward waypoint */
+      var dx=tx-x, dy=ty-y;
+      var d=Math.sqrt(dx*dx+dy*dy)||1;
+      vx+=dx/d*0.18;
+      vy+=dy/d*0.18;
+
+      /* sinusoidal jitter for organic feel */
+      vx+=Math.sin(frame*0.17)*0.35;
+      vy+=Math.cos(frame*0.13)*0.35;
+
+      /* cap speed */
+      var spd=Math.sqrt(vx*vx+vy*vy);
+      var MAX=3.8;
+      if(spd>MAX){vx=vx/spd*MAX; vy=vy/spd*MAX;}
+
+      /* bounce off walls */
+      if(x<4){vx=Math.abs(vx)+0.5; tx=W/2;}
+      if(x>W-SZ-4){vx=-Math.abs(vx)-0.5; tx=W/2;}
+      if(y<4){vy=Math.abs(vy)+0.5; ty=H/2;}
+      if(y>H-SZ-4){vy=-Math.abs(vy)-0.5; ty=H/2;}
+
+      x+=vx; y+=vy;
+
+      /* rotate to face direction of travel (+90° because SVG head points up) */
+      if(spd>.4) ang=Math.atan2(vy,vx)*180/Math.PI+90;
+
+      el.style.left=x+'px';
+      el.style.top=y+'px';
+      el.style.transform='rotate('+ang+'deg)';
+
+      raf=requestAnimationFrame(fly);
+    }
+    fly();
+
+    function squash(e){
+      if(e) e.preventDefault();
+      alive=false;
+      cancelAnimationFrame(raf);
+      var cx=x+SZ/2, cy=y+SZ/2;
+      el.remove();
+      showSplat(cx,cy);
+    }
+    el.addEventListener('touchstart',squash,{passive:false});
+    el.addEventListener('click',squash);
+  }
+
+  /* ── Splat ── */
+  function showSplat(cx,cy){
+    var SS=76;
+    var rot=Math.round(Math.random()*360);
+    var sp=document.createElement('div');
+    sp.id='mq-splat';
+    sp.innerHTML=splatSVG();
+    sp.style.cssText='position:fixed;z-index:9996;width:'+SS+'px;height:'+SS+'px;'
+      +'left:'+(cx-SS/2)+'px;top:'+(cy-SS/2)+'px;'
+      +'--mq-rot:'+rot+'deg;'
+      +'pointer-events:none;';
+    document.body.appendChild(sp);
+
+    /* fade out after 2 s */
+    setTimeout(function(){
+      sp.style.transition='opacity .45s ease';
+      sp.style.opacity='0';
+      setTimeout(function(){sp.remove();},470);
+    },2000);
+  }
+
+  /* ── Start after 10 s, mobile only ── */
+  setTimeout(function(){
+    if(window.innerWidth<=900) launch();
+  },10000);
+})();
+</script>
 
 </main>
 <section class="cta-band">
