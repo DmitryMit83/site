@@ -14,6 +14,79 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/styles.css">
+<style>
+/* ═══ User Account Bar ═══ */
+#userBar{background:rgba(8,20,13,.98);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.05);position:sticky;top:0;z-index:49;}
+.ub-inner{display:flex;align-items:center;min-height:52px;padding:.5rem 0;gap:1rem;flex-wrap:wrap;}
+.ub-guest,.ub-auth{padding-left:1.5rem;}
+/* Guest */
+.ub-guest{display:flex;align-items:center;gap:.9rem;flex:1;flex-wrap:wrap;}
+.ub-register-link{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff !important;font-size:.82rem;font-weight:600;padding:.38rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;transition:background .18s;}
+.ub-register-link:hover{background:#b23f13;}
+.ub-register-link svg{flex-shrink:0;}
+.ub-sep{width:1px;height:26px;background:rgba(255,255,255,.13);flex-shrink:0;}
+.ub-login-form{display:flex;align-items:center;gap:.6rem;flex:1;flex-wrap:wrap;}
+.ub-field{position:relative;display:flex;align-items:center;}
+.ub-field svg{position:absolute;left:9px;color:rgba(255,255,255,.38);pointer-events:none;flex-shrink:0;}
+.ub-field input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:8px;color:#fff;font-size:.83rem;padding:.38rem .75rem .38rem 2rem;outline:none;width:190px;font-family:inherit;transition:border-color .18s,background .18s;}
+.ub-field input::placeholder{color:rgba(255,255,255,.38);}
+.ub-field input:focus{border-color:var(--accent);background:rgba(255,255,255,.12);}
+.ub-login-btn{background:var(--green-2);color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:8px;font-size:.82rem;font-weight:600;padding:.38rem 1.1rem;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .18s;}
+.ub-login-btn:hover{background:#1d4d38;}
+.ub-err{color:#ff8870;font-size:.78rem;display:none;}
+.ub-forgot{color:rgba(255,255,255,.45);font-size:.76rem;text-decoration:none;white-space:nowrap;}
+.ub-forgot:hover{color:rgba(255,255,255,.75);}
+/* Auth */
+.ub-auth{display:none;align-items:center;gap:1.1rem;flex:1;flex-wrap:wrap;}
+.ub-avatar{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-size:.88rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ub-uinfo{display:flex;flex-direction:column;line-height:1.25;}
+.ub-uname{color:#fff;font-size:.88rem;font-weight:600;}
+.ub-uemail{color:rgba(255,255,255,.45);font-size:.74rem;}
+.ub-nav{display:flex;gap:1.1rem;margin-left:auto;}
+.ub-nav a{color:rgba(255,255,255,.65);font-size:.82rem;text-decoration:none;transition:color .18s;white-space:nowrap;}
+.ub-nav a:hover{color:#fff;}
+.ub-logout{display:flex;align-items:center;gap:.38rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);color:rgba(255,255,255,.65);border-radius:8px;font-size:.8rem;font-weight:500;padding:.35rem .9rem;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .18s,color .18s;}
+.ub-logout:hover{background:rgba(255,255,255,.13);color:#fff;}
+@media(max-width:700px){.ub-sep{display:none;}.ub-nav{display:none;}.ub-field input{width:140px;}}
+@media(max-width:480px){.ub-field input{width:100%;}.ub-field{flex:1;}.ub-login-form{gap:.4rem;}}
+/* ═══ Registration Form Page ═══ */
+.reg-page-wrap{max-width:700px;margin:0 auto;padding:3.5rem 1.5rem 4rem;}
+.reg-card{background:#fff;border-radius:18px;box-shadow:0 8px 40px rgba(0,0,0,.09);overflow:hidden;}
+.reg-card-head{background:linear-gradient(135deg,var(--green) 0%,#163325 100%);padding:2.2rem 2.4rem 1.8rem;color:#fff;}
+.reg-card-head h1{font-size:1.55rem;font-weight:700;margin:0 0 .35rem;color:#fff;}
+.reg-card-head p{font-size:.9rem;color:rgba(255,255,255,.72);margin:0;}
+.reg-card-body{padding:2.2rem 2.4rem 2.4rem;}
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.4rem;}
+.reg-grid .full{grid-column:1/-1;}
+@media(max-width:520px){.reg-grid{grid-template-columns:1fr;}.reg-grid .full{grid-column:1;}}
+.reg-label{display:block;font-size:.8rem;font-weight:600;color:var(--primary);margin-bottom:.35rem;letter-spacing:.02em;}
+.reg-label .req{color:var(--accent);}
+.reg-input,.reg-select{width:100%;padding:.62rem .9rem;border:1.5px solid #dde3e8;border-radius:10px;font-size:.9rem;font-family:inherit;color:var(--text);background:#fff;outline:none;transition:border-color .18s,box-shadow .18s;box-sizing:border-box;}
+.reg-input:focus,.reg-select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(30,58,46,.1);}
+.reg-input.invalid{border-color:#e53e3e;}
+.reg-input.valid{border-color:#38a169;}
+.reg-hint{font-size:.74rem;color:var(--muted);margin-top:.25rem;}
+.reg-section-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin:1.5rem 0 .75rem;grid-column:1/-1;}
+.reg-check-wrap{display:flex;align-items:flex-start;gap:.65rem;grid-column:1/-1;margin-top:.5rem;}
+.reg-check-wrap input[type=checkbox]{width:17px;height:17px;flex-shrink:0;margin-top:2px;accent-color:var(--green);cursor:pointer;}
+.reg-check-wrap label{font-size:.84rem;color:var(--muted);line-height:1.5;cursor:pointer;}
+.reg-check-wrap label a{color:var(--green);text-decoration:none;}
+.reg-check-wrap label a:hover{text-decoration:underline;}
+.reg-submit-wrap{grid-column:1/-1;margin-top:1.2rem;display:flex;flex-direction:column;gap:.75rem;align-items:flex-start;}
+.reg-submit{background:var(--accent);color:#fff;border:none;border-radius:11px;font-size:1rem;font-weight:700;padding:.85rem 2.2rem;cursor:pointer;font-family:inherit;transition:background .18s,transform .15s;display:inline-flex;align-items:center;gap:.5rem;}
+.reg-submit:hover{background:#b23f13;transform:translateY(-1px);}
+.reg-submit:active{transform:scale(.98);}
+.reg-login-hint{font-size:.84rem;color:var(--muted);}
+.reg-login-hint a{color:var(--green);font-weight:600;text-decoration:none;}
+.reg-login-hint a:hover{text-decoration:underline;}
+.reg-success{display:none;background:#f0faf4;border:1.5px solid #68d391;border-radius:12px;padding:1.5rem 1.8rem;grid-column:1/-1;text-align:center;}
+.reg-success h3{color:#276749;margin:0 0 .4rem;font-size:1.05rem;}
+.reg-success p{color:#2f855a;margin:0;font-size:.88rem;}
+.reg-pw-wrap{position:relative;}
+.reg-pw-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);padding:4px;}
+.reg-pw-strength{height:4px;border-radius:2px;margin-top:6px;background:#e8e8e8;overflow:hidden;}
+.reg-pw-strength-bar{height:100%;width:0;border-radius:2px;transition:width .3s,background .3s;}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -144,6 +217,50 @@
     </div>
   </div>
 </header>
+
+<!-- ══ User Account Bar ══ -->
+<div id="userBar">
+  <div class="container ub-inner">
+    <!-- Guest state: register link + login form -->
+    <div class="ub-guest" id="ubGuest">
+      <a href="registracija.html" class="ub-register-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        Reģistrēties
+      </a>
+      <div class="ub-sep"></div>
+      <form class="ub-login-form" id="ubLoginForm" novalidate>
+        <div class="ub-field">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <input type="email" id="ubEmail" placeholder="E-pasta adrese" autocomplete="email" required>
+        </div>
+        <div class="ub-field">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          <input type="password" id="ubPass" placeholder="Parole" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="ub-login-btn">Ieiet</button>
+        <a href="registracija.html" class="ub-forgot">Aizmirsu paroli?</a>
+        <span class="ub-err" id="ubErr">Nepareizs e-pasts vai parole</span>
+      </form>
+    </div>
+    <!-- Auth state: user info -->
+    <div class="ub-auth" id="ubAuth">
+      <div class="ub-avatar" id="ubAvatar">?</div>
+      <div class="ub-uinfo">
+        <span class="ub-uname" id="ubName">Lietotājs</span>
+        <span class="ub-uemail" id="ubEmailDisplay">e-pasts</span>
+      </div>
+      <div class="ub-nav">
+        <a href="#">Mans konts</a>
+        <a href="#">Pasūtījumi</a>
+        <a href="#">Vēlmju saraksts</a>
+      </div>
+      <button class="ub-logout" id="ubLogout">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Iziet
+      </button>
+    </div>
+  </div>
+</div>
 
 <main>
 
@@ -331,6 +448,75 @@
   </div>
 </div>
 
+
+
+<script>
+(function(){
+  var KEY = 'ub_user';
+  var guest = document.getElementById('ubGuest');
+  var auth  = document.getElementById('ubAuth');
+
+  function getUser(){ try{ return JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){return null;} }
+
+  function renderBar(){
+    var u = getUser();
+    if(u && u.email){
+      var n = (u.vards||'') + (u.uzvards?' '+u.uzvards:'') || u.email;
+      guest.style.display = 'none';
+      auth.style.display  = 'flex';
+      document.getElementById('ubName').textContent = n;
+      document.getElementById('ubEmailDisplay').textContent = u.email;
+      var av = (u.vards||u.email||'?')[0].toUpperCase();
+      document.getElementById('ubAvatar').textContent = av;
+    } else {
+      guest.style.display = 'flex';
+      auth.style.display  = 'none';
+    }
+  }
+
+  document.getElementById('ubLoginForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = document.getElementById('ubEmail').value.trim();
+    var pass  = document.getElementById('ubPass').value;
+    var err   = document.getElementById('ubErr');
+    // Find user in localStorage
+    var users = JSON.parse(localStorage.getItem('ub_users')||'[]');
+    var found = users.find(function(u){ return u.email===email && u.parole===pass; });
+    if(found){
+      localStorage.setItem(KEY, JSON.stringify(found));
+      err.style.display='none';
+      renderBar();
+    } else {
+      err.style.display='block';
+      document.getElementById('ubEmail').style.borderColor='rgba(255,100,80,.6)';
+      setTimeout(function(){ document.getElementById('ubEmail').style.borderColor=''; }, 2000);
+    }
+  });
+
+  document.getElementById('ubLogout').addEventListener('click', function(){
+    localStorage.removeItem(KEY);
+    renderBar();
+  });
+
+  renderBar();
+
+  // Stick userBar immediately under the sticky header
+  (function stickyBar(){
+    var bar = document.getElementById('userBar');
+    var header = document.querySelector('.site-header');
+    if(!bar || !header) return;
+    function setTop(){
+      bar.style.top = header.offsetHeight + 'px';
+    }
+    setTop();
+    window.addEventListener('resize', setTop);
+    // Re-check after fonts load (header height may change)
+    if(document.fonts && document.fonts.ready){
+      document.fonts.ready.then(setTop);
+    }
+  })();
+})();
+</script>
 
 </body>
 </html>
