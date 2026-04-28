@@ -181,12 +181,12 @@
 <!-- ── Category filters ───────────────────────────────────────── -->
 <section style="padding:32px 0 0;background:var(--paper-2);border-bottom:1px solid var(--line);">
   <div class="container">
-    <div style="display:flex;flex-wrap:wrap;gap:.5rem;padding-bottom:1px;">
-      <button onclick="filterArticles('all')" id="cat-all" class="cat-btn active" style="background:var(--accent);color:#fff;border:none;padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:600;cursor:pointer;">Visi raksti</button>
-      <button onclick="filterArticles('remonts')" id="cat-remonts" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;">Remonts</button>
-      <button onclick="filterArticles('kopeana')" id="cat-kopeana" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;">Kopšana</button>
-      <button onclick="filterArticles('produkti')" id="cat-produkti" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;">Produkti</button>
-      <button onclick="filterArticles('padomi')" id="cat-padomi" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;">Padomi</button>
+    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;padding-bottom:1px;">
+      <button onclick="filterArticles('all')" id="cat-all" class="cat-btn active" style="background:var(--accent);color:#fff;border:1px solid transparent;padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:600;cursor:pointer;line-height:1.4;box-sizing:border-box;">Visi raksti</button>
+      <button onclick="filterArticles('remonts')" id="cat-remonts" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;line-height:1.4;box-sizing:border-box;">Remonts</button>
+      <button onclick="filterArticles('kopeana')" id="cat-kopeana" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;line-height:1.4;box-sizing:border-box;">Kopšana</button>
+      <button onclick="filterArticles('produkti')" id="cat-produkti" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;line-height:1.4;box-sizing:border-box;">Produkti</button>
+      <button onclick="filterArticles('padomi')" id="cat-padomi" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;line-height:1.4;box-sizing:border-box;">Padomi</button>
     </div>
   </div>
 </section>
@@ -464,7 +464,7 @@ function filterArticles(cat) {
     const active = b.id === 'cat-' + cat;
     b.style.background = active ? 'var(--accent)' : 'transparent';
     b.style.color = active ? '#fff' : 'var(--text-2)';
-    b.style.border = active ? 'none' : '1px solid var(--line)';
+    b.style.border = active ? '1px solid transparent' : '1px solid var(--line)';
   });
   document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
 }

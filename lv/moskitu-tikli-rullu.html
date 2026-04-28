@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ruļļveida moskītu tīkli Rīgā | SIA Logu Apkope</title>
-<meta name="description" content="Ruļļveida (kasetes) moskītu tīkli Rīgā pēc izmēra. Kompakta kasete virs loga, izvelkams pēc vajadzības. Cena no €45.">
+<meta name="description" content="Ruļļveida (kasetes) moskītu tīkli Rīgā pēc izmēra. Kompakta kasete virs loga, izvelkams pēc vajadzības. Cena no €110.">
 <link rel="canonical" href="/lv/moskitu-tikli-rullu.html">
 <link rel="alternate" hreflang="lv" href="/lv/moskitu-tikli-rullu.html">
 <link rel="alternate" hreflang="ru" href="/ru/moskitnye-setki-rulonnye.html">
@@ -195,7 +195,7 @@
       <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800&q=80&auto=format&fit=crop" alt="Rullu moskītu tīkli" style="width:100%;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);" loading="lazy">
     </div>
     <div>
-      <div class="price-badge-lg" style="display:inline-block;background:var(--accent);color:#fff;padding:.5rem 1.5rem;border-radius:99px;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;">Cena: no €65</div>
+      <div class="price-badge-lg" style="display:inline-block;background:var(--accent);color:#fff;padding:.5rem 1.5rem;border-radius:99px;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;">Cena: no €110</div>
       <h2 style="margin-top:0">Iekļauts pakalpojumā</h2>
       <ul class="feature-list" style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;">
         <li>✓ Mērīšana un ražošana pēc pasūtījuma</li>
@@ -211,9 +211,10 @@
 <style>
 /* ── Mesh cards ── */
 .mesh-type-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1.2rem;margin-top:2rem;}
-.mesh-card{background:#fff;border-radius:14px;border:1px solid var(--line);overflow:hidden;transition:transform .2s,box-shadow .2s;cursor:pointer;}
+.mesh-card{background:#fff;border-radius:14px;border:1.5px solid var(--accent);overflow:hidden;transition:transform .2s,box-shadow .2s;cursor:pointer;}
 .mesh-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.1);}
 .mesh-card:active{transform:scale(.98);}
+  .mesh-card-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .mesh-card-img{position:relative;height:130px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .mesh-card-badge{position:absolute;top:8px;left:8px;background:var(--green);color:#fff;font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:99px;}
 .mesh-card-badge.mesh-card-badge--dark{background:#333;}
@@ -223,7 +224,7 @@
 .mesh-card-body p{font-size:.83rem;color:var(--muted);margin:0 0 .8rem;line-height:1.5;}
 .mesh-tap-hint{display:block;font-size:.78rem;font-weight:600;color:var(--primary);margin-top:.5rem;}
 /* ── Disabled card ── */
-.mesh-card--disabled{position:relative;cursor:default !important;filter:grayscale(1);opacity:.42;pointer-events:none;}
+.mesh-card--disabled{position:relative;cursor:default !important;border-color:#bbb;filter:grayscale(1);opacity:.42;pointer-events:none;}
 .mesh-card--disabled .mesh-tap-hint{display:none;}
 .mesh-unavail-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;pointer-events:none;}
 .mesh-unavail-label{background:rgba(0,0,0,.58);color:#fff;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:99px;letter-spacing:.04em;}
@@ -234,6 +235,7 @@
 .mesh-modal-box{background:#fff;border-radius:18px;max-width:540px;width:100%;max-height:85vh;overflow-y:auto;position:relative;padding:2rem 2.2rem;}
 .mesh-modal-close{position:absolute;top:1rem;right:1.1rem;background:var(--surface);border:none;width:32px;height:32px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);}
 .mesh-modal-close:hover{background:var(--line);color:var(--text);}
+  .modal-mesh-preview img{width:100%;height:100%;object-fit:cover;display:block;border-radius:12px;}
 .modal-mesh-preview{height:110px;border-radius:12px;margin-bottom:1.3rem;overflow:hidden;}
 .modal-h{font-size:1.2rem;font-weight:700;color:var(--primary);margin:0 0 .4rem;}
 .modal-sub{font-size:.88rem;color:var(--muted);margin:0 0 1.2rem;line-height:1.6;}
@@ -327,9 +329,7 @@
   <div class="mesh-type-grid">
       <div class="mesh-card" onclick="openMeshModal('standarta')">
         <div class="mesh-card-img" style="background:linear-gradient(135deg,#e8f4ec,#c8e6d0);">
-          <svg viewBox="0 0 120 90" width="120" height="90" xmlns="http://www.w3.org/2000/svg">
-            <defs><pattern id="ru1" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 0L8 0M0 4L8 4M0 8L8 8M0 0L0 8M4 0L4 8M8 0L8 8" stroke="#4a9c6a" stroke-width="0.8" fill="none" opacity="0.7"/></pattern></defs><rect width="120" height="90" fill="url(#ru1)"/><rect x="10" y="8" width="100" height="74" rx="4" fill="none" stroke="#2e6e49" stroke-width="2"/>
-          </svg>
+          <img src="../photo/standartasiete.gif" alt="Standarta stikla šķiedras moskītu tīkls logiem — PVC pārklājums, optimāla cena un kvalitāte, SIA Logu Apkope" title="Standarta stikla šķiedras moskītu tīkls logiem — PVC pārklājums, optimāla cena un kvalitāte, SIA Logu Apkope" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
           <div class="mesh-card-badge ">Populārākais</div>
         </div>
         <div class="mesh-card-body">
@@ -340,9 +340,7 @@
       </div>
       <div class="mesh-card mesh-card--disabled">
         <div class="mesh-card-img" style="background:linear-gradient(135deg,#fef3e8,#fdd9a8);">
-          <svg viewBox="0 0 120 90" width="120" height="90" xmlns="http://www.w3.org/2000/svg">
-            <defs><pattern id="ru2" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M0 0L10 0M0 5L10 5M0 10L10 10M0 0L0 10M5 0L5 10M10 0L10 10" stroke="#d4600a" stroke-width="1.4" fill="none" opacity="0.6"/></pattern></defs><rect width="120" height="90" fill="url(#ru2)"/><rect x="10" y="8" width="100" height="74" rx="4" fill="none" stroke="#b04d07" stroke-width="2"/><text x="60" y="52" text-anchor="middle" fill="#b04d07" font-size="22">&#x1F431;</text>
-          </svg>
+          <img src="../photo/PetScreen.gif" alt="PetScreen pastiprināts moskītu tīkls mājdzīvnieku īpašniekiem — 7× izturīgāks par standarta, kaķu nagiem izturīgs, SIA Logu Apkope" title="PetScreen pastiprināts moskītu tīkls mājdzīvnieku īpašniekiem — 7× izturīgāks par standarta, kaķu nagiem izturīgs, SIA Logu Apkope" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
           <div class="mesh-unavail-overlay"><span class="mesh-unavail-label">Nav pieejams</span></div>
         </div>
         <div class="mesh-card-body">
@@ -352,9 +350,7 @@
       </div>
       <div class="mesh-card mesh-card--disabled">
         <div class="mesh-card-img" style="background:linear-gradient(135deg,#e8f0fe,#c5d8fc);">
-          <svg viewBox="0 0 120 90" width="120" height="90" xmlns="http://www.w3.org/2000/svg">
-            <defs><pattern id="ru3" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 0L5 0M0 2.5L5 2.5M0 5L5 5M0 0L0 5M2.5 0L2.5 5M5 0L5 5" stroke="#3b5fc0" stroke-width="0.6" fill="none" opacity="0.5"/></pattern></defs><rect width="120" height="90" fill="url(#ru3)"/><rect x="10" y="8" width="100" height="74" rx="4" fill="none" stroke="#2a48a0" stroke-width="2"/><text x="60" y="52" text-anchor="middle" fill="#2a48a0" font-size="20">&#x1F33F;</text>
-          </svg>
+          <img src="../photo/alirgen.gif" alt="Antiallergēnais moskītu tīkls alerģiķiem — filtrē ziedputekšņus, putekļus un spalvas, smalks poliesteru audums, SIA Logu Apkope" title="Antiallergēnais moskītu tīkls alerģiķiem — filtrē ziedputekšņus, putekļus un spalvas, smalks poliesteru audums, SIA Logu Apkope" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
           <div class="mesh-unavail-overlay"><span class="mesh-unavail-label">Nav pieejams</span></div>
         </div>
         <div class="mesh-card-body">
@@ -364,9 +360,7 @@
       </div>
       <div class="mesh-card mesh-card--disabled">
         <div class="mesh-card-img" style="background:linear-gradient(135deg,#2a2a2a,#4a4a4a);">
-          <svg viewBox="0 0 120 90" width="120" height="90" xmlns="http://www.w3.org/2000/svg">
-            <defs><pattern id="ru4" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M0 0L7 0M0 3.5L7 3.5M0 7L7 7M0 0L0 7M3.5 0L3.5 7M7 0L7 7" stroke="rgba(255,255,255,0.25)" stroke-width="0.7" fill="none"/></pattern></defs><rect width="120" height="90" fill="url(#ru4)"/><rect x="10" y="8" width="100" height="74" rx="4" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
-          </svg>
+          <img src="../photo/nered.gif" alt="Neredzamais melns moskītu tīkls logiem — ogles krāsas audums, estētisks, praktiski neredzams no iekšpuses, SIA Logu Apkope" title="Neredzamais melns moskītu tīkls logiem — ogles krāsas audums, estētisks, praktiski neredzams no iekšpuses, SIA Logu Apkope" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
           <div class="mesh-card-badge mesh-card-badge--dark">Estētisks</div>
           <div class="mesh-unavail-overlay"><span class="mesh-unavail-label">Nav pieejams</span></div>
         </div>
@@ -377,9 +371,7 @@
       </div>
       <div class="mesh-card mesh-card--disabled">
         <div class="mesh-card-img" style="background:linear-gradient(135deg,#e8e8e8,#c0c0c0);">
-          <svg viewBox="0 0 120 90" width="120" height="90" xmlns="http://www.w3.org/2000/svg">
-            <defs><pattern id="ru5" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M0 0L9 0M0 4.5L9 4.5M0 9L9 9M0 0L0 9M4.5 0L4.5 9M9 0L9 9" stroke="#888" stroke-width="1.2" fill="none"/></pattern></defs><rect width="120" height="90" fill="url(#ru5)"/><rect x="10" y="8" width="100" height="74" rx="4" fill="none" stroke="#555" stroke-width="2.5"/>
-          </svg>
+          <img src="../photo/metal.gif" alt="Metāla nerūsējošā tērauda moskītu tīkls — maksimāla izturība, ugunsizturīgs, piemērots logiem un durvīm, SIA Logu Apkope" title="Metāla nerūsējošā tērauda moskītu tīkls — maksimāla izturība, ugunsizturīgs, piemērots logiem un durvīm, SIA Logu Apkope" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
           <div class="mesh-card-badge mesh-card-badge--metal">Izturīgākais</div>
           <div class="mesh-unavail-overlay"><span class="mesh-unavail-label">Nav pieejams</span></div>
         </div>
@@ -421,7 +413,7 @@
     <table class="price-table" style="width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden;">
       <thead><tr style="background:var(--primary);color:#fff;"><th style="padding:1rem;text-align:left">Tīkla auduma veids</th><th style="padding:1rem;text-align:right">Cena</th></tr></thead>
       <tbody style="font-size:.95rem;">
-        <tr><td style="padding:.85rem 1rem">Standarta tīkls</td><td style="padding:.85rem 1rem;text-align:right"><strong>no €25</strong></td></tr>
+        <tr><td style="padding:.85rem 1rem">Standarta tīkls</td><td style="padding:.85rem 1rem;text-align:right"><strong>no €110</strong></td></tr>
       </tbody>
     </table>
     <p style="margin-top:1rem;color:var(--muted);font-size:.85rem;">* Cenas ir indikatīvas. Precīza cena tiek noteikta pēc apskates.</p>
@@ -430,15 +422,20 @@
 <script>
 (function(){
 var MESH_DATA={
-  standarta:{title:'Standarta tīkls',bg:'linear-gradient(135deg,#e8f4ec,#c8e6d0)',desc:'Stikla šķiedra ar PVC pārklājumu — viegls, labi caurlaidīgs gaisam, nedārgs. Pieejams pelēkā krāsā.',
+  standarta:{title:'Standarta tīkls',bg:'linear-gradient(135deg,#e8f4ec,#c8e6d0)',
+    img: '../photo/standartasiete.gif',desc:'Stikla šķiedra ar PVC pārklājumu — viegls, labi caurlaidīgs gaisam, nedārgs. Pieejams pelēkā krāsā.',
     models:['Rāmju tīkli','Rullu tīkli','Plisē tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['Labākā cena','Laba gaisa caurlaidība','Laba redzamība cauri','UV izturīgs (6–8 gadi)','Viegls svars'],cons:['Viegli bojājas no kaķu nagiem','Nav piemērots alerģiķiem','Rupjāks par antiallergēno']},
-  petscreen:{title:'PetScreen (Kaķu tīkls)',bg:'linear-gradient(135deg,#fef3e8,#fdd9a8)',desc:'Pastiprināts polimēra audums — 7× izturīgāks par standarta tīklu. Speciāli izstrādāts mājdzīvnieku īpašniekiem.',
+  petscreen:{title:'PetScreen (Kaķu tīkls)',bg:'linear-gradient(135deg,#fef3e8,#fdd9a8)',
+    img: '../photo/PetScreen.gif',desc:'Pastiprināts polimēra audums — 7× izturīgāks par standarta tīklu. Speciāli izstrādāts mājdzīvnieku īpašniekiem.',
     models:['Rāmju tīkli','Plisē tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['7× izturīgāks par standarta','Iztur kaķu nagus','Piemērots bērniem','Mazgājams','Ilgs kalpošanas laiks'],cons:['Augstāka cena','Nedaudz mazāka gaisa caurlaidība','Smagāks par standarta','Pielaiž mazāk gaismas']},
-  antialerg:{title:'Antiallergēnais tīkls',bg:'linear-gradient(135deg,#e8f0fe,#c5d8fc)',desc:'Smalks poliesteru audums ar blīvu aušanu — aiztur putekļus, ziedputekšņus, spalvas un smalkas daļiņas.',
+  antialerg:{title:'Antiallergēnais tīkls',bg:'linear-gradient(135deg,#e8f0fe,#c5d8fc)',
+    img: '../photo/alirgen.gif',desc:'Smalks poliesteru audums ar blīvu aušanu — aiztur putekļus, ziedputekšņus, spalvas un smalkas daļiņas.',
     models:['Rāmju tīkli','Bīdāmie tīkli','Durvju tīkli'],pros:['Filtrē ziedputekšņus un putekļus','Ideāls alerģiķiem','Samazina dzīvnieku spalvas telpā','Piemērots bērniem'],cons:['Samazina gaisa caurlaidību','Jātīra biežāk','Augstāka cena','Samazināta izturība — nav piemērots mājdzīvnieku īpašniekiem']},
-  neredzamais:{title:'Neredzamais tīkls',bg:'linear-gradient(135deg,#2a2a2a,#4a4a4a)',desc:'Plāns stikla šķiedras audums melnā krāsā — praktiski neredzams logā. Laba gaisa caurlaidība un skats uz āru, piešķirot logam elegantu un neuzkrītošu izskatu.',
+  neredzamais:{title:'Neredzamais tīkls',bg:'linear-gradient(135deg,#2a2a2a,#4a4a4a)',
+    img: '../photo/nered.gif',desc:'Plāns stikla šķiedras audums melnā krāsā — praktiski neredzams logā. Laba gaisa caurlaidība un skats uz āru, piešķirot logam elegantu un neuzkrītošu izskatu.',
     models:['Rāmju tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['Praktiski neredzams no iekšpuses','Lielisks skats uz āru','Standarta gaisa caurlaidība','Moderns izskats'],cons:['Augstāka cena par standarta','Vieglāk uzkrāj putekļus (tumšais tonis)','Samazināta izturība — nav piemērots mājdzīvnieku īpašniekiem']},
-  metala:{title:'Metāla tīkls',bg:'linear-gradient(135deg,#e8e8e8,#c0c0c0)',desc:'Audums no nerūsējošā tērauda — maksimāla izturība un ilgmūžība jebkuros apstākļos.',
+  metala:{title:'Metāla tīkls',bg:'linear-gradient(135deg,#e8e8e8,#c0c0c0)',
+    img: '../photo/metal.gif',desc:'Audums no nerūsējošā tērauda — maksimāla izturība un ilgmūžība jebkuros apstākļos.',
     models:['Rāmju tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['Ārkārtīgi izturīgs','Iztur intensīvu slodzi','Ugunsizturīgs','Ļoti ilgs kalpošanas laiks','Netiek bojāts no grauzējiem'],cons:['Visaugstākā cena','Smags svars','Mazāka gaisa caurlaidība','Pie bojājuma neatiestājas — paliek saliekumi']}
 };
   window.openMeshModal=function(key){
@@ -447,7 +444,7 @@ var MESH_DATA={
     var pros=d.pros.map(function(p){return '<li>'+p+'</li>';}).join('');
     var cons=d.cons.map(function(c){return '<li>'+c+'</li>';}).join('');
     document.getElementById('meshModalContent').innerHTML=
-      '<div class="modal-mesh-preview" style="background:'+d.bg+'"></div>'+
+      '<div class="modal-mesh-preview" style="background:'+d.bg+'">'+(d.img?'<img src="'+d.img+'" alt="'+d.title+'" style="width:100%;height:100%;object-fit:cover;display:block;">':'')+'</div>'+
       '<div class="modal-h">'+d.title+'</div>'+
       '<p class="modal-sub">'+d.desc+'</p>'+
       '<div class="modal-section-title">Piemērots konstrukcijām</div>'+
