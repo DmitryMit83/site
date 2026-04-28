@@ -17,8 +17,9 @@
 <style>
 /* ═══ User Account Bar ═══ */
 #userBar{background:rgba(8,20,13,.98);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.05);position:sticky;top:0;z-index:49;}
-.ub-inner{display:flex;align-items:center;min-height:52px;padding:.5rem 0;gap:1rem;flex-wrap:wrap;}
-/* Desktop: slight left indent to match visual rhythm */
+/* padding-top/bottom только — не перекрываем горизонтальный padding контейнера */
+.ub-inner{display:flex;align-items:center;min-height:52px;padding-top:.5rem;padding-bottom:.5rem;gap:1rem;flex-wrap:wrap;}
+/* Desktop: лёгкий дополнительный сдвиг вправо внутри контейнера */
 .ub-guest,.ub-auth{padding-left:1.5rem;}
 /* Guest */
 .ub-guest{display:flex;align-items:center;gap:.9rem;flex:1;}
@@ -74,7 +75,7 @@
 .ub-logout:hover{background:rgba(255,255,255,.13);color:#fff;}
 /* ≤700px — планшет / большой телефон */
 @media(max-width:700px){
-  .ub-guest,.ub-auth{padding-left:0;}        /* убираем доп. отступ — контейнер уже даёт 24px */
+  .ub-guest,.ub-auth{padding-left:0;}   /* убираем доп. отступ — контейнер уже даёт 24px */
   .ub-sep{display:none;}
   .ub-nav{display:none;}
   .ub-field input{width:150px;}
@@ -82,22 +83,30 @@
   .ub-register-link{width:34px;padding:0;justify-content:center;}
   .ub-forgot{white-space:normal;width:3.2rem;line-height:1.25;text-align:center;}
 }
-/* ≤640px — контейнер переходит на padding:0 16px */
+/* ≤640px — контейнер сайта переходит на padding:0 16px */
 @media(max-width:640px){
-  .ub-field input{width:130px;}
-  .ub-login-form{gap:.5rem;}
+  .ub-field input{width:120px;}
+  .ub-login-form{gap:.45rem;}
 }
-/* ≤480px — маленький телефон */
+/* ≤480px — маленький телефон: поля растягиваются, «Aizmirsu» уходит на вторую строку */
 @media(max-width:480px){
-  .ub-guest{gap:.5rem;}
-  .ub-login-form{gap:.4rem;}
-  .ub-field{flex:1;}
+  .ub-guest{gap:.5rem;align-items:flex-start;}
+  .ub-login-form{flex-wrap:wrap;gap:.4rem;align-items:center;}
+  .ub-field{flex:1;min-width:80px;}
   .ub-field input{width:100%;}
-  .ub-forgot{display:none;}            /* убираем «Aizmirsu paroli?» — нет места */
+  .ub-forgot{
+    display:block;
+    white-space:normal;
+    width:100%;               /* занимает всю строку — переносится под поля */
+    line-height:1.3;
+    font-size:.72rem;
+    padding-top:.15rem;
+  }
 }
 /* ≤360px — самый маленький экран, контейнер padding:0 12px */
 @media(max-width:360px){
-  .ub-login-btn{padding:0 .7rem;font-size:.76rem;}
+  .ub-login-btn{padding:0 .65rem;font-size:.76rem;}
+  .ub-guest{gap:.35rem;}
 }
 /* ═══ Registration Form Page ═══ */
 .reg-page-wrap{max-width:700px;margin:0 auto;padding:3.5rem 1.5rem 4rem;}
