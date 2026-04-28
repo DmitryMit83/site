@@ -18,6 +18,7 @@
 /* ═══ User Account Bar ═══ */
 #userBar{background:rgba(8,20,13,.98);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.05);position:sticky;top:0;z-index:49;}
 .ub-inner{display:flex;align-items:center;min-height:52px;padding:.5rem 0;gap:1rem;flex-wrap:wrap;}
+/* Desktop: slight left indent to match visual rhythm */
 .ub-guest,.ub-auth{padding-left:1.5rem;}
 /* Guest */
 .ub-guest{display:flex;align-items:center;gap:.9rem;flex:1;}
@@ -71,15 +72,33 @@
 .ub-nav a:hover{color:#fff;}
 .ub-logout{display:flex;align-items:center;gap:.38rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);color:rgba(255,255,255,.65);border-radius:8px;font-size:.8rem;font-weight:500;padding:.35rem .9rem;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .18s,color .18s;}
 .ub-logout:hover{background:rgba(255,255,255,.13);color:#fff;}
+/* ≤700px — планшет / большой телефон */
 @media(max-width:700px){
+  .ub-guest,.ub-auth{padding-left:0;}        /* убираем доп. отступ — контейнер уже даёт 24px */
   .ub-sep{display:none;}
   .ub-nav{display:none;}
-  .ub-field input{width:140px;}
+  .ub-field input{width:150px;}
   .ub-reg-text{display:none;}
   .ub-register-link{width:34px;padding:0;justify-content:center;}
   .ub-forgot{white-space:normal;width:3.2rem;line-height:1.25;text-align:center;}
 }
-@media(max-width:480px){.ub-field input{width:100%;}.ub-field{flex:1;}.ub-login-form{gap:.4rem;}}
+/* ≤640px — контейнер переходит на padding:0 16px */
+@media(max-width:640px){
+  .ub-field input{width:130px;}
+  .ub-login-form{gap:.5rem;}
+}
+/* ≤480px — маленький телефон */
+@media(max-width:480px){
+  .ub-guest{gap:.5rem;}
+  .ub-login-form{gap:.4rem;}
+  .ub-field{flex:1;}
+  .ub-field input{width:100%;}
+  .ub-forgot{display:none;}            /* убираем «Aizmirsu paroli?» — нет места */
+}
+/* ≤360px — самый маленький экран, контейнер padding:0 12px */
+@media(max-width:360px){
+  .ub-login-btn{padding:0 .7rem;font-size:.76rem;}
+}
 /* ═══ Registration Form Page ═══ */
 .reg-page-wrap{max-width:700px;margin:0 auto;padding:3.5rem 1.5rem 4rem;}
 .reg-card{background:#fff;border-radius:18px;box-shadow:0 8px 40px rgba(0,0,0,.09);overflow:hidden;}
