@@ -20,21 +20,45 @@
 .ub-inner{display:flex;align-items:center;min-height:52px;padding:.5rem 0;gap:1rem;flex-wrap:wrap;}
 .ub-guest,.ub-auth{padding-left:1.5rem;}
 /* Guest */
-.ub-guest{display:flex;align-items:center;gap:.9rem;flex:1;flex-wrap:wrap;}
-.ub-register-link{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff !important;font-size:.82rem;font-weight:600;padding:.38rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;transition:background .18s;}
+.ub-guest{display:flex;align-items:center;gap:.9rem;flex:1;}
+.ub-register-link{
+  display:flex;align-items:center;gap:.4rem;
+  height:34px;box-sizing:border-box;
+  background:var(--accent);color:#fff !important;
+  font-size:.82rem;font-weight:600;line-height:1;
+  padding:0 1rem;border-radius:8px;
+  text-decoration:none;white-space:nowrap;flex-shrink:0;
+  transition:background .18s;
+}
 .ub-register-link:hover{background:#b23f13;}
 .ub-register-link svg{flex-shrink:0;}
 .ub-sep{width:1px;height:26px;background:rgba(255,255,255,.13);flex-shrink:0;}
-.ub-login-form{display:flex;align-items:center;gap:.6rem;flex:1;flex-wrap:wrap;}
-.ub-field{position:relative;display:flex;align-items:center;}
-.ub-field svg{position:absolute;left:9px;color:rgba(255,255,255,.38);pointer-events:none;flex-shrink:0;}
-.ub-field input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:8px;color:#fff;font-size:.83rem;padding:.38rem .75rem .38rem 2rem;outline:none;width:190px;font-family:inherit;transition:border-color .18s,background .18s;}
+.ub-login-form{display:flex;align-items:center;gap:.6rem;flex:1;margin:0;padding:0;}
+.ub-field{position:relative;flex-shrink:0;}
+.ub-field svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.38);pointer-events:none;display:block;}
+.ub-field input{
+  display:block;
+  height:34px;box-sizing:border-box;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:8px;
+  color:#fff;font-size:.83rem;line-height:1;
+  padding:0 .75rem 0 2rem;
+  outline:none;width:190px;font-family:inherit;
+  transition:border-color .18s,background .18s;
+}
 .ub-field input::placeholder{color:rgba(255,255,255,.38);}
 .ub-field input:focus{border-color:var(--accent);background:rgba(255,255,255,.12);}
-.ub-login-btn{background:var(--green-2);color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:8px;font-size:.82rem;font-weight:600;padding:.38rem 1.1rem;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .18s;}
+.ub-login-btn{
+  height:34px;box-sizing:border-box;
+  background:var(--green-2);color:#fff;
+  border:1px solid rgba(255,255,255,.16);border-radius:8px;
+  font-size:.82rem;font-weight:600;line-height:1;
+  padding:0 1.1rem;cursor:pointer;font-family:inherit;
+  white-space:nowrap;flex-shrink:0;
+  transition:background .18s;
+}
 .ub-login-btn:hover{background:#1d4d38;}
-.ub-err{color:#ff8870;font-size:.78rem;display:none;}
-.ub-forgot{color:rgba(255,255,255,.45);font-size:.76rem;text-decoration:none;white-space:nowrap;}
+.ub-err{color:#ff8870;font-size:.78rem;display:none;white-space:nowrap;}
+.ub-forgot{color:rgba(255,255,255,.45);font-size:.76rem;text-decoration:none;white-space:nowrap;flex-shrink:0;line-height:34px;}
 .ub-forgot:hover{color:rgba(255,255,255,.75);}
 /* Auth */
 .ub-auth{display:none;align-items:center;gap:1.1rem;flex:1;flex-wrap:wrap;}
