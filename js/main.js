@@ -304,4 +304,39 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   })();
+
+  // ── Service navigation bookmark tab (left side) ───────────────────────────
+  (function () {
+    var nav = document.getElementById('svcNav');
+    var tab = document.getElementById('svcNavTab');
+    if (!nav || !tab) return;
+
+    var siteHeader = document.querySelector('.site-header');
+    function placeNav() {
+      if (window.innerWidth >= 1200) return;
+      if (siteHeader) nav.style.top = siteHeader.offsetHeight + 'px';
+    }
+    placeNav();
+    window.addEventListener('resize', placeNav);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeNav);
+
+    var justOpened = false;
+    tab.addEventListener('click', function () {
+      var wasOpen = nav.classList.contains('open');
+      nav.classList.toggle('open');
+      tab.setAttribute('aria-expanded', wasOpen ? 'false' : 'true');
+      if (!wasOpen) {
+        justOpened = true;
+        setTimeout(function () { justOpened = false; }, 120);
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (justOpened) return;
+      if (nav.classList.contains('open') && !nav.contains(e.target)) {
+        nav.classList.remove('open');
+        tab.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
 });
