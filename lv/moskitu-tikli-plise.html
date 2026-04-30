@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Plisē moskītu tīkli Rīgā | SIA Logu Apkope</title>
-<meta name="description" content="Plisē (harmonika) moskītu tīkli Rīgā. Piemēroti lielām ailēm un balkonu durvīm. Divpusēja atvēršana. Cena no €60.">
+<title>Plisē (harmonika) moskītu tīkli Rīgā — uzstādīšana pēc pasūtījuma | SIA Logu Apkope</title>
+<meta name="description" content="Plisē (harmonika) moskītu tīkli Rīgā. Salokāms tīkls logiem un balkona durvīm — horizontāla un vertikāla atvēršana, 18mm un 25mm profili, standarta un PetScreen audums. Ražošana pēc pasūtījuma, uzstādīšana un garantija. Cena no €60.">
 <link rel="canonical" href="/lv/moskitu-tikli-plise.html">
 <link rel="alternate" hreflang="lv" href="/lv/moskitu-tikli-plise.html">
 <link rel="alternate" hreflang="ru" href="/ru/moskitnye-setki-plisse.html">
@@ -193,12 +193,12 @@
   <div class="service-detail-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
     <div>
       <img
-        src="../photo/Plisse_h1.webp"
-        alt="Plisē moskītu tīkls logam — harmonika tipa salokāms tīkls, uzstādīšana Rīgā, SIA Logu Apkope"
-        title="Plisē (harmonika) moskītu tīkli — ražošana pēc pasūtījuma, uzstādīšana un garantija, SIA Logu Apkope Rīgā"
+        src="../photo/PlisseH1.webp"
+        alt="Plisē moskītu tīkls — harmonika tipa salokāms tīkls logiem un balkona durvīm, uzstādīšana Rīgā, SIA Logu Apkope"
+        title="Plisē (harmonika) moskītu tīkli Rīgā — ražošana pēc pasūtījuma, horizontāla un vertikāla kustība, uzstādīšana un garantija"
         loading="lazy"
-        width="800"
-        height="600"
+        width="1000"
+        height="750"
         style="width:100%;height:auto;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:block;"
       >
     </div>
@@ -382,17 +382,22 @@
     </div>
 
     <style>
-    .profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem;}
+    /* ── Profile grid ── */
+    .profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem;transition:opacity .3s ease;}
+    .profile-grid.pg-out{opacity:0;pointer-events:none;}
     @media(max-width:640px){.profile-grid{grid-template-columns:1fr;}}
     @media(max-width:900px) and (min-width:641px){.profile-grid{grid-template-columns:1fr 1fr;}}
-    .profile-card{background:#f8faf9;border:1.5px solid var(--line);border-radius:16px;overflow:hidden;transition:box-shadow .2s,transform .2s;}
-    .profile-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.09);transform:translateY(-3px);}
+    .profile-card{background:#f8faf9;border:1.5px solid var(--line);border-radius:16px;overflow:hidden;transition:box-shadow .2s,transform .2s;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;}
+    .profile-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.12);transform:translateY(-4px);}
+    .profile-card:active{transform:scale(.97);}
     .profile-card-img{height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eef2f0,#dde7e2);overflow:hidden;position:relative;}
     .profile-card-img svg{width:100%;height:100%;}
     .profile-card-body{padding:1.2rem 1.3rem 1.4rem;}
     .profile-card-title{font-size:1.05rem;font-weight:700;color:var(--primary);margin:0 0 .4rem;}
-    .profile-card-sub{font-size:.82rem;color:var(--muted);line-height:1.55;margin:0 0 1rem;}
+    .profile-card-sub{font-size:.82rem;color:var(--muted);line-height:1.55;margin:0 0 .8rem;}
     .profile-badge{display:inline-block;background:var(--green);color:#fff;font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:99px;margin-bottom:.6rem;}
+    .profile-card-hint{font-size:.72rem;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:.3rem;margin-top:.5rem;}
+    .profile-card-hint svg{flex-shrink:0;}
     /* Color swatches */
     .profile-colors{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;}
     .profile-colors-label{font-size:.72rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-right:.2rem;}
@@ -404,12 +409,53 @@
     .ral-note-text h4{font-size:.92rem;font-weight:700;color:var(--primary);margin:0 0 .25rem;}
     .ral-note-text p{font-size:.83rem;color:var(--muted);margin:0;line-height:1.55;}
     .ral-note-text strong{color:var(--accent);}
+
+    /* ── Profile detail panel ── */
+    .pf-detail{margin-top:2rem;opacity:0;transform:translateY(20px);transition:opacity .38s cubic-bezier(.4,0,.2,1),transform .38s cubic-bezier(.4,0,.2,1);}
+    .pf-detail[hidden]{display:none;}
+    .pf-detail.pf-in{opacity:1;transform:translateY(0);}
+    .pf-back{display:inline-flex;align-items:center;gap:.4rem;background:none;border:1.5px solid var(--line);border-radius:99px;cursor:pointer;color:var(--muted);font-size:.8rem;font-weight:600;padding:.38rem .9rem;margin-bottom:1.6rem;-webkit-tap-highlight-color:transparent;transition:border-color .18s,color .18s;}
+    .pf-back:hover{border-color:var(--accent);color:var(--accent);}
+    .pf-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+    .pf-head-badge{font-size:.72rem;font-weight:700;padding:3px 12px;border-radius:99px;color:#fff;white-space:nowrap;}
+    .pf-head-title{font-size:1.45rem;font-weight:800;color:var(--primary);margin:0;}
+    .pf-body{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:1.8rem;}
+    @media(max-width:640px){.pf-body{grid-template-columns:1fr;gap:1.2rem;}}
+    /* Gallery */
+    .pf-gallery-main{border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#eef2f0,#dde7e2);height:230px;display:flex;align-items:center;justify-content:center;margin-bottom:.65rem;transition:opacity .22s ease;}
+    .pf-gallery-main.gm-fade{opacity:0;}
+    .pf-gallery-main img{width:100%;height:100%;object-fit:cover;display:block;}
+    .pf-gallery-main svg{width:100%;height:100%;}
+    .pf-gallery-thumbs{display:flex;gap:.5rem;}
+    .pf-thumb{width:58px;height:46px;border-radius:8px;border:2.5px solid var(--line);overflow:hidden;background:#dde7e2;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:border-color .2s;-webkit-tap-highlight-color:transparent;}
+    .pf-thumb.pf-thumb-active{border-color:var(--accent);}
+    .pf-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+    .pf-thumb svg{width:100%;height:100%;}
+    /* Features */
+    .pf-right-title{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:0 0 .7rem;}
+    .pf-desc{font-size:.84rem;color:var(--text);line-height:1.6;margin:0 0 1rem;}
+    .pf-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.4rem;}
+    .pf-features li{font-size:.81rem;color:var(--text);display:flex;align-items:flex-start;gap:.5rem;line-height:1.45;}
+    .pf-features li::before{content:'✓';color:#4a9c6a;font-weight:800;flex-shrink:0;}
+    /* Info cards */
+    .pf-info-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin-bottom:1.6rem;}
+    @media(max-width:500px){.pf-info-row{grid-template-columns:1fr 1fr;}}
+    .pf-info-card{background:#f8faf9;border:1.5px solid var(--line);border-radius:12px;padding:.85rem 1rem;}
+    .pf-info-card h5{font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:0 0 .45rem;}
+    .pf-info-card p{font-size:.81rem;color:var(--text);margin:0;line-height:1.5;}
+    .pf-info-card strong{color:var(--primary);font-weight:700;}
+    /* Colors row */
+    .pf-colors-row{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.4rem;}
+    .pf-color-sw{width:28px;height:28px;border-radius:50%;border:2px solid rgba(0,0,0,.13);cursor:default;position:relative;transition:transform .15s;}
+    .pf-color-sw:hover{transform:scale(1.22);}
+    .pf-color-sw[title]:hover::after{content:attr(title);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#222;color:#fff;font-size:.66rem;padding:3px 8px;border-radius:5px;white-space:nowrap;pointer-events:none;z-index:10;}
+    .pf-ral-hint{font-size:.73rem;color:var(--muted);font-style:italic;}
     </style>
 
-    <div class="profile-grid">
+    <div class="profile-grid" id="profileGrid">
 
       <!-- 18mm standarta -->
-      <div class="profile-card">
+      <div class="profile-card" data-profile="p18" role="button" tabindex="0" aria-label="Uzzināt vairāk par 18mm profilu">
         <div class="profile-card-img">
           <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
             <!-- Background wall representation -->
@@ -453,11 +499,12 @@
             <span class="color-swatch" style="background:#2c1a0e;" title="Tumši brūns"></span>
             <span class="color-swatch" style="background:#3a3a3a;" title="Antracīts"></span>
           </div>
+          <p class="profile-card-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Uzzināt vairāk</p>
         </div>
       </div>
 
       <!-- 18mm iekšējā -->
-      <div class="profile-card">
+      <div class="profile-card" data-profile="p18i" role="button" tabindex="0" aria-label="Uzzināt vairāk par 18mm iekšējo profilu">
         <div class="profile-card-img">
           <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
             <rect width="280" height="160" fill="#eef2f0"/>
@@ -503,11 +550,12 @@
             <span class="color-swatch" style="background:#2c1a0e;" title="Tumši brūns"></span>
             <span class="color-swatch" style="background:#3a3a3a;" title="Antracīts"></span>
           </div>
+          <p class="profile-card-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Uzzināt vairāk</p>
         </div>
       </div>
 
       <!-- 25mm -->
-      <div class="profile-card">
+      <div class="profile-card" data-profile="p25" role="button" tabindex="0" aria-label="Uzzināt vairāk par 25mm profilu">
         <div class="profile-card-img">
           <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
             <rect width="280" height="160" fill="#eef2f0"/>
@@ -549,10 +597,14 @@
             <span class="color-swatch" style="background:#2c1a0e;" title="Tumši brūns"></span>
             <span class="color-swatch" style="background:#3a3a3a;" title="Antracīts"></span>
           </div>
+          <p class="profile-card-hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Uzzināt vairāk</p>
         </div>
       </div>
 
     </div><!-- /profile-grid -->
+
+    <!-- ── Profile detail panel (populated by JS) ── -->
+    <div class="pf-detail" id="pfDetail" hidden></div>
 
     <!-- RAL note -->
     <div class="ral-note">
@@ -567,6 +619,223 @@
 
   </div>
 </section>
+<script>
+/* ── Profile detail interaction ── */
+(function(){
+  var grid   = document.getElementById('profileGrid');
+  var detail = document.getElementById('pfDetail');
+  if(!grid || !detail) return;
+
+  /* ─── Data ─── */
+  var COLORS = [
+    {bg:'#f2f2f2', border:'#c8c8c8', name:'Balts (RAL 9016)'},
+    {bg:'#2c1a0e', border:'#1a0e04', name:'Tumši brūns (RAL 8019)'},
+    {bg:'#3a3a3a', border:'#222222', name:'Antracīts (RAL 7016)'}
+  ];
+  var PF = {
+    p18:{
+      badge:'Visbiežāk izvēlas', badgeBg:'#4a9c6a',
+      title:'18 mm profils',
+      desc:'Viegls un kompakts alumīnija profils standarta logu ailēm. Minimāla ietekme uz loga atvēršanas platumu — optimāls risinājums lielākajai daļai dzīvokļu un privātmāju logu jebkurā stāvā.',
+      features:[
+        'Kompakts profila platums — tikai 18 mm',
+        'Viegls, korozijizturīgs alumīnija sakausējums',
+        'Neierobežo loga atvēršanas platumu',
+        'Uzstādīšana bez loga demontāžas — 30–60 min.',
+        'Piemērots horizontālai un vertikālai atvēršanai',
+        'Pieejams 3 standarta krāsās + RAL pēc pasūtījuma'
+      ],
+      mounting:'Profils tiek piestiprināts ar speciāliem alumīnija klipšiem vai skrūvēm tieši pie loga ailes rāmja no ārpuses. Uzstādīšana iespējama bez logu demontāžas vai remonta — vidēji 30–60 minūtes vienam logam.',
+      minW:300, maxW:2400, minH:400, maxH:2200,
+      photos:[
+        {src:'../photo/PlisseH1.webp',    alt:'Plisē moskītu tīkls ar 18mm profilu — uzstādīts logā'},
+        {src:'../photo/PlisseStandarta.webp', alt:'Plisē standarta audums 18mm profilā'}
+      ]
+    },
+    p18i:{
+      badge:'Montāžai iekšpusē', badgeBg:'#555555',
+      title:'18 mm profils — iekšējais',
+      desc:'Identisks 18mm profils, taču uzstādīts loga ailes iekšpusē — starp rāmi un palodzi. Ideāls gadījumos, kad loga konstrukcija neļauj montēt tīklu no ārpuses vai aile ir dziļa.',
+      features:[
+        'Tāds pats 18mm profils — montāža iekšpusē',
+        'Ideāls dziļām logu ailēm (dziļums no 60 mm)',
+        'Pilnībā neredzams no mājas ārpuses',
+        'Papildu aizsardzība pret vēja triecieniem',
+        'Piemērots moderniem logiem ar platiem rāmjiem',
+        'Nostiprināšana ar regulējamiem ieliktņiem'
+      ],
+      mounting:'Profils tiek ievietots un nostiprināts loga ailes iekšpusē — starp loga rāmi un palodzi. Izmanto regulējamus ieliktņus dažādu ailes dziļumu pielāgošanai. Minimālais ailes dziļums montāžai — 60 mm.',
+      minW:300, maxW:2000, minH:400, maxH:2000,
+      photos:[
+        {src:'../photo/PlisseH1.webp',       alt:'Plisē moskītu tīkls ar 18mm iekšējo profilu'},
+        {src:'../photo/PlissePetScreen.webp', alt:'Plisē PetScreen audums 18mm iekšējā profilā'}
+      ]
+    },
+    p25:{
+      badge:'Liela aile', badgeBg:'#1a6640',
+      title:'25 mm profils',
+      desc:'Pastiprinātais platais profils lielām logu un balkona durvju ailēm. Nodrošina ievērojami lielāku stingrību un mehānisko izturību — ideāls risinājums plašiem atvērumiem, kur nepieciešama papildu stabilitāte.',
+      features:[
+        'Pastiprinātais 25mm profils — augstāks stingrums',
+        'Piemērots lieliem atvērumiem un balkona durvīm',
+        'Augstāka mehāniskā izturība pret vēju',
+        'Ideāls platumam virs 1500 mm',
+        'Korozijizturīgs alumīnija sakausējums',
+        'Pieejams 3 standarta krāsās + RAL pēc pasūtījuma'
+      ],
+      mounting:'Profils tiek piestiprināts pie loga ailes rāmja ārpusē ar pastiprinātiem kronšteiniem. Lielāka platuma dēļ uzstādīšana nodrošina augstāku stabilitāti — īpaši svarīgi lieliem atvērumiem un ekspozētām fasādēm. Uzstādīšanas laiks — 60–120 minūtes.',
+      minW:400, maxW:3000, minH:500, maxH:2500,
+      photos:[
+        {src:'../photo/PlisseH1.webp',    alt:'Plisē moskītu tīkls ar 25mm profilu — liela aile'},
+        {src:'../photo/PlissePetScreen.webp', alt:'Plisē PetScreen tīkls 25mm profilā'}
+      ]
+    }
+  };
+
+  /* ─── Helpers ─── */
+  function svgOf(key){
+    var card = grid.querySelector('[data-profile="'+key+'"]');
+    if(!card) return '';
+    var s = card.querySelector('.profile-card-img svg');
+    return s ? s.outerHTML : '';
+  }
+
+  var curThumb = 0;
+  var curGallery = [];   /* [{type:'svg'|'img', content, alt}] */
+
+  function setGallerySlot(idx){
+    var main = detail.querySelector('.pf-gallery-main');
+    if(!main) return;
+    main.classList.add('gm-fade');
+    var item = curGallery[idx];
+    setTimeout(function(){
+      if(item.type === 'svg'){
+        main.innerHTML = item.content;
+      } else {
+        main.innerHTML = '<img src="'+item.src+'" alt="'+item.alt+'" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">';
+      }
+      main.classList.remove('gm-fade');
+    }, 180);
+    /* update thumb borders */
+    var thumbs = detail.querySelectorAll('.pf-thumb');
+    thumbs.forEach(function(t,i){ t.classList.toggle('pf-thumb-active', i===idx); });
+    curThumb = idx;
+  }
+
+  function renderDetail(key){
+    var d = PF[key];
+    if(!d) return;
+
+    /* Build gallery items: SVG illustration + real photos */
+    curGallery = [{type:'svg', content: svgOf(key)}];
+    d.photos.forEach(function(p){ curGallery.push({type:'img', src:p.src, alt:p.alt}); });
+    curThumb = 0;
+
+    /* Thumbnail HTML */
+    var thumbsHTML = curGallery.map(function(item, i){
+      var inner = item.type==='svg'
+        ? '<div style="width:100%;height:100%;padding:4px;box-sizing:border-box;">'+item.content+'</div>'
+        : '<img src="'+item.src+'" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">';
+      return '<div class="pf-thumb'+(i===0?' pf-thumb-active':'')+'" data-idx="'+i+'">'+inner+'</div>';
+    }).join('');
+
+    /* Features HTML */
+    var featHTML = d.features.map(function(f){ return '<li>'+f+'</li>'; }).join('');
+
+    /* Colors HTML */
+    var colHTML = COLORS.map(function(c){
+      return '<span class="pf-color-sw" style="background:'+c.bg+';border-color:'+c.border+';" title="'+c.name+'"></span>';
+    }).join('');
+
+    detail.innerHTML =
+      '<button class="pf-back" id="pfBack">'
+        +'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
+        +'Atpakaļ uz visiem profiliem'
+      +'</button>'
+      +'<div class="pf-head">'
+        +'<span class="pf-head-badge" style="background:'+d.badgeBg+'">'+d.badge+'</span>'
+        +'<h3 class="pf-head-title">'+d.title+'</h3>'
+      +'</div>'
+      +'<div class="pf-body">'
+        +'<div class="pf-gallery">'
+          +'<div class="pf-gallery-main">'+curGallery[0].content+'</div>'
+          +'<div class="pf-gallery-thumbs">'+thumbsHTML+'</div>'
+        +'</div>'
+        +'<div>'
+          +'<p class="pf-right-title">Par šo profilu</p>'
+          +'<p class="pf-desc">'+d.desc+'</p>'
+          +'<ul class="pf-features">'+featHTML+'</ul>'
+        +'</div>'
+      +'</div>'
+      +'<div class="pf-info-row">'
+        +'<div class="pf-info-card">'
+          +'<h5>Montāža</h5>'
+          +'<p>'+d.mounting+'</p>'
+        +'</div>'
+        +'<div class="pf-info-card">'
+          +'<h5>Minimālie izmēri</h5>'
+          +'<p><strong>Platums:</strong> '+d.minW+' mm<br><strong>Augstums:</strong> '+d.minH+' mm</p>'
+        +'</div>'
+        +'<div class="pf-info-card">'
+          +'<h5>Maksimālie izmēri</h5>'
+          +'<p><strong>Platums:</strong> '+d.maxW+' mm<br><strong>Augstums:</strong> '+d.maxH+' mm</p>'
+        +'</div>'
+      +'</div>'
+      +'<div class="pf-info-card" style="margin-bottom:.5rem;">'
+        +'<h5>Standarta krāsas</h5>'
+        +'<div class="pf-colors-row" style="margin-top:.5rem;">'+colHTML+'</div>'
+        +'<p class="pf-ral-hint" style="margin-top:.5rem;">+ Jebkura RAL kataloga krāsa (cena +25%)</p>'
+      +'</div>';
+
+    /* Thumb click handlers */
+    detail.querySelectorAll('.pf-thumb').forEach(function(th){
+      th.addEventListener('click', function(){ setGallerySlot(+this.dataset.idx); });
+    });
+
+    /* Back button */
+    document.getElementById('pfBack').addEventListener('click', closeDetail);
+  }
+
+  function openDetail(key){
+    renderDetail(key);
+    detail.removeAttribute('hidden');
+    /* animate in */
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        detail.classList.add('pf-in');
+      });
+    });
+    /* scroll section into view */
+    detail.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function closeDetail(){
+    detail.classList.remove('pf-in');
+    setTimeout(function(){
+      detail.setAttribute('hidden','');
+      detail.innerHTML = '';
+      grid.style.display = '';
+      grid.classList.remove('pg-out');
+      grid.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 360);
+  }
+
+  /* ─── Attach card clicks ─── */
+  grid.querySelectorAll('.profile-card[data-profile]').forEach(function(card){
+    card.addEventListener('click', function(){
+      var key = this.dataset.profile;
+      grid.classList.add('pg-out');
+      setTimeout(function(){
+        grid.style.display = 'none';
+        openDetail(key);
+      }, 310);
+    });
+    card.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); this.click(); }
+    });
+  });
+})();
+</script>
 
 <!-- ══ Tīkla auduma veidi ══ -->
 <section class="container" style="padding-top:3rem;padding-bottom:3rem;">
@@ -1001,8 +1270,8 @@ var MESH_DATA={
 </main>
 <section class="cta-band">
   <div class="container">
-    <h2>Nepieciešams logu meistars?</h2>
-    <p>Atstājiet pieprasījumu un mēs sazināsimies ar Jums 12 stundu laikā, lai vienotos par bezmaksas tāmi.</p>
+    <h2>Nepieciešams profesionāls moskītu tīklu izmērs un uzstādīšana?</h2>
+    <p>Atstājiet pieprasījumu — mūsu speciālists bezmaksas izmērīs loga vai durvju aili un izgatavos moskītu tīklu precīzi pēc Jūsu izmēriem. Uzstādīšana — vienas dienas laikā pēc izgatavošanas.</p>
     <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.4rem;margin-bottom:1.4rem;">* Bezmaksas apskate un tāme — tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" style="color:rgba(255,255,255,.85);text-decoration:underline;">transporta izdevumi</a>.</p>
     <a class="btn btn-outline" href="kontakti.html">Sazināties</a>
   </div>
