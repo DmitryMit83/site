@@ -149,12 +149,27 @@
 <main>
 
 <!-- ── Page hero ─────────────────────────────────────────────── -->
-<section class="page-hero">
-  <div class="container">
+<style>
+.pal-hero-img{position:absolute;bottom:-70px;right:0;height:calc(100% + 70px);width:auto;opacity:.88;pointer-events:none;user-select:none;}
+@media(max-width:900px){.pal-hero-img{height:70%;bottom:0;opacity:.65;}}
+@media(max-width:600px){.pal-hero-img{display:none;}}
+</style>
+<section class="page-hero" style="overflow:hidden;">
+  <div class="container" style="position:relative;">
     <span class="eyebrow">Mūsu pakalpojumi</span>
     <h1>Logu palodzes pēc pasūtījuma</h1>
     <p>Uzstādām PVC, koka, akmens un marmora palodzes precīzi Jūsu izmēriem. Profesionāla montāža, ilgmūžīgi materiāli un garantija katram projektam.</p>
-    <a class="btn" href="kontakti.html">Pieteikties konsultācijai</a>
+    <a class="btn btn-outline-dark" href="kontakti.html">Pieteikties konsultācijai</a>
+    <img
+      class="pal-hero-img"
+      src="../photo/palodzes/palodzes.webp"
+      alt="Logu palodze — PVC, koka vai akmens palodze uz loga, uzstādīšana pēc pasūtījuma, SIA Logu Apkope"
+      title="Logu palodžu uzstādīšana Rīgā — PVC, koka un marmora palodzes precīzi izmēri un profesionāla montāža"
+      width="420"
+      height="420"
+      loading="eager"
+      decoding="async"
+    >
   </div>
 </section>
 

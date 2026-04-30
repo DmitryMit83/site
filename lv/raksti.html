@@ -23,7 +23,8 @@
 </script>
 <style>
 .article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.article-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+a.article-card{text-decoration:none;color:inherit;}
+.article-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;cursor:pointer;}
 .article-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.12)}
 .article-thumb{height:190px;background:var(--paper-2);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line)}
 .article-thumb svg{opacity:.3}
@@ -195,6 +196,25 @@
 <section style="padding:56px 0 80px;background:var(--paper-2);">
   <div class="container">
     <div class="article-grid" id="articleGrid">
+
+      <!-- Article 0 — Kondensāts un apkure -->
+      <article class="article-card" data-cat="kopeana" data-href="raksts-kondensats-apkure.html">
+        <div class="article-thumb" style="overflow:hidden;padding:0;">
+          <img src="../photo/stikls/stikls.webp" alt="Kondensāts uz stikla paketes — logu rasošana ziemā" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+        </div>
+        <div class="article-body">
+          <div class="article-cat">Kopšana</div>
+          <h3>Kāpēc logi svīst un kā tas saistīts ar apkuri</h3>
+          <p>Kondensāts uz logiem bieži nav logu defekts — galvenais iemesls ir apkure un gaisa cirkulācija. Uzziniet iemeslus un praktiskus risinājumus.</p>
+          <div class="article-meta">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Aprīlī 2025</span>
+            <span>·</span>
+            <span>5 min lasīšana</span>
+            <a href="raksts-kondensats-apkure.html" class="article-read">Lasīt vairāk →</a>
+          </div>
+        </div>
+      </article>
 
       <!-- Article 1 -->
       <article class="article-card" data-cat="kopeana">
@@ -470,6 +490,15 @@ function filterArticles(cat) {
 }
 </script>
 <script src="../js/main.js"></script>
+<script>
+document.querySelectorAll('.article-card[data-href]').forEach(function(card){
+  card.style.cursor='pointer';
+  card.addEventListener('click',function(e){
+    if(e.target.tagName==='A') return;
+    window.location.href=card.getAttribute('data-href');
+  });
+});
+</script>
 
 
 

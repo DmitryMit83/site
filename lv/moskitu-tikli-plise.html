@@ -284,17 +284,17 @@
 @media(max-width:500px){.pop-row{grid-template-columns:82px 1fr 38px;gap:.5rem;}}
 .pop-label{font-size:.84rem;color:var(--text);font-weight:600;text-align:right;line-height:1.3;}
 .pop-track{background:#e4e8ed;border-radius:99px;height:28px;overflow:hidden;position:relative;}
-.pop-bar{height:100%;width:0;border-radius:99px;transition:width 1.35s cubic-bezier(.23,1,.32,1);position:relative;}
-.pop-bar-pct{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:.76rem;font-weight:700;color:#fff;opacity:0;transition:opacity .5s ease 1s;white-space:nowrap;}
+.pop-bar{height:100%;width:0;border-radius:99px;transition:width 4.05s cubic-bezier(.23,1,.32,1);position:relative;}
+.pop-bar-pct{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:.76rem;font-weight:700;color:#fff;opacity:0;transition:opacity 1.5s ease 3s;white-space:nowrap;}
 .pop-chart.pop-animated .pop-bar-pct{opacity:1;}
 .pop-pct-num{font-size:.85rem;font-weight:700;color:var(--primary);}
 /* ── Year demand chart ── */
 .year-chart-wrap{width:100%;}
 .year-chart{display:flex;align-items:flex-end;gap:5px;height:160px;padding-bottom:26px;position:relative;border-bottom:2px solid #d0d8e0;}
 .year-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;position:relative;}
-.year-bar{width:100%;max-width:46px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#4caf50,#2e7d32);transform-origin:bottom;transform:scaleY(0);transition:transform 1.2s cubic-bezier(.23,1,.32,1);position:relative;}
+.year-bar{width:100%;max-width:46px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#4caf50,#2e7d32);transform-origin:bottom;transform:scaleY(0);transition:transform 3.6s cubic-bezier(.23,1,.32,1);position:relative;}
 .year-bar.partial{background:linear-gradient(180deg,#ffa726,#e65100);}
-.year-bar.partial::after{content:'▲';position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:.6rem;color:#e65100;font-weight:700;opacity:0;transition:opacity .6s ease 1.4s;}
+.year-bar.partial::after{content:'▲';position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:.6rem;color:#e65100;font-weight:700;opacity:0;transition:opacity 1.8s ease 4.2s;}
 .year-chart.yc-animated .year-bar{transform:scaleY(1);}
 .year-chart.yc-animated .year-bar.partial::after{opacity:1;}
 .year-label{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:.65rem;font-weight:600;color:var(--muted);white-space:nowrap;}

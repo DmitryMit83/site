@@ -149,12 +149,27 @@
 <main>
 
 <!-- ── Page hero ─────────────────────────────────────────────── -->
-<section class="page-hero">
-  <div class="container">
+<style>
+.vent-hero-img{position:absolute;bottom:-70px;right:0;height:calc(100% + 70px);width:auto;opacity:.88;pointer-events:none;user-select:none;}
+@media(max-width:900px){.vent-hero-img{height:70%;bottom:0;opacity:.65;}}
+@media(max-width:600px){.vent-hero-img{display:none;}}
+</style>
+<section class="page-hero" style="overflow:hidden;">
+  <div class="container" style="position:relative;">
     <span class="eyebrow">Mūsu pakalpojumi</span>
     <h1>Pieplūdes gaisa vārsti logiem un durvīm</h1>
     <p>Svaigs gaiss bez caurvēja un siltuma zudumiem. Uzstādām pieplūdes ventilācijas vārstus uz PVC, koka un alumīnija logiem — rūpniecisks risinājums mūsdienīgai dzīvei.</p>
-    <a class="btn" href="kontakti.html">Pieteikties uzstādīšanai</a>
+    <a class="btn btn-outline-dark" href="kontakti.html">Pieteikties uzstādīšanai</a>
+    <img
+      class="vent-hero-img"
+      src="../photo/Vent/Logs.webp"
+      alt="Pieplūdes ventilācijas vārsts uz loga — gaisa plūsmas shēma: svaigs gaiss iekļūst caur vārstu un izplatās telpā, SIA Logu Apkope"
+      title="Pieplūdes gaisa vārsts uz PVC loga — kontrolēta ventilācija bez loga atvēršanas, uzstādīšana Rīgā"
+      width="380"
+      height="380"
+      loading="eager"
+      decoding="async"
+    >
   </div>
 </section>
 
@@ -164,13 +179,60 @@
     <div class="section-head" style="margin-bottom:1.5rem;">
       <span class="eyebrow">Problēma</span>
       <h2>Kāpēc moderna dzīvokļa logs neelpo?</h2>
-      <p>Hermētiski PVC logi, kas tik labi izolē skaņu un aukstumu, vienlaikus aizspiež dabisko gaisa apmaiņu. Rezultāts — kondensāts, pelējums, smakušs gaiss un slikts miegs.</p>
     </div>
-    <div class="why">
-      <div class="item"><b>💧</b><span>Kondensāts uz stikliem un palodzēm — mitruma uzkrāšanās</span></div>
-      <div class="item"><b>🍄</b><span>Pelējums stūros — nepietiekama gaisa cirkulācija</span></div>
-      <div class="item"><b>😮‍💨</b><span>Smakušs gaiss — CO₂ pieaugums slēgtā telpā</span></div>
-      <div class="item"><b>🌡️</b><span>Pārkaršana vasarā — trūkst pietiekami atdzesēta gaisa pieplūdes</span></div>
+
+    <div style="max-width:760px;margin:0 auto;">
+
+      <p style="font-size:1.05rem;margin-bottom:1.5rem;line-height:1.7;text-align:center;">Mūsdienu logs «neelpo» nevis tāpēc, ka ar to kaut kas nav kārtībā — gluži otrādi, tāpēc ka tas ir <strong>pārāk hermētisks</strong>.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.5rem;">
+        <div style="background:#fff;border-radius:12px;padding:1.2rem 1.4rem;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+          <p style="font-weight:700;color:var(--green);margin-bottom:.7rem;">Agrāk — vecajos koka logos:</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.4rem;font-size:.95rem;color:var(--text-2);">
+            <li>✓&nbsp; Bija spraugas un mikrozazorai</li>
+            <li>✓&nbsp; Gaiss iekļuva dabiskā veidā</li>
+            <li>✓&nbsp; Notika spontāna ventilācija</li>
+          </ul>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:1.2rem 1.4rem;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+          <p style="font-weight:700;color:var(--accent);margin-bottom:.7rem;">Mūsdienu PVC, koka un alumīnija logos:</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.4rem;font-size:.95rem;color:var(--text-2);">
+            <li>✗&nbsp; Pilnīga hermētiskums</li>
+            <li>✗&nbsp; Daudzakameru stikla paketes</li>
+            <li>✗&nbsp; Blīvgumijas aizspiež gaisa pieplūdi</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:rgba(208,77,26,.08);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin-bottom:1.5rem;">
+        <p style="font-weight:700;margin-bottom:.5rem;">👉 Rezultātā:</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.3rem;font-size:.95rem;color:var(--text-2);">
+          <li>• Nav dabiskās gaisa apmaiņas</li>
+          <li>• Paaugstinās mitrums</li>
+          <li>• Parādās kondensāts uz stikliem</li>
+          <li>• Var veidoties pelējums</li>
+          <li>• Gaiss kļūst «smags»</li>
+        </ul>
+      </div>
+
+      <p style="background:var(--green);color:#fff;border-radius:10px;padding:.9rem 1.3rem;font-weight:600;font-size:1rem;margin-bottom:1.5rem;text-align:center;">
+        Svarīgi saprast: logam nav jāelpo — jāelpo ir ventilācijas sistēmai.
+      </p>
+
+      <div style="margin-bottom:1.2rem;">
+        <p style="font-weight:700;margin-bottom:.7rem;text-align:center;">Risinājums:</p>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:.4rem .8rem;font-size:.95rem;color:var(--text-2);">
+          <li>→&nbsp; Regulāra vēdināšana</li>
+          <li>→&nbsp; Mikrovēdināšana (ja ir funkcija)</li>
+          <li>→&nbsp; Pieplūdes klap­ānu uzstādīšana</li>
+          <li>→&nbsp; Normālas ventilācijas organizēšana dzīvoklī</li>
+        </ul>
+      </div>
+
+      <p style="font-style:italic;color:var(--text-2);border-top:1px solid rgba(0,0,0,.1);padding-top:1rem;text-align:center;">
+        Īsumā: jo modernāks logs — jo vairāk nepieciešama pārdomāta ventilācija.
+      </p>
+
     </div>
   </div>
 </section>
@@ -180,7 +242,7 @@
   <div class="section-head">
     <span class="eyebrow">Risinājums</span>
     <h2>Pieplūdes vārsts — vienkāršs un efektīvs</h2>
-    <p>Pieplūdes ventilācijas vārsts uzstāda uz loga augšas rāmī un nodrošina kontrolētu svaigu gaisu bez atvērtiem logiem. Nav redzams no iekšpuses, nesamazina siltumizolāciju.</p>
+    <p>Pieplūdes ventilācijas vārsts uzstāda uz loga augšas rāmī un nodrošina kontrolētu svaigu gaisu bez atvērtiem logiem. Gandrīz nepamanāms uz loga, nesamazina siltumizolāciju.</p>
   </div>
   <div class="grid cols-3">
 

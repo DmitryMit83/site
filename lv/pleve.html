@@ -153,51 +153,44 @@
 <main>
 
 <!-- ── Page hero ─────────────────────────────────────────────── -->
-<section class="page-hero">
-  <div class="container">
+<style>
+.pleve-hero-img{position:absolute;bottom:-70px;right:0;height:calc(100% + 70px);width:auto;opacity:.88;pointer-events:none;user-select:none;}
+@media(max-width:900px){.pleve-hero-img{height:70%;bottom:0;opacity:.65;}}
+@media(max-width:600px){.pleve-hero-img{display:none;}}
+</style>
+<section class="page-hero" style="overflow:hidden;">
+  <div class="container" style="position:relative;">
     <span class="eyebrow">Mūsu pakalpojumi</span>
     <h1>Logu plēve — saules aizsardzība un komforts</h1>
     <p class="lead">Profesionāla logu plēves uzstādīšana dzīvokļiem, birojiem un privātmājām. Samaziniet saules karstumu, aizsargājiet no UV stariem un pievienojiet privātumu — bez loga nomaiņas.</p>
     <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem;">
-      <a class="btn btn-primary" href="kontakti.html">Pieteikties konsultācijai</a>
-      <a class="btn btn-outline-dark" href="#cenas">Skatīt cenas →</a>
+      <a class="btn btn-outline-dark" href="kontakti.html">Pieteikties konsultācijai</a>
     </div>
+    <img
+      class="pleve-hero-img"
+      src="../photo/pleve/pleve.webp"
+      alt="Logu plēve uz loga — saules aizsardzības plēves uzstādīšana uz PVC loga, UV aizsardzība un privātums, SIA Logu Apkope"
+      title="Logu plēves uzstādīšana Rīgā — saules aizsardzība, UV filtrs un privātums bez loga nomaiņas"
+      width="420"
+      height="420"
+      loading="eager"
+      decoding="async"
+    >
   </div>
 </section>
 
-<!-- ── USP strip ──────────────────────────────────────────────── -->
-<section class="usp-strip">
-  <div class="container usp-row">
-    <div class="usp-item">
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M24 12v12l7 4"/></svg>
-      <span>Uzstādīšana 1–2 stundās</span>
-    </div>
-    <div class="usp-item">
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6l4.9 9.9L40 17.6l-8 7.8 1.9 11-9.9-5.2L14.1 36.4l1.9-11L8 17.6l11.1-1.7z"/></svg>
-      <span>Garantija 3 gadi</span>
-    </div>
-    <div class="usp-item">
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 36V20M24 36V12M36 36V26"/></svg>
-      <span>Samazina karstumu līdz 60%</span>
-    </div>
-    <div class="usp-item">
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="10" width="28" height="28" rx="3"/><path d="M10 24h28M24 10v28"/></svg>
-      <span>Plēve pēc pasūtījuma izmēriem</span>
-    </div>
+<!-- ── Plēves veidi ───────────────────────────────────────────── -->
+<section class="container" style="padding-top:3rem;padding-bottom:2.5rem;">
+  <div class="section-head">
+    <span class="eyebrow">Pakalpojumi</span>
+    <h2>Logu plēves veidi</h2>
+    <p>Izvēlieties plēvi atbilstoši savām vajadzībām — mēs palīdzēsim atrast labāko risinājumu.</p>
   </div>
-</section>
+  <div class="grid cols-3">
 
-<!-- ── Film types ─────────────────────────────────────────────── -->
-<section style="padding:80px 0;background:var(--paper-2);">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:.6rem;">Logu plēves veidi</h2>
-    <p style="text-align:center;color:var(--text-2);margin-bottom:3rem;max-width:520px;margin-left:auto;margin-right:auto;">Izvēlieties plēvi atbilstoši savām vajadzībām — mēs palīdzēsim atrast labāko risinājumu.</p>
-
-    <div class="grid cols-3">
-
-      <!-- Solar -->
-      <div class="srv-card">
-        <div class="srv-icon">
+    <div class="sub">
+      <div class="sub-body">
+        <div style="width:48px;height:48px;margin-bottom:1rem;color:var(--accent);">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="24" cy="24" r="8"/>
             <line x1="24" y1="6" x2="24" y2="2"/><line x1="24" y1="46" x2="24" y2="42"/>
@@ -207,78 +200,126 @@
           </svg>
         </div>
         <h3>Saules aizsargplēve</h3>
-        <p>Atspoguļo līdz 79% saules siltuma un bloķē līdz 99% UV starojuma. Ideāla dienvidu un rietumu ekspozīcijas logiem, kur vasarā ir liels karstums. Samazina dzesēšanas izmaksas.</p>
-        <ul style="margin-top:1rem;padding-left:1.2rem;color:var(--text-2);font-size:.9rem;line-height:1.9;">
-          <li>UV aizsardzība 99%</li>
-          <li>Karstuma samazinājums līdz 60%</li>
-          <li>Caurspīdīga vai tonēta versija</li>
-          <li>Saglabā dabisko gaismu</li>
-        </ul>
-        <p style="margin-top:1.25rem;font-weight:600;color:var(--accent);">no €8 / m²</p>
+        <p>Atspoguļo līdz 79% saules siltuma un bloķē līdz 99% UV starojuma. Ideāla dienvidu un rietumu ekspozīcijas logiem. Pieejama caurspīdīgā un tonētā versijā — saglabā dabisko gaismu.</p>
+        <div class="card-footer-row">
+          <span class="price-badge">no €8 / m²</span>
+          <a class="card-link" href="kontakti.html">Pieteikties →</a>
+        </div>
       </div>
+    </div>
 
-      <!-- Thermal -->
-      <div class="srv-card">
-        <div class="srv-icon">
+    <div class="sub">
+      <div class="sub-body">
+        <div style="width:48px;height:48px;margin-bottom:1rem;color:var(--accent);">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M28 28.5V14a4 4 0 00-8 0v14.5a8 8 0 108 0z"/>
             <line x1="24" y1="32" x2="24" y2="36"/>
           </svg>
         </div>
         <h3>Siltuma izolācijas plēve</h3>
-        <p>Darbojas kā "Low-E" pārklājums — ziemā saglabā siltumu telpā, vasarā atstāj ārā saules karstumu. Samazina apkures un dzesēšanas izmaksas visa gada garumā.</p>
-        <ul style="margin-top:1rem;padding-left:1.2rem;color:var(--text-2);font-size:.9rem;line-height:1.9;">
-          <li>Efektīva visā gadā</li>
-          <li>Samazina enerģijas patēriņu</li>
-          <li>Gandrīz neredzama uz stikla</li>
-          <li>Atbilst energoefektivitātes prasībām</li>
-        </ul>
-        <p style="margin-top:1.25rem;font-weight:600;color:var(--accent);">no €12 / m²</p>
+        <p>Darbojas kā "Low-E" pārklājums — ziemā saglabā siltumu telpā, vasarā atdala saules karstumu. Samazina apkures un dzesēšanas izmaksas visa gada garumā. Gandrīz neredzama uz stikla.</p>
+        <div class="card-footer-row">
+          <span class="price-badge">no €12 / m²</span>
+          <a class="card-link" href="kontakti.html">Pieteikties →</a>
+        </div>
       </div>
+    </div>
 
-      <!-- Decorative -->
-      <div class="srv-card">
-        <div class="srv-icon">
+    <div class="sub">
+      <div class="sub-body">
+        <div style="width:48px;height:48px;margin-bottom:1rem;color:var(--accent);">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="8" y="8" width="32" height="32" rx="4"/>
             <path d="M8 20h32M8 32h32M20 8v32M32 8v32" stroke-dasharray="4 3"/>
           </svg>
         </div>
         <h3>Dekoratīvā un matētā plēve</h3>
-        <p>Nodrošina privātumu, vienlaikus caurlaidot dabisko gaismu. Ideāla vannas istabām, biroja stikla sienām, durvju stikli un jebkurai vietai, kur nepieciešams aizsegs.</p>
-        <ul style="margin-top:1rem;padding-left:1.2rem;color:var(--text-2);font-size:.9rem;line-height:1.9;">
-          <li>Matēta, smilšu, rakstainā versija</li>
-          <li>Privātums bez aizkaru vajadzības</li>
-          <li>Viegli tīrāma virsma</li>
-          <li>Noņemama pēc vajadzības</li>
-        </ul>
-        <p style="margin-top:1.25rem;font-weight:600;color:var(--accent);">no €6 / m²</p>
+        <p>Nodrošina privātumu, vienlaikus caurlaidot dabisko gaismu. Ideāla vannas istabām, biroja stikla sienām un durvju stikliem. Matēta, smilšu vai rakstainā versija — noņemama bez pēdām.</p>
+        <div class="card-footer-row">
+          <span class="price-badge">no €6 / m²</span>
+          <a class="card-link" href="kontakti.html">Pieteikties →</a>
+        </div>
       </div>
-
     </div>
+
+    <div class="sub">
+      <div class="sub-body">
+        <div style="width:48px;height:48px;margin-bottom:1rem;color:var(--accent);">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 8l32 32M8 40l32-32"/>
+            <rect x="6" y="6" width="36" height="36" rx="4"/>
+          </svg>
+        </div>
+        <h3>Drošības un pretsitiena plēve</h3>
+        <p>Aizkavē stikla šķembu izkliedēšanos sitiena vai sprādziena gadījumā. Īpaši ieteicama bērnu istabām, zemes stāvam un telpām ar drošības prasībām.</p>
+        <div class="card-footer-row">
+          <span class="price-badge">no €18 / m²</span>
+          <a class="card-link" href="kontakti.html">Pieteikties →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-body">
+        <div style="width:48px;height:48px;margin-bottom:1rem;color:var(--accent);">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="24" cy="24" rx="16" ry="16"/>
+            <path d="M24 14v10l6 4"/>
+            <path d="M10 24h4M34 24h4M24 10v4M24 38v4"/>
+          </svg>
+        </div>
+        <h3>Tonēšanas plēve (privātums)</h3>
+        <p>Nodrošina vienpusēju redzamību — no ārpuses logs izskatās kā spogulis, bet no iekšienes redzamība saglabājas. Populāra biroja telpās un dienesta ieeju logos.</p>
+        <div class="card-footer-row">
+          <span class="price-badge">no €9 / m²</span>
+          <a class="card-link" href="kontakti.html">Pieteikties →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-body">
+        <div style="width:48px;height:48px;margin-bottom:1rem;color:var(--accent);">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="6" width="36" height="36" rx="4"/>
+            <path d="M6 18h36M6 30h36"/>
+            <circle cx="15" cy="12" r="2" fill="currentColor"/>
+            <circle cx="24" cy="12" r="2" fill="currentColor"/>
+            <circle cx="33" cy="12" r="2" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3>Prettrokšņu (akustiskā) plēve</h3>
+        <p>Īpaša daudzslāņu struktūra uzlabo loga skaņas izolāciju. Efektīva kombinācijā ar stikla paketes nomaiņu — ievērojami samazina ielas trokšņus.</p>
+        <div class="card-footer-row">
+          <span class="price-badge">Cena pēc aprekstājuma</span>
+          <a class="card-link" href="kontakti.html">Pieteikties →</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ── Info block ─────────────────────────────────────────────── -->
-<section style="padding:80px 0;background:#fff;">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
-      <div>
-        <span class="eyebrow">Kāpēc izvēlēties mūs</span>
-        <h2>Profesionāla uzstādīšana bez burbulīšiem un krunkām</h2>
-        <p style="color:var(--text-2);line-height:1.8;margin:1rem 0;">Logu plēves uzstādīšana šķiet vienkārša, taču neprofesionāli uzstādīta plēve ātri lobās, veido burbulīšus un izskatās neglīti. Mūsu speciālisti strādā ar profesionāliem instrumentiem un nodrošina nevainojamu rezultātu.</p>
-        <ul style="list-style:none;padding:0;margin:0 0 1.5rem;">
-          <li style="padding:.4rem 0;display:flex;gap:.7rem;align-items:flex-start;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg><span>Priekšapmaksa netiek prasīta</span></li>
-          <li style="padding:.4rem 0;display:flex;gap:.7rem;align-items:flex-start;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg><span>Bezmaksas konsultācija un izmēru noteikšana (tikai Rīgā*)</span></li>
-          <li style="padding:.4rem 0;display:flex;gap:.7rem;align-items:flex-start;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg><span>Plēve no sertificētiem Eiropas ražotājiem</span></li>
-          <li style="padding:.4rem 0;display:flex;gap:.7rem;align-items:flex-start;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg><span>Darbs bez netīrumu atstāšanas — sakopjam pēc sevis</span></li>
-          <li style="padding:.4rem 0;display:flex;gap:.7rem;align-items:flex-start;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg><span>Rīga un visa Latvija</span></li>
-        </ul>
-        <div style="display:flex;flex-wrap:wrap;gap:.75rem;">
-          <a class="btn btn-primary" href="kontakti.html">Pieteikties konsultācijai</a>
-          <a class="btn btn-outline-dark" href="aksesuari.html">Skatīt aksesuārus →</a>
-        </div>
+<!-- ── Kāpēc izvēlēties mūs ───────────────────────────────────── -->
+<section style="background:#f8f8f8;padding:3rem 0;">
+  <div class="container work-info-grid">
+    <div>
+      <span class="eyebrow">Kāpēc mēs</span>
+      <h2>Profesionāla uzstādīšana bez burbulīšiem un krunkām</h2>
+      <p>Logu plēves uzstādīšana šķiet vienkārša, taču neprofesionāli uzstādīta plēve ātri lobās, veido burbulīšus un izskatās neglīti. Mūsu speciālisti strādā ar profesionāliem instrumentiem un nodrošina nevainojamu rezultātu.</p>
+      <ul class="work-quality-list">
+        <li>Priekšapmaksa netiek prasīta</li>
+        <li>Bezmaksas konsultācija un izmēru noteikšana (tikai Rīgā*)</li>
+        <li>Plēve no sertificētiem Eiropas ražotājiem</li>
+        <li>Darbs bez netīrumu atstāšanas — sakopjam pēc sevis</li>
+        <li>Rīga un visa Latvija</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:.5rem;">
+        <a class="btn btn-primary" href="kontakti.html">Pieteikties konsultācijai</a>
+        <a class="btn btn-outline-dark" href="aksesuari.html">Skatīt aksesuārus →</a>
       </div>
+    </div>
+    <div>
       <div style="background:var(--paper-2);border-radius:16px;padding:2.5rem;border:1px solid var(--line);">
         <h3 style="margin-bottom:1.25rem;">Kā notiek uzstādīšana?</h3>
         <ol style="padding-left:1.4rem;color:var(--text-2);line-height:2;font-size:.95rem;">
@@ -294,83 +335,100 @@
   </div>
 </section>
 
-<!-- ── Price table ────────────────────────────────────────────── -->
-<section id="cenas" style="padding:80px 0;background:var(--paper-2);">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:.6rem;">Cenas</h2>
-    <p style="text-align:center;color:var(--text-2);margin-bottom:2.5rem;">Cenas norādītas ar PVN un ietver uzstādīšanu. Bezmaksas konsultācija un izmēru noteikšana (tikai Rīgā*).</p>
-    <div class="price-table-wrap">
-    <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06);">
+<!-- ── Cenu tabula ────────────────────────────────────────────── -->
+<section id="cenas" class="container" style="padding-top:3rem;padding-bottom:3rem;">
+  <div class="section-head">
+    <span class="eyebrow">Cenas</span>
+    <h2>Uzstādīšanas cenas</h2>
+    <p>Cenas norādītas ar PVN un ietver uzstādīšanu. Bezmaksas konsultācija un izmēru noteikšana (tikai Rīgā*).</p>
+  </div>
+  <div class="price-table-wrap">
+    <table class="price-table">
       <thead>
-        <tr style="background:var(--green);color:#fff;">
-          <th style="padding:14px 20px;text-align:left;font-weight:600;">Plēves veids</th>
-          <th style="padding:14px 20px;text-align:center;font-weight:600;">Cena / m²</th>
-          <th style="padding:14px 20px;text-align:left;font-weight:600;">Piemērots</th>
+        <tr>
+          <th>Plēves veids</th>
+          <th>Cena / m²</th>
+          <th>Piemērots</th>
         </tr>
       </thead>
       <tbody>
-        <tr style="border-bottom:1px solid var(--line);">
-          <td style="padding:14px 20px;font-weight:500;">Saules aizsargplēve (tonēta)</td>
-          <td style="padding:14px 20px;text-align:center;color:var(--accent);font-weight:600;">no €8</td>
-          <td style="padding:14px 20px;color:var(--text-2);font-size:.9rem;">Dienas istabas, virtuves, dienvidrietumu puse</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--line);background:var(--cream);">
-          <td style="padding:14px 20px;font-weight:500;">Saules aizsargplēve (caurspīdīga)</td>
-          <td style="padding:14px 20px;text-align:center;color:var(--accent);font-weight:600;">no €10</td>
-          <td style="padding:14px 20px;color:var(--text-2);font-size:.9rem;">Birojs, kur svarīga pilna caurspīdība</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--line);">
-          <td style="padding:14px 20px;font-weight:500;">Siltuma izolācijas plēve</td>
-          <td style="padding:14px 20px;text-align:center;color:var(--accent);font-weight:600;">no €12</td>
-          <td style="padding:14px 20px;color:var(--text-2);font-size:.9rem;">Visa gada efektivitāte, apkures samazinājums</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--line);background:var(--cream);">
-          <td style="padding:14px 20px;font-weight:500;">Dekoratīvā / matētā plēve</td>
-          <td style="padding:14px 20px;text-align:center;color:var(--accent);font-weight:600;">no €6</td>
-          <td style="padding:14px 20px;color:var(--text-2);font-size:.9rem;">Vannas istaba, birojs, durvju stikli</td>
+        <tr>
+          <td>Saules aizsargplēve (tonēta)</td>
+          <td>no €8</td>
+          <td>Dienas istabas, virtuves, dienvidrietumu puse</td>
         </tr>
         <tr>
-          <td style="padding:14px 20px;font-weight:500;">Drošības / pretsitiena plēve</td>
-          <td style="padding:14px 20px;text-align:center;color:var(--accent);font-weight:600;">no €18</td>
-          <td style="padding:14px 20px;color:var(--text-2);font-size:.9rem;">Bērnu istabas, zemes stāvs, drošības apsvērumi</td>
+          <td>Saules aizsargplēve (caurspīdīga)</td>
+          <td>no €10</td>
+          <td>Birojs, kur svarīga pilna caurspīdība</td>
+        </tr>
+        <tr>
+          <td>Siltuma izolācijas plēve</td>
+          <td>no €12</td>
+          <td>Visa gada efektivitāte, apkures samazinājums</td>
+        </tr>
+        <tr>
+          <td>Dekoratīvā / matētā plēve</td>
+          <td>no €6</td>
+          <td>Vannas istaba, birojs, durvju stikli</td>
+        </tr>
+        <tr>
+          <td>Drošības / pretsitiena plēve</td>
+          <td>no €18</td>
+          <td>Bērnu istabas, zemes stāvs, drošības apsvērumi</td>
+        </tr>
+        <tr>
+          <td>Tonēšanas plēve (privātums)</td>
+          <td>no €9</td>
+          <td>Biroji, dienesta ieejas, dzīvokļi uz ielas pusi</td>
         </tr>
       </tbody>
     </table>
-    </div>
-    <p style="text-align:center;margin-top:1.5rem;font-size:.88rem;color:var(--muted);">* Minimālais pasūtījums — 2 m². Braukšanas izmaksas ārpus Rīgas — individuāli. Precīzu cenu aprēķinām pēc izmēru noteikšanas.</p>
   </div>
+  <p style="text-align:center;margin-top:1.5rem;font-size:.88rem;color:var(--muted);">* Minimālais pasūtījums — 2 m². Braukšanas izmaksas ārpus Rīgas — individuāli. Precīzu cenu aprēķinām pēc izmēru noteikšanas.</p>
 </section>
 
 <!-- ── FAQ ────────────────────────────────────────────────────── -->
-<section style="padding:80px 0;background:#fff;">
-  <div class="container" style="max-width:760px;">
-    <h2 style="text-align:center;margin-bottom:2.5rem;">Biežāk uzdotie jautājumi</h2>
-
-    <details style="border:1px solid var(--line);border-radius:8px;margin-bottom:12px;padding:18px 20px;">
-      <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">Vai logu plēve sabojā stiklu vai rāmi?<span style="font-size:1.4rem;color:var(--accent);">+</span></summary>
-      <p style="margin-top:12px;color:var(--text-2);line-height:1.7;">Nē. Kvalitatīva logu plēve, pareizi uzstādīta, nestiprina papildu spiedienu uz stiklu un nesabojā rāmi. Tā ir noņemama bez pēdām, ja vēlaties to mainīt vai likvidēt.</p>
-    </details>
-
-    <details style="border:1px solid var(--line);border-radius:8px;margin-bottom:12px;padding:18px 20px;">
-      <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">Cik ilgi kalpo logu plēve?<span style="font-size:1.4rem;color:var(--accent);">+</span></summary>
-      <p style="margin-top:12px;color:var(--text-2);line-height:1.7;">Profesionāla logu plēve kalpā 10–15 gadus un vairāk. Mūsu plēves nāk ar 3 gadu garantiju. Kalpošanas laiks atkarīgs no plēves veida, uzstādīšanas kvalitātes un ekspozīcijas.</p>
-    </details>
-
-    <details style="border:1px solid var(--line);border-radius:8px;margin-bottom:12px;padding:18px 20px;">
-      <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">Vai plēve ir redzama no ārpuses?<span style="font-size:1.4rem;color:var(--accent);">+</span></summary>
-      <p style="margin-top:12px;color:var(--text-2);line-height:1.7;">Atkarīgs no plēves veida. Caurspīdīgā saules aizsargplēve no ārpuses ir praktiski neredzama. Tonētā plēve atspoguļo gaismu un dos spoguļefektu no ārpuses. Siltuma plēve parasti ir gandrīz neredzama.</p>
-    </details>
-
-    <details style="border:1px solid var(--line);border-radius:8px;margin-bottom:12px;padding:18px 20px;">
-      <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">Vai var uzstādīt uz dubultā stikla (stikla paketēm)?<span style="font-size:1.4rem;color:var(--accent);">+</span></summary>
-      <p style="margin-top:12px;color:var(--text-2);line-height:1.7;">Jā, lielākā daļa logu plēvju ir piemērotas uzstādīšanai uz standarta stikla paketēm. Enerģijas taupīšanas plēves var ietekmēt siltuma apmaiņu, tāpēc ieteicams konsultēties pirms uzstādīšanas.</p>
-    </details>
-
-    <details style="border:1px solid var(--line);border-radius:8px;padding:18px 20px;">
-      <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">Kā tīrīt logu pēc plēves uzstādīšanas?<span style="font-size:1.4rem;color:var(--accent);">+</span></summary>
-      <p style="margin-top:12px;color:var(--text-2);line-height:1.7;">Uzgaidiet vismaz 30 dienas pēc uzstādīšanas, kamēr plēve pilnībā ir sacietējusi. Tīriet ar mīkstu drāniņu un neagresīvu tīrīšanas līdzekli. Izvairieties no abrazīviem sūkļiem un stipriem ķīmiskiem līdzekļiem.</p>
-    </details>
+<section class="container" style="padding-top:1rem;padding-bottom:3.5rem;max-width:760px;">
+  <div class="section-head">
+    <span class="eyebrow">Jautājumi</span>
+    <h2>Biežāk uzdotie jautājumi par logu plēvi</h2>
   </div>
+
+  <details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
+    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+      Vai logu plēve sabojā stiklu vai rāmi?<span style="font-size:1.3rem;line-height:1;">+</span>
+    </summary>
+    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">Nē. Kvalitatīva logu plēve, pareizi uzstādīta, nestiprina papildu spiedienu uz stiklu un nesabojā rāmi. Tā ir noņemama bez pēdām, ja vēlaties to mainīt vai likvidēt.</p>
+  </details>
+
+  <details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
+    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+      Cik ilgi kalpo logu plēve?<span style="font-size:1.3rem;line-height:1;">+</span>
+    </summary>
+    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">Profesionāla logu plēve kalpo 10–15 gadus un vairāk. Mūsu plēves nāk ar 3 gadu garantiju. Kalpošanas laiks atkarīgs no plēves veida, uzstādīšanas kvalitātes un ekspozīcijas.</p>
+  </details>
+
+  <details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
+    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+      Vai plēve ir redzama no ārpuses?<span style="font-size:1.3rem;line-height:1;">+</span>
+    </summary>
+    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">Atkarīgs no plēves veida. Caurspīdīgā saules aizsargplēve no ārpuses ir praktiski neredzama. Tonētā plēve atspoguļo gaismu un dos spoguļefektu no ārpuses. Siltuma plēve parasti ir gandrīz neredzama.</p>
+  </details>
+
+  <details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
+    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+      Vai var uzstādīt uz dubultā stikla (stikla paketēm)?<span style="font-size:1.3rem;line-height:1;">+</span>
+    </summary>
+    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">Jā, lielākā daļa logu plēvju ir piemērotas uzstādīšanai uz standarta stikla paketēm. Enerģijas taupīšanas plēves var ietekmēt siltuma apmaiņu, tāpēc ieteicams konsultēties pirms uzstādīšanas.</p>
+  </details>
+
+  <details style="padding:.9rem 0;">
+    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+      Kā tīrīt logu pēc plēves uzstādīšanas?<span style="font-size:1.3rem;line-height:1;">+</span>
+    </summary>
+    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">Uzgaidiet vismaz 30 dienas pēc uzstādīšanas, kamēr plēve pilnībā ir sacietējusi. Tīriet ar mīkstu drāniņu un neagresīvu tīrīšanas līdzekli. Izvairieties no abrazīviem sūkļiem un stipriem ķīmiskiem līdzekļiem.</p>
+  </details>
 </section>
 
 <!-- ── CTA ────────────────────────────────────────────────────── -->

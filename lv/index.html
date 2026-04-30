@@ -389,7 +389,7 @@
       <!-- Text column -->
       <div class="promo-text-col">
         <span class="eyebrow">Ieteicamais produkts</span>
-        <h2>Plissētie moskītu tīkli —<br><span>elastīgi, eleganti, ilgmūžīgi</span></h2>
+        <h2>Plissētie moskītu tīkli —<br><span>dari savu dzīvi ērtāku</span></h2>
         <p class="promo-lead">
           Mūsu ražotie plissētie moskītu tīkli aizsargā no kukaiņiem, nezaudējot estētiku.
           Piemēroti gan lieliem, gan nelieliem logiem — pieejami dažādās stiepļu biezumās un izmēros.
@@ -398,7 +398,7 @@
           <li>Plissēta sistēma — viegli bīdāma abos virzienos</li>
           <li>Izgatavoti pēc pasūtījuma — precīzs izmērs katram logam</li>
           <li>Dažādi stiepļu veidi: standarta, UV-aizsargājošs un pulēts</li>
-          <li>Uzstādīšana bez urbumiem — uz skavām vai magnētiem</li>
+          <li>Vienīgais variants, kas piemērots 99% logu un durvju</li>
           <li>Ilgmūžīgs alumīnija rāmis ar antikorozijas pārklājumu</li>
         </ul>
         <div class="promo-ctas">
@@ -925,13 +925,21 @@
       }
     });
   }
-  place(false);
-  updatePeek();
-
-  /* ── Hero text update ── */
+  /* ── Hero text refs ── */
   var heroText = document.getElementById('heroSlideText');
   var heroH1   = document.getElementById('heroSlideH1');
   var heroLead = document.getElementById('heroSlideLead');
+
+  place(false);
+  updatePeek();
+
+  /* Sync initial hero text to whichever card is on top */
+  if (cards[0] && heroH1 && heroLead) {
+    var _t = cards[0].getAttribute('data-title');
+    var _d = cards[0].getAttribute('data-desc');
+    if (_t) heroH1.textContent  = _t;
+    if (_d) heroLead.textContent = _d;
+  }
 
   function updateHeroText(card) {
     var t = card.getAttribute('data-title');
