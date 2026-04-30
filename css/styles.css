@@ -365,11 +365,13 @@ section.green p{color:#D9D4C7}
 .card .card-img{aspect-ratio:16/10;overflow:hidden;background:#E6E2D6}
 .card .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
 .card:hover .card-img img{transform:scale(1.04)}
-.card-body{padding:24px 26px 28px}
+.card-body{padding:24px 26px 28px;flex:1;display:flex;flex-direction:column;}
 .card h3{color:var(--green);margin-bottom:.6rem}
-.card p{color:var(--text-2);margin-bottom:14px}
-.card a.more{color:var(--accent);font-weight:600}
-.card a.more:hover{color:#B23F13}
+.card p{color:var(--text-2);margin-bottom:14px;flex:1;}
+.card a.more,.card span.more{color:var(--accent);font-weight:600;font-size:.92rem;white-space:nowrap;}
+.card a.more:hover,.card span.more:hover{color:#B23F13}
+.card-footer-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:0;}
+.card-footer-row .price-badge{margin-bottom:0;font-size:1rem;padding:5px 14px;}
 
 /* ---------- Subsection list ---------- */
 .sub-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
@@ -385,15 +387,19 @@ section.green p{color:#D9D4C7}
 /* sub card with image + link */
 a.sub{display:block;color:inherit;text-decoration:none}
 a.sub:hover{color:inherit}
-.sub.has-img{padding:0;overflow:hidden;border-left-width:0;border-top:3px solid var(--accent)}
+.sub.has-img{padding:0;overflow:hidden;border-left-width:0;border-top:3px solid var(--accent);display:flex;flex-direction:column;position:relative;}
 .sub.has-img:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-top-color:var(--green)}
 .sub.has-img .sub-img{aspect-ratio:16/9;overflow:hidden}
 .sub.has-img .sub-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
 .sub.has-img:hover .sub-img img{transform:scale(1.05)}
-.sub.has-img .sub-body{padding:18px 22px 20px 22px}
+.sub.has-img .sub-body{padding:18px 22px 20px 22px;flex:1;display:flex;flex-direction:column;}
 .sub.has-img .sub-body h3{margin-bottom:.4rem;color:var(--green)}
-.sub.has-img .sub-body p{color:var(--text-2);font-size:.96rem;margin-bottom:0}
+.sub.has-img .sub-body p{color:var(--text-2);font-size:.96rem;margin-bottom:12px;flex:1;}
 .sub-more{display:inline-block;color:var(--accent);font-weight:600;font-size:.88rem;margin-top:10px}
+.sub.has-img .card-footer-row .price-badge{margin-bottom:0;font-size:.95rem;padding:5px 13px;}
+/* Side stamp — vertically centered on right edge of card */
+.rec-stamp--side{position:absolute;right:10px;top:50%;transform:translateY(-50%) rotate(-12deg);width:64px;height:64px;z-index:5;}
+.sub.has-img.has-side-stamp .sub-body{padding-right:80px;}
 .sub.has-img:hover .sub-more{color:var(--green)}
 
 /* ---------- Why us ---------- */
@@ -1255,6 +1261,16 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 .svc-nav-item:active{background:#f5f5f5;}
 .svc-nav-item--cur{color:var(--accent);font-weight:700;background:linear-gradient(90deg,rgba(208,77,26,.08),transparent);pointer-events:none;cursor:default;}
 .svc-nav-item--cur::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;display:inline-block;}
+
+/* ── Rekomendējam stamp ─────────────────────────────────────────────────────── */
+.rec-stamp{position:absolute;z-index:10;pointer-events:none;animation:rec-stamp-in .6s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes rec-stamp-in{from{opacity:0;transform:scale(.55) rotate(-18deg)}to{opacity:1;transform:scale(1) rotate(-12deg)}}
+.rec-stamp svg{display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,.25));}
+/* Card variant — inline with price badge, right side */
+.rec-stamp--card{position:static;display:inline-block;flex-shrink:0;width:58px;height:58px;}
+/* Page text-column variant — bottom-right of description column */
+.rec-stamp--txt{bottom:0;right:0;width:96px;height:96px;}
+@media(max-width:767px){.rec-stamp--txt{width:72px;height:72px;}}
 
 /* ── Hero header (index.html only, ≥1200px) ─────────────────────────────────── */
 

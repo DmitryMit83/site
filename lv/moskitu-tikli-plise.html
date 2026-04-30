@@ -202,16 +202,29 @@
         style="width:100%;height:auto;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:block;"
       >
     </div>
-    <div>
+    <div style="position:relative;padding-bottom:110px;">
       <div class="price-badge-lg" style="display:inline-block;background:var(--accent);color:#fff;padding:.5rem 1.5rem;border-radius:99px;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;">Cena: no €60</div>
       <h2 style="margin-top:0">Iekļauts pakalpojumā</h2>
       <ul class="feature-list" style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;">
         <li>✓ Mērīšana un ražošana pēc pasūtījuma</li>
-<li>✓ Horizontāla vai vertikāla kustība</li>
-<li>✓ Elegants dizains — iederas jebkurā interjerā</li>
-<li>✓ Viegla bīdīšana</li>
-<li>✓ Uzstādīšana un garantija iekļauta</li>
+        <li>✓ Horizontāla vai vertikāla kustība</li>
+        <li>✓ Elegants dizains — iederas jebkurā interjerā</li>
+        <li>✓ Viegla bīdīšana</li>
+        <li>✓ Uzstādīšana un garantija iekļauta</li>
       </ul>
+      <span class="rec-stamp rec-stamp--txt" aria-label="Rekomendējam">
+        <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path id="rp-arc" d="M 48,48 m -33,0 a 33,33 0 1,1 66,0 a 33,33 0 1,1 -66,0"/>
+          </defs>
+          <circle cx="48" cy="48" r="45" fill="#d44d1a" stroke="#fff" stroke-width="2.5"/>
+          <circle cx="48" cy="48" r="36" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2" stroke-dasharray="3.5 2.5"/>
+          <text font-family="Poppins,Arial,sans-serif" font-size="10.5" font-weight="700" fill="#fff" letter-spacing="1.8">
+            <textPath href="#rp-arc" startOffset="10%">REKOMENDĒJAM</textPath>
+          </text>
+          <text x="48" y="55" text-anchor="middle" font-family="Poppins,Arial,sans-serif" font-size="22" fill="#fff">★</text>
+        </svg>
+      </span>
     </div>
   </div>
 </section>
@@ -636,17 +649,18 @@
     p18:{
       badge:'Visbiežāk izvēlas', badgeBg:'#4a9c6a',
       title:'18 mm profils',
-      desc:'Viegls un kompakts alumīnija profils standarta logu ailēm. Minimāla ietekme uz loga atvēršanas platumu — optimāls risinājums lielākajai daļai dzīvokļu un privātmāju logu jebkurā stāvā.',
+      desc:'Kompakts alumīnija profils standarta logu ailēm. Tiek piestiprināts tieši pie loga rāmja vai sienas ar skrūvēm — biežākais variants. Alternatīvi rāmi var pielīmēt ar pastiprinātāju divpusējo lenti uz iepriekš attaukošanas virsmas.',
       features:[
         'Kompakts profila platums — tikai 18 mm',
         'Viegls, korozijizturīgs alumīnija sakausējums',
         'Neierobežo loga atvēršanas platumu',
-        'Uzstādīšana bez loga demontāžas — 30–60 min.',
-        'Piemērots horizontālai un vertikālai atvēršanai',
+        'Horizontāla, vertikāla vai divpusēja atvēršana',
+        'Stiprināšana: skrūves pie rāmja/sienas vai divpusējā lente',
         'Pieejams 3 standarta krāsās + RAL pēc pasūtījuma'
       ],
-      mounting:'Profils tiek piestiprināts ar speciāliem alumīnija klipšiem vai skrūvēm tieši pie loga ailes rāmja no ārpuses. Uzstādīšana iespējama bez logu demontāžas vai remonta — vidēji 30–60 minūtes vienam logam.',
-      minW:300, maxW:2400, minH:400, maxH:2200,
+      mounting:'Rāmis tiek piestiprināts ar skrūvēm tieši pie loga rāmja (visbiežāk) vai tieši pie sienas. Alternatīvi — rāmi var pielīmēt ar pastiprinātāju divpusējo lenti: pirms tam virsma rūpīgi jāattauko. Uzstādīšanas laiks — no 15 minūtēm līdz 3 stundām atkarībā no izmēra un uzstādīšanas vietas.',
+      minW:300, maxW:3000, minH:400, maxH:2700,
+      maxNote:'Maks. platums <strong>3000 mm</strong> pie maks. augstuma <strong>2700 mm</strong>. Ja augstums ir mazāks, platumu var palielināt — piemēram, pie augstuma 1500 mm platums var sasniegt <strong>4000 mm</strong>. Lielāka kvadratūra palielina sieta svaru un rada risku tam nokārt.',
       photos:[
         {src:'../photo/PlisseH1.webp',    alt:'Plisē moskītu tīkls ar 18mm profilu — uzstādīts logā'},
         {src:'../photo/PlisseStandarta.webp', alt:'Plisē standarta audums 18mm profilā'}
@@ -655,17 +669,18 @@
     p18i:{
       badge:'Montāžai iekšpusē', badgeBg:'#555555',
       title:'18 mm profils — iekšējais',
-      desc:'Identisks 18mm profils, taču uzstādīts loga ailes iekšpusē — starp rāmi un palodzi. Ideāls gadījumos, kad loga konstrukcija neļauj montēt tīklu no ārpuses vai aile ir dziļa.',
+      desc:'18mm profils divās montāžas iespējās: ievietojams loga rāmja iekšpusē ar ātrām stiprinājuma klipšiem, vai fiksējams ārpusē ar āķiem — tāpat kā standarta rāmja sietam. Šis variants netiek pieskrūvēts.',
       features:[
-        'Tāds pats 18mm profils — montāža iekšpusē',
-        'Ideāls dziļām logu ailēm (dziļums no 60 mm)',
-        'Pilnībā neredzams no mājas ārpuses',
-        'Papildu aizsardzība pret vēja triecieniem',
-        'Piemērots moderniem logiem ar platiem rāmjiem',
-        'Nostiprināšana ar regulējamiem ieliktņiem'
+        'Divas montāžas metodes — iekšpuse vai ārpuse',
+        'Iekšpuse: ātrās stiprinājuma klipšas rāmja iekšienē',
+        'Ārpuse: fiksācija ar āķiem kā standarta rāmja sietam',
+        'Nav nepieciešama skrūvēšana — nav caurumu rāmī',
+        'Horizontāla, vertikāla vai divpusēja atvēršana',
+        'Ātri noņemams tīrīšanai vai ziemā'
       ],
-      mounting:'Profils tiek ievietots un nostiprināts loga ailes iekšpusē — starp loga rāmi un palodzi. Izmanto regulējamus ieliktņus dažādu ailes dziļumu pielāgošanai. Minimālais ailes dziļums montāžai — 60 mm.',
-      minW:300, maxW:2000, minH:400, maxH:2000,
+      mounting:'Divas uzstādīšanas iespējas: (1) Iekšpusē — rāmis tiek ievietots loga ailes iekšpusē un nostiprināts ar ātrām klipšām, nav nepieciešams pieskrūvēt; (2) Ārpusē — rāmis tiek uzlikts no ārpuses un fiksēts ar āķiem, tāpat kā standarta rāmja moskītu sietam. Abos gadījumos tīklu var ātri noņemt. Uzstādīšanas laiks — no 15 minūtēm līdz 3 stundām atkarībā no izmēra un uzstādīšanas vietas.',
+      minW:300, maxW:1500, minH:400, maxH:1500,
+      maxNote:'Maks. platums un augstums — <strong>1500 mm</strong>. Lielāki izmēri nav ieteicami: ātrās klipšas vai āķi var neizturēt smagāka sieta svaru, kas var izraisīt stiprinājuma atbrīvošanos.',
       photos:[
         {src:'../photo/PlisseH1.webp',       alt:'Plisē moskītu tīkls ar 18mm iekšējo profilu'},
         {src:'../photo/PlissePetScreen.webp', alt:'Plisē PetScreen audums 18mm iekšējā profilā'}
@@ -674,17 +689,18 @@
     p25:{
       badge:'Liela aile', badgeBg:'#1a6640',
       title:'25 mm profils',
-      desc:'Pastiprinātais platais profils lielām logu un balkona durvju ailēm. Nodrošina ievērojami lielāku stingrību un mehānisko izturību — ideāls risinājums plašiem atvērumiem, kur nepieciešama papildu stabilitāte.',
+      desc:'Pastiprinātais platais profils lielām logu un balkona durvju ailēm. Tiek piestiprināts ar skrūvēm pie loga rāmja vai sienas; iespējama arī montāža ar pastiprinātāju divpusējo lenti uz attaukošanas virsmas. Pieejama zemā sliekšņa opcija — 10 mm.',
       features:[
         'Pastiprinātais 25mm profils — augstāks stingrums',
         'Piemērots lieliem atvērumiem un balkona durvīm',
-        'Augstāka mehāniskā izturība pret vēju',
-        'Ideāls platumam virs 1500 mm',
-        'Korozijizturīgs alumīnija sakausējums',
+        'Horizontāla, vertikāla vai divpusēja atvēršana',
+        'Zemā sliekšņa opcija — tikai 10 mm augstums',
+        'Stiprināšana: skrūves pie rāmja/sienas vai divpusējā lente',
         'Pieejams 3 standarta krāsās + RAL pēc pasūtījuma'
       ],
-      mounting:'Profils tiek piestiprināts pie loga ailes rāmja ārpusē ar pastiprinātiem kronšteiniem. Lielāka platuma dēļ uzstādīšana nodrošina augstāku stabilitāti — īpaši svarīgi lieliem atvērumiem un ekspozētām fasādēm. Uzstādīšanas laiks — 60–120 minūtes.',
-      minW:400, maxW:3000, minH:500, maxH:2500,
+      mounting:'Rāmis tiek piestiprināts ar skrūvēm tieši pie loga rāmja (visbiežāk) vai pie sienas. Alternatīvi — rāmi var pielīmēt ar pastiprinātāju divpusējo lenti uz iepriekš attaukošanas virsmas. Pieejama zemā sliekšņa opcija ar augstumu tikai 10 mm — ērta pārvietošanās bez paklupiena riska. Uzstādīšanas laiks — no 15 minūtēm līdz 3 stundām atkarībā no izmēra un uzstādīšanas vietas.',
+      minW:400, maxW:3000, minH:500, maxH:2700,
+      maxNote:'Maks. platums <strong>3000 mm</strong> pie maks. augstuma <strong>2700 mm</strong>. Ja augstums ir mazāks, platumu var palielināt — piemēram, pie augstuma 1500 mm platums var sasniegt <strong>4000 mm</strong>. Lielāka kvadratūra palielina sieta svaru un rada risku tam nokārt.',
       photos:[
         {src:'../photo/PlisseH1.webp',    alt:'Plisē moskītu tīkls ar 25mm profilu — liela aile'},
         {src:'../photo/PlissePetScreen.webp', alt:'Plisē PetScreen tīkls 25mm profilā'}
@@ -778,7 +794,10 @@
         +'</div>'
         +'<div class="pf-info-card">'
           +'<h5>Maksimālie izmēri</h5>'
-          +'<p><strong>Platums:</strong> '+d.maxW+' mm<br><strong>Augstums:</strong> '+d.maxH+' mm</p>'
+          +(d.maxNote
+            ? '<p><strong>Platums:</strong> '+d.maxW+' mm<br><strong>Augstums:</strong> '+d.maxH+' mm</p><p style="font-size:.76rem;color:var(--muted);margin:.5rem 0 0;line-height:1.5;">'+d.maxNote+'</p>'
+            : '<p><strong>Platums:</strong> '+d.maxW+' mm<br><strong>Augstums:</strong> '+d.maxH+' mm</p>'
+          )
         +'</div>'
       +'</div>'
       +'<div class="pf-info-card" style="margin-bottom:.5rem;">'
