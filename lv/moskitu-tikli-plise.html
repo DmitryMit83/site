@@ -452,7 +452,21 @@
     .pf-features li::before{content:'✓';color:#4a9c6a;font-weight:800;flex-shrink:0;}
     /* Info cards */
     .pf-info-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin-bottom:1.6rem;}
-    @media(max-width:500px){.pf-info-row{grid-template-columns:1fr 1fr;}}
+    /* Mobile: keep all 3 cards in a horizontal row, shrink padding/fonts */
+    @media(max-width:640px){
+      .pf-info-row{gap:.4rem;}
+      .pf-info-card{padding:.55rem .6rem;border-radius:10px;}
+      .pf-info-card h5{font-size:.6rem;letter-spacing:.04em;margin-bottom:.28rem;}
+      .pf-info-card p{font-size:.7rem;line-height:1.38;}
+      .pf-info-card strong{font-size:.7rem;}
+      /* Montāža has long text — cap height and allow inner scroll */
+      .pf-info-row .pf-info-card:first-child p{
+        max-height:7rem;
+        overflow-y:auto;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:thin;
+      }
+    }
     .pf-info-card{background:#f8faf9;border:1.5px solid var(--line);border-radius:12px;padding:.85rem 1rem;}
     .pf-info-card h5{font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:0 0 .45rem;}
     .pf-info-card p{font-size:.81rem;color:var(--text);margin:0;line-height:1.5;}
