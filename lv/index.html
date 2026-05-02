@@ -48,16 +48,40 @@
 .hsl-dot--active{background:#fff;transform:scale(1.35);}
 .hsl-progress{width:100px;height:2px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden;}
 .hsl-progress-bar{height:100%;background:rgba(255,255,255,.65);width:0%;}
+/* ══ Mobile midge swarm canvas ══ */
+#midgesCanvas{
+  display:none; /* hidden on desktop */
+  position:absolute;
+  top:0;right:0;
+  width:200px;height:200px;
+  z-index:0;        /* behind .promo-inner (z-index:1) */
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 1.2s ease;
+}
+#midgesCanvas.is-active{opacity:1;}
+@media(max-width:700px){
+  #midgesCanvas{display:block;}
+}
 /* Mobile */
 @media(max-width:700px){
-  .hero--fs{min-height:340px;height:72vw;max-height:460px;}
-  .hsl-grad{background:linear-gradient(to top,rgba(var(--tint),.97) 0%,rgba(var(--tint),.82) 42%,rgba(var(--tint),.3) 66%,transparent 84%);}
-  .hsl-inner{align-items:flex-end;}
-  .hsl-body-wrap{padding:0 16px 64px;}
+  /* Section = image zone (58vw, max 320px) + text strip (114px) */
+  .hero--fs{min-height:370px;height:calc(58vw + 114px);max-height:490px;}
+  /* Image only fills the top portion — text strip is unobscured */
+  .hsl-bg{bottom:114px;}
+  /* Gradient sits only over the image zone */
+  .hsl-grad{bottom:114px;background:linear-gradient(to top,rgba(var(--tint),.78) 0%,rgba(var(--tint),.42) 48%,rgba(var(--tint),.1) 74%,transparent 90%);}
+  /* Solid tinted strip at the bottom — text lives here */
+  .hsl-slide::after{content:'';position:absolute;bottom:0;left:0;right:0;height:114px;background:rgba(var(--tint),.97);z-index:1;}
+  /* Text box centred inside the strip */
+  .hsl-inner{top:auto;height:114px;align-items:center;z-index:3;}
+  .hsl-body-wrap{padding:0 16px;width:100%;}
   .hsl-body{max-width:100%;}
-  .hsl-body h1{font-size:clamp(1.15rem,5vw,1.6rem);margin-bottom:10px;}
+  .hsl-body h1{font-size:clamp(1.05rem,4.5vw,1.45rem);margin-bottom:8px;line-height:1.25;}
   .hsl-body .lead{display:none;}
-  .hsl-btn{padding:.38rem .85rem;font-size:.78rem;}
+  .hsl-btn{padding:.35rem .8rem;font-size:.76rem;}
+  /* Dots/progress bar float just above the text strip */
+  .hsl-controls{bottom:calc(114px + 8px);}
 }
 </style>
 <script type="application/ld+json">
@@ -301,21 +325,6 @@
     </div></div></div>
   </div>
 
-  <!-- Slide 6: Interneta veikals -->
-  <div class="hsl-slide" style="--tint:22,51,37">
-    <div class="hsl-bg"><img src="../photo/EVeikalsLoguApkope.gif" alt="Interneta veikals" loading="lazy"></div>
-    <div class="hsl-grad"></div>
-    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
-      <span class="eyebrow">Interneta veikals</span>
-      <h1>Logu piederumi — ātri un ērti tiešsaistē</h1>
-      <p class="lead">Rokturi, blīvgumijas, tapas, starplikas un citi piederumi. Ātra piegāde visā Latvijā.</p>
-      <div class="hsl-cta">
-        <a href="interneta-veikals.html" class="hsl-btn hsl-btn--fill">Uz veikalu</a>
-        <a href="aksesuari.html" class="hsl-btn hsl-btn--ghost">Visi aksesuāri →</a>
-      </div>
-    </div></div></div>
-  </div>
-
   <!-- Controls -->
   <div class="hsl-controls">
     <div class="hsl-dots" id="hslDots"></div>
@@ -453,7 +462,7 @@
 </style>
 
 <!-- ══ PROMO: Plissēti moskītu tīkli ══════════════════════════════ -->
-<section class="promo-plise">
+<section class="promo-plise" id="promoPlise">
   <div class="container">
     <div class="promo-inner">
 
@@ -477,6 +486,9 @@
           <a href="kontakti.html" class="btn-outline-light">Pasūtīt / Jautāt</a>
         </div>
       </div>
+
+      <!-- Mobile midge swarm — top-right corner, under text (z-index 0) -->
+      <canvas id="midgesCanvas" width="200" height="200" aria-hidden="true"></canvas>
 
       <!-- Visual column: mosquito swarm animation -->
       <div class="promo-visual-col">
@@ -952,7 +964,7 @@
 <script>
 /* ── Full-screen hero slider ── */
 (function(){
-  var INTERVAL = 7000;   /* auto-advance ms */
+  var INTERVAL = 6000;   /* auto-advance ms */
   var FADE_DUR = 750;    /* must match CSS transition */
 
   var slides   = Array.prototype.slice.call(document.querySelectorAll('.hsl-slide'));
@@ -1293,6 +1305,98 @@
     }
   }, { threshold: 0.15 });
   obs.observe(stage);
+})();
+
+/* ── Mobile midge swarm — tiny dots in top-right corner of promo section ── */
+(function(){
+  if (window.innerWidth > 700) return;            /* desktop: skip */
+  var mc = document.getElementById('midgesCanvas');
+  if (!mc || !mc.getContext) return;
+  var ctx = mc.getContext('2d');
+
+  /* Retina / high-DPR support */
+  var dpr = window.devicePixelRatio || 1;
+  var W = 200, H = 200;
+  mc.width  = W * dpr;
+  mc.height = H * dpr;
+  mc.style.width  = W + 'px';
+  mc.style.height = H + 'px';
+  ctx.scale(dpr, dpr);
+
+  /* Spawn midges — clustered toward the right-top area */
+  var NUM = 26, midges = [];
+  for (var i = 0; i < NUM; i++) {
+    midges.push({
+      x  : W * 0.45 + Math.random() * W * 0.50,
+      y  : H * 0.02 + Math.random() * H * 0.45,
+      vx : (Math.random() - 0.5) * 1.1,
+      vy : (Math.random() - 0.5) * 1.1,
+      ph : Math.random() * Math.PI * 2   /* jitter phase */
+    });
+  }
+
+  var t = 0, rafId;
+
+  function tick() {
+    ctx.clearRect(0, 0, W, H);
+    t += 0.045;
+
+    /* Loose grid pattern — faint lines hint at mesh */
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    ctx.lineWidth = 0.6;
+    var step = 20;
+    for (var gx = 0; gx <= W; gx += step) {
+      ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
+    }
+    for (var gy = 0; gy <= H; gy += step) {
+      ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+    }
+
+    midges.forEach(function(m) {
+      /* Weak pull toward home zone (upper-right quadrant) */
+      var hx = W * 0.70, hy = H * 0.22;
+      var dx = hx - m.x, dy = hy - m.y;
+      m.vx += dx * 0.011 + (Math.random() - 0.5) * 0.24 + Math.sin(t + m.ph) * 0.04;
+      m.vy += dy * 0.011 + (Math.random() - 0.5) * 0.24 + Math.cos(t + m.ph * 1.4) * 0.04;
+
+      /* Speed cap */
+      var spd = Math.sqrt(m.vx*m.vx + m.vy*m.vy);
+      if (spd > 1.8) { m.vx *= 1.8/spd; m.vy *= 1.8/spd; }
+      if (spd > 0 && spd < 0.25) { m.vx *= 0.25/spd; m.vy *= 0.25/spd; }
+
+      m.x += m.vx;
+      m.y += m.vy;
+
+      /* Soft wall bounce */
+      var p = 3;
+      if (m.x < p)   { m.x = p;   m.vx =  Math.abs(m.vx) * 0.7; }
+      if (m.x > W-p) { m.x = W-p; m.vx = -Math.abs(m.vx) * 0.7; }
+      if (m.y < p)   { m.y = p;   m.vy =  Math.abs(m.vy) * 0.7; }
+      if (m.y > H-p) { m.y = H-p; m.vy = -Math.abs(m.vy) * 0.7; }
+
+      /* Tiny dot */
+      ctx.beginPath();
+      ctx.arc(m.x, m.y, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(172,228,172,0.75)';
+      ctx.fill();
+    });
+
+    rafId = requestAnimationFrame(tick);
+  }
+
+  /* Trigger: after section enters view AND scroll-reveal (0.65s) completes */
+  var promo = document.getElementById('promoPlise');
+  if (!promo) return;
+  var obs2 = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      setTimeout(function() {
+        mc.classList.add('is-active');   /* fade in canvas */
+        if (!rafId) tick();              /* start animation */
+      }, 750);                           /* wait for reveal animation */
+      obs2.disconnect();
+    }
+  }, { threshold: 0.2 });
+  obs2.observe(promo);
 })();
 </script>
 
