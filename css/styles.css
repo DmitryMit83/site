@@ -1667,7 +1667,7 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 /* ── Promo / mosquito section ────────────────────────────────────── */
 @media(max-width:640px){
   .promo-plise{padding:44px 0}
-  .promo-inner{gap:28px}
+  .promo-inner{gap:28px;position:relative;z-index:1;}
   .promo-text-col h2{font-size:1.35rem}
   .promo-text-col .promo-lead{font-size:.9rem;margin-bottom:18px}
   .promo-ctas{flex-direction:column}
