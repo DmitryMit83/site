@@ -53,7 +53,7 @@
   display:none; /* hidden on desktop */
   position:absolute;
   top:0;right:0;
-  width:200px;height:200px;
+  width:400px;height:400px;
   z-index:0;        /* behind .promo-inner (z-index:1) */
   pointer-events:none;
   opacity:0;
@@ -65,23 +65,32 @@
 }
 /* Mobile */
 @media(max-width:700px){
-  /* Section = image zone (58vw, max 320px) + text strip (114px) */
-  .hero--fs{min-height:370px;height:calc(58vw + 114px);max-height:490px;}
-  /* Image only fills the top portion — text strip is unobscured */
-  .hsl-bg{bottom:114px;}
-  /* Gradient sits only over the image zone */
-  .hsl-grad{bottom:114px;background:linear-gradient(to top,rgba(var(--tint),.78) 0%,rgba(var(--tint),.42) 48%,rgba(var(--tint),.1) 74%,transparent 90%);}
-  /* Solid tinted strip at the bottom — text lives here */
-  .hsl-slide::after{content:'';position:absolute;bottom:0;left:0;right:0;height:114px;background:rgba(var(--tint),.97);z-index:1;}
-  /* Text box centred inside the strip */
-  .hsl-inner{top:auto;height:114px;align-items:center;z-index:3;}
-  .hsl-body-wrap{padding:0 16px;width:100%;}
+  /* Section = image zone (58vw) + text+controls strip (148px) */
+  .hero--fs{min-height:380px;height:calc(58vw + 148px);max-height:530px;}
+  /* Image only covers the top portion */
+  .hsl-bg{bottom:148px;}
+  /* Gradient spans full height — blends seamlessly into the text strip */
+  .hsl-grad{
+    bottom:0;
+    background:linear-gradient(to top,
+      rgba(var(--tint),.97) 0%,
+      rgba(var(--tint),.95) 18%,
+      rgba(var(--tint),.58) 38%,
+      rgba(var(--tint),.14) 58%,
+      transparent 74%);
+  }
+  /* Solid tinted strip — base layer under gradient */
+  .hsl-slide::after{content:'';position:absolute;bottom:0;left:0;right:0;height:148px;background:rgba(var(--tint),.97);z-index:1;}
+  /* Text anchored to top of strip, leaves room at bottom for controls */
+  .hsl-inner{top:auto;bottom:0;left:0;right:0;height:148px;align-items:flex-start;z-index:3;}
+  .hsl-body-wrap{padding:12px 16px 0;width:100%;}
   .hsl-body{max-width:100%;}
-  .hsl-body h1{font-size:clamp(1.05rem,4.5vw,1.45rem);margin-bottom:8px;line-height:1.25;}
+  .hsl-body h1{font-size:clamp(1.05rem,4.5vw,1.4rem);margin-bottom:7px;line-height:1.25;}
   .hsl-body .lead{display:none;}
-  .hsl-btn{padding:.35rem .8rem;font-size:.76rem;}
-  /* Dots/progress bar float just above the text strip */
-  .hsl-controls{bottom:calc(114px + 8px);}
+  .hsl-btn{padding:.33rem .78rem;font-size:.76rem;}
+  /* Controls sit at the bottom of the strip, below the CTA buttons */
+  .hsl-controls{bottom:9px;left:16px;transform:none;flex-direction:row;align-items:center;gap:10px;}
+  .hsl-progress{width:72px;}
 }
 </style>
 <script type="application/ld+json">
@@ -488,7 +497,7 @@
       </div>
 
       <!-- Mobile midge swarm — top-right corner, under text (z-index 0) -->
-      <canvas id="midgesCanvas" width="200" height="200" aria-hidden="true"></canvas>
+      <canvas id="midgesCanvas" width="400" height="400" aria-hidden="true"></canvas>
 
       <!-- Visual column: mosquito swarm animation -->
       <div class="promo-visual-col">
@@ -1316,19 +1325,19 @@
 
   /* Retina / high-DPR support */
   var dpr = window.devicePixelRatio || 1;
-  var W = 200, H = 200;
+  var W = 400, H = 400;
   mc.width  = W * dpr;
   mc.height = H * dpr;
   mc.style.width  = W + 'px';
   mc.style.height = H + 'px';
   ctx.scale(dpr, dpr);
 
-  /* Spawn midges — clustered toward the right-top area */
-  var NUM = 26, midges = [];
+  /* Spawn midges — 78 dots, clustered toward the right-top area */
+  var NUM = 78, midges = [];
   for (var i = 0; i < NUM; i++) {
     midges.push({
-      x  : W * 0.45 + Math.random() * W * 0.50,
-      y  : H * 0.02 + Math.random() * H * 0.45,
+      x  : W * 0.42 + Math.random() * W * 0.54,
+      y  : H * 0.01 + Math.random() * H * 0.46,
       vx : (Math.random() - 0.5) * 1.1,
       vy : (Math.random() - 0.5) * 1.1,
       ph : Math.random() * Math.PI * 2   /* jitter phase */
@@ -1341,10 +1350,10 @@
     ctx.clearRect(0, 0, W, H);
     t += 0.045;
 
-    /* Loose grid pattern — faint lines hint at mesh */
+    /* Faint mesh grid hinting at mosquito screen */
     ctx.strokeStyle = 'rgba(255,255,255,0.04)';
     ctx.lineWidth = 0.6;
-    var step = 20;
+    var step = 22;
     for (var gx = 0; gx <= W; gx += step) {
       ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
     }
@@ -1353,11 +1362,11 @@
     }
 
     midges.forEach(function(m) {
-      /* Weak pull toward home zone (upper-right quadrant) */
+      /* Weak pull toward home zone (upper-right quadrant center) */
       var hx = W * 0.70, hy = H * 0.22;
       var dx = hx - m.x, dy = hy - m.y;
-      m.vx += dx * 0.011 + (Math.random() - 0.5) * 0.24 + Math.sin(t + m.ph) * 0.04;
-      m.vy += dy * 0.011 + (Math.random() - 0.5) * 0.24 + Math.cos(t + m.ph * 1.4) * 0.04;
+      m.vx += dx * 0.010 + (Math.random() - 0.5) * 0.24 + Math.sin(t + m.ph) * 0.04;
+      m.vy += dy * 0.010 + (Math.random() - 0.5) * 0.24 + Math.cos(t + m.ph * 1.4) * 0.04;
 
       /* Speed cap */
       var spd = Math.sqrt(m.vx*m.vx + m.vy*m.vy);
