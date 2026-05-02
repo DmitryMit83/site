@@ -352,9 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function hide() {
       if (document.body.classList.contains('hdr--hidden')) return;
-      /* Don't hide the hero-header while still in its large/initial state */
-      if (hdr.classList.contains('hero-header') &&
-          !hdr.classList.contains('scrolled')) return;
       document.body.classList.add('hdr--hidden');
     }
 

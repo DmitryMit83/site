@@ -350,7 +350,7 @@
 </div><!-- /hsl-outer-wrap -->
 
 <!-- ══ SOS — Steidzams logu remonts / stikla paketes maiņa 24h ══════ -->
-<section id="sos-remonts" aria-label="Steidzams logu remonts Rīgā — 24 stundu pakalpojums" style="padding:16px 24px 0;max-width:var(--maxw);margin:0 auto;box-sizing:border-box;">
+<section id="sos-remonts" aria-label="Steidzams logu remonts Rīgā — 24 stundu pakalpojums" style="padding:24px 24px 0;max-width:var(--maxw);margin:0 auto;box-sizing:border-box;">
 <style>
 .sos-wrap{
   position:relative;
@@ -448,7 +448,7 @@
 .sos-btn-write:hover{border-color:rgba(255,255,255,.85);color:#fff;}
 .sos-btn-write svg{flex-shrink:0;}
 @media(max-width:640px){
-  #sos-remonts{padding:12px 12px 0;}
+  #sos-remonts{padding:12px 12px 0 !important;}
   .sos-wrap{min-height:300px;align-items:flex-end;border-radius:14px;}
   .sos-overlay{background:linear-gradient(to top,rgba(10,28,18,.96) 0%,rgba(10,28,18,.78) 45%,rgba(10,28,18,.3) 72%,transparent 90%);}
   .sos-inner{padding:0 16px 36px;}
@@ -597,12 +597,13 @@
     </div>
     <!-- Show all button -->
     <div style="text-align:center;margin-top:2rem;" id="pakShowWrap">
-      <button id="pakShowBtn" class="btn btn-outline-dark" style="display:inline-flex;flex-direction:column;align-items:center;gap:.25rem;line-height:1.3;" onclick="(function(){
+      <button id="pakShowBtn" class="btn btn-outline-dark" style="display:inline-flex;flex-direction:row;align-items:center;gap:.45rem;" onclick="(function(){
         document.querySelectorAll('.pak-hidden').forEach(function(el){el.classList.remove('pak-hidden')});
         document.getElementById('pakShowWrap').style.display='none';
       })()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         <span>Rādīt visus pakalpojumus</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
     </div>
   </div>
@@ -834,12 +835,13 @@
 
     <!-- Show all FAQ button -->
     <div style="text-align:center;margin-top:2rem;" id="faqShowWrap">
-      <button class="btn btn-outline-dark" style="display:inline-flex;flex-direction:column;align-items:center;gap:.25rem;line-height:1.3;" onclick="(function(){
+      <button class="btn btn-outline-dark" style="display:inline-flex;flex-direction:row;align-items:center;gap:.45rem;" onclick="(function(){
         document.querySelectorAll('.faq-hidden').forEach(function(el){el.classList.remove('faq-hidden')});
         document.getElementById('faqShowWrap').style.display='none';
       })()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         <span>Rādīt visus jautājumus</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
     </div>
 
