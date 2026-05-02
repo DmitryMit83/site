@@ -16,7 +16,8 @@
 <link rel="stylesheet" href="../css/styles.css">
 <style>
 /* ═══ User Account Bar ═══ */
-#userBar{background:rgba(8,20,13,.98);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.05);position:sticky;top:0;z-index:49;}
+#userBar{background:rgba(8,20,13,.98);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.05);position:sticky;top:0;z-index:49;transition:top .32s cubic-bezier(.4,0,.2,1);}
+body.hdr--hidden #userBar{top:0!important;}
 /* padding-top/bottom только — не перекрываем горизонтальный padding контейнера */
 .ub-inner{display:flex;align-items:center;min-height:52px;padding-top:.5rem;padding-bottom:.5rem;gap:1rem;flex-wrap:wrap;}
 /* Desktop: лёгкий дополнительный сдвиг вправо внутри контейнера */

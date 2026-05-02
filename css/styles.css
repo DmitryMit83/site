@@ -49,7 +49,15 @@ p{margin-bottom:1rem;color:var(--text-2)}
   position:sticky;top:0;z-index:50;
   background:var(--green);
   border-bottom:1px solid rgba(0,0,0,.2);
+  transition:transform .32s cubic-bezier(.4,0,.2,1);
+  will-change:transform;
 }
+/* ── Hide-on-scroll ── */
+body.hdr--hidden .site-header{transform:translateY(-100%);}
+/* Mobile widgets smoothly follow the header */
+.mob-cw,.svc-nav{transition:top .32s cubic-bezier(.4,0,.2,1);}
+body.hdr--hidden .mob-cw,
+body.hdr--hidden .svc-nav{top:0!important;}
 .header-inner{
   display:flex;align-items:center;justify-content:space-between;
   padding:12px 24px;max-width:var(--maxw);margin:0 auto;gap:16px;
@@ -605,29 +613,43 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 }
 
 /* ── Promo block: Plissēti moskītu tīkli ─────────────────────────── */
+/* Outer wrapper — constrains to site grid, same as hero & SOS blocks */
+.promo-plise-wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 24px;
+}
+@media(max-width:640px){.promo-plise-wrap{padding:0 12px;}}
 .promo-plise{
-  background:linear-gradient(135deg,#0d2e1a 0%,#164d2a 50%,#0f3820 100%);
   padding:90px 0;
   position:relative;
   overflow:hidden;
+  border-radius:20px;
+  transition:box-shadow .35s ease;
 }
-/* Decorative green glow circles */
-.promo-plise::before,
-.promo-plise::after{
+.promo-plise:hover{box-shadow:0 12px 48px rgba(0,0,0,.38);}
+@media(max-width:640px){.promo-plise{border-radius:14px;}}
+/* Photo background */
+.promo-plise-bg{
+  position:absolute;inset:0;z-index:0;overflow:hidden;
+}
+.promo-plise-bg img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;
+  transition:transform 700ms ease;
+}
+.promo-plise:hover .promo-plise-bg img{transform:scale(1.06);}
+/* Dark overlay for text readability */
+.promo-plise-bg::after{
   content:'';
-  position:absolute;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(52,168,83,.18) 0%,transparent 70%);
-  pointer-events:none;
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to top,rgba(5,18,8,.72) 0%,rgba(5,18,8,.18) 38%,transparent 60%),
+    linear-gradient(100deg,rgba(5,18,8,.82) 0%,rgba(10,35,15,.72) 45%,rgba(5,18,8,.45) 100%);
+  z-index:1;
 }
-.promo-plise::before{
-  width:600px;height:600px;
-  top:-150px;right:-100px;
-}
-.promo-plise::after{
-  width:400px;height:400px;
-  bottom:-100px;left:-80px;
-}
+/* Lift content above photo */
+.promo-plise .container{position:relative;z-index:2;}
 .promo-inner{
   display:grid;
   grid-template-columns:1fr 1fr;

@@ -29,7 +29,9 @@
   .tips-nav{
     background:var(--paper);border-bottom:1px solid var(--line);
     position:sticky;top:64px;z-index:10;
+    transition:top .32s cubic-bezier(.4,0,.2,1);
   }
+  body.hdr--hidden .tips-nav{top:0!important;}
   .tips-nav .container{
     display:flex;gap:0;overflow-x:auto;scrollbar-width:none;
   }
@@ -555,6 +557,17 @@
     const el = document.getElementById(id);
     if(el) observer.observe(el);
   });
+
+  // Anchor tips-nav below the header dynamically
+  (function(){
+    var nav = document.querySelector('.tips-nav');
+    var hdr = document.querySelector('.site-header');
+    if(!nav || !hdr) return;
+    function setTop(){ nav.style.top = hdr.offsetHeight + 'px'; }
+    setTop();
+    window.addEventListener('resize', setTop);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(setTop);
+  })();
 </script>
 <script src="../js/main.js"></script>
 

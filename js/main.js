@@ -339,4 +339,52 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   })();
+
+  // ── Hide header on scroll-down, reveal on scroll-up ───────────────────────
+  (function () {
+    var hdr = document.querySelector('.site-header');
+    if (!hdr) return;
+
+    var lastY   = window.pageYOffset;
+    var ticking = false;
+    var DELTA   = 6;    /* minimum px delta to trigger */
+    var MIN_TOP = 80;   /* always show header within first 80px */
+
+    function hide() {
+      if (document.body.classList.contains('hdr--hidden')) return;
+      /* Don't hide the hero-header while still in its large/initial state */
+      if (hdr.classList.contains('hero-header') &&
+          !hdr.classList.contains('scrolled')) return;
+      document.body.classList.add('hdr--hidden');
+    }
+
+    function show() {
+      document.body.classList.remove('hdr--hidden');
+    }
+
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y     = window.pageYOffset;
+        var delta = y - lastY;
+
+        if (y < MIN_TOP) {
+          show();
+        } else if (delta >  DELTA) {
+          hide();
+        } else if (delta < -DELTA) {
+          show();
+        }
+
+        lastY   = y;
+        ticking = false;
+      });
+    }, { passive: true });
+
+    /* Also show header when any dropdown/panel opens */
+    document.addEventListener('focusin', function (e) {
+      if (e.target.closest('.site-header')) show();
+    });
+  })();
 });
