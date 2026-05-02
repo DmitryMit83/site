@@ -21,6 +21,45 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/styles.css?v=4">
+<style>
+/* ══ Full-screen hero slider ══ */
+.hero--fs{position:relative;overflow:hidden;background:var(--green);min-height:520px;height:calc(100vh - 64px);max-height:700px;}
+.hsl-slide{position:absolute;inset:0;opacity:0;transition:opacity 750ms ease-in-out;pointer-events:none;z-index:1;}
+.hsl-slide--active{opacity:1;pointer-events:auto;z-index:2;}
+.hsl-bg{position:absolute;inset:0;}
+.hsl-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+.hsl-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(var(--tint),0.97) 0%,rgba(var(--tint),0.9) 28%,rgba(var(--tint),0.6) 52%,rgba(var(--tint),0.18) 72%,transparent 88%);}
+.hsl-inner{position:absolute;inset:0;display:flex;align-items:center;}
+.hsl-body-wrap{max-width:var(--maxw);width:100%;margin:0 auto;padding:90px 24px 56px;}
+.hsl-body{max-width:560px;color:#fff;}
+.hsl-body .eyebrow{margin-bottom:.6rem;display:block;}
+.hsl-body h1{color:#fff;margin-bottom:16px;font-size:clamp(1.6rem,2.8vw,2.5rem);line-height:1.2;}
+.hsl-body .lead{color:rgba(255,255,255,.82);margin-bottom:1.5rem;font-size:.98rem;line-height:1.65;max-width:480px;}
+.hsl-cta{display:flex;gap:.65rem;flex-wrap:wrap;}
+.hsl-btn{display:inline-flex;align-items:center;padding:.45rem 1rem;border-radius:6px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s,color .2s,border-color .2s;white-space:nowrap;letter-spacing:.01em;}
+.hsl-btn--fill{background:var(--accent);color:#fff;border:1.5px solid var(--accent);}
+.hsl-btn--fill:hover{background:#c0641a;border-color:#c0641a;}
+.hsl-btn--ghost{background:transparent;color:rgba(255,255,255,.88);border:1.5px solid rgba(255,255,255,.38);}
+.hsl-btn--ghost:hover{border-color:rgba(255,255,255,.85);color:#fff;}
+/* Controls */
+.hsl-controls{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;z-index:10;}
+.hsl-dots{display:flex;gap:7px;}
+.hsl-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:background .3s,transform .3s;border:none;padding:0;flex-shrink:0;}
+.hsl-dot--active{background:#fff;transform:scale(1.35);}
+.hsl-progress{width:100px;height:2px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden;}
+.hsl-progress-bar{height:100%;background:rgba(255,255,255,.65);width:0%;}
+/* Mobile */
+@media(max-width:700px){
+  .hero--fs{min-height:340px;height:72vw;max-height:460px;}
+  .hsl-grad{background:linear-gradient(to top,rgba(var(--tint),.97) 0%,rgba(var(--tint),.82) 42%,rgba(var(--tint),.3) 66%,transparent 84%);}
+  .hsl-inner{align-items:flex-end;}
+  .hsl-body-wrap{padding:0 16px 64px;}
+  .hsl-body{max-width:100%;}
+  .hsl-body h1{font-size:clamp(1.15rem,5vw,1.6rem);margin-bottom:10px;}
+  .hsl-body .lead{display:none;}
+  .hsl-btn{padding:.38rem .85rem;font-size:.78rem;}
+}
+</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"SIA Logu Apkope","image":"/assets/img/logo-white.svg","description":"Logu un durvju remonts, moskītu tīklu ražošana, žalūziju uzstādīšana visā Latvijā.","telephone":["+37128950055","+37129825477"],"address":{"@type":"PostalAddress","streetAddress":"Latgales iela 130a","addressLocality":"Rīga","postalCode":"LV-1003","addressCountry":"LV"},"areaServed":"Latvija","serviceType":["Logu remonts","Moskītu tīkli","Žalūzijas","Aksesuāri","Palodzes","Ventilācija"]}
 </script>
@@ -184,75 +223,106 @@
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-inner">
+<section class="hero hero--fs" id="heroSection">
 
-    <!-- Kreisā puse: virsraksts + teksts + pogas -->
-    <div class="hero-text-block">
-      <div class="hero-slide-text" id="heroSlideText">
-        <h1 id="heroSlideH1">Logu un durvju apkope, kurai var uzticēties</h1>
-        <p class="lead" id="heroSlideLead">SIA Logu Apkope — specializēts uzņēmums Latvijā: PVC, koka un alumīnija logu remonts un apkope, durvju regulēšana, moskītu tīklu ražošana un žalūziju uzstādīšana.</p>
+  <!-- Slide 1: Logu remonts -->
+  <div class="hsl-slide hsl-slide--active" style="--tint:22,51,37">
+    <div class="hsl-bg"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&h=800&auto=format&q=80&fit=crop" alt="Logu remonts" loading="eager"></div>
+    <div class="hsl-grad"></div>
+    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
+      <span class="eyebrow">Logu un durvju remonts</span>
+      <h1>Logu apkope, kurai var uzticēties</h1>
+      <p class="lead">SIA Logu Apkope — PVC, koka un alumīnija logu remonts, regulēšana, moskītu tīkli un žalūzijas visā Latvijā.</p>
+      <div class="hsl-cta">
+        <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Bezmaksas konsultācija</a>
+        <a href="remonts.html" class="hsl-btn hsl-btn--ghost">Uzzināt vairāk →</a>
       </div>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="kontakti.html">Bezmaksas konsultācija</a>
-        <a class="btn btn-outline" href="#pakalpojumi">Mūsu pakalpojumi</a>
-      </div>
-    </div>
-
-    <!-- Labā puse: automātiski mainīgas fotogrāfijas (kā karšu kaudzīte) -->
-    <div class="hero-gallery" id="heroGallery">
-      <div class="gallery-card gallery-card--shop"
-           data-href="interneta-veikals.html"
-           data-title="Interneta veikals — aksesuāri un piederumi"
-           data-desc="Iegādājieties logu roktures, blīvgumijas, tapas, starplikas un citus piederumus tiešsaistē. Ātra piegāde visā Latvijā.">
-        <img src="../photo/EVeikalsLoguApkope.gif" alt="Interneta veikals" loading="eager">
-        <span class="gallery-label">Interneta veikals</span>
-      </div>
-      <div class="gallery-card"
-           data-href="remonts.html"
-           data-title="Logu un durvju apkope, kurai var uzticēties"
-           data-desc="SIA Logu Apkope — specializēts uzņēmums Latvijā: PVC, koka un alumīnija logu remonts un apkope, durvju regulēšana, moskītu tīklu ražošana un žalūziju uzstādīšana.">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=600&auto=format&q=80&fit=crop" alt="Logu remonts" loading="eager">
-        <span class="gallery-label">Logu remonts</span>
-      </div>
-      <div class="gallery-card"
-           data-href="moskitu-tikli.html"
-           data-title="Moskītu tīkli pēc pasūtījuma"
-           data-desc="Ražojam un uzstādām rāmju, rullu, plisē un bīdāmos un durvju moskītu tīklus precīzi Jūsu logu izmēriem. Aizsardzība pret kukaiņiem bez kompromisiem.">
-        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=900&h=600&auto=format&q=80&fit=crop" alt="Moskītu tīkli" loading="lazy">
-        <span class="gallery-label">Moskītu tīkli</span>
-      </div>
-      <div class="gallery-card"
-           data-href="zaluzijas.html"
-           data-title="Žalūzijas jebkuram interjerim"
-           data-desc="Kasešu, rullu, plisē, vertikālās un horizontālās žalūzijas. Stilīgs risinājums gaismas regulēšanai — precīzi izmēri un profesionāla uzstādīšana.">
-        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&h=600&auto=format&q=80&fit=crop" alt="Žalūzijas" loading="lazy">
-        <span class="gallery-label">Žalūzijas</span>
-      </div>
-      <div class="gallery-card"
-           data-href="remonts-blivgumija.html"
-           data-title="Blīvgumijas maiņa — siltums mājās"
-           data-desc="Nolietota blīvgumija ir galvenais caurvēja un siltuma zudumu cēlonis. Nomainām ātri un kvalitatīvi — ar 2 gadu garantiju visiem darbiem.">
-        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&h=600&auto=format&q=80&fit=crop" alt="Blīvgumija" loading="lazy">
-        <span class="gallery-label">Blīvgumija</span>
-      </div>
-      <div class="gallery-card"
-           data-href="remonts-furnitura.html"
-           data-title="Logu furnitūras maiņa un regulēšana"
-           data-desc="Rokturi, eņģes, slēgšanas mehānismi — atjaunojam pilnīgu funkcionalitāti. Logs atkal aizveras hermētiski un darbojas nevainojami.">
-        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&h=600&auto=format&q=80&fit=crop" alt="Furnitūra" loading="lazy">
-        <span class="gallery-label">Furnitūra</span>
-      </div>
-      <div class="gallery-card"
-           data-href="remonts-stiklu-paketes.html"
-           data-title="Stikla paketes maiņa bez rāmja nomaiņas"
-           data-desc="Miglainas vai saplaisājušas stikla paketes mainām, saglabājot oriģinālo rāmi. Ātrāk un lētāk nekā jauns logs — ar uzlabotu siltumizolāciju.">
-        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&h=600&auto=format&q=80&fit=crop" alt="Stikla paketes" loading="lazy">
-        <span class="gallery-label">Stikla paketes</span>
-      </div>
-    </div>
-
+    </div></div></div>
   </div>
+
+  <!-- Slide 2: Moskītu tīkli -->
+  <div class="hsl-slide" style="--tint:18,46,32">
+    <div class="hsl-bg"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1400&h=800&auto=format&q=80&fit=crop" alt="Moskītu tīkli" loading="lazy"></div>
+    <div class="hsl-grad"></div>
+    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
+      <span class="eyebrow">Moskītu tīkli</span>
+      <h1>Moskītu tīkli pēc pasūtījuma</h1>
+      <p class="lead">Rāmju, rullu, plisē un durvju tīkli precīzi Jūsu logu izmēriem. Aizsardzība pret kukaiņiem bez kompromisiem.</p>
+      <div class="hsl-cta">
+        <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pasūtīt tīklu</a>
+        <a href="moskitu-tikli.html" class="hsl-btn hsl-btn--ghost">Visi modeļi →</a>
+      </div>
+    </div></div></div>
+  </div>
+
+  <!-- Slide 3: Žalūzijas -->
+  <div class="hsl-slide" style="--tint:38,30,20">
+    <div class="hsl-bg"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1400&h=800&auto=format&q=80&fit=crop" alt="Žalūzijas" loading="lazy"></div>
+    <div class="hsl-grad"></div>
+    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
+      <span class="eyebrow">Žalūzijas</span>
+      <h1>Žalūzijas jebkuram interjerim</h1>
+      <p class="lead">Kasešu, rullu, plisē, vertikālās un horizontālās žalūzijas. Precīzi izmēri, stilīgs dizains un profesionāla uzstādīšana.</p>
+      <div class="hsl-cta">
+        <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pieteikties mērījumiem</a>
+        <a href="zaluzijas.html" class="hsl-btn hsl-btn--ghost">Skatīt kolekciju →</a>
+      </div>
+    </div></div></div>
+  </div>
+
+  <!-- Slide 4: Blīvgumija -->
+  <div class="hsl-slide" style="--tint:32,24,14">
+    <div class="hsl-bg"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&h=800&auto=format&q=80&fit=crop" alt="Blīvgumija" loading="lazy"></div>
+    <div class="hsl-grad"></div>
+    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
+      <span class="eyebrow">Blīvgumijas maiņa</span>
+      <h1>Beidziet maksāt par siltumu, kas aizplūst</h1>
+      <p class="lead">Nolietota blīvgumija ir galvenais caurvēja un siltumzudumu cēlonis. Nomainām ātri un kvalitatīvi — ar 2 gadu garantiju.</p>
+      <div class="hsl-cta">
+        <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pieteikt maiņu</a>
+        <a href="remonts-blivgumija.html" class="hsl-btn hsl-btn--ghost">Uzzināt vairāk →</a>
+      </div>
+    </div></div></div>
+  </div>
+
+  <!-- Slide 5: Stikla paketes -->
+  <div class="hsl-slide" style="--tint:18,28,42">
+    <div class="hsl-bg"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&h=800&auto=format&q=80&fit=crop" alt="Stikla paketes" loading="lazy"></div>
+    <div class="hsl-grad"></div>
+    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
+      <span class="eyebrow">Stikla paketes</span>
+      <h1>Stikla paketes maiņa bez rāmja nomaiņas</h1>
+      <p class="lead">Miglainas vai saplaisājušas stikla paketes mainām, saglabājot oriģinālo rāmi. Ātrāk un lētāk nekā jauns logs.</p>
+      <div class="hsl-cta">
+        <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pieteikt maiņu</a>
+        <a href="remonts-stiklu-paketes.html" class="hsl-btn hsl-btn--ghost">Uzzināt vairāk →</a>
+      </div>
+    </div></div></div>
+  </div>
+
+  <!-- Slide 6: Interneta veikals -->
+  <div class="hsl-slide" style="--tint:22,51,37">
+    <div class="hsl-bg"><img src="../photo/EVeikalsLoguApkope.gif" alt="Interneta veikals" loading="lazy"></div>
+    <div class="hsl-grad"></div>
+    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
+      <span class="eyebrow">Interneta veikals</span>
+      <h1>Logu piederumi — ātri un ērti tiešsaistē</h1>
+      <p class="lead">Rokturi, blīvgumijas, tapas, starplikas un citi piederumi. Ātra piegāde visā Latvijā.</p>
+      <div class="hsl-cta">
+        <a href="interneta-veikals.html" class="hsl-btn hsl-btn--fill">Uz veikalu</a>
+        <a href="aksesuari.html" class="hsl-btn hsl-btn--ghost">Visi aksesuāri →</a>
+      </div>
+    </div></div></div>
+  </div>
+
+  <!-- Controls -->
+  <div class="hsl-controls">
+    <div class="hsl-dots" id="hslDots"></div>
+    <div class="hsl-progress" id="hslProgress">
+      <div class="hsl-progress-bar" id="hslProgressBar"></div>
+    </div>
+  </div>
+
 </section>
 
 <section id="par-mums">
@@ -879,148 +949,80 @@
 })();
 </script>
 <script>
-/* ── Hero gallery: top card sinks behind others, next card rises ── */
+/* ── Full-screen hero slider ── */
 (function(){
-  var el = document.getElementById('heroGallery');
-  if (!el) return;
+  var INTERVAL = 7000;   /* auto-advance ms */
+  var FADE_DUR = 750;    /* must match CSS transition */
 
-  var CARD_H   = el.querySelector('.gallery-card').offsetHeight || 280;
-  var GAP      = 12;
-  var SLOT     = CARD_H + GAP;   /* spacing between card origins */
-  var DUR      = 600;            /* animation ms */
-  var PAUSE    = 8000;           /* auto-advance interval ms */
+  var slides   = Array.prototype.slice.call(document.querySelectorAll('.hsl-slide'));
+  var dotsWrap = document.getElementById('hslDots');
+  var bar      = document.getElementById('hslProgressBar');
 
-  var cards = Array.prototype.slice.call(el.querySelectorAll('.gallery-card'));
-  var N = cards.length;
-  var busy = false;
-  var timer;
+  if (!slides.length || !dotsWrap || !bar) return;
 
-  /* Place all cards via transform; highest z-index = top card */
-  function place(animate) {
-    cards.forEach(function(c, i) {
-      c.style.transition = animate
-        ? 'transform ' + DUR + 'ms cubic-bezier(.4,0,.2,1)'
-        : 'none';
-      c.style.zIndex = N - i;
-      c.style.transform = 'translateY(' + (i * SLOT) + 'px)';
-    });
-  }
-  /* Mark which card is currently peeking (index 1):
-     — Adding .peek → instant small font (no transition, so it doesn't shrink visibly)
-     — Removing .peek → CSS transition fires → font grows smoothly to full size */
-  function updatePeek() {
-    cards.forEach(function(c, i) {
-      var shouldPeek = (i === 1);
-      var isPeek = c.classList.contains('peek');
-      if (shouldPeek && !isPeek) {
-        /* Becoming peek: disable font-size transition for this change only */
-        var lbl = c.querySelector('.gallery-label');
-        lbl.style.transition = 'none';
-        c.classList.add('peek');
-        void lbl.offsetHeight; /* force reflow so size applies instantly */
-        lbl.style.transition = ''; /* restore CSS transition for future changes */
-      } else if (!shouldPeek && isPeek) {
-        /* Leaving peek: transition active → font grows smoothly */
-        c.classList.remove('peek');
-      }
-    });
-  }
-  /* ── Hero text refs ── */
-  var heroText = document.getElementById('heroSlideText');
-  var heroH1   = document.getElementById('heroSlideH1');
-  var heroLead = document.getElementById('heroSlideLead');
+  var N       = slides.length;
+  var current = 0;
+  var timer, barTimer;
 
-  place(false);
-  updatePeek();
+  /* ── Build dot buttons ── */
+  var dots = slides.map(function(_, i) {
+    var d = document.createElement('button');
+    d.className = 'hsl-dot' + (i === 0 ? ' hsl-dot--active' : '');
+    d.setAttribute('aria-label', 'Slaids ' + (i + 1));
+    d.addEventListener('click', function() { goTo(i); restartTimer(); });
+    dotsWrap.appendChild(d);
+    return d;
+  });
 
-  /* Sync initial hero text to whichever card is on top */
-  if (cards[0] && heroH1 && heroLead) {
-    var _t = cards[0].getAttribute('data-title');
-    var _d = cards[0].getAttribute('data-desc');
-    if (_t) heroH1.textContent  = _t;
-    if (_d) heroLead.textContent = _d;
+  /* ── Switch to slide idx ── */
+  function goTo(idx) {
+    slides[current].classList.remove('hsl-slide--active');
+    dots[current].classList.remove('hsl-dot--active');
+    current = (idx + N) % N;
+    slides[current].classList.add('hsl-slide--active');
+    dots[current].classList.add('hsl-dot--active');
+    resetBar();
   }
 
-  function updateHeroText(card) {
-    var t = card.getAttribute('data-title');
-    var d = card.getAttribute('data-desc');
-    if (!t || !d || !heroText) return;
-    /* Fade out */
-    heroText.style.transition = 'opacity 220ms ease, transform 220ms ease';
-    heroText.style.opacity = '0';
-    heroText.style.transform = 'translateY(8px)';
-    setTimeout(function() {
-      heroH1.textContent   = t;
-      heroLead.textContent = d;
-      /* Fade in */
-      heroText.style.transition = 'opacity 280ms ease, transform 280ms ease';
-      heroText.style.opacity = '1';
-      heroText.style.transform = 'translateY(0)';
-    }, 230);
+  /* ── Progress bar: animate 0 → 100% over INTERVAL ms ── */
+  function resetBar() {
+    /* Kill any running bar animation */
+    clearTimeout(barTimer);
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    /* Force reflow so transition starts fresh */
+    void bar.offsetWidth;
+    bar.style.transition = 'width ' + INTERVAL + 'ms linear';
+    bar.style.width = '100%';
   }
 
-  function next() {
-    if (busy) return;
-    busy = true;
-
-    var first = cards[0];
-
-    /* Drop z-index of top card immediately so it sinks behind the others */
-    first.style.transition = 'none';
-    first.style.zIndex = '0';
-    void el.offsetHeight; /* force reflow */
-
-    /* Top card slides DOWN to the last slot (visible sinking effect) */
-    first.style.transition = 'transform ' + DUR + 'ms cubic-bezier(.4,0,.2,1)';
-    first.style.transform  = 'translateY(' + ((N - 1) * SLOT) + 'px)';
-
-    /* Other cards animate UP by one slot — they rise over the sinking card */
-    cards.slice(1).forEach(function(c, i) {
-      c.style.transition = 'transform ' + DUR + 'ms cubic-bezier(.4,0,.2,1)';
-      c.style.zIndex = N - i;
-      c.style.transform = 'translateY(' + (i * SLOT) + 'px)';
-    });
-
-    /* Update left-side text to match the incoming top card */
-    updateHeroText(cards[1]);
-
-    setTimeout(function() {
-      cards = cards.slice(1).concat([first]);
-      first.style.transition = 'none';
-      first.style.zIndex = '1';
-      updatePeek(); /* keep .peek class on whichever card is now second */
-      busy = false;
-    }, DUR + 60);
-  }
-
-  /* Start / restart the auto-advance timer */
+  /* ── Auto-advance ── */
   function startTimer() {
-    clearInterval(timer);
-    timer = setInterval(next, PAUSE);
+    timer = setInterval(function() { goTo(current + 1); }, INTERVAL);
   }
+  function restartTimer() {
+    clearInterval(timer);
+    startTimer();
+  }
+
+  /* ── Pause on hover ── */
+  var section = document.getElementById('heroSection');
+  if (section) {
+    section.addEventListener('mouseenter', function() {
+      clearInterval(timer);
+      clearTimeout(barTimer);
+      bar.style.transition = 'none';
+      /* freeze bar width as-is */
+    });
+    section.addEventListener('mouseleave', function() {
+      restartTimer();
+      resetBar();
+    });
+  }
+
+  /* ── Init ── */
+  resetBar();
   startTimer();
-
-  /* Click handler: peek zone → advance; top card zone → navigate */
-  el.addEventListener('click', function(e) {
-    var rect = el.getBoundingClientRect();
-    var clickY = e.clientY - rect.top;
-    if (clickY > CARD_H) {
-      /* Peek zone → advance card */
-      if (!busy) { next(); startTimer(); }
-    } else {
-      /* Top card → navigate to its page */
-      var href = cards[0].getAttribute('data-href');
-      if (href) window.location.href = href;
-    }
-  });
-
-  /* Cursor: pointer everywhere (top card = link, peek = advance) */
-  el.addEventListener('mousemove', function(e) {
-    el.style.cursor = 'pointer';
-  });
-  el.addEventListener('mouseleave', function() {
-    el.style.cursor = '';
-  });
 })();
 </script>
 
