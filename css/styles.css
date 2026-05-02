@@ -613,6 +613,21 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 }
 
 /* ── Promo block: Plissēti moskītu tīkli ─────────────────────────── */
+/* ── Services block — grid-contained, rounded like hero/SOS ──────── */
+.pak-outer-wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:24px 24px 0;
+  box-sizing:border-box;
+}
+@media(max-width:640px){.pak-outer-wrap{padding:12px 12px 0;}}
+.pak-rounded{
+  border-radius:20px;
+  overflow:hidden;
+  background:transparent;
+}
+@media(max-width:640px){.pak-rounded{border-radius:14px;}}
+
 /* Outer wrapper — constrains to site grid, same as hero & SOS blocks */
 .promo-plise-wrap{
   max-width:var(--maxw);
