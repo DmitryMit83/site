@@ -1,3 +1,95 @@
+// ── Cookie consent banner ─────────────────────────────────────────────────
+(function () {
+  if (localStorage.getItem('cookieConsent')) return;
+
+  var POLICY_URL = (function () {
+    var p = window.location.pathname;
+    if (p.indexOf('/lv/') !== -1) return '../lv/privatuma-politika.html';
+    if (p.indexOf('/ru/') !== -1) return '../lv/privatuma-politika.html';
+    if (p.indexOf('/en/') !== -1) return '../lv/privatuma-politika.html';
+    return 'lv/privatuma-politika.html';
+  })();
+
+  var css = [
+    '#ck-banner{',
+    '  position:fixed;bottom:0;left:0;right:0;z-index:9999;',
+    '  background:#fff;border-top:2px solid #1E3A2E;',
+    '  box-shadow:0 -4px 32px rgba(0,0,0,.14);',
+    '  transform:translateY(110%);transition:transform .45s cubic-bezier(.4,0,.2,1);',
+    '}',
+    '#ck-banner.ck-visible{transform:translateY(0);}',
+    '#ck-banner.ck-hiding{transform:translateY(110%);}',
+    '.ck-inner{',
+    '  max-width:1100px;margin:0 auto;',
+    '  padding:18px 24px;',
+    '  display:flex;align-items:center;gap:20px;flex-wrap:wrap;',
+    '}',
+    '.ck-text{flex:1;min-width:220px;font-size:.82rem;line-height:1.6;color:#333;}',
+    '.ck-text a{color:#1E3A2E;font-weight:600;text-decoration:underline;}',
+    '.ck-actions{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap;}',
+    '.ck-btn{',
+    '  display:inline-flex;align-items:center;',
+    '  padding:.5rem 1.3rem;border-radius:8px;',
+    '  font-size:.82rem;font-weight:700;cursor:pointer;',
+    '  border:2px solid #1E3A2E;white-space:nowrap;',
+    '  transition:background .2s,color .2s;',
+    '}',
+    '.ck-btn-accept{background:#1E3A2E;color:#fff;}',
+    '.ck-btn-accept:hover{background:#2C5341;}',
+    '.ck-btn-reject{background:transparent;color:#1E3A2E;}',
+    '.ck-btn-reject:hover{background:rgba(30,58,46,.07);}',
+    '@media(max-width:600px){',
+    '  .ck-inner{padding:14px 16px;gap:12px;}',
+    '  .ck-text{font-size:.78rem;}',
+    '  .ck-btn{padding:.45rem 1rem;font-size:.78rem;}',
+    '}',
+  ].join('');
+
+  var style = document.createElement('style');
+  style.textContent = css;
+  document.head.appendChild(style);
+
+  var banner = document.createElement('div');
+  banner.id = 'ck-banner';
+  banner.setAttribute('role', 'dialog');
+  banner.setAttribute('aria-label', 'Sīkdatņu piekrišana');
+  banner.innerHTML = [
+    '<div class="ck-inner">',
+    '  <p class="ck-text">',
+    '    Logu Apkope izmanto sīkdatnes un citas tehnoloģijas, lai mēs varētu droši un uzticami piedāvāt',
+    '    mūsu lapas, pārbaudīt to veiktspēju un uzlabot tavu lietotāja pieredzi, tostarp atbilstošu saturu',
+    '    un personalizētu reklāmu gan mūsu, gan trešo pušu vietnēs.',
+    '    Noklikšķinot uz „Es piekrītu", tu piekrīti sīkdatņu un citu tehnoloģiju izmantošanai.',
+    '    <a href="' + POLICY_URL + '">Privātuma politika →</a>',
+    '  </p>',
+    '  <div class="ck-actions">',
+    '    <button class="ck-btn ck-btn-accept" id="ckAccept">Es piekrītu</button>',
+    '    <button class="ck-btn ck-btn-reject" id="ckReject">Tikai būtiskās</button>',
+    '  </div>',
+    '</div>',
+  ].join('');
+  document.body.appendChild(banner);
+
+  function hideBanner() {
+    banner.classList.add('ck-hiding');
+    setTimeout(function () { banner.remove(); }, 500);
+  }
+
+  document.getElementById('ckAccept').addEventListener('click', function () {
+    localStorage.setItem('cookieConsent', 'accepted');
+    hideBanner();
+  });
+  document.getElementById('ckReject').addEventListener('click', function () {
+    localStorage.setItem('cookieConsent', 'rejected');
+    hideBanner();
+  });
+
+  // Show after splash screens finish (~1.8s)
+  setTimeout(function () {
+    banner.classList.add('ck-visible');
+  }, 1800);
+})();
+
 // ── Chrome mobile: reduce font size + fix service-detail-grid ────────────
 (function(){
   var ua = navigator.userAgent;
