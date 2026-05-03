@@ -45,6 +45,7 @@
           <a href="moskitu-tikli-plise.html">Plisē tīkli</a>
           <a href="moskitu-tikli-durvis.html">Durvju tīkli</a>
           <a href="moskitu-tikli-slidamie.html">Bīdāmie tīkli</a>
+          <a href="kalkulators.html">Sietu kalkulators</a>
           </div></div>
         </div>
       <div class="has-dropdown-sub">
@@ -200,47 +201,47 @@
   </div>
 </section>
 
-<section class="container" style="padding-top:3rem;padding-bottom:3rem;">
-  <div class="service-detail-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
-    <div>
-      <img
-        src="../photo/PlisseH1.webp"
-        alt="Plisē moskītu tīkls — harmonika tipa salokāms tīkls logiem un balkona durvīm, uzstādīšana Rīgā, SIA Logu Apkope"
-        title="Plisē (harmonika) moskītu tīkli Rīgā — ražošana pēc pasūtījuma, horizontāla un vertikāla kustība, uzstādīšana un garantija"
-        loading="lazy"
-        width="1000"
-        height="750"
-        style="width:100%;height:auto;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:block;"
-      >
-    </div>
-    <div style="position:relative;padding-bottom:110px;">
-      <div class="price-badge-lg" style="display:inline-block;background:var(--accent);color:#fff;padding:.5rem 1.5rem;border-radius:99px;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;">Cena: no €60</div>
-      <h2 style="margin-top:0">Iekļauts pakalpojumā</h2>
-      <ul class="feature-list" style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;">
-        <li>✓ Mērīšana un ražošana pēc pasūtījuma</li>
-        <li>✓ Horizontāla vai vertikāla kustība</li>
-        <li>✓ Elegants dizains — iederas jebkurā interjerā</li>
-        <li>✓ Viegla bīdīšana</li>
-        <li>✓ Uzstādīšana un garantija iekļauta</li>
+<!-- Pakalpojuma apraksts — hero banner stils -->
+<div class="svc-hero-outer">
+  <div class="svc-hero">
+    <img class="svc-hero-img" src="../photo/PlisseH1.webp" alt="Plisē moskītu tīkls — harmonika tipa salokāms tīkls logiem un balkona durvīm, uzstādīšana Rīgā, SIA Logu Apkope" loading="lazy">
+    <div class="svc-hero-grad"></div>
+    <div class="svc-hero-body">
+      <div class="svc-hero-price">Cena: no €60</div>
+      <h2>Iekļauts pakalpojumā</h2>
+      <ul class="svc-hero-list">
+        <li>Mērīšana un ražošana pēc pasūtījuma</li>
+        <li>Horizontāla vai vertikāla kustība</li>
+        <li>Elegants dizains — iederas jebkurā interjerā</li>
+        <li>Viegla bīdīšana</li>
+        <li>Uzstādīšana un garantija iekļauta</li>
       </ul>
-      <span class="rec-stamp rec-stamp--txt" aria-label="Rekomendējam">
-        <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path id="rp-arc" d="M 48,48 m -33,0 a 33,33 0 1,1 66,0 a 33,33 0 1,1 -66,0"/>
-          </defs>
-          <circle cx="48" cy="48" r="45" fill="#d44d1a" stroke="#fff" stroke-width="2.5"/>
-          <circle cx="48" cy="48" r="36" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2" stroke-dasharray="3.5 2.5"/>
-          <text font-family="Poppins,Arial,sans-serif" font-size="10.5" font-weight="700" fill="#fff" letter-spacing="1.8">
-            <textPath href="#rp-arc" startOffset="10%">REKOMENDĒJAM</textPath>
-          </text>
-          <text x="48" y="55" text-anchor="middle" font-family="Poppins,Arial,sans-serif" font-size="22" fill="#fff">★</text>
-        </svg>
-      </span>
     </div>
   </div>
-</section>
+</div>
 
 <style>
+/* ── Service hero banner ── */
+.svc-hero-outer{max-width:var(--maxw);margin:0 auto;padding:2rem 24px 0;}
+.svc-hero{position:relative;overflow:hidden;border-radius:20px;min-height:420px;background:var(--green);display:flex;align-items:center;}
+.svc-hero:hover .svc-hero-img{transform:scale(1.05);}
+.svc-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 700ms ease;}
+.svc-hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(14,34,24,0.97) 0%,rgba(14,34,24,0.92) 26%,rgba(14,34,24,0.65) 50%,rgba(14,34,24,0.22) 70%,transparent 88%);}
+.svc-hero-body{position:relative;z-index:2;max-width:560px;color:#fff;padding:3.5rem 3rem 3.5rem 3rem;}
+.svc-hero-price{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;font-weight:800;font-size:1.05rem;padding:.38rem 1.1rem;border-radius:99px;margin-bottom:1.2rem;}
+.svc-hero h2{color:#fff;font-size:clamp(1.4rem,2.5vw,2rem);line-height:1.2;margin:0 0 .9rem;}
+.svc-hero-list{list-style:none;padding:0;margin:0 0 .4rem;display:flex;flex-direction:column;gap:.45rem;}
+.svc-hero-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.5;}
+.svc-hero-list li::before{content:'✓';flex-shrink:0;width:18px;height:18px;background:rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;margin-top:.1rem;}
+@media(max-width:700px){
+  .svc-hero-outer{padding:1.2rem 12px 0;}
+  .svc-hero{min-height:300px;border-radius:14px;}
+  .svc-hero-grad{background:linear-gradient(to top,rgba(14,34,24,.97) 0%,rgba(14,34,24,.9) 30%,rgba(14,34,24,.6) 56%,rgba(14,34,24,.18) 76%,transparent 92%);}
+  .svc-hero-body{padding:1.6rem 1.2rem 2.2rem;max-width:100%;align-self:flex-end;}
+  .svc-hero h2{font-size:clamp(1.1rem,4.5vw,1.4rem);}
+  .svc-hero-list li{font-size:.82rem;}
+}
+
 /* ── Mesh cards ── */
 .mesh-type-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1.2rem;margin-top:2rem;}
 .mesh-card{background:#fff;border-radius:14px;border:1.5px solid var(--accent);overflow:hidden;transition:transform .2s,box-shadow .2s;cursor:pointer;}
@@ -463,20 +464,12 @@
     .pf-features li::before{content:'✓';color:#4a9c6a;font-weight:800;flex-shrink:0;}
     /* Info cards */
     .pf-info-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin-bottom:1.6rem;}
-    /* Mobile: keep all 3 cards in a horizontal row, shrink padding/fonts */
+    /* Mobile: stack cards vertically so all text is fully visible */
     @media(max-width:640px){
-      .pf-info-row{gap:.4rem;}
-      .pf-info-card{padding:.55rem .6rem;border-radius:10px;}
-      .pf-info-card h5{font-size:.6rem;letter-spacing:.04em;margin-bottom:.28rem;}
-      .pf-info-card p{font-size:.7rem;line-height:1.38;}
-      .pf-info-card strong{font-size:.7rem;}
-      /* Montāža has long text — cap height and allow inner scroll */
-      .pf-info-row .pf-info-card:first-child p{
-        max-height:7rem;
-        overflow-y:auto;
-        -webkit-overflow-scrolling:touch;
-        scrollbar-width:thin;
-      }
+      .pf-info-row{grid-template-columns:1fr;gap:.6rem;}
+      .pf-info-card{padding:.65rem .8rem;border-radius:10px;}
+      .pf-info-card h5{font-size:.62rem;letter-spacing:.04em;margin-bottom:.3rem;}
+      .pf-info-card p{font-size:.8rem;line-height:1.45;}
     }
     .pf-info-card{background:#f8faf9;border:1.5px solid var(--line);border-radius:12px;padding:.85rem 1rem;}
     .pf-info-card h5{font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:0 0 .45rem;}
@@ -703,7 +696,7 @@
         'Horizontāla, vertikāla vai divpusēja atvēršana',
         'Ātri noņemams tīrīšanai vai ziemā'
       ],
-      mounting:'Divas uzstādīšanas iespējas: (1) Iekšpusē — rāmis tiek ievietots loga ailes iekšpusē un nostiprināts ar ātrām klipšām, nav nepieciešams pieskrūvēt; (2) Ārpusē — rāmis tiek uzlikts no ārpuses un fiksēts ar āķiem, tāpat kā standarta rāmja moskītu sietam. Abos gadījumos tīklu var ātri noņemt. Uzstādīšanas laiks — no 15 minūtēm līdz 3 stundām atkarībā no izmēra un uzstādīšanas vietas.',
+      mounting:'Divas uzstādīšanas iespējas: (1) Iekšpusē — rāmis tiek ievietots loga ailes iekšpusē un nostiprināts ar ātrām klipšām, nav nepieciešams pieskrūvēt; (2) Ārpusē — rāmis tiek uzlikts no ārpuses un fiksēts ar āķiem, tāpat kā standarta rāmja moskītu sietam. Abos gadījumos tīklu var ātri noņemt. Uzstādīšanas laiks — līdz 15 minūtēm.',
       minW:300, maxW:1500, minH:400, maxH:1500,
       maxNote:'Maks. platums un augstums — <strong>1500 mm</strong>. Lielāki izmēri nav ieteicami: ātrās klipšas vai āķi var neizturēt smagāka sieta svaru, kas var izraisīt stiprinājuma atbrīvošanos.',
       photos:[
@@ -1366,6 +1359,7 @@ var MESH_DATA={
       <a href="kontakti.html">Kontakti</a>
       <a href="transporta-izmaksas.html">Transporta izmaksas</a>
       <a href="privatuma-politika.html">Privātuma politika</a>
+      <a href="kalkulators.html">Sietu kalkulators</a>
     </div>
     <div>
       <h4>Kontakti</h4>
