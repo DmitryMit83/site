@@ -33,6 +33,14 @@
 .pp-contact-box p:last-child{margin:0;}
 .pp-contact-box a{color:var(--green);font-weight:600;}
 @media(max-width:600px){.pp-wrap{padding:36px 16px 60px;}.pp-hero{padding:36px 0 28px;}}
+/* ── Tab navigation ── */
+.pp-tab-bar{display:flex;gap:6px;margin-top:22px;flex-wrap:wrap;}
+.pp-tab{background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);color:#fff;padding:.5rem 1.3rem;border-radius:8px;font-size:.92rem;font-weight:600;cursor:pointer;transition:background .18s,border-color .18s;}
+.pp-tab:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.5);}
+.pp-tab.pp-tab--active{background:#fff;color:var(--green);border-color:#fff;}
+.pp-pane{display:block;}
+.pp-pane[hidden]{display:none;}
+@media(max-width:480px){.pp-tab{font-size:.84rem;padding:.42rem .9rem;}}
 </style>
 </head>
 <body>
@@ -171,13 +179,24 @@
 <!-- Page hero -->
 <div class="pp-hero">
   <div class="container">
-    <h1>Privātuma politika</h1>
-    <p>SIA "Logu Apkope" — personas datu apstrādes noteikumi</p>
+    <h1 id="ppHeroTitle">Privātuma politika</h1>
+    <p id="ppHeroSub">SIA "Logu Apkope" — personas datu apstrādes noteikumi</p>
+    <div class="pp-tab-bar" role="tablist">
+      <button class="pp-tab pp-tab--active" role="tab" aria-selected="true"
+        data-pane="ppPrivacy"
+        data-title="Privātuma politika"
+        data-sub='SIA "Logu Apkope" — personas datu apstrādes noteikumi'>Privātuma politika</button>
+      <button class="pp-tab" role="tab" aria-selected="false"
+        data-pane="ppTerms"
+        data-title="Lietošanas noteikumi"
+        data-sub='SIA "Logu Apkope" — mājas lapas lietošanas noteikumi'>Lietošanas noteikumi</button>
+    </div>
   </div>
 </div>
 
 <div class="pp-wrap">
 
+<div id="ppPrivacy" class="pp-pane" role="tabpanel">
   <!-- 1 -->
   <div class="pp-section">
     <h2>Pārzinis</h2>
@@ -324,6 +343,113 @@
   </div>
 
   <p style="font-size:.82rem;color:var(--muted,#888);margin-top:2.5rem;">Politika aktualizēta: 2025. gads. SIA "Logu Apkope" patur tiesības grozīt šo politiku, publicējot jaunāko versiju mājas lapā.</p>
+</div><!-- /ppPrivacy -->
+
+<!-- ══ Lietošanas noteikumi ══════════════════════════════════════════ -->
+<div id="ppTerms" class="pp-pane" role="tabpanel" hidden>
+
+  <div class="pp-section">
+    <p>SIA "Logu Apkope" reģistrācijas numurs LV42103113356 (turpmāk — Logu Apkope) savā mājas lapā www.LoguApkope.lv piedāvā dažādus pakalpojumus atbilstoši šiem noteikumiem (turpmāk – Lietošanas noteikumi). Šie Lietošanas noteikumi nosaka mājas lapas un tajā pieejamās informācijas lietošanas noteikumus un ierobežojumus, un ir saistoši visiem mājas lapas Lietotājiem.</p>
+    <p>Katra mājas lapas Lietotāja pienākums ir iepazīties ar Lietošanas noteikumiem — mājas lapas lietošana ir uzskatāma par piekrišanu ievērot šos noteikumus. Logu Apkope nav pienākums informēt Lietotāju par izmaiņām noteikumos. Piekļūstot lapai vai lietojot to, Jūs apliecināt, ka esat izlasījuši šos Noteikumus, saprotat tos un piekrītat tos ievērot bez ierobežojumiem vai nosacījumiem.</p>
+  </div>
+
+  <div class="pp-section">
+    <h2>Reģistrācija</h2>
+    <p>Jums ir iespēja reģistrēties un izveidot Lietotāja kontu interneta vietnē Logu Apkope. Reģistrējoties Jūs piekrītat šiem Lietošanas Noteikumiem. Reģistrējoties jānorāda Jums pieejama e-pasta adrese un parole. Jūs nedrīkstat izmantot viltus e-pasta adresi, uzdoties par citu personu vai organizāciju vai kā citādi maldināt par satura izcelsmi.</p>
+    <p>Jūs esat atbildīgs par visām darbībām, kas tiek veiktas, izmantojot Jūsu kontu un paroli. Logu Apkope nav atbildīgs par zaudējumiem, kas radušies šo noteikumu neievērošanas dēļ. Noteikumu pārkāpuma gadījumā Logu Apkope ir tiesības pārtraukt piekļuvi vai dzēst Lietotāja kontu.</p>
+  </div>
+
+  <div class="pp-section">
+    <h2>Cenas</h2>
+    <p>Interneta vietnē Logu Apkope visas cenas norādītas eiro valūtā ar pievienotās vērtības nodokli. Preču piegādes pakalpojuma izmaksas nav iekļautas norādītajā preces cenā. Cenas var mainīties pēc Logu Apkope ieskatiem.</p>
+  </div>
+
+  <div class="pp-section">
+    <h2>Piegāde</h2>
+    <p>Logu Apkope nodrošina preces piegādi Latvijā atbilstoši noslēgtajam sadarbības līgumam ar piegādes pakalpojumu sniedzēju. Precei jāsasniedz adresāts 2–5 darba dienu laikā kopš izsūtīšanas brīža, atkarībā no saņemšanas adreses. Ja piegāde kavējas, nosūtiet e-pastu uz <a href="mailto:info@loguapkope.lv">info@loguapkope.lv</a>, norādot pasūtījuma numuru.</p>
+  </div>
+
+  <div class="pp-section">
+    <h2>Konfidencialitāte</h2>
+    <p>Logu Apkope ar lielu atbildību izturās pret privāto informāciju, ko klienti uztic, veicot pasūtījumus vai reģistrējoties. Nepieciešamā informācija ietver: vārds, uzvārds vai juridiskās personas nosaukums; pasūtītāja un piegādes adrese; tālruņa numurs; e-pasta adrese.</p>
+    <p>Jūsu privātā informācija tiks izmantota, lai:</p>
+    <ul>
+      <li>nosūtītu elektronisku pasūtījuma apstiprinājumu uz norādīto e-pastu;</li>
+      <li>nosūtītu preci uz norādīto adresi;</li>
+      <li>sazinātos ar Jums, ja nepieciešams precizēt pasūtījuma detaļas;</li>
+      <li>veiktu pasūtījumu analīzi augstākai servisa nodrošināšanai;</li>
+      <li>informētu Jūs par jaunākajiem produktu piedāvājumiem.</li>
+    </ul>
+    <p>Logu Apkope garantē, ka Jūsu privāto informāciju neatklās trešajai pusei, izņemot gadījumus, ja to pieprasa ar tiesas rīkojumu vai ja rodas situācija, kad jānovērš krāpniecisks vai noziedzīgs nolūks.</p>
+  </div>
+
+  <div class="pp-section">
+    <h2>Pakalpojumu apmaksas un maksājumu atgriešanas noteikumi</h2>
+
+    <h3>1. Vispārīgie noteikumi</h3>
+    <p>1.1. Šie noteikumi nosaka kārtību, kādā tiek veikta SIA "Logu Apkope" pakalpojumu apmaksa mājas lapā www.loguapkope.lv un maksājumu atgriešana pakalpojuma saņēmējam (turpmāk — Klients).</p>
+    <p>1.2. Izmantojot mājas lapu un/vai veicot pakalpojumu apmaksu, Klients piekrīt ievērot šos noteikumus.</p>
+
+    <h3>2. Personas datu norādīšana, aizsardzība un atbildība</h3>
+    <p>2.1. Klients uzņemas pilnu atbildību par patiesas informācijas sniegšanu, veicot pakalpojuma apmaksu. Norādot kļūdainu vai nepatiesu informāciju, var tikt atteikta pakalpojuma sniegšana. SIA "Logu Apkope" nav atbildīga par Klienta maksājumu karšu datu neprecizitāti.</p>
+    <p>2.2. Klients piekrīt, ka visa informācija par personas datiem tiks apstrādāta saskaņā ar Fizisko personu datu aizsardzības likumu un izmantos tikai pakalpojuma nodrošināšanai.</p>
+    <p>2.3. Klienta maksājumu karšu dati tiks izmantoti tikai pakalpojumu apmaksai atbilstoši starptautiskajiem banku noteikumiem. SIA "Logu Apkope" nav pieejami Klientu veikto darījumu kartes dati.</p>
+
+    <h3>3. Pakalpojuma apmaksas un saņemšanas kārtība</h3>
+    <p>3.1. Pakalpojuma saņemšanai Klients veic apmaksu mājas lapā, izvēloties attiecīgu pakalpojumu un ievadot nepieciešamos datus.</p>
+    <p>3.2. Darījuma veikšanai Klienti tiek novirzīti uz drošu pirkumu vidi. Apmaksas laiks ir ierobežots — apmaksa jāveic 10 minūšu laikā no uzsākšanas brīža.</p>
+    <p>3.3. Pakalpojuma apmaksa tiek veikta ar VISA, VISA Electron un MasterCard maksājuma kartēm vai caur SWEDBANK banklink sistēmu.</p>
+    <p>3.4. Apmaksājot pakalpojumus mājas lapā, komisijas maksa netiek piemērota.</p>
+    <p>3.5. Pēc veiksmīgas apmaksas Klients saņem apstiprinājumu uz norādīto e-pastu.</p>
+    <p>3.6. Apmaksāto pakalpojumu Klients var saņemt e-pastā norādītā laikā, ierodoties personīgi filiālē vai izmantojot piegādi norādītā adresē.</p>
+
+    <h3>4. Apmaksas apjomi un nosacījumi</h3>
+    <p>4.1. Mājas lapā var norēķināties par pakalpojumiem, kuru summa ir sākot ar 3,00 EUR. Par pakalpojumiem līdz 3,00 EUR var norēķināties tikai Logu Apkope filiālēs pasūtījuma saņemšanas brīdī.</p>
+
+    <h3>5. Atteikšanās no pakalpojuma un maksājumu atgriešanas kārtība</h3>
+    <p>5.1. Pircējam — fiziskai personai — ir tiesības, nenorādot iemeslus, 14 dienu laikā atteikties no līguma, kas noslēgts par preču iegādi interneta veikalā www.loguapkope.lv.</p>
+    <p>5.2. Atteikuma tiesību termiņš beidzas pēc 14 dienām no Preces saņemšanas dienas. Ja vienā pasūtījumā pasūtītas vairākas Preces, kuras piegādā atsevišķi, termiņš skaitās no pēdējās Preces saņemšanas dienas.</p>
+    <p>5.3. Lai izmantotu atteikuma tiesības, Pircējam jāinformē Pārdevējs, aizpildot iesniegumu profilā "PIRKUMA ATGRIEŠANA" vai nosūtot rakstveida paziņojumu uz e-pastu <a href="mailto:info@loguapkope.lv">info@loguapkope.lv</a>. Pārdevējs nekavējoties nosūta apstiprinājumu par paziņojuma saņemšanu.</p>
+    <p>5.5. Ja Pircējs atteicās no Līguma, Pārdevējs atmaksā visu samaksāto naudu, ieskaitot piegādes izdevumus, ne vēlāk kā 14 dienu laikā no atteikuma saņemšanas.</p>
+    <p>5.6. Naudas atmaksa tiek veikta ar tādu pašu maksāšanas līdzekli, kādu klients izmantoja, 14 dienu laikā no pieteikuma saņemšanas. No Pircēja saistībā ar atmaksāšanu netiks iekasēta nekāda maksa.</p>
+    <p>5.7. Pārdevējs ir tiesīgs aizturēt atmaksu līdz brīdim, kad ir saņēmis Preci vai Pircējs iesniedzis apliecinājumu par tās nosūtīšanu atpakaļ.</p>
+    <p>5.8. Pircējs atgriež Preces ne vēlāk kā 14 dienu laikā pēc atteikuma iesniegšanas. Preces atpakaļatdošanas izmaksas sedz Pircējs.</p>
+    <p>5.9. Pircējs ir atbildīgs par Preces vērtības samazināšanos, ja tā atteikuma laikā lietota citā nolūkā, nevis rakstura un īpašību noskaidrošanai.</p>
+
+    <h3>6. Citi jautājumi</h3>
+    <p>6.1. Logu Apkope visus paziņojumus nosūta uz Klienta norādīto e-pasta adresi.</p>
+    <p>6.2. Klients ar jautājumiem vēršas pie Logu Apkope, izmantojot: vietnes sadaļu "Atsauksmes un ierosinājumi"; e-pastu <a href="mailto:info@loguapkope.lv">info@loguapkope.lv</a>; tālruni <a href="tel:+37128950055">+371 28 950 055</a>; personīgi birojā vai filiālē.</p>
+  </div>
+
+  <div class="pp-section">
+    <h2>Strīdu risināšanas noteikumi</h2>
+    <p>Sūdzības par preču pieejamību vai kvalitāti lūdzam iesniegt elektroniski uz <a href="mailto:info@loguapkope.lv">info@loguapkope.lv</a> vai rakstveidā: Latgales iela 130A, Rīga, LV-1003. Sūdzība tiks izskatīta 7 darba dienu laikā, atbildi nosūtot uz sūdzībā norādīto adresi.</p>
+    <p>Ja sūdzība atzīta par nepamatotu un Jūs tam nepiekrītat, Jums ir tiesības izmantot alternatīvā strīdu risināšanas iespējas, iesniedzot rakstveida iesniegumu ar: vārdu, uzvārdu, kontaktinformāciju; iesniegšanas datumu; strīda būtību, prasījumiem un pamatojumu.</p>
+    <p>Informācija par ārpustiesas strīdu risināšanu:</p>
+    <ul>
+      <li>Strīdu risināšanas process: <a href="https://www.ptac.gov.lv/lv/content/stridu-risinasanas-process" target="_blank" rel="noopener">www.ptac.gov.lv</a></li>
+      <li>Ārpustiesas strīdu risinātāju datubāze: <a href="https://www.ptac.gov.lv/lv/content/arpustiesas-pateretaju-stridu-risinataju-datubaze" target="_blank" rel="noopener">ptac.gov.lv — datubāze</a></li>
+      <li>Strīdu izšķiršana tiešsaistē (SIT): <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&amp;lng=LV" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a></li>
+    </ul>
+  </div>
+
+  <div class="pp-section">
+    <h2>Atteikuma tiesību ierobežojumi</h2>
+    <p>LR MK Noteikumi Nr. 207 "Noteikumi par distances līgumu" nosaka, ka patērētājam ir tiesības atteikties no līguma 14 kalendāra dienu laikā. Logu Apkope patur tiesības atteikt atteikuma tiesību izmantošanu vai ieturēt kompensāciju, ja prece ir lietota, nolietota vai bojāta, nav oriģinālajā iepakojumā vai iepakojums ir būtiski bojāts.</p>
+    <p>Ja pasūtījums netika saņemts vai tika atteikts un atgriežas atpakaļ, pēc Jūsu pieprasījuma atgriezīsim naudu, izņemot piegādes izdevumus un 10% komisiju par pasūtījuma apstrādi (bet ne mazāk par 10,00 EUR).</p>
+    <p>Atteikuma tiesības nevar izmantot, ja:</p>
+    <ul>
+      <li>iegādātas halogēna lampas, izpārdošanas preces vai atvērts to iepakojums;</li>
+      <li>piegādātā prece ātri bojājas vai tai drīz beigsies derīguma termiņš;</li>
+      <li>prece tiek izgatavota pēc Jūsu norādījumiem vai ir personalizēta;</li>
+      <li>atvērts iepakojums precei, ko veselības vai higiēnas apsvērumu dēļ nevar atdot atpakaļ.</li>
+    </ul>
+    <p>Atgādinām, ka patērētājiem 24 mēnešu laikā no preces piegādes dienas ir likumā noteiktas tiesības pieteikt prasījumu par līguma noteikumiem neatbilstošu preci.</p>
+  </div>
+
+  <p style="font-size:.82rem;color:var(--muted,#888);margin-top:2.5rem;">Noteikumi aktualizēti: 2025. gads. SIA "Logu Apkope" patur tiesības grozīt šos noteikumus, publicējot jaunāko versiju mājas lapā.</p>
+
+</div><!-- /ppTerms -->
 
 </div>
 
@@ -379,6 +505,33 @@
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 <script src="../js/main.js"></script>
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.pp-tab');
+  var title = document.getElementById('ppHeroTitle');
+  var sub   = document.getElementById('ppHeroSub');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      // deactivate all
+      tabs.forEach(function(t){
+        t.classList.remove('pp-tab--active');
+        t.setAttribute('aria-selected','false');
+      });
+      // hide all panes
+      document.querySelectorAll('.pp-pane').forEach(function(p){ p.hidden = true; });
+      // activate clicked
+      tab.classList.add('pp-tab--active');
+      tab.setAttribute('aria-selected','true');
+      var pane = document.getElementById(tab.dataset.pane);
+      if(pane) pane.hidden = false;
+      if(title) title.textContent = tab.dataset.title;
+      if(sub)   sub.textContent   = tab.dataset.sub;
+      // scroll to content
+      document.querySelector('.pp-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+})();
+</script>
 <div class="mob-cw" id="mobContactWidget">
   <button class="mob-cw-tab" id="mobContactTab" aria-label="Sazināties ar mums" aria-expanded="false">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>

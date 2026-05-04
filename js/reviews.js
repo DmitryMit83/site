@@ -14,34 +14,34 @@
   var STATIC = {
     lv: [
       {
-        author: 'Jānis Kalniņš', initial: 'J', rating: 5,
-        time: 'pirms 2 nedēļām',
-        text: 'Izcils serviss! Logs tika regulēts ātri un kvalitatīvi. Meistars ieradās laikā, izskaidroja visu un novērsa problēmu uzreiz. Noteikti ieteikšu!'
-      },
-      {
-        author: 'Ilze Siliņa', initial: 'I', rating: 5,
-        time: 'pirms mēneša',
-        text: 'Izgatavoja moskītu tīklus pēc izmēra visiem logiem. Ieradās ātri, uzmontēja precīzi. Kvalitāte un cena — vislabākā attiecība Rīgā. Iesaku!'
-      },
-      {
-        author: 'Māris Pētersons', initial: 'M', rating: 4,
+        author: 'Diāna Pudule', initial: 'D', rating: 5,
         time: 'pirms 3 nedēļām',
-        text: 'Nomainīja stikla paketi, cena atbilstoša. Pakalpojums kvalitatīvs, ieradās nākamajā dienā pēc zvana. Neliela kavēšanās ar materiālu, taču kopumā apmierināts.'
+        text: 'Gribēju uzstādīt logiem sietus, lai būtu droši kaķim. Izsaucu meistaru, kurš visu nomērīja un solīja nedēļas laikā sietus izgatavot, taču pēc divām dienām jau sieti bija gatavi, un meistars tos ātri uzstādīja. Esmu ļoti apmierināta.'
       },
       {
-        author: 'Kristīne Liepiņa', initial: 'K', rating: 5,
-        time: 'pirms 5 nedēļām',
-        text: 'Uzstādīja žalūzijas divās istabās. Meistars paskaidroja visas iespējas, palīdzēja izvēlēties krāsu. Rezultāts pārsniedza cerības — ārkārtīgi glīti!'
+        author: 'Ģirts Liniņš', initial: 'Ģ', rating: 5,
+        time: 'pirms mēneša',
+        text: 'Ātri, kvalitatīvi, pieklājīgi saveda kārtībā pirms 30 gadiem ieliktus koka pakešu logus. Par to visu arī attiecīgi jāsamaksā, protams. Paldies.'
       },
       {
-        author: 'Andris Bērziņš', initial: 'A', rating: 5,
-        time: 'pirms 2 mēnešiem',
-        text: 'Remontēja ieejas durvis — tās vairs neaizverās pareizi. Meistars atrisināja problēmu 30 minūtēs. Ļoti profesionāla pieeja, iesaku visiem!'
+        author: 'Андрей Иванов', initial: 'А', rating: 5,
+        time: 'pirms 3 mēnešiem',
+        text: 'Мастер молодец! Благодарю и рекомендую другим!'
       },
       {
-        author: 'Dace Ozoliņa', initial: 'D', rating: 5,
-        time: 'pirms 6 nedēļām',
-        text: 'Nomainīja blīvgumijas visiem logiem dzīvoklī. Tagad logi ir siltāki un klusāki. Darbs izdarīts ātri, tīri un bez papildu izmaksām. Paldies!'
+        author: 'Inese Maslova', initial: 'I', rating: 5,
+        time: 'pirms 6 mēnešiem',
+        text: 'Ļoti patīkama pieredze, liels paldies! Noteikti iesaku :).'
+      },
+      {
+        author: 'Raimonda Kursīte', initial: 'R', rating: 2,
+        time: 'pirms 7 mēnešiem',
+        text: 'Atbrauca, visu izdarīja, liekas kā nākas, bet nu attieksme... un cenas arī diezgan kosmiskas.'
+      },
+      {
+        author: 'Līga Dukure', initial: 'L', rating: 5,
+        time: 'pirms gada',
+        text: 'Ātri, operatīvi. Meistars visu paskaidroja. Ļoti pieklājīgi meistari un par saprātīgu cenu.'
       }
     ],
     ru: [
