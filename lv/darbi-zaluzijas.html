@@ -180,18 +180,7 @@
     <!-- Photo data (JSON) -->
     <!-- Slider stage (populated by JS after script load) -->
     <div class="gal-stage"></div>
-
-    <!-- Dots (generated dynamically — hidden on mobile) -->
-    <div class="gal-dots" id="galDots"></div>
-
-    <!-- Mobile prev/next arrows (shown on mobile ≤640px) -->
-    <div class="gal-mob-arrows" role="group" aria-label="Navigācija pa fotoattēliem">
-      <button class="gal-mob-btn gal-mob-prev" aria-label="Iepriekšējā foto">&#8249;</button>
-      <span class="gal-mob-counter" aria-live="polite">1 / …</span>
-      <button class="gal-mob-btn gal-mob-next" aria-label="Nākamā foto">&#8250;</button>
-    </div>
-
-    <!-- Lightbox -->
+<!-- Lightbox -->
     <div class="gal-lightbox" role="dialog" aria-label="Foto priekšskatījums">
       <button class="gal-lb-close" aria-label="Aizvērt">✕</button>
       <button class="gal-lb-nav gal-lb-prev" aria-label="Iepriekšējā foto">‹</button>
@@ -315,26 +304,12 @@
   var slots   = ['gal-s2','gal-s1','gal-main','gal-s1','gal-s2'];
 
   var stage    = document.querySelector('.gal-stage');
-  var dotsWrap = document.getElementById('galDots');
   var lightbox = document.querySelector('.gal-lightbox');
   var lbImg    = lightbox.querySelector('img');
 
   if(!n){ stage.innerHTML = '<p style="text-align:center;color:var(--muted);padding:2rem;">Fotoattēli nav pieejami</p>'; return; }
 
-  function idx(offset){ return (cur + offset + n * 100) % n; }
-
-  function buildDots(){
-    dotsWrap.innerHTML = '';
-    photos.forEach(function(p, i){
-      var btn = document.createElement('button');
-      btn.className = 'gal-dot' + (i === 0 ? ' active' : '');
-      btn.setAttribute('aria-label', 'Foto ' + (i + 1));
-      btn.addEventListener('click', function(){ cur = i; render(); });
-      dotsWrap.appendChild(btn);
-    });
-  }
-
-  function render(){
+  function idx(offset){ return (cur + offset + n * 100) % n; }  function render(){
     var items   = stage.querySelectorAll('.gal-item');
     var offsets = [-2, -1, 0, 1, 2];
     items.forEach(function(el, i){
@@ -350,12 +325,11 @@
       el.className      = 'gal-item ' + slots[i];
       el.dataset.offset = off;
     });
-    dotsWrap.querySelectorAll('.gal-dot').forEach(function(d, i){
-      d.classList.toggle('active', i === cur);
-    });
-    var ctr = document.querySelector('.gal-mob-counter');
-    if(ctr) ctr.textContent = (cur + 1) + ' / ' + n;
-  }
+    var navCur = document.querySelector('.gal-nav-cur');
+    var navTot = document.querySelector('.gal-nav-total');
+    if(navCur) navCur.textContent = cur + 1;
+    if(navTot) navTot.textContent = n;
+    }
 
   stage.innerHTML = '';
   for(var i = 0; i < 5; i++){
@@ -364,14 +338,13 @@
     el.innerHTML = '<img src="" alt="" loading="lazy">';
     stage.appendChild(el);
   }
-  buildDots();
   render();
 
-  // Mobile arrow navigation
-  var mobPrev = document.querySelector('.gal-mob-prev');
-  var mobNext = document.querySelector('.gal-mob-next');
-  if(mobPrev) mobPrev.addEventListener('click', function(){ cur = (cur - 1 + n) % n; render(); });
-  if(mobNext) mobNext.addEventListener('click', function(){ cur = (cur + 1) % n; render(); });
+  // Gallery arrow navigation
+  var galPrev = document.querySelector('.gal-prev');
+  var galNext = document.querySelector('.gal-next');
+  if(galPrev) galPrev.addEventListener('click', function(){ cur = (cur - 1 + n) % n; render(); });
+  if(galNext) galNext.addEventListener('click', function(){ cur = (cur + 1) % n; render(); });
 
   stage.addEventListener('click', function(e){
     var item = e.target.closest('.gal-item');
