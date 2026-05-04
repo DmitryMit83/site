@@ -177,21 +177,11 @@
       <h2>Fotogalerija</h2>
     </div>
 
-    <!-- Photo data (JSON) -->
-    <script type="application/json" id="galPhotos">[{"src": "https://images.unsplash.com/photo-1563262924-641a8b3d397f?w=1200&q=85&auto=format&fit=crop", "alt": "Durvju rokturis"}, {"src": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=85&auto=format&fit=crop", "alt": "Logu furnitūra"}, {"src": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&auto=format&fit=crop", "alt": "Logu aksesuāri"}, {"src": "https://images.unsplash.com/photo-1504307651908-5e7d7e5b91fa?w=1200&q=85&auto=format&fit=crop", "alt": "Blīvgumija"}, {"src": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=85&auto=format&fit=crop", "alt": "Logu rokturis"}, {"src": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=1200&q=85&auto=format&fit=crop", "alt": "Slēdzene"}]</script>
-
-    <!-- Slider stage (populated by JS) -->
+    <!-- Slider stage (populated by JS after script load) -->
     <div class="gal-stage"></div>
 
-    <!-- Dots -->
-    <div class="gal-dots">
-      <button class="gal-dot active" aria-label="Foto 1"></button>
-      <button class="gal-dot" aria-label="Foto 2"></button>
-      <button class="gal-dot" aria-label="Foto 3"></button>
-      <button class="gal-dot" aria-label="Foto 4"></button>
-      <button class="gal-dot" aria-label="Foto 5"></button>
-      <button class="gal-dot" aria-label="Foto 6"></button>
-    </div>
+    <!-- Dots (generated dynamically) -->
+    <div class="gal-dots" id="galDots"></div>
 
     <!-- Lightbox -->
     <div class="gal-lightbox" role="dialog" aria-label="Foto priekšskatījums">
@@ -209,7 +199,10 @@
 <section>
   <div class="container work-info-grid">
     <div>
-      <img src="https://images.unsplash.com/photo-1563262924-641a8b3d397f?w=800&q=80&auto=format&fit=crop" alt="Logu aksesuāri" loading="lazy">
+      <img src="../photo/portfolio/aksesuari/bernu_dros.jpg"
+           alt="Bērnu drošības aksesuāri logiem Rīgā — loga atvēršanas ierobežotāji un drošības slēdzenes, SIA Logu Apkope"
+           title="Logu un durvju aksesuāri Rīgā — bērnu drošība, rokturas, eņģes, slēdzenes, uzstādīšana, SIA Logu Apkope"
+           loading="lazy" width="800" height="600" itemprop="image">
     </div>
     <div>
       <span class="eyebrow">Mūsu darbi</span>
@@ -302,26 +295,37 @@
 </footer>
 
 <script src="../js/main.js"></script>
+<script src="../photo/portfolio/aksesuari/photos.js"></script>
 <script>
 (function(){
-  var photos = JSON.parse(document.getElementById('galPhotos').textContent);
+  var PHOTO_BASE = '../photo/portfolio/aksesuari/';
+  var photos = window.GAL_AKSESUARI_PHOTOS || [];
   var n = photos.length;
-  var cur = 0;            // index of center photo
-  var lbCur = 0;          // lightbox index
+  var cur = 0;
+  var lbCur = 0;
 
   var stage    = document.querySelector('.gal-stage');
-  var dots     = document.querySelectorAll('.gal-dot');
+  var dotsWrap = document.getElementById('galDots');
   var lightbox = document.querySelector('.gal-lightbox');
   var lbImg    = lightbox.querySelector('img');
 
-  // Slot order: s2-left, s1-left, main, s1-right, s2-right
   var slots = ['gal-s2','gal-s1','gal-main','gal-s1','gal-s2'];
 
   function idx(offset){ return (cur + offset + n*10) % n; }
 
-  function render(animate){
+  function buildDots(){
+    dotsWrap.innerHTML = '';
+    for(var i=0;i<n;i++){
+      var d = document.createElement('button');
+      d.className = 'gal-dot' + (i===0?' active':'');
+      d.setAttribute('aria-label','Foto '+(i+1));
+      (function(ii){ d.addEventListener('click', function(){ cur=ii; render(); }); })(i);
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function render(){
     var items = stage.querySelectorAll('.gal-item');
-    // offsets: -2, -1, 0, +1, +2
     var offsets = [-2,-1,0,1,2];
     items.forEach(function(el,i){
       var off = offsets[i];
@@ -329,71 +333,62 @@
       var img = el.querySelector('img');
       if(img.dataset.pi != pi){
         img.dataset.pi = pi;
-        img.src = photos[pi].src;
-        img.alt = photos[pi].alt;
+        img.src = PHOTO_BASE + photos[pi].src;
+        img.alt = photos[pi].alt || '';
+        img.title = photos[pi].title || '';
       }
       el.className = 'gal-item ' + slots[i];
       el.dataset.offset = off;
     });
-    dots.forEach(function(d,i){ d.classList.toggle('active', i===cur); });
+    dotsWrap.querySelectorAll('.gal-dot').forEach(function(d,i){
+      d.classList.toggle('active', i===cur);
+    });
   }
 
-  // Build 5 slot elements
+  // Build stage slots
   stage.innerHTML = '';
   for(var i=0;i<5;i++){
     var el = document.createElement('div');
-    el.className='gal-item';
-    el.innerHTML='<img src="" alt="" loading="lazy">';
+    el.className = 'gal-item';
+    el.innerHTML = '<img src="" alt="" loading="lazy">';
     stage.appendChild(el);
   }
-  render(false);
+  buildDots();
+  render();
 
-  // Click on slot: move to center or open lightbox
   stage.addEventListener('click', function(e){
     var item = e.target.closest('.gal-item');
     if(!item) return;
     var off = parseInt(item.dataset.offset, 10);
-    if(off === 0){
-      openLightbox(cur);
-    } else {
-      cur = idx(off);
-      render(true);
-    }
+    if(off === 0){ openLightbox(cur); } else { cur = idx(off); render(); }
   });
 
-  // Dots
-  dots.forEach(function(d,i){
-    d.addEventListener('click', function(){ cur=i; render(true); });
-  });
-
-  // Lightbox
   function openLightbox(i){
     lbCur = i;
-    lbImg.src = photos[lbCur].src;
-    lbImg.alt = photos[lbCur].alt;
+    lbImg.src = PHOTO_BASE + photos[lbCur].src;
+    lbImg.alt = photos[lbCur].alt || '';
     lightbox.classList.add('open');
-    document.body.style.overflow='hidden';
+    document.body.style.overflow = 'hidden';
   }
   function closeLightbox(){
     lightbox.classList.remove('open');
-    document.body.style.overflow='';
+    document.body.style.overflow = '';
   }
   lightbox.querySelector('.gal-lb-close').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', function(e){ if(e.target===lightbox) closeLightbox(); });
   document.addEventListener('keydown', function(e){
     if(!lightbox.classList.contains('open')) return;
     if(e.key==='Escape') closeLightbox();
-    if(e.key==='ArrowRight'){ lbCur=(lbCur+1)%n; lbImg.src=photos[lbCur].src; }
-    if(e.key==='ArrowLeft') { lbCur=(lbCur-1+n)%n; lbImg.src=photos[lbCur].src; }
+    if(e.key==='ArrowRight'){ lbCur=(lbCur+1)%n; lbImg.src=PHOTO_BASE+photos[lbCur].src; }
+    if(e.key==='ArrowLeft') { lbCur=(lbCur-1+n)%n; lbImg.src=PHOTO_BASE+photos[lbCur].src; }
   });
   lightbox.querySelector('.gal-lb-prev').addEventListener('click', function(){
-    lbCur=(lbCur-1+n)%n; lbImg.src=photos[lbCur].src;
+    lbCur=(lbCur-1+n)%n; lbImg.src=PHOTO_BASE+photos[lbCur].src;
   });
   lightbox.querySelector('.gal-lb-next').addEventListener('click', function(){
-    lbCur=(lbCur+1)%n; lbImg.src=photos[lbCur].src;
+    lbCur=(lbCur+1)%n; lbImg.src=PHOTO_BASE+photos[lbCur].src;
   });
-  document.getElementById('yr2') && (document.getElementById('yr2').textContent=new Date().getFullYear());
-  document.getElementById('yr')  && (document.getElementById('yr').textContent=new Date().getFullYear());
+  document.getElementById('yr') && (document.getElementById('yr').textContent=new Date().getFullYear());
 })();
 </script>
 
