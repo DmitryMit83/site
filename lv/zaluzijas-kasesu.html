@@ -352,14 +352,27 @@
       var btn    = block.querySelector('.kasesu-expand-btn');
       if (!img || !expDiv || !fadeEl || !btn) return;
 
+      function isMobile() { return window.innerWidth <= 820; }
+
       function getAvailable() {
-        /* Height of the photo minus the text above the expandable (tag+title+intro) */
+        if (isMobile()) {
+          /* On mobile layout is stacked — use a fixed compact height */
+          return 200;
+        }
+        /* Desktop: limit text column to photo height minus the header above the list */
         var imgH  = img.offsetHeight;
         var headH = expDiv.getBoundingClientRect().top - img.getBoundingClientRect().top;
         return Math.max(60, imgH - headH - 12);
       }
 
       function init() {
+        /* Reset first so scrollHeight is accurate */
+        expDiv.style.maxHeight = '';
+        btn.style.display = 'none';
+        fadeEl.style.opacity = '1';
+        btn.setAttribute('data-expanded', '0');
+        btn.textContent = 'Rādīt visu sarakstu ↓';
+
         var available = getAvailable();
         if (expDiv.scrollHeight > available + 16) {
           expDiv.style.maxHeight = available + 'px';
@@ -369,8 +382,13 @@
 
       if (img.complete && img.naturalHeight) { init(); }
       else { img.addEventListener('load', init); }
+
+      var resizeTimer;
       window.addEventListener('resize', function() {
-        if (btn.getAttribute('data-expanded') !== '1') init();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          if (btn.getAttribute('data-expanded') !== '1') init();
+        }, 120);
       });
 
       btn.addEventListener('click', function() {
