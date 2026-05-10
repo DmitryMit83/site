@@ -1389,6 +1389,23 @@
       restartTimer();
       resetBar();
     });
+
+    /* ── Touch swipe (mobile) ── */
+    var swipeStartX = 0, swipeStartY = 0;
+    section.addEventListener('touchstart', function(e) {
+      swipeStartX = e.touches[0].clientX;
+      swipeStartY = e.touches[0].clientY;
+    }, { passive: true });
+    section.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - swipeStartX;
+      var dy = e.changedTouches[0].clientY - swipeStartY;
+      /* Require mostly horizontal swipe of at least 50px */
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        goTo(current + (dx < 0 ? 1 : -1));
+        restartTimer();
+        resetBar();
+      }
+    }, { passive: true });
   }
 
   /* ── Init ── */
