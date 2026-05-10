@@ -198,6 +198,10 @@ body.hdr--hidden .svc-nav{top:0!important;}
 .sr-item-title mark{background:none;color:var(--accent);font-weight:700;}
 .sr-item-sub{font-size:.78rem;color:var(--text-2);margin-top:1px;}
 .sr-empty{padding:12px 16px;color:var(--text-2);font-size:.88rem;text-align:center;}
+/* ── Global mobile font scale: reduce all text by 2px (16 → 14px) ── */
+@media(max-width:900px){
+  html{font-size:87.5%;}
+}
 @media(max-width:900px){
   .util-panel.open{max-height:220px;}
   .util-panel-inner{flex-direction:column;}
