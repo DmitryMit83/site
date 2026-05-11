@@ -421,6 +421,11 @@
     #ventCardGrid.has-active .vent-card:not(.active){opacity:.45;filter:grayscale(20%);}
     #ventCardGrid.has-active .vent-card:not(.active):hover{opacity:.65;filter:none;}
   }
+  /* Mobile: switch grid to flex-column so DOM order controls visual order */
+  @media(max-width:699px){
+    #ventCardGrid.vent-mob-open{display:flex;flex-direction:column;}
+    #ventCardGrid.vent-mob-open .vent-detail-panel{max-height:2000px;opacity:1;margin-top:.75rem;margin-bottom:.75rem;}
+  }
   /* ── Detail panel ── */
   .vent-detail-panel{overflow:hidden;max-height:0;transition:max-height .5s ease,opacity .35s ease,margin .4s ease;opacity:0;margin-top:0;}
   .vent-detail-panel.open{max-height:1200px;opacity:1;margin-top:2rem;}
@@ -457,21 +462,26 @@
     function isMobile() { return window.innerWidth < 700; }
 
     function showDetail(key, card) {
+      /* Set active content */
       document.querySelectorAll('.vent-detail-content').forEach(function(el){ el.classList.remove('active'); });
       var target = document.getElementById('ventDetail-' + key);
       if (target) target.classList.add('active');
 
       if (isMobile()) {
-        /* Move panel to sit directly after the clicked card */
-        card.parentNode.insertBefore(panel, card.nextSibling);
+        /* Switch grid to flex-column so insertion order = visual order */
+        grid.classList.add('vent-mob-open');
+        /* Move panel directly after the clicked card inside the grid */
+        grid.insertBefore(panel, card.nextSibling);
       } else {
-        /* Restore panel to its original position (after the grid, inside section) */
+        /* Restore panel to original position outside the grid */
+        grid.classList.remove('vent-mob-open');
         if (panel.parentNode !== panelOrigParent) {
           panelOrigParent.insertBefore(panel, panelOrigSibling);
         }
+        panel.classList.add('open');
+        panel.setAttribute('aria-hidden', 'false');
       }
 
-      panel.classList.add('open');
       panel.setAttribute('aria-hidden', 'false');
       setTimeout(function(){ panel.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 120);
     }
@@ -481,14 +491,18 @@
       panel.setAttribute('aria-hidden', 'true');
       cards.forEach(function(c){ c.classList.remove('active'); c.setAttribute('aria-expanded','false'); });
 
+      /* On mobile: restore grid and move panel back */
+      if (isMobile()) {
+        grid.classList.remove('vent-mob-open');
+      }
+
       setTimeout(function(){
         document.querySelectorAll('.vent-detail-content').forEach(function(el){ el.classList.remove('active'); });
-        /* Always restore panel to original position after closing */
         if (panel.parentNode !== panelOrigParent) {
           panelOrigParent.insertBefore(panel, panelOrigSibling);
         }
         if (scrollTarget) scrollTarget.scrollIntoView({behavior:'smooth', block:'nearest'});
-      }, 500);
+      }, 400);
     }
 
     cards.forEach(function(card) {
