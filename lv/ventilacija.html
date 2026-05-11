@@ -272,7 +272,7 @@
       <div class="sub-body">
         <h3>AIR-BOX COMFORT / ECO</h3>
         <p>Pašregulējošs pieplūdes vārsts PVC logiem — uzstādīšana bez frēzēšanas un urbšanas. COMFORT: maks. 43 m³/h. ECO ar G3 filtru: maks. 32 m³/h. Skaņas slāpēšana 35 dB. 3 krāsas.</p>
-        <span class="price-badge">no €45</span>
+        <span class="price-badge">sākot no €17</span>
         <span class="vent-card-hint">Uzzināt vairāk ↓</span>
       </div>
     </div>
@@ -290,7 +290,7 @@
       <div class="sub-body">
         <h3>BREVIS Ventair II TRDN</h3>
         <p>Automātisks pieplūdes vārsts ar spiediena regulāciju un manuālo vadību. Maks. gaisa plūsma 26,1 m³/h, skaņas izolācija 34 dB. Alumīnija un ABS/ASA korpuss PVC un koka logiem.</p>
-        <span class="price-badge">no €75</span>
+        <span class="price-badge">sākot no €30</span>
         <span class="vent-card-hint">Uzzināt vairāk ↓</span>
       </div>
     </div>
@@ -308,7 +308,7 @@
       <div class="sub-body">
         <h3>AERECO EMM</h3>
         <p>Higroreaktīvs akustiskais vārsts — automātiski regulē gaisa plūsmu pēc telpas mitruma līmeņa. Maks. plūsma 30 m³/h, skaņas izolācija 34 dB. Akustiskā pamatne E-EHA². Pieejams 5 krāsās.</p>
-        <span class="price-badge">no €95</span>
+        <span class="price-badge">sākot no €83</span>
         <span class="vent-card-hint">Uzzināt vairāk ↓</span>
       </div>
     </div>
@@ -370,7 +370,17 @@
           style="width:100%;height:auto;border-radius:10px;border:1px solid var(--line,#e5e0da);"
         >
       </div>
-      <p class="vent-detail-price">Cena: <strong>no €45</strong> ieskaitot uzstādīšanu</p>
+      <div class="vent-price-list">
+        <div class="vent-price-row">
+          <span class="vent-price-name">AIR-BOX COMFORT <span class="vent-price-note">(bez filtra)</span></span>
+          <span class="vent-price-val">€17</span>
+        </div>
+        <div class="vent-price-row">
+          <span class="vent-price-name">AIR-BOX ECO <span class="vent-price-note">(ar G3 filtru)</span></span>
+          <span class="vent-price-val">€29</span>
+        </div>
+        <p class="vent-price-disclaimer">* Norādītās cenas ir par vārstu bez uzstādīšanas. Uzstādīšanas cenu noskaidrojiet pie mūsu menedžera.</p>
+      </div>
     </div>
 
     <div class="vent-detail-content" id="ventDetail-filtrs">
@@ -422,7 +432,17 @@
           style="width:100%;height:auto;border-radius:10px;border:1px solid var(--line,#e5e0da);"
         >
       </div>
-      <p class="vent-detail-price">Cena: <strong>no €75</strong> ieskaitot uzstādīšanu</p>
+      <div class="vent-price-list">
+        <div class="vent-price-row">
+          <span class="vent-price-name">BREVIS Ventair II TRDN <span class="vent-price-note">(bez filtra)</span></span>
+          <span class="vent-price-val">€30</span>
+        </div>
+        <div class="vent-price-row">
+          <span class="vent-price-name">BREVIS Ventair II TRDN <span class="vent-price-note">(ar filtru)</span></span>
+          <span class="vent-price-val">€44,50</span>
+        </div>
+        <p class="vent-price-disclaimer">* Norādītās cenas ir par vārstu bez uzstādīšanas. Uzstādīšanas cenu noskaidrojiet pie mūsu menedžera.</p>
+      </div>
     </div>
 
     <div class="vent-detail-content" id="ventDetail-akustiskais">
@@ -477,7 +497,17 @@
           style="width:100%;height:auto;border-radius:10px;border:1px solid var(--line,#e5e0da);"
         >
       </div>
-      <p class="vent-detail-price">Cena: <strong>no €95</strong> ieskaitot uzstādīšanu</p>
+      <div class="vent-price-list">
+        <div class="vent-price-row">
+          <span class="vent-price-name">AERECO EMM <span class="vent-price-note">(standarta)</span></span>
+          <span class="vent-price-val">€83</span>
+        </div>
+        <div class="vent-price-row">
+          <span class="vent-price-name">AERECO EMM <span class="vent-price-note">(ar akustisko pamatni E-EHA²)</span></span>
+          <span class="vent-price-val">€118</span>
+        </div>
+        <p class="vent-price-disclaimer">* Norādītās cenas ir par vārstu bez uzstādīšanas. Uzstādīšanas cenu noskaidrojiet pie mūsu menedžera.</p>
+      </div>
     </div>
 
     <button class="vent-detail-close" id="ventDetailClose" aria-label="Aizvērt">Aizvērt ↑</button>
@@ -513,6 +543,14 @@
   .vent-detail-grid ul li{font-size:.82rem;color:var(--text-2);line-height:1.5;padding-left:1rem;position:relative;}
   .vent-detail-grid ul li::before{content:"–";position:absolute;left:0;color:var(--muted);}
   .vent-detail-price{font-size:.95rem;color:var(--text);margin:0;padding-top:1rem;border-top:1px solid var(--line,#e5e0da);}
+  /* Price list inside detail panel */
+  .vent-price-list{border-top:1px solid var(--line,#e5e0da);padding-top:1rem;margin-top:.4rem;}
+  .vent-price-row{display:flex;justify-content:space-between;align-items:baseline;padding:.45rem 0;border-bottom:1px solid rgba(0,0,0,.06);}
+  .vent-price-row:last-of-type{border-bottom:none;}
+  .vent-price-name{font-size:.9rem;font-weight:600;color:var(--text);}
+  .vent-price-note{font-weight:400;color:var(--muted);font-size:.82rem;}
+  .vent-price-val{font-size:1.05rem;font-weight:700;color:var(--accent,#d04d1a);white-space:nowrap;margin-left:1rem;}
+  .vent-price-disclaimer{font-size:.78rem;color:var(--muted);margin:.65rem 0 0;line-height:1.5;font-style:italic;}
   .vent-detail-close{display:block;margin:1.4rem auto 0;background:none;border:1.5px solid var(--primary,#1E3A2E);color:var(--primary,#1E3A2E);font-size:.82rem;font-weight:600;padding:.45rem 1.4rem;border-radius:99px;cursor:pointer;transition:background .2s,color .2s;letter-spacing:.03em;}
   .vent-detail-close:hover{background:var(--primary,#1E3A2E);color:#fff;}
   @media(max-width:700px){
@@ -649,15 +687,19 @@
   </div>
   <div class="price-table-wrap">
   <table class="price-table">
-    <thead><tr><th>Pakalpojums</th><th>Apraksts</th><th>Cena</th></tr></thead>
+    <thead>
+      <tr><th>Vārsta modelis</th><th>Apraksts</th><th>Cena (bez uzst.)</th><th>Uzstādīšana</th></tr>
+    </thead>
     <tbody>
-      <tr><td>AIR-BOX COMFORT / ECO</td><td>Bez frēzēšanas; ECO ar G3 filtru</td><td>no €45</td></tr>
-      <tr><td>BREVIS Ventair II TRDN</td><td>Automātiska regulācija + manuāla vadība</td><td>no €75</td></tr>
-      <tr><td>AERECO EMM</td><td>Higroreaktīvs + akustiskā pamatne E-EHA²</td><td>no €95</td></tr>
-      <tr><td>Uzstādīšana pie balkona durvīm</td><td>Lielāks izmērs, frezēšana</td><td>no €85</td></tr>
-      <tr><td>Filtra nomaiņa (apkope)</td><td>Ieteicama reizi gadā</td><td>no €12</td></tr>
+      <tr><td>AIR-BOX COMFORT</td><td>Bez filtra, pašregulējoša, uzst. bez frēzēšanas</td><td>€17</td><td>—</td></tr>
+      <tr><td>AIR-BOX ECO</td><td>Ar G3 filtru (putekļi, ziedputekšņi, sporas)</td><td>€29</td><td>—</td></tr>
+      <tr><td>BREVIS Ventair II TRDN</td><td>Automātiska + manuāla regulācija</td><td>€30</td><td>—</td></tr>
+      <tr><td>BREVIS Ventair II TRDN ar filtru</td><td>Automātiska + manuāla regulācija, ar filtru</td><td>€44,50</td><td>—</td></tr>
+      <tr><td>AERECO EMM</td><td>Higroreaktīvs, automātiska regulācija pēc mitruma</td><td>€83</td><td>—</td></tr>
+      <tr><td>AERECO EMM ar akustisko pamatni</td><td>Higroreaktīvs + akustiskā pamatne E-EHA²</td><td>€118</td><td>—</td></tr>
     </tbody>
   </table>
+  <p style="font-size:.82rem;color:var(--muted);margin-top:.75rem;">* Norādītās cenas ir par vārstu bez uzstādīšanas. Uzstādīšanas cenu noskaidrojiet pie mūsu menedžera.</p>
   </div>
 </section>
 
