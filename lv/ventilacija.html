@@ -581,7 +581,7 @@
         /* Switch grid to flex-column so insertion order = visual order */
         grid.classList.add('vent-mob-open');
         /* Move panel directly after the clicked card inside the grid */
-        grid.insertBefore(panel, card.nextSibling);
+        grid.insertBefore(panel, card.parentNode.nextSibling);
       } else {
         /* Restore panel to original position outside the grid */
         grid.classList.remove('vent-mob-open');

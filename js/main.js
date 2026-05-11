@@ -1,3 +1,27 @@
+// ── Animated border wrappers: Mūsu darbi + Pakalpojumi cards ─────────────
+(function () {
+  function wrapCards(selector, wrapClass) {
+    document.querySelectorAll(selector).forEach(function (card) {
+      if (card.parentElement.classList.contains(wrapClass)) return;
+      var wrap = document.createElement('div');
+      wrap.className = wrapClass;
+      card.parentNode.insertBefore(wrap, card);
+      wrap.appendChild(card);
+    });
+  }
+  function init() {
+    wrapCards('.darbi-home-grid .darbi-home-card', 'dhc-w');
+    wrapCards('#pakalpojumiGrid .card', 'pak-w');
+    wrapCards('.sub.has-img', 'sub-w');
+    wrapCards('.mesh-card', 'mesh-w');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
 // ── Cookie consent banner ─────────────────────────────────────────────────
 (function () {
   if (localStorage.getItem('cookieConsent')) return;

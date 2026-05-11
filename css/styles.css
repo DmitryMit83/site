@@ -1973,3 +1973,207 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   section.alt .container > p{text-align:center;}
   section.container:has(.faq-list) > h2{text-align:center;}
 }
+
+/* ── Animated gradient border: shared keyframe ───────────────────────────
+   .dhc-w  = wrapper injected by JS around each .darbi-home-card
+   ::before = oversized conic-gradient that spins behind the card
+   overflow:hidden on wrapper clips the spinner to the card shape
+   ─────────────────────────────────────────────────────────────────────── */
+@keyframes dhc-spin{
+  to{transform:translate(-50%,-50%) rotate(360deg);}
+}
+.dhc-w{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  padding:2px;
+  display:block;   /* keeps grid-item behaviour */
+  transition:box-shadow .25s;
+}
+.dhc-w::before{
+  content:'';
+  position:absolute;
+  width:260%;
+  aspect-ratio:1 / 1;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(0deg);
+  background:conic-gradient(
+    from 0deg,
+    #3D1208 0%,
+    #A03510 15%,
+    #D04D1A 30%,
+    #F8956A 45%,
+    #FFD4B8 50%,
+    #F8956A 55%,
+    #D04D1A 70%,
+    #A03510 85%,
+    #3D1208 100%
+  );
+  animation:dhc-spin 3s linear infinite;
+  animation-play-state:paused;  /* stopped by default */
+  opacity:0;
+  transition:opacity .3s ease;
+  filter:brightness(.5);
+  z-index:0;
+}
+/* Card sits above the spinner */
+.dhc-w .darbi-home-card{
+  position:relative;
+  z-index:1;
+  border-radius:12px;
+  width:100%;
+  height:100%;
+}
+/* Hover: start spin + fade in border + lift shadow */
+.dhc-w:hover::before{
+  animation-play-state:running;
+  opacity:1;
+}
+.dhc-w:hover{
+  box-shadow:0 14px 40px rgba(208,77,26,.22);
+}
+/* Override original card hover (no Y translate, wrapper clips it) */
+.dhc-w .darbi-home-card:hover{
+  transform:none;
+  box-shadow:none;
+}
+
+/* ── Animated gradient border: sub.has-img cards (service pages) ─────────
+   .sub-w = wrapper for .sub.has-img on remonts / moskitu / zaluzijas /
+            palodzes / aksesuari / ventilacija pages
+   ─────────────────────────────────────────────────────────────────────── */
+.sub-w{
+  position:relative;
+  border-radius:10px;
+  overflow:hidden;
+  padding:2px;
+  display:block;
+  transition:box-shadow .25s;
+}
+.sub-w::before{
+  content:'';
+  position:absolute;
+  width:260%;
+  aspect-ratio:1 / 1;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(0deg);
+  background:conic-gradient(
+    from 0deg,
+    #3D1208 0%,#A03510 15%,#D04D1A 30%,#F8956A 45%,
+    #FFD4B8 50%,#F8956A 55%,#D04D1A 70%,#A03510 85%,#3D1208 100%
+  );
+  animation:dhc-spin 3s linear infinite;
+  animation-play-state:paused;
+  opacity:0;
+  transition:opacity .3s ease;
+  filter:brightness(.5);
+  z-index:0;
+}
+.sub-w .sub{
+  position:relative;z-index:1;
+  border-radius:8px;width:100%;height:100%;
+}
+.sub-w:hover::before{animation-play-state:running;opacity:1;}
+.sub-w:hover{box-shadow:0 14px 40px rgba(208,77,26,.22);}
+.sub-w .sub.has-img:hover{transform:none;box-shadow:none;border-top-color:var(--accent);}
+
+/* ── Animated gradient border: mesh-card (moskitu-tikli page) ────────────
+   .mesh-w = wrapper for .mesh-card
+   ─────────────────────────────────────────────────────────────────────── */
+.mesh-w{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  padding:2px;
+  display:block;
+  transition:box-shadow .25s;
+  flex:0 0 190px;max-width:220px; /* preserve flex sizing from .mesh-card */
+}
+.mesh-w::before{
+  content:'';
+  position:absolute;
+  width:260%;
+  aspect-ratio:1 / 1;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(0deg);
+  background:conic-gradient(
+    from 0deg,
+    #3D1208 0%,#A03510 15%,#D04D1A 30%,#F8956A 45%,
+    #FFD4B8 50%,#F8956A 55%,#D04D1A 70%,#A03510 85%,#3D1208 100%
+  );
+  animation:dhc-spin 3s linear infinite;
+  animation-play-state:paused;
+  opacity:0;
+  transition:opacity .3s ease;
+  filter:brightness(.5);
+  z-index:0;
+}
+.mesh-w .mesh-card{
+  position:relative;z-index:1;
+  border-radius:12px;width:100%;height:100%;
+  flex:unset;max-width:unset; /* sizing now on .mesh-w */
+  display:flex;flex-direction:column;
+}
+.mesh-w:hover::before{animation-play-state:running;opacity:1;}
+.mesh-w:hover{box-shadow:0 14px 40px rgba(208,77,26,.22);}
+.mesh-w .mesh-card:hover{transform:none;box-shadow:none;}
+
+/* ── Animated gradient border: Pakalpojumi service cards ─────────────────
+   .pak-w = wrapper injected by JS around each #pakalpojumiGrid .card
+   ─────────────────────────────────────────────────────────────────────── */
+.pak-w{
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  padding:2px;
+  display:block;
+  transition:box-shadow .25s;
+}
+.pak-w::before{
+  content:'';
+  position:absolute;
+  width:260%;
+  aspect-ratio:1 / 1;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(0deg);
+  background:conic-gradient(
+    from 0deg,
+    #3D1208 0%,
+    #A03510 15%,
+    #D04D1A 30%,
+    #F8956A 45%,
+    #FFD4B8 50%,
+    #F8956A 55%,
+    #D04D1A 70%,
+    #A03510 85%,
+    #3D1208 100%
+  );
+  animation:dhc-spin 3s linear infinite;
+  animation-play-state:paused;
+  opacity:0;
+  transition:opacity .3s ease;
+  filter:brightness(.5);
+  z-index:0;
+}
+.pak-w .card{
+  position:relative;
+  z-index:1;
+  border-radius:9px;
+  width:100%;
+  height:100%;
+}
+.pak-w:hover::before{
+  animation-play-state:running;
+  opacity:1;
+}
+.pak-w:hover{
+  box-shadow:0 14px 40px rgba(208,77,26,.22);
+}
+.pak-w .card:hover{
+  transform:none;
+  box-shadow:none;
+  border-color:var(--line);
+  border-top-color:var(--accent);
+}
