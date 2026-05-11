@@ -194,7 +194,7 @@
       <h2>Kāpēc moderna dzīvokļa logs neelpo?</h2>
     </div>
 
-    <div style="max-width:760px;margin:0 auto;">
+    <div>
 
       <p style="font-size:1.05rem;margin-bottom:1.5rem;line-height:1.7;text-align:center;">Mūsdienu logs «neelpo» nevis tāpēc, ka ar to kaut kas nav kārtībā — gluži otrādi, tāpēc ka tas ir <strong>pārāk hermētisks</strong>.</p>
 
@@ -413,10 +413,14 @@
 
   <style>
   /* ── Card interactivity ── */
-  .vent-card{cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;}
+  .vent-card{cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s,opacity .25s,filter .25s;}
   .vent-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.12);}
   .vent-card.active{border:2px solid var(--accent,#d04d1a);box-shadow:0 8px 28px rgba(208,77,26,.18);}
   .vent-card-hint{display:block;margin-top:.6rem;font-size:.78rem;font-weight:600;color:var(--accent,#d04d1a);letter-spacing:.02em;}
+  @media(min-width:700px){
+    #ventCardGrid.has-active .vent-card:not(.active){opacity:.45;filter:grayscale(20%);}
+    #ventCardGrid.has-active .vent-card:not(.active):hover{opacity:.65;filter:none;}
+  }
   /* ── Detail panel ── */
   .vent-detail-panel{overflow:hidden;max-height:0;transition:max-height .5s ease,opacity .35s ease,margin .4s ease;opacity:0;margin-top:0;}
   .vent-detail-panel.open{max-height:1200px;opacity:1;margin-top:2rem;}
@@ -441,39 +445,65 @@
   </style>
   <script>
   (function(){
-    var cards  = document.querySelectorAll('.vent-card');
-    var panel  = document.getElementById('ventDetailPanel');
+    var cards    = document.querySelectorAll('.vent-card');
+    var panel    = document.getElementById('ventDetailPanel');
     var closeBtn = document.getElementById('ventDetailClose');
+    var grid     = document.getElementById('ventCardGrid');
 
-    function showDetail(key) {
+    /* Original DOM position — used to restore panel on desktop */
+    var panelOrigParent  = panel.parentNode;
+    var panelOrigSibling = panel.nextSibling;
+
+    function isMobile() { return window.innerWidth < 700; }
+
+    function showDetail(key, card) {
       document.querySelectorAll('.vent-detail-content').forEach(function(el){ el.classList.remove('active'); });
       var target = document.getElementById('ventDetail-' + key);
       if (target) target.classList.add('active');
+
+      if (isMobile()) {
+        /* Move panel to sit directly after the clicked card */
+        card.parentNode.insertBefore(panel, card.nextSibling);
+      } else {
+        /* Restore panel to its original position (after the grid, inside section) */
+        if (panel.parentNode !== panelOrigParent) {
+          panelOrigParent.insertBefore(panel, panelOrigSibling);
+        }
+      }
+
       panel.classList.add('open');
       panel.setAttribute('aria-hidden', 'false');
+      setTimeout(function(){ panel.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 120);
     }
 
-    function hideDetail() {
+    function hideDetail(scrollTarget) {
       panel.classList.remove('open');
       panel.setAttribute('aria-hidden', 'true');
       cards.forEach(function(c){ c.classList.remove('active'); c.setAttribute('aria-expanded','false'); });
+
       setTimeout(function(){
         document.querySelectorAll('.vent-detail-content').forEach(function(el){ el.classList.remove('active'); });
+        /* Always restore panel to original position after closing */
+        if (panel.parentNode !== panelOrigParent) {
+          panelOrigParent.insertBefore(panel, panelOrigSibling);
+        }
+        if (scrollTarget) scrollTarget.scrollIntoView({behavior:'smooth', block:'nearest'});
       }, 500);
     }
 
     cards.forEach(function(card) {
       function toggle() {
-        var key = card.getAttribute('data-vent');
+        var key      = card.getAttribute('data-vent');
         var isActive = card.classList.contains('active');
         cards.forEach(function(c){ c.classList.remove('active'); c.setAttribute('aria-expanded','false'); });
         if (isActive) {
-          hideDetail();
+          grid.classList.remove('has-active');
+          hideDetail(isMobile() ? card : grid);
         } else {
           card.classList.add('active');
           card.setAttribute('aria-expanded','true');
-          showDetail(key);
-          setTimeout(function(){ panel.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 100);
+          grid.classList.add('has-active');
+          showDetail(key, card);
         }
       }
       card.addEventListener('click', toggle);
@@ -481,8 +511,9 @@
     });
 
     closeBtn.addEventListener('click', function(){
-      hideDetail();
-      setTimeout(function(){ document.getElementById('ventCardGrid').scrollIntoView({behavior:'smooth', block:'nearest'}); }, 100);
+      var activeCard = document.querySelector('.vent-card.active');
+      grid.classList.remove('has-active');
+      hideDetail(isMobile() ? activeCard : grid);
     });
   })();
   </script>
