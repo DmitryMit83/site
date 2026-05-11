@@ -1991,6 +1991,7 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 .sub-w{position:relative;overflow:hidden;display:block;border-radius:9px;padding:1px;}
 .pak-w{position:relative;overflow:hidden;display:block;border-radius:11px;padding:1px;}
 .mesh-w{position:relative;overflow:hidden;display:block;border-radius:15px;padding:1px;flex:0 0 196px;max-width:226px;}
+@media(max-width:900px){.mesh-w{flex:0 0 calc(50% - .6rem);max-width:calc(50% - .6rem);}}
 
 /* Shine layer */
 .dhc-w::before,.sub-w::before,.pak-w::before,.mesh-w::before{

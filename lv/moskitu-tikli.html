@@ -511,6 +511,14 @@
 .mesh-card-body p{font-size:.83rem;color:var(--muted);margin:0 0 .8rem;line-height:1.5;}
 .mesh-more-btn{width:100%;padding:.5rem 0;border:1.5px solid var(--primary);background:transparent;color:var(--primary);border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s,color .15s;}
 .mesh-tap-hint{display:block;font-size:.78rem;font-weight:600;color:var(--primary);margin-top:.5rem;}
+@media(max-width:900px){
+  .mesh-type-grid{gap:.6rem;}
+  .mesh-card{flex:0 0 calc(50% - .6rem);max-width:calc(50% - .6rem);}
+  .mesh-card-img{height:100px;}
+  .mesh-card-body{padding:.7rem .8rem .85rem;}
+  .mesh-card-body h3{font-size:.88rem;}
+  .mesh-card-body p{font-size:.76rem;}
+}
 
 /* ── Modal ── */
 .mesh-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;align-items:center;justify-content:center;padding:1rem;}
