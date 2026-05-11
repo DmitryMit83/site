@@ -165,6 +165,7 @@
 .vent-hero-img{position:absolute;bottom:-70px;right:0;height:calc(100% + 70px);width:auto;opacity:.88;pointer-events:none;user-select:none;}
 @media(max-width:900px){.vent-hero-img{height:70%;bottom:0;opacity:.65;}}
 @media(max-width:600px){.vent-hero-img{display:none;}}
+@media(max-width:768px){.vent-install-img{object-position:top!important;}}
 </style>
 <section class="page-hero" style="overflow:hidden;">
   <div class="container" style="position:relative;">
@@ -256,36 +257,236 @@
     <h2>Pieplūdes vārsts — vienkāršs un efektīvs</h2>
     <p>Pieplūdes ventilācijas vārsts uzstāda uz loga augšas rāmī un nodrošina kontrolētu svaigu gaisu bez atvērtiem logiem. Gandrīz nepamanāms uz loga, nesamazina siltumizolāciju.</p>
   </div>
-  <div class="grid cols-3">
+  <div class="grid cols-3" id="ventCardGrid">
 
-    <div class="sub has-img">
+    <div class="sub has-img vent-card" data-vent="standarta" tabindex="0" role="button" aria-expanded="false">
       <div class="sub-img"><img src="https://images.unsplash.com/photo-1504307651908-5e7d7e5b91fa?w=600&q=80&auto=format&fit=crop" alt="Standarta pieplūdes vārsts logam" loading="lazy"></div>
       <div class="sub-body">
         <h3>Standarta pieplūdes vārsts</h3>
         <p>Uzstāda loga augšējā rāmī, regulē gaisa daudzumu ar slīdni. Piemērots dzīvokļiem un birojiem. Uzstādīšana bez loga demontāžas — 30–60 min.</p>
         <span class="price-badge">no €45</span>
+        <span class="vent-card-hint">Uzzināt vairāk ↓</span>
       </div>
     </div>
 
-    <div class="sub has-img">
+    <div class="sub has-img vent-card" data-vent="filtrs" tabindex="0" role="button" aria-expanded="false">
       <div class="sub-img"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80&auto=format&fit=crop" alt="Regulējams vārsts ar filtru" loading="lazy"></div>
       <div class="sub-body">
         <h3>Vārsts ar filtru un regulāciju</h3>
         <p>Aprīkots ar putekļu un ziedputekšņu filtru. Gaisa daudzuma regulācija — no pilnīgi aizvērta līdz maksimālai plūsmai. Ideāls alerģiķiem un bērnu istabām.</p>
         <span class="price-badge">no €75</span>
+        <span class="vent-card-hint">Uzzināt vairāk ↓</span>
       </div>
     </div>
 
-    <div class="sub has-img">
+    <div class="sub has-img vent-card" data-vent="akustiskais" tabindex="0" role="button" aria-expanded="false">
       <div class="sub-img"><img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&q=80&auto=format&fit=crop" alt="Akustiskais pieplūdes vārsts" loading="lazy"></div>
       <div class="sub-body">
         <h3>Akustiskais vārsts</h3>
         <p>Nodrošina svaigu gaisu, vienlaikus saglabājot pazeminātu trokšņu līmeni — līdz 45 dB uzsūkšana. Ieteicams pilsētas centros un pie intensīvas satiksmes.</p>
         <span class="price-badge">no €95</span>
+        <span class="vent-card-hint">Uzzināt vairāk ↓</span>
       </div>
     </div>
 
   </div>
+
+  <!-- ── Detail panel ── -->
+  <div class="vent-detail-panel" id="ventDetailPanel" aria-hidden="true">
+
+    <div class="vent-detail-content" id="ventDetail-standarta">
+      <div class="vent-detail-tag">Standarta pieplūdes vārsts</div>
+      <h3>Standarta pieplūdes vārsts — par ko tas ir?</h3>
+      <p>Standarta pieplūdes vārsts ir vienkāršākais un populārākais risinājums kontrolētai ventilācijai dzīvokļos un birojos. Vārsts tiek uzstādīts loga augšējā PVC vai koka rāmī, un gaisa plūsma tiek regulēta ar roku vadāmu slīdni — no pilnīgi aizvērta līdz maksimālai plūsmai.</p>
+      <div class="vent-detail-grid">
+        <div>
+          <h4>✅ Priekšrocības</h4>
+          <ul>
+            <li>Uzstādīšana 30–60 minūtēs bez loga demontāžas</li>
+            <li>Nesamazina loga siltumizolāciju</li>
+            <li>Gandrīz nepamanāms — saplūst ar loga profilu</li>
+            <li>Viegli tīrāms un ilgmūžīgs</li>
+            <li>Piemērots PVC, koka un alumīnija logiem</li>
+          </ul>
+        </div>
+        <div>
+          <h4>📋 Tehniskie parametri</h4>
+          <ul>
+            <li>Gaisa plūsma: 5–25 m³/h</li>
+            <li>Uzstādīšanas platums: no 600 mm</li>
+            <li>Materiāls: ABS plastmasa vai alumīnijs</li>
+            <li>Krāsa: balta (pēc pasūtījuma — brūna, pelēka)</li>
+            <li>Garantija: 2 gadi</li>
+          </ul>
+        </div>
+        <div>
+          <h4>🏠 Piemērots</h4>
+          <ul>
+            <li>Dzīvokļiem ar plastikāta logiem</li>
+            <li>Guļamistabām un viesistabām</li>
+            <li>Birojiem un tirdzniecības telpām</li>
+            <li>Mājām ar centrālo ventilāciju</li>
+          </ul>
+        </div>
+      </div>
+      <p class="vent-detail-price">Cena: <strong>no €45</strong> ieskaitot uzstādīšanu</p>
+    </div>
+
+    <div class="vent-detail-content" id="ventDetail-filtrs">
+      <div class="vent-detail-tag">Vārsts ar filtru un regulāciju</div>
+      <h3>Vārsts ar filtru — tīrs gaiss bez alerģēniem</h3>
+      <p>Šis vārsts ir aprīkots ar maiņamu putekļu un ziedputekšņu filtru, kas aiztur smalkas daļiņas pirms gaisa nonākšanas telpā. Gaisa daudzuma regulācija ir precīzāka — ar vairākiem fiksētiem iestatījumiem vai pilnīgu aizslēgšanu. Ideāls risinājums ģimenēm ar bērniem un alerģijas slimniekiem.</p>
+      <div class="vent-detail-grid">
+        <div>
+          <h4>✅ Priekšrocības</h4>
+          <ul>
+            <li>Iebūvēts filtra elements — putekļi, ziedputekšņi, smalkās daļiņas</li>
+            <li>Precīza gaisa plūsmas regulācija vairākos līmeņos</li>
+            <li>Filtrs maināms reizi gadā — vienkārši un lēti</li>
+            <li>Uzstādīšana bez demontāžas — 45–75 min</li>
+            <li>Darbojas klusāk nekā standarta vārsts</li>
+          </ul>
+        </div>
+        <div>
+          <h4>📋 Tehniskie parametri</h4>
+          <ul>
+            <li>Gaisa plūsma: 5–30 m³/h</li>
+            <li>Filtra klase: G3–G4 (putekļi, ziedputekšņi)</li>
+            <li>Regulācija: 3–5 fiksēti iestatījumi</li>
+            <li>Filtra maiņas intervāls: 6–12 mēneši</li>
+            <li>Garantija: 2 gadi</li>
+          </ul>
+        </div>
+        <div>
+          <h4>🏠 Piemērots</h4>
+          <ul>
+            <li>Alerģiķiem un astmas slimniekiem</li>
+            <li>Bērnu istabām un guļamistabām</li>
+            <li>Pilsētas dzīvokļiem ar piesārņotu gaisu</li>
+            <li>Telpām ar augstu mitrumu</li>
+          </ul>
+        </div>
+      </div>
+      <p class="vent-detail-price">Cena: <strong>no €75</strong> ieskaitot uzstādīšanu un filtru</p>
+    </div>
+
+    <div class="vent-detail-content" id="ventDetail-akustiskais">
+      <div class="vent-detail-tag">Akustiskais vārsts</div>
+      <h3>Akustiskais vārsts — svaigs gaiss un klusums</h3>
+      <p>Akustiskais pieplūdes vārsts ir aprīkots ar skaņas slāpēšanas kameru, kas samazina ielu troksni pat par 42–45 dB. Tas ir optimālais risinājums dzīvokļiem, kas atrodas pie intensīvas satiksmes, dzelzceļa vai trokšņainiem komercobjektiem — svaigs gaiss bez kompromisiem ar klusumu.</p>
+      <div class="vent-detail-grid">
+        <div>
+          <h4>✅ Priekšrocības</h4>
+          <ul>
+            <li>Skaņas slāpēšana: līdz 45 dB — ievērojami klusāk</li>
+            <li>Svaigs gaiss bez jebkāda trokšņa pieauguma</li>
+            <li>Iebūvēts filtrs pret putekļiem un kukaiņiem</li>
+            <li>Regulējama gaisa plūsma ar slīdni</li>
+            <li>Uzstādīšana bez loga demontāžas — 60–90 min</li>
+          </ul>
+        </div>
+        <div>
+          <h4>📋 Tehniskie parametri</h4>
+          <ul>
+            <li>Gaisa plūsma: 5–20 m³/h</li>
+            <li>Skaņas slāpēšana: 42–45 dB</li>
+            <li>Korpusa materiāls: ABS + akustiskā sūkļa slānis</li>
+            <li>Uzstādīšanas garums: no 700 mm</li>
+            <li>Garantija: 2 gadi</li>
+          </ul>
+        </div>
+        <div>
+          <h4>🏠 Piemērots</h4>
+          <ul>
+            <li>Dzīvokļiem pie noslogtām ielām</li>
+            <li>Telpām pie dzelzceļa vai lidostas</li>
+            <li>Birojiem ar augstām trokšņa prasībām</li>
+            <li>Guļamistabām pilsētas centrā</li>
+          </ul>
+        </div>
+      </div>
+      <p class="vent-detail-price">Cena: <strong>no €95</strong> ieskaitot uzstādīšanu</p>
+    </div>
+
+    <button class="vent-detail-close" id="ventDetailClose" aria-label="Aizvērt">Aizvērt ↑</button>
+  </div>
+
+  <style>
+  /* ── Card interactivity ── */
+  .vent-card{cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;}
+  .vent-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.12);}
+  .vent-card.active{border:2px solid var(--accent,#d04d1a);box-shadow:0 8px 28px rgba(208,77,26,.18);}
+  .vent-card-hint{display:block;margin-top:.6rem;font-size:.78rem;font-weight:600;color:var(--accent,#d04d1a);letter-spacing:.02em;}
+  /* ── Detail panel ── */
+  .vent-detail-panel{overflow:hidden;max-height:0;transition:max-height .5s ease,opacity .35s ease,margin .4s ease;opacity:0;margin-top:0;}
+  .vent-detail-panel.open{max-height:1200px;opacity:1;margin-top:2rem;}
+  .vent-detail-content{display:none;background:var(--paper-2,#f3ede6);border-radius:16px;padding:2rem 2.2rem 1.6rem;border:1px solid var(--line,#e5e0da);}
+  .vent-detail-content.active{display:block;}
+  .vent-detail-tag{display:inline-flex;background:var(--accent,#d04d1a);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .9rem;border-radius:99px;margin-bottom:.9rem;}
+  .vent-detail-content h3{font-size:1.2rem;font-weight:700;color:var(--primary);margin:0 0 .75rem;}
+  .vent-detail-content > p{font-size:.93rem;color:var(--text-2);line-height:1.75;margin:0 0 1.4rem;}
+  .vent-detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:1.4rem;}
+  .vent-detail-grid > div{background:#fff;border-radius:12px;padding:1.1rem 1.2rem;border:1px solid var(--line,#e5e0da);}
+  .vent-detail-grid h4{font-size:.88rem;font-weight:700;color:var(--text);margin:0 0 .6rem;}
+  .vent-detail-grid ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.35rem;}
+  .vent-detail-grid ul li{font-size:.82rem;color:var(--text-2);line-height:1.5;padding-left:1rem;position:relative;}
+  .vent-detail-grid ul li::before{content:"–";position:absolute;left:0;color:var(--muted);}
+  .vent-detail-price{font-size:.95rem;color:var(--text);margin:0;padding-top:1rem;border-top:1px solid var(--line,#e5e0da);}
+  .vent-detail-close{display:block;margin:1.4rem auto 0;background:none;border:1.5px solid var(--primary,#1E3A2E);color:var(--primary,#1E3A2E);font-size:.82rem;font-weight:600;padding:.45rem 1.4rem;border-radius:99px;cursor:pointer;transition:background .2s,color .2s;letter-spacing:.03em;}
+  .vent-detail-close:hover{background:var(--primary,#1E3A2E);color:#fff;}
+  @media(max-width:700px){
+    .vent-detail-grid{grid-template-columns:1fr;}
+    .vent-detail-content{padding:1.4rem 1.1rem 1.2rem;}
+  }
+  </style>
+  <script>
+  (function(){
+    var cards  = document.querySelectorAll('.vent-card');
+    var panel  = document.getElementById('ventDetailPanel');
+    var closeBtn = document.getElementById('ventDetailClose');
+
+    function showDetail(key) {
+      document.querySelectorAll('.vent-detail-content').forEach(function(el){ el.classList.remove('active'); });
+      var target = document.getElementById('ventDetail-' + key);
+      if (target) target.classList.add('active');
+      panel.classList.add('open');
+      panel.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideDetail() {
+      panel.classList.remove('open');
+      panel.setAttribute('aria-hidden', 'true');
+      cards.forEach(function(c){ c.classList.remove('active'); c.setAttribute('aria-expanded','false'); });
+      setTimeout(function(){
+        document.querySelectorAll('.vent-detail-content').forEach(function(el){ el.classList.remove('active'); });
+      }, 500);
+    }
+
+    cards.forEach(function(card) {
+      function toggle() {
+        var key = card.getAttribute('data-vent');
+        var isActive = card.classList.contains('active');
+        cards.forEach(function(c){ c.classList.remove('active'); c.setAttribute('aria-expanded','false'); });
+        if (isActive) {
+          hideDetail();
+        } else {
+          card.classList.add('active');
+          card.setAttribute('aria-expanded','true');
+          showDetail(key);
+          setTimeout(function(){ panel.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 100);
+        }
+      }
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+    });
+
+    closeBtn.addEventListener('click', function(){
+      hideDetail();
+      setTimeout(function(){ document.getElementById('ventCardGrid').scrollIntoView({behavior:'smooth', block:'nearest'}); }, 100);
+    });
+  })();
+  </script>
+
 </section>
 
 <!-- ── Uzstādīšanas process ───────────────────────────────────── -->
@@ -293,6 +494,7 @@
   <div class="container work-info-grid">
     <div>
       <img
+        class="vent-install-img"
         src="../photo/ventilacijas/vent_ka_mes.jpg"
         alt="Pieplūdes gaisa vārsta uzstādīšana uz PVC loga — logu ventilācijas vārstu montāža Rīgā, svaigs gaiss dzīvoklī bez caurvēja, SIA Logu Apkope"
         title="Logu ventilācijas vārstu uzstādīšana Rīgā — pieplūdes gaisa vārsts PVC, koka un alumīnija logiem, frezēšana bez demontāžas, garantija 2 gadi"
