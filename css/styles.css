@@ -326,6 +326,7 @@ body.hdr--hidden .svc-nav{top:0!important;}
   font-weight:600;letter-spacing:.2px;border:1px solid transparent;cursor:pointer;
   transition:transform .15s ease,background .2s ease,border-color .2s;
   font-family:inherit;font-size:.95rem;
+  position:relative;overflow:hidden;isolation:isolate;
 }
 .btn-primary{background:var(--accent);color:#fff}
 .btn-primary:hover{background:#B23F13;color:#fff;transform:translateY(-1px)}
@@ -1974,206 +1975,102 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   section.container:has(.faq-list) > h2{text-align:center;}
 }
 
-/* ── Animated gradient border: shared keyframe ───────────────────────────
-   .dhc-w  = wrapper injected by JS around each .darbi-home-card
-   ::before = oversized conic-gradient that spins behind the card
-   overflow:hidden on wrapper clips the spinner to the card shape
+/* ── Shine border on hover ────────────────────────────────────────────────
+   Converted from ShineBorder React component.
+   Radial gradient sweeps around the border via mask-composite:exclude.
+   Wrappers hold the ::before shine layer; cards are neutral inside.
    ─────────────────────────────────────────────────────────────────────── */
-@keyframes dhc-spin{
-  to{transform:translate(-50%,-50%) rotate(360deg);}
-}
-.dhc-w{
-  position:relative;
-  border-radius:16px;
-  overflow:hidden;
-  padding:2px;
-  display:block;   /* keeps grid-item behaviour */
-  transition:box-shadow .25s;
-}
-.dhc-w::before{
-  content:'';
-  position:absolute;
-  width:260%;
-  aspect-ratio:1 / 1;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%) rotate(0deg);
-  background:conic-gradient(
-    from 0deg,
-    #3D1208 0%,
-    #A03510 15%,
-    #D04D1A 30%,
-    #F8956A 45%,
-    #FFD4B8 50%,
-    #F8956A 55%,
-    #D04D1A 70%,
-    #A03510 85%,
-    #3D1208 100%
-  );
-  animation:dhc-spin 3s linear infinite;
-  animation-play-state:paused;  /* stopped by default */
-  opacity:0;
-  transition:opacity .3s ease;
-  filter:brightness(.5);
-  z-index:0;
-}
-/* Card sits above the spinner */
-.dhc-w .darbi-home-card{
-  position:relative;
-  z-index:1;
-  border-radius:12px;
-  width:100%;
-  height:100%;
-}
-/* Hover: start spin + fade in border + lift shadow */
-.dhc-w:hover::before{
-  animation-play-state:running;
-  opacity:1;
-}
-.dhc-w:hover{
-  box-shadow:0 14px 40px rgba(208,77,26,.22);
-}
-/* Override original card hover (no Y translate, wrapper clips it) */
-.dhc-w .darbi-home-card:hover{
-  transform:none;
-  box-shadow:none;
+@keyframes shine-border{
+  0%  {background-position:0% 0%;}
+  50% {background-position:100% 100%;}
+  100%{background-position:0% 0%;}
 }
 
-/* ── Animated gradient border: sub.has-img cards (service pages) ─────────
-   .sub-w = wrapper for .sub.has-img on remonts / moskitu / zaluzijas /
-            palodzes / aksesuari / ventilacija pages
-   ─────────────────────────────────────────────────────────────────────── */
-.sub-w{
-  position:relative;
-  border-radius:10px;
-  overflow:hidden;
-  padding:2px;
-  display:block;
-  transition:box-shadow .25s;
-}
-.sub-w::before{
-  content:'';
-  position:absolute;
-  width:260%;
-  aspect-ratio:1 / 1;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%) rotate(0deg);
-  background:conic-gradient(
-    from 0deg,
-    #3D1208 0%,#A03510 15%,#D04D1A 30%,#F8956A 45%,
-    #FFD4B8 50%,#F8956A 55%,#D04D1A 70%,#A03510 85%,#3D1208 100%
-  );
-  animation:dhc-spin 3s linear infinite;
-  animation-play-state:paused;
-  opacity:0;
-  transition:opacity .3s ease;
-  filter:brightness(.5);
-  z-index:0;
-}
-.sub-w .sub{
-  position:relative;z-index:1;
-  border-radius:8px;width:100%;height:100%;
-}
-.sub-w:hover::before{animation-play-state:running;opacity:1;}
-.sub-w:hover{box-shadow:0 14px 40px rgba(208,77,26,.22);}
-.sub-w .sub.has-img:hover{transform:none;box-shadow:none;border-top-color:var(--accent);}
+/* Wrapper layout */
+.dhc-w{position:relative;overflow:hidden;display:block;border-radius:15px;padding:1px;}
+.sub-w{position:relative;overflow:hidden;display:block;border-radius:9px;padding:1px;}
+.pak-w{position:relative;overflow:hidden;display:block;border-radius:11px;padding:1px;}
+.mesh-w{position:relative;overflow:hidden;display:block;border-radius:15px;padding:1px;flex:0 0 196px;max-width:226px;}
 
-/* ── Animated gradient border: mesh-card (moskitu-tikli page) ────────────
-   .mesh-w = wrapper for .mesh-card
-   ─────────────────────────────────────────────────────────────────────── */
-.mesh-w{
-  position:relative;
-  border-radius:16px;
-  overflow:hidden;
-  padding:2px;
-  display:block;
-  transition:box-shadow .25s;
-  flex:0 0 190px;max-width:220px; /* preserve flex sizing from .mesh-card */
-}
-.mesh-w::before{
+/* Shine layer */
+.dhc-w::before,.sub-w::before,.pak-w::before,.mesh-w::before{
   content:'';
-  position:absolute;
-  width:260%;
-  aspect-ratio:1 / 1;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%) rotate(0deg);
-  background:conic-gradient(
-    from 0deg,
-    #3D1208 0%,#A03510 15%,#D04D1A 30%,#F8956A 45%,
-    #FFD4B8 50%,#F8956A 55%,#D04D1A 70%,#A03510 85%,#3D1208 100%
-  );
-  animation:dhc-spin 3s linear infinite;
-  animation-play-state:paused;
+  position:absolute;inset:0;
+  border-radius:inherit;
+  padding:1px;
+  background-image:radial-gradient(transparent,transparent,#D04D1A,#F8956A,transparent,transparent);
+  background-size:300% 300%;
+  background-position:0% 0%;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  animation:shine-border 5s linear infinite;
   opacity:0;
-  transition:opacity .3s ease;
-  filter:brightness(.5);
-  z-index:0;
+  transition:opacity .4s ease;
+  pointer-events:none;
 }
-.mesh-w .mesh-card{
-  position:relative;z-index:1;
-  border-radius:12px;width:100%;height:100%;
-  flex:unset;max-width:unset; /* sizing now on .mesh-w */
-  display:flex;flex-direction:column;
-}
-.mesh-w:hover::before{animation-play-state:running;opacity:1;}
-.mesh-w:hover{box-shadow:0 14px 40px rgba(208,77,26,.22);}
-.mesh-w .mesh-card:hover{transform:none;box-shadow:none;}
 
-/* ── Animated gradient border: Pakalpojumi service cards ─────────────────
-   .pak-w = wrapper injected by JS around each #pakalpojumiGrid .card
+/* Show shine on hover */
+.dhc-w:hover::before,.sub-w:hover::before,.pak-w:hover::before,.mesh-w:hover::before{opacity:1;}
+
+/* Inner card sizing */
+.dhc-w .darbi-home-card,
+.sub-w .sub,
+.pak-w .card,
+.mesh-w .mesh-card{width:100%;height:100%;}
+.mesh-w .mesh-card{display:flex;flex-direction:column;flex:unset;max-width:unset;}
+
+/* No lift on hover */
+.dhc-w .darbi-home-card:hover,
+.sub-w .sub.has-img:hover,
+.pak-w .card:hover,
+.mesh-w .mesh-card:hover{transform:none;}
+
+/* Restore original card borders (undo cursor-border overrides) */
+.darbi-home-card{border:none;background-image:none;background-clip:border-box;background-color:var(--paper,#fff);}
+.sub.has-img{border-top:3px solid var(--accent);border-left-width:0;background-image:none;background-clip:border-box;background-color:var(--paper,#fff);}
+#pakalpojumiGrid .card{border:1px solid var(--line);border-top:3px solid var(--accent);background-image:none;background-clip:border-box;background-color:var(--paper,#fff);}
+.mesh-card{border:1.5px solid var(--accent);background-image:none;background-clip:border-box;background-color:#fff;}
+.sub.has-img:hover{border-top-color:var(--green);}
+.card:hover{border-color:var(--green);border-top-color:var(--green);}
+
+/* ── Shiny Button effect (converted from ShinyButton React component) ────
+   @property lets CSS animate the custom percentage variable.
+   A diagonal white shimmer sweeps left→right, then pauses before repeating.
    ─────────────────────────────────────────────────────────────────────── */
-.pak-w{
-  position:relative;
-  border-radius:12px;
-  overflow:hidden;
-  padding:2px;
-  display:block;
-  transition:box-shadow .25s;
+@property --shiny-x {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 100%;
 }
-.pak-w::before{
-  content:'';
-  position:absolute;
-  width:260%;
-  aspect-ratio:1 / 1;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%) rotate(0deg);
-  background:conic-gradient(
-    from 0deg,
-    #3D1208 0%,
-    #A03510 15%,
-    #D04D1A 30%,
-    #F8956A 45%,
-    #FFD4B8 50%,
-    #F8956A 55%,
-    #D04D1A 70%,
-    #A03510 85%,
-    #3D1208 100%
+@keyframes shiny-btn {
+  0%   { --shiny-x: 100%; }
+  35%  { --shiny-x: -100%; }
+  100% { --shiny-x: -100%; }
+}
+
+/* Ensure base button styles support the pseudo-element */
+.hsl-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Shimmer layer */
+.btn::after, .hsl-btn::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    -75deg,
+    transparent              calc(var(--shiny-x) + 20%),
+    rgba(255,255,255,.28)    calc(var(--shiny-x) + 25%),
+    transparent              calc(var(--shiny-x) + 30%)
   );
-  animation:dhc-spin 3s linear infinite;
-  animation-play-state:paused;
-  opacity:0;
-  transition:opacity .3s ease;
-  filter:brightness(.5);
-  z-index:0;
+  animation: shiny-btn 3s ease-in-out infinite;
 }
-.pak-w .card{
-  position:relative;
-  z-index:1;
-  border-radius:9px;
-  width:100%;
-  height:100%;
-}
-.pak-w:hover::before{
-  animation-play-state:running;
-  opacity:1;
-}
-.pak-w:hover{
-  box-shadow:0 14px 40px rgba(208,77,26,.22);
-}
-.pak-w .card:hover{
-  transform:none;
-  box-shadow:none;
-  border-color:var(--line);
-  border-top-color:var(--accent);
-}
+
+/* Press feedback */
+.btn:active, .hsl-btn:active { transform: scale(.95); }

@@ -1,5 +1,6 @@
-// ── Animated border wrappers: Mūsu darbi + Pakalpojumi cards ─────────────
+// ── Cursor-following gradient border ─────────────────────────────────────
 (function () {
+  /* Wrap cards so grid/flex layout is preserved (wrappers are neutral divs) */
   function wrapCards(selector, wrapClass) {
     document.querySelectorAll(selector).forEach(function (card) {
       if (card.parentElement.classList.contains(wrapClass)) return;
@@ -9,12 +10,14 @@
       wrap.appendChild(card);
     });
   }
+
   function init() {
     wrapCards('.darbi-home-grid .darbi-home-card', 'dhc-w');
-    wrapCards('#pakalpojumiGrid .card', 'pak-w');
-    wrapCards('.sub.has-img', 'sub-w');
-    wrapCards('.mesh-card', 'mesh-w');
+    wrapCards('#pakalpojumiGrid .card',            'pak-w');
+    wrapCards('.sub.has-img',                      'sub-w');
+    wrapCards('.mesh-card',                        'mesh-w');
   }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

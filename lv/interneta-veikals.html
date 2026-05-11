@@ -146,6 +146,80 @@ body.hdr--hidden #userBar{top:0!important;}
 .reg-pw-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);padding:4px;}
 .reg-pw-strength{height:4px;border-radius:2px;margin-top:6px;background:#e8e8e8;overflow:hidden;}
 .reg-pw-strength-bar{height:100%;width:0;border-radius:2px;transition:width .3s,background .3s;}
+
+/* ── Countdown Timer ───────────────────────────────────────────────────── */
+.cd-grid{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:2.8rem;}
+.cd-unit{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:100;}
+.cd-box{
+  position:relative;
+  background:rgba(255,255,255,.09);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:16px;
+  padding:30px 36px;
+  min-width:144px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 32px rgba(0,0,0,.25);
+  transition:border-color .3s;
+}
+.cd-num-wrap{
+  position:relative;
+  height:2.6rem;
+  overflow:hidden;
+}
+.cd-val{
+  position:absolute;
+  width:100%;
+  text-align:left;
+  left:7px;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+  font-size:2.6rem;
+  font-weight:600;
+  color:#fff;
+  line-height:1.15;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .3s ease;
+  will-change:transform,opacity;
+  letter-spacing:-.02em;
+  z-index:10;
+}
+.cd-val.cd-exit{transform:translateY(-110%);opacity:0;}
+.cd-val.cd-enter{transform:translateY(110%);opacity:0;}
+.cd-lbl{
+  font-size:.68rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  color:rgba(255,255,255,.5);
+  white-space:nowrap;
+}
+.cd-sep{
+  font-size:2.4rem;
+  font-weight:300;
+  color:rgba(255,255,255,.3);
+  margin-bottom:28px;
+  line-height:1;
+  animation:cd-blink 1s ease-in-out infinite;
+}
+@keyframes cd-blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.cd-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(208,77,26,.18);
+  border:1px solid rgba(208,77,26,.35);
+  border-radius:99px;
+  padding:.42rem 1rem;
+  font-size:.76rem;font-weight:600;
+  color:rgba(255,255,255,.9);
+  letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:1.4rem;
+}
+.cd-finished{display:none;padding:1.2rem 2rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;color:#fff;font-size:1.1rem;font-weight:600;margin-bottom:2rem;}
+@media(max-width:560px){
+  .cd-val{font-size:1.8rem;}
+  .cd-box{padding:14px 16px;min-width:72px;border-radius:12px;}
+  .cd-grid{gap:8px;}
+  .cd-sep{font-size:1.8rem;margin-bottom:22px;}
+}
 </style>
 </head>
 <body>
@@ -336,42 +410,161 @@ body.hdr--hidden #userBar{top:0!important;}
 
 <main>
 
-<!-- ══ Coming Soon Hero ══ -->
-<section style="padding:100px 0 80px;text-align:center;background:linear-gradient(135deg,var(--green) 0%,var(--green-2) 100%);color:#fff;min-height:60vh;display:flex;align-items:center;">
-  <div class="container">
-    <!-- Shopping cart icon -->
-    <div style="margin-bottom:2rem;">
-      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto;">
-        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-        <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
-      </svg>
-    </div>
+<!-- ══ Countdown Hero ══ -->
+<section style="position:relative;overflow:hidden;background:linear-gradient(135deg,var(--green) 0%,#0d2318 55%,#08150e 100%);padding:72px 0 88px;min-height:72vh;display:flex;align-items:center;">
 
-    <!-- Badge -->
-    <div style="display:inline-block;background:var(--accent);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.35rem 1rem;border-radius:100px;margin-bottom:1.5rem;">Drīzumā</div>
+  <!-- Decorative blobs -->
+  <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;">
+    <div style="position:absolute;width:650px;height:500px;background:var(--accent);opacity:.06;border-radius:50%;filter:blur(90px);top:-180px;left:-120px;"></div>
+    <div style="position:absolute;width:520px;height:520px;background:rgba(30,58,46,.9);border-radius:50%;filter:blur(90px);bottom:-140px;right:-60px;"></div>
+  </div>
 
-    <h1 style="font-size:clamp(2rem,6vw,3.5rem);font-weight:700;margin-bottom:1.25rem;line-height:1.15;color:#fff;">Interneta veikals</h1>
-    <p style="font-size:1.15rem;opacity:.85;max-width:560px;margin:0 auto 2.5rem;line-height:1.7;color:#fff;">Mēs strādājam pie ērtā tiešsaistes veikala, kur varēsiet iegādāties logu aksesuārus, palodzes, moskītu tīklus un daudz ko citu — neizejot no mājām.</p>
+  <div class="container" style="position:relative;z-index:1;text-align:center;">
+    <div style="max-width:780px;margin:0 auto;background:rgba(255,255,255,.05);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.11);border-radius:28px;padding:52px 40px 56px;box-shadow:0 40px 90px rgba(0,0,0,.35);position:relative;overflow:hidden;">
 
-    <!-- Progress indicator -->
-    <div style="max-width:340px;margin:0 auto 2.5rem;">
-      <div style="display:flex;justify-content:space-between;font-size:.8rem;opacity:.7;margin-bottom:.5rem;color:#fff;">
-        <span>Izstrādes progress</span>
-        <span>35%</span>
+      <!-- inner glow -->
+      <div style="position:absolute;inset:0;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,transparent 45%);pointer-events:none;"></div>
+
+      <!-- Badge -->
+      <div class="cd-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Atvēršana 1. jūnijā
       </div>
-      <div style="background:rgba(255,255,255,.15);border-radius:100px;height:6px;overflow:hidden;">
-        <div style="background:var(--accent);height:100%;width:35%;border-radius:100px;"></div>
-      </div>
-    </div>
 
-    <!-- CTA -->
-    <p style="font-size:.95rem;opacity:.7;margin-bottom:1.5rem;color:#fff;">Līdz tam sazinieties ar mums tieši — mēs ar prieku palīdzēsim:</p>
-    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
-      <a href="kontakti.html" class="btn btn-primary">Sazināties ar mums</a>
-      <a href="index.html" class="btn btn-outline-dark" style="border-color:rgba(255,255,255,.5);color:#fff;">Uz sākumlapu</a>
+      <!-- Cart icon -->
+      <div style="margin-bottom:1.2rem;">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto;">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+        </svg>
+      </div>
+
+      <!-- Title & description -->
+      <h1 style="font-size:clamp(1.9rem,5vw,3rem);font-weight:700;color:#fff;margin:0 0 .9rem;line-height:1.15;position:relative;z-index:1;">Interneta veikals</h1>
+      <p style="font-size:1rem;color:rgba(255,255,255,.68);max-width:460px;margin:0 auto 2.4rem;line-height:1.75;position:relative;z-index:1;">Mēs strādājam pie ērtā tiešsaistes veikala. Sekojiet atpakaļskaitīšanai — tieši tik daudz palicis līdz atvēršanai!</p>
+
+      <!-- ── Countdown ── -->
+      <div id="cd-finished" class="cd-finished">🎉 Veikals ir atvērts!</div>
+
+      <div class="cd-grid" id="cd-timer" style="position:relative;z-index:100;">
+
+        <div class="cd-unit">
+          <div class="cd-box"><div class="cd-num-wrap" id="cd-d"><span class="cd-val">00</span></div></div>
+          <span class="cd-lbl">Dienas</span>
+        </div>
+
+        <div class="cd-sep">:</div>
+
+        <div class="cd-unit">
+          <div class="cd-box"><div class="cd-num-wrap" id="cd-h"><span class="cd-val">00</span></div></div>
+          <span class="cd-lbl">Stundas</span>
+        </div>
+
+        <div class="cd-sep">:</div>
+
+        <div class="cd-unit">
+          <div class="cd-box"><div class="cd-num-wrap" id="cd-m"><span class="cd-val">00</span></div></div>
+          <span class="cd-lbl">Minūtes</span>
+        </div>
+
+        <div class="cd-sep">:</div>
+
+        <div class="cd-unit">
+          <div class="cd-box"><div class="cd-num-wrap" id="cd-s"><span class="cd-val">00</span></div></div>
+          <span class="cd-lbl">Sekundes</span>
+        </div>
+
+      </div>
+
+      <!-- CTAs -->
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;position:relative;z-index:1;">
+        <a href="mailto:info@loguapkope.lv?subject=Interneta%20veikals%20—%20paziņojums&body=Lūdzu%20paziņojiet%20man%2C%20kad%20interneta%20veikals%20būs%20pieejams!" style="display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:99px;background:var(--accent);color:#fff;font-weight:600;font-size:.92rem;text-decoration:none;transition:background .2s,transform .15s;box-shadow:0 8px 24px rgba(208,77,26,.38);">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Paziņojiet man
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="kontakti.html" style="display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:99px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.85);font-weight:600;font-size:.92rem;text-decoration:none;transition:background .2s,transform .15s;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
+          Sazināties
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
+
+<script>
+(function(){
+  // Target: June 1, 2026 at 09:00 Latvian time (EEST = UTC+3)
+  var TARGET = new Date('2026-06-01T09:00:00+03:00');
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function getTimeLeft(){
+    var diff = TARGET.getTime() - Date.now();
+    if(diff <= 0) return null;
+    var days    = Math.floor(diff / 86400000);
+    var hours   = Math.floor((diff % 86400000) / 3600000);
+    var minutes = Math.floor((diff % 3600000)  / 60000);
+    var seconds = Math.floor((diff % 60000)    / 1000);
+    return { d: pad(days), h: pad(hours), m: pad(minutes), s: pad(seconds) };
+  }
+
+  function animateUnit(el, newVal){
+    if(!el || el.textContent === newVal) return;
+
+    // Exit current
+    el.classList.add('cd-exit');
+
+    // Create entering span
+    var next = document.createElement('span');
+    next.className = 'cd-val cd-enter';
+    next.textContent = newVal;
+    el.parentNode.appendChild(next);
+
+    // Trigger enter transition (double rAF ensures class is applied before transition)
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        next.classList.remove('cd-enter');
+      });
+    });
+
+    // Remove exited span after transition
+    setTimeout(function(){
+      if(el.parentNode) el.parentNode.removeChild(el);
+    }, 350);
+  }
+
+  function tick(){
+    var t = getTimeLeft();
+    if(!t){
+      document.getElementById('cd-timer').style.display    = 'none';
+      document.getElementById('cd-finished').style.display = 'block';
+      return;
+    }
+    ['d','h','m','s'].forEach(function(k){
+      var wrap    = document.getElementById('cd-'+k);
+      var current = wrap ? wrap.querySelector('.cd-val:not(.cd-exit)') : null;
+      if(current) animateUnit(current, t[k]);
+    });
+  }
+
+  // Initial render without animation
+  var t = getTimeLeft();
+  if(t){
+    ['d','h','m','s'].forEach(function(k){
+      var wrap = document.getElementById('cd-'+k);
+      var span = wrap ? wrap.querySelector('.cd-val') : null;
+      if(span) span.textContent = t[k];
+    });
+  } else {
+    document.getElementById('cd-timer').style.display    = 'none';
+    document.getElementById('cd-finished').style.display = 'block';
+  }
+
+  setInterval(tick, 1000);
+})();
+</script>
 
 <!-- ══ What's Coming ══ -->
 <section style="padding:72px 0;background:linear-gradient(135deg,#0f2b4a 0%,#1a3a5c 100%);">
