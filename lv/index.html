@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/styles.css?v=4">
+<link rel="stylesheet" href="../css/styles.css?v=7">
 <style>
 /* ══ Full-screen hero slider ══ */
 /* Outer wrapper: constrains slider to site grid */
@@ -1019,6 +1019,9 @@
       </button>
     </div>
 
+    <!-- Animated card stack root (populated by JS) -->
+    <div id="fcs-root" class="fcs-outer"></div>
+
   </div>
 </section>
 <!-- FAQ overlay -->
@@ -1436,8 +1439,8 @@
     '.promo-plise',
     '#jautajumi .section-head',
     '#jautajumi .faq-card',
-    '.reviews-header',
-    '.review-card',
+    '.at-left',
+    '.at-stack',
     '.contact-grid > *'
   ];
 
@@ -1957,6 +1960,299 @@
 </script>
 
 
+
+<!-- ── FAQ Animated Card Stack ── -->
+<script>
+(function(){
+  /* ── Collect FAQ data from existing DOM ── */
+  var faqCards = document.querySelectorAll('#jautajumi .faq-card');
+  var faqData = [];
+  faqCards.forEach(function(card){
+    var q      = card.querySelector('h3');
+    var teaser = card.querySelector('.faq-teaser');
+    var answer = card.querySelector('.faq-answer');
+    faqData.push({
+      question  : q      ? q.textContent.trim()      : '',
+      teaser    : teaser ? teaser.textContent.trim()  : '',
+      answerHtml: answer ? answer.innerHTML           : ''
+    });
+  });
+  if(!faqData.length) return;
+
+  var root = document.getElementById('fcs-root');
+  if(!root) return;
+
+  /* ── Overlay helpers ── */
+  var overlay  = document.getElementById('faqOverlay');
+  var overlayQ = document.getElementById('faqOverlayQ');
+  var overlayA = document.getElementById('faqOverlayA');
+  var closeBtn = document.getElementById('faqCloseBtn');
+
+  function openOverlay(item){
+    if(!overlay) return;
+    overlayQ.textContent = item.question;
+    overlayA.innerHTML   = item.answerHtml;
+    overlay.classList.add('open');
+  }
+  if(closeBtn) closeBtn.addEventListener('click', function(){ overlay.classList.remove('open'); });
+  if(overlay)  overlay.addEventListener('click',  function(e){ if(e.target===overlay) overlay.classList.remove('open'); });
+
+  /* ── Escape helper ── */
+  function esc(str){
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ── Build inner card HTML ── */
+  function cardHTML(item){
+    return '<span class="fcs-q-tag">Jautājums</span>'+
+           '<h3>'+esc(item.question)+'</h3>'+
+           '<p class="fcs-teaser">'+esc(item.teaser)+'</p>'+
+           '<button class="fcs-read-btn">Lasīt vairāk'+
+             '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>'+
+           '</button>';
+  }
+
+  /* ── Create one animated stack for a list of items ── */
+  function createStack(items){
+    var col = document.createElement('div');
+    col.className = 'fcs-col';
+
+    /* Stage */
+    var stageWrap = document.createElement('div');
+    stageWrap.className = 'fcs-stage-wrap';
+    var stage = document.createElement('div');
+    stage.className = 'fcs-stage';
+    stageWrap.appendChild(stage);
+    col.appendChild(stageWrap);
+
+    /* 3 card DOM elements */
+    var cards = [0,1,2].map(function(i){
+      var c = document.createElement('div');
+      c.className = 'fcs-card';
+      c.dataset.pos = String(i);
+      stage.appendChild(c);
+      return c;
+    });
+
+    /* Navigation */
+    var nav = document.createElement('div');
+    nav.className = 'fcs-nav';
+
+    var btnPrev = document.createElement('button');
+    btnPrev.className = 'fcs-nav-btn';
+    btnPrev.setAttribute('aria-label','Iepriekšējais');
+    btnPrev.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
+
+    var counter = document.createElement('span');
+    counter.className = 'fcs-counter';
+
+    var btnNext = document.createElement('button');
+    btnNext.className = 'fcs-nav-btn';
+    btnNext.setAttribute('aria-label','Nākamais');
+    btnNext.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+
+    nav.appendChild(btnPrev);
+    nav.appendChild(counter);
+    nav.appendChild(btnNext);
+    col.appendChild(nav);
+
+    /* ── Stack state ── */
+    var cur = 0;                /* index of item currently at front (pos-0) */
+    var pos = [0,1,2];         /* pos[i] = which DOM card element is at position i */
+    var busy = false;
+
+    function item(offset){ return items[(cur + offset + items.length*10) % items.length]; }
+
+    function attachBtn(card, itm){
+      var btn = card.querySelector('.fcs-read-btn');
+      if(!btn) return;
+      /* Capture itm in closure */
+      (function(it){
+        btn.addEventListener('click', function(e){ e.stopPropagation(); openOverlay(it); });
+        card.addEventListener('click', function(){ openOverlay(it); });
+      })(itm);
+    }
+
+    function loadCard(card, itm){
+      /* Remove old click listeners by replacing the node */
+      var fresh = card.cloneNode(false);
+      fresh.innerHTML = cardHTML(itm);
+      card.parentNode.replaceChild(fresh, card);
+      /* Update reference in cards array */
+      var idx = cards.indexOf(card);
+      if(idx !== -1) cards[idx] = fresh;
+      attachBtn(fresh, itm);
+      return fresh;
+    }
+
+    function updateCounter(){
+      counter.textContent = (cur + 1) + ' / ' + items.length;
+    }
+
+    /* ── Initialise card contents ── */
+    cards.forEach(function(c, i){
+      c.innerHTML = cardHTML(item(i));
+      attachBtn(c, item(i));
+    });
+    updateCounter();
+
+    /* ── Go NEXT: front card exits downward, back-cards advance, new card enters behind ── */
+    function goNext(){
+      if(busy) return;
+      busy = true;
+
+      var iF = pos[0], iM = pos[1], iB = pos[2]; /* DOM card indices at each position */
+
+      /* 1. Exit front card */
+      cards[iF].classList.add('fcs-exiting');
+
+      /* 2. Mid → front, Back → mid (simultaneous with exit) */
+      cards[iM].dataset.pos = '0';
+      cards[iB].dataset.pos = '1';
+
+      /* 3. Advance index */
+      cur = (cur + 1) % items.length;
+
+      setTimeout(function(){
+        /* 4. Snap old-front to entry position (behind), load new content, animate in */
+        cards[iF].classList.remove('fcs-exiting');
+        cards[iF].dataset.pos = 'entry';
+
+        var newCard = loadCard(cards[iF], item(2));
+        /* loadCard may have replaced the DOM node; update iF reference */
+        iF = cards.indexOf(newCard); /* will be same index if array updated */
+
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            newCard.dataset.pos = '2';
+          });
+        });
+
+        pos = [iM, iB, iF >= 0 ? iF : pos[2]];
+        updateCounter();
+
+        setTimeout(function(){ busy = false; }, 100);
+      }, 430);
+    }
+
+    /* ── Go PREV: back card becomes new front (flies in from below), others shift back ── */
+    function goPrev(){
+      if(busy) return;
+      busy = true;
+
+      var iF = pos[0], iM = pos[1], iB = pos[2];
+
+      /* 1. Advance index backwards */
+      cur = (cur - 1 + items.length) % items.length;
+
+      /* 2. Shift: front → mid, mid → back */
+      cards[iF].dataset.pos = '1';
+      cards[iM].dataset.pos = '2';
+
+      /* 3. Snap back card to exit position (below), load new front content */
+      cards[iB].dataset.pos = 'exit';
+      var newCard = loadCard(cards[iB], item(0));
+      newCard.dataset.pos = 'exit';
+
+      var iNew = cards.indexOf(newCard);
+
+      /* 4. Animate new card from below → front */
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          newCard.dataset.pos = '0';
+        });
+      });
+
+      pos = [iNew >= 0 ? iNew : iB, iF, iM];
+      updateCounter();
+
+      setTimeout(function(){ busy = false; }, 450);
+    }
+
+    btnNext.addEventListener('click', goNext);
+    btnPrev.addEventListener('click', goPrev);
+
+    return col;
+  }
+
+  /* ── Layout builder ── */
+  var lastMobile = null;
+
+  function buildLayout(mobile){
+    if(mobile === lastMobile) return;
+    lastMobile = mobile;
+    root.innerHTML = '';
+
+    var wrap = document.createElement('div');
+    wrap.className = 'fcs-stacks';
+
+    if(mobile){
+      /* 1 stack, all 8 items */
+      wrap.appendChild(createStack(faqData));
+    } else {
+      /* 2 stacks: first 4 left, last 4 right */
+      wrap.appendChild(createStack(faqData.slice(0,4)));
+      wrap.appendChild(createStack(faqData.slice(4)));
+    }
+
+    root.appendChild(wrap);
+  }
+
+  /* ── Equalize all card heights across both stacks ── */
+  function equalizeHeights(){
+    /* Get actual rendered card width from a live card */
+    var sample = root.querySelector('.fcs-card');
+    if(!sample) return;
+    var cardW = sample.offsetWidth;
+    if(!cardW) return;
+
+    /* Render every FAQ item into a temp card at the same width, find tallest */
+    var tmp = document.createElement('div');
+    tmp.style.cssText = 'position:fixed;top:-9999px;left:0;visibility:hidden;'
+                      + 'width:'+cardW+'px;pointer-events:none;overflow:hidden;';
+    document.body.appendChild(tmp);
+
+    var maxH = 0;
+    faqData.forEach(function(item){
+      var c = document.createElement('div');
+      c.className = 'fcs-card';
+      /* Reset positioning so it flows naturally for measurement */
+      c.style.cssText = 'position:static;left:auto;transform:none;width:100%;min-height:0;';
+      c.innerHTML = cardHTML(item);
+      tmp.appendChild(c);
+      maxH = Math.max(maxH, c.offsetHeight);
+      tmp.removeChild(c);
+    });
+    document.body.removeChild(tmp);
+
+    if(!maxH) return;
+
+    /* Apply min-height to every live card element */
+    root.querySelectorAll('.fcs-card').forEach(function(c){
+      c.style.minHeight = maxH + 'px';
+    });
+    /* Adjust stage height: tallest card + back-card offset (42px) + small buffer */
+    root.querySelectorAll('.fcs-stage-wrap').forEach(function(s){
+      s.style.height = (maxH + 54) + 'px';
+    });
+  }
+
+  function checkLayout(){
+    var w = root.parentElement ? root.parentElement.offsetWidth : window.innerWidth;
+    buildLayout(w < 860);
+    /* Run after paint so card dimensions are available */
+    requestAnimationFrame(equalizeHeights);
+  }
+
+  checkLayout();
+
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(checkLayout, 150);
+  });
+})();
+</script>
 
 <!-- ── Mobile contact widget ── -->
 <div class="mob-cw" id="mobContactWidget">
