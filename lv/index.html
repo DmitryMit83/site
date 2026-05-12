@@ -760,8 +760,12 @@
 <style>
 .pak-hidden{display:none}
 .faq-hidden{display:none}
+/* Скрываем обёртку .pak-w если внутри скрытая карточка — иначе пустой блок занимает место в гриде */
+.pak-w:has(.pak-hidden){display:none !important}
 @media(max-width:900px){
   .pak-show-mobile{display:block !important}
+  /* На мобильных показываем обёртку с pak-show-mobile карточкой */
+  .pak-w:has(.pak-show-mobile){display:block !important}
 }
 </style>
 
