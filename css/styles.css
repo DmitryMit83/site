@@ -27,7 +27,7 @@ html{scroll-behavior:smooth}
 body{
   font-family:'Poppins','Montserrat','Segoe UI',Roboto,Arial,sans-serif;
   color:var(--text);
-  background:var(--cream);
+  background:var(--paper-2);
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
 }
@@ -616,6 +616,10 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   .faq-grid{grid-template-columns:1fr}
   .faq-overlay-card{padding:28px 22px}
 }
+
+/* ── Section divider ─────────────────────────────────────────────── */
+.section-divider-wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.section-divider{border:none;border-top:1px solid var(--line);margin:0}
 
 /* ── FAQ Animated Card Stack ─────────────────────────────────────── */
 #jautajumi .faq-grid,
