@@ -47,6 +47,8 @@ p{margin-bottom:1rem;color:var(--text-2)}
 /* ---------- Header ---------- */
 .site-header{
   position:sticky;top:0;z-index:100;
+  background:var(--green);
+  border-bottom:1px solid rgba(0,0,0,.2);
   transition:transform .32s cubic-bezier(.4,0,.2,1);
   will-change:transform;
 }
@@ -58,10 +60,7 @@ body.hdr--hidden .mob-cw,
 body.hdr--hidden .svc-nav{top:0!important;}
 .header-inner{
   display:flex;align-items:center;justify-content:space-between;
-  padding:12px 32px;max-width:calc(var(--maxw) - 48px);margin:15px auto 0;gap:16px;
-  background:var(--green);
-  border-radius:16px;
-  border:1px solid rgba(0,0,0,.2);
+  padding:12px 32px;max-width:var(--maxw);margin:0 auto;gap:16px;
 }
 .brand{display:flex;align-items:center}
 .brand img{height:46px;width:auto;display:block;border:none}
@@ -73,19 +72,19 @@ body.hdr--hidden .svc-nav{top:0!important;}
 /* Links & triggers share the same base style */
 .snm-link,.snm-trig{
   color:#E9E6DD;font-weight:500;font-size:.95rem;
-  padding:6px 10px;border-radius:6px;cursor:pointer;
+  padding:6px 10px;border-radius:0;cursor:pointer;
   display:inline-flex;align-items:center;gap:5px;
-  transition:color .15s,background .15s;
+  transition:color .15s,box-shadow .15s;
   position:relative;
 }
 .snm-link:hover,.snm-trig:hover,
 .snm-has-menu:hover .snm-trig,
-.snm-trig[data-state="open"]{color:#fff;background:rgba(208,77,26,.42);}
-.snm-link.active{color:#fff;}
-.snm-link.active::after{
-  content:"";position:absolute;left:10px;right:10px;bottom:3px;
-  height:2px;background:var(--accent);border-radius:2px;
+.snm-trig[data-state="open"]{
+  color:#fff;background:none;
+  box-shadow:inset 0 -2px 0 var(--accent);
 }
+.snm-link.active{color:#fff;box-shadow:inset 0 -2px 0 var(--accent);}
+.snm-link.active::after{content:none;}
 /* Suppress has-dropdown arrow text for snm triggers on desktop */
 @media(min-width:901px){
   .snm-trig::after{content:none!important;}
@@ -99,7 +98,7 @@ body.hdr--hidden .svc-nav{top:0!important;}
 
 /* Lang / Social still use has-dropdown highlight */
 .has-dropdown:hover>a:not(.snm-trig),
-.has-dropdown:focus-within>a:not(.snm-trig){background:rgba(208,77,26,.42);color:#fff;}
+.has-dropdown:focus-within>a:not(.snm-trig){background:none;color:#fff;box-shadow:inset 0 -2px 0 var(--accent);}
 
 /* ── Viewport wrapper: zoom-in-90 on open, zoom-out-95 on close ── */
 .snm-vp-wrap{
@@ -115,7 +114,7 @@ body.hdr--hidden .svc-nav{top:0!important;}
 }
 .snm-viewport{
   background:var(--green);border:1px solid rgba(255,255,255,.15);
-  border-radius:12px;box-shadow:0 14px 44px rgba(0,0,0,.42);overflow:hidden;
+  border-radius:0;box-shadow:0 14px 44px rgba(0,0,0,.42);overflow:hidden;
 }
 /* Diamond indicator */
 .snm-indicator{
@@ -150,21 +149,29 @@ a.snm-col-hd:hover{color:rgba(255,255,255,.85);}
 .snm-col ul{list-style:none;padding:0;margin:0;}
 .snm-col li{margin-bottom:1px;}
 .snm-col li a{
-  display:block;padding:7px 10px;border-radius:6px;
-  margin:1px 6px;
+  display:block;padding:7px 10px;border-radius:0;
+  margin:1px 6px;position:relative;
   color:#D9D5C9;font-size:.875rem;white-space:nowrap;
-  transition:background .14s,color .14s;
+  transition:color .14s;
 }
-.snm-col li a:hover{background:rgba(208,77,26,.42);color:#fff;}
+.snm-col li a:hover{background:none;color:#fff;}
+.snm-col li a:hover::before{
+  content:"";position:absolute;left:0;top:4px;bottom:4px;
+  width:2px;background:var(--accent);
+}
 .snm-flat{list-style:none;padding:0;margin:0;}
 .snm-flat li{margin-bottom:0;}
 .snm-flat li a{
-  display:block;padding:7px 10px;border-radius:6px;
-  margin:1px 6px;
+  display:block;padding:7px 10px;border-radius:0;
+  margin:1px 6px;position:relative;
   color:#D9D5C9;font-size:.9rem;white-space:nowrap;
-  transition:background .14s,color .14s;
+  transition:color .14s;
 }
-.snm-flat li a:hover{background:rgba(208,77,26,.42);color:#fff;}
+.snm-flat li a:hover{background:none;color:#fff;}
+.snm-flat li a:hover::before{
+  content:"";position:absolute;left:0;top:4px;bottom:4px;
+  width:2px;background:var(--accent);
+}
 .lang{display:flex;gap:4px;align-items:center;font-size:.82rem;margin-left:6px}
 .lang a{
   padding:5px 9px;border:1px solid rgba(255,255,255,.25);border-radius:4px;color:#D6D2C6;
@@ -557,6 +564,9 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   background:var(--green);border-top:1px solid rgba(0,0,0,.2);
   padding:52px 0 24px;color:#C9C4B7;font-size:.92rem;
 }
+.footer-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 24px;
+}
 .site-footer h4{color:#fff;font-size:1rem;margin-bottom:12px}
 .footer-sub-h4{margin-top:20px !important}
 .site-footer a{color:#C9C4B7}
@@ -609,18 +619,22 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 }
 .dropdown-inner{
   background:var(--green);border:1px solid rgba(255,255,255,.15);
-  border-radius:12px;min-width:160px;
+  border-radius:0;min-width:160px;
   box-shadow:0 14px 44px rgba(0,0,0,.42);
   padding:6px 0;
   overflow:hidden;
 }
 .dropdown a{
   display:block;padding:7px 10px;color:#D9D5C9;font-size:.9rem;
-  border-radius:6px;margin:1px 6px;
-  transition:background .14s,color .14s;
+  border-radius:0;margin:1px 6px;position:relative;
+  transition:color .14s;
   white-space:nowrap;
 }
-.dropdown a:hover{background:rgba(208,77,26,.42);color:#fff;}
+.dropdown a:hover{background:none;color:#fff;}
+.dropdown a:hover::before{
+  content:"";position:absolute;left:0;top:4px;bottom:4px;
+  width:2px;background:var(--accent);
+}
 .has-dropdown:hover .dropdown,
 .has-dropdown:focus-within .dropdown{
   opacity:1;visibility:visible;pointer-events:auto;
@@ -1346,10 +1360,14 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 .social-links a{
   display:flex;align-items:center;gap:10px;
   padding:7px 10px;color:#D9D5C9;font-size:.88rem;
-  border-radius:6px;margin:1px 6px;
-  transition:background .14s,color .14s;white-space:nowrap;
+  border-radius:0;margin:1px 6px;position:relative;
+  transition:color .14s;white-space:nowrap;
 }
-.social-links a:hover{background:rgba(208,77,26,.42);color:#fff;}
+.social-links a:hover{background:none;color:#fff;}
+.social-links a:hover::before{
+  content:"";position:absolute;left:0;top:4px;bottom:4px;
+  width:2px;background:var(--accent);
+}
 .social-links svg{width:14px;height:14px;fill:currentColor;flex-shrink:0;opacity:.8}
 .social-links a:hover svg{opacity:1}
 
@@ -1894,7 +1912,7 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 
 /* ── CTA band ─────────────────────────────────────────────────────── */
 @media(max-width:640px){
-  .cta-band{padding:44px 0}
+  .cta-band{padding:44px 0;}
   .cta-band h2{font-size:1.25rem}
   .cta-band p{font-size:.9rem}
   .cta-band .btn{display:block;text-align:center}

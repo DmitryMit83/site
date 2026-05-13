@@ -20,45 +20,99 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/styles.css?v=32">
+<link rel="stylesheet" href="../css/styles.css?v=45">
 <style>
-/* ══ Full-screen hero slider ══ */
-/* Outer wrapper: constrains slider to site grid */
-.hsl-outer-wrap{max-width:var(--maxw);margin:0 auto;padding:24px 24px 0;}
-.hero--fs{position:relative;overflow:hidden;background:var(--green);min-height:346px;height:calc((100vh - 112px) * 0.667);max-height:440px;border-radius:20px;}
-.hsl-slide{position:absolute;inset:0;opacity:0;transition:opacity 750ms ease-in-out;pointer-events:none;z-index:1;}
+/* ══ Split hero slider ══ */
+.hsl-outer-wrap{max-width:none;margin:0;padding:0;}
+.hero--split{
+  position:relative;overflow:hidden;
+  min-height:430px;height:calc((100vh - 112px)*.78);max-height:560px;
+  border-radius:0;
+}
+.hsl-slide{
+  position:absolute;inset:0;
+  background:rgb(var(--tint));
+  background:color-mix(in srgb,rgb(var(--tint)) 38%,#1c1c1c);
+  opacity:0;transition:opacity 700ms ease-in-out;
+  pointer-events:none;z-index:1;
+  display:flex;
+}
 .hsl-slide--active{opacity:1;pointer-events:auto;z-index:2;}
-.hsl-bg{position:absolute;inset:0;overflow:hidden;}
-.hsl-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 700ms ease;}
-/* Hover: zoom image inside the rounded block */
-.hero--fs:hover .hsl-bg img{transform:scale(1.06);}
-.hsl-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(var(--tint),0.97) 0%,rgba(var(--tint),0.9) 28%,rgba(var(--tint),0.6) 52%,rgba(var(--tint),0.18) 72%,transparent 88%);}
-.hsl-inner{position:absolute;inset:0;display:flex;align-items:center;}
-.hsl-body-wrap{max-width:var(--maxw);width:100%;margin:0 auto;padding:72px 40px 56px;}
-.hsl-body{max-width:560px;color:#fff;}
-.hsl-body .eyebrow{margin-bottom:.6rem;display:block;}
-.hsl-body h1{color:#fff;margin-bottom:16px;font-size:clamp(1.6rem,2.8vw,2.5rem);line-height:1.2;}
-.hsl-body .lead{color:rgba(255,255,255,.82);margin-bottom:1.5rem;font-size:.98rem;line-height:1.65;max-width:480px;}
+
+/* ── Left content panel ── */
+.hsl-split-l{
+  flex:0 0 57%;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:44px 52px 44px max(24px, calc((100vw - var(--maxw)) / 2 + 44px));
+  position:relative;z-index:2;
+}
+/* ── Hide contact bar ── */
+.hsl-contact-bar{display:none;}
+/* ── Right image panel ── */
+.hsl-split-r{
+  flex:1;overflow:hidden;
+  clip-path:polygon(15% 0,100% 0,100% 100%,0% 100%);
+}
+.hsl-split-r img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;transition:transform 700ms ease;
+}
+.hero--split:hover .hsl-split-r img{transform:scale(1.05);}
+
+/* ── Entrance animations ── */
+@keyframes hslFadeUp{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes hslClipReveal{
+  from{clip-path:polygon(100% 0,100% 0,100% 100%,100% 100%);}
+  to{clip-path:polygon(15% 0,100% 0,100% 100%,0% 100%);}
+}
+.hsl-anim .hsl-split-l .eyebrow{animation:hslFadeUp .4s ease-out .06s both;}
+.hsl-anim .hsl-split-l h1       {animation:hslFadeUp .4s ease-out .16s both;}
+.hsl-anim .hsl-accent-bar       {animation:hslFadeUp .4s ease-out .26s both;}
+.hsl-anim .hsl-split-l .lead    {animation:hslFadeUp .4s ease-out .32s both;}
+.hsl-anim .hsl-cta              {animation:hslFadeUp .4s ease-out .42s both;}
+.hsl-anim .hsl-contact-bar      {animation:hslFadeUp .4s ease-out .52s both;}
+.hsl-anim .hsl-split-r          {animation:hslClipReveal 1.1s cubic-bezier(.16,1,.3,1) .04s both;}
+
+/* ── Content styles ── */
+.hsl-split-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:20px;}
+.hsl-split-l .eyebrow{margin-bottom:10px;}
+.hsl-split-l h1{color:#fff;margin-bottom:14px;font-size:clamp(1.5rem,2.4vw,2.3rem);line-height:1.2;}
+.hsl-accent-bar{width:52px;height:3px;background:var(--accent);margin-bottom:18px;flex-shrink:0;border-radius:2px;}
+.hsl-split-l .lead{color:rgba(255,255,255,.78);margin-bottom:22px;font-size:.93rem;line-height:1.65;max-width:440px;}
 .hsl-cta{display:flex;gap:.65rem;flex-wrap:wrap;}
 .hsl-btn{display:inline-flex;align-items:center;padding:.45rem 1rem;border-radius:6px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s,color .2s,border-color .2s;white-space:nowrap;letter-spacing:.01em;}
 .hsl-btn--fill{background:var(--accent);color:#fff;border:1.5px solid var(--accent);}
 .hsl-btn--fill:hover{background:#c0641a;border-color:#c0641a;}
 .hsl-btn--ghost{background:transparent;color:rgba(255,255,255,.88);border:1.5px solid rgba(255,255,255,.38);}
 .hsl-btn--ghost:hover{border-color:rgba(255,255,255,.85);color:#fff;}
-/* Controls */
-.hsl-controls{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;z-index:10;}
+
+/* ── Contact bar ── */
+.hsl-contact-bar{
+  display:flex;gap:18px;flex-wrap:wrap;flex-shrink:0;
+  padding-top:20px;border-top:1px solid rgba(255,255,255,.12);
+}
+.hsl-contact-item{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.5);font-size:.77rem;}
+.hsl-contact-item svg{color:var(--accent);flex-shrink:0;width:15px;height:15px;}
+
+/* ── Controls ── */
+.hsl-controls{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;z-index:10;}
 .hsl-dots{display:flex;gap:7px;}
 .hsl-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:background .3s,transform .3s;border:none;padding:0;flex-shrink:0;}
 .hsl-dot--active{background:#fff;transform:scale(1.35);}
-.hsl-progress{width:100px;height:2px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden;}
+.hsl-dot:hover:not(.hsl-dot--active){background:rgba(255,255,255,.65);}
+.hsl-progress{width:100px;height:2px;background:rgba(255,255,255,.18);border-radius:2px;overflow:hidden;}
 .hsl-progress-bar{height:100%;background:rgba(255,255,255,.65);width:0%;}
+
 /* ══ Mobile midge swarm canvas ══ */
 #midgesCanvas{
-  display:none; /* hidden on desktop */
+  display:none;
   position:absolute;
   top:0;right:0;
   width:400px;height:400px;
-  z-index:0;        /* behind .promo-inner (z-index:1) */
+  z-index:0;
   pointer-events:none;
   opacity:0;
   transition:opacity 1.2s ease;
@@ -76,36 +130,25 @@
     z-index:0;
   }
 }
-/* Mobile */
-@media(max-width:700px){
-  .hsl-outer-wrap{padding:12px 12px 0;}
-  .hero--fs{min-height:320px;height:80vw;max-height:520px;border-radius:14px;}
-  .hsl-bg{bottom:0;}          /* full-bleed image */
-  .hsl-slide::after{display:none;} /* no separate text strip */
-  /* Strong gradient from bottom — keeps text readable over photo */
-  .hsl-grad{
-    bottom:0;
-    background:linear-gradient(to top,
-      rgba(var(--tint),.97) 0%,
-      rgba(var(--tint),.92) 20%,
-      rgba(var(--tint),.62) 42%,
-      rgba(var(--tint),.18) 62%,
-      transparent 78%);
-  }
-  /* Text overlays image, anchored to bottom */
-  .hsl-inner{top:0;bottom:0;height:auto;align-items:flex-end;z-index:3;}
-  /* Bottom padding: enough for text + gap + controls */
-  .hsl-body-wrap{padding:0 16px 48px;width:100%;}
-  .hsl-body{max-width:100%;}
-  .hsl-body h1{font-size:clamp(1.05rem,4.5vw,1.4rem);margin-bottom:7px;line-height:1.25;}
-  .hsl-body .lead{display:none;}
-  .hsl-btn{padding:.33rem .78rem;font-size:.76rem;}
-  /* Controls: horizontally centered, at the very bottom of the block */
-  .hsl-controls{bottom:10px;left:50%;transform:translateX(-50%);flex-direction:column;align-items:center;gap:6px;}
-  .hsl-progress{width:76px;}
-}
+
+/* ── Tablet ── */
 @media(max-width:900px){
   .pak-show-wrap{margin-top:2rem !important;}
+  .hsl-split-l{flex:0 0 65%;padding:28px 28px 28px max(16px, calc((100vw - var(--maxw)) / 2 + 28px));}
+  .hsl-split-l h1{font-size:clamp(1.3rem,2.8vw,2rem);}
+}
+/* ── Mobile ── */
+@media(max-width:640px){
+  .hero--split{min-height:290px;height:74vw;max-height:460px;}
+  .hsl-slide{flex-direction:column;}
+  .hsl-split-l{flex:none;height:100%;padding:20px 18px 40px;}
+  .hsl-split-r{display:none;}
+  .hsl-split-l h1{font-size:clamp(1.05rem,4.5vw,1.35rem);margin-bottom:8px;}
+  .hsl-split-l .lead{display:none;}
+  .hsl-accent-bar{height:2px;width:36px;margin-bottom:12px;}
+  .hsl-btn{padding:.33rem .78rem;font-size:.76rem;}
+  .hsl-controls{bottom:10px;}
+  .hsl-progress{width:76px;}
 }
 </style>
 <script type="application/ld+json">
@@ -391,111 +434,127 @@
 </header>
 
 <div class="hsl-outer-wrap">
-<section class="hero hero--fs" id="heroSection">
+<section class="hero hero--split" id="heroSection">
 
   <!-- Slide 1: Logu remonts -->
-  <div class="hsl-slide hsl-slide--active" style="--tint:22,51,37" itemscope itemtype="https://schema.org/Service">
-    <div class="hsl-bg"><img
-      src="../photo/banner_enhanced.jpg"
-      alt="Logu un durvju remonts Rīgā — SIA Logu Apkope: PVC, koka un alumīnija logu regulēšana, blīvgumiju maiņa, stikla pakešu nomaiņa, furnitūras remonts visā Latvijā"
-      title="Profesionāls logu un durvju remonts Rīgā un visā Latvijā — SIA Logu Apkope"
-      loading="eager"
-      fetchpriority="high"
-      decoding="sync"
-      width="1536"
-      height="807"
-      itemprop="image"
-    ></div>
-    <div class="hsl-grad"></div>
-    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
-      <span class="eyebrow">Logu un durvju remonts</span>
-      <h1>Logu apkope, kurai var uzticēties</h1>
-      <p class="lead">SIA Logu Apkope — PVC, koka un alumīnija logu remonts, regulēšana, moskītu tīkli un žalūzijas visā Latvijā.</p>
-      <div class="hsl-cta">
-        <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Bezmaksas konsultācija</a>
-        <a href="remonts.html" class="hsl-btn hsl-btn--ghost">Uzzināt vairāk →</a>
+  <div class="hsl-slide hsl-slide--active hsl-anim" style="--tint:22,51,37" itemscope itemtype="https://schema.org/Service">
+    <div class="hsl-split-l">
+      <div class="hsl-split-body">
+        <span class="eyebrow">Logu un durvju remonts</span>
+        <h1>Logu apkope, kurai var uzticēties</h1>
+        <div class="hsl-accent-bar"></div>
+        <p class="lead">SIA Logu Apkope — PVC, koka un alumīnija logu remonts, regulēšana, moskītu tīkli un žalūzijas visā Latvijā.</p>
+        <div class="hsl-cta">
+          <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Bezmaksas konsultācija</a>
+          <a href="remonts.html" class="hsl-btn hsl-btn--ghost">Uzzināt vairāk →</a>
+        </div>
       </div>
-    </div></div></div>
+      <div class="hsl-contact-bar">
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>logu-apkope.lv</span></div>
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+371 28 950 055</span></div>
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Latgales iela 130a, Rīga</span></div>
+      </div>
+    </div>
+    <div class="hsl-split-r">
+      <img src="../photo/banner_enhanced.jpg" alt="Logu un durvju remonts Rīgā — SIA Logu Apkope" loading="eager" fetchpriority="high" decoding="sync" width="1536" height="807" itemprop="image">
+    </div>
   </div>
 
   <!-- Slide 2: Moskītu tīkli / Plisē -->
   <div class="hsl-slide" style="--tint:16,42,28">
-    <div class="hsl-bg"><img src="../photo/PlisseH1.webp" alt="Plisē moskītu tīkls uzstādīts logā — SIA Logu Apkope" loading="lazy" width="1400" height="800"></div>
-    <div class="hsl-grad"></div>
-    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
-      <span class="eyebrow">Moskītu tīkli Rīgā un visā Latvijā</span>
-      <h1>Plisē moskītu tīkli — precīzi izgatavoti pēc Jūsu logu izmēriem</h1>
-      <p class="lead">Viegli bīdāms plisē tīkls piemērots 99% logu un durvju. Alumīnija rāmis, dažādi audumi, piegāde un uzstādīšana.</p>
-      <div class="hsl-cta">
-        <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pasūtīt tīklu</a>
-        <a href="moskitu-tikli-plise.html" class="hsl-btn hsl-btn--ghost">Plisē modeļi →</a>
-        <a href="moskitu-tikli.html" class="hsl-btn hsl-btn--ghost">Visi modeļi →</a>
+    <div class="hsl-split-l">
+      <div class="hsl-split-body">
+        <span class="eyebrow">Moskītu tīkli Rīgā un visā Latvijā</span>
+        <h1>Plisē moskītu tīkli — precīzi izgatavoti pēc Jūsu logu izmēriem</h1>
+        <div class="hsl-accent-bar"></div>
+        <p class="lead">Viegli bīdāms plisē tīkls piemērots 99% logu un durvju. Alumīnija rāmis, dažādi audumi, piegāde un uzstādīšana.</p>
+        <div class="hsl-cta">
+          <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pasūtīt tīklu</a>
+          <a href="moskitu-tikli-plise.html" class="hsl-btn hsl-btn--ghost">Plisē modeļi →</a>
+          <a href="moskitu-tikli.html" class="hsl-btn hsl-btn--ghost">Visi modeļi →</a>
+        </div>
       </div>
-    </div></div></div>
+      <div class="hsl-contact-bar">
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>logu-apkope.lv</span></div>
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+371 28 950 055</span></div>
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Latgales iela 130a, Rīga</span></div>
+      </div>
+    </div>
+    <div class="hsl-split-r">
+      <img src="../photo/PlisseH1.webp" alt="Plisē moskītu tīkls uzstādīts logā — SIA Logu Apkope" loading="lazy" width="1400" height="800">
+    </div>
   </div>
 
   <!-- Slide 3: Žalūzijas -->
   <div class="hsl-slide" style="--tint:38,30,20">
-    <div class="hsl-bg"><img
-      src="../photo/zaluzi/zaluzi_h1.jpg"
-      alt="Žalūzijas uz loga Rīgā — kasešu, rullu, plisē, vertikālās un horizontālās žalūzijas pēc pasūtījuma, profesionāla uzstādīšana, SIA Logu Apkope"
-      title="Žalūzijas pēc pasūtījuma Rīgā un visā Latvijā — plaša audumu un krāsu izvēle, precīzi izmēri, manuāla un motorizēta vadība, SIA Logu Apkope"
-      loading="lazy"
-      width="1400"
-      height="933"
-      itemprop="image"
-    ></div>
-    <div class="hsl-grad"></div>
-    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
-      <span class="eyebrow">Žalūzijas</span>
-      <h1>Žalūzijas jebkuram interjerim</h1>
-      <p class="lead">Kasešu, rullu, plisē, vertikālās un horizontālās žalūzijas. Precīzi izmēri, stilīgs dizains un profesionāla uzstādīšana.</p>
-      <div class="hsl-cta">
-        <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pieteikties mērījumiem</a>
-        <a href="zaluzijas.html" class="hsl-btn hsl-btn--ghost">Skatīt kolekciju →</a>
+    <div class="hsl-split-l">
+      <div class="hsl-split-body">
+        <span class="eyebrow">Žalūzijas</span>
+        <h1>Žalūzijas jebkuram interjerim</h1>
+        <div class="hsl-accent-bar"></div>
+        <p class="lead">Kasešu, rullu, plisē, vertikālās un horizontālās žalūzijas. Precīzi izmēri, stilīgs dizains un profesionāla uzstādīšana.</p>
+        <div class="hsl-cta">
+          <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pieteikties mērījumiem</a>
+          <a href="zaluzijas.html" class="hsl-btn hsl-btn--ghost">Skatīt kolekciju →</a>
+        </div>
       </div>
-    </div></div></div>
+      <div class="hsl-contact-bar">
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>logu-apkope.lv</span></div>
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+371 28 950 055</span></div>
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Latgales iela 130a, Rīga</span></div>
+      </div>
+    </div>
+    <div class="hsl-split-r">
+      <img src="../photo/zaluzi/zaluzi_h1.jpg" alt="Žalūzijas uz loga Rīgā — SIA Logu Apkope" loading="lazy" width="1400" height="933" itemprop="image">
+    </div>
   </div>
 
   <!-- Slide 4: Blīvgumija -->
   <div class="hsl-slide" style="--tint:32,24,14">
-    <div class="hsl-bg"><img src="../photo/sakums.jpg"
-      alt="Logu blīvgumijas maiņa Rīgā — nolietotu un sacietējušu blīvgumiju nomaiņa PVC, koka un alumīnija logiem, caurvēja un siltumzudumu novēršana, SIA Logu Apkope"
-      title="Blīvgumijas maiņa Rīgā — kvalitatīvas EPDM un TPE blīvgumijas, hermētizācija, siltumizolācija, 2 gadu garantija, SIA Logu Apkope"
-      loading="lazy" width="1400" height="800" itemprop="image"></div>
-    <div class="hsl-grad"></div>
-    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
-      <span class="eyebrow">Blīvgumijas maiņa</span>
-      <h1>Beidziet maksāt par siltumu, kas aizplūst</h1>
-      <p class="lead">Nolietota blīvgumija ir galvenais caurvēja un siltumzudumu cēlonis. Nomainām ātri un kvalitatīvi — ar 2 gadu garantiju.</p>
-      <div class="hsl-cta">
-        <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pieteikt maiņu</a>
-        <a href="remonts-blivgumija.html" class="hsl-btn hsl-btn--ghost">Uzzināt vairāk →</a>
+    <div class="hsl-split-l">
+      <div class="hsl-split-body">
+        <span class="eyebrow">Blīvgumijas maiņa</span>
+        <h1>Beidziet maksāt par siltumu, kas aizplūst</h1>
+        <div class="hsl-accent-bar"></div>
+        <p class="lead">Nolietota blīvgumija ir galvenais caurvēja un siltumzudumu cēlonis. Nomainām ātri un kvalitatīvi — ar 2 gadu garantiju.</p>
+        <div class="hsl-cta">
+          <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pieteikt maiņu</a>
+          <a href="remonts-blivgumija.html" class="hsl-btn hsl-btn--ghost">Uzzināt vairāk →</a>
+        </div>
       </div>
-    </div></div></div>
+      <div class="hsl-contact-bar">
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>logu-apkope.lv</span></div>
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+371 28 950 055</span></div>
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Latgales iela 130a, Rīga</span></div>
+      </div>
+    </div>
+    <div class="hsl-split-r">
+      <img src="../photo/sakums.jpg" alt="Logu blīvgumijas maiņa Rīgā — SIA Logu Apkope" loading="lazy" width="1400" height="800" itemprop="image">
+    </div>
   </div>
 
   <!-- Slide 5: Stikla paketes -->
   <div class="hsl-slide" style="--tint:18,28,42">
-    <div class="hsl-bg"><img
-      src="../photo/Stikls/stikls_h1.jpg"
-      alt="Stikla paketes maiņa Rīgā — miglainas un saplaisājušas stikla paketes nomaiņa bez rāmja, PVC, koka un alumīnija logi, SIA Logu Apkope"
-      title="Stikla pakešu nomaiņa Rīgā — ātra un profesionāla stikla paketes maiņa, energoefektīvas paketes, garantija 2 gadi, SIA Logu Apkope"
-      loading="lazy"
-      width="1400"
-      height="933"
-      itemprop="image"
-    ></div>
-    <div class="hsl-grad"></div>
-    <div class="hsl-inner"><div class="hsl-body-wrap"><div class="hsl-body">
-      <span class="eyebrow">Stikla paketes</span>
-      <h1>Stikla paketes maiņa bez rāmja nomaiņas</h1>
-      <p class="lead">Miglainas vai saplaisājušas stikla paketes mainām, saglabājot oriģinālo rāmi. Ātrāk un lētāk nekā jauns logs.</p>
-      <div class="hsl-cta">
-        <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pieteikt maiņu</a>
-        <a href="remonts-stiklu-paketes.html" class="hsl-btn hsl-btn--ghost">Uzzināt vairāk →</a>
+    <div class="hsl-split-l">
+      <div class="hsl-split-body">
+        <span class="eyebrow">Stikla paketes</span>
+        <h1>Stikla paketes maiņa bez rāmja nomaiņas</h1>
+        <div class="hsl-accent-bar"></div>
+        <p class="lead">Miglainas vai saplaisājušas stikla paketes mainām, saglabājot oriģinālo rāmi. Ātrāk un lētāk nekā jauns logs.</p>
+        <div class="hsl-cta">
+          <a href="kontakti.html" class="hsl-btn hsl-btn--fill">Pieteikt maiņu</a>
+          <a href="remonts-stiklu-paketes.html" class="hsl-btn hsl-btn--ghost">Uzzināt vairāk →</a>
+        </div>
       </div>
-    </div></div></div>
+      <div class="hsl-contact-bar">
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>logu-apkope.lv</span></div>
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+371 28 950 055</span></div>
+        <div class="hsl-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Latgales iela 130a, Rīga</span></div>
+      </div>
+    </div>
+    <div class="hsl-split-r">
+      <img src="../photo/Stikls/stikls_h1.jpg" alt="Stikla paketes maiņa Rīgā — SIA Logu Apkope" loading="lazy" width="1400" height="933" itemprop="image">
+    </div>
   </div>
 
   <!-- Controls -->
@@ -510,135 +569,108 @@
 </div><!-- /hsl-outer-wrap -->
 
 <!-- ══ SOS — Steidzams logu remonts / stikla paketes maiņa 24h ══════ -->
-<section id="sos-remonts" aria-label="Steidzams logu remonts Rīgā — 24 stundu pakalpojums" style="padding:24px 24px 0;max-width:var(--maxw);margin:0 auto;box-sizing:border-box;">
+<section id="sos-remonts" aria-label="Steidzams logu remonts Rīgā — 24 stundu pakalpojums" style="margin:0;padding:0;display:block;">
 <style>
+/* ── SOS split block (mirrored: image left, content right) ── */
 .sos-wrap{
-  position:relative;
-  min-height:440px;
-  max-height:440px;
   display:flex;
-  align-items:center;
   overflow:hidden;
-  background:#0d2e1a;
-  border-radius:20px;
+  background:#15221a;
+  min-height:430px;height:calc((100vh - 112px)*.78);max-height:560px;
+  margin:0;
 }
-.sos-bg{
-  position:absolute;inset:0;
-  z-index:0;
+/* Left: image — same width as hero content panel (57%) so diagonal aligns */
+.sos-img-panel{
+  flex:0 0 57%;overflow:hidden;
+  clip-path:polygon(0% 0,100% 0,88.7% 100%,0% 100%);
 }
-.sos-bg picture,.sos-bg img{
-  width:100%;height:100%;
-  object-fit:cover;
-  object-position:center 30%;
-  display:block;
-  transition:transform 700ms ease;
+.sos-img-panel img{
+  width:100%;height:100%;object-fit:cover;object-position:center 30%;
+  display:block;transition:transform 700ms ease;
 }
-.sos-wrap:hover .sos-bg img{transform:scale(1.06);}
-.sos-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to right,
-    rgba(10,28,18,.93) 0%,
-    rgba(10,28,18,.82) 38%,
-    rgba(10,28,18,.45) 62%,
-    transparent 85%);
-  z-index:1;
+.sos-wrap:hover .sos-img-panel img{transform:scale(1.05);}
+/* Right: content — text aligned close to right grid edge */
+.sos-content-panel{
+  flex:1;background:#15221a;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:44px max(24px, calc((100vw - var(--maxw)) / 2 + 44px)) 44px 36px;
 }
-.sos-inner{
-  position:relative;
-  z-index:2;
-  max-width:var(--maxw);
-  width:100%;
-  margin:0 auto;
-  padding:64px 24px;
+/* Entrance animations */
+@keyframes sosFadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes sosClipReveal{
+  from{clip-path:polygon(0% 0,0% 0,0% 100%,0% 100%);}
+  to{clip-path:polygon(0% 0,100% 0,88.7% 100%,0% 100%);}
 }
+.sos-anim .sos-img-panel     {animation:sosClipReveal 1.1s cubic-bezier(.16,1,.3,1) .04s both;}
+.sos-anim .sos-eyebrow        {animation:sosFadeUp .4s ease-out .1s both;}
+.sos-anim .sos-content-panel h2{animation:sosFadeUp .4s ease-out .2s both;}
+.sos-anim .sos-accent-bar     {animation:sosFadeUp .4s ease-out .3s both;}
+.sos-anim .sos-lead           {animation:sosFadeUp .4s ease-out .36s both;}
+.sos-anim .sos-cta            {animation:sosFadeUp .4s ease-out .46s both;}
+/* Content typography */
 .sos-eyebrow{
   display:inline-flex;align-items:center;gap:.45rem;
-  background:rgba(220,38,38,.18);
-  border:1.5px solid rgba(220,38,38,.5);
-  border-radius:99px;
-  color:#f87171;
-  font-size:.72rem;font-weight:700;
-  text-transform:uppercase;letter-spacing:.1em;
-  padding:4px 14px;
-  margin-bottom:1.1rem;
+  background:rgba(220,38,38,.18);border:1.5px solid rgba(220,38,38,.5);
+  border-radius:99px;color:#f87171;
+  font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  padding:4px 14px;margin-bottom:1.1rem;width:fit-content;
 }
 .sos-eyebrow svg{flex-shrink:0;animation:sos-pulse 1.4s ease-in-out infinite;}
 @keyframes sos-pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
-.sos-inner h2{
-  color:#fff;
-  font-size:clamp(1.5rem,2.8vw,2.3rem);
-  line-height:1.22;
-  margin:0 0 .9rem;
-  max-width:520px;
+.sos-content-panel h2{
+  color:#fff;font-size:clamp(1.5rem,2.4vw,2.3rem);
+  line-height:1.22;margin:0 0 .9rem;max-width:520px;
 }
-.sos-inner h2 span{color:#f87171;}
-.sos-lead{
-  color:rgba(255,255,255,.78);
-  font-size:.96rem;
-  line-height:1.65;
-  max-width:460px;
-  margin:0 0 1.8rem;
-}
+.sos-content-panel h2 span{color:#f87171;}
+.sos-accent-bar{width:52px;height:3px;background:var(--accent);margin-bottom:18px;flex-shrink:0;border-radius:2px;}
+.sos-lead{color:rgba(255,255,255,.78);font-size:.93rem;line-height:1.65;max-width:460px;margin:0 0 1.8rem;}
 .sos-cta{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;}
 .sos-btn-call{
   display:inline-flex;align-items:center;gap:.5rem;
-  background:#dc2626;color:#fff;
-  border:2px solid #dc2626;
-  border-radius:8px;
-  padding:.6rem 1.4rem;
-  font-size:.9rem;font-weight:700;
-  text-decoration:none;
-  letter-spacing:.02em;
-  transition:background .2s,border-color .2s,transform .15s;
-  white-space:nowrap;
+  background:#dc2626;color:#fff;border:2px solid #dc2626;border-radius:8px;
+  padding:.6rem 1.4rem;font-size:.9rem;font-weight:700;text-decoration:none;
+  letter-spacing:.02em;transition:background .2s,border-color .2s,transform .15s;white-space:nowrap;
 }
 .sos-btn-call:hover{background:#b91c1c;border-color:#b91c1c;transform:translateY(-1px);}
 .sos-btn-call svg{flex-shrink:0;}
 .sos-btn-write{
   display:inline-flex;align-items:center;gap:.5rem;
-  background:transparent;
-  color:rgba(255,255,255,.88);
-  border:2px solid rgba(255,255,255,.35);
-  border-radius:8px;
-  padding:.6rem 1.4rem;
-  font-size:.9rem;font-weight:600;
-  text-decoration:none;
-  transition:border-color .2s,color .2s;
-  white-space:nowrap;
+  background:transparent;color:rgba(255,255,255,.88);
+  border:2px solid rgba(255,255,255,.35);border-radius:8px;
+  padding:.6rem 1.4rem;font-size:.9rem;font-weight:600;text-decoration:none;
+  transition:border-color .2s,color .2s;white-space:nowrap;
 }
 .sos-btn-write:hover{border-color:rgba(255,255,255,.85);color:#fff;}
 .sos-btn-write svg{flex-shrink:0;}
+/* Tablet */
+@media(max-width:900px){
+  .sos-img-panel{flex:0 0 52%;}
+  .sos-content-panel{padding:28px max(16px,calc((100vw - var(--maxw))/2 + 28px)) 28px 28px;}
+}
+/* Mobile */
 @media(max-width:640px){
-  #sos-remonts{padding:12px 12px 0 !important;}
-  .sos-wrap{min-height:300px;align-items:flex-end;border-radius:14px;}
-  .sos-overlay{
-    background:
-      linear-gradient(to top, rgba(10,28,18,.96) 0%,rgba(10,28,18,.82) 38%,transparent 58%),
-      linear-gradient(to bottom, rgba(10,28,18,.80) 0%,rgba(10,28,18,.45) 30%,transparent 55%);
-  }
-  .sos-inner{padding:20px 20px 32px;}
-  .sos-inner h2{font-size:clamp(1.2rem,5.5vw,1.65rem);max-width:100%;}
-  .sos-lead{font-size:.88rem;max-width:100%;margin-bottom:1.2rem;}
+  .sos-wrap{flex-direction:column;height:auto;min-height:300px;max-height:none;}
+  .sos-img-panel{flex:none;height:44vw;clip-path:polygon(0% 0,100% 0,100% 85%,0% 100%);}
+  .sos-content-panel{padding:24px 18px 32px;}
+  .sos-content-panel h2{font-size:clamp(1.2rem,5.5vw,1.65rem);}
+  .sos-lead{font-size:.88rem;margin-bottom:1.2rem;}
 }
 </style>
-<div class="sos-wrap">
-  <!-- Background photo -->
-  <div class="sos-bg">
-    <picture>
-      <source srcset="../photo/sos.webp" type="image/webp">
-      <img src="../photo/sos.jpg"
-           alt="Steidzams logu remonts un stikla paketes maiņa 24 stundu laikā — SIA Logu Apkope Rīgā"
-           loading="lazy" decoding="async" width="1400" height="933">
-    </picture>
+<div class="sos-wrap" id="sosWrap">
+  <!-- Left: image -->
+  <div class="sos-img-panel">
+    <img src="../photo/sos.jpg"
+         alt="Steidzams logu remonts un stikla paketes maiņa 24 stundu laikā — SIA Logu Apkope Rīgā"
+         loading="lazy" decoding="async" width="1400" height="933">
   </div>
-  <div class="sos-overlay"></div>
-
-  <div class="sos-inner">
+  <!-- Right: content -->
+  <div class="sos-content-panel">
     <span class="sos-eyebrow">
       <svg width="11" height="11" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#f87171"/></svg>
       Steidzams remonts
     </span>
     <h2>Nepieciešams <span>steidzams remonts?</span><br>Stikla paketes maiņa — <span>24 stundu laikā</span></h2>
+    <div class="sos-accent-bar"></div>
     <p class="sos-lead">Saplīsis vai miglains stikls? Bojāts logu mehānisms? Izsaucam meistaru uz vietas un nomainām stikla paketi vai veicam logu remontu <strong style="color:#fff;">24 stundu laikā</strong>.</p>
     <div class="sos-cta">
       <a href="tel:+37128950055" class="sos-btn-call" aria-label="Zvanīt uz SIA Logu Apkope — steidzams logu remonts">
@@ -652,6 +684,20 @@
     </div>
   </div>
 </div>
+<script>
+(function(){
+  var wrap = document.getElementById('sosWrap');
+  if(!wrap) return;
+  if(!window.IntersectionObserver){wrap.classList.add('sos-anim');return;}
+  var obs = new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){
+      wrap.classList.add('sos-anim');
+      obs.disconnect();
+    }
+  },{threshold:0.1});
+  obs.observe(wrap);
+})();
+</script>
 </section>
 
 <!-- ══ MINI DUAL: Sietu kalkulators + Interneta veikals ═════════════ -->
@@ -1361,7 +1407,8 @@
   </div>
 </section>
 <footer class="site-footer">
-  <div class="container footer-grid">
+  <div class="footer-inner">
+  <div class="footer-grid">
     <div class="footer-brand">
       <img src="../assets/img/logo-white.svg" alt="SIA Logu Apkope">
       <p>Profesionāla logu un durvju apkope Latvijā.</p>
@@ -1418,7 +1465,8 @@
       <a href="interneta-veikals.html" class="footer-shop-link">Interneta veikals</a>
     </div>
   </div>
-  <div class="container copyright">© <span id="yr"></span> SIA Logu Apkope. Visas tiesības aizsargātas.</div>
+  <div class="copyright">© <span id="yr"></span> SIA Logu Apkope. Visas tiesības aizsargātas.</div>
+  </div><!-- /.footer-inner -->
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 <script src="../js/google-config.js"></script>
@@ -1470,8 +1518,13 @@
   /* ── Switch to slide idx ── */
   function goTo(idx) {
     slides[current].classList.remove('hsl-slide--active');
+    slides[current].classList.remove('hsl-anim');
     dots[current].classList.remove('hsl-dot--active');
     current = (idx + N) % N;
+    /* Force reflow so CSS animations restart cleanly */
+    slides[current].classList.remove('hsl-anim');
+    void slides[current].offsetWidth;
+    slides[current].classList.add('hsl-anim');
     slides[current].classList.add('hsl-slide--active');
     dots[current].classList.add('hsl-dot--active');
     resetBar();
