@@ -208,14 +208,17 @@ a.snm-col-hd:hover{color:rgba(255,255,255,.85);}
   display:flex;
   align-items:stretch;
   min-height:0;
-  width:90%;
-  max-width:calc(var(--maxw) * 0.9);
-  margin:0 auto;
+  width:100%;
+  max-width:none;
+  margin:0;
   background:rgba(8,26,16,.97);
-  border-radius:0 0 16px 16px;
-  border:1px solid rgba(255,255,255,.09);
-  border-top:none;
+  border-radius:0;
+  border:none;
+  border-top:1px solid rgba(255,255,255,.09);
   overflow:hidden;
+  padding-left:max(24px, calc((100vw - var(--maxw)) / 2));
+  padding-right:max(24px, calc((100vw - var(--maxw)) / 2));
+  box-sizing:border-box;
 }
 /* Tab sidebar */
 .util-tabs{
@@ -824,22 +827,20 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 }
 @media(max-width:640px){.pak-rounded{border-radius:14px;}}
 
-/* Outer wrapper — constrains to site grid, same as hero & SOS blocks */
+/* Outer wrapper — full bleed */
 .promo-plise-wrap{
-  max-width:var(--maxw);
-  margin:0 auto;
-  padding:0 24px;
+  max-width:none;
+  margin:0;
+  padding:0;
 }
-@media(max-width:640px){.promo-plise-wrap{padding:0 12px;}}
 .promo-plise{
   padding:90px 0;
   position:relative;
   overflow:hidden;
-  border-radius:20px;
+  border-radius:0;
   transition:box-shadow .35s ease;
 }
 .promo-plise:hover{box-shadow:0 12px 48px rgba(0,0,0,.38);}
-@media(max-width:640px){.promo-plise{border-radius:14px;}}
 /* Photo background */
 .promo-plise-bg{
   position:absolute;inset:0;z-index:0;overflow:hidden;

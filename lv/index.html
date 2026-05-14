@@ -31,13 +31,8 @@
 }
 .hsl-slide{
   position:absolute;inset:0;
-  background-color:rgb(var(--tint));
-  background-color:color-mix(in srgb,rgb(var(--tint)) 38%,#1c1c1c);
-  background-image:
-    radial-gradient(circle 560px at 57% 18%, rgba(208,77,26,.18), transparent),
-    linear-gradient(to right, rgba(255,255,255,.055) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.055) 1px, transparent 1px);
-  background-size: auto, 5rem 3.5rem, 5rem 3.5rem;
+  background-color:#1E3A2E;
+  background-image:none;
   opacity:0;transition:opacity 700ms ease-in-out;
   pointer-events:none;z-index:1;
   display:flex;
@@ -594,12 +589,8 @@
 .sos-wrap{
   display:flex;
   overflow:hidden;
-  background-color:#15221a;
-  background-image:
-    radial-gradient(circle 560px at 57% 50%, rgba(208,77,26,.18), transparent),
-    linear-gradient(to right, rgba(255,255,255,.055) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.055) 1px, transparent 1px);
-  background-size: auto, 5rem 3.5rem, 5rem 3.5rem;
+  background-color:#1E3A2E;
+  background-image:none;
   min-height:430px;height:calc((100vh - 112px)*.78);max-height:560px;
   margin:0;
 }
@@ -731,10 +722,25 @@
   display:grid;
   grid-template-columns:1fr 1fr;
   height:130px;
-  border-radius:20px;
-  overflow:hidden;
-  border:1px solid #1E3A2E;
+  border-radius:0;
+  overflow:visible;
+  border:none;
   background:transparent;
+  position:relative;
+}
+/* Fading top border */
+.mini-dual::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(to right,transparent 0%,#1E3A2E 18%,#1E3A2E 82%,transparent 100%);
+  pointer-events:none;
+}
+/* Fading bottom border */
+.mini-dual::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(to right,transparent 0%,#1E3A2E 18%,#1E3A2E 82%,transparent 100%);
+  pointer-events:none;
 }
 /* ── Shared half styles ── */
 .mini-dual-half{
@@ -768,7 +774,7 @@
 }
 @media(max-width:640px){
   .mini-dual-wrap{padding:12px 12px 0 !important;}
-  .mini-dual{height:100px;border-radius:14px;}
+  .mini-dual{height:100px;}
   .mini-dual-icon{width:48px;height:48px;}
   .mini-dual-label{font-size:.63rem;letter-spacing:.04em;}
 }
@@ -950,6 +956,19 @@
 <div class="promo-plise-wrap">
 <section class="promo-plise" id="promoPlise"
   itemscope itemtype="https://schema.org/Product">
+  <!-- SVG filter for glow border effect -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <filter width="3000%" x="-1000%" height="3000%" y="-1000%" id="promo-unopaq">
+      <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 3 0"></feColorMatrix>
+    </filter>
+  </svg>
+  <!-- Glowing border backdrop -->
+  <div class="promo-glow-backdrop" aria-hidden="true">
+    <div class="promo-glow-border border-top"></div>
+    <div class="promo-glow-border border-bottom"></div>
+    <div class="promo-glow-border border-left"></div>
+    <div class="promo-glow-border border-right"></div>
+  </div>
   <!-- Background photo with SEO markup -->
   <div class="promo-plise-bg" aria-hidden="true">
     <picture>
@@ -1516,7 +1535,7 @@
 <script>
 /* ── Full-screen hero slider ── */
 (function(){
-  var INTERVAL = 6000;   /* auto-advance ms */
+  var INTERVAL = 4000;   /* auto-advance ms */
   var FADE_DUR = 750;    /* must match CSS transition */
 
   var slides   = Array.prototype.slice.call(document.querySelectorAll('.hsl-slide'));
