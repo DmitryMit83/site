@@ -1732,7 +1732,7 @@
     if(next === cur) return;
     animating = true;
 
-    /* fling current card off-screen */
+    /* 1 ── Fling current card off-screen */
     var flyDir = ((next - cur + n) % n) <= Math.floor(n / 2) ? -1 : 1;
     setTransition(true);
     cards[cur].style.transform = 'translateX(' + (flyDir * -520) + 'px) rotate(' + (flyDir * -26) + 'deg) scale(1)';
@@ -1740,18 +1740,45 @@
 
     setTimeout(function(){
       cur = next;
+
+      /* 2 ── Snap all cards to new logical positions (no transition)
+              New current starts from the "stacked behind" pos so it can rise */
       setTransition(false);
-      applyPositions(0);
-      updateDots();
-      requestAnimationFrame(function(){
-        setTransition(true);
-        applyPositions(0);
-        setTimeout(function(){
-          animating = false;
-          setHeight();
-        }, 420);
+      cards.forEach(function(c, i){
+        var p = relPos(i);
+        if(p === 0){
+          /* new front — start from stacked position */
+          c.style.zIndex = '3'; c.style.opacity = '.65';
+          c.style.transform = 'translateY(10px) rotate(-1.5deg) scale(.96)';
+          c.style.pointerEvents = '';
+        } else if(p === 1){
+          c.style.zIndex = '2'; c.style.opacity = '.6';
+          c.style.transform = 'translateY(8px) rotate(-2deg) scale(.95)';
+          c.style.pointerEvents = 'none';
+        } else if(p === 2){
+          c.style.zIndex = '1'; c.style.opacity = '.3';
+          c.style.transform = 'translateY(16px) rotate(-4deg) scale(.95)';
+          c.style.pointerEvents = 'none';
+        } else {
+          c.style.zIndex = '0'; c.style.opacity = '0';
+          c.style.transform = 'translateY(16px) rotate(-4deg) scale(.95)';
+          c.style.pointerEvents = 'none';
+        }
       });
-    }, 210);
+      updateDots();
+
+      /* 3 ── Animate new front card rising smoothly to top position */
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          setTransition(true);
+          applyPositions(0);
+          setTimeout(function(){
+            animating = false;
+            setHeight();
+          }, 450);
+        });
+      });
+    }, 220);
   }
 
   /* ── Touch drag ── */
