@@ -1050,6 +1050,537 @@
 </section>
 </div><!-- /promo-plise-wrap -->
 
+<!-- ══ Pakalpojumu pieteikšana ════════════════════════════════════════ -->
+<section id="pieteikties" class="svc-apply-section">
+<style>
+/* ── Section ── */
+.svc-apply-section{
+  padding:80px 0 96px;
+  background:#f5f4f0;
+}
+/* ── Left-aligned header (pricing.tsx style) ── */
+.svc-apply-article{
+  max-width:680px;
+  margin-bottom:52px;
+}
+.svc-apply-article h2{
+  font-size:clamp(2rem,4vw,3.4rem);
+  font-weight:700;
+  color:var(--green);
+  line-height:1.15;
+  margin:0 0 16px;
+  display:flex;flex-wrap:wrap;gap:0 .3em;
+}
+/* VerticalCutReveal words */
+.svc-vcr-word{overflow:hidden;display:inline-block;}
+.svc-vcr-inner{
+  display:inline-block;
+  transform:translateY(110%);
+  transition:transform .6s cubic-bezier(.16,1,.3,1);
+}
+.svc-card.vcr-ready .svc-vcr-inner,
+.svc-vcr-fired .svc-vcr-inner{transform:translateY(0);}
+.svc-apply-desc{
+  font-size:1rem;color:#6b7280;line-height:1.65;
+  margin:0 0 22px;max-width:480px;
+  opacity:0;transform:translateY(-14px);
+  transition:opacity .5s .3s ease, transform .5s .3s ease;
+}
+.svc-vcr-fired .svc-apply-desc{opacity:1;transform:translateY(0);}
+/* Article CTA row */
+.svc-article-actions{
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  opacity:0;transform:translateY(-10px);
+  transition:opacity .5s .45s ease, transform .5s .45s ease;
+}
+.svc-vcr-fired .svc-article-actions{opacity:1;transform:translateY(0);}
+.svc-article-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:11px 22px;
+  background:var(--green);color:#fff;
+  font-size:.9rem;font-weight:600;font-family:inherit;
+  border-radius:8px;text-decoration:none;
+  transition:opacity .2s, transform .15s;
+  white-space:nowrap;
+}
+.svc-article-btn:hover{opacity:.88;transform:translateY(-1px);}
+.svc-article-hint{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.83rem;color:#6b7280;line-height:1.4;
+  max-width:220px;
+}
+.svc-hint-icon{
+  flex-shrink:0;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;
+  background:#e5e7eb;color:#374151;
+  border-radius:50%;font-size:.7rem;font-weight:800;
+}
+
+/* ── Grid (subgrid rows — aligns all card rows across columns) ── */
+.svc-cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(7,auto);
+  column-gap:20px;
+  row-gap:0;
+}
+/* ── Card ── */
+.svc-card{
+  grid-row:span 7;
+  display:grid;
+  grid-template-rows:subgrid;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+  position:relative;
+  overflow:hidden;
+  transition:box-shadow .25s ease, transform .25s ease;
+}
+.svc-card:hover{
+  box-shadow:0 8px 32px rgba(0,0,0,.1);
+  transform:translateY(-3px);
+}
+/* Popular card — orange ring */
+.svc-card--popular{
+  background:#fff7ed;
+  outline:2px solid var(--accent);
+  outline-offset:0;
+  box-shadow:0 0 0 4px rgba(208,77,26,.1);
+}
+.svc-card--popular:hover{
+  box-shadow:0 0 0 4px rgba(208,77,26,.1), 0 8px 32px rgba(208,77,26,.15);
+}
+.svc-popular-badge{
+  position:absolute;top:-1px;right:20px;
+  background:var(--accent);color:#fff;
+  font-size:.72rem;font-weight:700;letter-spacing:.05em;
+  padding:4px 14px;border-radius:0 0 8px 8px;
+}
+/* ── Card row wrappers (7 subgrid rows per card) ── */
+.svc-card-r-title{padding:28px 24px 0;}
+.svc-card-r-price{padding:10px 24px 0;}
+.svc-card-r-pnote{padding:4px 24px 0;}
+.svc-card-r-desc{padding:10px 24px 0;}
+.svc-card-r-btn{padding:18px 24px;}
+.svc-card-r-feats{padding:0 24px 8px;align-self:start;}
+.svc-card-r-foot{padding:0 24px 24px;}
+.svc-card-name{
+  display:flex;justify-content:space-between;align-items:flex-start;
+}
+.svc-card-title{
+  font-size:clamp(1.1rem,2vw,1.45rem);
+  font-weight:700;color:#111827;
+  margin:0;line-height:1.2;
+}
+.svc-card-desc{
+  font-size:.83rem;color:#6b7280;line-height:1.6;
+  margin:0;
+}
+/* ── Buttons ── */
+.svc-btn-primary{
+  display:block;width:100%;
+  padding:14px 20px;
+  font-size:.95rem;font-weight:600;font-family:inherit;
+  border:none;border-radius:10px;cursor:pointer;
+  text-align:center;text-decoration:none;
+  transition:opacity .2s, transform .15s;
+  line-height:1;
+}
+.svc-btn-primary:hover{opacity:.9;transform:translateY(-1px);}
+.svc-btn-orange{
+  background:linear-gradient(to top, #ea580c, #f97316);
+  box-shadow:0 4px 14px rgba(234,88,12,.4);
+  border:1px solid #fb923c;
+  color:#fff;
+}
+.svc-btn-dark{
+  background:linear-gradient(to top, #1f2937, #374151);
+  box-shadow:0 4px 14px rgba(31,41,55,.4);
+  border:1px solid #4b5563;
+  color:#fff;
+}
+.svc-btn-ghost{
+  display:block;width:100%;
+  padding:14px 20px;
+  font-size:.9rem;font-weight:600;font-family:inherit;
+  background:#fff;color:#111827;
+  border:1px solid #e5e7eb;
+  border-radius:10px;cursor:pointer;
+  text-align:center;text-decoration:none;
+  box-shadow:0 2px 8px rgba(0,0,0,.07);
+  transition:box-shadow .2s, transform .15s;
+  line-height:1;
+}
+.svc-btn-ghost:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateY(-1px);}
+
+/* ── Features ── */
+.svc-features-divider{
+  border:none;border-top:1px solid #e5e7eb;
+  margin:0 0 18px;
+}
+.svc-features-label{
+  font-size:.8rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:#111827;
+  margin:0 0 12px;
+}
+.svc-features-include{
+  font-size:.85rem;font-weight:600;color:#111827;
+  margin:0 0 10px;
+}
+.svc-features-list{
+  list-style:none;padding:0;margin:0;
+  display:flex;flex-direction:column;gap:9px;
+}
+.svc-features-list li{
+  display:flex;align-items:center;gap:10px;
+  font-size:.83rem;color:#6b7280;
+}
+.svc-check-badge{
+  flex-shrink:0;
+  width:22px;height:22px;
+  background:#fff;
+  border:1.5px solid var(--accent);
+  border-radius:50%;
+  display:grid;place-content:center;
+}
+.svc-check-badge svg{
+  width:13px;height:13px;
+  stroke:var(--accent);stroke-width:2.5;
+  fill:none;stroke-linecap:round;stroke-linejoin:round;
+}
+
+/* ── Price display ── */
+.svc-card-price{
+  display:flex;align-items:baseline;gap:5px;
+  line-height:1;margin:12px 0 2px;
+}
+.svc-card-price-amount{
+  font-size:2.6rem;font-weight:800;
+  color:var(--green);line-height:1;
+}
+.svc-card-price-currency{
+  font-size:1.4rem;font-weight:700;
+  color:var(--green);
+}
+.svc-card-price-old{
+  font-size:1rem;font-weight:500;
+  color:#9ca3af;text-decoration:line-through;
+  margin-left:10px;align-self:center;
+}
+.svc-card-price-note{
+  font-size:.74rem;color:#9ca3af;
+  margin:0 0 14px;line-height:1.4;
+}
+.svc-card-footnote{
+  font-size:.73rem;color:#9ca3af;
+  margin:14px 0 0;line-height:1.55;
+}
+
+/* ── Modal overlay ── */
+.svc-modal-overlay{
+  position:fixed;inset:0;z-index:9000;
+  background:rgba(10,25,16,.58);
+  backdrop-filter:blur(5px);
+  display:flex;align-items:center;justify-content:center;
+  padding:16px;
+  opacity:0;pointer-events:none;
+  transition:opacity .28s ease;
+}
+.svc-modal-overlay.open{opacity:1;pointer-events:auto;}
+.svc-modal{
+  background:#fff;
+  border-radius:12px;
+  border-top:3px solid var(--accent);
+  box-shadow:0 24px 80px rgba(10,25,16,.25);
+  width:100%;max-width:500px;
+  max-height:90vh;overflow-y:auto;
+  padding:36px 36px 32px;
+  position:relative;
+  transform:translateY(28px) scale(.96);
+  transition:transform .35s cubic-bezier(.16,1,.3,1);
+}
+.svc-modal-overlay.open .svc-modal{transform:translateY(0) scale(1);}
+.svc-modal-close{
+  position:absolute;top:14px;right:16px;
+  background:none;border:none;font-size:1.3rem;
+  color:#9ca3af;cursor:pointer;padding:4px 6px;
+  transition:color .15s;
+}
+.svc-modal-close:hover{color:#374151;}
+.svc-modal-tag{
+  display:inline-block;
+  background:rgba(208,77,26,.12);color:var(--accent);
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 12px;border-radius:99px;margin-bottom:14px;
+}
+.svc-modal h3{
+  font-size:1.3rem;font-weight:700;color:var(--green);
+  margin:0 0 24px;line-height:1.3;
+}
+/* Form */
+.svc-form{display:flex;flex-direction:column;gap:12px;}
+.svc-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.svc-form input{
+  width:100%;box-sizing:border-box;
+  padding:.7rem 1rem;
+  border:1.5px solid #e5e7eb;
+  border-radius:8px;
+  font-size:.88rem;font-family:inherit;color:#111827;
+  background:#f9fafb;
+  transition:border-color .2s,background .2s;
+  outline:none;
+}
+.svc-form input:focus{border-color:var(--accent);background:#fff;}
+.svc-form input::placeholder{color:#9ca3af;}
+.svc-form-submit{
+  margin-top:8px;
+  background:linear-gradient(to top,#ea580c,#f97316);
+  box-shadow:0 4px 14px rgba(234,88,12,.35);
+  border:1px solid #fb923c;
+  color:#fff;
+  border-radius:10px;
+  padding:.85rem 1.6rem;
+  font-size:.95rem;font-weight:700;font-family:inherit;
+  cursor:pointer;letter-spacing:.02em;
+  transition:opacity .2s,transform .15s;
+}
+.svc-form-submit:hover{opacity:.9;transform:translateY(-1px);}
+.svc-form-note{
+  font-size:.75rem;color:#9ca3af;margin-top:2px;text-align:center;
+}
+.svc-form-success{
+  display:none;text-align:center;padding:20px 0 8px;
+}
+.svc-form-success svg{display:block;margin:0 auto 14px;color:var(--accent);}
+.svc-form-success h4{color:var(--green);font-size:1.05rem;margin:0 0 8px;}
+.svc-form-success p{color:#6b7280;font-size:.88rem;}
+
+/* ── Responsive ── */
+@media(max-width:960px){
+  .svc-cards-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:620px){
+  .svc-cards-grid{grid-template-columns:1fr;}
+  .svc-apply-section{padding:56px 0 64px;}
+  .svc-card-r-title,.svc-card-r-price,.svc-card-r-pnote,
+  .svc-card-r-desc,.svc-card-r-btn,.svc-card-r-feats,.svc-card-r-foot{
+    padding-left:18px;padding-right:18px;
+  }
+  .svc-form-row{grid-template-columns:1fr;}
+  .svc-modal{padding:28px 20px 24px;}
+  .svc-apply-article h2{font-size:1.9rem;}
+}
+</style>
+
+<div class="container">
+  <!-- Left-aligned header with VerticalCutReveal -->
+  <article class="svc-apply-article" id="svcArticle">
+    <h2 id="svcHeading" aria-label="Plisē siets — fiksēta cena">
+      <span class="svc-vcr-word"><span class="svc-vcr-inner">Plisē</span></span>
+      <span class="svc-vcr-word"><span class="svc-vcr-inner" style="transition-delay:.1s">siets</span></span>
+      <span class="svc-vcr-word"><span class="svc-vcr-inner" style="transition-delay:.2s">—</span></span>
+      <span class="svc-vcr-word"><span class="svc-vcr-inner" style="transition-delay:.3s">fiksēta</span></span>
+      <span class="svc-vcr-word"><span class="svc-vcr-inner" style="transition-delay:.4s">cena</span></span>
+    </h2>
+    <p class="svc-apply-desc">Izvēlieties sev piemērotāko paketi — no viena tīkla līdz pilnam mājoklim. Visi tīkli izgatavoti no 18 mm alumīnija profila. Fiksēta cena ietver visu: izmērus, izgatavošanu un uzstādīšanu. Pasūtiet tiešsaistē — atbildam 12 stundu laikā.</p>
+    <div class="svc-article-actions">
+      <a href="moskitu-tikli.html" class="svc-article-btn">Vairāk par plisē tīkliem →</a>
+      <span class="svc-article-hint">
+        <span class="svc-hint-icon">?</span>
+        Kas ir plisē moskītu tīkli?
+      </span>
+    </div>
+  </article>
+
+  <!-- 3 cards — 7-row subgrid structure for pixel-perfect alignment -->
+  <div class="svc-cards-grid">
+
+    <!-- Card 1: ×1 -->
+    <div class="svc-card" data-svc="Plisē moskītu tīkls">
+      <div class="svc-card-r-title">
+        <div class="svc-card-name"><h3 class="svc-card-title">Plisē moskītu tīkls</h3></div>
+      </div>
+      <div class="svc-card-r-price">
+        <div class="svc-card-price">
+          <span class="svc-card-price-amount">95</span>
+          <span class="svc-card-price-currency">€</span>
+          <span class="svc-card-price-old">135,06 €</span>
+        </div>
+      </div>
+      <div class="svc-card-r-pnote"><p class="svc-card-price-note">Fiksēta cena. PVN iekļauts.</p></div>
+      <div class="svc-card-r-desc"><p class="svc-card-desc">Vertikāls atverams plisē tīkls no balta profila ar standarta sietu — piemērots jebkuram logu izmēram līdz 1100 × 1500 mm.</p></div>
+      <div class="svc-card-r-btn"><button class="svc-btn-primary svc-btn-dark svc-apply-btn">Pasūtīt tagad</button></div>
+      <div class="svc-card-r-feats">
+        <hr class="svc-features-divider">
+        <p class="svc-features-label">Iekļauts cenā</p>
+        <ul class="svc-features-list">
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Izmēru ņemšana Rīgā</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Uzstādīšana Rīgā</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>PVN (21%)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Vertikāla atvēršana</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Balts profils</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Standarta siets</li>
+        </ul>
+      </div>
+      <div class="svc-card-r-foot"><p class="svc-card-footnote">* Maks. izmēri: platums 1100 mm, augstums 1500 mm.<br>* Uzstādīšana iekļauta tikai Rīgā.</p></div>
+    </div>
+
+    <!-- Card 2: ×5 POPULAR -->
+    <div class="svc-card svc-card--popular" data-svc="Plisē moskītu tīkli × 5">
+      <div class="svc-popular-badge">Populārākais</div>
+      <div class="svc-card-r-title">
+        <div class="svc-card-name"><h3 class="svc-card-title">Plisē moskītu tīkli × 5</h3></div>
+      </div>
+      <div class="svc-card-r-price">
+        <div class="svc-card-price">
+          <span class="svc-card-price-amount">450</span>
+          <span class="svc-card-price-currency">€</span>
+          <span class="svc-card-price-old">675,30 €</span>
+        </div>
+      </div>
+      <div class="svc-card-r-pnote"><p class="svc-card-price-note">Fiksēta cena par 5 gab. PVN iekļauts.</p></div>
+      <div class="svc-card-r-desc"><p class="svc-card-desc">Tas pats risinājums — vairāk logu. Izvēlieties profila krāsu, sieta veidu un atvēršanas virzienu katram logam atsevišķi.</p></div>
+      <div class="svc-card-r-btn"><button class="svc-btn-primary svc-btn-orange svc-apply-btn">Pasūtīt tagad</button></div>
+      <div class="svc-card-r-feats">
+        <hr class="svc-features-divider">
+        <p class="svc-features-label">Iekļauts cenā</p>
+        <ul class="svc-features-list">
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>5 plisē tīkli (līdz 1100 × 1500 mm)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Izmēru ņemšana Rīgā</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Uzstādīšana Rīgā</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>PVN (21%)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Krāsa: balts / antracīts / tumši brūns</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Siets: standarta vai Pet Screen</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Atvēršana: vertikāla vai horizontāla</li>
+        </ul>
+      </div>
+      <div class="svc-card-r-foot"><p class="svc-card-footnote">* Maks. izmēri: platums 1100 mm, augstums 1500 mm.<br>* Uzstādīšana iekļauta tikai Rīgā.</p></div>
+    </div>
+
+    <!-- Card 3: ×11 -->
+    <div class="svc-card" data-svc="Plisē moskītu tīkli × 11">
+      <div class="svc-card-r-title">
+        <div class="svc-card-name"><h3 class="svc-card-title">Plisē moskītu tīkli × 11</h3></div>
+      </div>
+      <div class="svc-card-r-price">
+        <div class="svc-card-price">
+          <span class="svc-card-price-amount">1150</span>
+          <span class="svc-card-price-currency">€</span>
+          <span class="svc-card-price-old">1586,79 €</span>
+        </div>
+      </div>
+      <div class="svc-card-r-pnote"><p class="svc-card-price-note">Fiksēta cena par 11 gab. PVN iekļauts.</p></div>
+      <div class="svc-card-r-desc"><p class="svc-card-desc">Pilnīgs risinājums lielam mājoklim — arī XXL izmēru logiem. Krāsa, siets un atvēršanas virziens pēc izvēles katram logam. Uzstādīšana 100 km rādiusā no Rīgas.</p></div>
+      <div class="svc-card-r-btn"><button class="svc-btn-primary svc-btn-dark svc-apply-btn">Pasūtīt tagad</button></div>
+      <div class="svc-card-r-feats">
+        <hr class="svc-features-divider">
+        <p class="svc-features-label">Iekļauts cenā</p>
+        <ul class="svc-features-list">
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>8 tīkli līdz 1100 × 1500 mm</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>2 tīkli līdz 1000 × 2200 mm (augsts logs)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>1 tīkls līdz 2000 × 2200 mm (XXL)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Izmēru ņemšana 100 km rādiusā no Rīgas</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Uzstādīšana 100 km rādiusā no Rīgas</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>PVN (21%)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Krāsa: balts / antracīts / tumši brūns</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Siets: standarta vai Pet Screen</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Atvēršana: vertikāla vai horizontāla</li>
+        </ul>
+      </div>
+      <div class="svc-card-r-foot"><!-- nav footnotes for card 3 --></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Modal ── -->
+<div class="svc-modal-overlay" id="svcModal" role="dialog" aria-modal="true">
+  <div class="svc-modal">
+    <button class="svc-modal-close" id="svcModalClose" aria-label="Aizvērt">✕</button>
+    <span class="svc-modal-tag" id="svcModalService"></span>
+    <h3>Pakalpojuma pieteikums</h3>
+    <div class="svc-form-success" id="svcFormSuccess">
+      <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+      <h4>Pieteikums nosūtīts!</h4>
+      <p>Mēs sazināsimies ar Jums 12 stundu laikā.</p>
+    </div>
+    <form class="svc-form" id="svcForm" novalidate>
+      <div class="svc-form-row">
+        <input type="text" name="name" placeholder="Vārds *" required autocomplete="given-name">
+        <input type="text" name="surname" placeholder="Uzvārds *" required autocomplete="family-name">
+      </div>
+      <input type="tel" name="phone" placeholder="Telefona numurs *" required autocomplete="tel">
+      <input type="text" name="address" placeholder="Objekta adrese" autocomplete="street-address">
+      <input type="email" name="email" placeholder="E-pasts" autocomplete="email">
+      <button type="submit" class="svc-form-submit">Nosūtīt pieteikumu →</button>
+      <p class="svc-form-note">* Obligātie lauki. Dati tiek izmantoti tikai pieteikuma apstrādei.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ── VerticalCutReveal + desc fade-in on scroll ── */
+  var article = document.getElementById('svcArticle');
+  if(article){
+    var fired = false;
+    function fireReveal(){
+      if(fired) return;
+      fired = true;
+      article.classList.add('svc-vcr-fired');
+    }
+    if(window.IntersectionObserver){
+      new IntersectionObserver(function(entries){
+        if(entries[0].isIntersecting) fireReveal();
+      },{threshold:0.5}).observe(article);
+    } else { fireReveal(); }
+  }
+
+  /* ── Modal ── */
+  var overlay  = document.getElementById('svcModal');
+  var closeBtn = document.getElementById('svcModalClose');
+  var svcLabel = document.getElementById('svcModalService');
+  var form     = document.getElementById('svcForm');
+  var success  = document.getElementById('svcFormSuccess');
+
+  function openModal(name){
+    svcLabel.textContent = name;
+    form.style.display = '';
+    success.style.display = 'none';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ form.querySelector('input').focus(); }, 340);
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function(){ form.reset(); }, 300);
+  }
+
+  document.querySelectorAll('#pieteikties .svc-apply-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      openModal(btn.closest('.svc-card').dataset.svc || 'Pakalpojums');
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name  = form.querySelector('[name="name"]').value.trim();
+    var phone = form.querySelector('[name="phone"]').value.trim();
+    if(!name||!phone){ alert('Lūdzu aizpildiet vārdu un tālruņa numuru.'); return; }
+    form.style.display = 'none';
+    success.style.display = 'block';
+    setTimeout(closeModal, 3200);
+  });
+})();
+</script>
+</section>
 <section id="par-mums">
   <div class="container">
     <div class="section-head">

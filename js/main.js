@@ -192,24 +192,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Hamburger toggle ──────────────────────────────────────────────────────
   btn.addEventListener('click', () => {
     nav.classList.toggle('open');
-    // Close all open dropdowns when closing nav
     if (!nav.classList.contains('open')) {
       nav.querySelectorAll('.dropdown.open, .dropdown-sub.open')
          .forEach(d => d.classList.remove('open'));
     }
   });
 
-  // ── Mobile: level-1 dropdowns (.has-dropdown > a) ─────────────────────────
-  nav.querySelectorAll('.has-dropdown > a').forEach(trigger => {
+  // ── Mobile: level-1 dropdowns (SNM nav: .snm-trig; legacy: .has-dropdown > a)
+  nav.querySelectorAll('.snm-trig, .has-dropdown > a:not(.snm-trig)').forEach(trigger => {
     trigger.addEventListener('click', e => {
       if (window.innerWidth > 900) return;
       e.preventDefault();
-      const parent   = trigger.closest('.has-dropdown');
-      const dropdown = parent.querySelector(':scope > .dropdown');
+      const parent   = trigger.closest('.snm-item, .has-dropdown');
+      const dropdown = parent.querySelector(':scope > .snm-mob-dd, :scope > .dropdown');
+      if (!dropdown) return;
       const isOpen   = dropdown.classList.contains('open');
-      // Close all level-1 dropdowns
-      nav.querySelectorAll('.has-dropdown > .dropdown').forEach(d => d.classList.remove('open'));
-      nav.querySelectorAll('.dropdown-sub').forEach(d => d.classList.remove('open'));
+      nav.querySelectorAll('.snm-mob-dd.open, .has-dropdown > .dropdown.open')
+         .forEach(d => d.classList.remove('open'));
+      nav.querySelectorAll('.dropdown-sub.open').forEach(d => d.classList.remove('open'));
       if (!isOpen) dropdown.classList.add('open');
     });
   });
@@ -221,16 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const parent = trigger.closest('.has-dropdown-sub');
       const sub    = parent.querySelector(':scope > .dropdown-sub');
+      if (!sub) return;
       const isOpen = sub.classList.contains('open');
-      // Close siblings
       parent.closest('.dropdown-inner').querySelectorAll('.dropdown-sub')
             .forEach(d => d.classList.remove('open'));
       if (!isOpen) sub.classList.add('open');
     });
   });
 
-  // ── Close nav when a leaf link is clicked (not a dropdown trigger) ────────
-  nav.querySelectorAll('a:not(.has-dropdown > a):not(.has-dropdown-sub > a):not(.social-trigger)')
+  // ── Close nav when a leaf link is clicked ────────────────────────────────
+  nav.querySelectorAll('a:not(.snm-trig):not(.has-dropdown > a):not(.has-dropdown-sub > a):not(.social-trigger)')
      .forEach(a => a.addEventListener('click', () => {
        nav.classList.remove('open');
        nav.querySelectorAll('.dropdown.open, .dropdown-sub.open')
@@ -504,3 +504,119 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 });
+
+// ── SNM NavigationMenu viewport (desktop dropdowns) ──────────────────────────
+(function () {
+  var nav      = document.getElementById('siteNav');
+  var vpWrap   = document.getElementById('snmVPWrap');
+  var viewport = document.getElementById('snmViewport');
+  var indEl    = document.getElementById('snmIndicator');
+  if (!nav || !vpWrap || !viewport || !indEl) return;
+
+  var items      = Array.from(nav.querySelectorAll('.snm-has-menu'));
+  var activeId   = null;
+  var closeTimer = null;
+
+  function itemIdx(id) {
+    return items.findIndex(function (el) { return el.id === 'snmi-' + id; });
+  }
+
+  function open(id) {
+    clearTimeout(closeTimer);
+    var prevId  = activeId;
+    var prevIdx = prevId ? itemIdx(prevId) : -1;
+    var newIdx  = itemIdx(id);
+    var dir     = prevId ? (newIdx > prevIdx ? 1 : -1) : 0;
+    activeId = id;
+
+    items.forEach(function (it) {
+      var t = it.querySelector('.snm-trig');
+      if (t) t.dataset.state = (it.id === 'snmi-' + id) ? 'open' : '';
+    });
+
+    viewport.querySelectorAll('.snm-panel').forEach(function (p) {
+      var pid = p.id.replace('snmp-', '');
+      p.classList.remove('is-active', 'from-right', 'from-left', 'fade-in');
+      if (pid === id) {
+        p.classList.add('is-active');
+        if (dir > 0)      p.classList.add('from-right');
+        else if (dir < 0) p.classList.add('from-left');
+        else              p.classList.add('fade-in');
+      }
+    });
+
+    vpWrap.classList.add('is-open');
+    positionVP(id);
+  }
+
+  function positionVP(id) {
+    var item    = document.getElementById('snmi-' + id);
+    var trigger = item ? item.querySelector('.snm-trig') : null;
+    if (!trigger) return;
+
+    var navRect  = nav.getBoundingClientRect();
+    var trigRect = trigger.getBoundingClientRect();
+    var trigCx   = trigRect.left - navRect.left + trigRect.width / 2;
+
+    var panel = document.getElementById('snmp-' + id);
+    if (panel) {
+      vpWrap.style.minWidth  = '';
+      panel.style.display    = 'block';
+      panel.style.width      = 'fit-content';
+      var pw = panel.scrollWidth;
+      panel.style.width      = '';
+      panel.style.display    = '';
+      vpWrap.style.minWidth  = Math.max(180, pw) + 'px';
+    }
+
+    var vpW    = vpWrap.offsetWidth || 220;
+    var rawLeft = trigCx - vpW / 2;
+    var maxLeft = nav.offsetWidth - vpW;
+    var left    = Math.max(0, Math.min(rawLeft, maxLeft));
+    vpWrap.style.left = left + 'px';
+
+    var indLeft = trigCx - left;
+    indEl.style.left = indLeft + 'px';
+    indEl.classList.add('is-visible');
+  }
+
+  function close() {
+    activeId = null;
+    vpWrap.classList.remove('is-open');
+    indEl.classList.remove('is-visible');
+    items.forEach(function (it) {
+      var t = it.querySelector('.snm-trig');
+      if (t) t.dataset.state = '';
+    });
+    viewport.querySelectorAll('.snm-panel').forEach(function (p) {
+      p.classList.remove('is-active', 'from-right', 'from-left', 'fade-in');
+    });
+  }
+
+  items.forEach(function (item) {
+    var id = item.id.replace('snmi-', '');
+    item.addEventListener('mouseenter', function () { open(id); });
+  });
+
+  nav.querySelectorAll('.snm-item:not(.snm-has-menu)').forEach(function (item) {
+    item.addEventListener('mouseenter', function () {
+      clearTimeout(closeTimer);
+      close();
+    });
+  });
+
+  vpWrap.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
+
+  [nav, vpWrap].forEach(function (el) {
+    el.addEventListener('mouseleave', function () {
+      closeTimer = setTimeout(close, 100);
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!nav.contains(e.target) && !vpWrap.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();
