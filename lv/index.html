@@ -1361,14 +1361,75 @@
 @media(max-width:960px){
   .svc-cards-grid{grid-template-columns:1fr 1fr;}
 }
+
+/* ── Mobile carousel arrows / dots ── */
+.svc-mob-nav{
+  display:none;
+  position:absolute;
+  inset-x:0;top:50%;
+  transform:translateY(-50%);
+  justify-content:space-between;
+  padding:0 10px;
+  z-index:10;
+  pointer-events:none;
+}
+.svc-mob-arr{
+  pointer-events:auto;
+  width:36px;height:36px;
+  background:rgba(255,255,255,.92);
+  border:1px solid #e5e7eb;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+  font-size:1rem;color:#374151;
+  transition:box-shadow .15s;
+}
+.svc-mob-arr:hover{box-shadow:0 4px 14px rgba(0,0,0,.18);}
+.svc-mob-dots{
+  display:none;
+  justify-content:center;gap:8px;
+  margin-top:20px;
+}
+.svc-mob-dot{
+  width:8px;height:8px;border-radius:50%;
+  border:none;padding:0;cursor:pointer;
+  background:#d1d5db;
+  transition:background .25s,transform .2s;
+  flex-shrink:0;
+}
+.svc-mob-dot.active{
+  background:var(--green);
+  transform:scale(1.35);
+}
+
 @media(max-width:620px){
-  .svc-cards-grid{grid-template-columns:1fr;}
-  .svc-card{margin-bottom:20px;}
-  .svc-apply-section{padding:56px 0 64px;}
+  /* Carousel container */
+  .svc-cards-grid{
+    display:block;
+    position:relative;
+    overflow:visible;
+    /* height set by JS */
+  }
+  /* Stacked absolute cards */
+  .svc-card{
+    position:absolute;
+    width:100%;top:0;left:0;
+    margin:0;
+    cursor:grab;
+    touch-action:none;
+    will-change:transform,opacity;
+    transition:transform .4s cubic-bezier(.25,.46,.45,.94),opacity .35s;
+  }
+  .svc-card:active{cursor:grabbing;}
+  .svc-mob-nav{display:flex;}
+  .svc-mob-dots{display:flex;}
+  /* Inner row padding */
   .svc-card-r-title,.svc-card-r-price,.svc-card-r-pnote,
   .svc-card-r-desc,.svc-card-r-btn,.svc-card-r-feats,.svc-card-r-foot{
     padding-left:18px;padding-right:18px;
   }
+  .svc-apply-section{padding:56px 0 64px;}
   .svc-form-row{grid-template-columns:1fr;}
   .svc-modal{padding:28px 20px 24px;}
   .svc-apply-article h2{font-size:1.9rem;}
@@ -1579,6 +1640,192 @@
     success.style.display = 'block';
     setTimeout(closeModal, 3200);
   });
+})();
+</script>
+
+<script>
+/* ── Mobile card carousel (≤620px) ── */
+(function(){
+  var mq = window.matchMedia('(max-width:620px)');
+  var grid = document.querySelector('.svc-cards-grid');
+  if(!grid) return;
+  var cards = Array.from(grid.querySelectorAll(':scope > .svc-card'));
+  var n = cards.length;
+  if(n < 2) return;
+
+  var cur = 0, animating = false, dragging = false, mouseDown = false;
+  var startX = 0, dragDX = 0;
+
+  /* ── UI elements ── */
+  var navEl = document.createElement('div');
+  navEl.className = 'svc-mob-nav';
+  navEl.innerHTML = '<button class="svc-mob-arr" aria-label="Iepriekšējā">&#8592;</button>'
+                  + '<button class="svc-mob-arr" aria-label="Nākamā">&#8594;</button>';
+  grid.appendChild(navEl);
+  navEl.children[0].addEventListener('click', function(){ go(cur - 1); });
+  navEl.children[1].addEventListener('click', function(){ go(cur + 1); });
+
+  var dotsEl = document.createElement('div');
+  dotsEl.className = 'svc-mob-dots';
+  cards.forEach(function(_, i){
+    var d = document.createElement('button');
+    d.className = 'svc-mob-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Kartiņa ' + (i + 1));
+    d.addEventListener('click', function(){ go(i); });
+    dotsEl.appendChild(d);
+  });
+  grid.insertAdjacentElement('afterend', dotsEl);
+
+  /* ── Helpers ── */
+  function norm(i){ return ((i % n) + n) % n; }
+  function relPos(i){ return ((i - cur + n) % n); }
+
+  function setTransition(on){
+    var t = on ? 'transform .4s cubic-bezier(.25,.46,.45,.94),opacity .35s' : 'none';
+    cards.forEach(function(c){ c.style.transition = t; });
+  }
+
+  function applyPositions(dx){
+    dx = dx || 0;
+    cards.forEach(function(c, i){
+      var p = relPos(i);
+      if(p === 0){
+        c.style.zIndex      = '3';
+        c.style.opacity     = '1';
+        c.style.transform   = 'translateX(' + dx + 'px) rotate(' + (dx / 20) + 'deg) scale(1)';
+        c.style.pointerEvents = '';
+      } else if(p === 1){
+        c.style.zIndex      = '2';
+        c.style.opacity     = '.6';
+        c.style.transform   = 'translateY(8px) rotate(-2deg) scale(.95)';
+        c.style.pointerEvents = 'none';
+      } else if(p === 2){
+        c.style.zIndex      = '1';
+        c.style.opacity     = '.3';
+        c.style.transform   = 'translateY(16px) rotate(-4deg) scale(.95)';
+        c.style.pointerEvents = 'none';
+      } else {
+        c.style.zIndex      = '0';
+        c.style.opacity     = '0';
+        c.style.transform   = 'translateY(16px) rotate(-4deg) scale(.95)';
+        c.style.pointerEvents = 'none';
+      }
+    });
+  }
+
+  function updateDots(){
+    Array.from(dotsEl.children).forEach(function(d, i){
+      d.classList.toggle('active', i === cur);
+    });
+  }
+
+  function setHeight(){
+    if(!mq.matches) return;
+    grid.style.height = (cards[cur].offsetHeight + 28) + 'px';
+  }
+
+  function go(target){
+    if(animating) return;
+    var next = norm(target);
+    if(next === cur) return;
+    animating = true;
+
+    /* fling current card off-screen */
+    var flyDir = ((next - cur + n) % n) <= Math.floor(n / 2) ? -1 : 1;
+    setTransition(true);
+    cards[cur].style.transform = 'translateX(' + (flyDir * -520) + 'px) rotate(' + (flyDir * -26) + 'deg) scale(1)';
+    cards[cur].style.opacity   = '0';
+
+    setTimeout(function(){
+      cur = next;
+      setTransition(false);
+      applyPositions(0);
+      updateDots();
+      requestAnimationFrame(function(){
+        setTransition(true);
+        applyPositions(0);
+        setTimeout(function(){
+          animating = false;
+          setHeight();
+        }, 420);
+      });
+    }, 210);
+  }
+
+  /* ── Touch drag ── */
+  grid.addEventListener('touchstart', function(e){
+    if(!mq.matches || animating) return;
+    dragging = true;
+    startX   = e.touches[0].clientX;
+    dragDX   = 0;
+    setTransition(false);
+  }, {passive:true});
+
+  grid.addEventListener('touchmove', function(e){
+    if(!dragging || !mq.matches) return;
+    dragDX = e.touches[0].clientX - startX;
+    applyPositions(dragDX);
+    if(Math.abs(dragDX) > 8 && e.cancelable) e.preventDefault();
+  }, {passive:false});
+
+  grid.addEventListener('touchend', function(){
+    if(!dragging || !mq.matches) return;
+    dragging = false;
+    if(Math.abs(dragDX) > 80){
+      go(dragDX < 0 ? cur + 1 : cur - 1);
+    } else {
+      setTransition(true);
+      applyPositions(0);
+    }
+  });
+
+  /* ── Mouse drag ── */
+  grid.addEventListener('mousedown', function(e){
+    if(!mq.matches || animating) return;
+    mouseDown = true;
+    startX    = e.clientX;
+    dragDX    = 0;
+    setTransition(false);
+  });
+  document.addEventListener('mousemove', function(e){
+    if(!mouseDown || !mq.matches) return;
+    dragDX = e.clientX - startX;
+    applyPositions(dragDX);
+  });
+  document.addEventListener('mouseup', function(){
+    if(!mouseDown || !mq.matches) return;
+    mouseDown = false;
+    if(Math.abs(dragDX) > 80){
+      go(dragDX < 0 ? cur + 1 : cur - 1);
+    } else {
+      setTransition(true);
+      applyPositions(0);
+    }
+  });
+
+  /* ── Init / resize ── */
+  function init(){
+    if(!mq.matches){
+      cards.forEach(function(c){ c.removeAttribute('style'); });
+      grid.style.height = '';
+      return;
+    }
+    setTransition(false);
+    applyPositions(0);
+    requestAnimationFrame(function(){
+      setTransition(true);
+      setHeight();
+    });
+  }
+
+  mq.addEventListener('change', init);
+  window.addEventListener('resize', function(){ if(mq.matches) setHeight(); });
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
 </script>
 </section>
