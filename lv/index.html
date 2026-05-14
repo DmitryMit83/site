@@ -1366,15 +1366,11 @@
 .svc-mob-nav{
   display:none;
   position:absolute;
-  inset-x:0;top:50%;
-  transform:translateY(-50%);
-  justify-content:space-between;
-  padding:0 10px;
+  right:12px;bottom:18px;
+  gap:8px;
   z-index:10;
-  pointer-events:none;
 }
 .svc-mob-arr{
-  pointer-events:auto;
   width:36px;height:36px;
   background:rgba(255,255,255,.92);
   border:1px solid #e5e7eb;
@@ -1721,7 +1717,13 @@
 
   function setHeight(){
     if(!mq.matches) return;
-    grid.style.height = (cards[cur].offsetHeight + 28) + 'px';
+    /* Reset min-heights to measure natural content height */
+    cards.forEach(function(c){ c.style.minHeight = ''; });
+    var maxH = 0;
+    cards.forEach(function(c){ if(c.offsetHeight > maxH) maxH = c.offsetHeight; });
+    /* Apply same min-height to all — equal card heights */
+    cards.forEach(function(c){ c.style.minHeight = maxH + 'px'; });
+    grid.style.height = (maxH + 28) + 'px';
   }
 
   function go(target){
