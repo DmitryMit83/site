@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/styles.css?v=48">
+<link rel="stylesheet" href="../css/styles.css?v=49">
 <style>
 /* ══ Split hero slider ══ */
 .hsl-outer-wrap{max-width:none;margin:0;padding:0;}
@@ -1117,6 +1117,111 @@
   border-radius:50%;font-size:.7rem;font-weight:800;
 }
 
+/* ── Toggle switch ── */
+.svc-toggle-wrap{
+  display:flex;align-items:center;gap:16px;
+  justify-content:center;
+  margin-bottom:44px;
+}
+.svc-tog-label{
+  font-size:.93rem;font-weight:600;
+  color:#9ca3af;cursor:pointer;
+  transition:color .25s;
+  user-select:none;
+}
+.svc-tog-label.is-on{color:var(--green);}
+.svc-tog-switch{
+  position:relative;
+  width:54px;height:30px;
+  background:var(--green);
+  border-radius:99px;border:none;
+  cursor:pointer;flex-shrink:0;
+  transition:background .25s;
+  outline:none;
+}
+.svc-tog-switch:focus-visible{box-shadow:0 0 0 3px rgba(30,58,46,.35);}
+.svc-tog-knob{
+  position:absolute;top:4px;left:4px;
+  width:22px;height:22px;
+  background:#fff;border-radius:50%;
+  transition:transform .3s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 1px 5px rgba(0,0,0,.22);
+  pointer-events:none;
+}
+.svc-tog-switch[aria-checked="true"] .svc-tog-knob{transform:translateX(24px);}
+/* ── Panels ── */
+.svc-panels-wrap{position:relative;}
+.svc-panel{transition:opacity .38s ease;}
+.svc-panel--active{opacity:1;pointer-events:auto;}
+.svc-panel:not(.svc-panel--active){
+  position:absolute;top:0;left:0;right:0;
+  opacity:0;pointer-events:none;
+}
+/* ── Desktop: centred header + tooltip ── */
+@media(min-width:621px){
+  .svc-apply-article{
+    max-width:100%;
+    text-align:center;
+  }
+  .svc-apply-article h2{
+    font-size:clamp(1.6rem,2.6vw,2.25rem);
+    justify-content:center;
+  }
+  .svc-apply-desc{
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .svc-article-actions{
+    justify-content:center;
+  }
+  /* Hide the inline hint — shown as tooltip instead */
+  .svc-article-hint{
+    display:none;
+  }
+  /* Tooltip on the button */
+  .svc-article-btn{
+    position:relative;
+  }
+  .svc-article-btn::after{
+    content:attr(data-tip);
+    position:absolute;
+    bottom:calc(100% + 10px);
+    left:50%;
+    transform:translateX(-50%) translateY(6px);
+    background:rgba(20,20,20,.9);
+    color:#fff;
+    font-size:.8rem;
+    font-weight:500;
+    line-height:1.4;
+    white-space:nowrap;
+    padding:7px 14px;
+    border-radius:6px;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity .22s ease, transform .22s ease;
+    z-index:50;
+  }
+  .svc-article-btn::before{
+    content:'';
+    position:absolute;
+    bottom:calc(100% + 4px);
+    left:50%;
+    transform:translateX(-50%) translateY(6px);
+    border:6px solid transparent;
+    border-top-color:rgba(20,20,20,.9);
+    pointer-events:none;
+    opacity:0;
+    transition:opacity .22s ease, transform .22s ease;
+    z-index:50;
+  }
+  .svc-article-btn:hover::after,
+  .svc-article-btn:hover::before{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+}
+
 /* ── Grid (subgrid rows — aligns all card rows across columns) ── */
 .svc-cards-grid{
   display:grid;
@@ -1350,6 +1455,11 @@
 .svc-form-note{
   font-size:.75rem;color:#9ca3af;margin-top:2px;text-align:center;
 }
+.svc-form-note-link{
+  color:#9ca3af;text-decoration:underline;text-underline-offset:2px;
+  transition:color .15s;
+}
+.svc-form-note-link:hover{color:var(--accent);}
 .svc-form-success{
   display:none;text-align:center;padding:20px 0 8px;
 }
@@ -1433,8 +1543,23 @@
 </style>
 
 <div class="container">
-  <!-- Left-aligned header with VerticalCutReveal -->
+
+  <!-- ── Тumbler toggle ── -->
+  <div class="svc-toggle-wrap" id="svcToggleWrap">
+    <span class="svc-tog-label is-on" data-panel="plise">Plisē tīkli</span>
+    <button class="svc-tog-switch" id="svcToggle" role="switch" aria-checked="false" aria-label="Pārslēgt pakalpojumu">
+      <span class="svc-tog-knob"></span>
+    </button>
+    <span class="svc-tog-label" data-panel="remonts">Logu regulēšana</span>
+  </div>
+
+  <div class="svc-panels-wrap" id="svcPanelsWrap">
+
+  <!-- ══ Panel 1: Plisē tīkli ══════════════════════════════════════════ -->
+  <div class="svc-panel svc-panel--active" id="svcPanelPlise">
+
   <article class="svc-apply-article" id="svcArticle">
+    <span class="eyebrow">Sezonālais piedāvājums</span>
     <h2 id="svcHeading" aria-label="Plisē siets — fiksēta cena">
       <span class="svc-vcr-word"><span class="svc-vcr-inner">Plisē</span></span>
       <span class="svc-vcr-word"><span class="svc-vcr-inner" style="transition-delay:.1s">siets</span></span>
@@ -1444,7 +1569,7 @@
     </h2>
     <p class="svc-apply-desc">Izvēlieties sev piemērotāko paketi — no viena tīkla līdz pilnam mājoklim. Visi tīkli izgatavoti no 18 mm alumīnija profila. Fiksēta cena ietver visu: izmērus, izgatavošanu un uzstādīšanu. Pasūtiet tiešsaistē — atbildam 12 stundu laikā.</p>
     <div class="svc-article-actions">
-      <a href="moskitu-tikli.html" class="svc-article-btn">Vairāk par plisē tīkliem →</a>
+      <a href="moskitu-tikli-plise.html" class="svc-article-btn" data-tip="Kas ir plisē moskītu tīkli?">Vairāk par plisē tīkliem →</a>
       <span class="svc-article-hint">
         <span class="svc-hint-icon">?</span>
         Kas ir plisē moskītu tīkli?
@@ -1547,10 +1672,117 @@
           <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Atvēršana: vertikāla vai horizontāla</li>
         </ul>
       </div>
-      <div class="svc-card-r-foot"><!-- nav footnotes for card 3 --></div>
+      <div class="svc-card-r-foot"><!-- no footnote --></div>
     </div>
 
-  </div>
+  </div><!-- /svc-cards-grid plise -->
+  </div><!-- /svcPanelPlise -->
+
+  <!-- ══ Panel 2: Logu regulēšana ══════════════════════════════════════ -->
+  <div class="svc-panel" id="svcPanelRemonts">
+
+  <article class="svc-apply-article svc-vcr-fired">
+    <span class="eyebrow">Sezonālais piedāvājums</span>
+    <h2>Logu regulēšana — <span>fiksēta cena</span></h2>
+    <p class="svc-apply-desc">Izvēlieties sev piemērotāko apkopes paketi — no trīs logiem līdz pilnai mājai. Fiksēta cena ietver regulēšanu, blīvgumiju un roktura maiņu. Pasūtiet tiešsaistē — atbildam 12 stundu laikā.</p>
+    <div class="svc-article-actions">
+      <a href="remonts-regulesana.html" class="svc-article-btn" data-tip="Uzzināt vairāk par logu regulēšanu">Vairāk par logu regulēšanu →</a>
+    </div>
+  </article>
+
+  <div class="svc-cards-grid">
+
+    <!-- Card R1: × 3 -->
+    <div class="svc-card" data-svc="Logu regulēšana × 3">
+      <div class="svc-card-r-title">
+        <div class="svc-card-name"><h3 class="svc-card-title">Regulēšana × 3 logi</h3></div>
+      </div>
+      <div class="svc-card-r-price">
+        <div class="svc-card-price">
+          <span class="svc-card-price-amount">75</span>
+          <span class="svc-card-price-currency">€</span>
+        </div>
+      </div>
+      <div class="svc-card-r-pnote"><p class="svc-card-price-note">Fiksēta cena. PVN iekļauts.</p></div>
+      <div class="svc-card-r-desc"><p class="svc-card-desc">Trīs logu regulēšana — novērš svilpšanu, šķiebumu un nepilnīgu aizvēršanos. Ideāli dzīvokļiem ar nelielu logu skaitu.</p></div>
+      <div class="svc-card-r-btn"><button class="svc-btn-primary svc-btn-dark svc-apply-btn">Pasūtīt tagad</button></div>
+      <div class="svc-card-r-feats">
+        <hr class="svc-features-divider">
+        <p class="svc-features-label">Iekļauts cenā</p>
+        <ul class="svc-features-list">
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Regulēšana (3 logi)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Mehānismu pārbaude</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Blīvgumiju stāvokļa pārbaude</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Izbraukšana Rīgā</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>PVN (21%)</li>
+        </ul>
+      </div>
+      <div class="svc-card-r-foot"><p class="svc-card-footnote">* Izbraukšana iekļauta tikai Rīgā.</p></div>
+    </div>
+
+    <!-- Card R2: × 5 POPULAR -->
+    <div class="svc-card svc-card--popular" data-svc="Logu apkope × 5">
+      <div class="svc-popular-badge">Populārākais</div>
+      <div class="svc-card-r-title">
+        <div class="svc-card-name"><h3 class="svc-card-title">Apkopes pakete × 5</h3></div>
+      </div>
+      <div class="svc-card-r-price">
+        <div class="svc-card-price">
+          <span class="svc-card-price-amount">175</span>
+          <span class="svc-card-price-currency">€</span>
+        </div>
+      </div>
+      <div class="svc-card-r-pnote"><p class="svc-card-price-note">Fiksēta cena par 5 logiem. PVN iekļauts.</p></div>
+      <div class="svc-card-r-desc"><p class="svc-card-desc">Pilns serviss pieciem logiem — regulēšana, jauna blīvgumija un rokturi. Ideāls risinājums dzīvoklim vai nelielai mājai.</p></div>
+      <div class="svc-card-r-btn"><button class="svc-btn-primary svc-btn-orange svc-apply-btn">Pasūtīt tagad</button></div>
+      <div class="svc-card-r-feats">
+        <hr class="svc-features-divider">
+        <p class="svc-features-label">Iekļauts cenā</p>
+        <ul class="svc-features-list">
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Regulēšana (5 logi)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Blīvgumiju maiņa (5 logi)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Roktura maiņa (5 logi)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Izbraukšana Rīgā</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>PVN (21%)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>6 mēnešu garantija</li>
+        </ul>
+      </div>
+      <div class="svc-card-r-foot"><p class="svc-card-footnote">* Izbraukšana iekļauta tikai Rīgā.</p></div>
+    </div>
+
+    <!-- Card R3: × 10 -->
+    <div class="svc-card" data-svc="Logu apkope × 10">
+      <div class="svc-card-r-title">
+        <div class="svc-card-name"><h3 class="svc-card-title">Apkopes pakete × 10</h3></div>
+      </div>
+      <div class="svc-card-r-price">
+        <div class="svc-card-price">
+          <span class="svc-card-price-amount">320</span>
+          <span class="svc-card-price-currency">€</span>
+        </div>
+      </div>
+      <div class="svc-card-r-pnote"><p class="svc-card-price-note">Fiksēta cena par 10 logiem. PVN iekļauts.</p></div>
+      <div class="svc-card-r-desc"><p class="svc-card-desc">Pilna mājoklīša logu apkope — regulēšana, blīvgumijas un roktura maiņa visiem logiem. Izbraukšana 50 km rādiusā no Rīgas.</p></div>
+      <div class="svc-card-r-btn"><button class="svc-btn-primary svc-btn-dark svc-apply-btn">Pasūtīt tagad</button></div>
+      <div class="svc-card-r-feats">
+        <hr class="svc-features-divider">
+        <p class="svc-features-label">Iekļauts cenā</p>
+        <ul class="svc-features-list">
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Regulēšana (10 logi)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Blīvgumiju maiņa (10 logi)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Roktura maiņa (10 logi)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Izbraukšana 50 km no Rīgas</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>PVN (21%)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>12 mēnešu garantija</li>
+        </ul>
+      </div>
+      <div class="svc-card-r-foot"><!-- no footnote --></div>
+    </div>
+
+  </div><!-- /svc-cards-grid remonts -->
+  </div><!-- /svcPanelRemonts -->
+
+  </div><!-- /svc-panels-wrap -->
 </div>
 
 <!-- ── Modal ── -->
@@ -1573,7 +1805,7 @@
       <input type="text" name="address" placeholder="Objekta adrese" autocomplete="street-address">
       <input type="email" name="email" placeholder="E-pasts" autocomplete="email">
       <button type="submit" class="svc-form-submit">Nosūtīt pieteikumu →</button>
-      <p class="svc-form-note">* Obligātie lauki. Dati tiek izmantoti tikai pieteikuma apstrādei.</p>
+      <p class="svc-form-note">* Obligātie lauki. Iesniedzot šo veidlapu, Jūs piekrītat mūsu <a href="privatuma-politika.html" target="_blank" class="svc-form-note-link">Privātuma politikai</a>.</p>
     </form>
   </div>
 </div>
@@ -1595,6 +1827,35 @@
       },{threshold:0.5}).observe(article);
     } else { fireReveal(); }
   }
+
+  /* ── Toggle: Plisē ↔ Logu regulēšana ── */
+  (function(){
+    var togBtn     = document.getElementById('svcToggle');
+    var panelPlise = document.getElementById('svcPanelPlise');
+    var panelRem   = document.getElementById('svcPanelRemonts');
+    var labels     = document.querySelectorAll('.svc-tog-label');
+    var current    = 'plise';
+    if(!togBtn) return;
+
+    function switchTo(target){
+      if(target === current) return;
+      current = target;
+      var isRem = target === 'remonts';
+      togBtn.setAttribute('aria-checked', isRem ? 'true' : 'false');
+      panelPlise.classList.toggle('svc-panel--active', !isRem);
+      panelRem.classList.toggle('svc-panel--active',  isRem);
+      labels.forEach(function(l){
+        l.classList.toggle('is-on', l.dataset.panel === target);
+      });
+    }
+
+    togBtn.addEventListener('click', function(){
+      switchTo(current === 'plise' ? 'remonts' : 'plise');
+    });
+    labels.forEach(function(l){
+      l.addEventListener('click', function(){ switchTo(l.dataset.panel); });
+    });
+  })();
 
   /* ── Modal ── */
   var overlay  = document.getElementById('svcModal');
@@ -2256,7 +2517,113 @@
     <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.4rem;margin-bottom:1.4rem;">* Bezmaksas apskate un tāme — tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" style="color:rgba(255,255,255,.85);text-decoration:underline;">transporta izdevumi</a>.</p>
     <a class="btn btn-outline" href="kontakti.html">Sazināties</a>
   </div>
+  <div class="container"><div class="fsb-divider"></div></div>
 </section>
+<!-- ══ Footer search band ═══════════════════════════════════════════ -->
+<section class="fsb-section">
+  <style>
+  .fsb-section{background:var(--green);padding:38px 0 0;}
+  .fsb-inner{
+    display:grid;grid-template-columns:1fr 1fr;
+    align-items:center;gap:40px;
+  }
+  .fsb-heading{
+    color:#fff;font-size:1.05rem;font-weight:600;
+    margin:0 0 7px;line-height:1.35;
+  }
+  .fsb-sub{
+    color:#a8c4b0;font-size:.9rem;margin:0;line-height:1.55;
+  }
+  .fsb-wrap{position:relative;}
+  .fsb-input{
+    width:100%;padding:13px 18px;
+    border-radius:8px;
+    border:1.5px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.08);
+    color:#fff;font-size:.95rem;font-family:inherit;
+    outline:none;
+    transition:border-color .2s,background .2s;
+    box-sizing:border-box;
+  }
+  .fsb-input::placeholder{color:rgba(255,255,255,.38);}
+  .fsb-input:focus{
+    border-color:rgba(255,255,255,.45);
+    background:rgba(255,255,255,.13);
+  }
+  .fsb-results{
+    display:none;
+    position:absolute;
+    bottom:calc(100% + 8px);left:0;right:0;
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 -8px 32px rgba(0,0,0,.22);
+    overflow:hidden;
+    z-index:200;
+  }
+  .fsb-results.visible{display:block;}
+  .fsb-divider{
+    height:1px;
+    margin-top:38px;
+    background:linear-gradient(to right,transparent 0%,rgba(255,255,255,.18) 20%,rgba(255,255,255,.18) 80%,transparent 100%);
+  }
+  @media(max-width:640px){
+    .fsb-inner{grid-template-columns:1fr;gap:20px;}
+  }
+  </style>
+
+  <div class="container">
+    <div class="fsb-inner">
+      <div class="fsb-text">
+        <p class="fsb-heading">Nevar atrast meklēto?</p>
+        <p class="fsb-sub">Izmantojiet meklēšanu — ātri atrodiet nepieciešamo pakalpojumu vai informāciju.</p>
+      </div>
+      <div class="fsb-right">
+        <div class="fsb-wrap">
+          <input class="fsb-input" id="fsbInput" type="text"
+            placeholder="Meklēt pakalpojumu…" autocomplete="off" spellcheck="false">
+          <div class="fsb-results" id="fsbResults"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container"><div class="fsb-divider"></div></div>
+
+  <script>
+  (function(){
+    var inp = document.getElementById('fsbInput');
+    var res = document.getElementById('fsbResults');
+    if(!inp || !res) return;
+    var base = window.location.pathname.includes('/lv/') ? '../lv/' : './';
+    function doSearch(){
+      var q = inp.value.trim();
+      if(q.length < 2){ res.classList.remove('visible'); res.innerHTML=''; return; }
+      var idx = (typeof SEARCH_IDX !== 'undefined') ? SEARCH_IDX : [];
+      var hits = idx.filter(function(item){
+        return item.t.toLowerCase().includes(q.toLowerCase()) ||
+               item.k.toLowerCase().includes(q.toLowerCase());
+      }).slice(0,6);
+      if(!hits.length){
+        res.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „'+q+'"</div>';
+      } else {
+        res.innerHTML = hits.map(function(item){
+          var kw = item.k.split(' ').find(function(w){ return w.toLowerCase().includes(q.toLowerCase()); }) || '';
+          return '<a class="sr-item" href="'+base+item.u+'">'
+            +'<div class="sr-item-title">'+item.t+'</div>'
+            +(kw ? '<div class="sr-item-sub">'+kw+'</div>' : '')
+            +'</a>';
+        }).join('');
+      }
+      res.classList.add('visible');
+    }
+    inp.addEventListener('input', doSearch);
+    inp.addEventListener('keydown', function(e){ if(e.key==='Escape'){ res.classList.remove('visible'); } });
+    document.addEventListener('click', function(e){
+      if(!inp.contains(e.target) && !res.contains(e.target)) res.classList.remove('visible');
+    });
+  })();
+  </script>
+</section>
+
 <footer class="site-footer">
   <div class="footer-inner">
   <div class="footer-grid">
@@ -2322,7 +2689,7 @@
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 <script src="../js/google-config.js"></script>
 <script src="../js/reviews.js"></script>
-<script src="../js/main.js"></script>
+<script src="../js/main.js?v=49"></script>
 <script>
 /* ── Kartes bloks: mobilā poga rādīt/slēpt ── */
 (function(){

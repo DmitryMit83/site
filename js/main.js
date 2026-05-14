@@ -313,6 +313,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Resolve base URL (works from any depth: lv/, ru/, etc.)
     const basePath = window.location.pathname.includes('/lv/') ? '../lv/' : './';
 
+    // Position search results below the input wrap (fixed, escapes overflow:hidden)
+    function positionSearchRes() {
+      const wrap = searchInp.closest('.util-search-wrap');
+      if (!wrap) return;
+      const r = wrap.getBoundingClientRect();
+      searchRes.style.top   = (r.bottom + 6) + 'px';
+      searchRes.style.left  = r.left + 'px';
+      searchRes.style.width = r.width + 'px';
+    }
+
     searchInp.addEventListener('input', () => {
       const q = searchInp.value.trim();
       if (q.length < 4) { searchRes.classList.remove('visible'); searchRes.innerHTML = ''; return; }
@@ -324,6 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!hits.length) {
         searchRes.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „' + q + '"</div>';
+        positionSearchRes();
         searchRes.classList.add('visible');
         return;
       }
@@ -339,6 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </a>`;
       }).join('');
+      positionSearchRes();
       searchRes.classList.add('visible');
     });
 
@@ -356,32 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
       form.reset();
     });
   }
-
-  // ── Auto-highlight active nav item based on current page ─────────────────
-  (function() {
-    const page = window.location.pathname.split('/').pop() || 'index.html';
-
-    // Pages that belong under "Pakalpojumi" dropdown
-    const servicePages = [
-      'remonts', 'remonts-regulesana', 'remonts-stiklu-paketes',
-      'remonts-blivgumija', 'remonts-furnitura', 'remonts-durvis',
-      'moskitu-tikli', 'moskitu-tikli-rama', 'moskitu-tikli-rullu',
-      'moskitu-tikli-plise',       'zaluzijas', 'zaluzijas-horizontalas', 'zaluzijas-rullu',
-      'zaluzijas-dienas-nakts', 'zaluzijas-romiesu',
-      'aksesuari',
-      'palodzes',
-      'ventilacija'
-    ];
-
-    const isService = servicePages.some(p => page === p + '.html');
-    if (!isService) return;
-
-    // Find the "Pakalpojumi" trigger — first .has-dropdown that is NOT lang-dd or social-dd
-    const pakTrigger = nav.querySelector(
-      '.has-dropdown:not(.lang-dd):not(.social-dd) > a'
-    );
-    if (pakTrigger) pakTrigger.classList.add('active');
-  })();
 
   // ── Mobile contact widget (bookmark tab) ───────────────────────────────
   (function () {
@@ -620,3 +606,85 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') close();
   });
 })();
+
+// ── Active nav highlight — runs independently of all other nav logic ──────────
+document.addEventListener('DOMContentLoaded', function () {
+  var page = window.location.pathname.split('/').pop() || 'index.html';
+
+  // ── LV pages: SNM nav (snmi-* IDs) ────────────────────────────────────────
+  var snmNav = document.querySelector('nav.snm');
+  if (snmNav) {
+    var pageMap = {
+      // Pakalpojumi
+      'remonts.html':'pakalpojumi','remonts-regulesana.html':'pakalpojumi',
+      'remonts-stiklu-paketes.html':'pakalpojumi','remonts-blivgumija.html':'pakalpojumi',
+      'remonts-furnitura.html':'pakalpojumi','remonts-durvis.html':'pakalpojumi',
+      'remonts-siltinasana.html':'pakalpojumi','remonts-modernizacija.html':'pakalpojumi',
+      'remonts-termokamera.html':'pakalpojumi',
+      'moskitu-tikli.html':'pakalpojumi','moskitu-tikli-rama.html':'pakalpojumi',
+      'moskitu-tikli-rullu.html':'pakalpojumi','moskitu-tikli-plise.html':'pakalpojumi',
+      'moskitu-tikli-durvis.html':'pakalpojumi','moskitu-tikli-slidamie.html':'pakalpojumi',
+      'moskitu-tikli-magnetiskie.html':'pakalpojumi','kalkulators.html':'pakalpojumi',
+      'zaluzijas.html':'pakalpojumi','zaluzijas-kasesu.html':'pakalpojumi',
+      'zaluzijas-rullu.html':'pakalpojumi','zaluzijas-plise.html':'pakalpojumi',
+      'zaluzijas-vertikalas.html':'pakalpojumi','zaluzijas-horizontalas.html':'pakalpojumi',
+      'zaluzijas-dienas-nakts.html':'pakalpojumi','zaluzijas-romiesu.html':'pakalpojumi',
+      'aksesuari.html':'pakalpojumi','palodzes.html':'pakalpojumi',
+      'ventilacija.html':'pakalpojumi','pleve.html':'pakalpojumi',
+      // Portfolio
+      'darbi-logu-remonts.html':'portfolio','darbi-durvis.html':'portfolio',
+      'darbi-moskitu-tikli.html':'portfolio','darbi-zaluzijas.html':'portfolio',
+      'darbi-aksesuari.html':'portfolio','darbi-stikla-paketes.html':'portfolio',
+      // Jaunumi
+      'padomi.html':'jaunumi','raksti.html':'jaunumi',
+      // Info
+      'kontakti.html':'info','transporta-izmaksas.html':'info',
+      'privatuma-politika.html':'info'
+    };
+    var section = pageMap[page];
+    if (section) {
+      var navItem = document.getElementById('snmi-' + section);
+      if (navItem) {
+        var trig = navItem.querySelector('a');
+        if (trig) trig.classList.add('active');
+      }
+    }
+  }
+
+  // ── RU / EN pages: old-style nav (no snm class) ───────────────────────────
+  var oldNav = document.querySelector('nav.nav:not(.snm)');
+  if (oldNav) {
+    // Remove hardcoded active (except lang-dd / social-dd)
+    oldNav.querySelectorAll('a.active').forEach(function (a) {
+      if (!a.closest('.lang-dd') && !a.closest('.social-dd')) {
+        a.classList.remove('active');
+      }
+    });
+
+    var matched = false;
+    Array.from(oldNav.children).forEach(function (child) {
+      if (matched) return;
+      if (child.tagName === 'A') {
+        if ((child.getAttribute('href') || '') === page) {
+          child.classList.add('active');
+          matched = true;
+        }
+      } else if (child.classList.contains('has-dropdown') &&
+                 !child.classList.contains('lang-dd') &&
+                 !child.classList.contains('social-dd')) {
+        var anyMatch = Array.from(child.querySelectorAll('.dropdown a')).some(function (a) {
+          return (a.getAttribute('href') || '') === page;
+        });
+        if (anyMatch) {
+          var t = child.querySelector('a');
+          if (t) { t.classList.add('active'); matched = true; }
+        }
+      }
+    });
+
+    if (!matched && (page === 'index.html' || page === '')) {
+      var homeLink = oldNav.querySelector('a[href="index.html"]');
+      if (homeLink) homeLink.classList.add('active');
+    }
+  }
+});
