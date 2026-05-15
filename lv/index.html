@@ -1105,9 +1105,7 @@
 }
 .svc-article-btn:hover{opacity:.88;transform:translateY(-1px);}
 .svc-article-hint{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:.83rem;color:#6b7280;line-height:1.4;
-  max-width:220px;
+  display:none;
 }
 .svc-hint-icon{
   flex-shrink:0;
@@ -1117,38 +1115,31 @@
   border-radius:50%;font-size:.7rem;font-weight:800;
 }
 
-/* ── Toggle switch ── */
-.svc-toggle-wrap{
-  display:flex;align-items:center;gap:16px;
-  justify-content:center;
-  margin-bottom:44px;
+/* ── Segmented control (Sieti / Remonts) ── */
+.svc-seg{
+  display:inline-flex;
+  background:#e5e7eb;
+  border-radius:99px;
+  padding:3px;
+  gap:0;
+  flex-shrink:0;
 }
-.svc-tog-label{
-  font-size:.93rem;font-weight:600;
-  color:#9ca3af;cursor:pointer;
-  transition:color .25s;
-  user-select:none;
+.svc-seg-btn{
+  font-size:.82rem;font-weight:600;font-family:inherit;
+  padding:7px 18px;
+  border:none;cursor:pointer;
+  border-radius:99px;
+  color:#6b7280;
+  background:transparent;
+  transition:color .2s,background .2s,box-shadow .2s;
+  white-space:nowrap;
+  line-height:1;
 }
-.svc-tog-label.is-on{color:var(--green);}
-.svc-tog-switch{
-  position:relative;
-  width:54px;height:30px;
-  background:var(--green);
-  border-radius:99px;border:none;
-  cursor:pointer;flex-shrink:0;
-  transition:background .25s;
-  outline:none;
+.svc-seg-btn--active{
+  background:#fff;
+  color:var(--green);
+  box-shadow:0 1px 4px rgba(0,0,0,.13);
 }
-.svc-tog-switch:focus-visible{box-shadow:0 0 0 3px rgba(30,58,46,.35);}
-.svc-tog-knob{
-  position:absolute;top:4px;left:4px;
-  width:22px;height:22px;
-  background:#fff;border-radius:50%;
-  transition:transform .3s cubic-bezier(.4,0,.2,1);
-  box-shadow:0 1px 5px rgba(0,0,0,.22);
-  pointer-events:none;
-}
-.svc-tog-switch[aria-checked="true"] .svc-tog-knob{transform:translateX(24px);}
 /* ── Panels ── */
 .svc-panels-wrap{position:relative;}
 .svc-panel{transition:opacity .38s ease;}
@@ -1173,11 +1164,7 @@
     margin-right:auto;
   }
   .svc-article-actions{
-    justify-content:center;
-  }
-  /* Hide the inline hint — shown as tooltip instead */
-  .svc-article-hint{
-    display:none;
+    justify-content:flex-start;
   }
   /* Tooltip on the button */
   .svc-article-btn{
@@ -1536,6 +1523,8 @@
     padding-left:18px;padding-right:18px;
   }
   .svc-apply-section{padding:56px 0 64px;}
+  .svc-article-actions{justify-content:space-between;flex-wrap:nowrap;gap:10px;}
+  .svc-article-btn{font-size:.82rem;padding:9px 14px;}
   .svc-form-row{grid-template-columns:1fr;}
   .svc-modal{padding:28px 20px 24px;}
   .svc-apply-article h2{font-size:1.9rem;}
@@ -1543,15 +1532,6 @@
 </style>
 
 <div class="container">
-
-  <!-- ── Тumbler toggle ── -->
-  <div class="svc-toggle-wrap" id="svcToggleWrap">
-    <span class="svc-tog-label is-on" data-panel="plise">Plisē tīkli</span>
-    <button class="svc-tog-switch" id="svcToggle" role="switch" aria-checked="false" aria-label="Pārslēgt pakalpojumu">
-      <span class="svc-tog-knob"></span>
-    </button>
-    <span class="svc-tog-label" data-panel="remonts">Logu regulēšana</span>
-  </div>
 
   <div class="svc-panels-wrap" id="svcPanelsWrap">
 
@@ -1570,10 +1550,10 @@
     <p class="svc-apply-desc">Izvēlieties sev piemērotāko paketi — no viena tīkla līdz pilnam mājoklim. Visi tīkli izgatavoti no 18 mm alumīnija profila. Fiksēta cena ietver visu: izmērus, izgatavošanu un uzstādīšanu. Pasūtiet tiešsaistē — atbildam 12 stundu laikā.</p>
     <div class="svc-article-actions">
       <a href="moskitu-tikli-plise.html" class="svc-article-btn" data-tip="Kas ir plisē moskītu tīkli?">Vairāk par plisē tīkliem →</a>
-      <span class="svc-article-hint">
-        <span class="svc-hint-icon">?</span>
-        Kas ir plisē moskītu tīkli?
-      </span>
+      <div class="svc-seg" role="group" aria-label="Pakalpojuma izvēle">
+        <button class="svc-seg-btn svc-seg-btn--active" data-panel="plise">Sieti</button>
+        <button class="svc-seg-btn" data-panel="remonts">Remonts</button>
+      </div>
     </div>
   </article>
 
@@ -1687,6 +1667,10 @@
     <p class="svc-apply-desc">Izvēlieties sev piemērotāko apkopes paketi — no trīs logiem līdz pilnai mājai. Fiksēta cena ietver regulēšanu, blīvgumiju un roktura maiņu. Pasūtiet tiešsaistē — atbildam 12 stundu laikā.</p>
     <div class="svc-article-actions">
       <a href="remonts-regulesana.html" class="svc-article-btn" data-tip="Uzzināt vairāk par logu regulēšanu">Vairāk par logu regulēšanu →</a>
+      <div class="svc-seg" role="group" aria-label="Pakalpojuma izvēle">
+        <button class="svc-seg-btn" data-panel="plise">Sieti</button>
+        <button class="svc-seg-btn svc-seg-btn--active" data-panel="remonts">Remonts</button>
+      </div>
     </div>
   </article>
 
@@ -1828,32 +1812,24 @@
     } else { fireReveal(); }
   }
 
-  /* ── Toggle: Plisē ↔ Logu regulēšana ── */
+  /* ── Toggle: Sieti ↔ Remonts (segmented control) ── */
   (function(){
-    var togBtn     = document.getElementById('svcToggle');
     var panelPlise = document.getElementById('svcPanelPlise');
     var panelRem   = document.getElementById('svcPanelRemonts');
-    var labels     = document.querySelectorAll('.svc-tog-label');
     var current    = 'plise';
-    if(!togBtn) return;
 
     function switchTo(target){
       if(target === current) return;
       current = target;
-      var isRem = target === 'remonts';
-      togBtn.setAttribute('aria-checked', isRem ? 'true' : 'false');
-      panelPlise.classList.toggle('svc-panel--active', !isRem);
-      panelRem.classList.toggle('svc-panel--active',  isRem);
-      labels.forEach(function(l){
-        l.classList.toggle('is-on', l.dataset.panel === target);
+      panelPlise.classList.toggle('svc-panel--active', target === 'plise');
+      panelRem.classList.toggle('svc-panel--active',   target === 'remonts');
+      document.querySelectorAll('#pieteikties .svc-seg-btn').forEach(function(b){
+        b.classList.toggle('svc-seg-btn--active', b.dataset.panel === target);
       });
     }
 
-    togBtn.addEventListener('click', function(){
-      switchTo(current === 'plise' ? 'remonts' : 'plise');
-    });
-    labels.forEach(function(l){
-      l.addEventListener('click', function(){ switchTo(l.dataset.panel); });
+    document.querySelectorAll('#pieteikties .svc-seg-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ switchTo(btn.dataset.panel); });
     });
   })();
 
@@ -1901,11 +1877,10 @@
 </script>
 
 <script>
-/* ── Mobile card carousel (≤620px) ── */
-(function(){
-  var mq = window.matchMedia('(max-width:620px)');
-  var grid = document.querySelector('.svc-cards-grid');
+/* ── Mobile card carousel (≤620px) — shared factory ── */
+function initCarousel(grid){
   if(!grid) return;
+  var mq = window.matchMedia('(max-width:620px)');
   var cards = Array.from(grid.querySelectorAll(':scope > .svc-card'));
   var n = cards.length;
   if(n < 2) return;
@@ -1978,11 +1953,9 @@
 
   function setHeight(){
     if(!mq.matches) return;
-    /* Reset min-heights to measure natural content height */
     cards.forEach(function(c){ c.style.minHeight = ''; });
     var maxH = 0;
     cards.forEach(function(c){ if(c.offsetHeight > maxH) maxH = c.offsetHeight; });
-    /* Apply same min-height to all — equal card heights */
     cards.forEach(function(c){ c.style.minHeight = maxH + 'px'; });
     grid.style.height = (maxH + 28) + 'px';
   }
@@ -1993,7 +1966,6 @@
     if(next === cur) return;
     animating = true;
 
-    /* 1 ── Fling current card off-screen */
     var flyDir = ((next - cur + n) % n) <= Math.floor(n / 2) ? -1 : 1;
     setTransition(true);
     cards[cur].style.transform = 'translateX(' + (flyDir * -520) + 'px) rotate(' + (flyDir * -26) + 'deg) scale(1)';
@@ -2001,14 +1973,10 @@
 
     setTimeout(function(){
       cur = next;
-
-      /* 2 ── Snap all cards to new logical positions (no transition)
-              New current starts from the "stacked behind" pos so it can rise */
       setTransition(false);
       cards.forEach(function(c, i){
         var p = relPos(i);
         if(p === 0){
-          /* new front — start from stacked position */
           c.style.zIndex = '3'; c.style.opacity = '.65';
           c.style.transform = 'translateY(10px) rotate(-1.5deg) scale(.96)';
           c.style.pointerEvents = '';
@@ -2027,8 +1995,6 @@
         }
       });
       updateDots();
-
-      /* 3 ── Animate new front card rising smoothly to top position */
       requestAnimationFrame(function(){
         requestAnimationFrame(function(){
           setTransition(true);
@@ -2116,7 +2082,11 @@
   } else {
     init();
   }
-})();
+}
+
+/* Apply carousel to both panels */
+initCarousel(document.querySelector('#svcPanelPlise .svc-cards-grid'));
+initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
 </script>
 </section>
 <section id="par-mums">
