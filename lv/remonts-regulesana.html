@@ -401,7 +401,7 @@
 </div><!-- /.hero-unified -->
 <script>
 (function(){
-  /* ── Block 2 slide-in: starts after block 1 fade-up finishes (~1.5s) ── */
+  /* ── Block 2 slide-in: starts exactly when block 1's last element finishes ── */
   var hero = document.querySelector('.svc-hero');
   if(hero){
     var heroTriggered = false;
@@ -410,13 +410,13 @@
       heroTriggered = true;
       hero.classList.add('is-visible');
     }
-    /* Primary: sequential delay after page-hero (last el finishes at ~1.35s) */
+    /* Primary: animationend on the last animated element in page-hero (btn, delay .85s + dur .5s = 1.35s) */
+    var pageHeroBtn = document.querySelector('.hero-unified .page-hero .btn');
+    if(pageHeroBtn){
+      pageHeroBtn.addEventListener('animationend', triggerHero, {once: true});
+    }
+    /* Fallback: fixed timeout in case animationend doesn't fire (prefers-reduced-motion etc.) */
     setTimeout(triggerHero, 1500);
-    /* Fallback: user scrolled to svc-hero before the timer fired */
-    var heroIO = new IntersectionObserver(function(entries){
-      if(entries[0].isIntersecting){ triggerHero(); heroIO.disconnect(); }
-    },{threshold:0.15});
-    heroIO.observe(hero);
   }
 
   /* ── Life chart animation ── */
@@ -591,20 +591,16 @@
   /* Draw placeholder (axes only) immediately */
   draw(0);
 
-  /* Start chart after svc-hero text animations wrap up (~2.7s from page load):
-     svc starts at 1.5s, last li at +0.9s delay, +0.5s duration = 2.9s → use 2.8s */
-  setTimeout(function(){
+  /* Start chart when svc-hero's last list item finishes animating */
+  function startChart(){
     if(!triggered){ triggered = true; requestAnimationFrame(loop); }
-  }, 2800);
-  /* Fallback: canvas scrolled into view before timer fires */
-  var chartIO = new IntersectionObserver(function(entries){
-    if(entries[0].isIntersecting && !triggered){
-      triggered = true;
-      chartIO.disconnect();
-      requestAnimationFrame(loop);
-    }
-  }, { threshold: 0.15 });
-  chartIO.observe(canvas);
+  }
+  var lastLi = document.querySelector('.svc-hero-list li:last-child');
+  if(lastLi){
+    lastLi.addEventListener('animationend', startChart, {once: true});
+  }
+  /* Fallback: fixed timeout (svc starts ~1.35s, last li ends at ~1.35+0.9+0.5 = 2.75s) */
+  setTimeout(startChart, 2900);
 })();
 </script>
 
