@@ -76,16 +76,8 @@
         </li>
 
         <!-- Portfolio -->
-        <li class="snm-item has-dropdown snm-has-menu" id="snmi-portfolio">
-          <a href="#" class="snm-trig">Portfolio<svg class="snm-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-          <div class="dropdown snm-mob-dd"><div class="dropdown-inner">
-            <a href="darbi-logu-remonts.html">Logu remonts</a>
-            <a href="darbi-durvis.html">Durvju remonts</a>
-            <a href="darbi-moskitu-tikli.html">Moskītu tīkli</a>
-            <a href="darbi-zaluzijas.html">Žalūzijas</a>
-            <a href="darbi-aksesuari.html">Aksesuāri</a>
-            <a href="darbi-stikla-paketes.html">Stikla paketes</a>
-          </div></div>
+        <li class="snm-item" id="snmi-portfolio">
+          <a href="darbi.html" class="snm-link">Portfolio</a>
         </li>
 
         <!-- Jaunumi -->
@@ -185,17 +177,6 @@
             </div>
           </div><!-- /pakalpojumi -->
 
-          <!-- Portfolio panel -->
-          <div class="snm-panel" id="snmp-portfolio">
-            <ul class="snm-flat">
-              <li><a href="darbi-logu-remonts.html">Logu remonts</a></li>
-              <li><a href="darbi-durvis.html">Durvju remonts</a></li>
-              <li><a href="darbi-moskitu-tikli.html">Moskītu tīkli</a></li>
-              <li><a href="darbi-zaluzijas.html">Žalūzijas</a></li>
-              <li><a href="darbi-aksesuari.html">Aksesuāri</a></li>
-              <li><a href="darbi-stikla-paketes.html">Stikla paketes</a></li>
-            </ul>
-          </div>
 
           <!-- Jaunumi panel -->
           <div class="snm-panel" id="snmp-jaunumi">
@@ -456,8 +437,62 @@
     <p>Atstājiet pieprasījumu un mēs sazināsimies ar Jums 12 stundu laikā, lai vienotos par piemērotāko risinājumu.</p>
     <a class="btn btn-outline" href="kontakti.html">Sazināties</a>
   </div>
+  <div class="container"><div class="fsb-divider"></div></div>
 </section>
+<!-- ══ Footer search band ═══════════════════════════════════════════ -->
+<section class="fsb-section">
+  <div class="container">
+    <div class="fsb-inner">
+      <div class="fsb-text">
+        <p class="fsb-heading">Nevar atrast meklēto?</p>
+        <p class="fsb-sub">Izmantojiet meklēšanu — ātri atrodiet nepieciešamo pakalpojumu vai informāciju.</p>
+      </div>
+      <div class="fsb-right">
+        <div class="fsb-wrap">
+          <input class="fsb-input" id="fsbInput" type="text"
+            placeholder="Meklēt pakalpojumu…" autocomplete="off" spellcheck="false">
+          <div class="fsb-results" id="fsbResults"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container"><div class="fsb-divider"></div></div>
 
+  <script>
+  (function(){
+    var inp = document.getElementById('fsbInput');
+    var res = document.getElementById('fsbResults');
+    if(!inp || !res) return;
+    var base = window.location.pathname.includes('/lv/') ? '../lv/' : './';
+    function doSearch(){
+      var q = inp.value.trim();
+      if(q.length < 2){ res.classList.remove('visible'); res.innerHTML=''; return; }
+      var idx = (typeof SEARCH_IDX !== 'undefined') ? SEARCH_IDX : [];
+      var hits = idx.filter(function(item){
+        return item.t.toLowerCase().includes(q.toLowerCase()) ||
+               item.k.toLowerCase().includes(q.toLowerCase());
+      }).slice(0,6);
+      if(!hits.length){
+        res.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „'+q+'"</div>';
+      } else {
+        res.innerHTML = hits.map(function(item){
+          var kw = item.k.split(' ').find(function(w){ return w.toLowerCase().includes(q.toLowerCase()); }) || '';
+          return '<a class="sr-item" href="'+base+item.u+'">'
+            +'<div class="sr-item-title">'+item.t+'</div>'
+            +(kw ? '<div class="sr-item-sub">'+kw+'</div>' : '')
+            +'</a>';
+        }).join('');
+      }
+      res.classList.add('visible');
+    }
+    inp.addEventListener('input', doSearch);
+    inp.addEventListener('keydown', function(e){ if(e.key==='Escape'){ res.classList.remove('visible'); } });
+    document.addEventListener('click', function(e){
+      if(!inp.contains(e.target) && !res.contains(e.target)) res.classList.remove('visible');
+    });
+  })();
+  </script>
+</section>
 <!-- ── Footer ────────────────────────────────────────────────── -->
 <footer class="site-footer">
   <div class="container footer-grid">

@@ -254,16 +254,8 @@
         </li>
 
         <!-- Portfolio -->
-        <li class="snm-item has-dropdown snm-has-menu" id="snmi-portfolio">
-          <a href="#" class="snm-trig">Portfolio<svg class="snm-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-          <div class="dropdown snm-mob-dd"><div class="dropdown-inner">
-            <a href="darbi-logu-remonts.html">Logu remonts</a>
-            <a href="darbi-durvis.html">Durvju remonts</a>
-            <a href="darbi-moskitu-tikli.html">Moskītu tīkli</a>
-            <a href="darbi-zaluzijas.html">Žalūzijas</a>
-            <a href="darbi-aksesuari.html">Aksesuāri</a>
-            <a href="darbi-stikla-paketes.html">Stikla paketes</a>
-          </div></div>
+        <li class="snm-item" id="snmi-portfolio">
+          <a href="darbi.html" class="snm-link">Portfolio</a>
         </li>
 
         <!-- Jaunumi -->
@@ -363,17 +355,6 @@
             </div>
           </div><!-- /pakalpojumi -->
 
-          <!-- Portfolio panel -->
-          <div class="snm-panel" id="snmp-portfolio">
-            <ul class="snm-flat">
-              <li><a href="darbi-logu-remonts.html">Logu remonts</a></li>
-              <li><a href="darbi-durvis.html">Durvju remonts</a></li>
-              <li><a href="darbi-moskitu-tikli.html">Moskītu tīkli</a></li>
-              <li><a href="darbi-zaluzijas.html">Žalūzijas</a></li>
-              <li><a href="darbi-aksesuari.html">Aksesuāri</a></li>
-              <li><a href="darbi-stikla-paketes.html">Stikla paketes</a></li>
-            </ul>
-          </div>
 
           <!-- Jaunumi panel -->
           <div class="snm-panel" id="snmp-jaunumi">
@@ -2315,113 +2296,302 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
 
 <!-- ══ Mūsu darbi ══════════════════════════════════════════════ -->
 <section id="musu-darbi" style="padding:80px 0;background:var(--paper-2);">
+<style>
+/* ── Mūsu darbi mosaic ─────────────────────────── */
+.md-tabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;}
+.md-tab{font-family:inherit;font-size:.82rem;font-weight:600;padding:7px 16px;border-radius:99px;border:1.5px solid #d1d5db;background:#fff;color:#6b7280;cursor:pointer;transition:all .18s;white-space:nowrap;line-height:1.3;}
+.md-tab:hover{border-color:var(--green);color:var(--green);}
+.md-tab--active{background:var(--green);border-color:var(--green);color:#fff;}
+.md-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:10px;aspect-ratio:3/2;}
+.md-slot{position:relative;overflow:hidden;border-radius:10px;background:#e5e7eb;cursor:pointer;}
+.md-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease,transform .35s ease;opacity:1;}
+.md-slot img.md-img-out{opacity:0;}
+.md-slot:hover img{transform:scale(1.05);}
+.md-slot-zoom{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);transition:background .2s;pointer-events:none;}
+.md-slot:hover .md-slot-zoom{background:rgba(0,0,0,.25);}
+.md-slot-zoom svg{opacity:0;transition:opacity .2s;color:#fff;}
+.md-slot:hover .md-slot-zoom svg{opacity:1;}
+.md-footer{display:flex;align-items:center;justify-content:center;margin-top:28px;}
+/* Lightbox (shared style, same as darbi.html) */
+.md-lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;}
+.md-lb.md-lb--open{display:flex;}
+.md-lb-wrap{position:relative;max-width:min(92vw,1100px);max-height:90vh;display:flex;align-items:center;justify-content:center;}
+.md-lb-wrap img{max-width:100%;max-height:88vh;border-radius:8px;object-fit:contain;user-select:none;}
+.md-lb-close{position:fixed;top:18px;right:22px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;padding:4px 10px;opacity:.8;transition:opacity .15s;}
+.md-lb-close:hover{opacity:1;}
+.md-lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;font-size:2.8rem;cursor:pointer;line-height:1;padding:0 14px;border-radius:6px;height:72px;display:flex;align-items:center;transition:background .15s;}
+.md-lb-nav:hover{background:rgba(255,255,255,.25);}
+.md-lb-prev{left:12px;}
+.md-lb-next{right:12px;}
+.md-lb-counter{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.65);font-size:.85rem;font-family:inherit;}
+@media(max-width:620px){
+  .md-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);aspect-ratio:2/3;}
+  .md-tab{font-size:.75rem;padding:6px 12px;}
+  .md-lb-nav{font-size:2rem;padding:0 10px;height:56px;}
+  .md-lb-prev{left:4px;}
+  .md-lb-next{right:4px;}
+}
+</style>
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Pieredze un kvalitāte</span>
       <h2>Mūsu darbi</h2>
       <p>Iepazīstieties ar mūsu veiktajiem darbiem — katrs projekts ir apliecinājums mūsu meistarībai un rūpīgumam.</p>
     </div>
-    <div class="darbi-home-grid">
 
-      <a href="darbi-logu-remonts.html" class="darbi-home-card">
-        <div class="darbi-home-img">
-          <img src="../photo/portfolio/logu_remonts/IMG_20220419_112153.jpg"
-               alt="Logu regulēšana un remonts Rīgā — PVC loga eņģu un furnitūras nomaiņa, SIA Logu Apkope"
-               title="Logu remonts Rīgā — regulēšana, furnitūra, blīvgumijas, stikla paketes, SIA Logu Apkope"
-               loading="lazy" width="800" height="600" itemprop="image">
-          <div class="darbi-home-overlay">
-            <span>Skatīt darbus →</span>
-          </div>
-        </div>
-        <div class="darbi-home-body">
-          <h3>Logu remonts</h3>
-          <p>Regulēšana, furnitūra, blīvgumijas, stikla paketes.</p>
-        </div>
-      </a>
+    <!-- Filter tabs -->
+    <div class="md-tabs" id="mdTabs" role="tablist">
+      <button class="md-tab md-tab--active" data-cat="all" role="tab">Visi darbi</button>
+      <button class="md-tab" data-cat="logu-remonts" role="tab">Logu remonts</button>
+      <button class="md-tab" data-cat="durvju-remonts" role="tab">Durvju remonts</button>
+      <button class="md-tab" data-cat="sieti" role="tab">Moskītu tīkli</button>
+      <button class="md-tab" data-cat="zaluzijas" role="tab">Žalūzijas</button>
+      <button class="md-tab" data-cat="aksesuari" role="tab">Aksesuāri</button>
+      <button class="md-tab" data-cat="stikla-paketes" role="tab">Stikla paketes</button>
+    </div>
 
-      <a href="darbi-durvis.html" class="darbi-home-card">
-        <div class="darbi-home-img">
-          <img src="../photo/portfolio/durvju_remonts/2022-01-13.jpg"
-               alt="Durvju remonts un regulēšana Rīgā — PVC durvju eņģu un slēdzeņu nomaiņa, SIA Logu Apkope"
-               title="Durvju remonts Rīgā — regulēšana, slēdzenes, eņģes, blīvgumijas, SIA Logu Apkope"
-               loading="lazy" width="800" height="600" itemprop="image">
-          <div class="darbi-home-overlay">
-            <span>Skatīt darbus →</span>
-          </div>
-        </div>
-        <div class="darbi-home-body">
-          <h3>Durvju remonts</h3>
-          <p>Durvju regulēšana, slēdzeņu un eņģu nomaiņa.</p>
-        </div>
-      </a>
+    <!-- 6-photo mosaic grid -->
+    <div class="md-grid" id="mdGrid">
+      <div class="md-slot" data-slot="0"><img src="" alt="" loading="lazy"><div class="md-slot-zoom"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+      <div class="md-slot" data-slot="1"><img src="" alt="" loading="lazy"><div class="md-slot-zoom"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+      <div class="md-slot" data-slot="2"><img src="" alt="" loading="lazy"><div class="md-slot-zoom"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+      <div class="md-slot" data-slot="3"><img src="" alt="" loading="lazy"><div class="md-slot-zoom"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+      <div class="md-slot" data-slot="4"><img src="" alt="" loading="lazy"><div class="md-slot-zoom"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+      <div class="md-slot" data-slot="5"><img src="" alt="" loading="lazy"><div class="md-slot-zoom"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+    </div>
 
-      <a href="darbi-moskitu-tikli.html" class="darbi-home-card">
-        <div class="darbi-home-img">
-          <img src="../photo/portfolio/sieti/2022-07-05-4.jpg"
-               alt="Moskītu tīkla uzstādīšana logā Rīgā — rāmju un rullu sietu montāža pēc pasūtījuma, SIA Logu Apkope"
-               title="Moskītu tīkli Rīgā — rāmju, rullu, plisē un durvju sieti pēc pasūtījuma, SIA Logu Apkope"
-               loading="lazy" width="800" height="600" itemprop="image">
-          <div class="darbi-home-overlay">
-            <span>Skatīt darbus →</span>
-          </div>
-        </div>
-        <div class="darbi-home-body">
-          <h3>Moskītu tīkli</h3>
-          <p>Rāmju, rullu, plisē pēc pasūtījuma.</p>
-        </div>
-      </a>
-
-      <a href="darbi-zaluzijas.html" class="darbi-home-card">
-        <div class="darbi-home-img">
-          <img src="../photo/portfolio/zaluzi/zaluzi1.gif"
-               alt="Žalūzijas uzstādītas logā Rīgā — rullu, kasešu un horizontālās žalūzijas, SIA Logu Apkope"
-               title="Žalūzijas pēc pasūtījuma Rīgā — kasešu, rullu, plisē, vertikālās un horizontālās, SIA Logu Apkope"
-               loading="lazy" width="800" height="600" itemprop="image">
-          <div class="darbi-home-overlay">
-            <span>Skatīt darbus →</span>
-          </div>
-        </div>
-        <div class="darbi-home-body">
-          <h3>Žalūzijas</h3>
-          <p>Kasešu, rullu, plisē, vertikālās un horizontālās žalūzijas.</p>
-        </div>
-      </a>
-
-      <a href="darbi-aksesuari.html" class="darbi-home-card">
-        <div class="darbi-home-img">
-          <img src="../photo/portfolio/aksesuari/bernu_dros.jpg"
-               alt="Bērnu drošības aksesuāri logiem Rīgā — loga atvēršanas ierobežotāji un drošības slēdzenes, SIA Logu Apkope"
-               title="Logu un durvju aksesuāri Rīgā — bērnu drošība, rokturas, eņģes, slēdzenes, SIA Logu Apkope"
-               loading="lazy" width="800" height="600" itemprop="image">
-          <div class="darbi-home-overlay">
-            <span>Skatīt darbus →</span>
-          </div>
-        </div>
-        <div class="darbi-home-body">
-          <h3>Aksesuāri</h3>
-          <p>Rokturi, eņģes, slēdzenes un citi piederumi.</p>
-        </div>
-      </a>
-
-      <a href="darbi-stikla-paketes.html" class="darbi-home-card">
-        <div class="darbi-home-img">
-          <img src="../photo/portfolio/stikla_paketes/2022-02-08-2.jpg"
-               alt="Stikla paketes maiņa logā Rīgā — noplīsušas vai bojātas stikla paketes aizstāšana, SIA Logu Apkope"
-               title="Stikla paketes maiņa Rīgā — dubultā un trīskārtīgā pakete, energoefektivitāte, SIA Logu Apkope"
-               loading="lazy" width="800" height="600" itemprop="image">
-          <div class="darbi-home-overlay">
-            <span>Skatīt darbus →</span>
-          </div>
-        </div>
-        <div class="darbi-home-body">
-          <h3>Stikla paketes</h3>
-          <p>Duklā vai bojātā stikla paketes maiņa ar garantiju.</p>
-        </div>
-      </a>
-
+    <div class="md-footer">
+      <a href="darbi.html" class="btn btn-outline-dark" style="margin-top:0;">Skatīt visus darbus →</a>
     </div>
   </div>
 </section>
+
+<!-- ── Mosaic lightbox ───────────────────────────────────────── -->
+<div class="md-lb" id="mdLb" role="dialog" aria-modal="true" aria-label="Foto priekšskatījums">
+  <button class="md-lb-close" id="mdLbClose" aria-label="Aizvērt">✕</button>
+  <button class="md-lb-nav md-lb-prev" id="mdLbPrev" aria-label="Iepriekšējā foto">‹</button>
+  <div class="md-lb-wrap"><img id="mdLbImg" src="" alt=""></div>
+  <button class="md-lb-nav md-lb-next" id="mdLbNext" aria-label="Nākamā foto">›</button>
+  <div class="md-lb-counter" id="mdLbCounter"></div>
+</div>
+
+<script>
+(function(){
+var PHOTOS = [
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/logu_remonts_1.jpg',alt:'Logu regulēšana Rīgā'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/IMG_20220419_112153.jpg',alt:'Logu remonts Rīgā — meistars darba vietā'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/2025-03-28.jpg',alt:'Logu regulēšana un apkope Rīgā'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_1.jpg',alt:'Blīvgumijas maiņa PVC logam Rīgā'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_2.jpg',alt:'Jauna blīvgumija uzstādīta PVC logā'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_3.jpg',alt:'Blīvgumijas maiņas process Rīgā'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_4.jpg',alt:'Gatava blīvgumija pēc maiņas Rīgā'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_koka_1.jpg',alt:'Blīvgumijas maiņa koka logam Rīgā'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/fur_maina_1.jpg',alt:'Logu furnitūras maiņa Rīgā'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/fur_maina_2.jpg',alt:'Jauna logu furnitūra uzstādīta Rīgā'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/2022-01-12.jpg',alt:'Durvju remonts Rīgā'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/2022-01-13.jpg',alt:'Durvju furnitūras maiņa Rīgā'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/durvju_remonts_1.jpg',alt:'PVC durvju regulēšana Rīgā'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/durvju_remonts_2.jpg',alt:'Durvju blīvgumijas maiņa Rīgā'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_1053.jpg',alt:'Koka durvju remonts Rīgā'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_4677.JPG',alt:'Durvju slēdzenes maiņa Rīgā'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_4685.JPG',alt:'Durvju eņģu maiņa Rīgā'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_4687.JPG',alt:'Balkona durvju remonts Rīgā'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_8068.JPG',alt:'Durvju remonts dzīvoklī Rīgā'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/2022-07-05.jpg',alt:'Rāmju moskītu tīkls uzstādīts Rīgā'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/2022-07-05-3.jpg',alt:'Moskītu tīkls balkona logā Rīgā'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/2022-07-05-4.jpg',alt:'Uzstādīts moskītu tīkls dzīvokļa logā'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2117 3.JPG',alt:'Plisē harmonika moskītu tīkls logam'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2118 3.JPG',alt:'Plisē moskītu tīkls atvērtā stāvoklī'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2119 3.JPG',alt:'Plisē moskītu tīkla detaļa'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2120 4.JPG',alt:'Plisē moskītu tīkls balkona durvīm'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2122 3.JPG',alt:'Gatavs plisē moskītu tīkls'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4974 3.JPG',alt:'Rullu moskītu tīkls uzstādīts logā'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4977 3.JPG',alt:'Rullu moskītu tīkla kasetne logā'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4988 3.JPG',alt:'Rullu moskītu tīkls atvērtā stāvoklī'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4992 3.JPG',alt:'Moskītu tīkla uzstādīšana privātmājā'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4993 3.JPG',alt:'Rāmju moskītu tīkls uz plastmasas loga'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4995 3.JPG',alt:'Veiksmīgi uzstādīts moskītu tīkls'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5042 4.JPG',alt:'Bīdāmais moskītu tīkls terasē'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5065 2.JPG',alt:'Durvju moskītu tīkls ar magnētisko aizvēršanu'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5145.JPG',alt:'Moskītu tīkls koka logam Rīgā'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5791 3.JPG',alt:'Moskītu tīkls balkona logam'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5794 4.JPG',alt:'Uzstādīti moskītu tīkli vairākiem logiem'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5795 3.JPG',alt:'Rāmju moskītu tīkla atvēršana'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5843 3.JPG',alt:'Gatavs moskītu tīkls pēc uzstādīšanas'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_1.jpg',alt:'Rullu žalūzijas uzstādītas logā Rīgā'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_2.jpg',alt:'Dienas-nakts žalūzijas logā Rīgā'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_3.jpg',alt:'Kasešu žalūzijas uzstādītas logā'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_4.jpg',alt:'Horizontālās žalūzijas logā Rīgā'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_5.jpg',alt:'Plisē žalūzijas logam Rīgā'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_6.jpg',alt:'Vertikālās žalūzijas balkona durvīm'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi1.gif',alt:'Žalūzijas kustībā'},
+  {cat:'aksesuari',src:'../photo/portfolio/aksesuari/bernu_dros.jpg',alt:'Bērnu drošības aksesuāri logiem'},
+  {cat:'aksesuari',src:'../photo/portfolio/aksesuari/durvju.jpg',alt:'Durvju un logu aksesuāri Rīgā'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-02-08.jpg',alt:'Stikla paketes maiņa PVC logā'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-02-08-2.jpg',alt:'Jauna stikla pakete uzstādīta'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-05-10.jpg',alt:'Termopaketes uzstādīšana dzīvoklī'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-05-10-2.jpg',alt:'Stikla pakete pēc nomaiņas'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-07-06.jpg',alt:'Energoefektīvas stikla paketes'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210202_113252.jpg',alt:'Stikla paketes nomaiņa PVC logam'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210202_113847.jpg',alt:'Jaunas stikla paketes montāža logā'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210211_131700.jpg',alt:'Stikla paketes hermetizācija'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210222_134705.jpg',alt:'Divkāršā stikla paketes nomaiņa koka logā'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210222_134747.jpg',alt:'Koka loga stikla paketes nomaiņa'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210227_124340.jpg',alt:'Stikla paketes uzstādīšana daudzdzīvokļu mājā'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210407_101814.jpg',alt:'Jauna stikla pakete PVC logā'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210407_122824.jpg',alt:'PVC loga stikla paketes nomaiņa'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210514_105436.jpg',alt:'Stikla paketes montāža ofisa telpās'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210805_110158.jpg',alt:'Stikla paketes nomaiņa vasarā'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20211012_132729.jpg',alt:'Stikla paketes nomaiņa rudenī'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20211012_145927.jpg',alt:'Pabeigtā stikla paketes nomaiņa'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20211104_122343.jpg',alt:'Trīskāršā stikla paketes uzstādīšana'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_4590.JPG',alt:'Stikla paketes nomaiņas process'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_4917.JPG',alt:'Alumīnija loga stikla paketes nomaiņa'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_8326.jpg',alt:'Stikla paketes uzstādīšana balkonā'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_8331-2.jpg',alt:'Panorāmas loga stikla paketes nomaiņa'}
+];
+
+var grid     = document.getElementById('mdGrid');
+var tabsEl   = document.getElementById('mdTabs');
+var lb       = document.getElementById('mdLb');
+var lbImg    = document.getElementById('mdLbImg');
+var lbClose  = document.getElementById('mdLbClose');
+var lbPrev   = document.getElementById('mdLbPrev');
+var lbNext   = document.getElementById('mdLbNext');
+var lbCount  = document.getElementById('mdLbCounter');
+var slots    = Array.from(grid.querySelectorAll('.md-slot'));
+
+var activeCat = 'all';
+var pool      = [];   /* filtered photo indexes */
+var shown     = [];   /* pool-indexes currently in 6 slots */
+var timer     = null;
+
+function shuffle(arr){
+  var a = arr.slice();
+  for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
+  return a;
+}
+
+function buildPool(cat){
+  pool = [];
+  PHOTOS.forEach(function(p,i){ if(cat==='all'||p.cat===cat) pool.push(i); });
+}
+
+function pickInitial(){
+  /* build an array of indices INTO pool (0 … pool.length-1), shuffle, pick 6 */
+  var indices = [];
+  for(var i=0; i<pool.length; i++) indices.push(i);
+  var s = shuffle(indices);
+  shown = s.slice(0, Math.min(6, s.length));
+  /* if fewer than 6 unique slots, repeat from start of shuffled list */
+  while(shown.length < 6) shown = shown.concat(s).slice(0,6);
+}
+
+function setSlot(slotIdx, poolIdx, fade){
+  var img = slots[slotIdx].querySelector('img');
+  if(fade){
+    img.classList.add('md-img-out');
+    setTimeout(function(){
+      img.src = PHOTOS[pool[poolIdx]].src;
+      img.alt = PHOTOS[pool[poolIdx]].alt;
+      img.classList.remove('md-img-out');
+    }, 520);
+  } else {
+    img.src = PHOTOS[pool[poolIdx]].src;
+    img.alt = PHOTOS[pool[poolIdx]].alt;
+  }
+  shown[slotIdx] = poolIdx;
+}
+
+function renderAll(){
+  pickInitial();
+  slots.forEach(function(_, i){ setSlot(i, shown[i], false); });
+}
+
+function rotateTick(){
+  if(pool.length <= 6) return; /* not enough photos to rotate */
+  /* pick a random slot */
+  var slotIdx = Math.floor(Math.random() * 6);
+  /* pick a pool index not currently shown */
+  var candidates = [];
+  pool.forEach(function(_, pi){
+    if(shown.indexOf(pi) === -1) candidates.push(pi);
+  });
+  if(!candidates.length) return;
+  var newPi = candidates[Math.floor(Math.random() * candidates.length)];
+  setSlot(slotIdx, newPi, true);
+}
+
+function startTimer(){ timer = setInterval(rotateTick, 3000); }
+function stopTimer(){ clearInterval(timer); }
+
+/* ── Lightbox ── */
+var lbOpenSlot = 0;
+function openLb(slotIdx){
+  lbOpenSlot = slotIdx;
+  showLb();
+  lb.classList.add('md-lb--open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb(){
+  lb.classList.remove('md-lb--open');
+  document.body.style.overflow = '';
+}
+function showLb(){
+  var pi  = pool[shown[lbOpenSlot]];
+  lbImg.src = PHOTOS[pi].src;
+  lbImg.alt = PHOTOS[pi].alt;
+  lbCount.textContent = (lbOpenSlot + 1) + ' / 6';
+}
+function navLb(dir){
+  lbOpenSlot = (lbOpenSlot + dir + 6) % 6;
+  showLb();
+}
+lbClose.addEventListener('click', closeLb);
+lbPrev.addEventListener('click', function(){ navLb(-1); });
+lbNext.addEventListener('click', function(){ navLb(1); });
+lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
+document.addEventListener('keydown', function(e){
+  if(!lb.classList.contains('md-lb--open')) return;
+  if(e.key==='Escape') closeLb();
+  if(e.key==='ArrowLeft') navLb(-1);
+  if(e.key==='ArrowRight') navLb(1);
+});
+var lbTouchX=0;
+lb.addEventListener('touchstart',function(e){lbTouchX=e.touches[0].clientX;},{passive:true});
+lb.addEventListener('touchend',function(e){
+  var dx=e.changedTouches[0].clientX-lbTouchX;
+  if(Math.abs(dx)>50) navLb(dx<0?1:-1);
+},{passive:true});
+
+/* ── Slot click → lightbox ── */
+slots.forEach(function(slot, i){
+  slot.addEventListener('click', function(){ openLb(i); });
+});
+
+/* ── Tab filter ── */
+tabsEl.addEventListener('click', function(e){
+  var btn = e.target.closest('.md-tab');
+  if(!btn) return;
+  tabsEl.querySelectorAll('.md-tab').forEach(function(b){ b.classList.remove('md-tab--active'); });
+  btn.classList.add('md-tab--active');
+  stopTimer();
+  buildPool(btn.dataset.cat);
+  renderAll();
+  startTimer();
+});
+
+/* ── Init ── */
+buildPool('all');
+renderAll();
+startTimer();
+
+/* Pause on hover */
+grid.addEventListener('mouseenter', stopTimer);
+grid.addEventListener('mouseleave', startTimer);
+
+})();
+</script>
 
 <!-- ── Google Maps atrašanās vieta ──────────────────────────────── -->
 <section id="atrašanās-vieta" style="padding:80px 0;background:var(--cream);">
@@ -2520,56 +2690,6 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
 </section>
 <!-- ══ Footer search band ═══════════════════════════════════════════ -->
 <section class="fsb-section">
-  <style>
-  .fsb-section{background:var(--green);padding:38px 0 0;}
-  .fsb-inner{
-    display:grid;grid-template-columns:1fr 1fr;
-    align-items:center;gap:40px;
-  }
-  .fsb-heading{
-    color:#fff;font-size:1.05rem;font-weight:600;
-    margin:0 0 7px;line-height:1.35;
-  }
-  .fsb-sub{
-    color:#a8c4b0;font-size:.9rem;margin:0;line-height:1.55;
-  }
-  .fsb-wrap{position:relative;}
-  .fsb-input{
-    width:100%;padding:13px 18px;
-    border-radius:8px;
-    border:1.5px solid rgba(255,255,255,.18);
-    background:rgba(255,255,255,.08);
-    color:#fff;font-size:.95rem;font-family:inherit;
-    outline:none;
-    transition:border-color .2s,background .2s;
-    box-sizing:border-box;
-  }
-  .fsb-input::placeholder{color:rgba(255,255,255,.38);}
-  .fsb-input:focus{
-    border-color:rgba(255,255,255,.45);
-    background:rgba(255,255,255,.13);
-  }
-  .fsb-results{
-    display:none;
-    position:absolute;
-    bottom:calc(100% + 8px);left:0;right:0;
-    background:#fff;
-    border-radius:8px;
-    box-shadow:0 -8px 32px rgba(0,0,0,.22);
-    overflow:hidden;
-    z-index:200;
-  }
-  .fsb-results.visible{display:block;}
-  .fsb-divider{
-    height:1px;
-    margin-top:38px;
-    background:linear-gradient(to right,transparent 0%,rgba(255,255,255,.18) 20%,rgba(255,255,255,.18) 80%,transparent 100%);
-  }
-  @media(max-width:640px){
-    .fsb-inner{grid-template-columns:1fr;gap:20px;}
-  }
-  </style>
-
   <div class="container">
     <div class="fsb-inner">
       <div class="fsb-text">

@@ -551,6 +551,38 @@ a.sub:hover{color:inherit}
 .cta-band p{color:#D9D4C7;max-width:640px;margin:0 auto 26px}
 .cta-band .fsb-divider{margin-top:56px;}
 
+/* ── Footer search band ── */
+.fsb-section{background:var(--green);padding:38px 0 0;}
+.fsb-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;}
+.fsb-heading{color:#fff;font-size:1.05rem;font-weight:600;margin:0 0 7px;line-height:1.35;}
+.fsb-sub{color:#a8c4b0;font-size:.9rem;margin:0;line-height:1.55;}
+.fsb-wrap{position:relative;}
+.fsb-input{
+  width:100%;padding:13px 18px;
+  border-radius:8px;
+  border:1.5px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.08);
+  color:#fff;font-size:.95rem;font-family:inherit;
+  outline:none;
+  transition:border-color .2s,background .2s;
+  box-sizing:border-box;
+}
+.fsb-input::placeholder{color:rgba(255,255,255,.38);}
+.fsb-input:focus{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.13);}
+.fsb-results{
+  display:none;position:absolute;
+  bottom:calc(100% + 8px);left:0;right:0;
+  background:#fff;border-radius:8px;
+  box-shadow:0 -8px 32px rgba(0,0,0,.22);
+  overflow:hidden;z-index:200;
+}
+.fsb-results.visible{display:block;}
+.fsb-divider{
+  height:1px;margin-top:38px;
+  background:linear-gradient(to right,transparent 0%,rgba(255,255,255,.18) 20%,rgba(255,255,255,.18) 80%,transparent 100%);
+}
+@media(max-width:640px){.fsb-inner{grid-template-columns:1fr;gap:20px;}}
+
 /* ---------- Contact ---------- */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .form-group{margin-bottom:16px}
