@@ -313,7 +313,17 @@
   .svc-chart-wrap{width:100%;}
 }
 
-/* ── Slide-in animation ── */
+/* ── Block 1: page-hero fade-up on load ── */
+@keyframes heroFadeUp{
+  from{opacity:0;transform:translateY(18px);}
+  to  {opacity:1;transform:translateY(0);}
+}
+.hero-unified .page-hero .page-hero-text{opacity:0;animation:heroFadeUp .5s ease both;animation-delay:.1s;}
+.hero-unified .page-hero h1             {opacity:0;animation:heroFadeUp .55s ease both;animation-delay:.35s;}
+.hero-unified .page-hero > .container > p{opacity:0;animation:heroFadeUp .5s ease both;animation-delay:.62s;}
+.hero-unified .page-hero .btn           {opacity:0;animation:heroFadeUp .5s ease both;animation-delay:.85s;}
+
+/* ── Block 2: svc-hero slide-in (triggered by .is-visible) ── */
 @keyframes svcSlideIn{
   from{opacity:0;transform:translateX(-38px);}
   to  {opacity:1;transform:translateX(0);}
@@ -337,10 +347,16 @@
 <!-- ── Unified hero: shared background across both blocks ── -->
 <div class="hero-unified">
   <!-- Shared background image + gradient -->
-  <img class="svc-hero-img"
-       src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80&auto=format&fit=crop"
-       alt="Logu un durvju regulēšana — SIA Logu Apkope"
-       loading="lazy">
+  <picture>
+    <source media="(max-width:800px)" srcset="../photo/logu_reg_mb.jpg">
+    <img class="svc-hero-img"
+         src="../photo/logu_reg_desk.jpg"
+         alt="Logu un durvju regulēšana Rīgā — meistars regulē PVC loga eņģes un slēgšanas mehānismu, SIA Logu Apkope"
+         title="Profesionāla logu un durvju regulēšana Rīgā — PVC, koka un alumīnija logi, eņģu regulēšana, caurvēja novēršana, garantija 2 gadi, SIA Logu Apkope"
+         width="1400" height="900"
+         loading="eager"
+         fetchpriority="high">
+  </picture>
   <div class="svc-hero-grad"></div>
 
   <!-- Block 1: page title -->
@@ -383,13 +399,22 @@
 </div><!-- /.hero-unified -->
 <script>
 (function(){
-  /* ── Slide-in animation ── */
+  /* ── Block 2 slide-in: starts after block 1 fade-up finishes (~1.5s) ── */
   var hero = document.querySelector('.svc-hero');
   if(hero){
-    var io = new IntersectionObserver(function(entries){
-      if(entries[0].isIntersecting){ hero.classList.add('is-visible'); io.disconnect(); }
-    },{threshold:0.1});
-    io.observe(hero);
+    var heroTriggered = false;
+    function triggerHero(){
+      if(heroTriggered) return;
+      heroTriggered = true;
+      hero.classList.add('is-visible');
+    }
+    /* Primary: sequential delay after page-hero (last el finishes at ~1.35s) */
+    setTimeout(triggerHero, 1500);
+    /* Fallback: user scrolled to svc-hero before the timer fired */
+    var heroIO = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){ triggerHero(); heroIO.disconnect(); }
+    },{threshold:0.15});
+    heroIO.observe(hero);
   }
 
   /* ── Life chart animation ── */
@@ -564,14 +589,19 @@
   /* Draw placeholder (axes only) immediately */
   draw(0);
 
-  /* Start animation when canvas enters viewport */
+  /* Start chart after svc-hero text animations wrap up (~2.7s from page load):
+     svc starts at 1.5s, last li at +0.9s delay, +0.5s duration = 2.9s → use 2.8s */
+  setTimeout(function(){
+    if(!triggered){ triggered = true; requestAnimationFrame(loop); }
+  }, 2800);
+  /* Fallback: canvas scrolled into view before timer fires */
   var chartIO = new IntersectionObserver(function(entries){
     if(entries[0].isIntersecting && !triggered){
       triggered = true;
       chartIO.disconnect();
       requestAnimationFrame(loop);
     }
-  }, { threshold: 0.25 });
+  }, { threshold: 0.15 });
   chartIO.observe(canvas);
 })();
 </script>
