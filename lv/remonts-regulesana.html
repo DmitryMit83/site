@@ -283,69 +283,298 @@
 .tip-card h3{margin:0 0 .6rem;font-size:1.05rem;}
 .tip-card p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.7;}
 
+/* ── Unified hero wrapper (spans page-hero + svc-hero) ── */
+.hero-unified{position:relative;overflow:hidden;background:var(--green);}
+.hero-unified > .svc-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+.hero-unified > .svc-hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(14,34,24,0.97) 0%,rgba(14,34,24,0.92) 26%,rgba(14,34,24,0.72) 52%,rgba(14,34,24,0.48) 70%,rgba(14,34,24,0.28) 88%);}
+.hero-unified .page-hero{background:transparent;position:relative;z-index:1;}
+
 /* ── Service hero banner ── */
-.svc-hero-outer{max-width:var(--maxw);margin:0 auto;padding:2rem 24px 0;}
-.svc-hero{position:relative;overflow:hidden;border-radius:20px;min-height:420px;background:var(--green);display:flex;align-items:center;}
-.svc-hero:hover .svc-hero-img{transform:scale(1.05);}
-.svc-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 700ms ease;}
-.svc-hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(14,34,24,0.97) 0%,rgba(14,34,24,0.92) 26%,rgba(14,34,24,0.65) 50%,rgba(14,34,24,0.22) 70%,transparent 88%);}
-.svc-hero-body{position:relative;z-index:2;max-width:560px;color:#fff;padding:3.5rem 3rem 3.5rem 3rem;}
+.svc-hero-outer{margin:0;padding:0;position:relative;z-index:1;}
+.svc-hero{display:block;background:transparent;border-radius:0;overflow:visible;}
+.svc-hero-inner{max-width:1280px;margin:0 auto;padding:2rem 24px 3.2rem;display:flex;align-items:center;gap:3.5rem;}
+.svc-hero-body{flex:0 0 auto;max-width:360px;color:#fff;}
 .svc-hero-eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:.8rem;}
 .svc-hero-price{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;font-weight:800;font-size:1.05rem;padding:.38rem 1.1rem;border-radius:99px;margin-bottom:1.2rem;}
-.svc-hero h2{color:#fff;font-size:clamp(1.4rem,2.5vw,2rem);line-height:1.2;margin:0 0 .9rem;}
-.svc-hero-list{list-style:none;padding:0;margin:0 0 1.6rem;display:flex;flex-direction:column;gap:.45rem;}
-.svc-hero-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.5;}
+.svc-hero h2{color:#fff;font-size:clamp(1.3rem,2.2vw,1.8rem);line-height:1.2;margin:0 0 .9rem;}
+.svc-hero-list{list-style:none;padding:0;margin:0 0 .5rem;display:flex;flex-direction:column;gap:.45rem;}
+.svc-hero-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:rgba(255,255,255,.88);line-height:1.5;}
 .svc-hero-list li::before{content:'✓';flex-shrink:0;width:18px;height:18px;background:rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;margin-top:.1rem;}
-.svc-hero-cta{display:flex;gap:.65rem;flex-wrap:wrap;}
-.svc-hero-btn-fill{display:inline-flex;align-items:center;padding:.5rem 1.2rem;border-radius:8px;font-size:.88rem;font-weight:700;text-decoration:none;background:var(--accent);color:#fff;border:1.5px solid var(--accent);transition:background .2s;}
-.svc-hero-btn-fill:hover{background:#c0641a;border-color:#c0641a;}
-.svc-hero-btn-ghost{display:inline-flex;align-items:center;padding:.5rem 1.2rem;border-radius:8px;font-size:.88rem;font-weight:700;text-decoration:none;background:transparent;color:rgba(255,255,255,.9);border:1.5px solid rgba(255,255,255,.38);transition:border-color .2s,color .2s;}
-.svc-hero-btn-ghost:hover{border-color:rgba(255,255,255,.85);color:#fff;}
-@media(max-width:700px){
-  .svc-hero-outer{padding:1.2rem 12px 0;}
-  .svc-hero{min-height:300px;border-radius:14px;}
-  .svc-hero-grad{background:linear-gradient(to top,rgba(14,34,24,.97) 0%,rgba(14,34,24,.9) 30%,rgba(14,34,24,.6) 56%,rgba(14,34,24,.18) 76%,transparent 92%);}
-  .svc-hero-body{padding:1.6rem 1.2rem 2.2rem;max-width:100%;align-self:flex-end;}
+/* Chart wrapper */
+.svc-chart-wrap{flex:1;min-width:0;}
+.svc-chart-label{color:rgba(255,255,255,.6);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 .5rem;}
+#lifeChart{width:100%;height:auto;display:block;}
+@media(max-width:800px){
+  .hero-unified > .svc-hero-grad{background:linear-gradient(to bottom,rgba(14,34,24,.78) 0%,rgba(14,34,24,.93) 50%,rgba(14,34,24,.98) 100%);}
+  .svc-hero-inner{flex-direction:column;align-items:flex-start;gap:1.6rem;padding:1.2rem 16px 2rem;}
+  .svc-hero-body{max-width:100%;}
   .svc-hero h2{font-size:clamp(1.1rem,4.5vw,1.4rem);}
   .svc-hero-list li{font-size:.82rem;}
+  .svc-chart-wrap{width:100%;}
 }
+
+/* ── Slide-in animation ── */
+@keyframes svcSlideIn{
+  from{opacity:0;transform:translateX(-38px);}
+  to  {opacity:1;transform:translateX(0);}
+}
+.svc-hero-price,
+.svc-hero h2,
+.svc-hero-list li,
+.svc-hero-cta{opacity:0;}
+.svc-hero.is-visible .svc-hero-price{animation:svcSlideIn .55s cubic-bezier(.22,.68,0,1.1) both;animation-delay:.05s;}
+.svc-hero.is-visible .svc-hero h2  {animation:svcSlideIn .55s cubic-bezier(.22,.68,0,1.1) both;animation-delay:.2s;}
+.svc-hero.is-visible .svc-hero-list li:nth-child(1){animation:svcSlideIn .5s ease both;animation-delay:.35s;}
+.svc-hero.is-visible .svc-hero-list li:nth-child(2){animation:svcSlideIn .5s ease both;animation-delay:.46s;}
+.svc-hero.is-visible .svc-hero-list li:nth-child(3){animation:svcSlideIn .5s ease both;animation-delay:.57s;}
+.svc-hero.is-visible .svc-hero-list li:nth-child(4){animation:svcSlideIn .5s ease both;animation-delay:.68s;}
+.svc-hero.is-visible .svc-hero-list li:nth-child(5){animation:svcSlideIn .5s ease both;animation-delay:.79s;}
+.svc-hero.is-visible .svc-hero-list li:nth-child(6){animation:svcSlideIn .5s ease both;animation-delay:.9s;}
+.svc-hero.is-visible .svc-hero-cta{animation:svcSlideIn .5s ease both;animation-delay:1.05s;}
 </style>
 
 <main>
-<section class="page-hero">
-  <div class="container">
-    <div class="page-hero-text">
-      <a href="remonts.html" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;">← Atpakaļ uz remontiem</a>
-      <span class="eyebrow">Logu un durvju remonts</span>
-    </div>
-    <h1>Logu un durvju regulēšana</h1>
-    <p>Precīza logu un durvju regulēšana novērš caurvēju, mitrumu un nolietojumu. Apkalpojam PVC, koka un alumīnija konstrukcijas.</p>
-    <a class="btn btn-outline-dark" href="kontakti.html">Pasūtīt pakalpojumu</a>
-  </div>
-</section>
+<!-- ── Unified hero: shared background across both blocks ── -->
+<div class="hero-unified">
+  <!-- Shared background image + gradient -->
+  <img class="svc-hero-img"
+       src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80&auto=format&fit=crop"
+       alt="Logu un durvju regulēšana — SIA Logu Apkope"
+       loading="lazy">
+  <div class="svc-hero-grad"></div>
 
-<!-- Pakalpojuma apraksts — hero banner stils -->
-<div class="svc-hero-outer">
-  <div class="svc-hero">
-    <img class="svc-hero-img"
-         src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80&auto=format&fit=crop"
-         alt="Logu un durvju regulēšana — SIA Logu Apkope"
-         loading="lazy">
-    <div class="svc-hero-grad"></div>
-    <div class="svc-hero-body">
-      <div class="svc-hero-price">Cena: no €15</div>
-      <h2>Iekļauts pakalpojumā</h2>
-      <ul class="svc-hero-list">
-        <li>Augšas, apakšas un sānu regulēšana</li>
-        <li>Blīvgumijas stāvokļa pārbaude</li>
-        <li>Eņģu un šarnīru nostiprināšana</li>
-        <li>Slēgšanas mehānisma pārbaude</li>
-        <li>Rezultāta pārbaude uz vietas</li>
-        <li>Garantija 2 gadi</li>
-      </ul>
+  <!-- Block 1: page title -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-text">
+        <a href="remonts.html" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;">← Atpakaļ uz remontiem</a>
+        <span class="eyebrow">Logu un durvju remonts</span>
+      </div>
+      <h1>Logu un durvju regulēšana</h1>
+      <p>Precīza logu un durvju regulēšana novērš caurvēju, mitrumu un nolietojumu. Apkalpojam PVC, koka un alumīnija konstrukcijas.</p>
+      <a class="btn btn-outline-dark" href="kontakti.html">Pasūtīt pakalpojumu</a>
+    </div>
+  </section>
+
+  <!-- Block 2: service details -->
+  <div class="svc-hero-outer">
+    <div class="svc-hero">
+      <div class="svc-hero-inner">
+        <div class="svc-hero-body">
+          <div class="svc-hero-price">Cena: no €15</div>
+          <h2>Iekļauts pakalpojumā</h2>
+          <ul class="svc-hero-list">
+            <li>Augšas, apakšas un sānu regulēšana</li>
+            <li>Blīvgumijas stāvokļa pārbaude</li>
+            <li>Eņģu un šarnīru nostiprināšana</li>
+            <li>Slēgšanas mehānisma pārbaude</li>
+            <li>Rezultāta pārbaude uz vietas</li>
+            <li>Garantija 2 gadi</li>
+          </ul>
+        </div>
+        <div class="svc-chart-wrap">
+          <p class="svc-chart-label">Logu kalpošanas laiks</p>
+          <canvas id="lifeChart" width="880" height="420"></canvas>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+
+</div><!-- /.hero-unified -->
+<script>
+(function(){
+  /* ── Slide-in animation ── */
+  var hero = document.querySelector('.svc-hero');
+  if(hero){
+    var io = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){ hero.classList.add('is-visible'); io.disconnect(); }
+    },{threshold:0.1});
+    io.observe(hero);
+  }
+
+  /* ── Life chart animation ── */
+  var canvas = document.getElementById('lifeChart');
+  if(!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+
+  var W = canvas.width, H = canvas.height;
+  var ml = 58, mr = 20, mt = 42, mb = 56;
+  var pw = W - ml - mr;
+  var ph = H - mt - mb;
+
+  function xs(t){ return ml + (t / 20) * pw; }
+  function ys(q){ return mt + ph - (q / 100) * ph; }
+
+  /* Serviced window: sawtooth — declines within each 2-yr cycle, boosted at service */
+  function servicedQ(t){
+    var cycle = Math.floor(t / 2);
+    var phase = (t % 2) / 2;           // 0→1 within cycle
+    var peak  = 98 - cycle * 1.8;      // each cycle peak drops slightly: 98,96.2,94.4…
+    var floor = peak - 11;             // 11-point swing per cycle
+    return Math.max(68, peak - (peak - floor) * phase);
+  }
+
+  /* Unserviced: accelerating exponential decay */
+  function unservicedQ(t){
+    return 100 * Math.exp(-0.013 * t * t);
+  }
+
+  /* Pre-compute 240 sample points */
+  var STEPS = 240;
+  var servPts = [], unsvPts = [];
+  for(var i = 0; i <= STEPS; i++){
+    var t = (i / STEPS) * 20;
+    servPts.push({ t: t, q: servicedQ(t) });
+    unsvPts.push({ t: t, q: unservicedQ(t) });
+  }
+
+  var SERVICE_YEARS = [2,4,6,8,10,12,14,16,18,20];
+
+  function draw(progress){
+    ctx.clearRect(0, 0, W, H);
+
+    /* — Grid — */
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.lineWidth = 1;
+    [0,25,50,75,100].forEach(function(q){
+      ctx.beginPath(); ctx.moveTo(ml, ys(q)); ctx.lineTo(ml + pw, ys(q)); ctx.stroke();
+    });
+    [0,5,10,15,20].forEach(function(t){
+      ctx.beginPath(); ctx.moveTo(xs(t), mt); ctx.lineTo(xs(t), mt + ph); ctx.stroke();
+    });
+    ctx.restore();
+
+    /* — Axis labels — */
+    ctx.save();
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '500 21px Poppins,sans-serif';
+    ctx.textAlign = 'center';
+    [0,5,10,15,20].forEach(function(t){
+      ctx.fillText(t, xs(t), mt + ph + 32);
+    });
+    ctx.font = '500 20px Poppins,sans-serif';
+    ctx.fillText('gadi', ml + pw / 2, mt + ph + 52);
+    ctx.textAlign = 'right';
+    [0,50,100].forEach(function(q){
+      ctx.fillText(q + '%', ml - 9, ys(q) + 7);
+    });
+    ctx.restore();
+
+    /* — Legend — */
+    ctx.save();
+    var lx = ml, ly = mt - 18;
+    ctx.fillStyle = '#86efac';
+    ctx.fillRect(lx, ly - 3, 26, 5);
+    ctx.font = '600 21px Poppins,sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('Ar regulāru apkopi', lx + 32, ly + 5);
+
+    ctx.fillStyle = '#fb923c';
+    ctx.fillRect(lx + 300, ly - 3, 26, 5);
+    ctx.fillText('Bez apkopes', lx + 332, ly + 5);
+    ctx.restore();
+
+    /* — Draw lines up to current progress — */
+    var maxIdx = Math.min(Math.ceil(progress * STEPS), STEPS);
+
+    /* Unserviced (orange) */
+    ctx.save();
+    ctx.strokeStyle = '#fb923c';
+    ctx.lineWidth = 4.5;
+    ctx.lineJoin = 'round';
+    ctx.lineCap  = 'round';
+    ctx.beginPath();
+    for(var i = 0; i <= maxIdx; i++){
+      var d = unsvPts[i];
+      if(i === 0) ctx.moveTo(xs(d.t), ys(d.q));
+      else         ctx.lineTo(xs(d.t), ys(d.q));
+    }
+    ctx.stroke();
+    ctx.restore();
+
+    /* Serviced (green) */
+    ctx.save();
+    ctx.strokeStyle = '#86efac';
+    ctx.lineWidth = 4.5;
+    ctx.lineJoin = 'round';
+    ctx.lineCap  = 'round';
+    ctx.beginPath();
+    for(var i = 0; i <= maxIdx; i++){
+      var d = servPts[i];
+      if(i === 0) ctx.moveTo(xs(d.t), ys(d.q));
+      else         ctx.lineTo(xs(d.t), ys(d.q));
+    }
+    ctx.stroke();
+    ctx.restore();
+
+    /* — Service dots (white circles at each 2-yr mark) — */
+    SERVICE_YEARS.forEach(function(y){
+      if(y / 20 <= progress){
+        var q = servicedQ(y);
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(xs(y), ys(q), 6.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+        ctx.strokeStyle = '#86efac';
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+        ctx.restore();
+      }
+    });
+
+    /* — End labels — */
+    if(progress > 0.82){
+      var alpha = Math.min(1, (progress - 0.82) / 0.18);
+      ctx.save();
+      ctx.globalAlpha = alpha;
+
+      /* Serviced end label */
+      var sq = servicedQ(20);
+      ctx.fillStyle = '#86efac';
+      ctx.font = 'bold 22px Poppins,sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText('20+ gadi', xs(20) - 10, ys(sq) - 12);
+
+      /* Unserviced label — annotate at ~t=10 where it's clearly declining */
+      var uq = unservicedQ(9);
+      ctx.fillStyle = '#fb923c';
+      ctx.textAlign = 'left';
+      ctx.fillText('~10 gadi', xs(9.3) + 6, ys(uq) - 14);
+
+      ctx.restore();
+    }
+  }
+
+  /* Animation loop */
+  var startTime = null;
+  var DURATION  = 2200;
+  var triggered = false;
+
+  function easeInOut(x){ return x < 0.5 ? 2*x*x : 1 - Math.pow(-2*x+2,2)/2; }
+
+  function loop(ts){
+    if(!startTime) startTime = ts;
+    var progress = Math.min(1, (ts - startTime) / DURATION);
+    draw(easeInOut(progress));
+    if(progress < 1) requestAnimationFrame(loop);
+  }
+
+  /* Draw placeholder (axes only) immediately */
+  draw(0);
+
+  /* Start animation when canvas enters viewport */
+  var chartIO = new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting && !triggered){
+      triggered = true;
+      chartIO.disconnect();
+      requestAnimationFrame(loop);
+    }
+  }, { threshold: 0.25 });
+  chartIO.observe(canvas);
+})();
+</script>
 
 <!-- Cenrādis pēc materiāla -->
 <section class="alt">
