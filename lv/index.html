@@ -909,13 +909,11 @@
     </div>
     <!-- Show all button -->
     <div style="text-align:center;margin-top:2rem;" id="pakShowWrap" class="pak-show-wrap">
-      <button id="pakShowBtn" class="btn btn-outline-dark" style="display:inline-flex;flex-direction:row;align-items:center;gap:.45rem;" onclick="(function(){
+      <button id="pakShowBtn" class="btn" style="background:var(--accent);border-color:var(--accent);color:#fff;" onclick="(function(){
         document.querySelectorAll('.pak-hidden').forEach(function(el){el.classList.remove('pak-hidden')});
         document.getElementById('pakShowWrap').style.display='none';
       })()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        <span>Rādīt visus pakalpojumus</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        Rādīt visus pakalpojumus
       </button>
     </div>
   </div>
@@ -930,6 +928,17 @@
   .pak-show-mobile{display:block !important}
   /* На мобильных показываем обёртку с pak-show-mobile карточкой */
   .pak-w:has(.pak-show-mobile){display:block !important}
+  /* Услуги — всегда 2 колонки на мобильном */
+  #pakalpojumiGrid{grid-template-columns:repeat(2,1fr) !important;gap:12px;}
+}
+@media(max-width:640px){
+  /* Скрываем описание в карточках услуг на телефоне */
+  #pakalpojumiGrid .card p{display:none;}
+  /* Прайс и ссылка — в столбик */
+  #pakalpojumiGrid .card-footer-row{flex-direction:column;align-items:flex-start;gap:5px;}
+  #pakalpojumiGrid .card-body{padding:14px 14px 16px;}
+  #pakalpojumiGrid .card h3{font-size:.92rem;margin-bottom:.4rem;}
+  #pakalpojumiGrid .card .card-img{aspect-ratio:4/3;}
 }
 </style>
 
@@ -2361,7 +2370,7 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
     </div>
 
     <div class="md-footer">
-      <a href="darbi.html" class="btn btn-outline-dark" style="margin-top:0;">Skatīt visus darbus →</a>
+      <a href="darbi.html" class="btn" style="margin-top:0;background:var(--accent);border-color:var(--accent);color:#fff;">Portfolio</a>
     </div>
   </div>
 </section>
