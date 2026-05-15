@@ -1265,6 +1265,7 @@
   font-size:clamp(1.1rem,2vw,1.45rem);
   font-weight:700;color:#111827;
   margin:0;line-height:1.2;
+  text-decoration:none;border:none;
 }
 .svc-card-desc{
   font-size:.83rem;color:#6b7280;line-height:1.6;
@@ -1447,6 +1448,11 @@
   transition:color .15s;
 }
 .svc-form-note-link:hover{color:var(--accent);}
+.svc-footnote-link{
+  color:inherit;text-decoration:underline;text-underline-offset:2px;
+  transition:color .15s;
+}
+.svc-footnote-link:hover{color:var(--accent);}
 .svc-form-success{
   display:none;text-align:center;padding:20px 0 8px;
 }
@@ -1677,14 +1683,15 @@
   <div class="svc-cards-grid">
 
     <!-- Card R1: × 3 -->
-    <div class="svc-card" data-svc="Logu regulēšana × 3">
+    <div class="svc-card" data-svc="Logu regulēšana × 3 logi">
       <div class="svc-card-r-title">
         <div class="svc-card-name"><h3 class="svc-card-title">Regulēšana × 3 logi</h3></div>
       </div>
       <div class="svc-card-r-price">
         <div class="svc-card-price">
-          <span class="svc-card-price-amount">75</span>
+          <span class="svc-card-price-amount">50</span>
           <span class="svc-card-price-currency">€</span>
+          <span class="svc-card-price-old">55 €</span>
         </div>
       </div>
       <div class="svc-card-r-pnote"><p class="svc-card-price-note">Fiksēta cena. PVN iekļauts.</p></div>
@@ -1701,66 +1708,72 @@
           <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>PVN (21%)</li>
         </ul>
       </div>
-      <div class="svc-card-r-foot"><p class="svc-card-footnote">* Izbraukšana iekļauta tikai Rīgā.</p></div>
+      <div class="svc-card-r-foot"><p class="svc-card-footnote">* Izbraukšana iekļauta tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" class="svc-footnote-link">transporta izdevumi</a>.</p></div>
     </div>
 
-    <!-- Card R2: × 5 POPULAR -->
-    <div class="svc-card svc-card--popular" data-svc="Logu apkope × 5">
+    <!-- Card R2: 3 logi + 1 balkona durvis POPULAR -->
+    <div class="svc-card svc-card--popular" data-svc="Pilna apkope × 3 logi + 1 balkona durvis">
       <div class="svc-popular-badge">Populārākais</div>
       <div class="svc-card-r-title">
-        <div class="svc-card-name"><h3 class="svc-card-title">Apkopes pakete × 5</h3></div>
-      </div>
-      <div class="svc-card-r-price">
-        <div class="svc-card-price">
-          <span class="svc-card-price-amount">175</span>
-          <span class="svc-card-price-currency">€</span>
-        </div>
-      </div>
-      <div class="svc-card-r-pnote"><p class="svc-card-price-note">Fiksēta cena par 5 logiem. PVN iekļauts.</p></div>
-      <div class="svc-card-r-desc"><p class="svc-card-desc">Pilns serviss pieciem logiem — regulēšana, jauna blīvgumija un rokturi. Ideāls risinājums dzīvoklim vai nelielai mājai.</p></div>
-      <div class="svc-card-r-btn"><button class="svc-btn-primary svc-btn-orange svc-apply-btn">Pasūtīt tagad</button></div>
-      <div class="svc-card-r-feats">
-        <hr class="svc-features-divider">
-        <p class="svc-features-label">Iekļauts cenā</p>
-        <ul class="svc-features-list">
-          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Regulēšana (5 logi)</li>
-          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Blīvgumiju maiņa (5 logi)</li>
-          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Roktura maiņa (5 logi)</li>
-          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Izbraukšana Rīgā</li>
-          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>PVN (21%)</li>
-          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>6 mēnešu garantija</li>
-        </ul>
-      </div>
-      <div class="svc-card-r-foot"><p class="svc-card-footnote">* Izbraukšana iekļauta tikai Rīgā.</p></div>
-    </div>
-
-    <!-- Card R3: × 10 -->
-    <div class="svc-card" data-svc="Logu apkope × 10">
-      <div class="svc-card-r-title">
-        <div class="svc-card-name"><h3 class="svc-card-title">Apkopes pakete × 10</h3></div>
+        <div class="svc-card-name"><h3 class="svc-card-title">Pilna apkope 3+1</h3></div>
       </div>
       <div class="svc-card-r-price">
         <div class="svc-card-price">
           <span class="svc-card-price-amount">320</span>
           <span class="svc-card-price-currency">€</span>
+          <span class="svc-card-price-old">375 €</span>
         </div>
       </div>
-      <div class="svc-card-r-pnote"><p class="svc-card-price-note">Fiksēta cena par 10 logiem. PVN iekļauts.</p></div>
-      <div class="svc-card-r-desc"><p class="svc-card-desc">Pilna mājoklīša logu apkope — regulēšana, blīvgumijas un roktura maiņa visiem logiem. Izbraukšana 50 km rādiusā no Rīgas.</p></div>
+      <div class="svc-card-r-pnote"><p class="svc-card-price-note">Fiksēta cena par 3 logiem + 1 balkona durvis. PVN iekļauts.</p></div>
+      <div class="svc-card-r-desc"><p class="svc-card-desc">Pilns serviss trijiem logiem un vienai balkona durvij — regulēšana, smērēšana, jauni blīvgumiji un rokturi, ģeometrijas izlīdzināšana.</p></div>
+      <div class="svc-card-r-btn"><button class="svc-btn-primary svc-btn-orange svc-apply-btn">Pasūtīt tagad</button></div>
+      <div class="svc-card-r-feats">
+        <hr class="svc-features-divider">
+        <p class="svc-features-label">Iekļauts cenā</p>
+        <ul class="svc-features-list">
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Regulēšana (3 logi + 1 balkona durvis)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Smērēšana</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Blīvgumiju maiņa</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Roktura maiņa</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Ģeometrijas izlīdzināšana</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Izbraukšana Rīgā</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>PVN (21%)</li>
+        </ul>
+      </div>
+      <div class="svc-card-r-foot"><p class="svc-card-footnote">* Izbraukšana iekļauta tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" class="svc-footnote-link">transporta izdevumi</a>.</p></div>
+    </div>
+
+    <!-- Card R3: pilna mājas apkope -->
+    <div class="svc-card" data-svc="Pilna mājas apkope">
+      <div class="svc-card-r-title">
+        <div class="svc-card-name"><h3 class="svc-card-title">Pilna mājas apkope</h3></div>
+      </div>
+      <div class="svc-card-r-price">
+        <div class="svc-card-price">
+          <span class="svc-card-price-amount">999</span>
+          <span class="svc-card-price-currency">€</span>
+          <span class="svc-card-price-old">1 175 €</span>
+        </div>
+      </div>
+      <div class="svc-card-r-pnote"><p class="svc-card-price-note">Fiksēta cena. 7 logi + 2 balkona + 1 ieejas + 1 terases durvis. PVN iekļauts.</p></div>
+      <div class="svc-card-r-desc"><p class="svc-card-desc">Pilna mājas logu un durvju apkope — regulēšana, smērēšana, blīvgumiji, rokturi un ģeometrijas izlīdzināšana. Izmēru ņemšana un izbraukšana 100 km rādiusā no Rīgas.</p></div>
       <div class="svc-card-r-btn"><button class="svc-btn-primary svc-btn-dark svc-apply-btn">Pasūtīt tagad</button></div>
       <div class="svc-card-r-feats">
         <hr class="svc-features-divider">
         <p class="svc-features-label">Iekļauts cenā</p>
         <ul class="svc-features-list">
-          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Regulēšana (10 logi)</li>
-          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Blīvgumiju maiņa (10 logi)</li>
-          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Roktura maiņa (10 logi)</li>
-          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Izbraukšana 50 km no Rīgas</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>7 logi + 2 balkona durvis</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>1 ieejas durvis + 1 terases durvis (bīdāmas/dubultās)</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Regulēšana un smērēšana</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Blīvgumiju maiņa</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Roktura maiņa</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Ģeometrijas izlīdzināšana</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Izmēru ņemšana 100 km rādiusā no Rīgas</li>
+          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Izbraukšana 100 km rādiusā no Rīgas</li>
           <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>PVN (21%)</li>
-          <li><span class="svc-check-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>12 mēnešu garantija</li>
         </ul>
       </div>
-      <div class="svc-card-r-foot"><!-- no footnote --></div>
+      <div class="svc-card-r-foot"><p class="svc-card-footnote">* Ārpus 100 km zonas tiek piemēroti papildu <a href="transporta-izmaksas.html" class="svc-footnote-link">transporta izdevumi</a>.</p></div>
     </div>
 
   </div><!-- /svc-cards-grid remonts -->
