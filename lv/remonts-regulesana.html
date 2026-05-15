@@ -285,6 +285,8 @@
 
 /* ── Unified hero wrapper (spans page-hero + svc-hero) ── */
 .hero-unified{position:relative;overflow:hidden;background:var(--green);}
+.hero-unified > picture{position:absolute;inset:0;width:100%;height:100%;}
+.hero-unified > picture > .svc-hero-img,
 .hero-unified > .svc-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
 .hero-unified > .svc-hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(14,34,24,0.97) 0%,rgba(14,34,24,0.92) 26%,rgba(14,34,24,0.72) 52%,rgba(14,34,24,0.48) 70%,rgba(14,34,24,0.28) 88%);}
 .hero-unified .page-hero{background:transparent;position:relative;z-index:1;}
