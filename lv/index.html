@@ -1510,7 +1510,7 @@
     width:100%;top:0;left:0;
     margin:0;
     cursor:grab;
-    touch-action:none;
+    touch-action:pan-y;
     will-change:transform,opacity;
     transition:transform .4s cubic-bezier(.25,.46,.45,.94),opacity .35s;
   }
@@ -2032,12 +2032,11 @@ function initCarousel(grid){
       if(dirLocked === 'h') dragging = true;
     }
 
-    if(!dragging) return; /* vertical scroll — let browser handle it */
+    if(!dragging) return; /* vertical scroll — browser handles it via touch-action:pan-y */
 
     dragDX = dx;
     applyPositions(dragDX);
-    if(e.cancelable) e.preventDefault();
-  }, {passive:false});
+  }, {passive:true});
 
   grid.addEventListener('touchend', function(){
     if(!mq.matches) return;
