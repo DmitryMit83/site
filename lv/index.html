@@ -932,10 +932,12 @@
   #pakalpojumiGrid{grid-template-columns:repeat(2,1fr) !important;gap:12px;}
 }
 @media(max-width:640px){
-  /* Скрываем описание в карточках услуг на телефоне */
-  #pakalpojumiGrid .card p{display:none;}
-  /* Прайс и ссылка — в столбик */
-  #pakalpojumiGrid .card-footer-row{flex-direction:column;align-items:flex-start;gap:5px;}
+  /* Описание — очень мелко */
+  #pakalpojumiGrid .card p{display:block;font-size:.72rem;line-height:1.4;margin-bottom:8px;}
+  /* Цену убираем */
+  #pakalpojumiGrid .price-badge{display:none;}
+  /* Ссылка "Uzzināt vairāk" без отдельной строки */
+  #pakalpojumiGrid .card-footer-row{flex-direction:row;align-items:center;justify-content:flex-start;gap:0;}
   #pakalpojumiGrid .card-body{padding:14px 14px 16px;}
   #pakalpojumiGrid .card h3{font-size:.92rem;margin-bottom:.4rem;}
   #pakalpojumiGrid .card .card-img{aspect-ratio:4/3;}
@@ -2320,7 +2322,11 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
 .md-slot:hover .md-slot-zoom{background:rgba(0,0,0,.25);}
 .md-slot-zoom svg{opacity:0;transition:opacity .2s;color:#fff;}
 .md-slot:hover .md-slot-zoom svg{opacity:1;}
-.md-footer{display:flex;align-items:center;justify-content:center;margin-top:28px;}
+.md-footer{margin-top:28px;text-align:center;}
+.md-footer .btn{padding-left:3em;padding-right:3em;}
+@media(max-width:640px){
+  .md-footer .btn{display:block;width:100%;box-sizing:border-box;padding-left:1rem;padding-right:1rem;}
+}
 /* Lightbox (shared style, same as darbi.html) */
 .md-lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;}
 .md-lb.md-lb--open{display:flex;}
