@@ -529,8 +529,7 @@ a.sub:hover{color:inherit}
 .sub-more{display:inline-block;color:var(--accent);font-weight:600;font-size:.88rem;margin-top:10px}
 .sub.has-img .card-footer-row .price-badge{margin-bottom:0;font-size:.95rem;padding:5px 13px;}
 /* Side stamp — vertically centered on right edge of card */
-.rec-stamp--side{position:absolute;right:10px;top:50%;transform:translateY(-50%) rotate(-12deg);width:64px;height:64px;z-index:5;}
-.sub.has-img.has-side-stamp .sub-body{padding-right:80px;}
+.rec-stamp--side{position:absolute;right:10px;top:10px;transform:rotate(-12deg);width:64px;height:64px;z-index:5;}
 .sub.has-img:hover .sub-more{color:var(--green)}
 
 /* ---------- Why us ---------- */
@@ -1933,7 +1932,6 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   .mob-2col .sub.has-img .card-footer-row{flex-direction:row;align-items:center;justify-content:space-between;gap:6px;}
   .mob-2col .sub.has-img .price-badge{font-size:.8rem;padding:3px 9px;margin-bottom:0;}
   .mob-2col .sub.has-img .more{font-size:.76rem;}
-  .mob-2col .sub.has-img.has-side-stamp .sub-body{padding-right:14px;}
 }
 
 /* ── Cards ────────────────────────────────────────────────────────── */
