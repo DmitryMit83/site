@@ -1923,17 +1923,17 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 
 /* ── Sub-card grids: 2 columns on mobile (moskitu-tikli, zaluzijas, remonts, palodzes) ── */
 @media(max-width:900px){
-  .grid.cols-3:has(>.sub.has-img){grid-template-columns:repeat(2,1fr)!important;gap:12px;}
+  .mob-2col{grid-template-columns:repeat(2,1fr)!important;gap:12px!important;}
 }
 @media(max-width:640px){
-  .grid.cols-3:has(>.sub.has-img) .sub.has-img .sub-img{aspect-ratio:4/3;}
-  .grid.cols-3:has(>.sub.has-img) .sub.has-img .sub-body{padding:10px 12px 12px;}
-  .grid.cols-3:has(>.sub.has-img) .sub.has-img .sub-body h3{font-size:.88rem;margin-bottom:.25rem;}
-  .grid.cols-3:has(>.sub.has-img) .sub.has-img .sub-body p{font-size:.72rem;line-height:1.4;margin-bottom:6px;flex:none;}
-  .grid.cols-3:has(>.sub.has-img) .sub.has-img .card-footer-row{flex-direction:row;align-items:center;justify-content:flex-start;gap:0;}
-  .grid.cols-3:has(>.sub.has-img) .sub.has-img .price-badge{font-size:.8rem;padding:3px 9px;margin-bottom:0;}
-  .grid.cols-3:has(>.sub.has-img) .sub.has-img .more{font-size:.76rem;}
-  .grid.cols-3:has(>.sub.has-img) .sub.has-img.has-side-stamp .sub-body{padding-right:14px;}
+  .mob-2col .sub.has-img .sub-img{aspect-ratio:4/3;}
+  .mob-2col .sub.has-img .sub-body{padding:10px 12px 12px;}
+  .mob-2col .sub.has-img .sub-body h3{font-size:.88rem;margin-bottom:.25rem;}
+  .mob-2col .sub.has-img .sub-body p{font-size:.72rem;line-height:1.4;margin-bottom:6px;flex:none;}
+  .mob-2col .sub.has-img .card-footer-row{flex-direction:row;align-items:center;justify-content:flex-start;gap:0;}
+  .mob-2col .sub.has-img .price-badge{font-size:.8rem;padding:3px 9px;margin-bottom:0;}
+  .mob-2col .sub.has-img .more{font-size:.76rem;}
+  .mob-2col .sub.has-img.has-side-stamp .sub-body{padding-right:14px;}
 }
 
 /* ── Cards ────────────────────────────────────────────────────────── */
