@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/styles.css?v=52">
+<link rel="stylesheet" href="../css/styles.css?v=53">
 </head>
 <body>
 <header class="site-header">
@@ -300,6 +300,12 @@
         <li>Ražots pēc pasūtījuma — precīzi Jūsu atvēruma izmēriem</li>
         <li>Uzstādīšana un garantija iekļauta</li>
       </ul>
+    </div>
+    <div class="svc-chart-wrap">
+      <canvas class="svc-chart-canvas" id="moskChart" width="260" height="260"
+              aria-label="Moskītu tīklu popularitātes diagramma" role="img"></canvas>
+      <ul class="svc-chart-legend" id="moskLegend"></ul>
+      <p class="svc-chart-note">&#42; Statistika balstīta tikai uz SIA&nbsp;Logu&nbsp;Apkope pasūtījumu datiem</p>
     </div>
     </div>
   </div>
@@ -889,6 +895,115 @@ var MESH_DATA={
     requestAnimationFrame(animate);
   }
   animate();
+})();
+</script>
+<script>
+(function(){
+  var SEGS=[
+    {label:'Rāmju tīkli',   pct:35, base:'#3E7D59'},
+    {label:'Rullīšu tīkli', pct:14, base:'#6BA58A'},
+    {label:'Plisē tīkli',   pct:30, base:'#9ECAB5'},
+    {label:'Durvju tīkli',  pct:17, base:'#2C5341'},
+    {label:'Bīdāmie tīkli', pct:3,  base:'rgba(200,220,210,0.45)'}
+  ];
+  var ACTIVE=3;
+  var ACCENT='#D04D1A';
+  SEGS.forEach(function(s,i){s.color=(i===ACTIVE)?ACCENT:s.base;});
+
+  // Build legend
+  var legend=document.getElementById('moskLegend');
+  if(legend){
+    SEGS.forEach(function(s,i){
+      var li=document.createElement('li');
+      if(i===ACTIVE)li.className='leg-active';
+      li.innerHTML='<span class="leg-dot" style="background:'+s.color+'"></span>'
+                  +s.label+' &mdash; <b>'+s.pct+'%</b>';
+      legend.appendChild(li);
+    });
+  }
+
+  // Canvas chart
+  var canvas=document.getElementById('moskChart');
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var W=canvas.width,H=canvas.height,cx=W/2,cy=H/2;
+  var R=W*0.415, ri=W*0.255;
+  var GAP=0.028; // radians gap between segments
+  var total=SEGS.reduce(function(a,s){return a+s.pct;},0);
+  var angles=SEGS.map(function(s){return(s.pct/total)*(2*Math.PI-GAP*SEGS.length);});
+  var DUR=1350, started=null;
+
+  function ease(t){return t<.5?4*t*t*t:(t-1)*(2*t-2)*(2*t-2)+1;}
+
+  function draw(prog){
+    ctx.clearRect(0,0,W,H);
+
+    // Background track ring
+    ctx.beginPath();
+    ctx.arc(cx,cy,R,0,2*Math.PI);
+    ctx.arc(cx,cy,ri,0,2*Math.PI,true);
+    ctx.fillStyle='rgba(255,255,255,0.07)';
+    ctx.fill();
+
+    // Draw segments (sweeping reveal)
+    var totalDraw=2*Math.PI*prog;
+    var consumed=0, ang=-Math.PI/2;
+    SEGS.forEach(function(seg,i){
+      var fullSlot=angles[i]+GAP;
+      var drawArc=Math.max(0, Math.min(angles[i], totalDraw-consumed));
+      consumed+=fullSlot;
+      if(drawArc<=0){ang+=fullSlot;return;}
+      var sa=ang+GAP/2, ea=sa+drawArc;
+      ctx.beginPath();
+      ctx.arc(cx,cy,R,sa,ea);
+      ctx.arc(cx,cy,ri,ea,sa,true);
+      ctx.closePath();
+      if(i===ACTIVE){ctx.shadowColor=ACCENT;ctx.shadowBlur=18;}
+      ctx.fillStyle=seg.color;
+      ctx.fill();
+      ctx.shadowBlur=0;
+      ang+=fullSlot;
+    });
+
+    // Center: animated % counter
+    var pctNow=Math.round(SEGS[ACTIVE].pct*prog);
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillStyle='#fff';
+    ctx.font='bold '+Math.round(W*.17)+'px Inter,system-ui,sans-serif';
+    ctx.fillText(pctNow+'%', cx, cy-H*.045);
+    ctx.font=Math.round(W*.063)+'px Inter,system-ui,sans-serif';
+    ctx.fillStyle='rgba(255,255,255,.6)';
+    var words=SEGS[ACTIVE].label.split(' ');
+    ctx.fillText(words[0], cx, cy+H*.075);
+    if(words[1]) ctx.fillText(words[1], cx, cy+H*.155);
+  }
+
+  function animate(ts){
+    if(!started)started=ts;
+    var t=Math.min((ts-started)/DUR,1);
+    draw(ease(t));
+    if(t<1)requestAnimationFrame(animate);
+  }
+
+  draw(0);
+
+  // Trigger on is-visible (same event as svc-hero slide-in)
+  var hero=document.querySelector('.svc-hero');
+  if(hero){
+    if(hero.classList.contains('is-visible')){
+      requestAnimationFrame(animate);
+    } else {
+      var obs=new MutationObserver(function(muts){
+        muts.forEach(function(m){
+          if(m.target.classList.contains('is-visible')){
+            requestAnimationFrame(animate);
+            obs.disconnect();
+          }
+        });
+      });
+      obs.observe(hero,{attributes:true,attributeFilter:['class']});
+    }
+  }
 })();
 </script>
 
