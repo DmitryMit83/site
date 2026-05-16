@@ -1929,8 +1929,8 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   .mob-2col .sub.has-img .sub-img{aspect-ratio:4/3;}
   .mob-2col .sub.has-img .sub-body{padding:10px 12px 12px;}
   .mob-2col .sub.has-img .sub-body h3{font-size:.88rem;margin-bottom:.25rem;}
-  .mob-2col .sub.has-img .sub-body p{font-size:.72rem;line-height:1.4;margin-bottom:6px;flex:none;}
-  .mob-2col .sub.has-img .card-footer-row{flex-direction:row;align-items:center;justify-content:flex-start;gap:0;}
+  .mob-2col .sub.has-img .sub-body p{font-size:.72rem;line-height:1.4;margin-bottom:6px;flex:1;}
+  .mob-2col .sub.has-img .card-footer-row{flex-direction:row;align-items:center;justify-content:space-between;gap:6px;}
   .mob-2col .sub.has-img .price-badge{font-size:.8rem;padding:3px 9px;margin-bottom:0;}
   .mob-2col .sub.has-img .more{font-size:.76rem;}
   .mob-2col .sub.has-img.has-side-stamp .sub-body{padding-right:14px;}
