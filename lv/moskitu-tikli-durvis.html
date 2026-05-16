@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/styles.css?v=53">
+<link rel="stylesheet" href="../css/styles.css?v=56">
 </head>
 <body>
 <header class="site-header">
@@ -302,10 +302,12 @@
       </ul>
     </div>
     <div class="svc-chart-wrap">
-      <canvas class="svc-chart-canvas" id="moskChart" width="260" height="260"
+      <div class="svc-chart-legend-col">
+        <ul class="svc-chart-legend" id="moskLegend"></ul>
+        <p class="svc-chart-note">&#42; Statistika balstīta tikai uz SIA&nbsp;Logu&nbsp;Apkope pasūtījumu datiem</p>
+      </div>
+      <canvas class="svc-chart-canvas" id="moskChart" width="220" height="220"
               aria-label="Moskītu tīklu popularitātes diagramma" role="img"></canvas>
-      <ul class="svc-chart-legend" id="moskLegend"></ul>
-      <p class="svc-chart-note">&#42; Statistika balstīta tikai uz SIA&nbsp;Logu&nbsp;Apkope pasūtījumu datiem</p>
     </div>
     </div>
   </div>
