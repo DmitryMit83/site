@@ -36,6 +36,16 @@ a.article-card{text-decoration:none;color:inherit;}
 .article-read{margin-left:auto;color:var(--accent);font-weight:600;font-size:.83rem;white-space:nowrap}
 @media(max-width:900px){.article-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:540px){.article-grid{grid-template-columns:1fr}}
+
+/* ── Filter tabs — portfolio style ── */
+.port-tabs{display:flex;flex-wrap:nowrap;align-items:flex-end;gap:2px;border-bottom:2px solid #d1d5db;margin-bottom:0;}
+.port-tab{font-family:inherit;font-size:.85rem;font-weight:600;padding:9px 20px;border:2px solid transparent;border-bottom:none;border-radius:7px 7px 0 0;background:transparent;color:#6b7280;cursor:pointer;transition:background .15s,color .15s,border-color .15s;white-space:nowrap;line-height:1.3;margin-bottom:-2px;}
+.port-tab:hover{color:var(--green);border-color:#e0e4e8;background:rgba(255,255,255,.55);}
+.port-tab--active{background:#fff;border-color:#d1d5db;border-bottom-color:#fff;color:var(--green);font-weight:700;}
+@media(max-width:640px){
+  .port-tabs{flex-wrap:wrap;gap:3px 2px;}
+  .port-tab{font-size:.78rem;padding:7px 13px;border-radius:6px 6px 0 0;}
+}
 </style>
 </head>
 <body>
@@ -280,16 +290,16 @@ a.article-card{text-decoration:none;color:inherit;}
 </section>
 
 <!-- ── Category filters ───────────────────────────────────────── -->
-<section style="padding:32px 0 0;background:var(--paper-2);border-bottom:1px solid var(--line);">
+<section style="padding:32px 0 0;background:var(--paper-2);">
   <div class="container">
-    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;padding-bottom:1px;">
-      <button onclick="filterArticles('all')" id="cat-all" class="cat-btn active" style="background:var(--accent);color:#fff;border:1px solid transparent;padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:600;cursor:pointer;line-height:1.4;box-sizing:border-box;">Visi raksti</button>
-      <button onclick="filterArticles('remonts')" id="cat-remonts" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;line-height:1.4;box-sizing:border-box;">Remonts</button>
-      <button onclick="filterArticles('kopeana')" id="cat-kopeana" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;line-height:1.4;box-sizing:border-box;">Kopšana</button>
-      <button onclick="filterArticles('produkti')" id="cat-produkti" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;line-height:1.4;box-sizing:border-box;">Produkti</button>
-      <button onclick="filterArticles('padomi')" id="cat-padomi" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;line-height:1.4;box-sizing:border-box;">Padomi</button>
-      <button onclick="filterArticles('montaza')" id="cat-montaza" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;line-height:1.4;box-sizing:border-box;">Montāža</button>
-      <button onclick="filterArticles('stikls')" id="cat-stikls" class="cat-btn" style="background:transparent;color:var(--text-2);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;line-height:1.4;box-sizing:border-box;">Stikla paketes</button>
+    <div class="port-tabs" id="artTabs">
+      <button class="port-tab port-tab--active" data-cat="all"      onclick="filterArticles('all')">Visi raksti</button>
+      <button class="port-tab" data-cat="remonts"                   onclick="filterArticles('remonts')">Remonts</button>
+      <button class="port-tab" data-cat="kopeana"                   onclick="filterArticles('kopeana')">Kopšana</button>
+      <button class="port-tab" data-cat="produkti"                  onclick="filterArticles('produkti')">Produkti</button>
+      <button class="port-tab" data-cat="padomi"                    onclick="filterArticles('padomi')">Padomi</button>
+      <button class="port-tab" data-cat="montaza"                   onclick="filterArticles('montaza')">Montāža</button>
+      <button class="port-tab" data-cat="stikls"                    onclick="filterArticles('stikls')">Stikla paketes</button>
     </div>
   </div>
 </section>
@@ -678,19 +688,14 @@ a.article-card{text-decoration:none;color:inherit;}
 // Category filter
 function filterArticles(cat) {
   const cards = document.querySelectorAll('.article-card');
-  const btns = document.querySelectorAll('.cat-btn');
+  const btns  = document.querySelectorAll('#artTabs .port-tab');
   let visible = 0;
   cards.forEach(c => {
     const show = cat === 'all' || c.dataset.cat === cat;
     c.style.display = show ? 'flex' : 'none';
     if (show) visible++;
   });
-  btns.forEach(b => {
-    const active = b.id === 'cat-' + cat;
-    b.style.background = active ? 'var(--accent)' : 'transparent';
-    b.style.color = active ? '#fff' : 'var(--text-2)';
-    b.style.border = active ? '1px solid transparent' : '1px solid var(--line)';
-  });
+  btns.forEach(b => b.classList.toggle('port-tab--active', b.dataset.cat === cat));
   document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
 }
 </script>

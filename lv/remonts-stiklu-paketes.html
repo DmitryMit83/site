@@ -264,6 +264,23 @@
 .price-table td{padding:.8rem 1rem;font-size:.93rem;}
 .price-table td:last-child{text-align:right;font-weight:700;color:var(--accent);}
 .price-note{margin-top:.9rem;color:var(--muted);font-size:.82rem;}
+
+/* ── Home test section ── */
+.home-test-section{padding-top:3rem;padding-bottom:3rem;}
+.home-test-section h2{margin:0 0 1.4rem;text-align:center;}
+.home-test-inner{display:flex;gap:2.8rem;align-items:stretch;}
+.home-test-img-wrap{flex:0 0 300px;display:flex;}
+.home-test-img{width:100%;border-radius:14px;object-fit:cover;display:block;box-shadow:0 6px 28px rgba(0,0,0,.11);}
+.home-test-article{flex:1 1 auto;}
+.home-test-article p{margin:0 0 1rem;font-size:.95rem;line-height:1.75;color:var(--text);}
+.home-test-article p:last-child{margin-bottom:0;}
+.home-test-article strong{color:var(--primary);}
+@media(max-width:720px){
+  .home-test-inner{flex-direction:column;gap:1.6rem;}
+  .home-test-img-wrap{flex:none;width:100%;}
+  .home-test-img{max-height:220px;}
+}
+
 @media(max-width:600px){
   .price-tabs{flex-wrap:wrap-reverse;}
   .price-tabs .price-tab-btn:last-child{margin-left:14px;}
@@ -426,6 +443,24 @@
     <div style="margin-top:1.4rem;padding:1rem 1.4rem;background:rgba(208,77,26,.08);border-radius:10px;font-size:.9rem;">💡 <strong>Bezmaksas apskate</strong> — tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" style="color:inherit;text-decoration:underline;">transporta izdevumi</a>.</div>
   </div>
 </section>
+<!-- Kā pārbaudīt stikla paketi mājās -->
+<section class="container home-test-section">
+  <h2>Kā pārbaudīt stikla paketi mājās?</h2>
+  <div class="home-test-inner">
+    <div class="home-test-img-wrap">
+      <img src="../photo/Stikls/stikls_sel.PNG"
+           alt="Sveču liesmas atspulgs stiklā — selektīvā stikla pārbaude"
+           class="home-test-img" loading="lazy">
+    </div>
+    <div class="home-test-article">
+      <p>Lai noskaidrotu, vai jūsu logā ir uzstādīts energoefektīvs stikls, pietiek ar vienkāršu mājas testu — nepieciešama tikai sērkociņš vai šķiltavas liesma.</p>
+      <p>Pienesiet degošu liesmu aptuveni 10–15 cm attālumā no stikla. Skatoties atspulgā, jūs redzēsiet <strong>četras liesmas kopijas</strong> — katrs stikla virsmas slānis atstaroja savu attēlu. Tagad uzmanīgi apskatiet to krāsas.</p>
+      <p>Ja <strong>trešā liesma deg citā krāsā</strong> — parasti nedaudz zilgana vai zaļgana — tas nozīmē, ka uz iekšējā stikla iekšējās virsmas ir uzklāts speciāls pārklājums. Visticamāk tā ir <strong>selektīvā Low-E kārta</strong>, kas ierobežo siltuma starojuma izplūšanu uz āru. Šāds stikls tiek saukts par "silto" vai energoefektīvo stikla paketi.</p>
+      <p>Ja visas četras liesmas atspulgi izskatās <strong>vienādā krāsā</strong> — jūsu logā ir uzstādīti parastie stikli bez jebkāda pārklājuma. Šādi stikli ievērojami sliktāk saglabā siltumu, un ir vērts apsvērt to nomaiņu pret modernāku, siltumizolējošu alternatīvu.</p>
+    </div>
+  </div>
+</section>
+
 <section class="container" style="padding-top:3rem;padding-bottom:3rem;">
   <h2>Biežāk uzdotie jautājumi</h2>
   <div class="faq-list">
