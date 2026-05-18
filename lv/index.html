@@ -1526,31 +1526,34 @@
   .svc-form-row{grid-template-columns:1fr;}
   .svc-modal{padding:28px 20px 24px;}
   .svc-apply-article h2{font-size:1.9rem;}
+}
 
-  /* ── Swipe hint ── */
+/* ── Swipe hint — mobile only ── */
+.swipe-hint{display:none;}
+@keyframes swipeHintAnim{
+  0%   {opacity:0;}
+  14%  {opacity:1;}
+  36%  {opacity:1;}
+  50%  {opacity:0;}
+  60%  {opacity:0;}
+  74%  {opacity:1;}
+  88%  {opacity:1;}
+  100% {opacity:0;}
+}
+@media(max-width:620px){
   .swipe-hint{
     display:block;
     position:absolute;
     left:50%;top:50%;
     transform:translate(-50%,-50%);
-    width:72px;
+    width:216px;
     pointer-events:none;
     opacity:0;
     z-index:20;
-    filter:drop-shadow(0 2px 8px rgba(0,0,0,.18));
-  }
-  @keyframes swipeHintAnim{
-    0%   {opacity:0;}
-    14%  {opacity:1;}
-    36%  {opacity:1;}
-    50%  {opacity:0;}
-    58%  {opacity:0;}
-    72%  {opacity:1;}
-    88%  {opacity:1;}
-    100% {opacity:0;}
+    mix-blend-mode:multiply;
   }
   .swipe-hint--play{
-    animation:swipeHintAnim 3.4s ease forwards;
+    animation:swipeHintAnim 3.6s ease forwards;
   }
 }
 </style>
@@ -2142,20 +2145,32 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
   var hint = document.querySelector('.swipe-hint');
   var grid = document.querySelector('#svcPanelPlise .svc-cards-grid');
   if(!hint || !grid) return;
-  var played = false;
+
+  var played   = false;
+  var inView   = false;
+  var idleTimer = null;
+
+  /* Start idle timer when user stops scrolling */
+  function onScrollStop(){
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(function(){
+      /* Scroll has been idle for 500ms — check if grid is still in view */
+      if(inView && !played){
+        played = true;
+        hint.classList.add('swipe-hint--play');
+      }
+    }, 500);
+  }
+
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
-      if(entry.isIntersecting && !played){
-        played = true;
-        obs.disconnect();
-        // Small delay so user has settled on the block
-        setTimeout(function(){
-          hint.classList.add('swipe-hint--play');
-        }, 600);
-      }
+      inView = entry.isIntersecting;
+      if(!inView) clearTimeout(idleTimer); /* Left view — cancel */
     });
   }, {threshold: 0.55});
+
   obs.observe(grid);
+  window.addEventListener('scroll', onScrollStop, {passive:true});
 })();
 </script>
 </section>
