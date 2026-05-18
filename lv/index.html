@@ -1540,6 +1540,16 @@
   88%  {opacity:1;}
   100% {opacity:0;}
 }
+@keyframes segPulseAnim{
+  0%   {box-shadow:0 0 0 0px rgba(208,77,26,0);}
+  14%  {box-shadow:0 0 0 2px rgba(208,77,26,1);}
+  36%  {box-shadow:0 0 0 2px rgba(208,77,26,1);}
+  50%  {box-shadow:0 0 0 0px rgba(208,77,26,0);}
+  60%  {box-shadow:0 0 0 0px rgba(208,77,26,0);}
+  74%  {box-shadow:0 0 0 2px rgba(208,77,26,1);}
+  88%  {box-shadow:0 0 0 2px rgba(208,77,26,1);}
+  100% {box-shadow:0 0 0 0px rgba(208,77,26,0);}
+}
 @media(max-width:620px){
   .swipe-hint{
     display:block;
@@ -1554,6 +1564,9 @@
   }
   .swipe-hint--play{
     animation:swipeHintAnim 3.6s ease forwards;
+  }
+  .svc-seg--pulse{
+    animation:segPulseAnim 3.6s ease forwards;
   }
 }
 </style>
@@ -2171,6 +2184,12 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
 
   obs.observe(grid);
   window.addEventListener('scroll', onScrollStop, {passive:true});
+
+  /* After swipe hint finishes → pulse the segmented toggle */
+  hint.addEventListener('animationend', function(){
+    var seg = document.querySelector('#svcPanelPlise .svc-seg');
+    if(seg) seg.classList.add('svc-seg--pulse');
+  }, {once:true});
 })();
 </script>
 </section>
