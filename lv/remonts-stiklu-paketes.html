@@ -299,6 +299,51 @@
 .tip-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
 .tip-card h3{margin:0 0 .6rem;font-size:1.05rem;}
 .tip-card p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.7;}
+
+/* ── Thermo frame section ── */
+.thermo-section{padding-top:3rem;padding-bottom:3rem;}
+.thermo-section h2{margin:0 0 1.4rem;text-align:center;}
+.thermo-inner{display:flex;gap:2.8rem;align-items:stretch;}
+.thermo-article{flex:1 1 auto;}
+.thermo-article p{margin:0 0 .9rem;font-size:.95rem;line-height:1.75;color:var(--text);}
+.thermo-article p:last-child{margin-bottom:0;}
+.thermo-article ul{margin:.2rem 0 .9rem 1.2rem;padding:0;}
+.thermo-article ul li{font-size:.93rem;line-height:1.7;color:var(--muted);margin-bottom:.3rem;}
+.thermo-article strong{color:var(--primary);}
+.thermo-img-wrap{flex:0 0 280px;display:flex;}
+.thermo-img{width:100%;border-radius:14px;object-fit:cover;display:block;box-shadow:0 6px 28px rgba(0,0,0,.11);mix-blend-mode:multiply;}
+@media(max-width:720px){
+  .thermo-inner{flex-direction:column;gap:1.6rem;}
+  .thermo-img-wrap{flex:none;width:100%;}
+  .thermo-img{max-height:240px;object-fit:contain;mix-blend-mode:multiply;}
+}
+
+/* ── Glass types table ── */
+.glass-types-section{padding-top:3rem;padding-bottom:3rem;}
+.glass-types-section h2{margin:0 0 .7rem;}
+.glass-types-section .gt-intro{color:var(--muted);font-size:.93rem;margin:0 0 1.6rem;line-height:1.7;}
+.glass-table-wrap{overflow-x:auto;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,.08);}
+.glass-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;min-width:340px;}
+.glass-table thead tr{background:var(--primary);color:#fff;}
+.glass-table th{padding:.75rem 1rem;text-align:left;font-weight:600;font-size:.88rem;}
+.glass-table th:last-child{text-align:center;}
+.glass-table tbody tr{border-bottom:1px solid #e8e8e8;}
+.glass-table tbody tr:last-child{border-bottom:none;}
+.glass-table tbody tr:nth-child(even){background:rgba(0,0,0,.025);}
+.glass-table td{padding:.65rem 1rem;font-size:.88rem;vertical-align:middle;}
+.glass-table td:first-child{color:var(--muted);font-size:.8rem;width:36px;text-align:center;}
+.glass-table td:nth-child(2){font-family:'Courier New',monospace;font-size:.83rem;letter-spacing:.01em;color:var(--text);}
+.glass-table td:last-child{text-align:center;width:100px;}
+.ug-badge{display:inline-block;padding:3px 11px;border-radius:99px;font-weight:700;font-size:.82rem;white-space:nowrap;}
+.ug-best{background:rgba(22,163,74,.15);color:#15803d;}
+.ug-good{background:rgba(74,180,100,.12);color:#16a34a;}
+.ug-average{background:rgba(234,179,8,.14);color:#a16207;}
+.ug-standard{background:rgba(208,77,26,.1);color:#c2410c;}
+.glass-legend{margin-top:1.4rem;padding:1rem 1.4rem;background:var(--surface);border-radius:10px;}
+.glass-legend-title{font-weight:700;font-size:.84rem;margin-bottom:.65rem;color:var(--text);}
+.glass-legend-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.35rem .9rem;}
+.glass-legend-item{font-size:.82rem;color:var(--muted);}
+.glass-legend-item strong{color:var(--text);}
 </style>
 
 <main>
@@ -443,6 +488,73 @@
     <div style="margin-top:1.4rem;padding:1rem 1.4rem;background:rgba(208,77,26,.08);border-radius:10px;font-size:.9rem;">💡 <strong>Bezmaksas apskate</strong> — tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" style="color:inherit;text-decoration:underline;">transporta izdevumi</a>.</div>
   </div>
 </section>
+
+<section class="alt">
+<div class="container glass-types-section">
+  <h2>Stikla pakešu veidi un siltumizolācija</h2>
+  <p class="gt-intro">Zemāk apkopoti biežāk izmantotie stikla pakešu veidi ar to siltuma caurlaidības koeficientu <strong>Ug (W/m²K)</strong>. Jo zemāks Ug, jo labāka siltumizolācija un zemāki apkures rēķini.</p>
+  <div class="glass-table-wrap">
+    <table class="glass-table">
+      <thead>
+        <tr><th>Nr.</th><th>Struktūra</th><th>Ug (W/m²K)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>4cf / 16 / 4cf</td><td><span class="ug-badge ug-standard">2.6</span></td></tr>
+        <tr><td>2</td><td>6cf / 16 / 6cf</td><td><span class="ug-badge ug-standard">2.6</span></td></tr>
+        <tr><td>3</td><td>6cf / 16 / 4cf</td><td><span class="ug-badge ug-standard">2.6</span></td></tr>
+        <tr><td>4</td><td>4cf / 12 / 4cf / 12 / 4cf</td><td><span class="ug-badge ug-average">1.8</span></td></tr>
+        <tr><td>5</td><td>33.1 Lam / 16 / 4cf</td><td><span class="ug-badge ug-standard">2.6</span></td></tr>
+        <tr><td>6</td><td>33.1 Lam / 16 / 33.1 Lam</td><td><span class="ug-badge ug-standard">2.6</span></td></tr>
+        <tr><td>7</td><td>4cf / 16 / 4 Low-E1.1</td><td><span class="ug-badge ug-good">1.1</span></td></tr>
+        <tr><td>8</td><td>6cf / 16 / 4 Low-E1.1</td><td><span class="ug-badge ug-good">1.1</span></td></tr>
+        <tr><td>9</td><td>33.1 Lam / 16 / 4 Low-E1.1</td><td><span class="ug-badge ug-best">1.0</span></td></tr>
+        <tr><td>10</td><td>4cf / 12 / 4cf / 12 / 4 Low-E1.1</td><td><span class="ug-badge ug-best">0.7</span></td></tr>
+        <tr><td>11</td><td>33.1 Lam / 16 / 6 Low-E1.1</td><td><span class="ug-badge ug-good">1.1</span></td></tr>
+        <tr><td>12</td><td>4 mat / 16 / 4 Low-E1.1</td><td><span class="ug-badge ug-good">1.1</span></td></tr>
+        <tr><td>13</td><td>4 Antisan / 12 / 4cf / 12 / 4 Low-E1.1</td><td><span class="ug-badge ug-best">1.0</span></td></tr>
+        <tr><td>14</td><td>4 Antisan / 12 / 4 Low-E1.1</td><td><span class="ug-badge ug-good">1.1</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="glass-legend">
+    <div class="glass-legend-title">Apzīmējumu skaidrojums:</div>
+    <div class="glass-legend-grid">
+      <div class="glass-legend-item"><strong>cf</strong> — parastais float stikls</div>
+      <div class="glass-legend-item"><strong>Lam</strong> — laminēts (drošības) stikls</div>
+      <div class="glass-legend-item"><strong>Low-E</strong> — selektīvs pārklājums (energoefektīvs)</div>
+      <div class="glass-legend-item"><strong>mat</strong> — matēts stikls</div>
+      <div class="glass-legend-item"><strong>Antisan</strong> — anti-kondensāta stikls</div>
+      <div class="glass-legend-item"><strong>4, 6, 33.1</strong> — stikla biezums (mm)</div>
+      <div class="glass-legend-item"><strong>12 / 16</strong> — starpstiklu atstarpes platums (mm)</div>
+      <div class="glass-legend-item"><strong>Ug</strong> — siltuma caurlaidības koeficients W/m²K</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="container thermo-section">
+  <h2>Uzlabojiet siltumizolāciju ar Thermo rāmi</h2>
+  <div class="thermo-inner">
+    <div class="thermo-article">
+      <p>Papildus stikla paketes veidam, būtisku ieguldījumu siltumizolācijā sniedz distances rāmis starp stikliem. Nomainot standarta <strong>alumīnija distanceri</strong> pret <strong>Thermo rāmi</strong> (plastmasas vai kompozīta materiāla), iespējams ievērojami uzlabot loga kopējos siltumizolācijas raksturlielumus.</p>
+      <p><strong>Ko tas dod praksē:</strong></p>
+      <ul>
+        <li>loga kopējo siltumzudumu (U-value) uzlabošana par aptuveni <strong>5–18%</strong></li>
+        <li>loga siltuma caurlaidības koeficienta uzlabošana par aptuveni <strong>0.15–0.2 W/m²K</strong></li>
+        <li>siltumzudumu samazinājums caur stikla paketes malu līdz <strong>30%</strong> salīdzinot ar alumīnija rāmi</li>
+        <li>kondensāta samazinājums pie stikla malām līdz <strong>70%</strong></li>
+        <li>iekšējā stikla mala ziemā kļūst siltāka par <strong>4–9°C</strong></li>
+      </ul>
+      <p>Thermo rāmis ir vienkāršs un efektīvs veids, kā uzlabot stikla paketes raksturlielumus — to uzstāda jaunas paketes izgatavošanas laikā bez papildu izmaksām par montāžu.</p>
+    </div>
+    <div class="thermo-img-wrap">
+      <img src="../photo/Stikls/termo_ram.PNG"
+           alt="Thermo rāmis stikla paketē — siltumizolācijas uzlabošana"
+           class="thermo-img" loading="lazy">
+    </div>
+  </div>
+</section>
+
 <!-- Kā pārbaudīt stikla paketi mājās -->
 <section class="container home-test-section">
   <h2>Kā pārbaudīt stikla paketi mājās?</h2>
