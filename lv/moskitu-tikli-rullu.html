@@ -412,6 +412,14 @@
 .pop-bar-pct{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:.76rem;font-weight:700;color:#fff;opacity:0;transition:opacity 1.5s ease 3s;white-space:nowrap;}
 .pop-chart.pop-animated .pop-bar-pct{opacity:1;}
 .pop-pct-num{font-size:.85rem;font-weight:700;color:var(--primary);}
+/* ── Rullu info carousel ── */
+.rama-intro{font-size:.95rem;line-height:1.72;color:var(--text);margin:0;}
+.rama-card-title{font-size:1.12rem;font-weight:700;color:var(--primary);margin:0 0 .85rem;border-bottom:2px solid var(--accent);padding-bottom:.55rem;}
+.rama-card-body{font-size:.94rem;line-height:1.75;color:var(--text);}
+.rama-card-body p{margin:0 0 .65rem;}
+.rama-card-body p:last-child{margin-bottom:0;}
+.rama-card-body ul{margin:.25rem 0 .65rem 1.2rem;padding:0;}
+.rama-card-body ul li{margin-bottom:.3rem;color:var(--muted);}
 /* ── Comparison ── */
 .cmp-selectors-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:1rem;margin-bottom:1.8rem;}
 @media(max-width:600px){.cmp-selectors-row{grid-template-columns:1fr;}.cmp-vs-badge{margin:0 auto;}}
@@ -450,6 +458,131 @@
     <div id="meshModalContent"></div>
   </div>
 </div>
+<!-- ══ Rullu tīklu informācija ══ -->
+<section class="container" style="padding-top:3.5rem;padding-bottom:3.5rem;">
+  <div class="section-head" style="margin-bottom:2rem;">
+    <h2>Rullu moskītu tīkli</h2>
+  </div>
+  <div class="at-wrap">
+    <div class="at-left">
+      <p class="rama-intro">Rullu moskītu tīkli — mūsdienīgs un ērts risinājums logu aizsardzībai pret insektiem. Sietaudums tiek savīts rullī, kas atrodas augšā virs loga, un pēc vajadzības izvelkams uz leju. Kompakts izskats, vienkārša lietošana un uzticama konstrukcija padara tos par arvien pieprasītāku alternatīvu klasiskajiem rāmju tīkliem.</p>
+      <div class="at-nav">
+        <div class="at-dots" id="rulluDots"></div>
+        <div class="at-arrows">
+          <button class="at-arrow" id="rulluPrev" aria-label="Iepriekšējais">←</button>
+          <button class="at-arrow" id="rulluNext" aria-label="Nākamais">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="at-right">
+      <div class="at-deco at-deco-1"></div>
+      <div class="at-deco at-deco-2"></div>
+      <div class="at-stack">
+        <div class="at-card-front" id="rulluCardFront">
+          <div id="rulluSlide"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var CARDS = [
+    {
+      title: 'Kur tiek izmantoti',
+      body:  '<p>Rullu sietki ir piemērotas plastmasas, alumīnija un koka logiem, kā arī mansardas logiem ar slīpu atvēršanu. Tās ir īpaši ērtas tur, kur logs tiek bieži atvērts — tīklu var ātri pacelts un nolaists, nenoņemot to no vietas.</p>'
+    },
+    {
+      title: 'Uzstādīšanas veids',
+      body:  '<p>Rullu tīkls tiek montēts uz loga rāmja, izmantojot vadotnes sānos un aizsargkobu augšā. Šāda konstrukcija nodrošina:</p><ul><li>uzticamu fiksāciju darbības laikā;</li><li>vienkāršu lietošanu — viena kustība uz leju vai uz augšu;</li><li>nav nepieciešams noņemt tīklu pirms loga atvēršanas;</li><li>sietaudums ir aizsargāts rullī ziemā, kad tīkls netiek lietots.</li></ul>'
+    },
+    {
+      title: 'Kāpēc kļuva populāri',
+      body:  '<p>Rullu sietki kļuva arvien pieprasītākas, jo piedāvā modernāku un ērtāku alternatīvu klasiskajiem rāmju tīkliem. Atšķirībā no rāmju variantiem, rullu sistēma ir kompaktāka, skaistāka un neprasa sezonas noņemšanu.</p><p>Tā kā cena laika gaitā ir kļuvusi pieejamāka, arvien vairāk klientu izvēlas šo risinājumu kā ilgtermiņa ieguldījumu.</p>'
+    },
+    {
+      title: 'Galvenās priekšrocības',
+      body:  '<p><strong>Ērtums.</strong> Tīkls paceļas un nolaižas vienā kustībā — netraucē loga atvēršanai.</p><p><strong>Kompaktums.</strong> Saritināts rullis ir gandrīz neredzams — nekaitē loga estētikai.</p><p><strong>Moderns izskats.</strong> Tīrs dizains lieliski iederas gan jaunās, gan renovētās mājās.</p><p><strong>Sietauduma aizsardzība.</strong> Rullis pasargā audumu no bojājumiem un putekļiem, pagarinot kalpošanas laiku.</p>'
+    },
+    {
+      title: 'Kāpēc agrāk uzstādīja retāk',
+      body:  '<p>Galvenais iemesls bija cena — rullu sietki ir aptuveni 3× dārgākas nekā klasiskie rāmju varianti. Sarežģītāka konstrukcija nozīmēja augstākas ražošanas izmaksas.</p><p>Tagad, pieaugot pieprasījumam un uzlabojoties ražošanas tehnoloģijām, rullu tīkli kļuvuši par pieejamu un loģisku izvēli daudziem mūsu klientiem.</p>'
+    }
+  ];
+
+  var cardFront = document.getElementById('rulluCardFront');
+  var slide     = document.getElementById('rulluSlide');
+  var dotsEl    = document.getElementById('rulluDots');
+  var prevBtn   = document.getElementById('rulluPrev');
+  var nextBtn   = document.getElementById('rulluNext');
+  if(!cardFront || !slide || !dotsEl || !prevBtn || !nextBtn) return;
+
+  var current = 0;
+  var busy = false;
+
+  /* Build dots */
+  CARDS.forEach(function(_, i){
+    var d = document.createElement('button');
+    d.className = 'at-dot' + (i === 0 ? ' at-dot-active' : '');
+    d.setAttribute('aria-label', 'Kartīte ' + (i + 1));
+    d.addEventListener('click', function(){ goTo(i); });
+    dotsEl.appendChild(d);
+  });
+
+  function renderSlide(idx){
+    var c = CARDS[idx];
+    slide.innerHTML = '<div class="rama-card-title">' + c.title + '</div><div class="rama-card-body">' + c.body + '</div>';
+  }
+  renderSlide(0);
+
+  /* Equalise card height to tallest card */
+  (function equalise(){
+    var w = cardFront.offsetWidth;
+    if(!w){ setTimeout(equalise, 80); return; }
+    var maxH = 0;
+    CARDS.forEach(function(c){
+      var tmp = document.createElement('div');
+      tmp.className = 'at-card-front';
+      tmp.style.cssText = 'position:fixed;top:-9999px;left:0;width:' + w + 'px;visibility:hidden;pointer-events:none;z-index:-1;';
+      tmp.innerHTML = '<div id="rulluSlide"><div class="rama-card-title">' + c.title + '</div><div class="rama-card-body">' + c.body + '</div></div>';
+      document.body.appendChild(tmp);
+      if(tmp.offsetHeight > maxH) maxH = tmp.offsetHeight;
+      document.body.removeChild(tmp);
+    });
+    if(maxH > 0) cardFront.style.minHeight = maxH + 'px';
+  })();
+
+  function updateDots(){
+    dotsEl.querySelectorAll('.at-dot').forEach(function(d, i){
+      d.classList.toggle('at-dot-active', i === current);
+    });
+  }
+
+  function goTo(idx){
+    idx = (idx + CARDS.length) % CARDS.length;
+    if(busy || idx === current) return;
+    busy = true;
+    var dir = idx > current ? 1 : -1;
+    slide.style.cssText = 'opacity:0;transform:translateX(' + (-dir * 60) + 'px);transition:opacity .25s ease,transform .25s cubic-bezier(.4,0,.2,1)';
+    setTimeout(function(){
+      current = idx;
+      renderSlide(current);
+      updateDots();
+      slide.style.cssText = 'opacity:0;transform:translateX(' + (dir * 60) + 'px);transition:none';
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          slide.style.cssText = 'opacity:1;transform:translateX(0);transition:opacity .28s ease,transform .28s cubic-bezier(.4,0,.2,1)';
+          setTimeout(function(){ busy = false; }, 300);
+        });
+      });
+    }, 260);
+  }
+
+  prevBtn.addEventListener('click', function(){ goTo(current - 1); });
+  nextBtn.addEventListener('click', function(){ goTo(current + 1); });
+})();
+</script>
+
 <!-- ══ Ko izvēlas klienti ══ -->
 <section class="alt" id="klienti">
   <div class="container" style="padding-top:3rem;padding-bottom:3rem;">
