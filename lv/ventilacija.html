@@ -250,29 +250,71 @@
 
 <!-- ── Page hero ─────────────────────────────────────────────── -->
 <style>
-.vent-hero-img{position:absolute;bottom:-70px;right:0;height:calc(100% + 70px);width:auto;opacity:.88;pointer-events:none;user-select:none;}
-@media(max-width:900px){.vent-hero-img{height:70%;bottom:0;opacity:.65;}}
-@media(max-width:600px){.vent-hero-img{display:none;}}
 @media(max-width:768px){.vent-install-img{object-position:top!important;}}
 </style>
-<section class="page-hero" style="overflow:hidden;">
-  <div class="container" style="position:relative;">
+<div class="hero-unified">
+  <picture>
+    <source media="(max-width:800px)" srcset="../photo/ventilacijas/vent.PNG">
+    <img class="svc-hero-img"
+         src="../photo/ventilacijas/vent.PNG"
+         alt="Pieplūdes ventilācijas vārsti logiem — uzstādīšana Rīgā | SIA Logu Apkope"
+         width="1400" height="800"
+         loading="eager"
+         fetchpriority="high">
+  </picture>
+  <div class="svc-hero-grad"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-text">
+    <a href="index.html" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;">← Atpakaļ uz sākumu</a>
     <span class="eyebrow">Mūsu pakalpojumi</span>
+    </div>
     <h1>Pieplūdes gaisa vārsti logiem un durvīm</h1>
     <p>Svaigs gaiss bez caurvēja un siltuma zudumiem. Uzstādām pieplūdes ventilācijas vārstus uz PVC, koka un alumīnija logiem — rūpniecisks risinājums mūsdienīgai dzīvei.</p>
     <a class="btn btn-outline-dark" href="kontakti.html">Pieteikties uzstādīšanai</a>
-    <img
-      class="vent-hero-img"
-      src="../photo/Vent/Logs.webp"
-      alt="Pieplūdes ventilācijas vārsts uz loga — gaisa plūsmas shēma: svaigs gaiss iekļūst caur vārstu un izplatās telpā, SIA Logu Apkope"
-      title="Pieplūdes gaisa vārsts uz PVC loga — kontrolēta ventilācija bez loga atvēršanas, uzstādīšana Rīgā"
-      width="380"
-      height="380"
-      loading="eager"
-      decoding="async"
-    >
   </div>
 </section>
+<!-- Pakalpojuma apraksts — hero banner stils -->
+<div class="svc-hero-outer">
+  <div class="svc-hero">
+    <div class="svc-hero-inner">
+    <div class="svc-hero-body">
+      <div class="svc-hero-price">Cena: no €17</div>
+      <h2>Viedā ventilācija jūsu mājai</h2>
+      <ul class="svc-hero-list">
+        <li>AIR-BOX, BREVIS vai AERECO vārsts</li>
+        <li>Uzstādīšana uz PVC, koka vai alumīnija loga</li>
+        <li>Kontrolēta gaisa pieplūde bez caurvēja</li>
+        <li>Mitruma un CO₂ jutīgi varianti</li>
+        <li>Akustiski vārsti ar skaņas izolāciju</li>
+        <li>Filtra komplekts (pēc izvēles)</li>
+        <li>Garantija iekļauta</li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /.hero-unified -->
+<script>
+(function(){
+  var hero = document.querySelector('.svc-hero');
+  if(hero){
+    var heroTriggered = false;
+    function triggerHero(){
+      if(heroTriggered) return;
+      heroTriggered = true;
+      hero.classList.add('is-visible');
+    }
+    var pageHeroBtn = document.querySelector('.hero-unified .page-hero .btn');
+    if(pageHeroBtn){
+      pageHeroBtn.addEventListener('animationend', triggerHero, {once: true});
+    }
+    setTimeout(triggerHero, 1500);
+  }
+})();
+</script>
 
 <!-- ── Kāpēc vajag ────────────────────────────────────────────── -->
 <section style="background:var(--paper-2,#f3ede6);padding:2.5rem 0;">
