@@ -427,6 +427,15 @@
   .cmp-th-name{font-size:.74rem;}
   .cmp-icon{width:26px;height:26px;font-size:.78rem;}
 }
+/* ── Durvis info carousel ── */
+.rama-intro{font-size:.95rem;line-height:1.72;color:var(--text);margin:0 0 1rem;}
+.plise-verdict{font-size:.9rem;line-height:1.72;color:var(--muted);margin:.8rem 0 0;padding:.85rem 1.1rem;background:rgba(22,163,74,.07);border-left:3px solid var(--primary);border-radius:0 8px 8px 0;}
+.rama-card-title{font-size:1.12rem;font-weight:700;color:var(--primary);margin:0 0 .85rem;border-bottom:2px solid var(--accent);padding-bottom:.55rem;}
+.rama-card-body{font-size:.94rem;line-height:1.75;color:var(--text);}
+.rama-card-body p{margin:0 0 .65rem;}
+.rama-card-body p:last-child{margin-bottom:0;}
+.rama-card-body ul{margin:.25rem 0 .65rem 1.2rem;padding:0;}
+.rama-card-body ul li{margin-bottom:.3rem;color:var(--muted);}
 </style>
 <!-- ══ Modal ══ -->
 <div class="mesh-modal-overlay" id="meshModalOverlay" onclick="closeMeshModal(event)">
@@ -435,6 +444,126 @@
     <div id="meshModalContent"></div>
   </div>
 </div>
+<!-- ══ Durvis tīklu informācija ══ -->
+<section class="container" style="padding-top:3.5rem;padding-bottom:3.5rem;">
+  <div class="section-head" style="margin-bottom:2rem;">
+    <h2>Moskītu durvis</h2>
+  </div>
+  <div class="at-wrap">
+    <div class="at-left">
+      <p class="rama-intro">Moskītu durvis — ērts risinājums balkona un ieejas durvju aizsardzībai pret insektiem, pūkām un putekļiem. Īpaši praktiski tur, kur bieži iet cauri uz balkonu, terasi vai pagalmu.</p>
+      <p class="plise-verdict">Mēs piedāvājam divus variantus — budžeta un ekskluzīvo. Budžeta modelis ir pieejams un uzticams risinājums ikdienas lietošanai, savukārt ekskluzīvās sistēmas izceļas ar mūsdienīgāku dizainu, pastiprinātu konstrukciju un uzlabotu furnitūru.</p>
+      <div class="at-nav">
+        <div class="at-dots" id="durvisDots"></div>
+        <div class="at-arrows">
+          <button class="at-arrow" id="durvisPrev" aria-label="Iepriekšējais">←</button>
+          <button class="at-arrow" id="durvisNext" aria-label="Nākamais">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="at-right">
+      <div class="at-deco at-deco-1"></div>
+      <div class="at-deco at-deco-2"></div>
+      <div class="at-stack">
+        <div class="at-card-front" id="durvisCardFront">
+          <div id="durvisSlide"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var CARDS = [
+    {
+      title: 'Varianti',
+      body:  '<p>Mēs piedāvājam divus moskītu durvju variantus:</p><ul><li><strong>Budžeta variants</strong> — pieejams, uzticams un praktisks risinājums ikdienas lietošanai.</li><li><strong>Ekskluzīvais variants</strong> — mūsdienīgāks dizains, pastiprināta konstrukcija un uzlabota furnitūra.</li></ul><p>Abi varianti darbojas pēc viena principa — tā ir vērtne ar sieta polotnu, kas atveras pretējā virzienā no pamata durvīm.</p>'
+    },
+    {
+      title: 'Uzstādīšanas veids',
+      body:  '<p>Moskītu durvis tiek uzstādītas uz eņģēm ar atsperi, kas automātiski atgriež vērtni aizvērtā stāvoklī. Papildus tiek izmantoti magnēti, kas:</p><ul><li>notur durvis aizvērtā stāvoklī;</li><li>neļauj tām atvērties caurvēja laikā;</li><li>nodrošina ērtu un uzticamu lietošanu.</li></ul>'
+    },
+    {
+      title: 'Priekšrocības',
+      body:  '<ul><li>ērta pāreja bez nepieciešamības noņemt sietku;</li><li>automātiska aizvēršanās;</li><li>uzticama fiksācija ar magnētiem;</li><li>piemērotas balkoniem, terasēm un privātmājām;</li><li>praktisks risinājums ikdienas lietošanai.</li></ul>'
+    },
+    {
+      title: 'Kur tiek izmantotas',
+      body:  '<p>Moskītu durvis ir ideāls risinājums:</p><ul><li>balkona durvīm daudzdzīvokļu namos;</li><li>ieejas durvīm privātmājās un vasarnīcās;</li><li>terašu atvērumiem;</li><li>jebkurai vietai, kur nepieciešama pastāvīga aizsardzība bez sietkas noņemšanas.</li></ul><p>Automātiskā atgriešanās aizvērtā stāvoklī nodrošina, ka durvis vienmēr paliek aizvērtas pat tad, ja aizmirsāt tās aizcirst.</p>'
+    }
+  ];
+
+  var cardFront = document.getElementById('durvisCardFront');
+  var slide     = document.getElementById('durvisSlide');
+  var dotsEl    = document.getElementById('durvisDots');
+  var prevBtn   = document.getElementById('durvisPrev');
+  var nextBtn   = document.getElementById('durvisNext');
+  if(!cardFront || !slide || !dotsEl || !prevBtn || !nextBtn) return;
+
+  var current = 0;
+  var busy = false;
+
+  CARDS.forEach(function(_, i){
+    var d = document.createElement('button');
+    d.className = 'at-dot' + (i === 0 ? ' at-dot-active' : '');
+    d.setAttribute('aria-label', 'Kartīte ' + (i + 1));
+    d.addEventListener('click', function(){ goTo(i); });
+    dotsEl.appendChild(d);
+  });
+
+  function renderSlide(idx){
+    var c = CARDS[idx];
+    slide.innerHTML = '<div class="rama-card-title">' + c.title + '</div><div class="rama-card-body">' + c.body + '</div>';
+  }
+  renderSlide(0);
+
+  (function equalise(){
+    var w = cardFront.offsetWidth;
+    if(!w){ setTimeout(equalise, 80); return; }
+    var maxH = 0;
+    CARDS.forEach(function(c){
+      var tmp = document.createElement('div');
+      tmp.className = 'at-card-front';
+      tmp.style.cssText = 'position:fixed;top:-9999px;left:0;width:' + w + 'px;visibility:hidden;pointer-events:none;z-index:-1;';
+      tmp.innerHTML = '<div><div class="rama-card-title">' + c.title + '</div><div class="rama-card-body">' + c.body + '</div></div>';
+      document.body.appendChild(tmp);
+      if(tmp.offsetHeight > maxH) maxH = tmp.offsetHeight;
+      document.body.removeChild(tmp);
+    });
+    if(maxH > 0) cardFront.style.minHeight = maxH + 'px';
+  })();
+
+  function updateDots(){
+    dotsEl.querySelectorAll('.at-dot').forEach(function(d, i){
+      d.classList.toggle('at-dot-active', i === current);
+    });
+  }
+
+  function goTo(idx){
+    idx = (idx + CARDS.length) % CARDS.length;
+    if(busy || idx === current) return;
+    busy = true;
+    var dir = idx > current ? 1 : -1;
+    slide.style.cssText = 'opacity:0;transform:translateX(' + (-dir * 60) + 'px);transition:opacity .25s ease,transform .25s cubic-bezier(.4,0,.2,1)';
+    setTimeout(function(){
+      current = idx;
+      renderSlide(current);
+      updateDots();
+      slide.style.cssText = 'opacity:0;transform:translateX(' + (dir * 60) + 'px);transition:none';
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          slide.style.cssText = 'opacity:1;transform:translateX(0);transition:opacity .28s ease,transform .28s cubic-bezier(.4,0,.2,1)';
+          setTimeout(function(){ busy = false; }, 300);
+        });
+      });
+    }, 260);
+  }
+
+  prevBtn.addEventListener('click', function(){ goTo(current - 1); });
+  nextBtn.addEventListener('click', function(){ goTo(current + 1); });
+})();
+</script>
+
 <!-- ══ Ko izvēlas klienti ══ -->
 <section class="alt" id="klienti">
   <div class="container" style="padding-top:3rem;padding-bottom:3rem;">

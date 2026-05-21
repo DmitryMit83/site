@@ -442,6 +442,15 @@
   .cmp-th-name{font-size:.74rem;}
   .cmp-icon{width:26px;height:26px;font-size:.78rem;}
 }
+/* ── Plisē info carousel ── */
+.rama-intro{font-size:.95rem;line-height:1.72;color:var(--text);margin:0 0 1rem;}
+.plise-verdict{font-size:.9rem;line-height:1.72;color:var(--muted);margin:.8rem 0 0;padding:.85rem 1.1rem;background:rgba(22,163,74,.07);border-left:3px solid var(--primary);border-radius:0 8px 8px 0;}
+.rama-card-title{font-size:1.12rem;font-weight:700;color:var(--primary);margin:0 0 .85rem;border-bottom:2px solid var(--accent);padding-bottom:.55rem;}
+.rama-card-body{font-size:.94rem;line-height:1.75;color:var(--text);}
+.rama-card-body p{margin:0 0 .65rem;}
+.rama-card-body p:last-child{margin-bottom:0;}
+.rama-card-body ul{margin:.25rem 0 .65rem 1.2rem;padding:0;}
+.rama-card-body ul li{margin-bottom:.3rem;color:var(--muted);}
 /* ── Ko biežāk izvēlas klienti (plisē-specific) ── */
 .klienti-cols{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1.8rem;}
 @media(max-width:700px){.klienti-cols{grid-template-columns:1fr;gap:1.6rem;}}
@@ -467,6 +476,126 @@
     <div id="meshModalContent"></div>
   </div>
 </div>
+<!-- ══ Plisē tīklu informācija ══ -->
+<section class="container" style="padding-top:3.5rem;padding-bottom:3.5rem;">
+  <div class="section-head" style="margin-bottom:2rem;">
+    <h2>Plisē moskītu tīkli</h2>
+  </div>
+  <div class="at-wrap">
+    <div class="at-left">
+      <p class="rama-intro">Plisē moskītu tīkli — mūsdienīga aizsardzības sistēma pret insektiem logiem, durvīm un lieliem atvērumiem. Polotns salocās "harmonikā" un vienmērīgi bīdās uz sānu.</p>
+      <p class="plise-verdict">Pēdējos gados mēs arvien biežāk uzstādām budžeta plisē variantu uz logiem un balkonu durvīm — tas ir praktiski, ērti un lētāk par rullu un durvju sistēmām. Klientam iegūst mūsdienīgu risinājumu ar ievērojamu budžeta ietaupījumu.</p>
+      <div class="at-nav">
+        <div class="at-dots" id="pliseDots"></div>
+        <div class="at-arrows">
+          <button class="at-arrow" id="plisePrev" aria-label="Iepriekšējais">←</button>
+          <button class="at-arrow" id="pliseNext" aria-label="Nākamais">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="at-right">
+      <div class="at-deco at-deco-1"></div>
+      <div class="at-deco at-deco-2"></div>
+      <div class="at-stack">
+        <div class="at-card-front" id="pliseCardFront">
+          <div id="pliseSlide"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var CARDS = [
+    {
+      title: 'Kur tiek izmantoti',
+      body:  '<p>Plisē sietki ir piemērotas:</p><ul><li>logiem;</li><li>balkona durvīm;</li><li>terases un bīdāmajām sistēmām;</li><li>lieliem panorāmas atvērumiem.</li></ul><p>Tās ir ideāls risinājums tur, kur citi tīklu veidi konstruktīvi neder vai ir neērti.</p>'
+    },
+    {
+      title: 'Uzstādīšanas veids',
+      body:  '<p>Sistēma tiek uzstādīta atvērumā ar vadotņu un alumīnija konstrukcijas palīdzību. Priekšrocības:</p><ul><li>vienmērīga, gluda atvēršana un aizvēršana;</li><li>kompakta polotna salocīšana;</li><li>piemērota lieliem izmēriem;</li><li>nav nepieciešama pastāvīga noņemšana.</li></ul>'
+    },
+    {
+      title: 'Varianti un priekšrocības',
+      body:  '<p>Mēs piedāvājam gan budžeta, gan premium plisē sistēmas. Budžeta variants logiem un balkona durvīm ir:</p><ul><li>praktisks ikdienas lietošanā;</li><li>ērts — bīdās ar vienu kustību;</li><li>lētāks par rullu un durvju sistēmām.</li></ul><p>Mēs aktīvi izmantojam šādas sistēmas jau vairākus gadus, un tās lieliski uzrāda sevi ekspluatācijā.</p>'
+    },
+    {
+      title: 'Kāpēc kļuva populāri',
+      body:  '<p>Plisē sietki ir pieprasītas pateicoties:</p><ul><li>mūsdienīgam izskatam;</li><li>lietošanas ērtumam;</li><li>kompaktumam;</li><li>iespējai aizsegt lielus atvērumus.</li></ul><p>Agrāk galvenais risinājums bija rāmju sietki, bet rullu sistēmas augstākas cenas dēļ uzstādīja retāk. Šodien plisē ir viens no ērtākajiem un mūsdienīgākajiem aizsardzības risinājumiem.</p>'
+    }
+  ];
+
+  var cardFront = document.getElementById('pliseCardFront');
+  var slide     = document.getElementById('pliseSlide');
+  var dotsEl    = document.getElementById('pliseDots');
+  var prevBtn   = document.getElementById('plisePrev');
+  var nextBtn   = document.getElementById('pliseNext');
+  if(!cardFront || !slide || !dotsEl || !prevBtn || !nextBtn) return;
+
+  var current = 0;
+  var busy = false;
+
+  CARDS.forEach(function(_, i){
+    var d = document.createElement('button');
+    d.className = 'at-dot' + (i === 0 ? ' at-dot-active' : '');
+    d.setAttribute('aria-label', 'Kartīte ' + (i + 1));
+    d.addEventListener('click', function(){ goTo(i); });
+    dotsEl.appendChild(d);
+  });
+
+  function renderSlide(idx){
+    var c = CARDS[idx];
+    slide.innerHTML = '<div class="rama-card-title">' + c.title + '</div><div class="rama-card-body">' + c.body + '</div>';
+  }
+  renderSlide(0);
+
+  (function equalise(){
+    var w = cardFront.offsetWidth;
+    if(!w){ setTimeout(equalise, 80); return; }
+    var maxH = 0;
+    CARDS.forEach(function(c){
+      var tmp = document.createElement('div');
+      tmp.className = 'at-card-front';
+      tmp.style.cssText = 'position:fixed;top:-9999px;left:0;width:' + w + 'px;visibility:hidden;pointer-events:none;z-index:-1;';
+      tmp.innerHTML = '<div id="pliseSlide"><div class="rama-card-title">' + c.title + '</div><div class="rama-card-body">' + c.body + '</div></div>';
+      document.body.appendChild(tmp);
+      if(tmp.offsetHeight > maxH) maxH = tmp.offsetHeight;
+      document.body.removeChild(tmp);
+    });
+    if(maxH > 0) cardFront.style.minHeight = maxH + 'px';
+  })();
+
+  function updateDots(){
+    dotsEl.querySelectorAll('.at-dot').forEach(function(d, i){
+      d.classList.toggle('at-dot-active', i === current);
+    });
+  }
+
+  function goTo(idx){
+    idx = (idx + CARDS.length) % CARDS.length;
+    if(busy || idx === current) return;
+    busy = true;
+    var dir = idx > current ? 1 : -1;
+    slide.style.cssText = 'opacity:0;transform:translateX(' + (-dir * 60) + 'px);transition:opacity .25s ease,transform .25s cubic-bezier(.4,0,.2,1)';
+    setTimeout(function(){
+      current = idx;
+      renderSlide(current);
+      updateDots();
+      slide.style.cssText = 'opacity:0;transform:translateX(' + (dir * 60) + 'px);transition:none';
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          slide.style.cssText = 'opacity:1;transform:translateX(0);transition:opacity .28s ease,transform .28s cubic-bezier(.4,0,.2,1)';
+          setTimeout(function(){ busy = false; }, 300);
+        });
+      });
+    }, 260);
+  }
+
+  prevBtn.addEventListener('click', function(){ goTo(current - 1); });
+  nextBtn.addEventListener('click', function(){ goTo(current + 1); });
+})();
+</script>
+
 <!-- ══ Ko izvēlas klienti ══ -->
 <section class="alt" id="klienti">
   <div class="container" style="padding-top:3rem;padding-bottom:3rem;">
