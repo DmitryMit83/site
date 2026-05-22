@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" fill="none">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#d4f0e2" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f0f8f3" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softShadow" x="-10%" y="-5%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="rgba(22,58,39,0.15)"/>
+    </filter>
+  </defs>
+
+  <!-- Background glow -->
+  <ellipse cx="160" cy="180" rx="140" ry="160" fill="url(#bgGlow)"/>
+
+  <!-- Antenna -->
+  <line x1="160" y1="52" x2="160" y2="72" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="160" cy="44" r="10" fill="#2f7d58" filter="url(#glow)"/>
+  <circle cx="160" cy="44" r="5" fill="#4ade80"/>
+
+  <!-- Head -->
+  <rect x="90" y="72" width="140" height="110" rx="28" fill="white" filter="url(#softShadow)"/>
+  <rect x="90" y="72" width="140" height="110" rx="28" fill="none" stroke="#e2f0e9" stroke-width="1.5"/>
+
+  <!-- Eyes -->
+  <rect x="112" y="100" width="38" height="28" rx="10" fill="#173526"/>
+  <rect x="170" y="100" width="38" height="28" rx="10" fill="#173526"/>
+  <ellipse cx="131" cy="114" rx="12" ry="9" fill="url(#eyeGlow)" filter="url(#glow)"/>
+  <ellipse cx="189" cy="114" rx="12" ry="9" fill="url(#eyeGlow)" filter="url(#glow)"/>
+  <circle cx="136" cy="110" r="3" fill="white" opacity="0.7"/>
+  <circle cx="194" cy="110" r="3" fill="white" opacity="0.7"/>
+
+  <!-- Mouth -->
+  <path d="M130 148 Q160 162 190 148" stroke="#2f7d58" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+  <!-- Neck -->
+  <rect x="148" y="182" width="24" height="16" rx="4" fill="#e2f0e9"/>
+
+  <!-- Body -->
+  <rect x="72" y="198" width="176" height="130" rx="24" fill="white" filter="url(#softShadow)"/>
+  <rect x="72" y="198" width="176" height="130" rx="24" fill="none" stroke="#e2f0e9" stroke-width="1.5"/>
+
+  <!-- Chest logo / badge -->
+  <rect x="118" y="220" width="84" height="52" rx="14" fill="#eaf5ef"/>
+  <path d="M147 250 l8 8 16-16" stroke="#2f7d58" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="160" cy="246" r="20" fill="none" stroke="#2f7d58" stroke-width="2" opacity="0.3"/>
+
+  <!-- Chest dots -->
+  <circle cx="102" cy="254" r="5" fill="#d4f0e2"/>
+  <circle cx="102" cy="270" r="5" fill="#d4f0e2"/>
+  <circle cx="218" cy="254" r="5" fill="#d4f0e2"/>
+  <circle cx="218" cy="270" r="5" fill="#d4f0e2"/>
+
+  <!-- Left arm -->
+  <rect x="32" y="206" width="36" height="90" rx="18" fill="white" filter="url(#softShadow)"/>
+  <rect x="32" y="206" width="36" height="90" rx="18" fill="none" stroke="#e2f0e9" stroke-width="1.5"/>
+
+  <!-- Right arm -->
+  <rect x="252" y="206" width="36" height="90" rx="18" fill="white" filter="url(#softShadow)"/>
+  <rect x="252" y="206" width="36" height="90" rx="18" fill="none" stroke="#e2f0e9" stroke-width="1.5"/>
+
+  <!-- Tablet in right hand -->
+  <rect x="248" y="272" width="52" height="38" rx="8" fill="#173526" transform="rotate(-12 274 291)"/>
+  <rect x="251" y="275" width="46" height="32" rx="6" fill="#1a4a2e" transform="rotate(-12 274 291)"/>
+  <!-- Stars on tablet -->
+  <text x="254" y="287" font-size="9" fill="#fbbf24" transform="rotate(-12 274 291)">★★★★★</text>
+  <rect x="254" y="290" width="28" height="3" rx="2" fill="#4ade80" opacity="0.7" transform="rotate(-12 274 291)"/>
+  <rect x="254" y="296" width="20" height="3" rx="2" fill="#4ade80" opacity="0.5" transform="rotate(-12 274 291)"/>
+
+  <!-- Legs -->
+  <rect x="110" y="324" width="40" height="44" rx="14" fill="white" filter="url(#softShadow)"/>
+  <rect x="110" y="324" width="40" height="44" rx="14" fill="none" stroke="#e2f0e9" stroke-width="1.5"/>
+  <rect x="170" y="324" width="40" height="44" rx="14" fill="white" filter="url(#softShadow)"/>
+  <rect x="170" y="324" width="40" height="44" rx="14" fill="none" stroke="#e2f0e9" stroke-width="1.5"/>
+
+  <!-- Feet -->
+  <rect x="104" y="358" width="52" height="18" rx="9" fill="#e2f0e9"/>
+  <rect x="164" y="358" width="52" height="18" rx="9" fill="#e2f0e9"/>
+
+  <!-- Floating particles -->
+  <circle cx="56" cy="120" r="5" fill="#4ade80" opacity="0.4"/>
+  <circle cx="46" cy="148" r="3" fill="#2f7d58" opacity="0.3"/>
+  <circle cx="270" cy="110" r="4" fill="#4ade80" opacity="0.4"/>
+  <circle cx="284" cy="140" r="3" fill="#2f7d58" opacity="0.25"/>
+  <circle cx="68" cy="170" r="2.5" fill="#16a34a" opacity="0.35"/>
+  <circle cx="258" cy="172" r="2.5" fill="#16a34a" opacity="0.35"/>
+</svg>
