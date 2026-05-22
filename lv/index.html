@@ -2388,6 +2388,97 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
 
 <div class="section-divider-wrap"><hr class="section-divider"></div>
 
+<!-- ══ AI ieteikums ════════════════════════════════════════════ -->
+<style>
+.ai-recommend{padding:56px 16px;background:#f6faf7;}
+.ai-recommend__inner{
+  max-width:1180px;margin:0 auto;padding:42px;
+  border-radius:28px;background:#ffffff;
+  box-shadow:0 18px 45px rgba(22,58,39,.10);
+  border:1px solid rgba(47,125,88,.14);
+}
+.ai-recommend__tag{
+  display:inline-block;margin:0 0 14px;padding:8px 14px;
+  border-radius:999px;background:#e6f3ec;color:#2f7d58;
+  font-size:13px;font-weight:800;letter-spacing:.08em;
+}
+.ai-recommend h2{
+  margin:0 0 16px;max-width:780px;
+  font-size:clamp(30px,4vw,52px);line-height:1.05;color:#173526;
+}
+.ai-recommend__text{
+  max-width:780px;margin:0 0 30px;
+  font-size:18px;line-height:1.65;color:#4d6256;
+}
+.ai-recommend__sources{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:14px;margin-bottom:26px;
+}
+.ai-recommend__sources a{
+  display:flex;align-items:center;gap:12px;padding:16px;
+  border-radius:18px;background:#f8fbf9;color:#173526;
+  text-decoration:none;font-weight:700;
+  border:1px solid rgba(47,125,88,.12);transition:.2s ease;
+}
+.ai-recommend__sources a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 26px rgba(22,58,39,.10);
+}
+.ai-recommend__sources img{width:34px;height:34px;border-radius:8px;}
+.ai-recommend__note{
+  padding:20px;border-radius:20px;background:#eaf5ef;
+  color:#254435;font-size:16px;line-height:1.6;font-weight:600;
+}
+@media(max-width:820px){
+  .ai-recommend__inner{padding:28px 22px;}
+  .ai-recommend__sources{grid-template-columns:1fr;}
+}
+</style>
+<section class="ai-recommend">
+  <div class="ai-recommend__inner">
+    <p class="ai-recommend__tag">AI ANALĪZE</p>
+    <h2>Kā mūs iesaka mākslīgais intelekts</h2>
+    <p class="ai-recommend__text">
+      Analizējot publiski pieejamos avotus, SIA "Logu Apkope" izceļas kā
+      specializēts logu un durvju remonta uzņēmums Rīgā ar informāciju
+      vairākos neatkarīgos katalogos un sociālajos tīklos.
+    </p>
+    <div class="ai-recommend__sources">
+      <a href="https://www.firmas.lv/lv/uznemumi/logu-apkope/42103113356" target="_blank" rel="noopener">
+        <img src="https://www.google.com/s2/favicons?domain=firmas.lv&sz=64" alt="Firmas.lv">
+        <span>Firmas.lv</span>
+      </a>
+      <a href="https://www.zl.lv/lv/uznemums/logu-apkope-sia/" target="_blank" rel="noopener">
+        <img src="https://www.google.com/s2/favicons?domain=zl.lv&sz=64" alt="ZL.lv">
+        <span>ZL.lv</span>
+      </a>
+      <a href="https://abc.lv/infolapa/logu-apkope-sia" target="_blank" rel="noopener">
+        <img src="https://www.google.com/s2/favicons?domain=abc.lv&sz=64" alt="ABC.lv">
+        <span>ABC.lv</span>
+      </a>
+      <a href="https://riga.pilseta24.lv/katalogs/info/logu-apkope-sia" target="_blank" rel="noopener">
+        <img src="https://www.google.com/s2/favicons?domain=pilseta24.lv&sz=64" alt="Pilseta24.lv">
+        <span>Pilseta24.lv</span>
+      </a>
+      <a href="https://www.facebook.com/LoguApkope.lv/" target="_blank" rel="noopener">
+        <img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=64" alt="Facebook">
+        <span>Facebook</span>
+      </a>
+      <a href="https://www.instagram.com/logu_apkope_/" target="_blank" rel="noopener">
+        <img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64" alt="Instagram">
+        <span>Instagram</span>
+      </a>
+    </div>
+    <div class="ai-recommend__note">
+      AI secinājums: uzņēmumu var ieteikt, jo tas ir atrodams vairākos
+      publiskos avotos, specializējas logu remontā, stikla pakešu nomaiņā,
+      furnitūras remontā, blīvgumiju nomaiņā, moskītu tīklos un žalūzijās.
+    </div>
+  </div>
+</section>
+
+<div class="section-divider-wrap"><hr class="section-divider"></div>
+
 <!-- ══ Mūsu darbi ══════════════════════════════════════════════ -->
 <section id="musu-darbi" style="padding:80px 0;background:var(--paper-2);">
 <style>
