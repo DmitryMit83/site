@@ -478,6 +478,12 @@
   .pal-spotlight.reverse .pal-spot-text{order:1;}
   .pal-spotlight.reverse .pal-spot-img{order:2;}
   .pal-spot-img img{aspect-ratio:16/9;}
+  /* eyebrow с ценой — под заголовок */
+  .pal-spot-text{display:flex;flex-direction:column;}
+  .pal-spot-text > div:first-child{order:2;}
+  .pal-spot-text h3{order:1;}
+  .pal-spot-text p{order:3;}
+  .pal-spot-text .btn{order:4;}
 }
 </style>
 
