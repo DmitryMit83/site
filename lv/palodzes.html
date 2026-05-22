@@ -393,102 +393,223 @@
 </section>
 
 <!-- ── Palodžu veidi ─────────────────────────────────────────── -->
-<section class="container" style="padding-top:3rem;padding-bottom:2rem;">
-  <div class="section-head">
+<style>
+/* ── Spotlight section ── */
+.pal-spotlight-section{padding:4rem 0 2rem;}
+.pal-spotlight-head{text-align:center;margin-bottom:3.5rem;}
+
+.pal-spotlight{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+  margin-bottom:4rem;
+}
+.pal-spotlight:last-child{margin-bottom:1rem;}
+
+/* шахматный порядок — чётные: картинка слева, текст справа */
+.pal-spotlight.reverse .pal-spot-text{order:2;}
+.pal-spotlight.reverse .pal-spot-img{order:1;}
+
+/* Текстовая колонка */
+.pal-spot-text{display:flex;flex-direction:column;gap:1rem;}
+.pal-spot-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Poppins',sans-serif;
+  font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);
+}
+.pal-spot-eyebrow svg{flex-shrink:0;}
+.pal-spot-text h3{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(1.5rem,2.4vw,2rem);
+  font-weight:700;
+  color:var(--text-1,#1a1a1a);
+  line-height:1.2;
+  margin:0;
+}
+.pal-spot-text p{
+  font-size:1rem;
+  color:var(--text-2,#555);
+  line-height:1.75;
+  margin:0;
+}
+.pal-spot-text .btn{align-self:flex-start;margin-top:.5rem;}
+
+/* Картинка */
+.pal-spot-img{
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,.12);
+}
+.pal-spot-img img{
+  width:100%;
+  object-fit:cover;
+  display:block;
+  aspect-ratio:16/9;
+  transition:transform .6s ease;
+}
+.pal-spot-img:hover img{transform:scale(1.03);}
+
+/* ── Анимации (scroll-triggered) ── */
+.pal-anim{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .65s ease, transform .65s ease;
+}
+.pal-anim.pal-img-anim{
+  opacity:0;
+  transform:scale(.96) translateY(16px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.pal-anim.visible{opacity:1;transform:none;}
+.pal-anim[data-delay="1"]{transition-delay:.12s;}
+.pal-anim[data-delay="2"]{transition-delay:.26s;}
+.pal-anim[data-delay="3"]{transition-delay:.4s;}
+.pal-anim[data-delay="4"]{transition-delay:.54s;}
+
+/* ── Мобильная версия — без шахмат ── */
+@media(max-width:768px){
+  .pal-spotlight{
+    grid-template-columns:1fr;
+    gap:1.2rem;
+    margin-bottom:2.5rem;
+  }
+  .pal-spotlight.reverse .pal-spot-text{order:1;}
+  .pal-spotlight.reverse .pal-spot-img{order:2;}
+  .pal-spot-img img{aspect-ratio:16/9;}
+}
+</style>
+
+<section class="pal-spotlight-section">
+  <div class="pal-spotlight-head container">
     <span class="eyebrow">Katalogs</span>
     <h2>Palodžu veidi un materiāli</h2>
     <p>Izvēlieties piemērotāko materiālu — palīdzēsim atrast optimālo risinājumu interjeram un budžetam.</p>
   </div>
-  <div class="grid cols-3 mob-2col">
 
-    <div class="sub has-img">
-      <div class="sub-img"><img
-        src="../photo/palodzes/palodzes_krasa.jpg"
-        alt="PVC palodze krāsaina — plastmasas logu palodze pēc pasūtījuma, uzstādīšana Rīgā, SIA Logu Apkope"
-        title="Krāsainas PVC palodzes pēc pasūtījuma — plastmasas palodžu uzstādīšana un nomaiņa Rīgā un visā Latvijā"
-        loading="lazy"
-        decoding="async"
-        width="600"
-        height="400"
-      ></div>
-      <div class="sub-body">
-        <h3>PVC palodzes</h3>
-        <p>Populārākais risinājums — viegls, ūdensnecaurlaidīgs, viegli kopjams. Piemērots virtuves, viesistabas un guļamistabas logiem. Pieejams baltā un dažādās krāsās.</p>
-        <span class="price-badge">no €25/m</span>
+  <!-- 1: PVC — teksts kreisajā, attēls labajā -->
+  <div class="container"><div class="pal-spotlight">
+    <div class="pal-spot-text">
+      <div class="pal-anim" data-delay="1">
+        <span class="pal-spot-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Populārākā izvēle · no €25/m
+        </span>
       </div>
+      <h3 class="pal-anim" data-delay="2">PVC palodzes</h3>
+      <p class="pal-anim" data-delay="3">Populārākais risinājums — viegls, ūdensnecaurlaidīgs, viegli kopjams. Piemērots virtuves, viesistabas un guļamistabas logiem. Pieejams baltā un dažādās krāsās un dekoros.</p>
+      <a href="kontakti.html" class="btn pal-anim" data-delay="4">Pieteikties konsultācijai</a>
     </div>
+    <div class="pal-spot-img pal-anim pal-img-anim" data-delay="2">
+      <img src="../photo/palodzes/palodzes_krasa.jpg"
+        alt="PVC palodze — plastmasas logu palodze pēc pasūtījuma, uzstādīšana Rīgā, SIA Logu Apkope"
+        title="PVC palodzes pēc pasūtījuma — uzstādīšana un nomaiņa Rīgā un visā Latvijā"
+        loading="lazy" decoding="async" width="600" height="400">
+    </div>
+  </div></div>
 
-    <div class="sub has-img">
-      <div class="sub-img"><img
-        src="../photo/palodzes/koka_palodzes_krasa.jpg"
-        alt="Koka palodze krāsaina — dabīgā koka logu palodze pēc pasūtījuma, liepa, egle, ozols, uzstādīšana Rīgā, SIA Logu Apkope"
-        title="Krāsainas koka palodzes pēc pasūtījuma — liepa, egle, ozols, lakojums, eļļojums, uzstādīšana un nomaiņa Rīgā un visā Latvijā"
-        loading="lazy"
-        decoding="async"
-        width="600"
-        height="400"
-      ></div>
-      <div class="sub-body">
-        <h3>Koka palodzes</h3>
-        <p>Dabisks materiāls, kas piešķir siltumu un eleganci. Izturīgas liepu, egles vai ozola koksnes palodzes ar lakojumu vai eļļojumu. Apstrādātas pret mitrumu.</p>
-        <span class="price-badge">no €45/m</span>
+  <!-- 2: Koka — attēls kreisajā, teksts labajā -->
+  <div class="container"><div class="pal-spotlight reverse">
+    <div class="pal-spot-text">
+      <div class="pal-anim" data-delay="1">
+        <span class="pal-spot-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Dabīgs materiāls · no €45/m
+        </span>
       </div>
+      <h3 class="pal-anim" data-delay="2">Koka palodzes</h3>
+      <p class="pal-anim" data-delay="3">Dabisks materiāls, kas piešķir siltumu un eleganci. Izturīgas liepu, egles vai ozola koksnes palodzes ar lakojumu vai eļļojumu. Apstrādātas pret mitrumu un ikdienas nolietojumu.</p>
+      <a href="kontakti.html" class="btn pal-anim" data-delay="4">Pieteikties konsultācijai</a>
     </div>
+    <div class="pal-spot-img pal-anim pal-img-anim" data-delay="2">
+      <img src="../photo/palodzes/koka_palodzes_krasa.jpg"
+        alt="Koka palodze — dabīgā koka logu palodze pēc pasūtījuma, liepa, egle, ozols, uzstādīšana Rīgā, SIA Logu Apkope"
+        title="Koka palodzes pēc pasūtījuma — liepa, egle, ozols, uzstādīšana un nomaiņa Rīgā un visā Latvijā"
+        loading="lazy" decoding="async" width="600" height="400">
+    </div>
+  </div></div>
 
-    <div class="sub has-img">
-      <div class="sub-img"><img
-        src="../photo/palodzes/dsp_palodzes_krasa.jpg"
-        alt="DSP palodze krāsaina — skaidu plates logu palodze pēc pasūtījuma, uzstādīšana Rīgā, SIA Logu Apkope"
-        title="Krāsainas DSP palodzes pēc pasūtījuma — skaidu plāksnes palodžu uzstādīšana un nomaiņa Rīgā un visā Latvijā"
-        loading="lazy"
-        decoding="async"
-        width="600"
-        height="400"
-      ></div>
-      <div class="sub-body">
-        <h3>DSP palodzes</h3>
-        <p>Ekonomisks un praktisks risinājums — skaidu plāksnes palodzes ar dekoratīvo pārklājumu. Pieejamas dažādās krāsās un faktūrās, izturīgas ikdienas lietošanai.</p>
-        <span class="price-badge">no €20/m</span>
+  <!-- 3: DSP — teksts kreisajā, attēls labajā -->
+  <div class="container"><div class="pal-spotlight">
+    <div class="pal-spot-text">
+      <div class="pal-anim" data-delay="1">
+        <span class="pal-spot-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Ekonomisks risinājums · no €20/m
+        </span>
       </div>
+      <h3 class="pal-anim" data-delay="2">DSP palodzes</h3>
+      <p class="pal-anim" data-delay="3">Ekonomisks un praktisks risinājums — skaidu plāksnes palodzes ar dekoratīvo pārklājumu. Pieejamas dažādās krāsās un faktūrās, izturīgas ikdienas lietošanai un viegli tīrāmas.</p>
+      <a href="kontakti.html" class="btn pal-anim" data-delay="4">Pieteikties konsultācijai</a>
     </div>
+    <div class="pal-spot-img pal-anim pal-img-anim" data-delay="2">
+      <img src="../photo/palodzes/dsp_palodzes_krasa.jpg"
+        alt="DSP palodze — skaidu plates logu palodze pēc pasūtījuma, uzstādīšana Rīgā, SIA Logu Apkope"
+        title="DSP palodzes pēc pasūtījuma — skaidu plāksnes palodžu uzstādīšana un nomaiņa Rīgā un visā Latvijā"
+        loading="lazy" decoding="async" width="600" height="400">
+    </div>
+  </div></div>
 
-    <div class="sub has-img">
-      <div class="sub-img"><img
-        src="../photo/palodzes/akm_palodzes_krasa.jpg"
-        alt="Akmens palodze krāsaina — dabīgā akmens un marmora logu palodze pēc pasūtījuma, uzstādīšana Rīgā, SIA Logu Apkope"
-        title="Krāsainas akmens un marmora palodzes pēc pasūtījuma — granīts, kvarcīts, uzstādīšana un nomaiņa Rīgā un visā Latvijā"
-        loading="lazy"
-        decoding="async"
-        width="600"
-        height="400"
-      ></div>
-      <div class="sub-body">
-        <h3>Akmens un marmors</h3>
-        <p>Prestižs risinājums premium interjeriem. Granīts, marmors un kvarca kompozīts — ilgmūžīgi, karstumizturīgi un viegli kopjami. Lieliski vannas istabai un virtuvei.</p>
-        <span class="price-badge">no €85/m</span>
+  <!-- 4: Akmens / Marmors — attēls kreisajā, teksts labajā -->
+  <div class="container"><div class="pal-spotlight reverse">
+    <div class="pal-spot-text">
+      <div class="pal-anim" data-delay="1">
+        <span class="pal-spot-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Premium klase · no €85/m
+        </span>
       </div>
+      <h3 class="pal-anim" data-delay="2">Akmens un marmors</h3>
+      <p class="pal-anim" data-delay="3">Prestižs risinājums premium interjeriem. Granīts, marmors un kvarca kompozīts — ilgmūžīgi, karstumizturīgi un viegli kopjami. Lieliski piemēroti vannas istabai un virtuvei.</p>
+      <a href="kontakti.html" class="btn pal-anim" data-delay="4">Pieteikties konsultācijai</a>
     </div>
+    <div class="pal-spot-img pal-anim pal-img-anim" data-delay="2">
+      <img src="../photo/palodzes/akm_palodzes_krasa.jpg"
+        alt="Akmens palodze — dabīgā akmens un marmora logu palodze pēc pasūtījuma, uzstādīšana Rīgā, SIA Logu Apkope"
+        title="Akmens un marmora palodzes pēc pasūtījuma — granīts, kvarcīts, uzstādīšana un nomaiņa Rīgā un visā Latvijā"
+        loading="lazy" decoding="async" width="600" height="400">
+    </div>
+  </div></div>
 
-
-    <div class="sub has-img">
-      <div class="sub-img"><img
-        src="../photo/palodzes/ara_palodzes_krasa.jpg"
-        alt="Āra palodze krāsaina — metāla jeb skārda ārējā logu palodze pēc pasūtījuma, uzstādīšana Rīgā, SIA Logu Apkope"
-        title="Krāsainas āra metāla palodzes pēc pasūtījuma — skārda ārējo palodžu uzstādīšana un nomaiņa Rīgā un visā Latvijā"
-        loading="lazy"
-        decoding="async"
-        width="600"
-        height="400"
-      ></div>
-      <div class="sub-body">
-        <h3>Āra (skārda) palodzes</h3>
-        <p>Izturīgas metāla palodzes ārējai lietošanai — aizsargā sienu no lietus un mitruma. Izgatavotas no cinkota skārda ar pulverkrāsojumu. Pieejamas dažādās krāsās.</p>
-        <span class="price-badge">no €18/m</span>
+  <!-- 5: Āra — teksts kreisajā, attēls labajā -->
+  <div class="container"><div class="pal-spotlight">
+    <div class="pal-spot-text">
+      <div class="pal-anim" data-delay="1">
+        <span class="pal-spot-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Ārējai lietošanai · no €18/m
+        </span>
       </div>
+      <h3 class="pal-anim" data-delay="2">Āra (skārda) palodzes</h3>
+      <p class="pal-anim" data-delay="3">Izturīgas metāla palodzes ārējai lietošanai — aizsargā sienu no lietus un mitruma. Izgatavotas no cinkota skārda ar pulverkrāsojumu. Pieejamas dažādās krāsās, izturīgas pret laika apstākļiem.</p>
+      <a href="kontakti.html" class="btn pal-anim" data-delay="4">Pieteikties konsultācijai</a>
     </div>
+    <div class="pal-spot-img pal-anim pal-img-anim" data-delay="2">
+      <img src="../photo/palodzes/ara_palodzes_krasa.jpg"
+        alt="Āra palodze — metāla jeb skārda ārējā logu palodze pēc pasūtījuma, uzstādīšana Rīgā, SIA Logu Apkope"
+        title="Āra metāla palodzes pēc pasūtījuma — skārda ārējo palodžu uzstādīšana un nomaiņa Rīgā un visā Latvijā"
+        loading="lazy" decoding="async" width="600" height="400">
+    </div>
+  </div></div>
 
-  </div>
 </section>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.pal-anim');
+  if(!items.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
 
 <!-- ── Montāžas process ──────────────────────────────────────── -->
 <section style="background:#f8f8f8;padding:3rem 0;">
