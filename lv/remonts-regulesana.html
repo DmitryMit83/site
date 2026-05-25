@@ -412,15 +412,7 @@
 .price-note{margin-top:.9rem;color:var(--muted);font-size:.82rem;}
 
 /* ── FAQ accordion ── */
-.faq-list{display:flex;flex-direction:column;gap:0;}
-.faq-item{border-bottom:1px solid #e0e0e0;}
-.faq-item:first-child{border-top:1px solid #e0e0e0;}
-.faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:1.1rem 0;background:none;border:none;cursor:pointer;text-align:left;font-size:.97rem;font-weight:600;color:var(--text);line-height:1.4;}
-.faq-trigger:hover{color:var(--primary);}
-.faq-icon{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;font-weight:400;line-height:1;transition:background .18s,color .18s,transform .25s;}
-.faq-item.open .faq-icon{background:var(--primary);color:#fff;transform:rotate(45deg);}
-.faq-body{max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.4,0,.2,1);}
-.faq-body-inner{padding:.1rem 0 1.1rem 0;color:var(--muted);font-size:.93rem;line-height:1.7;}
+
 
 /* ── Why adjustment section ── */
 .why-reg-section{padding-top:3rem;padding-bottom:3rem;}
@@ -829,8 +821,7 @@
     <div style="margin-top:1.4rem;padding:1rem 1.4rem;background:rgba(var(--accent-rgb, 208,77,26),.08);border-radius:10px;font-size:.9rem;">
       💡 <strong>Bezmaksas apskate</strong> — pirms darbu uzsākšanas speciālists novērtē stāvokli un apstiprina galīgo cenu. <em style="font-size:.88em;opacity:.75;">Tikai Rīgā. Ārpus Rīgas — <a href="transporta-izmaksas.html" style="color:inherit;text-decoration:underline;">transporta izdevumi</a>.</em>
     </div>
-  </div>
-</section>
+  </section>
 
 <!-- Kāpēc regulēšana ir svarīga -->
 <section class="container why-reg-section">
@@ -852,69 +843,32 @@
 
 <!-- FAQ -->
 <section class="container" style="padding-top:3rem;padding-bottom:3rem;">
-  <h2>Biežāk uzdotie jautājumi</h2>
-  <div class="faq-list">
-
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Kā zināt, ka logam nepieciešama regulēšana?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Ja logs aizveras ar grūtībām, ir manāma caurvēja sajūta, uz stikliem veidojas kondensāts vai ir dzirdamas šķindošas skaņas — tā ir skaidra pazīme, ka nepieciešama regulēšana. Arī redzama spraugstiņa starp rāmi un vērtni liecina par neprecīzu eņģu novietojumu.</div>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Cik bieži jāregulē PVC logi?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Ieteicams veikt regulēšanu reizi 2–3 gados — vai ātrāk, ja parādās pirmās pazīmes: caurvējš, apgrūtināta aizvēršana vai redzama sprauga. Papildus tam furnitūras tīrīšana un eļļošana reizi gadā ievērojami pagarina loga kalpošanas laiku un samazina regulēšanas nepieciešamību.</div>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Vai regulēšana palīdz ietaupīt siltumu?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Jā, un ievērojami. Pat neliela eņģu noregulēšana var samazināt siltuma zudumus par 15–20%, jo logs tiek cieši piespiests pie blīvgumijas visā perimetrā. Tas nozīmē zemākus komunālos rēķinus un lielāku komfortu mājās visa gada garumā.</div>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Cik ilgi aizņem viena loga regulēšana?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Vidēji 10–20 minūtes vienam logam atkarībā no tā stāvokļa un veida. Dzīvoklis ar 5–6 logiem parasti aizņem apmēram 1–1.5 stundas kopā ar pārbaudi. Koka logu regulēšana var aizņemt nedaudz ilgāk, ja nepieciešama eļļošana.</div>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Vai koka logu regulēšana atšķiras no PVC?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Koka logiem tiek uzstādīta tā pati furnitūra kā plastmasas logiem, tāpēc pamata regulēšana — eņģu un slēgmehānisma noregulēšana — ir ļoti līdzīga un izmaksā tikpat. Taču, ja nepieciešama sarežģītāka iejaukšanās, piemēram, ģeometrijas korekcija, tad koka loga konstrukcija to ievērojami apgrūtina: koks ir jutīgs pret mitrumu, sezonāli mainās tā izmēri, un rāmja apstrāde prasa papildu laiku un prasmes. Tāpēc šādos gadījumos koka logu regulēšana ir gan dārgāka, gan ilgāka nekā PVC.</div>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Vai var veikt regulēšanu bez speciālista?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Logu regulēšana ir diezgan sarežģīts process, ja nezini precīzi, ko un kādā secībā darīt. Ja vienkārši mēģināt griezt eņģes uz labu laimi, var panākt pretējo efektu — logs slēgsies vēl sliktāk vai arī tiks bojāta furnitūra. Tāpēc mēs iesakām uzticēt regulēšanu profesionāļiem: tas ietaupīs laiku, nervus un novērsīs dārgāku remontu nākotnē.</div>
-      </div>
-    </div>
-
+  <h2 class="faq-dl-heading">Biežāk uzdotie jautājumi</h2>
+  <div class="faq-dl-list">
+    <details class="faq-dl-item">
+      <summary>Kā zināt, ka logam nepieciešama regulēšana?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Ja logs aizveras ar grūtībām, ir manāma caurvēja sajūta, uz stikliem veidojas kondensāts vai ir dzirdamas šķindošas skaņas — tā ir skaidra pazīme, ka nepieciešama regulēšana. Arī redzama spraugstiņa starp rāmi un vērtni liecina par neprecīzu eņģu novietojumu.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Cik bieži jāregulē PVC logi?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Ieteicams veikt regulēšanu reizi 2–3 gados — vai ātrāk, ja parādās pirmās pazīmes: caurvējš, apgrūtināta aizvēršana vai redzama sprauga. Papildus tam furnitūras tīrīšana un eļļošana reizi gadā ievērojami pagarina loga kalpošanas laiku un samazina regulēšanas nepieciešamību.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Vai regulēšana palīdz ietaupīt siltumu?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Jā, un ievērojami. Pat neliela eņģu noregulēšana var samazināt siltuma zudumus par 15–20%, jo logs tiek cieši piespiests pie blīvgumijas visā perimetrā. Tas nozīmē zemākus komunālos rēķinus un lielāku komfortu mājās visa gada garumā.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Cik ilgi aizņem viena loga regulēšana?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Vidēji 10–20 minūtes vienam logam atkarībā no tā stāvokļa un veida. Dzīvoklis ar 5–6 logiem parasti aizņem apmēram 1–1.5 stundas kopā ar pārbaudi. Koka logu regulēšana var aizņemt nedaudz ilgāk, ja nepieciešama eļļošana.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Vai koka logu regulēšana atšķiras no PVC?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Koka logiem tiek uzstādīta tā pati furnitūra kā plastmasas logiem, tāpēc pamata regulēšana — eņģu un slēgmehānisma noregulēšana — ir ļoti līdzīga un izmaksā tikpat. Taču, ja nepieciešama sarežģītāka iejaukšanās, piemēram, ģeometrijas korekcija, tad koka loga konstrukcija to ievērojami apgrūtina: koks ir jutīgs pret mitrumu, sezonāli mainās tā izmēri, un rāmja apstrāde prasa papildu laiku un prasmes. Tāpēc šādos gadījumos koka logu regulēšana ir gan dārgāka, gan ilgāka nekā PVC.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Vai var veikt regulēšanu bez speciālista?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Logu regulēšana ir diezgan sarežģīts process, ja nezini precīzi, ko un kādā secībā darīt. Ja vienkārši mēģināt griezt eņģes uz labu laimi, var panākt pretējo efektu — logs slēgsies vēl sliktāk vai arī tiks bojāta furnitūra. Tāpēc mēs iesakām uzticēt regulēšanu profesionāļiem: tas ietaupīs laiku, nervus un novērsīs dārgāku remontu nākotnē.</div>
+    </details>
   </div>
 </section>
 
@@ -957,17 +911,7 @@
 
 // ── FAQ accordion ─────────────────────────────────────────────────────────
 (function(){
-  document.querySelectorAll('.faq-trigger').forEach(function(trigger){
-    trigger.addEventListener('click', function(){
-      var item   = trigger.closest('.faq-item');
-      var body   = item.querySelector('.faq-body');
-      var isOpen = item.classList.contains('open');
-      // Close all
-      document.querySelectorAll('.faq-item.open').forEach(function(o){
-        o.classList.remove('open');
-        o.querySelector('.faq-body').style.maxHeight = '0';
-        o.querySelector('.faq-trigger').setAttribute('aria-expanded','false');
-      });
+  
       // Open clicked (if was closed)
       if(!isOpen){
         item.classList.add('open');
@@ -983,7 +927,7 @@
     <h2>Nepieciešams logu meistars?</h2>
     <p>Atstājiet pieprasījumu un mēs sazināsimies ar Jums 12 stundu laikā, lai vienotos par bezmaksas tāmi.</p>
     <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.4rem;margin-bottom:1.4rem;">* Bezmaksas apskate un tāme — tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" style="color:rgba(255,255,255,.85);text-decoration:underline;">transporta izdevumi</a>.</p>
-    <a class="btn btn-outline" href="kontakti.html">Sazināties</a>
+    <a class="hsl-btn hsl-btn--ghost" href="kontakti.html">Sazināties</a>
   </div>
   <div class="container"><div class="fsb-divider"></div></div>
 </section>

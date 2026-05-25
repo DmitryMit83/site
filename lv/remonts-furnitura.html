@@ -264,15 +264,7 @@
 .price-table td{padding:.8rem 1rem;font-size:.93rem;}
 .price-table td:last-child{text-align:right;font-weight:700;color:var(--accent);}
 .price-note{margin-top:.9rem;color:var(--muted);font-size:.82rem;}
-.faq-list{display:flex;flex-direction:column;gap:0;}
-.faq-item{border-bottom:1px solid #e0e0e0;}
-.faq-item:first-child{border-top:1px solid #e0e0e0;}
-.faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:1.1rem 0;background:none;border:none;cursor:pointer;text-align:left;font-size:.97rem;font-weight:600;color:var(--text);line-height:1.4;}
-.faq-trigger:hover{color:var(--primary);}
-.faq-icon{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;font-weight:400;line-height:1;transition:background .18s,color .18s,transform .25s;}
-.faq-item.open .faq-icon{background:var(--primary);color:#fff;transform:rotate(45deg);}
-.faq-body{max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.4,0,.2,1);}
-.faq-body-inner{padding:.1rem 0 1.1rem 0;color:var(--muted);font-size:.93rem;line-height:1.7;}
+
 .tip-heading{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem;}.tip-heading h2{margin:0;}.tip-card{background:var(--surface);border-radius:16px;padding:2rem 2.2rem;border-left:5px solid var(--accent);}
 .tip-icon{flex-shrink:0;width:48px;height:48px;border-radius:50%;overflow:hidden;}
 .tip-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
@@ -302,8 +294,7 @@
     <h1>Furnitūras maiņa</h1>
     <p>Slēdzenes, rokturi, eņģes, šarnīri — nomainām visus nolietotos vai bojātos furnitūras elementus ar augstas kvalitātes analogiem.</p>
     <a class="btn btn-outline-dark" href="kontakti.html">Pasūtīt pakalpojumu</a>
-  </div>
-</section>
+  </section>
 
 <!-- Pakalpojuma apraksts — hero banner stils -->
 <div class="svc-hero-outer">
@@ -399,53 +390,28 @@
   </div>
 </section>
 <section class="container" style="padding-top:3rem;padding-bottom:3rem;">
-  <h2>Biežāk uzdotie jautājumi</h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Kādas ir pazīmes, ka furnitūra jānomaina?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Rokturis griežas bez pretestības vai nenofiksējas pozīcijā, logs noslēdzas ar piepūli, ir dzirdamas klaudzienu vai skrāpēšanas skaņas, eņģes ir redzami nodilušas vai logos ir spraugas — visi šie simptomi norāda uz nolietotu furnitūru, kas prasa nomaiņu.</div>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Vai var nomainīt tikai vienu daļu, piemēram, rokturi?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Jā, bieži vien pietiek nomainīt tikai bojāto elementu. Tomēr, ja furnitūra ir veca un vairākas detaļas ir nolietojušās, ekonomiskāk ir nomainīt visu komplektu uzreiz — tas ietaupa atkārtotus vizīšu izdevumus.</div>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Cik bieži jānomaina logu furnitūra?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Kvalitatīva furnitūra kalpo 15–25 gadus, ja to regulāri eļļo. Praktiski — lielākā daļa nomaiņu notiek 10–15 gadu vecumā vai pēc mehāniska bojājuma. Ikgadēja eļļošana ar speciālu logu eļļu var ievērojami pagarināt kalpošanas laiku.</div>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Kādu furnitūru izmantojat nomaiņā?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Strādājam ar Vācijas un Itālijas vadošajiem ražotājiem — MACO, Roto, Siegenia. Šī furnitūra atbilst Eiropas standartiem, un tai ir 2 gadu garantija. Pēc vienošanās var uzstādīt pasūtītāja izvēlētu furnitūru.</div>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Vai regulāra eļļošana tiešām palīdz?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Absolūti. Eļļošana reizi gadā (ieteicams rudenī) samazina berzi eņģēs un slēgšanas punktos, novērš rūsēšanu un pagarina furnitūras mūžu. Izmantojiet speciālu logu eļļu vai vieglu mašīneļļu — neizmantojiet WD-40, tas izžāvē gumijas elementus.</div>
-      </div>
-    </div>
+  <h2 class="faq-dl-heading">Biežāk uzdotie jautājumi</h2>
+  <div class="faq-dl-list">
+    <details class="faq-dl-item">
+      <summary>Kādas ir pazīmes, ka furnitūra jānomaina?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Rokturis griežas bez pretestības vai nenofiksējas pozīcijā, logs noslēdzas ar piepūli, ir dzirdamas klaudzienu vai skrāpēšanas skaņas, eņģes ir redzami nodilušas vai logos ir spraugas — visi šie simptomi norāda uz nolietotu furnitūru, kas prasa nomaiņu.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Vai var nomainīt tikai vienu daļu, piemēram, rokturi?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Jā, bieži vien pietiek nomainīt tikai bojāto elementu. Tomēr, ja furnitūra ir veca un vairākas detaļas ir nolietojušās, ekonomiskāk ir nomainīt visu komplektu uzreiz — tas ietaupa atkārtotus vizīšu izdevumus.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Cik bieži jānomaina logu furnitūra?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Kvalitatīva furnitūra kalpo 15–25 gadus, ja to regulāri eļļo. Praktiski — lielākā daļa nomaiņu notiek 10–15 gadu vecumā vai pēc mehāniska bojājuma. Ikgadēja eļļošana ar speciālu logu eļļu var ievērojami pagarināt kalpošanas laiku.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Kādu furnitūru izmantojat nomaiņā?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Strādājam ar Vācijas un Itālijas vadošajiem ražotājiem — MACO, Roto, Siegenia. Šī furnitūra atbilst Eiropas standartiem, un tai ir 2 gadu garantija. Pēc vienošanās var uzstādīt pasūtītāja izvēlētu furnitūru.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Vai regulāra eļļošana tiešām palīdz?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Absolūti. Eļļošana reizi gadā (ieteicams rudenī) samazina berzi eņģēs un slēgšanas punktos, novērš rūsēšanu un pagarina furnitūras mūžu. Izmantojiet speciālu logu eļļu vai vieglu mašīneļļu — neizmantojiet WD-40, tas izžāvē gumijas elementus.</div>
+    </details>
   </div>
 </section>
 <section class="alt">
@@ -470,7 +436,7 @@
     <h2>Nepieciešams logu meistars?</h2>
     <p>Atstājiet pieprasījumu un mēs sazināsimies ar Jums 12 stundu laikā, lai vienotos par bezmaksas tāmi.</p>
     <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.4rem;margin-bottom:1.4rem;">* Bezmaksas apskate un tāme — tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" style="color:rgba(255,255,255,.85);text-decoration:underline;">transporta izdevumi</a>.</p>
-    <a class="btn btn-outline" href="kontakti.html">Sazināties</a>
+    <a class="hsl-btn hsl-btn--ghost" href="kontakti.html">Sazināties</a>
   </div>
   <div class="container"><div class="fsb-divider"></div></div>
 </section>
@@ -608,16 +574,7 @@
   });
 })();
 (function(){
-  document.querySelectorAll('.faq-trigger').forEach(function(trigger){
-    trigger.addEventListener('click', function(){
-      var item = trigger.closest('.faq-item');
-      var body = item.querySelector('.faq-body');
-      var isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(o){
-        o.classList.remove('open');
-        o.querySelector('.faq-body').style.maxHeight = '0';
-        o.querySelector('.faq-trigger').setAttribute('aria-expanded','false');
-      });
+  
       if(!isOpen){
         item.classList.add('open');
         body.style.maxHeight = body.scrollHeight + 'px';

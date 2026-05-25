@@ -172,8 +172,8 @@
           '</div>'+
         '</div>'+
         '<div class="at-cta-row">'+
-          '<a href="'+MAPS_URL+'" target="_blank" rel="noopener" class="btn btn-secondary">'+L.seeAll+'</a>'+
-          '<a href="'+writeUrl+'" target="_blank" rel="noopener" class="btn btn-primary">'+L.write+'</a>'+
+          '<a href="'+MAPS_URL+'" target="_blank" rel="noopener" class="hsl-btn at-btn-green">'+L.seeAll+'</a>'+
+          '<a href="'+writeUrl+'" target="_blank" rel="noopener" class="hsl-btn hsl-btn--fill">'+L.write+'</a>'+
         '</div>'+
       '</div>';
 

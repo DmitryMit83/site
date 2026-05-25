@@ -83,9 +83,9 @@
 .hsl-accent-bar{width:52px;height:3px;background:var(--accent);margin-bottom:18px;flex-shrink:0;border-radius:2px;}
 .hsl-split-l .lead{color:rgba(255,255,255,.78);margin-bottom:22px;font-size:.93rem;line-height:1.65;max-width:440px;}
 .hsl-cta{display:flex;gap:.65rem;flex-wrap:wrap;}
-.hsl-btn{display:inline-flex;align-items:center;padding:.45rem 1rem;border-radius:6px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s,color .2s,border-color .2s;white-space:nowrap;letter-spacing:.01em;}
+.hsl-btn{display:inline-flex;align-items:center;padding:.45rem 1rem;border-radius:6px;font-size:.82rem;font-weight:600;font-family:'Poppins','Montserrat',sans-serif;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s,box-shadow .2s,transform .2s;white-space:nowrap;letter-spacing:.01em;}
 .hsl-btn--fill{background:var(--accent);color:#fff;border:1.5px solid var(--accent);}
-.hsl-btn--fill:hover{background:#c0641a;border-color:#c0641a;}
+.hsl-btn--fill:hover{background:var(--accent);border-color:rgba(255,255,255,.85);color:#fff;}
 .hsl-btn--ghost{background:transparent;color:rgba(255,255,255,.88);border:1.5px solid rgba(255,255,255,.38);}
 .hsl-btn--ghost:hover{border-color:rgba(255,255,255,.85);color:#fff;}
 
@@ -623,17 +623,17 @@
 .sos-cta{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;}
 .sos-btn-call{
   display:inline-flex;align-items:center;gap:.5rem;
-  background:#dc2626;color:#fff;border:2px solid #dc2626;border-radius:8px;
-  padding:.6rem 1.4rem;font-size:.9rem;font-weight:700;text-decoration:none;
-  letter-spacing:.02em;transition:background .2s,border-color .2s,transform .15s;white-space:nowrap;
+  background:#dc2626;color:#fff;border:1.5px solid #dc2626;border-radius:6px;
+  padding:.45rem 1rem;font-size:.82rem;font-weight:600;text-decoration:none;
+  letter-spacing:.01em;transition:background .2s,border-color .2s,color .2s;white-space:nowrap;
 }
-.sos-btn-call:hover{background:#b91c1c;border-color:#b91c1c;transform:translateY(-1px);}
+.sos-btn-call:hover{background:#dc2626;border-color:rgba(255,255,255,.85);color:#fff;}
 .sos-btn-call svg{flex-shrink:0;}
 .sos-btn-write{
   display:inline-flex;align-items:center;gap:.5rem;
   background:transparent;color:rgba(255,255,255,.88);
-  border:2px solid rgba(255,255,255,.35);border-radius:8px;
-  padding:.6rem 1.4rem;font-size:.9rem;font-weight:600;text-decoration:none;
+  border:1.5px solid rgba(255,255,255,.38);border-radius:6px;
+  padding:.45rem 1rem;font-size:.82rem;font-weight:600;text-decoration:none;
   transition:border-color .2s,color .2s;white-space:nowrap;
 }
 .sos-btn-write:hover{border-color:rgba(255,255,255,.85);color:#fff;}
@@ -909,7 +909,7 @@
     </div>
     <!-- Show all button -->
     <div style="text-align:center;margin-top:2rem;" id="pakShowWrap" class="pak-show-wrap">
-      <button id="pakShowBtn" class="btn" style="background:var(--accent);border-color:var(--accent);color:#fff;" onclick="(function(){
+      <button id="pakShowBtn" class="hsl-btn hsl-btn--fill" onclick="(function(){
         document.querySelectorAll('.pak-hidden').forEach(function(el){el.classList.remove('pak-hidden')});
         document.getElementById('pakShowWrap').style.display='none';
       })()">
@@ -1088,14 +1088,15 @@
 .svc-vcr-fired .svc-article-actions{opacity:1;transform:translateY(0);}
 .svc-article-btn{
   display:inline-flex;align-items:center;gap:6px;
-  padding:11px 22px;
-  background:var(--green);color:#fff;
-  font-size:.9rem;font-weight:600;font-family:inherit;
-  border-radius:8px;text-decoration:none;
-  transition:opacity .2s, transform .15s;
+  padding:.45rem 1rem;
+  background:var(--accent);color:#fff;
+  border:1.5px solid var(--accent);
+  font-size:.82rem;font-weight:600;font-family:'Poppins','Montserrat',sans-serif;
+  border-radius:6px;text-decoration:none;
+  transition:background .2s,border-color .2s,color .2s;
   white-space:nowrap;
 }
-.svc-article-btn:hover{opacity:.88;transform:translateY(-1px);}
+.svc-article-btn:hover{background:var(--accent);border-color:rgba(255,255,255,.85);color:#fff;}
 .svc-article-hint{
   display:none;
 }
@@ -1278,6 +1279,12 @@
   background:linear-gradient(to top, #ea580c, #f97316);
   box-shadow:0 4px 14px rgba(234,88,12,.4);
   border:1px solid #fb923c;
+  color:#fff;
+}
+.svc-btn-green{
+  background:linear-gradient(to top, #1E3A2E, #2C5341);
+  box-shadow:0 4px 14px rgba(30,58,46,.4);
+  border:1px solid #2C5341;
   color:#fff;
 }
 .svc-btn-dark{
@@ -2461,13 +2468,7 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
 .ai-rec__conclusion-body{flex:1;}
 .ai-rec__conclusion-body strong{display:flex;align-items:center;gap:8px;font-size:1rem;color:#173526;margin-bottom:4px;}
 .ai-rec__conclusion-body p{font-size:.9rem;color:#4d6256;line-height:1.5;margin:0;}
-.ai-rec__conclusion-btn{
-  flex-shrink:0;display:inline-flex;align-items:center;gap:8px;
-  padding:13px 22px;border-radius:999px;
-  background:#1f6b46;color:#fff;font-weight:700;font-size:.9rem;
-  text-decoration:none;transition:.2s;white-space:nowrap;
-}
-.ai-rec__conclusion-btn:hover{background:#175838;transform:translateY(-1px);}
+.ai-rec__conclusion-btn{flex-shrink:0;white-space:nowrap;}
 
 /* ── Mobile ── */
 @media(max-width:900px){
@@ -2554,7 +2555,7 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
         </strong>
         <p>Uzņēmumu var ieteikt — atrodams vairākos publiskos avotos, specializējas logu remontā, stikla pakešu nomaiņā, furnitūras remontā, blīvgumiju nomaiņā, moskītu tīklos un žalūzijās.</p>
       </div>
-      <a href="kontakti.html" class="ai-rec__conclusion-btn">
+      <a href="kontakti.html" class="hsl-btn hsl-btn--fill ai-rec__conclusion-btn">
         Uzzināt vairāk
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -2614,7 +2615,7 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
 .md-footer-text{flex:1;min-width:0;}
 .md-footer-title{margin:0 0 .25rem;font-weight:700;font-size:1rem;color:var(--primary);}
 .md-footer-sub{margin:0;font-size:.85rem;color:var(--muted);line-height:1.5;}
-.md-footer-btn{padding-left:2.4em;padding-right:2.4em;white-space:nowrap;}
+.md-footer-btn{white-space:nowrap;flex-shrink:0;}
 @media(max-width:600px){
   .md-footer{flex-direction:column;align-items:flex-start;gap:16px;}
   .md-footer-btn{width:100%;text-align:center;box-sizing:border-box;}
@@ -2674,7 +2675,7 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
         <p class="md-footer-title">Vairāk nekā 2000 pabeigtie darbi</p>
         <p class="md-footer-sub">Logu remonts, moskītu tīkli, žalūzijas un citi pakalpojumi — skatiet visu portfolio.</p>
       </div>
-      <a href="darbi.html" class="btn md-footer-btn" style="background:var(--accent);border-color:var(--accent);color:#fff;flex-shrink:0;">Portfolio</a>
+      <a href="darbi.html" class="hsl-btn hsl-btn--fill md-footer-btn">Portfolio</a>
     </div>
   </div>
 </section>
@@ -2972,10 +2973,10 @@ grid.addEventListener('mouseup', startTimer);
             </div>
           </div>
           <div class="biz-card-btns">
-            <a class="btn btn-primary" href="https://www.google.com/maps/dir//Logu+apkope,+SIA,+Latgales+iela+130a,+R%C4%ABga" target="_blank" rel="noopener">
+            <a class="btn btn-secondary" href="https://www.google.com/maps/dir//Logu+apkope,+SIA,+Latgales+iela+130a,+R%C4%ABga" target="_blank" rel="noopener">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>Maršruts
             </a>
-            <a class="btn btn-outline-dark" href="https://g.page/r/CURKBM8fHkM0EAE/review" target="_blank" rel="noopener">
+            <a class="btn btn-primary" href="https://g.page/r/CURKBM8fHkM0EAE/review" target="_blank" rel="noopener">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Atstāt atsauksmi
             </a>
           </div>
@@ -3009,7 +3010,7 @@ grid.addEventListener('mouseup', startTimer);
     <h2>Nepieciešams logu meistars?</h2>
     <p>Atstājiet pieprasījumu un mēs sazināsimies ar Jums 12 stundu laikā, lai vienotos par bezmaksas tāmi.</p>
     <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.4rem;margin-bottom:1.4rem;">* Bezmaksas apskate un tāme — tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" style="color:rgba(255,255,255,.85);text-decoration:underline;">transporta izdevumi</a>.</p>
-    <a class="btn btn-outline" href="kontakti.html">Sazināties</a>
+    <a class="hsl-btn hsl-btn--ghost" href="kontakti.html">Sazināties</a>
   </div>
   <div class="container"><div class="fsb-divider"></div></div>
 </section>
@@ -3994,7 +3995,7 @@ grid.addEventListener('mouseup', startTimer);
     var btnPrev = document.createElement('button');
     btnPrev.className = 'fcs-nav-btn';
     btnPrev.setAttribute('aria-label','Iepriekšējais');
-    btnPrev.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
+    btnPrev.innerHTML = '&#8592;';
 
     var counter = document.createElement('span');
     counter.className = 'fcs-counter';
@@ -4002,7 +4003,7 @@ grid.addEventListener('mouseup', startTimer);
     var btnNext = document.createElement('button');
     btnNext.className = 'fcs-nav-btn';
     btnNext.setAttribute('aria-label','Nākamais');
-    btnNext.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+    btnNext.innerHTML = '&#8594;';
 
     nav.appendChild(btnPrev);
     nav.appendChild(counter);

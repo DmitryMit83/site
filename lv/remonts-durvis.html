@@ -264,15 +264,7 @@
 .price-table td{padding:.8rem 1rem;font-size:.93rem;}
 .price-table td:last-child{text-align:right;font-weight:700;color:var(--accent);}
 .price-note{margin-top:.9rem;color:var(--muted);font-size:.82rem;}
-.faq-list{display:flex;flex-direction:column;gap:0;}
-.faq-item{border-bottom:1px solid #e0e0e0;}
-.faq-item:first-child{border-top:1px solid #e0e0e0;}
-.faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:1.1rem 0;background:none;border:none;cursor:pointer;text-align:left;font-size:.97rem;font-weight:600;color:var(--text);line-height:1.4;}
-.faq-trigger:hover{color:var(--primary);}
-.faq-icon{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;font-weight:400;line-height:1;transition:background .18s,color .18s,transform .25s;}
-.faq-item.open .faq-icon{background:var(--primary);color:#fff;transform:rotate(45deg);}
-.faq-body{max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.4,0,.2,1);}
-.faq-body-inner{padding:.1rem 0 1.1rem 0;color:var(--muted);font-size:.93rem;line-height:1.7;}
+
 .tip-heading{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem;}.tip-heading h2{margin:0;}.tip-card{background:var(--surface);border-radius:16px;padding:2rem 2.2rem;border-left:5px solid var(--accent);}
 .tip-icon{flex-shrink:0;width:48px;height:48px;border-radius:50%;overflow:hidden;}
 .tip-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
@@ -302,8 +294,7 @@
     <h1>Durvju remonts</h1>
     <p>Durvis, kas neslēdzas, cieši neguļ vai rada skaņas — diagnosticējam un novēršam visas problēmas ar garantiju.</p>
     <a class="btn btn-outline-dark" href="kontakti.html">Pasūtīt pakalpojumu</a>
-  </div>
-</section>
+  </section>
 
 <!-- Pakalpojuma apraksts — hero banner stils -->
 <div class="svc-hero-outer">
@@ -399,53 +390,28 @@
   </div>
 </section>
 <section class="container" style="padding-top:3rem;padding-bottom:3rem;">
-  <h2>Biežāk uzdotie jautājumi</h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Kāpēc durvis salipst vai grūti atveras?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Visbiežākie iemesli: eņģes ir nolietojušās vai kļuvušas vaļīgas (logs "nosēdies"), koka durvis uzbriedušas mitrumā, slēdzene ir nolietota, vai durvju rāmis ir deformējies. Lielāko daļu gadījumu var novērst ar regulēšanu vai vienas detaļas nomaiņu — bez pilnas durvju nomaiņas.</div>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Kāda ir atšķirība starp PVC un koka durvju remontu?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">PVC durvīm remonts parasti ir vienkāršāks un ātrāks — eņģu regulēšana un blīvgumijas maiņa. Koka durvīm bieži nepieciešama sezonāla kompensācija (koks uzbriest vasarā, saraujas ziemā), eļļošana un dažkārt nedaudz plānāka rāmja apstrāde. Abiem veidiem garantijā iekļaujam rezultātu pārbaudi uz vietas.</div>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Vai var labot durvis, kas neguļ cieši un nelaidīs aukstumu?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Jā, tas ir tipiskākais iemesls, kāpēc sauc mūs. Divas visbiežākās problēmas: eņģes ir noslīdējušas (durvis pārāk zemu), vai blīvgumija ir nolietota. Parasti pietiek ar regulēšanu un blīvgumijas maiņu, lai durvis atkal noslēgtu hermētiski.</div>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Vai visas slēdzenes var labot, vai dažas ir jānomaina?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Lielāko daļu slēdzeņu var labot — tīrīšana, eļļošana un regulēšana bieži atrisina problēmu. Ja cilindrs ir nodilis vai mehānisms ir fizikāli bojāts, nomaina tikai attiecīgo daļu. Pilna slēdzenes nomaiņa nepieciešama tikai vecākos un ļoti nolietojušos gadījumos.</div>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-trigger" aria-expanded="false">
-        <span>Vai ziemā durvju problēmas pasliktinās?</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-body">
-        <div class="faq-body-inner">Jā. Aukstā laikā metāla un alumīnija eņģes saraujas, kas var mainīt durvju piegulšanu. Koka durvis ziemā parasti guļ labāk (koks saraujas), bet pavasarī un vasarā var uzbriest. Ieteicams veikt regulēšanu divreiz gadā — rudenī un pavasarī — īpaši koka durvīm.</div>
-      </div>
-    </div>
+  <h2 class="faq-dl-heading">Biežāk uzdotie jautājumi</h2>
+  <div class="faq-dl-list">
+    <details class="faq-dl-item">
+      <summary>Kāpēc durvis salipst vai grūti atveras?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Visbiežākie iemesli: eņģes ir nolietojušās vai kļuvušas vaļīgas (logs "nosēdies"), koka durvis uzbriedušas mitrumā, slēdzene ir nolietota, vai durvju rāmis ir deformējies. Lielāko daļu gadījumu var novērst ar regulēšanu vai vienas detaļas nomaiņu — bez pilnas durvju nomaiņas.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Kāda ir atšķirība starp PVC un koka durvju remontu?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">PVC durvīm remonts parasti ir vienkāršāks un ātrāks — eņģu regulēšana un blīvgumijas maiņa. Koka durvīm bieži nepieciešama sezonāla kompensācija (koks uzbriest vasarā, saraujas ziemā), eļļošana un dažkārt nedaudz plānāka rāmja apstrāde. Abiem veidiem garantijā iekļaujam rezultātu pārbaudi uz vietas.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Vai var labot durvis, kas neguļ cieši un nelaidīs aukstumu?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Jā, tas ir tipiskākais iemesls, kāpēc sauc mūs. Divas visbiežākās problēmas: eņģes ir noslīdējušas (durvis pārāk zemu), vai blīvgumija ir nolietota. Parasti pietiek ar regulēšanu un blīvgumijas maiņu, lai durvis atkal noslēgtu hermētiski.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Vai visas slēdzenes var labot, vai dažas ir jānomaina?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Lielāko daļu slēdzeņu var labot — tīrīšana, eļļošana un regulēšana bieži atrisina problēmu. Ja cilindrs ir nodilis vai mehānisms ir fizikāli bojāts, nomaina tikai attiecīgo daļu. Pilna slēdzenes nomaiņa nepieciešama tikai vecākos un ļoti nolietojušos gadījumos.</div>
+    </details>
+    <details class="faq-dl-item">
+      <summary>Vai ziemā durvju problēmas pasliktinās?<span class="faq-dl-toggle">+</span></summary>
+      <div class="faq-dl-body">Jā. Aukstā laikā metāla un alumīnija eņģes saraujas, kas var mainīt durvju piegulšanu. Koka durvis ziemā parasti guļ labāk (koks saraujas), bet pavasarī un vasarā var uzbriest. Ieteicams veikt regulēšanu divreiz gadā — rudenī un pavasarī — īpaši koka durvīm.</div>
+    </details>
   </div>
 </section>
 <section class="alt">
@@ -470,7 +436,7 @@
     <h2>Nepieciešams logu meistars?</h2>
     <p>Atstājiet pieprasījumu un mēs sazināsimies ar Jums 12 stundu laikā, lai vienotos par bezmaksas tāmi.</p>
     <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.4rem;margin-bottom:1.4rem;">* Bezmaksas apskate un tāme — tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" style="color:rgba(255,255,255,.85);text-decoration:underline;">transporta izdevumi</a>.</p>
-    <a class="btn btn-outline" href="kontakti.html">Sazināties</a>
+    <a class="hsl-btn hsl-btn--ghost" href="kontakti.html">Sazināties</a>
   </div>
   <div class="container"><div class="fsb-divider"></div></div>
 </section>
@@ -608,16 +574,7 @@
   });
 })();
 (function(){
-  document.querySelectorAll('.faq-trigger').forEach(function(trigger){
-    trigger.addEventListener('click', function(){
-      var item = trigger.closest('.faq-item');
-      var body = item.querySelector('.faq-body');
-      var isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(o){
-        o.classList.remove('open');
-        o.querySelector('.faq-body').style.maxHeight = '0';
-        o.querySelector('.faq-trigger').setAttribute('aria-expanded','false');
-      });
+  
       if(!isOpen){
         item.classList.add('open');
         body.style.maxHeight = body.scrollHeight + 'px';

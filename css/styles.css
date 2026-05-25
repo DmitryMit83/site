@@ -840,12 +840,13 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   margin-top:28px;
 }
 .fcs-nav-btn{
-  width:40px;height:40px;border-radius:50%;
+  width:38px;height:38px;border-radius:50%;
   border:1.5px solid var(--line);background:var(--paper);
   cursor:pointer;display:flex;align-items:center;justify-content:center;
-  color:var(--green);transition:background .18s,border-color .18s,color .18s;
+  color:var(--text);font-size:1rem;line-height:1;
+  transition:background .2s,border-color .2s,color .2s;
 }
-.fcs-nav-btn:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.fcs-nav-btn:hover{background:var(--green);color:#fff;border-color:var(--green);}
 .fcs-counter{font-size:.84rem;color:var(--text-2);font-weight:500;min-width:38px;text-align:center}
 
 @media(max-width:860px){
@@ -967,35 +968,35 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 .promo-ctas .btn-primary{
   background:var(--accent);
   color:#fff;
-  border:2px solid var(--accent);
-  padding:13px 26px;
-  border-radius:8px;
+  border:1.5px solid var(--accent);
+  padding:.45rem 1rem;
+  border-radius:6px;
   font-weight:600;
+  font-family:'Poppins','Montserrat',sans-serif;
   text-decoration:none;
-  font-size:.95rem;
-  transition:background .2s,transform .2s,box-shadow .2s;
-  box-shadow:0 4px 18px rgba(234,88,12,.35);
+  font-size:.82rem;
+  transition:background .2s,border-color .2s,color .2s;
 }
 .promo-ctas .btn-primary:hover{
-  background:#c2440a;border-color:#c2440a;
-  transform:translateY(-2px);
-  box-shadow:0 8px 24px rgba(234,88,12,.45);
+  background:var(--accent);
+  border-color:rgba(255,255,255,.85);
+  color:#fff;
 }
 .promo-ctas .btn-outline-light{
   background:transparent;
-  color:#fff;
-  border:2px solid rgba(255,255,255,.45);
-  padding:13px 26px;
-  border-radius:8px;
+  color:rgba(255,255,255,.88);
+  border:1.5px solid rgba(255,255,255,.38);
+  padding:.45rem 1rem;
+  border-radius:6px;
   font-weight:600;
+  font-family:'Poppins','Montserrat',sans-serif;
   text-decoration:none;
-  font-size:.95rem;
-  transition:background .2s,border-color .2s,transform .2s;
+  font-size:.82rem;
+  transition:border-color .2s,color .2s;
 }
 .promo-ctas .btn-outline-light:hover{
-  background:rgba(255,255,255,.1);
-  border-color:rgba(255,255,255,.75);
-  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.85);
+  color:#fff;
 }
 /* Visual column */
 .promo-visual-col{
@@ -1415,6 +1416,9 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 
 /* CTA row — centered, side by side */
 .at-cta-row{display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
+/* green brand button for reviews CTA */
+.at-btn-green{background:var(--green);color:#fff;border-color:var(--green);}
+.at-btn-green:hover{background:var(--green-2);color:#fff;border-color:rgba(255,255,255,.85);}
 
 /* ── Responsive ── */
 @media(max-width:1060px){.at-right{flex:0 0 460px;}}
@@ -2272,9 +2276,33 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 .biz-contact-row a:hover{color:var(--accent);}
 .biz-card-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;}
 .biz-card-btns .btn{
-  font-size:.8rem;padding:8px 12px;flex:1;
-  display:inline-flex;align-items:center;justify-content:center;gap:5px;
+  font-size:.82rem!important;padding:.45rem 1rem!important;flex:1 1 0;
+  border-radius:6px!important;border:1.5px solid transparent!important;
+  font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:5px;
+  font-family:'Poppins','Montserrat',sans-serif;cursor:pointer;white-space:nowrap;
 }
+/* biz-card green button (Maršruts) */
+.biz-card-btns .btn.btn-secondary{background:var(--green)!important;color:#fff!important;border-color:var(--green)!important;}
+.biz-card-btns .btn.btn-secondary:hover{background:var(--green-2)!important;color:#fff!important;border-color:rgba(255,255,255,.85)!important;transform:none!important;}
+/* biz-card orange button (Atstāt atsauksmi) */
+.biz-card-btns .btn.btn-primary{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important;}
+.biz-card-btns .btn.btn-primary:hover{background:var(--accent)!important;color:#fff!important;border-color:rgba(255,255,255,.85)!important;transform:none!important;}
+/* ── FAQ Details — brand accordion ──────────────────────────────── */
+.faq-dl-heading{text-align:center;margin-bottom:2rem;}
+.faq-dl-list{display:flex;flex-direction:column;}
+.faq-dl-item{border-bottom:1px solid var(--line);}
+.faq-dl-item:first-child{border-top:1px solid var(--line);}
+.faq-dl-item summary{
+  font-weight:600;cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;padding:.9rem 0;color:var(--text);font-size:.97rem;line-height:1.4;
+}
+.faq-dl-item summary::-webkit-details-marker{display:none;}
+.faq-dl-item summary:hover{color:var(--primary);}
+.faq-dl-toggle{flex-shrink:0;font-size:1.3rem;line-height:1;transition:transform .25s;}
+.faq-dl-item[open] .faq-dl-toggle{transform:rotate(45deg);}
+.faq-dl-body{padding:.1rem 0 1.1rem;color:var(--text-2);font-size:.93rem;line-height:1.7;}
+
 /* ── Kā mūs atrast ───────────────────────────────────────────────── */
 .map-directions{
   display:grid;
@@ -2455,10 +2483,18 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 
 /* Ensure base button styles support the pseudo-element */
 .hsl-btn {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
+  display:inline-flex;align-items:center;padding:.45rem 1rem;border-radius:6px;
+  font-size:.82rem;font-weight:600;font-family:'Poppins','Montserrat',sans-serif;
+  text-decoration:none;cursor:pointer;white-space:nowrap;letter-spacing:.01em;
+  transition:background .2s,color .2s,border-color .2s,box-shadow .2s,transform .2s;
+  position:relative;overflow:hidden;isolation:isolate;
 }
+.hsl-btn--fill{background:var(--accent);color:#fff;border:1.5px solid var(--accent);}
+.hsl-btn--fill:hover{background:var(--accent);border-color:rgba(255,255,255,.85);color:#fff;}
+.hsl-btn--green{background:var(--green);color:#fff;border:1.5px solid var(--green);}
+.hsl-btn--green:hover{background:var(--green-2);color:#fff;border-color:rgba(255,255,255,.85);}
+.hsl-btn--ghost{background:transparent;color:rgba(255,255,255,.88);border:1.5px solid rgba(255,255,255,.38);}
+.hsl-btn--ghost:hover{border-color:rgba(255,255,255,.85);color:#fff;}
 
 /* Shimmer layer */
 .btn::after, .hsl-btn::after {
