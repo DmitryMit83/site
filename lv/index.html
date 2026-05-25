@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/styles.css?v=50">
+<link rel="stylesheet" href="../css/styles.css?v=51">
 <style>
 /* ══ Split hero slider ══ */
 .hsl-outer-wrap{max-width:none;margin:0;padding:0;}
@@ -175,6 +175,17 @@
 <div class="hero-splash gone" id="heroSplash" role="presentation">
   <img src="../assets/img/logo-white.svg" alt="SIA Logu Apkope" class="hero-splash-logo">
   <p class="hero-splash-tagline">Profesionāla apkope un remonts</p>
+  <div class="splash-loader">
+    <div class="sl-inner">
+      <div class="sl-sq" style="animation-delay:0s"></div>
+      <div class="sl-sq" style="animation-delay:-1.4285714286s"></div>
+      <div class="sl-sq" style="animation-delay:-2.8571428572s"></div>
+      <div class="sl-sq" style="animation-delay:-4.2857142858s"></div>
+      <div class="sl-sq" style="animation-delay:-5.7142857144s"></div>
+      <div class="sl-sq" style="animation-delay:-7.142857143s"></div>
+      <div class="sl-sq" style="animation-delay:-8.5714285716s"></div>
+    </div>
+  </div>
   <div class="hero-splash-hint">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
     Ritināt vai klikšķināt
@@ -185,6 +196,17 @@
 <div class="mobile-splash gone" id="mobileSplash" role="presentation">
   <img src="../assets/img/logo-white.svg" alt="SIA Logu Apkope" class="mobile-splash-logo">
   <p class="mobile-splash-tagline">Profesionāla apkope un remonts</p>
+  <div class="splash-loader">
+    <div class="sl-inner">
+      <div class="sl-sq" style="animation-delay:0s"></div>
+      <div class="sl-sq" style="animation-delay:-1.4285714286s"></div>
+      <div class="sl-sq" style="animation-delay:-2.8571428572s"></div>
+      <div class="sl-sq" style="animation-delay:-4.2857142858s"></div>
+      <div class="sl-sq" style="animation-delay:-5.7142857144s"></div>
+      <div class="sl-sq" style="animation-delay:-7.142857143s"></div>
+      <div class="sl-sq" style="animation-delay:-8.5714285716s"></div>
+    </div>
+  </div>
   <div class="mobile-splash-hint">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
     Pieskarties vai ritināt
@@ -3648,10 +3670,11 @@ grid.addEventListener('mouseup', startTimer);
         tagline.textContent = fullText.slice(0, ++charIdx);
         if (charIdx >= fullText.length) {
           clearInterval(timer);
-          /* Stop blinking cursor after 1.5 s */
+          /* Stop blinking cursor after 1.5 s, then auto-dismiss after 1 s more */
           setTimeout(function () {
             tagline.classList.remove('typing');
             tagline.classList.add('typed');
+            dismiss();
           }, 1500);
         }
       }, charDelay);

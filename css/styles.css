@@ -1544,6 +1544,38 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 /* After typing done — keep text visible, hide cursor */
 .hero-splash-tagline.typed{opacity:1;border-right:none}
 
+/* ── Splash loader — animated squares ── */
+.splash-loader{
+  margin-top:1.6rem;
+  display:flex;align-items:center;justify-content:center;
+  overflow:visible;
+}
+.sl-inner{
+  position:relative;
+  width:96px;height:96px;
+  flex-shrink:0;
+  transform:rotate(45deg);
+  overflow:visible;
+}
+.sl-sq{
+  position:absolute;
+  top:2px;left:2px;
+  width:28px;height:28px;
+  background:rgba(255,255,255,.82);
+  animation:sl-move 10s ease-in-out infinite;
+}
+@keyframes sl-move{
+  0%,10.5%   {transform:translate(0,0);}
+  12.5%,23%  {transform:translate(32px,0);}
+  25%,35.5%  {transform:translate(64px,0);}
+  37.5%,48%  {transform:translate(64px,32px);}
+  50%,60.5%  {transform:translate(32px,32px);}
+  62.5%,73%  {transform:translate(32px,64px);}
+  75%,85.5%  {transform:translate(0,64px);}
+  87.5%,98%  {transform:translate(0,32px);}
+  100%        {transform:translate(0,0);}
+}
+
 /* Scroll-hint arrow at bottom */
 .hero-splash-hint{
   position:absolute;bottom:36px;
