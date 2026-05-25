@@ -1626,21 +1626,21 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   color:rgba(255,255,255,.45);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
   animation:hintBounce 2s ease 2s infinite;
 }
-/* Squares — 2× smaller inside mobile splash */
-.mobile-splash .sl-inner{width:48px;height:48px;}
-.mobile-splash .sl-sq{top:1px;left:1px;width:14px;height:14px;}
+/* Squares — 4× smaller inside mobile splash */
+.mobile-splash .sl-inner{width:24px;height:24px;}
+.mobile-splash .sl-sq{top:1px;left:1px;width:7px;height:7px;}
 .mobile-splash .sl-inner .sl-sq{
   animation-name:sl-move-sm;
 }
 @keyframes sl-move-sm{
   0%,10.5%   {transform:translate(0,0);}
-  12.5%,23%  {transform:translate(16px,0);}
-  25%,35.5%  {transform:translate(32px,0);}
-  37.5%,48%  {transform:translate(32px,16px);}
-  50%,60.5%  {transform:translate(16px,16px);}
-  62.5%,73%  {transform:translate(16px,32px);}
-  75%,85.5%  {transform:translate(0,32px);}
-  87.5%,98%  {transform:translate(0,16px);}
+  12.5%,23%  {transform:translate(8px,0);}
+  25%,35.5%  {transform:translate(16px,0);}
+  37.5%,48%  {transform:translate(16px,8px);}
+  50%,60.5%  {transform:translate(8px,8px);}
+  62.5%,73%  {transform:translate(8px,16px);}
+  75%,85.5%  {transform:translate(0,16px);}
+  87.5%,98%  {transform:translate(0,8px);}
   100%        {transform:translate(0,0);}
 }
 /* Only show on mobile — hide on desktop */
