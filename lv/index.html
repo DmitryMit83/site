@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/styles.css?v=51">
+<link rel="stylesheet" href="../css/styles.css?v=52">
 <style>
 /* ══ Split hero slider ══ */
 .hsl-outer-wrap{max-width:none;margin:0;padding:0;}
@@ -88,6 +88,13 @@
 .hsl-btn--fill:hover{background:var(--accent);border-color:rgba(255,255,255,.85);color:#fff;}
 .hsl-btn--ghost{background:transparent;color:rgba(255,255,255,.88);border:1.5px solid rgba(255,255,255,.38);}
 .hsl-btn--ghost:hover{border-color:rgba(255,255,255,.85);color:#fff;}
+/* Brand-2 green override for specific block buttons */
+#pakShowBtn,
+.ai-rec__conclusion-btn,
+.md-footer-btn{background:var(--green-2);border-color:var(--green-2);}
+#pakShowBtn:hover,
+.ai-rec__conclusion-btn:hover,
+.md-footer-btn:hover{background:var(--green);border-color:var(--green);}
 
 /* ── Contact bar ── */
 .hsl-contact-bar{
@@ -1111,14 +1118,14 @@
 .svc-article-btn{
   display:inline-flex;align-items:center;gap:6px;
   padding:.45rem 1rem;
-  background:var(--accent);color:#fff;
-  border:1.5px solid var(--accent);
+  background:var(--green-2);color:#fff;
+  border:1.5px solid var(--green-2);
   font-size:.82rem;font-weight:600;font-family:'Poppins','Montserrat',sans-serif;
   border-radius:6px;text-decoration:none;
   transition:background .2s,border-color .2s,color .2s;
   white-space:nowrap;
 }
-.svc-article-btn:hover{background:var(--accent);border-color:rgba(255,255,255,.85);color:#fff;}
+.svc-article-btn:hover{background:var(--green);border-color:var(--green);color:#fff;}
 .svc-article-hint{
   display:none;
 }
@@ -2639,8 +2646,8 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
 .md-footer-sub{margin:0;font-size:.85rem;color:var(--muted);line-height:1.5;}
 .md-footer-btn{white-space:nowrap;flex-shrink:0;}
 @media(max-width:600px){
-  .md-footer{flex-direction:column;align-items:flex-start;gap:16px;}
-  .md-footer-btn{width:100%;text-align:center;box-sizing:border-box;}
+  .md-footer{flex-direction:column;align-items:center;gap:16px;}
+  .md-footer-btn{width:auto;text-align:center;}
 }
 /* Lightbox (shared style, same as darbi.html) */
 .md-lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;}

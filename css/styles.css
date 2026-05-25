@@ -2377,9 +2377,9 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   margin-top:16px;
   padding:13px 20px;
   background:#fff;
-  border:1.5px solid var(--accent);
+  border:1.5px solid var(--green-2);
   border-radius:12px;
-  color:var(--accent);
+  color:var(--green-2);
   font-weight:600;font-size:.95rem;font-family:inherit;
   cursor:pointer;
   align-items:center;
@@ -2387,10 +2387,10 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   gap:8px;
   transition:background .2s,color .2s;
 }
-.map-toggle-btn:hover{background:var(--accent);color:#fff;}
+.map-toggle-btn:hover{background:var(--green-2);color:#fff;}
 .map-toggle-btn:hover .map-toggle-arrow{stroke:#fff;}
-.map-toggle-arrow{transition:transform .3s;stroke:var(--accent);}
-.map-toggle-btn[aria-expanded="true"]{background:var(--accent);color:#fff;}
+.map-toggle-arrow{transition:transform .3s;stroke:var(--green-2);}
+.map-toggle-btn[aria-expanded="true"]{background:var(--green-2);color:#fff;}
 .map-toggle-btn[aria-expanded="true"] .map-toggle-arrow{stroke:#fff;transform:rotate(180deg);}
 /* ── Mobile layout ───────────────────────────────────────────────── */
 @media(max-width:900px){
