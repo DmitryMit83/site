@@ -660,21 +660,6 @@
     <div class="color-lb-caption" id="colorLbCaption"></div>
   </div>
 </div>
-<script>
-(function(){
-  if(window.innerWidth > 600) return;
-  document.querySelectorAll('.color-card').forEach(function(card){
-    card.addEventListener('click', function(){
-      var img = card.querySelector('img');
-      var label = card.querySelector('.color-card-label');
-      document.getElementById('colorLbImg').src = img.src;
-      document.getElementById('colorLbImg').alt = img.alt;
-      document.getElementById('colorLbCaption').textContent = label ? label.textContent : '';
-      document.getElementById('colorLb').classList.add('open');
-    });
-  });
-})();
-</script>
 <section class="alt">
   <div class="container" style="padding-top:3rem;padding-bottom:3rem;">
     <div class="section-head">
@@ -718,6 +703,21 @@
     </div>
   </div>
 </section>
+<script>
+(function(){
+  if(window.innerWidth > 600) return;
+  document.querySelectorAll('.color-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      var img = card.querySelector('img');
+      var label = card.querySelector('.color-card-label');
+      document.getElementById('colorLbImg').src = img.src;
+      document.getElementById('colorLbImg').alt = img.alt;
+      document.getElementById('colorLbCaption').textContent = label ? label.textContent : '';
+      document.getElementById('colorLb').classList.add('open');
+    });
+  });
+})();
+</script>
 
 <!-- ══ Tīkla auduma veidi ══ -->
 <section class="container" style="padding-top:3rem;padding-bottom:3rem;">
