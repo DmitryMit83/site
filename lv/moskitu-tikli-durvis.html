@@ -346,7 +346,7 @@
 .mesh-card-badge.mesh-card-badge--metal{background:#666;}
 .mesh-card-body{flex:1;display:flex;flex-direction:column;padding:1rem 1.1rem 1.2rem;}
 .mesh-card-body h3{font-size:.97rem;margin:0 0 .4rem;color:var(--primary);}
-.mesh-card-body p{font-size:.83rem;color:var(--muted);margin:0 0 .8rem;line-height:1.5;}
+.mesh-card-body p{font-size:.83rem;color:var(--muted);margin:0 0 .8rem;line-height:1.5;text-align:center;}
 .mesh-tap-hint{display:block;font-size:.78rem;font-weight:600;color:var(--primary);margin-top:.5rem;}
 @media(max-width:900px){
   .mesh-type-grid{gap:.6rem;}
@@ -386,17 +386,22 @@
 .pros-box h4,.cons-box h4{font-size:.78rem;font-weight:700;margin:0 0 .5rem;text-transform:uppercase;letter-spacing:.06em;}
 .pros-box h4{color:var(--green);}
 .cons-box h4{color:#c0392b;}
-/* ── Pop chart ── */
-.pop-chart-wrap{max-width:640px;margin:1.8rem auto 0;}
-.pop-chart{display:flex;flex-direction:column;gap:1.2rem;}
-.pop-row{display:grid;grid-template-columns:120px 1fr 48px;align-items:center;gap:.85rem;}
-@media(max-width:500px){.pop-row{grid-template-columns:82px 1fr 38px;gap:.5rem;}}
-.pop-label{font-size:.84rem;color:var(--text);font-weight:600;text-align:right;line-height:1.3;}
-.pop-track{background:#e4e8ed;border-radius:99px;height:28px;overflow:hidden;position:relative;}
-.pop-bar{height:100%;width:0;border-radius:99px;transition:width 4.05s cubic-bezier(.23,1,.32,1);position:relative;}
-.pop-bar-pct{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:.76rem;font-weight:700;color:#fff;opacity:0;transition:opacity 1.5s ease 3s;white-space:nowrap;}
-.pop-chart.pop-animated .pop-bar-pct{opacity:1;}
-.pop-pct-num{font-size:.85rem;font-weight:700;color:var(--primary);}
+/* ── Ko biežāk izvēlas klienti — Variant B (cards) ── */
+.choice-cards-wrap{max-width:980px;margin:1.8rem auto 0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.25rem 1.25rem 1.1rem;}
+.choice-cards-wrap--linked{max-width:none;margin-top:0;background:transparent;border:none;border-radius:0;padding:0;}
+.materials-linked{background:transparent;}
+.materials-linked .container{padding-top:0 !important;}
+.choice-cards-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;}
+.choice-card{flex:0 0 190px;max-width:220px;}
+@media(max-width:900px){.choice-cards-grid{gap:.6rem;}.choice-card{flex:0 0 calc(50% - .6rem);max-width:calc(50% - .6rem);}}
+.choice-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem .8rem .75rem;transition:border-color .2s,box-shadow .2s,opacity .2s;}
+.choice-card h3{margin:0 0 .35rem;color:var(--muted);font-size:.78rem;line-height:1.3;font-weight:700;letter-spacing:.02em;}
+.choice-card-val{color:var(--primary);font-size:1.36rem;line-height:1;font-weight:800;margin-bottom:.62rem;}
+.choice-mini-track{height:7px;background:#e9ece9;border-radius:999px;overflow:hidden;}
+.choice-mini-fill{height:100%;width:var(--pct);background:linear-gradient(90deg,var(--accent),var(--green-2));border-radius:999px;}
+.choice-card.is-top{border-color:rgba(208,77,26,.45);box-shadow:0 5px 16px rgba(208,77,26,.12);}
+.choice-card.is-zero{opacity:.52;}
+.choice-note{margin:.92rem 0 0;color:var(--muted);font-size:.79rem;text-align:center;}
 /* ── Comparison ── */
 .cmp-selectors-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:1rem;margin-bottom:1.8rem;}
 @media(max-width:600px){.cmp-selectors-row{grid-template-columns:1fr;}.cmp-vs-badge{margin:0 auto;}}
@@ -573,44 +578,6 @@
 })();
 </script>
 
-<!-- ══ Ko izvēlas klienti ══ -->
-<section class="alt" id="klienti">
-  <div class="container" style="padding-top:3rem;padding-bottom:3rem;">
-    <div class="section-head">
-      <h2>Ko biežāk izvēlas klienti</h2>
-      <p>Tīkla auduma veidu statistika, balstoties uz mūsu pasūtījumiem šim tīkla veidam.</p>
-    </div>
-    <div class="pop-chart-wrap">
-      <div class="pop-chart" id="popChart">
-      <div class="pop-row">
-        <span class="pop-label">Standarta</span>
-        <div class="pop-track"><div class="pop-bar" style="background:linear-gradient(90deg,#66bb6a,#2e7d32)" data-pct="52"><span class="pop-bar-pct">52%</span></div></div>
-        <span class="pop-pct-num">52%</span>
-      </div>
-      <div class="pop-row">
-        <span class="pop-label">PetScreen</span>
-        <div class="pop-track"><div class="pop-bar" style="background:linear-gradient(90deg,#ffa726,#e65100)" data-pct="30"><span class="pop-bar-pct">30%</span></div></div>
-        <span class="pop-pct-num">30%</span>
-      </div>
-      <div class="pop-row">
-        <span class="pop-label">Antiallergēns</span>
-        <div class="pop-track"><div class="pop-bar" style="background:linear-gradient(90deg,#42a5f5,#1565c0)" data-pct="7"><span class="pop-bar-pct">7%</span></div></div>
-        <span class="pop-pct-num">7%</span>
-      </div>
-      <div class="pop-row">
-        <span class="pop-label">Neredzamais</span>
-        <div class="pop-track"><div class="pop-bar" style="background:linear-gradient(90deg,#78909c,#263238)" data-pct="6"><span class="pop-bar-pct">6%</span></div></div>
-        <span class="pop-pct-num">6%</span>
-      </div>
-      <div class="pop-row">
-        <span class="pop-label">Metāla</span>
-        <div class="pop-track"><div class="pop-bar" style="background:linear-gradient(90deg,#bdbdbd,#424242)" data-pct="5"><span class="pop-bar-pct">5%</span></div></div>
-        <span class="pop-pct-num">5%</span>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
 <!-- ══ Tīkla auduma veidi ══ -->
 <section class="container" style="padding-top:3rem;padding-bottom:3rem;">
   <div class="section-head">
@@ -671,6 +638,43 @@
           <span class="mesh-tap-hint">Uzzināt vairāk →</span>
         </div>
       </div>
+  </div>
+</section>
+
+<!-- ══ Ko izvēlas klienti ══ -->
+<section class="materials-linked" id="klienti">
+  <div class="container" style="padding-top:0;padding-bottom:3rem;">
+    
+    <div class="choice-cards-wrap choice-cards-wrap--linked">
+      <div class="choice-cards-grid">
+        <article class="choice-card is-top">
+          <h3>Standarta</h3>
+          <div class="choice-card-val">52%</div>
+          <div class="choice-mini-track"><div class="choice-mini-fill" style="--pct:52%"></div></div>
+        </article>
+        <article class="choice-card">
+          <h3>PetScreen</h3>
+          <div class="choice-card-val">30%</div>
+          <div class="choice-mini-track"><div class="choice-mini-fill" style="--pct:30%"></div></div>
+        </article>
+        <article class="choice-card">
+          <h3>Antiallergēns</h3>
+          <div class="choice-card-val">7%</div>
+          <div class="choice-mini-track"><div class="choice-mini-fill" style="--pct:7%"></div></div>
+        </article>
+        <article class="choice-card">
+          <h3>Neredzamais</h3>
+          <div class="choice-card-val">6%</div>
+          <div class="choice-mini-track"><div class="choice-mini-fill" style="--pct:6%"></div></div>
+        </article>
+        <article class="choice-card">
+          <h3>Metāla</h3>
+          <div class="choice-card-val">5%</div>
+          <div class="choice-mini-track"><div class="choice-mini-fill" style="--pct:5%"></div></div>
+        </article>
+      </div>
+      <p class="choice-note">Durvju tīklos dominē <strong>Standarta</strong> un <strong>PetScreen</strong> risinājumi.</p>
+    </div>
   </div>
 </section>
 <!-- ══ Salīdzināt ══ -->
@@ -820,25 +824,6 @@ var MESH_DATA={
   };
   document.addEventListener('DOMContentLoaded',function(){renderCompare();});
   if(document.readyState!=='loading')renderCompare();
-  (function(){
-    var chart=document.getElementById('popChart');
-    if(!chart)return;
-    var bars=chart.querySelectorAll('.pop-bar');
-    function animate(){
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){
-          chart.classList.add('pop-animated');
-          bars.forEach(function(b){b.style.width=b.dataset.pct+'%';});
-        });
-      });
-    }
-    if('IntersectionObserver' in window){
-      var obs=new IntersectionObserver(function(entries){
-        if(entries[0].isIntersecting){animate();obs.disconnect();}
-      },{threshold:0.2});
-      obs.observe(chart);
-    } else { animate(); }
-  })();
 })();
 </script>
 

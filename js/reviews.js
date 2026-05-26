@@ -1,6 +1,6 @@
 /**
  * SIA Logu Apkope — Google Reviews Widget (AnimatedTestimonials style)
- * Конфигурация: js/google-config.js
+ * Опциональная конфигурация: window.LOGU_GOOGLE (apiKey, placeId, mapsUrl)
  */
 (function () {
 

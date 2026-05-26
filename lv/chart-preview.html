@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chart Preview — Ko biežāk izvēlas klienti</title>
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+  :root{
+    --pv-bg:#f5f2ec;
+    --pv-card:#ffffff;
+    --pv-text:#1f2426;
+    --pv-muted:#6b7278;
+    --pv-line:#e5dfd4;
+    --pv-green:#1e3a2e;
+    --pv-green-2:#2c5341;
+    --pv-accent:#d04d1a;
+  }
+  body{background:var(--pv-bg);color:var(--pv-text);}
+  .pv-wrap{max-width:1160px;margin:0 auto;padding:28px 20px 56px;}
+  .pv-head{margin-bottom:18px;}
+  .pv-title{font-size:clamp(1.35rem,2.2vw,2rem);margin:0 0 .4rem;color:var(--pv-green);}
+  .pv-sub{color:var(--pv-muted);margin:0;}
+  .pv-chip-row{display:flex;gap:.55rem;flex-wrap:wrap;margin:20px 0 24px;}
+  .pv-chip{
+    border:1px solid var(--pv-line);
+    background:#fff;
+    color:var(--pv-green);
+    padding:.48rem .9rem;
+    border-radius:999px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .pv-chip.is-active{background:var(--pv-green);color:#fff;border-color:var(--pv-green);}
+  .pv-panel{display:none;background:var(--pv-card);border:1px solid var(--pv-line);border-radius:16px;padding:18px;}
+  .pv-panel.is-active{display:block;}
+
+  .pv-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:900px){.pv-grid-2{grid-template-columns:1fr;}}
+
+  .pv-box{border:1px solid var(--pv-line);border-radius:14px;padding:14px;background:#fff;}
+  .pv-h3{margin:0 0 10px;font-size:1.05rem;color:var(--pv-green);}
+
+  .pv-list{display:flex;flex-direction:column;gap:8px;}
+  .pv-row{
+    display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;
+    border:1px solid var(--pv-line);padding:9px 10px;border-radius:10px;cursor:pointer;
+  }
+  .pv-row:hover{border-color:#cfc6b7;}
+  .pv-row.is-active{border-color:var(--pv-green);background:#f8fbf9;}
+  .pv-row b{font-size:.92rem;}
+  .pv-row span{font-size:.84rem;color:var(--pv-muted);}
+  .pv-pct{font-weight:700;color:var(--pv-green);}
+
+  .pv-bars{display:flex;flex-direction:column;gap:10px;}
+  .pv-bar-line{display:grid;grid-template-columns:135px 1fr 44px;gap:10px;align-items:center;}
+  .pv-bar-label{font-size:.85rem;color:var(--pv-text);}
+  .pv-bar-track{height:12px;background:#edf0ee;border-radius:999px;overflow:hidden;}
+  .pv-bar-fill{height:100%;background:linear-gradient(90deg,var(--pv-green),var(--pv-green-2));width:0;transition:width .45s ease;}
+  .pv-bar-val{font-size:.8rem;font-weight:700;color:var(--pv-green);text-align:right;}
+
+  .pv-type-switch{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+  .pv-type-btn{
+    border:1px solid var(--pv-line);background:#fff;padding:.32rem .65rem;border-radius:999px;
+    font-size:.78rem;font-weight:600;cursor:pointer;color:var(--pv-green);
+  }
+  .pv-type-btn.is-active{background:var(--pv-green);color:#fff;border-color:var(--pv-green);}
+
+  .pv-cards{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px;}
+  @media(max-width:900px){.pv-cards{grid-template-columns:repeat(2,minmax(120px,1fr));}}
+  .pv-card{
+    border:1px solid var(--pv-line);border-radius:12px;padding:10px;background:#fff;
+  }
+  .pv-card h4{font-size:.82rem;margin:0 0 .35rem;color:var(--pv-muted);}
+  .pv-card .v{font-size:1.35rem;font-weight:800;color:var(--pv-green);margin-bottom:7px;}
+  .pv-mini-track{height:7px;background:#f0f2f1;border-radius:999px;overflow:hidden;}
+  .pv-mini-fill{height:100%;background:linear-gradient(90deg,var(--pv-accent),#e8784a);width:0;transition:width .45s ease;}
+
+  .pv-table{width:100%;border-collapse:separate;border-spacing:0 8px;}
+  .pv-table td,.pv-table th{font-size:.86rem;padding:10px 12px;}
+  .pv-table th{color:var(--pv-muted);text-align:left;}
+  .pv-table tr{background:#fff;}
+  .pv-table tbody tr td{border-top:1px solid var(--pv-line);border-bottom:1px solid var(--pv-line);}
+  .pv-table tbody tr td:first-child{border-left:1px solid var(--pv-line);border-radius:10px 0 0 10px;}
+  .pv-table tbody tr td:last-child{border-right:1px solid var(--pv-line);border-radius:0 10px 10px 0;}
+  .pv-tag{
+    display:inline-flex;align-items:center;gap:6px;border:1px solid #dbe7df;background:#f7fbf8;
+    color:var(--pv-green);padding:3px 8px;border-radius:999px;font-size:.75rem;font-weight:700;
+  }
+  .pv-dot{width:8px;height:8px;border-radius:50%;background:var(--pv-green);}
+  .pv-note{margin-top:10px;color:var(--pv-muted);font-size:.82rem;}
+</style>
+</head>
+<body>
+  <main class="pv-wrap">
+    <div class="pv-head">
+      <h1 class="pv-title">Preview: “Ko biežāk izvēlas klienti”</h1>
+      <p class="pv-sub">Šī ir dizaina smilškaste. Te testējam variantus pirms ievietošanas lapās <code>lv/moskitu-tikli*.html</code>.</p>
+    </div>
+
+    <div class="pv-chip-row" id="variantSwitch">
+      <button class="pv-chip is-active" data-variant="a">Variants A — Clean Compare</button>
+      <button class="pv-chip" data-variant="b">Variants B — Segment Cards</button>
+      <button class="pv-chip" data-variant="c">Variants C — Insight Table</button>
+    </div>
+
+    <section class="pv-panel is-active" id="panel-a">
+      <div class="pv-grid-2">
+        <div class="pv-box">
+          <h3 class="pv-h3">Konstrukcijas veids</h3>
+          <div class="pv-list" id="a-construction"></div>
+        </div>
+        <div class="pv-box">
+          <h3 class="pv-h3" id="a-title">Auduma izvēle: vispārējā statistika</h3>
+          <div class="pv-bars" id="a-bars"></div>
+          <p class="pv-note">Nospied uz konstrukcijas kreisajā pusē, lai redzētu tieši tās audumu sadalījumu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pv-panel" id="panel-b">
+      <div class="pv-box">
+        <h3 class="pv-h3">Auduma popularitāte kartiņās</h3>
+        <div class="pv-type-switch" id="b-switch"></div>
+        <div class="pv-cards" id="b-cards"></div>
+      </div>
+    </section>
+
+    <section class="pv-panel" id="panel-c">
+      <div class="pv-box">
+        <h3 class="pv-h3">Kopsavilkums pa konstrukcijām</h3>
+        <table class="pv-table" id="c-table">
+          <thead>
+            <tr>
+              <th>Konstrukcija</th>
+              <th>Pieprasījums</th>
+              <th>Top audums</th>
+              <th>2. vieta</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="pv-note">Labs variants, ja vajag “nopietnāku” un kompaktāku biznesa vizuālo valodu.</p>
+      </div>
+    </section>
+  </main>
+
+<script>
+(function(){
+  var CONSTRUCTION = [
+    { key:'ramju',   label:'Rāmju tīkli',   pct:36 },
+    { key:'plise',   label:'Plisē tīkli',   pct:34 },
+    { key:'rullu',   label:'Rullu tīkli',   pct:14 },
+    { key:'durvju',  label:'Durvju tīkli',  pct:10 },
+    { key:'bidamie', label:'Bīdāmie tīkli', pct:6  }
+  ];
+  var MESH_ORDER = ['standarta','petscreen','antialerg','neredzamais','metala'];
+  var MESH_LABEL = {
+    standarta:'Standarta',
+    petscreen:'PetScreen',
+    antialerg:'Antiallergēns',
+    neredzamais:'Neredzamais',
+    metala:'Metāla'
+  };
+  var MESH_BY_TYPE = {
+    ramju:   { standarta:33, petscreen:36, antialerg:11, neredzamais:4,  metala:16 },
+    plise:   { standarta:58, petscreen:42, antialerg:0,  neredzamais:0,  metala:0  },
+    rullu:   { standarta:100,petscreen:0,  antialerg:0,  neredzamais:0,  metala:0  },
+    durvju:  { standarta:52, petscreen:30, antialerg:7,  neredzamais:6,  metala:5  },
+    bidamie: { standarta:82, petscreen:9,  antialerg:9,  neredzamais:0,  metala:0  }
+  };
+  var DEFAULTS = { standarta:46, petscreen:34, antialerg:11, neredzamais:6, metala:3 };
+
+  var state = { activeType:null, bType:'plise' };
+
+  function topTwo(obj){
+    var arr = MESH_ORDER.map(function(k){ return {k:k,v:obj[k]||0}; });
+    arr.sort(function(a,b){ return b.v-a.v; });
+    return [arr[0], arr[1]];
+  }
+
+  function renderVariantA(){
+    var l = document.getElementById('a-construction');
+    var b = document.getElementById('a-bars');
+    var title = document.getElementById('a-title');
+    l.innerHTML = '';
+    b.innerHTML = '';
+
+    CONSTRUCTION.forEach(function(item){
+      var row = document.createElement('button');
+      row.className = 'pv-row' + (state.activeType === item.key ? ' is-active' : '');
+      row.innerHTML =
+        '<div><b>'+item.label+'</b><br><span>Konstrukcijas pieprasījums</span></div>' +
+        '<div class="pv-pct">'+item.pct+'%</div>';
+      row.addEventListener('click', function(){
+        state.activeType = state.activeType === item.key ? null : item.key;
+        renderVariantA();
+      });
+      l.appendChild(row);
+    });
+
+    var data = state.activeType ? MESH_BY_TYPE[state.activeType] : DEFAULTS;
+    title.textContent = state.activeType
+      ? ('Auduma izvēle: ' + CONSTRUCTION.find(function(x){return x.key===state.activeType;}).label)
+      : 'Auduma izvēle: vispārējā statistika';
+
+    MESH_ORDER.forEach(function(k){
+      var val = data[k] || 0;
+      var line = document.createElement('div');
+      line.className = 'pv-bar-line';
+      line.innerHTML =
+        '<div class="pv-bar-label">'+MESH_LABEL[k]+'</div>' +
+        '<div class="pv-bar-track"><div class="pv-bar-fill"></div></div>' +
+        '<div class="pv-bar-val">'+val+'%</div>';
+      b.appendChild(line);
+      requestAnimationFrame(function(){
+        line.querySelector('.pv-bar-fill').style.width = val + '%';
+      });
+    });
+  }
+
+  function renderVariantB(){
+    var sw = document.getElementById('b-switch');
+    var cards = document.getElementById('b-cards');
+    sw.innerHTML = '';
+    cards.innerHTML = '';
+
+    var allBtn = document.createElement('button');
+    allBtn.className = 'pv-type-btn' + (state.bType === 'all' ? ' is-active' : '');
+    allBtn.textContent = 'Vispārējais';
+    allBtn.addEventListener('click', function(){ state.bType = 'all'; renderVariantB(); });
+    sw.appendChild(allBtn);
+
+    CONSTRUCTION.forEach(function(item){
+      var btn = document.createElement('button');
+      btn.className = 'pv-type-btn' + (state.bType === item.key ? ' is-active' : '');
+      btn.textContent = item.label;
+      btn.addEventListener('click', function(){ state.bType = item.key; renderVariantB(); });
+      sw.appendChild(btn);
+    });
+
+    var data = state.bType === 'all' ? DEFAULTS : MESH_BY_TYPE[state.bType];
+    MESH_ORDER.forEach(function(k){
+      var val = data[k] || 0;
+      var card = document.createElement('div');
+      card.className = 'pv-card';
+      card.innerHTML =
+        '<h4>'+MESH_LABEL[k]+'</h4>' +
+        '<div class="v">'+val+'%</div>' +
+        '<div class="pv-mini-track"><div class="pv-mini-fill"></div></div>';
+      cards.appendChild(card);
+      requestAnimationFrame(function(){
+        card.querySelector('.pv-mini-fill').style.width = val + '%';
+      });
+    });
+  }
+
+  function renderVariantC(){
+    var tbody = document.querySelector('#c-table tbody');
+    tbody.innerHTML = '';
+    CONSTRUCTION.forEach(function(item){
+      var tt = topTwo(MESH_BY_TYPE[item.key]);
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td><strong>'+item.label+'</strong></td>' +
+        '<td>'+item.pct+'%</td>' +
+        '<td><span class="pv-tag"><span class="pv-dot"></span>'+MESH_LABEL[tt[0].k]+' ('+tt[0].v+'%)</span></td>' +
+        '<td>'+MESH_LABEL[tt[1].k]+' ('+tt[1].v+'%)</td>';
+      tbody.appendChild(tr);
+    });
+  }
+
+  function initVariantSwitch(){
+    var chips = Array.prototype.slice.call(document.querySelectorAll('#variantSwitch .pv-chip'));
+    chips.forEach(function(ch){
+      ch.addEventListener('click', function(){
+        chips.forEach(function(x){x.classList.remove('is-active');});
+        ch.classList.add('is-active');
+        var v = ch.getAttribute('data-variant');
+        document.querySelectorAll('.pv-panel').forEach(function(p){ p.classList.remove('is-active'); });
+        document.getElementById('panel-' + v).classList.add('is-active');
+      });
+    });
+  }
+
+  initVariantSwitch();
+  renderVariantA();
+  renderVariantB();
+  renderVariantC();
+})();
+</script>
+</body>
+</html>
