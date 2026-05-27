@@ -580,6 +580,11 @@
 .mesh-more-btn{width:100%;padding:.5rem 0;border:1.5px solid var(--primary);background:transparent;color:var(--primary);border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s,color .15s;}
 .mesh-tap-hint{display:block;font-size:.78rem;font-weight:600;color:var(--primary);margin-top:auto;align-self:flex-start;}
 @media(max-width:900px){
+  #tikla-veidi > .container,
+  #popularitate > .container{
+    padding-left:.75rem;
+    padding-right:.75rem;
+  }
   .mesh-type-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;}
   .mesh-card{width:100%;max-width:none;}
   .mesh-card-img{height:100px;}
@@ -676,6 +681,11 @@
 .choice-card.is-top{border-color:rgba(208,77,26,.45);box-shadow:0 5px 16px rgba(208,77,26,.12);}
 .choice-card.is-zero{opacity:.52;}
 .choice-note{margin:.92rem 0 0;color:var(--muted);font-size:.79rem;text-align:center;}
+.mesh-card-percent{display:none;}
+@media(max-width:900px){
+  .choice-cards-wrap--linked{display:none;}
+  .mesh-card-percent{display:block;margin-top:.55rem;width:100% !important;max-width:none !important;}
+}
 </style>
 
 <script>
@@ -1251,6 +1261,62 @@ window.MESH_DATA = MESH_DATA;
     </a>
   </div>
 </div>
+
+<script>
+(function(){
+  var meshCards = document.querySelectorAll('.mesh-type-grid .mesh-card');
+  var choiceCards = document.querySelectorAll('.choice-cards-grid .choice-card');
+  if(!meshCards.length || !choiceCards.length) return;
+
+  function syncMobilePercentCards(){
+    for(var i=0;i<meshCards.length;i++){
+      var mesh = meshCards[i];
+      var src = choiceCards[i];
+      if(!src) continue;
+
+      var target = mesh.querySelector('.mesh-card-percent');
+      if(!target){
+        target = src.cloneNode(true);
+        target.classList.add('mesh-card-percent');
+        target.removeAttribute('data-mesh');
+        mesh.appendChild(target);
+      }
+
+      var srcTitle = src.querySelector('h3');
+      var tgtTitle = target.querySelector('h3');
+      if(srcTitle && tgtTitle) tgtTitle.textContent = srcTitle.textContent;
+
+      var srcVal = src.querySelector('.choice-card-val');
+      var tgtVal = target.querySelector('.choice-card-val');
+      if(srcVal && tgtVal) tgtVal.textContent = srcVal.textContent;
+
+      var srcFill = src.querySelector('.choice-mini-fill');
+      var tgtFill = target.querySelector('.choice-mini-fill');
+      if(srcFill && tgtFill){
+        tgtFill.style.width = srcFill.style.width;
+        var pct = srcFill.style.getPropertyValue('--pct');
+        if(pct) tgtFill.style.setProperty('--pct', pct);
+      }
+
+      target.classList.toggle('is-zero', src.classList.contains('is-zero'));
+      target.classList.toggle('is-top', src.classList.contains('is-top'));
+    }
+  }
+
+  syncMobilePercentCards();
+
+  var observer = new MutationObserver(syncMobilePercentCards);
+  choiceCards.forEach(function(card){
+    observer.observe(card, {
+      subtree:true,
+      childList:true,
+      characterData:true,
+      attributes:true,
+      attributeFilter:['class','style']
+    });
+  });
+})();
+</script>
 
 
 </body>
