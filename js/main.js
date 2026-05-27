@@ -620,7 +620,7 @@ document.addEventListener('DOMContentLoaded', function () {
       'moskitu-tikli.html':'pakalpojumi','moskitu-tikli-rama.html':'pakalpojumi',
       'moskitu-tikli-rullu.html':'pakalpojumi','moskitu-tikli-plise.html':'pakalpojumi',
       'moskitu-tikli-durvis.html':'pakalpojumi','moskitu-tikli-slidamie.html':'pakalpojumi',
-      'moskitu-tikli-magnetiskie.html':'pakalpojumi','kalkulators.html':'pakalpojumi',
+      'moskitu-tikli-magnetiskie.html':'pakalpojumi',
       'zaluzijas.html':'pakalpojumi','zaluzijas-kasesu.html':'pakalpojumi',
       'zaluzijas-rullu.html':'pakalpojumi','zaluzijas-plise.html':'pakalpojumi',
       'zaluzijas-vertikalas.html':'pakalpojumi','zaluzijas-horizontalas.html':'pakalpojumi',
