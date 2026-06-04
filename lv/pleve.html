@@ -348,7 +348,7 @@
 .fa-text,.fa-accordion{transition:opacity .45s ease,transform .45s ease;}
 .fa-wrap.detail-open .fa-text,
 .fa-wrap.detail-open .fa-accordion{opacity:0;transform:translateX(-14px);pointer-events:none;}
-.fa-detail{position:absolute;inset:0;display:flex;gap:3.2rem;align-items:stretch;opacity:0;visibility:hidden;transition:opacity .5s ease,visibility 0s linear .5s;z-index:5;}
+.fa-detail{position:absolute;inset:0;display:flex;gap:3.2rem;align-items:stretch;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .5s ease,visibility 0s linear .5s;z-index:5;}
 .fa-wrap.detail-open .fa-detail{opacity:1;visibility:visible;transition:opacity .5s ease,visibility 0s;}
 .fa-detail-img{position:relative;width:46%;flex-shrink:0;border-radius:16px;overflow:hidden;box-shadow:0 16px 40px rgba(13,31,23,.24);transform:translateX(70px);opacity:.25;transition:transform .6s cubic-bezier(.22,1,.36,1) .05s,opacity .55s ease .05s;}
 .fa-wrap.detail-open .fa-detail-img{transform:none;opacity:1;}
