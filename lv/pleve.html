@@ -375,9 +375,12 @@
   .fa-accordion{width:60%;}
 }
 @media(max-width:560px){
-  .fa-accordion{height:360px;gap:8px;}
-  .fa-panel{min-width:42px;border-radius:12px;}
-  .fa-vert{font-size:.82rem;bottom:70px;}
+  .fa-wrap{padding:0 12px;}
+  .fa-accordion{height:360px;gap:6px;}
+  .fa-panel{flex:0 0 32px;min-width:0;border-radius:12px;}
+  .fa-panel.active{flex:1 1 auto;}
+  .fa-vert{font-size:.82rem;bottom:66px;}
+  .fa-info{left:16px;right:16px;}
   .fa-info h3{font-size:1.1rem;}
 }
 @media(prefers-reduced-motion:reduce){
