@@ -45,5 +45,20 @@ window.GAL_DURVJU_REMONTS_PHOTOS = [
     "src": "IMG_8068.JPG",
     "alt": "Durvju remonts dzīvoklī Rīgā — iekštelpu durvju eņģu regulēšana un eļļošana, SIA Logu Apkope",
     "title": "Iekštelpu durvju remonts Rīgā — eņģes, slēdzenes, rokturi, aizvēršanas mehānismi, SIA Logu Apkope"
+  },
+  {
+    "src": "durvis.PNG",
+    "alt": "Durvju remonta darbi Rīgā — PVC balkona durvju pārbaude un regulēšana pēc sezonas, SIA Logu Apkope",
+    "title": "Durvju remonts Rīgā — regulēšana, furnitūras maiņa, blīvgumijas, hermētiska aizvēršana, SIA Logu Apkope"
+  },
+  {
+    "src": "durvju_remonts.jpg",
+    "alt": "Durvju remonts Rīgā — meistars veic durvju eņģu un slēdzenes iestatīšanu, SIA Logu Apkope",
+    "title": "Profesionāls durvju remonts Rīgā — balkona, ārdurvju un iekštelpu durvju apkope, SIA Logu Apkope"
+  },
+  {
+    "src": "durvju_rokturis.PNG",
+    "alt": "Durvju roktura maiņa Rīgā — jauns rokturis uzstādīts, durvis darbojas nevainojami, SIA Logu Apkope",
+    "title": "Durvju rokturu maiņa Rīgā — dažādi roktura veidi un apdares, ātrs uzstādīšanas darbs, SIA Logu Apkope"
   }
 ];

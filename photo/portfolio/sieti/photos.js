@@ -105,5 +105,55 @@ window.GAL_SIETI_PHOTOS = [
     "src": "IMG_5843 3.JPG",
     "alt": "Gatavs moskītu tīkls pēc uzstādīšanas Rīgā — logs pilnībā aizsargāts, tīrs un kvalitatīvs izskats, SIA Logu Apkope",
     "title": "Moskītu tīklu uzstādīšana Rīgā un Latvijā — ražošana 1–3 dienās, montāža tajā pašā dienā, SIA Logu Apkope"
+  },
+  {
+    "src": "plisse5.jpg",
+    "alt": "Plisē harmonika moskītu tīkls uzstādīts balkona logam Rīgā — salokāms mehānisms, alumīnija profils, SIA Logu Apkope",
+    "title": "Plisē moskītu tīkli balkona logiem Rīgā — horizontāla un vertikāla atvēršana, elegants dizains, SIA Logu Apkope"
+  },
+  {
+    "src": "plisse6.jpg",
+    "alt": "Plisē moskītu tīkla montāža logam Rīgā — precīza iestatīšana sliedēs, balts alumīnija rāmis, SIA Logu Apkope",
+    "title": "Plisē tīklu uzstādīšana Rīgā — piemērots dažāda izmēra logiem un balkona durvīm, SIA Logu Apkope"
+  },
+  {
+    "src": "plisse7.jpg",
+    "alt": "Plisē harmonika tīkls atvērtā stāvoklī Rīgā — redzams salokāmais mehānisms un auduma krokojums, SIA Logu Apkope",
+    "title": "Plisē moskītu tīkli Rīgā — kompakts un elegants risinājums jebkuram logam, SIA Logu Apkope"
+  },
+  {
+    "src": "plisse11.jpg",
+    "alt": "Plisē moskītu tīkls pēc uzstādīšanas Rīgā — logs aizsargāts no insektiem, hermētiski noslēgts, SIA Logu Apkope",
+    "title": "Plisē tīklu montāža Rīgā — ātrs un kvalitatīvs darbs, garantija 2 gadi, SIA Logu Apkope"
+  },
+  {
+    "src": "plisse12.jpg",
+    "alt": "Plisē harmonika tīkls balkona durvīm Rīgā — atveras no abām pusēm, balts rāmis, SIA Logu Apkope",
+    "title": "Balkona durvju plisē tīkli Rīgā — divpusēja atvēršana, kompakts izskats, SIA Logu Apkope"
+  },
+  {
+    "src": "plisse13.jpg",
+    "alt": "Plisē moskītu tīkla sliedu sistēma — alumīnija profils un auduma krokojums, SIA Logu Apkope Rīgā",
+    "title": "Plisē tīkla sliedu sistēma Rīgā — alumīnija profils, gluds darbības mehānisms, SIA Logu Apkope"
+  },
+  {
+    "src": "plisse14.PNG",
+    "alt": "Plisē harmonika moskītu tīkls uzstādīts logos Rīgā — augstas kvalitātes audums, gaismas caurlaidība, SIA Logu Apkope",
+    "title": "Plisē tīklu uzstādīšana Rīgā — dažādi auduma veidi, piemērots alerģiķiem, SIA Logu Apkope"
+  },
+  {
+    "src": "plisse15.jpg",
+    "alt": "Gatavs plisē moskītu tīkls pēc montāžas Rīgā — tīrs un elegants izskats, SIA Logu Apkope",
+    "title": "Plisē moskītu tīkli — uzstādīšana Rīgā un Pierīgā, garantija 2 gadi, SIA Logu Apkope"
+  },
+  {
+    "src": "plisse_logiem3.jpg",
+    "alt": "Plisē moskītu tīkls uzstādīts logam Rīgā — piemērots PVC un koka logiem, precīzi izmēri, SIA Logu Apkope",
+    "title": "Plisē tīkli logu aizsardzībai Rīgā — individuāla izgatavošana pēc loga izmēriem, SIA Logu Apkope"
+  },
+  {
+    "src": "ramis_siete4.PNG",
+    "alt": "Rāmju moskītu tīkls uzstādīts logam Rīgā — alumīnija rāmis, standarta fiberglass audums, SIA Logu Apkope",
+    "title": "Rāmju moskītu tīklu uzstādīšana Rīgā — individuāla izgatavošana pēc loga izmēriem, SIA Logu Apkope"
   }
 ];

@@ -50,5 +50,20 @@ window.GAL_LOGU_REMONTS_PHOTOS = [
     "src": "fur_maina_2.jpg",
     "alt": "Jauna logu furnitūra uzstādīta Rīgā — jauns rokturis un slēdzene, logi darbojas nevainojami, SIA Logu Apkope",
     "title": "Logu furnitūras uzstādīšana Rīgā — Roto, Siegenia, Maco un citu ražotāju furnitūra, SIA Logu Apkope"
+  },
+  {
+    "src": "siltinasana.jpg",
+    "alt": "Logu siltināšana Rīgā — siltumizolācijas materiāla uzklāšana logu rāmim, caurvēja novēršana, SIA Logu Apkope",
+    "title": "Logu siltināšana Rīgā — blīvgumijas, silikons, siltumizolācijas lente, enerģijas taupīšana, SIA Logu Apkope"
+  },
+  {
+    "src": "blivgumija_11.PNG",
+    "alt": "Logu blīvgumijas maiņa Rīgā — jauna EPDM gumija uzstādīta PVC loga rievā, SIA Logu Apkope",
+    "title": "Blīvgumiju maiņa logos Rīgā — caurvēja novēršana, siltuma saglabāšana, garantija 2 gadi, SIA Logu Apkope"
+  },
+  {
+    "src": "logu_remonts_24.PNG",
+    "alt": "Logu remonts Rīgā — PVC loga furnitūras regulēšana un pārbaude pēc ziemas sezonas, SIA Logu Apkope",
+    "title": "Logu remonta pakalpojumi Rīgā — regulēšana, furnitūra, blīvgumijas, stikla paketes, SIA Logu Apkope"
   }
 ];

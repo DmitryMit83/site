@@ -110,5 +110,10 @@ window.GAL_STIKLA_PHOTOS = [
     "src": "IMG_8331-2.jpg",
     "alt": "Panorāmas loga stikla paketes nomaiņa Rīgā — liela izmēra pakete, precīza montāža, SIA Logu Apkope",
     "title": "Lielu logu stikla pakešu nomaiņa Rīgā — panorāmas logi, jumta logi, speciālie izmēri, SIA Logu Apkope"
+  },
+  {
+    "src": "mansarda_stikls.jpg",
+    "alt": "Mansardas loga stikla paketes maiņa Rīgā — slīps jumta logs ar jaunu termopaket, siltumizolācija, SIA Logu Apkope",
+    "title": "Mansardas logu stikla paketes Rīgā — speciālas paketes slīpiem un jumta logiem, garantija, SIA Logu Apkope"
   }
 ];
