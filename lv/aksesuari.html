@@ -246,109 +246,299 @@
 </header>
 <main>
 
-<!-- ── Page hero ─────────────────────────────────────────────── -->
+<div class="hero-unified">
+  <picture>
+    <source media="(max-width:800px)" srcset="../photo/aksesuari/aksesuari.jpg">
+    <img class="svc-hero-img"
+         src="../photo/aksesuari/aksesuari.jpg"
+         alt="Logu un durvju aksesuāri — rokturi, eņģes, starplikas un citi piederumi Rīgā | SIA Logu Apkope"
+         width="1400" height="800"
+         loading="eager"
+         fetchpriority="high">
+  </picture>
+  <div class="svc-hero-grad"></div>
+
 <section class="page-hero">
   <div class="container">
+    <div class="page-hero-text">
+    <a href="index.html" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;">← Atpakaļ uz sākumu</a>
     <span class="eyebrow">Mūsu pakalpojumi</span>
+    </div>
     <h1>Logu un durvju aksesuāri</h1>
     <p>Kvalitatīvi piederumi logu un durvju funkcionēšanas uzlabošanai — rokturi, eņģes, starplikas, tapas un citi aksesuāri. Profesionāla uzstādīšana un konsultācija.</p>
     <a class="btn btn-outline-dark" href="kontakti.html">Pieteikties konsultācijai</a>
   </div>
 </section>
+<!-- Pakalpojuma apraksts — hero banner stils -->
+<div class="svc-hero-outer">
+  <div class="svc-hero">
+    <div class="svc-hero-inner">
+    <div class="svc-hero-body">
+      <h2>Kvalitatīvi logu un durvju piederumi</h2>
+      <ul class="svc-hero-list">
+        <li>Oriģinālas detaļas no vadošajiem ražotājiem — Roto, Siegenia, Maco u.c.</li>
+        <li>Rokturi, eņģes, slēdzenes, starplikas un tapas</li>
+        <li>Bērnu drošības aksesuāri un logu ierobežotāji</li>
+        <li>Komplekts — aksesuārs un profesionāla montāža vienā cenā</li>
+        <li>Standarta aksesuāri pieejami 1–3 darba dienās</li>
+        <li>Rakstiska garantija 2 gadi visiem montētajiem piederumiem</li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
 
-<!-- ── Intro / USP strip ──────────────────────────────────────── -->
-<section style="background:var(--green-light,#f3faf4);padding:2.5rem 0;">
+</div><!-- /.hero-unified -->
+<script>
+(function(){
+  var hero = document.querySelector('.svc-hero');
+  if(hero){
+    var heroTriggered = false;
+    function triggerHero(){
+      if(heroTriggered) return;
+      heroTriggered = true;
+      hero.classList.add('is-visible');
+    }
+    var pageHeroBtn = document.querySelector('.hero-unified .page-hero .btn');
+    if(pageHeroBtn){
+      pageHeroBtn.addEventListener('animationend', triggerHero, {once: true});
+    }
+    setTimeout(triggerHero, 1500);
+  }
+})();
+</script>
+
+<!-- ── Shop catalog ────────────────────────────────────────────── -->
+<style>
+#katalogs{background:#f7f7f7;}
+.skat-filter{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;background:#fff;border-radius:14px;padding:1rem 1.4rem;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:2rem;}
+.skat-search-wrap{position:relative;flex:1;min-width:180px;max-width:320px;}
+.skat-search-icon{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:#aaa;fill:none;pointer-events:none;}
+.skat-search{width:100%;padding:.52rem .9rem .52rem 2.2rem;border:1.5px solid #e5e5e5;border-radius:8px;font-size:.88rem;font-family:inherit;outline:none;transition:border-color .2s;box-sizing:border-box;}
+.skat-search:focus{border-color:#2d6a4f;}
+.skat-brands{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;}
+.skat-brand{padding:.32rem .85rem;border:1.5px solid #ddd;border-radius:20px;background:#fff;font-size:.8rem;font-family:inherit;cursor:pointer;transition:all .18s;white-space:nowrap;}
+.skat-brand:hover{border-color:#2d6a4f;color:#2d6a4f;}
+.skat-brand.is-active{background:#2d6a4f;border-color:#2d6a4f;color:#fff;}
+.skat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.skat-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;}
+.skat-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.13);}
+.skat-card-img{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.skat-card-img svg{width:54px;height:54px;}
+.skat-card-body{padding:.75rem .85rem .9rem;display:flex;flex-direction:column;flex:1;}
+.skat-card-brand{font-size:.68rem;color:#aaa;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.18rem;min-height:.9em;}
+.skat-card-name{font-size:.83rem;font-weight:600;line-height:1.35;color:#1a1a1a;flex:1;margin-bottom:.45rem;}
+.skat-card-price{font-size:.98rem;font-weight:700;color:#2d6a4f;margin-bottom:.6rem;}
+.skat-card-btn{width:100%;padding:.42rem;background:transparent;border:1.5px solid #2d6a4f;border-radius:7px;color:#2d6a4f;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .18s;}
+.skat-card-btn:hover{background:#2d6a4f;color:#fff;}
+.skat-more-wrap{text-align:center;margin-top:2rem;}
+#skatEmpty{text-align:center;padding:3rem 1rem;color:#bbb;font-size:.95rem;display:none;}
+#skatEmpty.visible{display:block;}
+/* Modal */
+.skat-modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9000;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .22s;}
+.skat-modal.open{opacity:1;pointer-events:all;}
+.skat-modal-box{background:#fff;border-radius:16px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(14px) scale(.98);transition:transform .22s;}
+.skat-modal.open .skat-modal-box{transform:none;}
+.skat-modal-close{position:absolute;top:.8rem;right:.8rem;width:30px;height:30px;border:none;background:rgba(0,0,0,.12);border-radius:50%;cursor:pointer;font-size:.95rem;line-height:30px;text-align:center;z-index:2;color:#fff;}
+.skat-modal-close:hover{background:rgba(0,0,0,.25);}
+.skat-modal-img{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border-radius:16px 16px 0 0;overflow:hidden;flex-shrink:0;}
+.skat-modal-img svg{width:90px;height:90px;}
+.skat-modal-body{padding:1.3rem 1.5rem 1.7rem;}
+.skat-modal-brand{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#aaa;}
+.skat-modal-title{font-size:1.2rem;font-weight:700;margin:.25rem 0 .35rem;color:#1a1a1a;}
+.skat-modal-price{font-size:1.3rem;font-weight:700;color:#2d6a4f;margin-bottom:.85rem;}
+.skat-modal-desc{color:#555;line-height:1.65;margin-bottom:.9rem;font-size:.91rem;}
+.skat-modal-features{list-style:none;padding:0;margin:0 0 1.2rem;display:grid;gap:.38rem;}
+.skat-modal-features li{display:flex;gap:.45rem;font-size:.87rem;color:#444;line-height:1.4;}
+.skat-modal-features li::before{content:"✓";color:#2d6a4f;font-weight:700;flex-shrink:0;}
+@media(max-width:1024px){.skat-grid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:768px){.skat-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:520px){.skat-grid{grid-template-columns:repeat(2,1fr);}.skat-search-wrap{max-width:100%;min-width:100%;}.skat-filter{gap:.7rem;}}
+</style>
+
+<section id="katalogs" style="padding:3rem 0;">
   <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center;">
-      <div>
-        <div style="font-size:2rem;margin-bottom:.4rem;">🔩</div>
-        <strong>Oriģinālās detaļas</strong>
-        <p style="margin:.3rem 0 0;font-size:.9rem;color:#555;">Piegādājam sertificētus aksesuārus no vadošajiem ražotājiem.</p>
+    <div class="section-head">
+      <span class="eyebrow">Katalogs</span>
+      <h2>Aksesuāru katalogs</h2>
+      <p>Pilns piederumu klāsts PVC, koka un alumīnija logiem un durvīm.</p>
+    </div>
+    <!-- Filter bar -->
+    <div class="skat-filter">
+      <div class="skat-search-wrap">
+        <svg class="skat-search-icon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="skatSearch" class="skat-search" placeholder="Meklēt pēc nosaukuma…" autocomplete="off">
       </div>
-      <div>
-        <div style="font-size:2rem;margin-bottom:.4rem;">🚀</div>
-        <strong>Ātra piegāde</strong>
-        <p style="margin:.3rem 0 0;font-size:.9rem;color:#555;">Standarta aksesuāri pieejami 1–3 darba dienās.</p>
+      <div class="skat-brands" id="skatBrands">
+        <button class="skat-brand is-active" data-brand="">Visi</button>
+        <button class="skat-brand" data-brand="Roto">Roto</button>
+        <button class="skat-brand" data-brand="Siegenia">Siegenia</button>
+        <button class="skat-brand" data-brand="Maco">Maco</button>
+        <button class="skat-brand" data-brand="Winkhaus">Winkhaus</button>
+        <button class="skat-brand" data-brand="Soudal">Soudal</button>
+        <button class="skat-brand" data-brand="Deventer">Deventer</button>
       </div>
-      <div>
-        <div style="font-size:2rem;margin-bottom:.4rem;">🛠️</div>
-        <strong>Uzstādīšana iekļauta</strong>
-        <p style="margin:.3rem 0 0;font-size:.9rem;color:#555;">Komplekts — aksesuārs un profesionāla montāža vienā cenā.</p>
-      </div>
-      <div>
-        <div style="font-size:2rem;margin-bottom:.4rem;">✅</div>
-        <strong>Garantija 2 gadi</strong>
-        <p style="margin:.3rem 0 0;font-size:.9rem;color:#555;">Visiem montētajiem aksesuāriem — rakstiska garantija.</p>
-      </div>
+    </div>
+    <!-- Product grid -->
+    <div class="skat-grid" id="skatGrid"></div>
+    <div id="skatEmpty">Nav atrastu rezultātu. Izmēģiniet citu meklēšanas vārdu.</div>
+    <div class="skat-more-wrap" id="skatMoreWrap" style="display:none;">
+      <button class="btn btn-outline-dark" id="skatMoreBtn">Rādīt vairāk ↓</button>
     </div>
   </div>
 </section>
 
-<!-- ── Accessory categories ───────────────────────────────────── -->
-<section class="container" style="padding-top:3rem;padding-bottom:3rem;">
-  <div class="section-head">
-    <span class="eyebrow">Katalogs</span>
-    <h2>Aksesuāru kategorijas</h2>
-    <p>Pilns piederumu klāsts PVC, koka un alumīnija logiem un durvīm.</p>
+<!-- Product modal -->
+<div class="skat-modal" id="skatModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="skat-modal-box">
+    <button class="skat-modal-close" id="skatModalClose" aria-label="Aizvērt">✕</button>
+    <div class="skat-modal-img" id="skatModalImg"></div>
+    <div class="skat-modal-body">
+      <div class="skat-modal-brand" id="skatModalBrand"></div>
+      <h3 class="skat-modal-title" id="skatModalTitle"></h3>
+      <div class="skat-modal-price" id="skatModalPrice"></div>
+      <p class="skat-modal-desc" id="skatModalDesc"></p>
+      <ul class="skat-modal-features" id="skatModalFeatures"></ul>
+      <a class="btn btn-primary" href="kontakti.html">Pieteikties konsultācijai</a>
+    </div>
   </div>
-  <div class="grid cols-3">
+</div>
 
-    <div class="sub has-img">
-      <div class="sub-img"><img src="https://images.unsplash.com/photo-1558618047-3c0b3b6726a8?w=600&q=80&auto=format&fit=crop" alt="Logu rokturi" loading="lazy"></div>
-      <div class="sub-body">
-        <h3>Rokturi</h3>
-        <p>Ergonomiski un izturīgi rokturi PVC, koka un alumīnija logiem un balkona durvīm. Dažādas krāsas un dizaini.</p>
-        <span class="price-badge">no €8</span>
-      </div>
-    </div>
+<script>
+(function(){
+var ICONS={
+  rokturis:'<svg viewBox="0 0 48 48" fill="none"><rect x="20" y="6" width="8" height="22" rx="4" fill="rgba(255,255,255,.9)"/><rect x="13" y="26" width="22" height="7" rx="3.5" fill="rgba(255,255,255,.7)"/><rect x="22" y="33" width="4" height="11" rx="2" fill="rgba(255,255,255,.9)"/></svg>',
+  enge:'<svg viewBox="0 0 48 48" fill="none"><rect x="8" y="6" width="10" height="36" rx="2" fill="rgba(255,255,255,.9)"/><rect x="30" y="6" width="10" height="36" rx="2" fill="rgba(255,255,255,.9)"/><rect x="18" y="19" width="12" height="10" rx="2" fill="rgba(255,255,255,.55)"/><circle cx="13" cy="13" r="2.5" fill="rgba(255,255,255,.5)"/><circle cx="13" cy="35" r="2.5" fill="rgba(255,255,255,.5)"/><circle cx="35" cy="13" r="2.5" fill="rgba(255,255,255,.5)"/><circle cx="35" cy="35" r="2.5" fill="rgba(255,255,255,.5)"/></svg>',
+  blivgumija:'<svg viewBox="0 0 48 48" fill="none"><rect x="6" y="20" width="36" height="8" rx="4" fill="rgba(255,255,255,.9)"/><rect x="6" y="20" width="36" height="3.5" rx="2" fill="rgba(255,255,255,.35)"/><rect x="10" y="15" width="3" height="5" rx="1.5" fill="rgba(255,255,255,.7)"/><rect x="18" y="15" width="3" height="5" rx="1.5" fill="rgba(255,255,255,.7)"/><rect x="26" y="15" width="3" height="5" rx="1.5" fill="rgba(255,255,255,.7)"/><rect x="34" y="15" width="3" height="5" rx="1.5" fill="rgba(255,255,255,.7)"/></svg>',
+  sledzene:'<svg viewBox="0 0 48 48" fill="none"><path d="M16 22V18a8 8 0 0116 0v4" stroke="rgba(255,255,255,.9)" stroke-width="3" stroke-linecap="round"/><rect x="10" y="22" width="28" height="20" rx="5" fill="rgba(255,255,255,.9)"/><circle cx="24" cy="31" r="3.5" fill="rgba(0,0,0,.22)"/><rect x="22.5" y="31" width="3" height="5" rx="1.5" fill="rgba(0,0,0,.22)"/></svg>',
+  starplikas:'<svg viewBox="0 0 48 48" fill="none"><rect x="7" y="15" width="10" height="18" rx="2" fill="rgba(255,255,255,.9)"/><rect x="20" y="15" width="10" height="18" rx="2" fill="rgba(255,255,255,.7)"/><rect x="33" y="15" width="8" height="18" rx="2" fill="rgba(255,255,255,.9)"/></svg>',
+  hermetikis:'<svg viewBox="0 0 48 48" fill="none"><rect x="16" y="8" width="16" height="26" rx="4" fill="rgba(255,255,255,.9)"/><rect x="21" y="5" width="6" height="6" rx="2" fill="rgba(255,255,255,.7)"/><path d="M19 34 L14 44 H34 L29 34Z" fill="rgba(255,255,255,.65)"/><rect x="22" y="44" width="4" height="3" rx="1" fill="rgba(255,255,255,.5)"/></svg>',
+  drosiba:'<svg viewBox="0 0 48 48" fill="none"><path d="M24 4L42 11v14c0 11-9 19-18 21C9 44 6 35 6 25V11Z" fill="rgba(255,255,255,.9)"/><path d="M17 25l5 5 9-9" stroke="rgba(0,0,0,.28)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  apkope:'<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="7" fill="rgba(255,255,255,.9)"/><rect x="22" y="5" width="4" height="8" rx="2" fill="rgba(255,255,255,.75)"/><rect x="22" y="35" width="4" height="8" rx="2" fill="rgba(255,255,255,.75)"/><rect x="5" y="22" width="8" height="4" rx="2" fill="rgba(255,255,255,.75)"/><rect x="35" y="22" width="8" height="4" rx="2" fill="rgba(255,255,255,.75)"/><rect x="9.5" y="8" width="4" height="8" rx="2" transform="rotate(45 11.5 12)" fill="rgba(255,255,255,.6)"/><rect x="34.5" y="28" width="4" height="8" rx="2" transform="rotate(45 36.5 32)" fill="rgba(255,255,255,.6)"/><rect x="9.5" y="28" width="4" height="8" rx="2" transform="rotate(-45 11.5 32)" fill="rgba(255,255,255,.6)"/><rect x="34.5" y="8" width="4" height="8" rx="2" transform="rotate(-45 36.5 12)" fill="rgba(255,255,255,.6)"/></svg>'
+};
 
-    <div class="sub has-img">
-      <div class="sub-img"><img src="https://images.unsplash.com/photo-1504307651908-5e7d7e5b91fa?w=600&q=80&auto=format&fit=crop" alt="Logu eņģes" loading="lazy"></div>
-      <div class="sub-body">
-        <h3>Eņģes un viras</h3>
-        <p>Regulējamas eņģes atveramo logu un durvju nostiprināšanai. Tērauda un alumīnija izpildījumā, slodze līdz 130 kg.</p>
-        <span class="price-badge">no €12</span>
-      </div>
-    </div>
+var P=[
+  // Rokturi
+  {id:0,name:'Standarta PVC loga rokturis',brand:'',cat:'rokturi',price:'no €8',bg:'#3d6e9c',icon:'rokturis',desc:'Universāls rokturis piemērots lielākajai daļai PVC logu. Piestiprināms ar diviem skrūvjiem ar 43 mm vai 32 mm starpattālumu.',features:['Piemērots PVC, koka un ALU logiem','Pieejams baltā, brūnā un grafīta krāsā','Starpattālums 43 mm vai 32 mm','Uzstādīšana 15–20 minūtēs']},
+  {id:1,name:'Roto Swing rokturis ar bloķēšanu',brand:'Roto',cat:'rokturi',price:'no €22',bg:'#3d6e9c',icon:'rokturis',desc:'Augstas kvalitātes rokturis ar iebūvētu bloķēšanas mehānismu. Novērš nejaušu atvēršanu un nodrošina papildu drošību.',features:['Bloķēšanas mehānisms ar atslēgu','Sertificēts pret ielaušanos (RC2)','Dažādi krāsu varianti','Vācu ražojums — ilgizturība garantēta']},
+  {id:2,name:'Siegenia rokturis ar eņģu slēdzeni',brand:'Siegenia',cat:'rokturi',price:'no €28',bg:'#3d6e9c',icon:'rokturis',desc:'Profesionāls rokturis ar integrētu slēdzeni, kas bloķē loga eņģes. Paaugstināta drošība dzīvokļiem un birojiem.',features:['Integrētā eņģu slēdzene','Piemērots PVC un ALU logiem','Izgatavots no cinktā sakausējuma','Garantija 10 gadi']},
+  {id:3,name:'Bērnu drošības rokturis',brand:'',cat:'rokturi',price:'no €15',bg:'#3d6e9c',icon:'rokturis',desc:'Rokturis ar bērnu drošības mehānismu — bērns nevar atvērt logu bez papildu darbības no pieaugušā puses.',features:['Divpakāpju atvēršanas mehānisms','Piemērots visiem PVC logiem','Viegla uzstādīšana','Ieteicams ģimenēm ar maziem bērniem']},
+  // Eņģes
+  {id:4,name:'Standarta PVC loga eņģe',brand:'',cat:'enges',price:'no €12',bg:'#7b5e3a',icon:'enge',desc:'Universāla eņģe atveramo PVC logu un balkona durvju nostiprināšanai. Regulējama trīs virzienā.',features:['Cinkotais tērauds','Slodze līdz 80 kg','3D regulēšana','Piemērota lielākajai daļai PVC logu']},
+  {id:5,name:'Roto NT eņģe (3D regulēšana)',brand:'Roto',cat:'enges',price:'no €28',bg:'#7b5e3a',icon:'enge',desc:'Premium klases regulējama eņģe ar uzlabotu 3D regulēšanas mehānismu. Nodrošina precīzu loga novietošanu un ilglaicīgu darbību.',features:['Slodze līdz 130 kg','Precīza 3D regulēšana','Korozijizturīgs pārklājums','Vācu ražojums']},
+  {id:6,name:'Maco N-tec eņģe',brand:'Maco',cat:'enges',price:'no €36',bg:'#7b5e3a',icon:'enge',desc:'Premium klases eņģe ar inovatīvu N-tec virsmas apstrādi, kas nodrošina maksimālu izturību pret koroziju — arī jūras klimatā.',features:['N-tec korozijaizsardzība','Slodze līdz 130 kg','Piemērota sāļa gaisa vidēm','Regulēšana bez instrumentiem']},
+  {id:7,name:'Tērauda durvju eņģe (3D)',brand:'',cat:'enges',price:'no €22',bg:'#7b5e3a',icon:'enge',desc:'Izturīga tērauda eņģe balkona un ārējo durvju nomaiņai. Slodze līdz 160 kg, piemērota smagām durvīm.',features:['Nerūsējošais tērauds','Slodze līdz 160 kg','3D regulēšana','Piemērota ALU un PVC durvīm']},
+  // Blīvgumijas
+  {id:8,name:'EPDM blīvgumija logiem',brand:'',cat:'blivgumijas',price:'no €3/m',bg:'#2e6644',icon:'blivgumija',desc:'EPDM gumijas blīvgumija siltuma un trokšņu izolācijai. Piemērota visiem PVC un ALU logu profiliem.',features:['Darba temp. −45°C līdz +120°C','Dažādas šķērsgriezuma formas','Piemērota logiem un durvīm','Pasūtāma pēc vajadzīgā garuma']},
+  {id:9,name:'Silikona blīvgumija',brand:'',cat:'blivgumijas',price:'no €4/m',bg:'#2e6644',icon:'blivgumija',desc:'Silikona blīvgumija ar augstu elastību. Ideāla stikla un rāmja savienojumu hermētizācijai.',features:['Augsta elastība','UV izturīga','Piemērota stikla piestiprināšanai','Vairākās krāsās']},
+  {id:10,name:'Deventer TPE blīvgumija',brand:'Deventer',cat:'blivgumijas',price:'no €6/m',bg:'#2e6644',icon:'blivgumija',desc:'Premium klases TPE blīvgumija no vadošā Vācijas ražotāja. Nodrošina izcilu siltumizolāciju un ilglaicību.',features:['TPE — izturīgāks par EPDM','Piemērota pasīvās mājas logiem','Sertificēts enerģijas taupīšanas standarts','Garantija 15 gadi']},
+  // Slēdzenes
+  {id:11,name:'Standarta loga aizture',brand:'',cat:'sledzenes',price:'no €15',bg:'#3a4a6a',icon:'sledzene',desc:'Vienkārša un uzticama loga aizture, kas novērš nejaušu atvēršanu. Piemērota balkona logu un durvju aizsardzībai.',features:['Cinkotais tērauds','Viegla uzstādīšana','Piemērota PVC un ALU logiem','Pieejama baltā un brūnā krāsā']},
+  {id:12,name:'Maco multi-punktu slēdzene',brand:'Maco',cat:'sledzenes',price:'no €48',bg:'#3a4a6a',icon:'sledzene',desc:'Augstās drošības multi-punktu slēdzene balkona durvīm. Aizslēdz vienlaicīgi vairākos punktos.',features:['3 vai 5 aizslēgšanas punkti','Sertificēts RC2 standarts','Piemērota PVC un ALU durvīm','Viegla apkope']},
+  {id:13,name:'Roto anti-burglar aizture',brand:'Roto',cat:'sledzenes',price:'no €35',bg:'#3a4a6a',icon:'sledzene',desc:'Speciāla pretlaupīšanas aizture no Roto. Nostiprināma uz esošās furnitūras bez pilnīgas nomaiņas.',features:['Sertificēts RC2 aizsardzības standarts','Uzstādāma uz esošās Roto furnitūras','No ārduses neredzama','Atslēgu bloķēšana']},
+  {id:14,name:'Winkhaus durvju slēdzene',brand:'Winkhaus',cat:'sledzenes',price:'no €42',bg:'#3a4a6a',icon:'sledzene',desc:'Uzticama daudzpunktu slēdzene no Vācijas ražotāja Winkhaus. Piemērota PVC un koka balkona durvīm.',features:['Daudzpunktu aizslēgšana','Cilindra maiņa bez instrumentiem','Piemērota esošajām PVC durvīm','Sertificēts drošības standarts']},
+  // Starplikas
+  {id:15,name:'Plastmasas starplikas (komplekts)',brand:'',cat:'starplikas',price:'no €2',bg:'#6a6a7a',icon:'starplikas',desc:'Plastmasas starplikas pareizai stikla paketes novietošanai rāmī. Novērš stikla vibrāciju un nodrošina pareizu ieliktni.',features:['100 gab. komplektā','Biezumi 1–6 mm','Piemērotas visiem stikla pakešu tipiem','UV izturīgs materiāls']},
+  {id:16,name:'Gumijas tapas (komplekts)',brand:'',cat:'starplikas',price:'no €3',bg:'#6a6a7a',icon:'starplikas',desc:'Gumijas tapas trokšņu absorbcijai un stikla paketes fiksēšanai rāmī. Samazina rezonansi un vibrāciju.',features:['50 gab. komplektā','EPDM gumija','Dažādas starplikas formas','Piemērotas PVC un ALU profiliem']},
+  // Hermētiķi
+  {id:17,name:'Silikona hermētiķis (310 ml)',brand:'',cat:'hermetiki',price:'no €7',bg:'#2e7e7e',icon:'hermetikis',desc:'Universāls silikona hermētiķis logu un durvju uzstādīšanai un noblīvēšanai. Izturīgs pret UV un atmosfēras iedarbību.',features:['310 ml kartušs','Pieejams caurspīdīgs, balts un pelēks','Darba temp. −40°C līdz +150°C','Pilnīga adhēzija 24 h laikā']},
+  {id:18,name:'Soudal Fix All (290 ml)',brand:'Soudal',cat:'hermetiki',price:'no €9',bg:'#2e7e7e',icon:'hermetikis',desc:'Profesionāls MS polimēra līmēšanas un blīvēšanas materiāls. Bez izocianāta, drošs darbam iekštelpās.',features:['Piemērots uz mitrām virsmām','Pārklājams un lakojas','Elastīgs pēc cietēšanas','Bez izocianāta — drošs iekštelpās']},
+  {id:19,name:'Soudal montāžas putas (750 ml)',brand:'Soudal',cat:'hermetiki',price:'no €8',bg:'#2e7e7e',icon:'hermetikis',desc:'Profesionālas poliuretāna montāžas putas logu un durvju uzstādīšanai. Pastāvīga ekspansija un augsta siltumizolācija.',features:['750 ml — taupīgāka par 500 ml','Pastāvīga ekspansija (< 10%)','Piemērotas logu montāžas šuvēm','Darba temp. −10°C līdz +35°C']},
+  {id:20,name:'Akrila hermētiķis (310 ml)',brand:'',cat:'hermetiki',price:'no €5',bg:'#2e7e7e',icon:'hermetikis',desc:'Akrila hermētiķis iekštelpu darbu noslēgšanai. Viegli noslaucāms ar ūdeni, labi pielīmējas un pārklājams ar krāsu.',features:['Pārklājams ar krāsu','Viegla uzklāšana','Piemērots iekštelpu šuvēm','Pieejams dažādās krāsās']},
+  // Drošība
+  {id:21,name:'Logu drošības ierobežotājs',brand:'',cat:'drosiba',price:'no €12',bg:'#8a3a3a',icon:'drosiba',desc:'Mehānisks logu ierobežotājs, kas aptur loga atvēršanos noteiktā pozīcijā. Ideāls bērniem un augsti stāvošiem logiem.',features:['Atvēršanas ierobežojums 10–15 cm','Viegla uzstādīšana un atcelšana','Izturīgs polimērs','Piemērots PVC un ALU logiem']},
+  {id:22,name:'Logu drošības tapa (komplekts)',brand:'',cat:'drosiba',price:'no €8',bg:'#8a3a3a',icon:'drosiba',desc:'Papildu drošības tapas loga rāmim, kas novērš loga atvēršanos no ārduses. Uzstādāmas uz esošās furnitūras.',features:['2 gab. komplektā','Cinkotais tērauds','Uzstādīšana bez urbšanas','Piemērota PVC un koka logiem']},
+  // Apkope
+  {id:23,name:'Furnitūras eļļošanas aerosols (200 ml)',brand:'',cat:'apkope',price:'no €6',bg:'#5a4a8a',icon:'apkope',desc:'Speciāls eļļošanas aerosols logu un durvju furnitūras apkopei. Novērš rūsu, samazina berzi un pagarina kalpošanas laiku.',features:['200 ml aerosols','Eņģēm, rokturiem un slēdzenēm','Tievas caurulītes uzgalis','Ieteicams lietot 2× gadā']},
+  {id:24,name:'Logu profila tīrīšanas līdzeklis (500 ml)',brand:'',cat:'apkope',price:'no €5',bg:'#5a4a8a',icon:'apkope',desc:'Speciāls tīrīšanas līdzeklis PVC logu profila atjaunošanai. Noņem dzeltenumu, netīrumus un UV bojājumus.',features:['500 ml pudelē','Iedarbīgs pret dzeltenumu','Nesaskrāpē virsmu','Piemērots visiem PVC profiliem']}
+];
 
-    <div class="sub has-img">
-      <div class="sub-img"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80&auto=format&fit=crop" alt="Logu starplikas" loading="lazy"></div>
-      <div class="sub-body">
-        <h3>Starplikas un tapas</h3>
-        <p>Plastmasas un gumijas starplikas pareizai loga novietošanai rāmī. Novērš skaņas un vibrāciju.</p>
-        <span class="price-badge">no €2</span>
-      </div>
-    </div>
+var INIT_COUNT=20;
+var activeBrand='',searchQuery='',showAll=false;
+var grid=document.getElementById('skatGrid');
+var empty=document.getElementById('skatEmpty');
+var moreWrap=document.getElementById('skatMoreWrap');
+var modal=document.getElementById('skatModal');
 
-    <div class="sub has-img">
-      <div class="sub-img"><img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&q=80&auto=format&fit=crop" alt="Blīvgumijas" loading="lazy"></div>
-      <div class="sub-body">
-        <h3>Blīvgumijas</h3>
-        <p>EPDM un silikona blīvgumijas siltuma un trokšņu izolācijai. Piemērotas visiem loga profiliem.</p>
-        <span class="price-badge">no €3/m</span>
-      </div>
-    </div>
+function getFiltered(){
+  return P.filter(function(p){
+    var bOk=!activeBrand||p.brand===activeBrand;
+    var sOk=!searchQuery||p.name.toLowerCase().includes(searchQuery)||p.brand.toLowerCase().includes(searchQuery);
+    return bOk&&sOk;
+  });
+}
 
-    <div class="sub has-img">
-      <div class="sub-img"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80&auto=format&fit=crop" alt="Slēdzenes un aiztures" loading="lazy"></div>
-      <div class="sub-body">
-        <h3>Slēdzenes un aiztures</h3>
-        <p>Drošas durvju un loga slēdzenes. Multi-punktu slēdzenes paaugstinātai drošībai un pretlaupīšanas aizsardzībai.</p>
-        <span class="price-badge">no €18</span>
-      </div>
-    </div>
+function render(){
+  var f=getFiltered();
+  grid.innerHTML='';
+  empty.classList.toggle('visible',f.length===0);
+  var count=showAll?f.length:Math.min(f.length,INIT_COUNT);
+  for(var i=0;i<count;i++){
+    var p=f[i];
+    var el=document.createElement('div');
+    el.className='skat-card';
+    el.dataset.id=p.id;
+    el.innerHTML='<div class="skat-card-img" style="background:'+p.bg+'">'+ICONS[p.icon]+'</div>'
+      +'<div class="skat-card-body">'
+      +'<div class="skat-card-brand">'+(p.brand||'&nbsp;')+'</div>'
+      +'<div class="skat-card-name">'+p.name+'</div>'
+      +'<div class="skat-card-price">'+p.price+'</div>'
+      +'<button class="skat-card-btn">Uzzināt vairāk</button>'
+      +'</div>';
+    el.querySelector('.skat-card-btn').addEventListener('click',function(e){
+      e.stopPropagation();
+      openModal(+e.currentTarget.closest('.skat-card').dataset.id);
+    });
+    grid.appendChild(el);
+  }
+  moreWrap.style.display=(f.length>INIT_COUNT&&!showAll)?'':'none';
+}
 
-    <div class="sub has-img">
-      <div class="sub-img"><img src="https://images.unsplash.com/photo-1448630564791-3be3781635e4?w=600&q=80&auto=format&fit=crop" alt="Hermētiķi un putas" loading="lazy"></div>
-      <div class="sub-body">
-        <h3>Hermētiķi un montāžas putas</h3>
-        <p>Profesionāli silikona hermētiķi un montāžas putas logu uzstādīšanai un noblīvēšanai. Garantēta ilgizturība.</p>
-        <span class="price-badge">no €5</span>
-      </div>
-    </div>
+function openModal(id){
+  var p=P[id];if(!p)return;
+  var mi=document.getElementById('skatModalImg');
+  mi.style.background=p.bg;
+  mi.innerHTML=ICONS[p.icon];
+  document.getElementById('skatModalBrand').textContent=p.brand||'';
+  document.getElementById('skatModalTitle').textContent=p.name;
+  document.getElementById('skatModalPrice').textContent=p.price;
+  document.getElementById('skatModalDesc').textContent=p.desc;
+  document.getElementById('skatModalFeatures').innerHTML=p.features.map(function(f){return'<li>'+f+'</li>';}).join('');
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
 
-  </div>
-</section>
+function closeModal(){
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+
+document.getElementById('skatModalClose').addEventListener('click',closeModal);
+modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
+document.getElementById('skatBrands').addEventListener('click',function(e){
+  var btn=e.target.closest('.skat-brand');if(!btn)return;
+  document.querySelectorAll('.skat-brand').forEach(function(b){b.classList.remove('is-active');});
+  btn.classList.add('is-active');
+  activeBrand=btn.dataset.brand;
+  showAll=false;render();
+});
+
+document.getElementById('skatSearch').addEventListener('input',function(e){
+  searchQuery=e.target.value.trim().toLowerCase();
+  showAll=false;render();
+});
+
+document.getElementById('skatMoreBtn').addEventListener('click',function(){
+  showAll=true;render();
+});
+
+render();
+})();
+</script>
 
 <!-- ── How we work ────────────────────────────────────────────── -->
 <section style="background:#f8f8f8;padding:3rem 0;">
