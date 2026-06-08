@@ -3,17 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Durvju remonts un regulēšana Rīgā | SIA Logu Apkope</title>
-<meta name="description" content="Ieejas un iekštelpu durvju remonts Rīgā: eņģu regulēšana, slēdzeņu maiņa, piespiešanas pielāgošana. Cena no €20.">
-<link rel="canonical" href="/lv/remonts-durvis.html">
-<link rel="alternate" hreflang="lv" href="/lv/remonts-durvis.html">
-<link rel="alternate" hreflang="ru" href="/ru/remont-dverej.html">
-<link rel="alternate" hreflang="en" href="/en/repair-doors.html">
+<title>Logu plēve — saules aizsardzība, siltuma izolācija, dekoratīvā plēve | SIA Logu Apkope</title>
+<meta name="description" content="Uzstādām logu plēves: saules aizsargplēve, siltuma izolācijas plēve, dekoratīvā un matētā plēve. Profesionāla uzstādīšana dzīvokļiem un birojiem Rīgā un visā Latvijā.">
+<meta name="keywords" content="logu plēve, saules aizsargplēve, logu tonēšana, siltuma izolācijas plēve, dekoratīvā plēve, matētā plēve, UV aizsardzība, energoefektīvā plēve, logu plēves uzstādīšana, Rīga, Latvija">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Logu plēve — saules aizsardzība un siltuma izolācija | SIA Logu Apkope">
+<meta property="og:description" content="Saules aizsargplēve, siltuma izolācijas un dekoratīvā plēve logiem — profesionāla uzstādīšana Latvijā.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="lv_LV">
+<meta property="og:image" content="/photo/pleve/logu_pleve.png">
+<meta name="twitter:image" content="/photo/pleve/logu_pleve.png">
+<link rel="canonical" href="/lv/pleve.html">
+<link rel="alternate" hreflang="lv" href="/lv/pleve.html">
 <link rel="icon" href="../assets/img/logo-white.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/styles.css?v=56">
+<link rel="stylesheet" href="../css/styles.css?v=50">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"Logu plēves uzstādīšana","provider":{"@type":"LocalBusiness","name":"SIA Logu Apkope","telephone":["+37128950055","+37129825477"],"address":{"@type":"PostalAddress","streetAddress":"Latgales iela 130a","addressLocality":"Rīga","postalCode":"LV-1003","addressCountry":"LV"}},"areaServed":"Latvija","image":"/photo/pleve/logu_pleve.png","description":"Saules aizsargplēve, siltuma izolācijas plēve un dekoratīvā plēve logiem — profesionāla uzstādīšana un konsultācija"}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -101,8 +110,8 @@
           <a href="#" class="snm-link">LV</a>
           <div class="dropdown"><div class="dropdown-inner">
             <a href="#" class="active">LV — Latviski</a>
-            <a href="../ru/remont-dverej.html">RU — Русский</a>
-            <a href="../en/repair-doors.html">EN — English</a>
+            <a href="../ru/index.html">RU — Русский</a>
+            <a href="../en/index.html">EN — English</a>
           </div></div>
         </li>
 
@@ -204,7 +213,6 @@
   <!-- ══ Utility panel: contacts + search ══ -->
   <div class="util-panel" id="utilPanel" aria-hidden="true">
     <div class="util-panel-inner">
-      <!-- Tab sidebar -->
       <div class="util-tabs">
         <button class="util-tab active" data-pane="utilPaneInfo">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
@@ -215,7 +223,6 @@
           Meklēt vietnē
         </button>
       </div>
-      <!-- Contacts pane -->
       <div class="util-pane" id="utilPaneInfo">
         <div class="util-contacts">
           <a class="util-clink" href="tel:+37128950055">
@@ -233,7 +240,6 @@
           <a class="util-clink util-clink--more" href="kontakti.html">Visi kontakti →</a>
         </div>
       </div>
-      <!-- Search pane -->
       <div class="util-pane hidden" id="utilPaneSearch">
         <div class="util-search-wrap">
           <svg class="util-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -245,68 +251,49 @@
     </div>
   </div>
 </header>
-<style>
-.price-block{display:flex;flex-direction:column;gap:0;}
-.price-tabs{display:flex;gap:3px;padding-left:14px;align-items:flex-end;border:none;background:transparent;line-height:1;}
-.price-tab-btn{padding:8px 22px;border-radius:7px 7px 0 0;border:none;background:rgba(30,58,46,.12);color:var(--green);font-weight:700;font-size:.88rem;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap;letter-spacing:.01em;display:block;}
-.price-tab-btn.active{background:var(--green);color:#fff;}
-.price-tab-btn:hover:not(.active){background:rgba(30,58,46,.22);}
-.price-panel{display:none;margin:0;padding:0;}
-.price-panel.active{display:block;margin:0;padding:0;}
-.price-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;margin:0;}
-.price-table thead tr{background:var(--primary);color:#fff;}
-.price-table th{padding:.85rem 1rem;text-align:left;font-weight:600;}
-.price-table th:last-child{text-align:right;}
-.price-table tbody tr{border-bottom:1px solid #e8e8e8;}
-.price-table tbody tr:last-child{border-bottom:none;}
-.price-table td{padding:.8rem 1rem;font-size:.93rem;}
-.price-table td:last-child{text-align:right;font-weight:700;color:var(--accent);}
-.price-note{margin-top:.9rem;color:var(--muted);font-size:.82rem;}
-
-.tip-heading{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem;}.tip-heading h2{margin:0;}.tip-card{background:var(--surface);border-radius:16px;padding:2rem 2.2rem;border-left:5px solid var(--accent);}
-.tip-icon{flex-shrink:0;width:48px;height:48px;border-radius:50%;overflow:hidden;}
-.tip-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
-.tip-card h3{margin:0 0 .6rem;font-size:1.05rem;}
-.tip-card p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.7;}
-</style>
-
 <main>
+
+<!-- ── Page hero ─────────────────────────────────────────────── -->
 <div class="hero-unified">
   <picture>
-    <source media="(max-width:800px)" srcset="../photo/Logu_Remonts/durvju_remonts.jpg">
+    <source media="(max-width:800px)" srcset="../photo/pleve/logu_pleve.png">
     <img class="svc-hero-img"
-         src="../photo/Logu_Remonts/durvju_remonts.jpg"
-         alt="Durvju remonts Rīgā — logu un durvju meistars, garantija, SIA Logu Apkope"
-         width="1400" height="800"
+         src="../photo/pleve/logu_pleve.png"
+         alt="Logu plēve uz stikla — saules aizsargplēves, tonēšanas plēves, siltuma izolācijas plēves, dekoratīvās matētās plēves un UV aizsardzības plēves uzstādīšana Rīgā un Latvijā | SIA Logu Apkope"
+         title="Logu plēves uzstādīšana Rīgā — saules aizsargplēve, UV aizsardzība, logu tonēšana, siltuma izolācija, dekoratīvā un matētā plēve"
+         width="1672" height="941"
          loading="eager"
-         fetchpriority="high">
+         fetchpriority="high"
+         decoding="async"
+         itemprop="image">
   </picture>
   <div class="svc-hero-grad"></div>
 
 <section class="page-hero">
   <div class="container">
     <div class="page-hero-text">
-    <a href="remonts.html" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;">← Atpakaļ uz remontiem</a>
-    <span class="eyebrow">Durvju remonts</span>
+    <a href="index.html" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;">← Atpakaļ uz sākumu</a>
+    <span class="eyebrow">Mūsu pakalpojumi</span>
     </div>
-    <h1>Durvju remonts</h1>
-    <p>Durvis, kas neslēdzas, cieši neguļ vai rada skaņas — diagnosticējam un novēršam visas problēmas ar garantiju.</p>
-    <a class="btn btn-outline-dark" href="kontakti.html">Pasūtīt pakalpojumu</a>
-  </section>
-
+    <h1>Logu plēve — saules aizsardzība un komforts</h1>
+    <p>Profesionāla logu plēves uzstādīšana dzīvokļiem, birojiem un privātmājām. Samaziniet saules karstumu, aizsargājiet no UV stariem un pievienojiet privātumu — bez loga nomaiņas.</p>
+    <a class="btn btn-outline-dark" href="kontakti.html">Pieteikties konsultācijai</a>
+  </div>
+</section>
 <!-- Pakalpojuma apraksts — hero banner stils -->
 <div class="svc-hero-outer">
   <div class="svc-hero">
     <div class="svc-hero-inner">
     <div class="svc-hero-body">
       <div class="svc-hero-price">Cena: no €30</div>
-      <h2>Iekļauts pakalpojumā</h2>
+      <h2>Profesionāla plēves uzstādīšana</h2>
       <ul class="svc-hero-list">
-        <li>Pilna durvju diagnostika</li>
-        <li>Eņģu regulēšana un nostiprināšana</li>
-        <li>Slēgšanas mehānisma remonts</li>
-        <li>Blīvgumijas stāvokļa pārbaude</li>
-        <li>Garantija 1 gads</li>
+        <li>Saules aizsargplēve pret karstumu un UV starojumu</li>
+        <li>Tonēšanas plēve privātumam un komfortam</li>
+        <li>Dekoratīvā un matētā plēve stikla sienām un durvīm</li>
+        <li>Siltuma izolācijas plēve energoefektivitātei</li>
+        <li>Drošības un pretsitiena plēve stikla stiprināšanai</li>
+        <li>Precīza uzstādīšana uz dzīvokļu, biroju un privātmāju logiem</li>
       </ul>
     </div>
     </div>
@@ -333,108 +320,255 @@
 })();
 </script>
 
-
-<section class="alt">
-  <div class="container">
-    <h2>Cenrādis pēc materiāla</h2>
-    <p style="color:var(--muted);margin-bottom:1.5rem;">Cenas atšķiras atkarībā no loga materiāla. Izvēlieties savu veidu:</p>
-    <div class="price-block">
-    <div class="price-tabs">
-      <button class="price-tab-btn active" data-tab="pvc">PVC</button>
-      <button class="price-tab-btn" data-tab="koks">Koka</button>
-      <button class="price-tab-btn" data-tab="alu">Alumīnija</button>
-    </div>
-    <div class="price-panel active" id="tab-pvc">
-      <table class="price-table">
-        <thead><tr><th>Pakalpojums</th><th>Cena</th></tr></thead>
-        <tbody>
-          <tr><td>Durvju regulēšana</td><td>€25–40</td></tr>
-          <tr><td>Eņģes nomaiņa</td><td>€35–60</td></tr>
-          <tr><td>Slēdzenes remonts</td><td>€45–90</td></tr>
-          <tr><td>Blīvgumijas maiņa</td><td>€30–50</td></tr>
-          <tr><td>Kompleksais remonts</td><td>pēc tāmes</td></tr>
-        </tbody>
-      </table>
-      <p class="price-note">* PVC durvis ir populārākais variants balkonu un ieejas durvīm — regulēšana un remonts parasti ātrs.</p>
-    </div>
-    <div class="price-panel " id="tab-koks">
-      <table class="price-table">
-        <thead><tr><th>Pakalpojums</th><th>Cena</th></tr></thead>
-        <tbody>
-          <tr><td>Durvju regulēšana</td><td>€30–50</td></tr>
-          <tr><td>Eņģes nomaiņa</td><td>€40–70</td></tr>
-          <tr><td>Uzbrieduma/deformācijas novēršana</td><td>€50–90</td></tr>
-          <tr><td>Slēgšanas mehānisma remonts</td><td>€55–100</td></tr>
-          <tr><td>Kompleksais remonts</td><td>pēc tāmes</td></tr>
-        </tbody>
-      </table>
-      <p class="price-note">* Koka durvis bieži uzbriest mitrumā vai saraujas sausumā — sezonāla regulēšana ir normāla prakse.</p>
-    </div>
-    <div class="price-panel " id="tab-alu">
-      <table class="price-table">
-        <thead><tr><th>Pakalpojums</th><th>Cena</th></tr></thead>
-        <tbody>
-          <tr><td>Durvju regulēšana</td><td>€40–70</td></tr>
-          <tr><td>Eņģes nomaiņa</td><td>€50–90</td></tr>
-          <tr><td>Slēgšanas sistēmas remonts</td><td>€70–140</td></tr>
-          <tr><td>Komerciālie un ieejas objekti</td><td>pēc tāmes</td></tr>
-        </tbody>
-      </table>
-      <p class="price-note">* Alumīnija un metāla durvis bieži sastopamas birojiem un komercobjektiem — nepieciešams speciāls instruments.</p>
-    </div>
-    </div><!-- /.price-block -->
-
-    <div style="margin-top:1.4rem;padding:1rem 1.4rem;background:rgba(208,77,26,.08);border-radius:10px;font-size:.9rem;">💡 <strong>Bezmaksas apskate</strong> — tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" style="color:inherit;text-decoration:underline;">transporta izdevumi</a>.</div>
+<!-- ── Plēves veidi — interaktīvais akordeons ─────────────────── -->
+<section class="container film-accordion-section" style="padding:3rem 0;">
+<style>
+.fa-wrap{display:flex;flex-direction:column;gap:2.4rem;align-items:center;}
+.fa-text{width:100%;}
+.fa-text .fa-eyebrow{display:inline-block;font-family:'Poppins','Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;}
+.fa-text h2{margin:0 0 1rem;font-family:'Poppins','Montserrat',sans-serif;font-size:1.9rem;font-weight:800;line-height:1.15;letter-spacing:-.02em;color:var(--primary);}
+.fa-text p{margin:0 0 1.6rem;font-size:1rem;color:var(--muted);line-height:1.65;max-width:34rem;}
+.fa-accordion{display:flex;flex-direction:row;gap:12px;width:100%;height:440px;}
+.fa-panel{position:relative;height:100%;border-radius:16px;overflow:hidden;cursor:pointer;flex:1 1 60px;min-width:54px;transition:flex .5s cubic-bezier(.22,1,.36,1);will-change:flex-grow;box-shadow:0 10px 28px rgba(13,31,23,.18);}
+.fa-panel.active{flex:6.5 1 0;min-width:0;}
+.fa-panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+.fa-panel.active img{transform:scale(1.04);}
+.fa-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,58,46,.12) 0%,rgba(30,58,46,.30) 45%,rgba(13,31,23,.78) 100%);transition:background .5s;}
+.fa-vert{position:absolute;bottom:96px;left:50%;transform:translateX(-50%) rotate(90deg);transform-origin:center;color:#fff;font-family:'Poppins','Montserrat',sans-serif;font-weight:700;font-size:1rem;white-space:nowrap;letter-spacing:.02em;text-shadow:0 2px 10px rgba(0,0,0,.55);transition:opacity .3s;}
+.fa-panel.active .fa-vert{opacity:0;}
+.fa-info{position:absolute;left:24px;right:24px;bottom:24px;opacity:0;transform:translateY(12px);transition:opacity .4s .12s cubic-bezier(.22,1,.36,1),transform .4s .12s cubic-bezier(.22,1,.36,1);pointer-events:none;}
+.fa-panel.active .fa-info{opacity:1;transform:none;pointer-events:auto;}
+.fa-bar{width:44px;height:4px;border-radius:2px;background:var(--accent);margin-bottom:.8rem;}
+.fa-info h3{margin:0 0 .4rem;color:#fff;font-family:'Poppins','Montserrat',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-.01em;}
+.fa-info p{margin:0 0 .9rem;color:rgba(255,255,255,.9);font-size:.9rem;line-height:1.55;max-width:24rem;}
+.fa-info a{display:inline-flex;align-items:center;gap:.4rem;font-family:'Poppins','Montserrat',sans-serif;font-size:.82rem;font-weight:700;color:#fff;text-decoration:none;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);padding:.5rem .95rem;border-radius:8px;backdrop-filter:blur(4px);transition:background .25s,border-color .25s;}
+.fa-info a:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+/* ── Detail (read-more) layer ── */
+.fa-wrap{position:relative;}
+.fa-text,.fa-accordion{transition:opacity .45s ease,transform .45s ease;}
+.fa-wrap.detail-open .fa-text,
+.fa-wrap.detail-open .fa-accordion{opacity:0;transform:translateX(-14px);pointer-events:none;}
+.fa-detail{position:absolute;inset:0;display:flex;gap:3.2rem;align-items:stretch;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .5s ease,visibility 0s linear .5s;z-index:5;}
+.fa-wrap.detail-open .fa-detail{opacity:1;visibility:visible;transition:opacity .5s ease,visibility 0s;}
+.fa-detail-img{position:relative;width:46%;flex-shrink:0;border-radius:16px;overflow:hidden;box-shadow:0 16px 40px rgba(13,31,23,.24);transform:translateX(70px);opacity:.25;transition:transform .6s cubic-bezier(.22,1,.36,1) .05s,opacity .55s ease .05s;}
+.fa-wrap.detail-open .fa-detail-img{transform:none;opacity:1;}
+.fa-detail-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.fa-detail-body{flex:1;position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 0 3.4rem;transform:translateX(26px);opacity:0;transition:transform .55s cubic-bezier(.22,1,.36,1) .15s,opacity .5s ease .15s;}
+.fa-wrap.detail-open .fa-detail-body{transform:none;opacity:1;}
+.fa-detail-body .fa-eyebrow{color:var(--accent);}
+.fa-detail-body h2{margin:.2rem 0 1rem;font-family:'Poppins','Montserrat',sans-serif;font-size:2rem;font-weight:800;line-height:1.12;letter-spacing:-.02em;color:var(--primary);}
+.fa-detail-body p{margin:0;font-size:1rem;color:#4a5450;line-height:1.7;}
+.fa-back{position:absolute;right:0;bottom:0;display:inline-flex;align-items:center;gap:.5rem;font-family:'Poppins','Montserrat',sans-serif;font-size:.85rem;font-weight:700;color:var(--green-2);text-decoration:none;padding:.6rem 1.1rem;border:1.5px solid var(--green-2);border-radius:9px;background:transparent;transition:background .25s,color .25s,transform .25s;}
+.fa-back:hover{background:var(--green-2);color:#fff;transform:translateX(-3px);}
+.fa-back .fa-back-arrow{transition:transform .25s;}
+.fa-back:hover .fa-back-arrow{transform:translateX(-3px);}
+@media(max-width:760px){
+  .fa-detail{flex-direction:column;gap:1.4rem;}
+  .fa-detail-img{width:100%;height:220px;}
+  .fa-detail-body{padding-bottom:3.6rem;justify-content:flex-start;}
+  .fa-detail-body h2{font-size:1.5rem;}
+}
+@media(min-width:920px){
+  .fa-wrap{flex-direction:row;gap:3.2rem;}
+  .fa-text{width:40%;flex-shrink:0;}
+  .fa-text h2{font-size:2.3rem;}
+  .fa-accordion{width:60%;}
+}
+@media(max-width:560px){
+  .fa-wrap{padding:0 12px;}
+  .fa-accordion{height:360px;gap:6px;}
+  .fa-panel{flex:0 0 32px;min-width:0;border-radius:12px;}
+  .fa-panel.active{flex:1 1 auto;}
+  .fa-vert{font-size:.82rem;bottom:66px;}
+  .fa-info{left:16px;right:16px;}
+  .fa-info h3{font-size:1.1rem;}
+  .fa-detail{padding:0 12px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .fa-panel,.fa-panel img,.fa-info,.fa-vert,.fa-ov,.fa-info a{transition-duration:.01ms!important;}
+}
+</style>
+<div class="fa-wrap">
+  <div class="fa-text">
+    <span class="fa-eyebrow">Plēves risinājumi</span>
+    <h2>Pareizā plēve katram logam</h2>
+    <p>Katrs plēves veids risina savu uzdevumu — drošību, saules aizsardzību, privātumu vai siltuma noturēšanu. Virziet kursoru pār attēliem, lai uzzinātu vairāk par katru risinājumu.</p>
+    <a class="btn btn-outline-dark" href="kontakti.html">Pieteikties konsultācijai</a>
   </div>
-</section>
-<section class="container" style="padding-top:3rem;padding-bottom:3rem;">
-  <h2 class="faq-dl-heading">Biežāk uzdotie jautājumi</h2>
-  <div class="faq-dl-list">
-    <details class="faq-dl-item">
-      <summary>Kāpēc durvis salipst vai grūti atveras?<span class="faq-dl-toggle">+</span></summary>
-      <div class="faq-dl-body">Visbiežākie iemesli: eņģes ir nolietojušās vai kļuvušas vaļīgas (logs "nosēdies"), koka durvis uzbriedušas mitrumā, slēdzene ir nolietota, vai durvju rāmis ir deformējies. Lielāko daļu gadījumu var novērst ar regulēšanu vai vienas detaļas nomaiņu — bez pilnas durvju nomaiņas.</div>
-    </details>
-    <details class="faq-dl-item">
-      <summary>Kāda ir atšķirība starp PVC un koka durvju remontu?<span class="faq-dl-toggle">+</span></summary>
-      <div class="faq-dl-body">PVC durvīm remonts parasti ir vienkāršāks un ātrāks — eņģu regulēšana un blīvgumijas maiņa. Koka durvīm bieži nepieciešama sezonāla kompensācija (koks uzbriest vasarā, saraujas ziemā), eļļošana un dažkārt nedaudz plānāka rāmja apstrāde. Abiem veidiem garantijā iekļaujam rezultātu pārbaudi uz vietas.</div>
-    </details>
-    <details class="faq-dl-item">
-      <summary>Vai var labot durvis, kas neguļ cieši un nelaidīs aukstumu?<span class="faq-dl-toggle">+</span></summary>
-      <div class="faq-dl-body">Jā, tas ir tipiskākais iemesls, kāpēc sauc mūs. Divas visbiežākās problēmas: eņģes ir noslīdējušas (durvis pārāk zemu), vai blīvgumija ir nolietota. Parasti pietiek ar regulēšanu un blīvgumijas maiņu, lai durvis atkal noslēgtu hermētiski.</div>
-    </details>
-    <details class="faq-dl-item">
-      <summary>Vai visas slēdzenes var labot, vai dažas ir jānomaina?<span class="faq-dl-toggle">+</span></summary>
-      <div class="faq-dl-body">Lielāko daļu slēdzeņu var labot — tīrīšana, eļļošana un regulēšana bieži atrisina problēmu. Ja cilindrs ir nodilis vai mehānisms ir fizikāli bojāts, nomaina tikai attiecīgo daļu. Pilna slēdzenes nomaiņa nepieciešama tikai vecākos un ļoti nolietojušos gadījumos.</div>
-    </details>
-    <details class="faq-dl-item">
-      <summary>Vai ziemā durvju problēmas pasliktinās?<span class="faq-dl-toggle">+</span></summary>
-      <div class="faq-dl-body">Jā. Aukstā laikā metāla un alumīnija eņģes saraujas, kas var mainīt durvju piegulšanu. Koka durvis ziemā parasti guļ labāk (koks saraujas), bet pavasarī un vasarā var uzbriest. Ieteicams veikt regulēšanu divreiz gadā — rudenī un pavasarī — īpaši koka durvīm.</div>
-    </details>
-  </div>
-</section>
-<section class="alt">
-  <div class="container" style="padding-top:2.5rem;padding-bottom:2.5rem;">
-    <div class="tip-heading">
-      <div class="tip-icon"><img src="../photo/Speciālista_padoms.jpg" alt="Speciālista padoms" style="width:100%;height:100%;object-fit:cover;"></div>
-      <h2>Speciālista padoms</h2>
-    </div>
-    <div class="tip-card">
-      <div>
-        <p class="tip-label">Vienkāršs tests pirms zvana meistaram</p>
-        <h3>Kā 1 minūtē noteikt, vai jūsu durvis prasa regulēšanu</h3>
-        <p>Aizveriet durvis un aplūkojiet spraugu starp vērtni un rāmi no durvju iekšpuses. Ja sprauga ir nevienmērīga — augšā šaurāka, apakšā platāka vai otrādi — tas norāda, ka eņģes ir "nosēdušās" un durvis ir jāregulē. Otrais tests: mēģiniet aizslēgt durvis bez papildu spiedināšanas. Ja slēdzene neieiet ar pirmo reizi, durvīm ir neprecīzs piegulšanas punkts. Abi šie simptomi novēršami ar vienkāršu regulēšanu.</p>
+  <div class="fa-accordion" id="plevAccordion">
+
+    <div class="fa-panel active" tabindex="0" data-full="Poliestera vai lavsāna aizsargplēve nodrošina visaptverošu stikla aizsardzību — logiem, vitrīnām, starpsienām un žogu stiklojumam. Plēve uz stikla ir praktiski neredzama, taču trieciena, sprādziena vai vētras gadījumā uzticami aiztur lauskas, novēršot to izkliedēšanos telpā. Aizsargplēves klase atkarīga no biezuma (100–400 mikroni), slāņu skaita un pašas līmes biezuma. Uzstādām privātmājās, dzīvokļos, vasarnīcās, automašīnās, kuteriem un jahtām, kā arī skolās, bērnudārzos, dzelzceļa stacijās, bankās, veikalu vitrīnās, muzejose, stikla jumtos un liftos.">
+      <img src="../photo/pleve/aizsargpleves.png" alt="Aizsargplēve" loading="lazy">
+      <div class="fa-ov"></div>
+      <span class="fa-vert">Aizsargplēve</span>
+      <div class="fa-info">
+        <div class="fa-bar"></div>
+        <h3>Aizsargplēve</h3>
+        <p>Poliestera plēve aizsargā jebkuru stiklu un aiztur lauskas trieciena gadījumā — neredzama, bet uzticama.</p>
+        <a class="fa-more" href="#">Uzzināt vairāk →</a>
       </div>
     </div>
+
+    <div class="fa-panel" tabindex="0" data-full="Speciāli izstrādātas saules staru intensitātes radīto problēmu risināšanai. Uztur patīkamu temperatūru telpās gan vasarā, gan ziemā, samazinot kondicionēšanas un apkures izmaksas. Novērš atspīdumus pie datora ekrāniem un TV — paaugstina darba produktivitāti, novēršot vajadzību aizvērt aizkarus vai žalūzijas. Aizsargā mēbeles, parketu un audumu no izbalēšanas. Plēvēm piemīt vienpusēja redzamība dienas laikā — privātums bez šķēršļiem skatam. Uzstādot jebkuru plēvi, stikls kļūst drošs pret lauskām. Plēve viegli tīrāma ar jebkuru logu mazgāšanas līdzekli un neuzkrāj putekļus.">
+      <img src="../photo/pleve/pleve_2.png" alt="Saules aizsargplēve" loading="lazy">
+      <div class="fa-ov"></div>
+      <span class="fa-vert">Saules aizsargplēve</span>
+      <div class="fa-info">
+        <div class="fa-bar"></div>
+        <h3>Saules aizsargplēve</h3>
+        <p>Kontrolē temperatūru, novērš atspīdumus un aizsargā no izbalēšanas — ērtas telpas visu gadu.</p>
+        <a class="fa-more" href="#">Uzzināt vairāk →</a>
+      </div>
+    </div>
+
+    <div class="fa-panel" tabindex="0" data-full="Uzstādām matēto un dekoratīvo plēvi uz logiem, durvīm, stikla fasādēm, starpsienām un liftiem — jebkurā sarežģītībā. Plēve nerada tumsu telpās: gaismas caurlaidība saglabājas vismaz 60–80%. Aplīmētais stikls kļūst drošs — lausku izkliedēšanās tiek pilnībā novērsta. Matēta plēve nodrošina pilnīgu necaurredzamību jebkurā diennakts laikā, piešķirot telpai privātumu un eleganci.">
+      <img src="../photo/pleve/pleve_3.png" alt="Dekoratīvā matētā plēve" loading="lazy">
+      <div class="fa-ov"></div>
+      <span class="fa-vert">Dekoratīvā plēve</span>
+      <div class="fa-info">
+        <div class="fa-bar"></div>
+        <h3>Dekoratīvā plēve</h3>
+        <p>Privātums un estētika bez tumsas — matēta plēve, kas caurlaiž 60–80% dabiskās gaismas.</p>
+        <a class="fa-more" href="#">Uzzināt vairāk →</a>
+      </div>
+    </div>
+
+    <div class="fa-panel" tabindex="0" data-full="Daudzslāņu plēve ar IR keramikas kārtu — ziemā saglabā siltumu telpas iekšpusē (līdz 40%), vasarā atstaro nevēlamo ārējo siltumu (līdz 80%), nodrošinot ērtus apstākļus visu gadu. Uzstādāma veikalos, izglītības iestādēs, muzejose un ražotnēs, kur nepieciešams noteikts mikroklimats ar dabasgaismas caurlaidību. Aizsargā interjeru un vitrīnu priekšmetus no izbalēšanas. Novērš atspīdumus — svarīgi darbā pie datora, kases vai skatoties televīziju. Plēves gaismas caurlaidība regulējama no 15% līdz 80% atbilstoši vajadzībām.">
+      <img src="../photo/pleve/pleve_1.png" alt="Enerģijas taupīšanas plēve" loading="lazy">
+      <div class="fa-ov"></div>
+      <span class="fa-vert">Enerģijas taupīšanas plēve</span>
+      <div class="fa-info">
+        <div class="fa-bar"></div>
+        <h3>Enerģijas taupīšanas plēve</h3>
+        <p>IR keramikas plēve saglabā siltumu ziemā (līdz 40%) un atstaro karstumu vasarā (līdz 80%).</p>
+        <a class="fa-more" href="#">Uzzināt vairāk →</a>
+      </div>
+    </div>
+
+    <div class="fa-panel" tabindex="0" data-full="Profesionāli un saudzīgi noņemam novecojušu, dzeltenu vai pārplaisājušu plēvi, neskrāpējot stiklu. Speciāli šķīdinātāji izšķīdina līmes atliekas, un stikla virsma paliek nevainojami tīra — gatava jaunai plēvei vai vienkārši caurspīdīga. Pieejams kā atsevišķs pakalpojums vai kombinācijā ar jaunas plēves uzstādīšanu.">
+      <img src="../photo/pleve/pleve_tir.jpg" alt="Vecās plēves noņemšana" loading="lazy">
+      <div class="fa-ov"></div>
+      <span class="fa-vert">Vecās plēves noņemšana</span>
+      <div class="fa-info">
+        <div class="fa-bar"></div>
+        <h3>Vecās plēves noņemšana</h3>
+        <p>Tīra noņemšana bez skrāpējumiem un līmes atlieku attīrīšana līdz nevainojamam stiklam.</p>
+        <a class="fa-more" href="#">Uzzināt vairāk →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="fa-detail" id="plevDetail" aria-hidden="true">
+    <div class="fa-detail-img"><img id="fdImg" src="" alt=""></div>
+    <div class="fa-detail-body">
+      <span class="fa-eyebrow">Plēves veids</span>
+      <h2 id="fdTitle"></h2>
+      <p id="fdText"></p>
+      <a class="fa-back" id="fdBack" href="#"><span class="fa-back-arrow" aria-hidden="true">←</span> Atpakaļ</a>
+    </div>
+  </div>
+
+</div>
+<script>
+(function(){
+  var acc = document.getElementById('plevAccordion');
+  if(!acc) return;
+  var wrap = acc.closest('.fa-wrap');
+  var panels = acc.querySelectorAll('.fa-panel');
+  var detail = document.getElementById('plevDetail');
+  var fdImg = document.getElementById('fdImg');
+  var fdTitle = document.getElementById('fdTitle');
+  var fdText = document.getElementById('fdText');
+  var fdBack = document.getElementById('fdBack');
+
+  function setActive(p){ panels.forEach(function(x){ x.classList.toggle('active', x === p); }); }
+  function openDetail(p){
+    var img = p.querySelector('img');
+    fdImg.src = img.getAttribute('src');
+    fdImg.alt = img.getAttribute('alt');
+    fdTitle.textContent = p.querySelector('h3').textContent;
+    fdText.textContent = p.getAttribute('data-full') || '';
+    wrap.classList.add('detail-open');
+    detail.setAttribute('aria-hidden', 'false');
+  }
+  function closeDetail(){
+    wrap.classList.remove('detail-open');
+    detail.setAttribute('aria-hidden', 'true');
+  }
+
+  panels.forEach(function(p){
+    p.addEventListener('mouseenter', function(){ if(!wrap.classList.contains('detail-open')) setActive(p); });
+    p.addEventListener('focus', function(){ if(!wrap.classList.contains('detail-open')) setActive(p); });
+    p.addEventListener('click', function(e){
+      if(e.target.closest('.fa-more')) return;
+      setActive(p);
+    });
+    var more = p.querySelector('.fa-more');
+    if(more){
+      more.addEventListener('click', function(e){ e.preventDefault(); openDetail(p); });
+    }
+  });
+  fdBack.addEventListener('click', function(e){ e.preventDefault(); closeDetail(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeDetail(); });
+})();
+</script>
+</section>
+
+<!-- ── FAQ ────────────────────────────────────────────────────── -->
+<section class="container" style="padding-top:1rem;padding-bottom:3.5rem;">
+  <div class="faq-layout">
+    <div class="faq-layout-head">
+
+  <div class="section-head">
+    <span class="eyebrow">Jautājumi</span>
+    <h2>Biežāk uzdotie jautājumi par logu plēvi</h2>
+  </div>
+    </div>
+    <div class="faq-layout-list">
+      <details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
+    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+      Vai logu plēve sabojā stiklu vai rāmi?<span style="font-size:1.3rem;line-height:1;">+</span>
+    </summary>
+    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">Nē. Kvalitatīva logu plēve, pareizi uzstādīta, nestiprina papildu spiedienu uz stiklu un nesabojā rāmi. Tā ir noņemama bez pēdām, ja vēlaties to mainīt vai likvidēt.</p>
+  </details>
+<details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
+    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+      Cik ilgi kalpo logu plēve?<span style="font-size:1.3rem;line-height:1;">+</span>
+    </summary>
+    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">Profesionāla logu plēve kalpo 10–15 gadus un vairāk. Mūsu plēves nāk ar 3 gadu garantiju. Kalpošanas laiks atkarīgs no plēves veida, uzstādīšanas kvalitātes un ekspozīcijas.</p>
+  </details>
+<details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
+    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+      Vai plēve ir redzama no ārpuses?<span style="font-size:1.3rem;line-height:1;">+</span>
+    </summary>
+    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">Atkarīgs no plēves veida. Caurspīdīgā saules aizsargplēve no ārpuses ir praktiski neredzama. Tonētā plēve atspoguļo gaismu un dos spoguļefektu no ārpuses. Siltuma plēve parasti ir gandrīz neredzama.</p>
+  </details>
+<details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
+    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+      Vai var uzstādīt uz dubultā stikla (stikla paketēm)?<span style="font-size:1.3rem;line-height:1;">+</span>
+    </summary>
+    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">Jā, lielākā daļa logu plēvju ir piemērotas uzstādīšanai uz standarta stikla paketēm. Enerģijas taupīšanas plēves var ietekmēt siltuma apmaiņu, tāpēc ieteicams konsultēties pirms uzstādīšanas.</p>
+  </details>
+<details style="padding:.9rem 0;">
+    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+      Kā tīrīt logu pēc plēves uzstādīšanas?<span style="font-size:1.3rem;line-height:1;">+</span>
+    </summary>
+    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">Uzgaidiet vismaz 30 dienas pēc uzstādīšanas, kamēr plēve pilnībā ir sacietējusi. Tīriet ar mīkstu drāniņu un neagresīvu tīrīšanas līdzekli. Izvairieties no abrazīviem sūkļiem un stipriem ķīmiskiem līdzekļiem.</p>
+  </details>
+    </div>
   </div>
 </section>
 
-</main>
+<!-- ── CTA ────────────────────────────────────────────────────── -->
 <section class="cta-band">
   <div class="container">
-    <h2>Nepieciešams logu meistars?</h2>
-    <p>Atstājiet pieprasījumu un mēs sazināsimies ar Jums 12 stundu laikā, lai vienotos par bezmaksas tāmi.</p>
-    <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:.4rem;margin-bottom:1.4rem;">* Bezmaksas apskate un tāme — tikai Rīgā. Ārpus Rīgas tiek piemēroti <a href="transporta-izmaksas.html" style="color:rgba(255,255,255,.85);text-decoration:underline;">transporta izdevumi</a>.</p>
-    <a class="hsl-btn hsl-btn--ghost" href="kontakti.html">Sazināties</a>
+    <h2>Sazinieties ar mums — aprēķinām cenu bez maksas</h2>
+    <p>Nosūtiet izmērus vai piesakieties speciālista vizītei uz mājām. Braucam uz Rīgu un visiem Latvijas reģioniem.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
+      <a class="hsl-btn hsl-btn--ghost" href="kontakti.html">Pieteikties konsultācijai</a>
+      <a class="hsl-btn hsl-btn--ghost" href="tel:+37128950055">+371 28 950 055</a>
+    </div>
   </div>
   <div class="container"><div class="fsb-divider"></div></div>
 </section>
@@ -472,7 +606,7 @@
                item.k.toLowerCase().includes(q.toLowerCase());
       }).slice(0,6);
       if(!hits.length){
-        res.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „'+q+'“</div>';
+        res.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „'+q+'"</div>';
       } else {
         res.innerHTML = hits.map(function(item){
           var kw = item.k.split(' ').find(function(w){ return w.toLowerCase().includes(q.toLowerCase()); }) || '';
@@ -492,6 +626,7 @@
   })();
   </script>
 </section>
+</main>
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
@@ -556,42 +691,6 @@
 
 
 
-<script>
-(function(){
-  var btns = document.querySelectorAll('.price-tab-btn');
-  var panels = document.querySelectorAll('.price-panel');
-  btns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      btns.forEach(function(b){ b.classList.remove('active'); });
-      panels.forEach(function(p){ p.classList.remove('active'); });
-      btn.classList.add('active');
-      var panel = document.getElementById('tab-' + btn.dataset.tab);
-      if(panel) panel.classList.add('active');
-    });
-  });
-})();
-</script>
-
-
-<!-- ── Service navigation tab ── -->
-<div class="svc-nav" id="svcNav">
-  <button class="svc-nav-tab" id="svcNavTab" aria-label="Remonts" aria-expanded="false">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-    <span class="svc-nav-label">Remonts</span>
-    <svg class="svc-nav-arrow" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-  </button>
-  <div class="svc-nav-panel">
-    <a href="remonts.html" class="svc-nav-item">Logu remonts</a>
-    <a href="remonts-regulesana.html" class="svc-nav-item">Regulēšana</a>
-    <a href="remonts-stiklu-paketes.html" class="svc-nav-item">Stikla paketes</a>
-    <a href="remonts-blivgumija.html" class="svc-nav-item">Blīvgumija</a>
-    <a href="remonts-furnitura.html" class="svc-nav-item">Furnitūra</a>
-    <a href="remonts-durvis.html" class="svc-nav-item svc-nav-item--cur">Durvju remonts</a>
-    <a href="remonts-siltinasana.html" class="svc-nav-item">Siltināšana</a>
-    <a href="remonts-modernizacija.html" class="svc-nav-item">Modernizācija</a>
-    <a href="remonts-termokamera.html" class="svc-nav-item">Termokamera</a>
-  </div>
-</div>
 <!-- ── Mobile contact widget ── -->
 <div class="mob-cw" id="mobContactWidget">
   <button class="mob-cw-tab" id="mobContactTab" aria-label="Sazināties ar mums" aria-expanded="false">
