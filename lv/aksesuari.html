@@ -317,8 +317,17 @@
 .skat-search{width:100%;padding:.6rem .9rem .6rem 2.2rem;border:1.5px solid #e5e5e5;border-radius:8px;font-size:.88rem;font-family:inherit;outline:none;transition:border-color .2s;box-sizing:border-box;}
 .skat-search:focus{border-color:#2d6a4f;}
 /* Brand bar — same underline-tab style as categories, no icons */
-.skat-brands{display:flex;gap:.2rem;align-items:center;overflow-x:auto;padding:.1rem 0;margin-bottom:1.4rem;border-bottom:1px solid #ececec;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.skat-brands{display:flex;gap:.2rem;align-items:center;overflow-x:auto;padding:.1rem 0;border-bottom:1px solid #ececec;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .skat-brands::-webkit-scrollbar{display:none;}
+/* Horizontal scroll hint (subtle edge arrows) */
+.skat-scroll{position:relative;margin-bottom:1.5rem;}
+.skat-arrow{position:absolute;top:0;bottom:1px;width:40px;display:flex;align-items:center;border:none;padding:0;background:none;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s;z-index:4;}
+.skat-arrow svg{width:17px;height:17px;stroke:#9a9a9a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.skat-arrow.left{left:0;justify-content:flex-start;background:linear-gradient(to right,#f7f7f7 40%,rgba(247,247,247,0));}
+.skat-arrow.right{right:0;justify-content:flex-end;background:linear-gradient(to left,#f7f7f7 40%,rgba(247,247,247,0));}
+.skat-arrow.is-show{opacity:.75;pointer-events:auto;}
+.skat-arrow.is-show:hover{opacity:1;}
+.skat-arrow.is-show:hover svg{stroke:#444;}
 .skat-brand{flex:0 0 auto;position:relative;display:flex;align-items:center;justify-content:center;min-height:48px;padding:.4rem .95rem .7rem;background:none;border:none;font-size:.85rem;font-weight:500;font-family:inherit;color:#9a9a9a;cursor:pointer;white-space:nowrap;transition:color .18s;}
 .skat-brand img{height:24px;width:auto;max-width:104px;object-fit:contain;display:block;filter:grayscale(1);opacity:.5;transition:opacity .18s,filter .18s;}
 .skat-brand::after{content:"";position:absolute;left:50%;bottom:-1px;width:0;height:2px;background:#1a1a1a;border-radius:2px;transform:translateX(-50%);transition:width .2s;}
@@ -328,7 +337,7 @@
 .skat-brand.is-active img{opacity:1;filter:none;}
 .skat-brand.is-active::after{width:60%;}
 /* Category bar (icon + label, underline active) */
-.skat-cats{display:flex;gap:.3rem;overflow-x:auto;padding:.2rem 0 .3rem;margin-bottom:1.5rem;border-bottom:1px solid #ececec;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.skat-cats{display:flex;gap:.3rem;overflow-x:auto;padding:.2rem 0 .3rem;border-bottom:1px solid #ececec;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .skat-cats::-webkit-scrollbar{display:none;}
 .skat-cat{flex:0 0 auto;position:relative;display:flex;flex-direction:column;align-items:center;gap:.5rem;min-width:78px;padding:.55rem .85rem .85rem;background:none;border:none;cursor:pointer;font-family:inherit;color:#9a9a9a;transition:color .18s;}
 .skat-cat svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
@@ -381,6 +390,7 @@
       <p>Pilns piederumu klāsts PVC, koka un alumīnija logiem un durvīm.</p>
     </div>
     <!-- Category bar -->
+    <div class="skat-scroll">
     <div class="skat-cats" id="skatCats">
       <button class="skat-cat is-active" data-cat="">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
@@ -419,7 +429,11 @@
         <span>Apkope</span>
       </button>
     </div>
+      <button class="skat-arrow left" type="button" aria-label="Ritināt pa kreisi" tabindex="-1"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="skat-arrow right" type="button" aria-label="Ritināt pa labi" tabindex="-1"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
     <!-- Brand bar -->
+    <div class="skat-scroll">
     <div class="skat-brands" id="skatBrands">
       <button class="skat-brand is-active" data-brand="">Visi zīmoli</button>
       <button class="skat-brand" data-brand="GU" aria-label="GU" title="GU"><img src="../photo/brands/gu.png" alt="GU"></button>
@@ -429,6 +443,9 @@
       <button class="skat-brand" data-brand="Geze" aria-label="Geze" title="Geze"><img src="../photo/brands/geze.png" alt="Geze"></button>
       <button class="skat-brand" data-brand="Roto" aria-label="Roto" title="Roto"><img src="../photo/brands/roto.png" alt="Roto"></button>
       <button class="skat-brand" data-brand="Winkhaus" aria-label="Winkhaus" title="Winkhaus"><img src="../photo/brands/winkhaus.png" alt="Winkhaus"></button>
+    </div>
+      <button class="skat-arrow left" type="button" aria-label="Ritināt pa kreisi" tabindex="-1"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="skat-arrow right" type="button" aria-label="Ritināt pa labi" tabindex="-1"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
     </div>
     <!-- Search -->
     <div class="skat-search-row">
@@ -592,6 +609,33 @@ document.getElementById('skatMoreBtn').addEventListener('click',function(){
 });
 
 render();
+
+// Horizontal scroll hint arrows for category/brand bars
+function initScrollHint(scroller){
+  var bar=scroller.querySelector('.skat-cats,.skat-brands');
+  var left=scroller.querySelector('.skat-arrow.left');
+  var right=scroller.querySelector('.skat-arrow.right');
+  if(!bar||!left||!right)return;
+  function update(){
+    var max=bar.scrollWidth-bar.clientWidth;
+    var x=bar.scrollLeft;
+    left.classList.toggle('is-show',x>2);
+    right.classList.toggle('is-show',x<max-2);
+  }
+  bar.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  left.addEventListener('click',function(){bar.scrollBy({left:-bar.clientWidth*0.7,behavior:'smooth'});});
+  right.addEventListener('click',function(){bar.scrollBy({left:bar.clientWidth*0.7,behavior:'smooth'});});
+  update();
+  setTimeout(update,400);
+}
+document.querySelectorAll('.skat-scroll').forEach(initScrollHint);
+window.addEventListener('load',function(){
+  document.querySelectorAll('.skat-scroll').forEach(function(s){
+    var bar=s.querySelector('.skat-cats,.skat-brands');
+    if(bar)bar.dispatchEvent(new Event('scroll'));
+  });
+});
 })();
 </script>
 
