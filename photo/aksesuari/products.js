@@ -14,7 +14,8 @@
 //
 //  brand    — zīmols, tukšs '' ja nav zīmola
 //             Filtrā pieejami (ar logotipu): 'GU' | 'Siegenia' | 'Maco' |
-//                              'Schüco' | 'Geze' | 'Roto' | 'Winkhaus'
+//                              'Schüco' | 'Geze' | 'Roto' | 'Winkhaus' |
+//                              'Schlegel' | 'Fapim' | 'REHAU' | 'AERECO'
 //
 //  cat      — kategorija filtrēšanai (tikai mazajiem burtiem):
 //             'rokturi' | 'enges' | 'blivgumijas' | 'sledzenes' |
@@ -144,6 +145,12 @@ window.SKAT_PRODUCTS = [
 
   // Apkope
   {id:23,name:'Furnitūras eļļošanas aerosols (200 ml)',brand:'',cat:'apkope',price:'no €6',bg:'#5a4a8a',icon:'apkope',desc:'Speciāls eļļošanas aerosols logu un durvju furnitūras apkopei. Novērš rūsu, samazina berzi un pagarina kalpošanas laiku.',features:['200 ml aerosols','Eņģēm, rokturiem un slēdzenēm','Tievas caurulītes uzgalis','Ieteicams lietot 2× gadā']},
-  {id:24,name:'Logu profila tīrīšanas līdzeklis (500 ml)',brand:'',cat:'apkope',price:'no €5',bg:'#5a4a8a',icon:'apkope',desc:'Speciāls tīrīšanas līdzeklis PVC logu profila atjaunošanai. Noņem dzeltenumu, netīrumus un UV bojājumus.',features:['500 ml pudelē','Iedarbīgs pret dzeltenumu','Nesaskrāpē virsmu','Piemērots visiem PVC profiliem']}
+  {id:24,name:'Logu profila tīrīšanas līdzeklis (500 ml)',brand:'',cat:'apkope',price:'no €5',bg:'#5a4a8a',icon:'apkope',desc:'Speciāls tīrīšanas līdzeklis PVC logu profila atjaunošanai. Noņem dzeltenumu, netīrumus un UV bojājumus.',features:['500 ml pudelē','Iedarbīgs pret dzeltenumu','Nesaskrāpē virsmu','Piemērots visiem PVC profiliem']},
+
+  // Jaunie zīmoli
+  {id:25,name:'Schlegel Q-Lon blīvgumija',brand:'Schlegel',cat:'blivgumijas',price:'no €5/m',bg:'#2e6644',icon:'blivgumija',desc:'Schlegel Q-Lon putu blīvgumija ar izcilu siltum- un skaņas izolāciju. Saglabā elastību un formu daudzu gadu garumā.',features:['Q-Lon putu serde','Lieliska skaņas izolācija','Noturīga pret deformāciju','Piemērota koka un PVC logiem']},
+  {id:26,name:'REHAU profila blīvgumija',brand:'REHAU',cat:'blivgumijas',price:'no €6/m',bg:'#2e6644',icon:'blivgumija',desc:'Oriģinālā REHAU blīvgumija PVC logu un durvju profiliem. Precīza piegulšana un ilgstošs hermētiskums.',features:['Oriģināla REHAU rezerves daļa','Augsta UV un laikapstākļu noturība','Piemērota REHAU profilu sistēmām','Saglabā elastību ziemā']},
+  {id:27,name:'Fapim alumīnija loga rokturis',brand:'Fapim',cat:'rokturi',price:'no €18',bg:'#3d6e9c',icon:'rokturis',desc:'Fapim (Itālija) augstas kvalitātes rokturis alumīnija logiem un durvīm. Eleganta dizaina un izturīga konstrukcija.',features:['Itālijas ražojums','Alumīnija sakausējums','Piemērots ALU profiliem','Vairāki krāsu pārklājumi']},
+  {id:28,name:'AERECO higroregulējams ventilācijas vārsts',brand:'AERECO',cat:'apkope',price:'no €24',bg:'#5a4a8a',icon:'apkope',desc:'AERECO higroregulējams gaisa pieplūdes vārsts logiem. Automātiski regulē ventilāciju atkarībā no mitruma līmeņa telpā.',features:['Automātiska mitruma regulēšana','Uzlabo gaisa kvalitāti telpās','Samazina kondensātu uz logiem','Vienkārša montāža logu rāmī']}
 
 ];
