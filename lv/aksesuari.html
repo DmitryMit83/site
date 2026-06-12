@@ -311,15 +311,32 @@
 <!-- ── Shop catalog ────────────────────────────────────────────── -->
 <style>
 #katalogs{background:#f7f7f7;}
-.skat-filter{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;background:#fff;border-radius:14px;padding:1rem 1.4rem;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:2rem;}
-.skat-search-wrap{position:relative;flex:1;min-width:180px;max-width:320px;}
+.skat-search-row{margin-bottom:2rem;}
+.skat-search-wrap{position:relative;width:100%;max-width:340px;}
 .skat-search-icon{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:#aaa;fill:none;pointer-events:none;}
-.skat-search{width:100%;padding:.52rem .9rem .52rem 2.2rem;border:1.5px solid #e5e5e5;border-radius:8px;font-size:.88rem;font-family:inherit;outline:none;transition:border-color .2s;box-sizing:border-box;}
+.skat-search{width:100%;padding:.6rem .9rem .6rem 2.2rem;border:1.5px solid #e5e5e5;border-radius:8px;font-size:.88rem;font-family:inherit;outline:none;transition:border-color .2s;box-sizing:border-box;}
 .skat-search:focus{border-color:#2d6a4f;}
-.skat-brands{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;}
-.skat-brand{padding:.32rem .85rem;border:1.5px solid #ddd;border-radius:20px;background:#fff;font-size:.8rem;font-family:inherit;cursor:pointer;transition:all .18s;white-space:nowrap;}
-.skat-brand:hover{border-color:#2d6a4f;color:#2d6a4f;}
-.skat-brand.is-active{background:#2d6a4f;border-color:#2d6a4f;color:#fff;}
+/* Brand bar — same underline-tab style as categories, no icons */
+.skat-brands{display:flex;gap:.2rem;align-items:center;overflow-x:auto;padding:.1rem 0;margin-bottom:1.4rem;border-bottom:1px solid #ececec;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.skat-brands::-webkit-scrollbar{display:none;}
+.skat-brand{flex:0 0 auto;position:relative;display:flex;align-items:center;justify-content:center;min-height:48px;padding:.4rem .95rem .7rem;background:none;border:none;font-size:.85rem;font-weight:500;font-family:inherit;color:#9a9a9a;cursor:pointer;white-space:nowrap;transition:color .18s;}
+.skat-brand img{height:24px;width:auto;max-width:104px;object-fit:contain;display:block;filter:grayscale(1);opacity:.5;transition:opacity .18s,filter .18s;}
+.skat-brand::after{content:"";position:absolute;left:50%;bottom:-1px;width:0;height:2px;background:#1a1a1a;border-radius:2px;transform:translateX(-50%);transition:width .2s;}
+.skat-brand:hover{color:#555;}
+.skat-brand:hover img{opacity:.85;filter:grayscale(.4);}
+.skat-brand.is-active{color:#1a1a1a;}
+.skat-brand.is-active img{opacity:1;filter:none;}
+.skat-brand.is-active::after{width:60%;}
+/* Category bar (icon + label, underline active) */
+.skat-cats{display:flex;gap:.3rem;overflow-x:auto;padding:.2rem 0 .3rem;margin-bottom:1.5rem;border-bottom:1px solid #ececec;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.skat-cats::-webkit-scrollbar{display:none;}
+.skat-cat{flex:0 0 auto;position:relative;display:flex;flex-direction:column;align-items:center;gap:.5rem;min-width:78px;padding:.55rem .85rem .85rem;background:none;border:none;cursor:pointer;font-family:inherit;color:#9a9a9a;transition:color .18s;}
+.skat-cat svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.skat-cat span{font-size:.78rem;font-weight:500;white-space:nowrap;}
+.skat-cat::after{content:"";position:absolute;left:50%;bottom:-1px;width:0;height:2px;background:#1a1a1a;border-radius:2px;transform:translateX(-50%);transition:width .2s;}
+.skat-cat:hover{color:#555;}
+.skat-cat.is-active{color:#1a1a1a;}
+.skat-cat.is-active::after{width:62%;}
 .skat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
 .skat-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;cursor:pointer;}
 .skat-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.13);}
@@ -353,7 +370,7 @@
 .skat-modal-features li::before{content:"✓";color:#2d6a4f;font-weight:700;flex-shrink:0;}
 @media(max-width:1024px){.skat-grid{grid-template-columns:repeat(4,1fr);}}
 @media(max-width:768px){.skat-grid{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:520px){.skat-grid{grid-template-columns:repeat(2,1fr);}.skat-search-wrap{max-width:100%;min-width:100%;}.skat-filter{gap:.7rem;}}
+@media(max-width:520px){.skat-grid{grid-template-columns:repeat(2,1fr);}.skat-search-wrap{max-width:100%;}}
 </style>
 
 <section id="katalogs" style="padding:3rem 0;">
@@ -363,20 +380,61 @@
       <h2>Aksesuāru katalogs</h2>
       <p>Pilns piederumu klāsts PVC, koka un alumīnija logiem un durvīm.</p>
     </div>
-    <!-- Filter bar -->
-    <div class="skat-filter">
+    <!-- Category bar -->
+    <div class="skat-cats" id="skatCats">
+      <button class="skat-cat is-active" data-cat="">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        <span>Visi</span>
+      </button>
+      <button class="skat-cat" data-cat="rokturi">
+        <svg viewBox="0 0 24 24"><rect x="9.5" y="3" width="5" height="9" rx="2.5"/><path d="M7 12h10"/><path d="M12 12v8"/></svg>
+        <span>Rokturi</span>
+      </button>
+      <button class="skat-cat" data-cat="enges">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="16" rx="1.5"/><rect x="15" y="4" width="6" height="16" rx="1.5"/><path d="M9 12h6"/><circle cx="12" cy="7" r="1"/><circle cx="12" cy="17" r="1"/></svg>
+        <span>Eņģes</span>
+      </button>
+      <button class="skat-cat" data-cat="blivgumijas">
+        <svg viewBox="0 0 24 24"><path d="M3 9c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2"/><path d="M3 15c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2"/></svg>
+        <span>Blīvgumijas</span>
+      </button>
+      <button class="skat-cat" data-cat="sledzenes">
+        <svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/><circle cx="12" cy="15" r="1.3"/></svg>
+        <span>Slēdzenes</span>
+      </button>
+      <button class="skat-cat" data-cat="starplikas">
+        <svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="3" rx="1.5"/><rect x="4" y="11" width="16" height="3" rx="1.5"/><rect x="4" y="16" width="16" height="3" rx="1.5"/></svg>
+        <span>Starplikas</span>
+      </button>
+      <button class="skat-cat" data-cat="hermetiki">
+        <svg viewBox="0 0 24 24"><rect x="6" y="8" width="9" height="12" rx="1.5"/><path d="M15 11l4-3-1-3"/><path d="M9 8V5h3v3"/></svg>
+        <span>Hermētiķi</span>
+      </button>
+      <button class="skat-cat" data-cat="drosiba">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
+        <span>Drošība</span>
+      </button>
+      <button class="skat-cat" data-cat="apkope">
+        <svg viewBox="0 0 24 24"><path d="M14.5 6a3.5 3.5 0 00-4.6 4.4l-5.6 5.6a1.5 1.5 0 002.1 2.1l5.6-5.6A3.5 3.5 0 0018 9.5l-2.5 2.5-2-2L16 7.5A3.5 3.5 0 0014.5 6z"/></svg>
+        <span>Apkope</span>
+      </button>
+    </div>
+    <!-- Brand bar -->
+    <div class="skat-brands" id="skatBrands">
+      <button class="skat-brand is-active" data-brand="">Visi zīmoli</button>
+      <button class="skat-brand" data-brand="GU" aria-label="GU" title="GU"><img src="../photo/brands/gu.png" alt="GU"></button>
+      <button class="skat-brand" data-brand="Siegenia" aria-label="Siegenia" title="Siegenia"><img src="../photo/brands/si.png" alt="Siegenia"></button>
+      <button class="skat-brand" data-brand="Maco" aria-label="Maco" title="Maco"><img src="../photo/brands/maco.png" alt="Maco"></button>
+      <button class="skat-brand" data-brand="Schüco" aria-label="Schüco" title="Schüco"><img src="../photo/brands/schuco.png" alt="Schüco"></button>
+      <button class="skat-brand" data-brand="Geze" aria-label="Geze" title="Geze"><img src="../photo/brands/geze.png" alt="Geze"></button>
+      <button class="skat-brand" data-brand="Roto" aria-label="Roto" title="Roto"><img src="../photo/brands/roto.png" alt="Roto"></button>
+      <button class="skat-brand" data-brand="Winkhaus" aria-label="Winkhaus" title="Winkhaus"><img src="../photo/brands/winkhaus.png" alt="Winkhaus"></button>
+    </div>
+    <!-- Search -->
+    <div class="skat-search-row">
       <div class="skat-search-wrap">
         <svg class="skat-search-icon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="text" id="skatSearch" class="skat-search" placeholder="Meklēt pēc nosaukuma…" autocomplete="off">
-      </div>
-      <div class="skat-brands" id="skatBrands">
-        <button class="skat-brand is-active" data-brand="">Visi</button>
-        <button class="skat-brand" data-brand="Roto">Roto</button>
-        <button class="skat-brand" data-brand="Siegenia">Siegenia</button>
-        <button class="skat-brand" data-brand="Maco">Maco</button>
-        <button class="skat-brand" data-brand="Winkhaus">Winkhaus</button>
-        <button class="skat-brand" data-brand="Soudal">Soudal</button>
-        <button class="skat-brand" data-brand="Deventer">Deventer</button>
       </div>
     </div>
     <!-- Product grid -->
@@ -423,7 +481,7 @@ var ICONS={
 var P = window.SKAT_PRODUCTS || [];
 
 var INIT_COUNT=20;
-var activeBrand='',searchQuery='',showAll=false;
+var activeBrand='',activeCat='',searchQuery='',showAll=false;
 var grid=document.getElementById('skatGrid');
 var empty=document.getElementById('skatEmpty');
 var moreWrap=document.getElementById('skatMoreWrap');
@@ -453,8 +511,9 @@ function modalImg(p){
 function getFiltered(){
   return P.filter(function(p){
     var bOk=!activeBrand||p.brand===activeBrand;
+    var cOk=!activeCat||p.cat===activeCat;
     var sOk=!searchQuery||p.name.toLowerCase().includes(searchQuery)||p.brand.toLowerCase().includes(searchQuery);
-    return bOk&&sOk;
+    return bOk&&cOk&&sOk;
   });
 }
 
@@ -515,6 +574,14 @@ document.getElementById('skatBrands').addEventListener('click',function(e){
   showAll=false;render();
 });
 
+document.getElementById('skatCats').addEventListener('click',function(e){
+  var btn=e.target.closest('.skat-cat');if(!btn)return;
+  document.querySelectorAll('.skat-cat').forEach(function(b){b.classList.remove('is-active');});
+  btn.classList.add('is-active');
+  activeCat=btn.dataset.cat;
+  showAll=false;render();
+});
+
 document.getElementById('skatSearch').addEventListener('input',function(e){
   searchQuery=e.target.value.trim().toLowerCase();
   showAll=false;render();
@@ -549,57 +616,6 @@ render();
         <a class="btn btn-primary" href="kontakti.html">Pieteikties konsultācijai</a>
         <a class="btn btn-outline-dark" href="darbi-aksesuari.html">Mūsu darbi →</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FAQ ────────────────────────────────────────────────────── -->
-<section class="container" style="padding-top:3rem;padding-bottom:3.5rem;">
-  <div class="faq-layout">
-    <div class="faq-layout-head">
-
-  <div class="section-head">
-    <span class="eyebrow">Bieži uzdotie jautājumi</span>
-    <h2>Jautājumi par aksesuāriem</h2>
-  </div>
-    </div>
-    <div class="faq-layout-list">
-      <details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
-    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
-      Kā uzzināt, kurš rokturis der manam logam?
-      <span style="font-size:1.3rem;line-height:1;">+</span>
-    </summary>
-    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">
-      Lielākajai daļai PVC logu rokturis piestiprināts ar diviem skrūvjiem, kas atrodas 43 mm vai 32 mm attālumā viens no otra. Fotogrāfiju un izmērus varat nosūtīt mums — precīzēsim piemērotāko modeli.
-    </p>
-  </details>
-<details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
-    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
-      Vai var nomainīt tikai rokturi, neaicināt meistaru?
-      <span style="font-size:1.3rem;line-height:1;">+</span>
-    </summary>
-    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">
-      Roktura nomaiņa parasti ir vienkārša (2 skrūves) un veicama pašam. Tomēr, ja vēlaties pārliecināties, ka logs ir pareizi salikts un regulēts, labāk aicināt meistaru — tas nodrošina ilgtermiņa rezultātu.
-    </p>
-  </details>
-<details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
-    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
-      Cik ilgi jāgaida aksesuāru piegādi?
-      <span style="font-size:1.3rem;line-height:1;">+</span>
-    </summary>
-    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">
-      Standarta aksesuāri (rokturi, starplikas, blīvgumijas) pieejami noliktavā un tiek piegādāti 1–3 darba dienās. Speciālas detaļas vai rets profils var prasīt 5–10 darba dienas.
-    </p>
-  </details>
-<details style="border-bottom:1px solid #e5e5e5;padding:.9rem 0;">
-    <summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
-      Vai piedāvājat garantiju uz uzstādītajiem aksesuāriem?
-      <span style="font-size:1.3rem;line-height:1;">+</span>
-    </summary>
-    <p style="margin:.6rem 0 0;color:#555;line-height:1.6;">
-      Jā — visiem mūsu uzstādītajiem aksesuāriem ir 2 gadu rakstiska garantija, kas ietver gan detaļu defektus, gan uzstādīšanas kļūdas.
-    </p>
-  </details>
     </div>
   </div>
 </section>

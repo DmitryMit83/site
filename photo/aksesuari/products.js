@@ -13,8 +13,8 @@
 //  name     — produkta nosaukums (rādīts kartītē un uznirstošajā logā)
 //
 //  brand    — zīmols, tukšs '' ja nav zīmola
-//             Filtrā pieejami: 'Roto' | 'Siegenia' | 'Maco' |
-//                              'Winkhaus' | 'Soudal' | 'Deventer'
+//             Filtrā pieejami (ar logotipu): 'GU' | 'Siegenia' | 'Maco' |
+//                              'Schüco' | 'Geze' | 'Roto' | 'Winkhaus'
 //
 //  cat      — kategorija filtrēšanai (tikai mazajiem burtiem):
 //             'rokturi' | 'enges' | 'blivgumijas' | 'sledzenes' |
@@ -120,7 +120,7 @@ window.SKAT_PRODUCTS = [
   // Blīvgumijas
   {id:8,name:'EPDM blīvgumija logiem',brand:'',cat:'blivgumijas',price:'no €3/m',bg:'#2e6644',icon:'blivgumija',desc:'EPDM gumijas blīvgumija siltuma un trokšņu izolācijai. Piemērota visiem PVC un ALU logu profiliem.',features:['Darba temp. −45°C līdz +120°C','Dažādas šķērsgriezuma formas','Piemērota logiem un durvīm','Pasūtāma pēc vajadzīgā garuma']},
   {id:9,name:'Silikona blīvgumija',brand:'',cat:'blivgumijas',price:'no €4/m',bg:'#2e6644',icon:'blivgumija',desc:'Silikona blīvgumija ar augstu elastību. Ideāla stikla un rāmja savienojumu hermētizācijai.',features:['Augsta elastība','UV izturīga','Piemērota stikla piestiprināšanai','Vairākās krāsās']},
-  {id:10,name:'Deventer TPE blīvgumija',brand:'Deventer',cat:'blivgumijas',price:'no €6/m',bg:'#2e6644',icon:'blivgumija',desc:'Premium klases TPE blīvgumija no vadošā Vācijas ražotāja. Nodrošina izcilu siltumizolāciju un ilglaicību.',features:['TPE — izturīgāks par EPDM','Piemērota pasīvās mājas logiem','Sertificēts enerģijas taupīšanas standarts','Garantija 15 gadi']},
+  {id:10,name:'Schüco profila blīvgumija (EPDM)',brand:'Schüco',cat:'blivgumijas',price:'no €7/m',bg:'#2e6644',icon:'blivgumija',desc:'Oriģinālā EPDM blīvgumija Schüco logu un durvju profilu sistēmām. Precīzi pieguļ profilam un saglabā elastību daudzu gadu garumā.',features:['Oriģināla Schüco rezerves daļa','Noturīga pret UV un temperatūru','Saglabā elastību −40°C līdz +80°C','Piemērota Schüco profilu sistēmām']},
 
   // Slēdzenes
   {id:11,name:'Standarta loga aizture',brand:'',cat:'sledzenes',price:'no €15',bg:'#3a4a6a',icon:'sledzene',desc:'Vienkārša un uzticama loga aizture, kas novērš nejaušu atvēršanu. Piemērota balkona logu un durvju aizsardzībai.',features:['Cinkotais tērauds','Viegla uzstādīšana','Piemērota PVC un ALU logiem','Pieejama baltā un brūnā krāsā']},
@@ -134,8 +134,8 @@ window.SKAT_PRODUCTS = [
 
   // Hermētiķi
   {id:17,name:'Silikona hermētiķis (310 ml)',brand:'',cat:'hermetiki',price:'no €7',bg:'#2e7e7e',icon:'hermetikis',desc:'Universāls silikona hermētiķis logu un durvju uzstādīšanai un noblīvēšanai. Izturīgs pret UV un atmosfēras iedarbību.',features:['310 ml kartušs','Pieejams caurspīdīgs, balts un pelēks','Darba temp. −40°C līdz +150°C','Pilnīga adhēzija 24 h laikā']},
-  {id:18,name:'Soudal Fix All (290 ml)',brand:'Soudal',cat:'hermetiki',price:'no €9',bg:'#2e7e7e',icon:'hermetikis',desc:'Profesionāls MS polimēra līmēšanas un blīvēšanas materiāls. Bez izocianāta, drošs darbam iekštelpās.',features:['Piemērots uz mitrām virsmām','Pārklājams un lakojas','Elastīgs pēc cietēšanas','Bez izocianāta — drošs iekštelpās']},
-  {id:19,name:'Soudal montāžas putas (750 ml)',brand:'Soudal',cat:'hermetiki',price:'no €8',bg:'#2e7e7e',icon:'hermetikis',desc:'Profesionālas poliuretāna montāžas putas logu un durvju uzstādīšanai. Pastāvīga ekspansija un augsta siltumizolācija.',features:['750 ml — taupīgāka par 500 ml','Pastāvīga ekspansija (< 10%)','Piemērotas logu montāžas šuvēm','Darba temp. −10°C līdz +35°C']},
+  {id:18,name:'GU SECURY multi-punktu slēdzene',brand:'GU',cat:'sledzenes',price:'no €58',bg:'#3a4a6a',icon:'sledzene',desc:'Vācu GU SECURY automātiskā multi-punktu slēdzene durvīm. Aizverot durvis, sprostpunkti aizslēdzas automātiski, nodrošinot maksimālu drošību.',features:['Automātiska aizslēgšanās','Vairāki sprostpunkti pa visu augstumu','Sertificēta pretielaušanās aizsardzība','PVC, koka un ALU durvīm']},
+  {id:19,name:'GEZE TS 4000 durvju aizvērējs',brand:'Geze',cat:'sledzenes',price:'no €72',bg:'#3a4a6a',icon:'sledzene',desc:'Premium klases virsmas durvju aizvērējs ar regulējamu aizvēršanas spēku. Nodrošina vienmērīgu un klusu durvju aizvēršanos.',features:['Regulējams aizvēršanas ātrums un spēks','Piemērots durvīm līdz 1100 mm','Ilgizturīgs vācu mehānisms','EN 2–4 klases aizvērējs']},
   {id:20,name:'Akrila hermētiķis (310 ml)',brand:'',cat:'hermetiki',price:'no €5',bg:'#2e7e7e',icon:'hermetikis',desc:'Akrila hermētiķis iekštelpu darbu noslēgšanai. Viegli noslaucāms ar ūdeni, labi pielīmējas un pārklājams ar krāsu.',features:['Pārklājams ar krāsu','Viegla uzklāšana','Piemērots iekštelpu šuvēm','Pieejams dažādās krāsās']},
 
   // Drošība
