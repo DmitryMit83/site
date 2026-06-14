@@ -83,13 +83,14 @@
 }
 .cd-finished{display:none;padding:.85rem 1.4rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:10px;color:#fff;font-size:.95rem;font-weight:600;margin-bottom:1.4rem;}
 @media(max-width:560px){
+  .cd-card{padding-left:14px !important;padding-right:14px !important;}
   .cd-val{font-size:1rem;}
   .cd-num-wrap{height:1.2rem;}
-  .cd-box{padding:8px 6px;min-width:0;width:calc(22vw - 8px);border-radius:8px;}
-  .cd-grid{gap:3px;flex-wrap:nowrap;}
-  .cd-sep{font-size:.9rem;margin-bottom:14px;}
+  .cd-grid{gap:4px;flex-wrap:nowrap;}
+  .cd-unit{flex:1;min-width:0;gap:5px;}
+  .cd-box{padding:8px 4px;min-width:0;width:100%;box-sizing:border-box;border-radius:8px;}
+  .cd-sep{font-size:.9rem;margin-bottom:14px;flex-shrink:0;}
   .cd-lbl{font-size:.5rem;letter-spacing:.1em;}
-  .cd-unit{gap:5px;}
 }
 </style>
 </head>
@@ -334,7 +335,7 @@
   </div>
 
   <div class="container" style="position:relative;z-index:1;text-align:center;">
-    <div style="max-width:546px;margin:0 auto;background:rgba(255,255,255,.05);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.11);border-radius:20px;padding:36px 28px 39px;box-shadow:0 40px 90px rgba(0,0,0,.35);position:relative;overflow:hidden;">
+    <div class="cd-card" style="max-width:546px;margin:0 auto;background:rgba(255,255,255,.05);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.11);border-radius:20px;padding:36px 28px 39px;box-shadow:0 40px 90px rgba(0,0,0,.35);position:relative;overflow:hidden;">
 
       <!-- inner glow -->
       <div style="position:absolute;inset:0;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,transparent 45%);pointer-events:none;"></div>
