@@ -678,7 +678,16 @@
     .pf-color-sw:hover{transform:scale(1.22);}
     .pf-color-sw[title]:hover::after{content:attr(title);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#222;color:#fff;font-size:.66rem;padding:3px 8px;border-radius:5px;white-space:nowrap;pointer-events:none;z-index:10;}
     .pf-ral-hint{font-size:.73rem;color:var(--muted);font-style:italic;}
-    </style>
+    /* ── Gallery main — clickable ── */
+    .pf-gallery-main{cursor:zoom-in;}
+    /* ── Lightbox ── */
+    .pf-lb{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:1rem;}
+    .pf-lb.pf-lb-open{display:flex;}
+    .pf-lb-img{max-width:100%;max-height:90vh;border-radius:8px;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,.6);user-select:none;}
+    .pf-lb-close{position:fixed;top:1rem;right:1.2rem;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:1.6rem;line-height:1;width:42px;height:42px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .18s;}
+    .pf-lb-close:hover{background:rgba(255,255,255,.28);}
+    .pf-lb-hint{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-size:.8rem;pointer-events:none;}
+</style>
 
     <div class="profile-grid" id="profileGrid">
 
@@ -787,8 +796,8 @@
       minW:300, maxW:3000, minH:400, maxH:2700,
       maxNote:'Maks. platums <strong>3000 mm</strong> pie maks. augstuma <strong>2700 mm</strong>. Ja augstums ir mazāks, platumu var palielināt — piemēram, pie augstuma 1500 mm platums var sasniegt <strong>4000 mm</strong>. Lielāka kvadratūra palielina sieta svaru un rada risku tam nokārt.',
       photos:[
-        {src:'../photo/PlisseH1.webp',    alt:'Plisē moskītu tīkls ar 18mm profilu — uzstādīts logā'},
-        {src:'../photo/PlisseStandarta.webp', alt:'Plisē standarta audums 18mm profilā'}
+        {src:'../photo/portfolio/sieti/plisse5.jpg',  alt:'Plisē moskītu tīkls ar 18mm profilu — uzstādīts logā'},
+        {src:'../photo/portfolio/sieti/plisse14.PNG',  alt:'Plisē 18mm profils — detaļa'}
       ]
     },
     p18i:{
@@ -807,8 +816,8 @@
       minW:300, maxW:1500, minH:400, maxH:1500,
       maxNote:'Maks. platums un augstums — <strong>1500 mm</strong>. Lielāki izmēri nav ieteicami: ātrās klipšas vai āķi var neizturēt smagāka sieta svaru, kas var izraisīt stiprinājuma atbrīvošanos.',
       photos:[
-        {src:'../photo/PlisseH1.webp',       alt:'Plisē moskītu tīkls ar 18mm iekšējo profilu'},
-        {src:'../photo/PlissePetScreen.webp', alt:'Plisē PetScreen audums 18mm iekšējā profilā'}
+        {src:'../photo/portfolio/sieti/18mmI1.png', alt:'Plisē moskītu tīkls ar 18mm iekšējo profilu'},
+        {src:'../photo/portfolio/sieti/18mmI2.jpg', alt:'Plisē 18mm iekšējais profils — detaļa'}
       ]
     },
     p25:{
@@ -827,8 +836,8 @@
       minW:400, maxW:3000, minH:500, maxH:2700,
       maxNote:'Maks. platums <strong>3000 mm</strong> pie maks. augstuma <strong>2700 mm</strong>. Ja augstums ir mazāks, platumu var palielināt — piemēram, pie augstuma 1500 mm platums var sasniegt <strong>4000 mm</strong>. Lielāka kvadratūra palielina sieta svaru un rada risku tam nokārt.',
       photos:[
-        {src:'../photo/PlisseH1.webp',    alt:'Plisē moskītu tīkls ar 25mm profilu — liela aile'},
-        {src:'../photo/PlissePetScreen.webp', alt:'Plisē PetScreen tīkls 25mm profilā'}
+        {src:'../photo/portfolio/sieti/IMG_2120 4.JPG', alt:'Plisē moskītu tīkls ar 25mm profilu — liela aile'},
+        {src:'../photo/portfolio/sieti/plisse_25mm.webp', alt:'Plisē 25mm profils — detaļa'}
       ]
     }
   };
@@ -964,6 +973,43 @@
     }, 360);
   }
 
+  /* ─── Lightbox (lazy — DOM not yet rendered at init time) ─── */
+  function openLb(src, alt){
+    var lb    = document.getElementById('pfLightbox');
+    var lbImg = document.getElementById('pfLbImg');
+    if(!lb || !lbImg) return;
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lb.classList.add('pf-lb-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb(){
+    var lb    = document.getElementById('pfLightbox');
+    var lbImg = document.getElementById('pfLbImg');
+    if(!lb) return;
+    lb.classList.remove('pf-lb-open');
+    document.body.style.overflow = '';
+    setTimeout(function(){ if(lbImg) lbImg.src = ''; }, 300);
+  }
+  document.addEventListener('click', function(e){
+    var closeBtn = e.target.closest('#pfLbClose');
+    if(closeBtn){ closeLb(); return; }
+    var lb = document.getElementById('pfLightbox');
+    if(lb && e.target === lb) closeLb();
+  });
+  document.addEventListener('keydown', function(e){
+    var lb = document.getElementById('pfLightbox');
+    if(e.key === 'Escape' && lb && lb.classList.contains('pf-lb-open')) closeLb();
+  });
+
+  /* Click on gallery main image */
+  detail.addEventListener('click', function(e){
+    var main = e.target.closest('.pf-gallery-main');
+    if(!main) return;
+    var img = main.querySelector('img');
+    if(img) openLb(img.src, img.alt);
+  });
+
   /* ─── Attach card clicks ─── */
   grid.querySelectorAll('.profile-card[data-profile]').forEach(function(card){
     card.addEventListener('click', function(){
@@ -980,6 +1026,13 @@
   });
 })();
 </script>
+
+<!-- ══ Profile photo lightbox ══ -->
+<div class="pf-lb" id="pfLightbox" role="dialog" aria-modal="true" aria-label="Foto skats">
+  <button class="pf-lb-close" id="pfLbClose" aria-label="Aizvērt">✕</button>
+  <img class="pf-lb-img" id="pfLbImg" src="" alt="">
+  <span class="pf-lb-hint">Nospiediet Esc vai klikšķiniet ārpus, lai aizvērtu</span>
+</div>
 
 <!-- ══ Tīkla auduma veidi ══ -->
 <section class="container" style="padding-top:3rem;padding-bottom:3rem;">
