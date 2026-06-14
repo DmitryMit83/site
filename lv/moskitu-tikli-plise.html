@@ -611,7 +611,7 @@
     .profile-card{background:#f8faf9;border:1.5px solid var(--line);border-radius:16px;overflow:hidden;transition:box-shadow .2s,transform .2s;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;}
     .profile-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.12);transform:translateY(-4px);}
     .profile-card:active{transform:scale(.97);}
-    .profile-card-img{height:240px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eef2f0,#dde7e2);overflow:hidden;position:relative;}
+    .profile-card-img{height:360px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eef2f0,#dde7e2);overflow:hidden;position:relative;}
     .profile-card-img svg{width:100%;height:100%;}
     .profile-card-body{padding:1.2rem 1.3rem 1.4rem;}
     .profile-card-title{font-size:1.05rem;font-weight:700;color:var(--primary);margin:0 0 .4rem;}
@@ -635,15 +635,16 @@
     .pf-detail{margin-top:2rem;opacity:0;transform:translateY(20px);transition:opacity .38s cubic-bezier(.4,0,.2,1),transform .38s cubic-bezier(.4,0,.2,1);}
     .pf-detail[hidden]{display:none;}
     .pf-detail.pf-in{opacity:1;transform:translateY(0);}
-    .pf-back{display:inline-flex;align-items:center;gap:.4rem;background:none;border:1.5px solid var(--line);border-radius:99px;cursor:pointer;color:var(--muted);font-size:.8rem;font-weight:600;padding:.38rem .9rem;margin-bottom:1.6rem;-webkit-tap-highlight-color:transparent;transition:border-color .18s,color .18s;}
-    .pf-back:hover{border-color:var(--accent);color:var(--accent);}
+    .pf-back{display:inline-flex;align-items:center;gap:.55rem;background:var(--accent);border:none;border-radius:99px;cursor:pointer;color:#fff;font-size:.92rem;font-weight:700;padding:.65rem 1.6rem;margin-top:1.8rem;-webkit-tap-highlight-color:transparent;transition:background .18s,transform .15s,box-shadow .18s;box-shadow:0 4px 14px rgba(208,77,26,.35);}
+    .pf-back:hover{background:#b85e14;box-shadow:0 6px 20px rgba(208,77,26,.45);transform:translateY(-1px);}
+    .pf-back:active{transform:scale(.97);}
     .pf-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem;flex-wrap:wrap;}
     .pf-head-badge{font-size:.72rem;font-weight:700;padding:3px 12px;border-radius:99px;color:#fff;white-space:nowrap;}
     .pf-head-title{font-size:1.45rem;font-weight:800;color:var(--primary);margin:0;}
     .pf-body{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:1.8rem;}
     @media(max-width:640px){.pf-body{grid-template-columns:1fr;gap:1.2rem;}}
     /* Gallery */
-    .pf-gallery-main{border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#eef2f0,#dde7e2);height:230px;display:flex;align-items:center;justify-content:center;margin-bottom:.65rem;transition:opacity .22s ease;}
+    .pf-gallery-main{border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#eef2f0,#dde7e2);height:460px;display:flex;align-items:center;justify-content:center;margin-bottom:.65rem;transition:opacity .22s ease;}
     .pf-gallery-main.gm-fade{opacity:0;}
     .pf-gallery-main img{width:100%;height:100%;object-fit:cover;display:block;}
     .pf-gallery-main svg{width:100%;height:100%;}
@@ -866,8 +867,8 @@
     var d = PF[key];
     if(!d) return;
 
-    /* Build gallery items: SVG illustration + real photos */
-    curGallery = [{type:'svg', content: svgOf(key)}];
+    /* Build gallery items: real photos only */
+    curGallery = [];
     d.photos.forEach(function(p){ curGallery.push({type:'img', src:p.src, alt:p.alt}); });
     curThumb = 0;
 
@@ -888,17 +889,13 @@
     }).join('');
 
     detail.innerHTML =
-      '<button class="pf-back" id="pfBack">'
-        +'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
-        +'Atpakaļ uz visiem profiliem'
-      +'</button>'
-      +'<div class="pf-head">'
+      '<div class="pf-head">'
         +'<span class="pf-head-badge" style="background:'+d.badgeBg+'">'+d.badge+'</span>'
         +'<h3 class="pf-head-title">'+d.title+'</h3>'
       +'</div>'
       +'<div class="pf-body">'
         +'<div class="pf-gallery">'
-          +'<div class="pf-gallery-main">'+curGallery[0].content+'</div>'
+          +'<div class="pf-gallery-main"><img src="'+curGallery[0].src+'" alt="'+curGallery[0].alt+'" style="width:100%;height:100%;object-fit:cover;display:block;"></div>'
           +'<div class="pf-gallery-thumbs">'+thumbsHTML+'</div>'
         +'</div>'
         +'<div>'
@@ -928,7 +925,11 @@
         +'<h5>Standarta krāsas</h5>'
         +'<div class="pf-colors-row" style="margin-top:.5rem;">'+colHTML+'</div>'
         +'<p class="pf-ral-hint" style="margin-top:.5rem;">+ Jebkura RAL kataloga krāsa (cena +25%)</p>'
-      +'</div>';
+      +'</div>'
+      +'<button class="pf-back" id="pfBack">'
+        +'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
+        +'Atpakaļ uz visiem profiliem'
+      +'</button>';
 
     /* Thumb click handlers */
     detail.querySelectorAll('.pf-thumb').forEach(function(th){
