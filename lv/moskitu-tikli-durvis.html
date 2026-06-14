@@ -579,6 +579,120 @@
 })();
 </script>
 
+<!-- ══ Durvju sietu krāsas (budžeta) ══ -->
+<style>
+.color-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:1.8rem;}
+.color-card{width:200px;flex-shrink:0;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s;cursor:default;}
+.color-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.13);}
+.color-card-img{width:100%;aspect-ratio:4/3;overflow:hidden;}
+.color-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s;}
+.color-card:hover .color-card-img img{transform:scale(1.05);}
+.color-card-label{padding:.55rem .7rem;font-size:.8rem;font-weight:600;color:var(--primary);text-align:center;line-height:1.3;background:#fff;}
+@media(max-width:600px){
+  .color-grid{gap:.5rem;}
+  .color-card{width:calc(50% - .25rem);cursor:pointer;}
+  .color-card-label{font-size:.65rem;padding:.35rem .3rem;}
+}
+.color-lb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);align-items:center;justify-content:center;padding:1.5rem;}
+.color-lb.open{display:flex;}
+.color-lb-inner{position:relative;max-width:88vw;max-height:82vh;border-radius:16px;overflow:hidden;box-shadow:0 16px 60px rgba(0,0,0,.5);}
+.color-lb-inner img{display:block;max-width:88vw;max-height:72vh;object-fit:contain;}
+.color-lb-caption{text-align:center;color:#fff;font-weight:700;font-size:1rem;margin-top:.8rem;}
+.color-lb-close{position:absolute;top:10px;right:12px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.55);border:none;color:#fff;font-size:1.3rem;line-height:34px;text-align:center;cursor:pointer;}
+</style>
+<div class="color-lb" id="colorLb" onclick="this.classList.remove('open')">
+  <div style="text-align:center;" onclick="event.stopPropagation()">
+    <div class="color-lb-inner">
+      <img id="colorLbImg" src="" alt="">
+      <button class="color-lb-close" onclick="document.getElementById('colorLb').classList.remove('open')">×</button>
+    </div>
+    <div class="color-lb-caption" id="colorLbCaption"></div>
+  </div>
+</div>
+<section class="alt">
+  <div class="container" style="padding-top:3rem;padding-bottom:1rem;">
+    <div class="section-head">
+      <span class="eyebrow">Budžeta durvju tīkli</span>
+      <h2>Durvju sietu krāsas — budžeta</h2>
+      <p>Izvēlieties profila krāsu, kas vislabāk iederas Jūsu durvju stilā.</p>
+    </div>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-card-img"><img src="../photo/sieti/color/durvis/bdurvis_balts.jpg" alt="Balts durvju siets" loading="lazy"></div>
+        <div class="color-card-label">Balts</div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-img"><img src="../photo/sieti/color/durvis/bdurvis_antracits.jpg" alt="Antracīts durvju siets" loading="lazy"></div>
+        <div class="color-card-label">Antracīts</div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-img"><img src="../photo/sieti/color/durvis/bdurvis_zozols.jpg" alt="Zelta Ozols durvju siets" loading="lazy"></div>
+        <div class="color-card-label">Zelta Ozols</div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-img"><img src="../photo/sieti/color/durvis/bdurvis_tbruns.jpg" alt="Tumši brūns durvju siets" loading="lazy"></div>
+        <div class="color-card-label">Tumši brūns</div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  if(window.innerWidth > 600) return;
+  document.querySelectorAll('.color-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      var img = card.querySelector('img');
+      var label = card.querySelector('.color-card-label');
+      document.getElementById('colorLbImg').src = img.src;
+      document.getElementById('colorLbImg').alt = img.alt;
+      document.getElementById('colorLbCaption').textContent = label ? label.textContent : '';
+      document.getElementById('colorLb').classList.add('open');
+    });
+  });
+})();
+</script>
+
+<!-- ══ Durvju sietu krāsas (ekskluzīvs) ══ -->
+<section>
+  <div class="container" style="padding-top:1rem;padding-bottom:3rem;">
+    <div class="section-head">
+      <span class="eyebrow">Ekskluzīvs dizains</span>
+      <h2>Durvju sietu krāsas — ekskluzīvs</h2>
+      <p>Plašs krāsu klāsts ekskluzīvajiem durvju tīkliem — tostarp laminācijas varianti koka imitācijai.</p>
+    </div>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-card-img"><img src="../photo/sieti/color/durvis/exdurvis_balts.jpg" alt="Balts ekskluzīvs durvju siets" loading="lazy"></div>
+        <div class="color-card-label">Balts</div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-img"><img src="../photo/sieti/color/durvis/exdurvis_bruns.jpg" alt="Brūns ekskluzīvs durvju siets" loading="lazy"></div>
+        <div class="color-card-label">Brūns</div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-img"><img src="../photo/sieti/color/durvis/exdurvis_tbruns.jpg" alt="Tumši brūns ekskluzīvs durvju siets" loading="lazy"></div>
+        <div class="color-card-label">Tumši brūns</div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-img"><img src="../photo/sieti/color/durvis/exdurvis_antracits.jpg" alt="Antracīts ekskluzīvs durvju siets" loading="lazy"></div>
+        <div class="color-card-label">Antracīts</div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-img"><img src="../photo/sieti/color/durvis/exdurvis_zozols.jpg" alt="Zelta Ozols laminācija durvju siets" loading="lazy"></div>
+        <div class="color-card-label">Zelta Ozols (laminācija)</div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-img"><img src="../photo/sieti/color/durvis/exdurvis_rieksts.jpg" alt="Rieksts laminācija durvju siets" loading="lazy"></div>
+        <div class="color-card-label">Rieksts (laminācija)</div>
+      </div>
+      <div class="color-card">
+        <div class="color-card-img"><img src="../photo/sieti/color/durvis/exdurvis_mahagons.jpg" alt="Mahagons laminācija durvju siets" loading="lazy"></div>
+        <div class="color-card-label">Mahagons (laminācija)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══ Tīkla auduma veidi ══ -->
 <section class="container" style="padding-top:3rem;padding-bottom:3rem;">
   <div class="section-head">
