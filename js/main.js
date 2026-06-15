@@ -29,13 +29,23 @@
 (function () {
   if (localStorage.getItem('cookieConsent')) return;
 
+  var CK_LNG = (document.documentElement.lang || 'lv').slice(0, 2).toLowerCase();
   var POLICY_URL = (function () {
     var p = window.location.pathname;
-    if (p.indexOf('/lv/') !== -1) return '../lv/privatuma-politika.html';
-    if (p.indexOf('/ru/') !== -1) return '../lv/privatuma-politika.html';
+    if (p.indexOf('/ru/') !== -1) return '../ru/politika-konfidencialnosti.html';
     if (p.indexOf('/en/') !== -1) return '../lv/privatuma-politika.html';
+    if (p.indexOf('/lv/') !== -1) return '../lv/privatuma-politika.html';
     return 'lv/privatuma-politika.html';
   })();
+  var CK = (CK_LNG === 'ru') ? {
+    aria: 'Согласие на использование cookie',
+    text: 'Logu Apkope использует cookie-файлы и другие технологии, чтобы безопасно и надёжно предлагать наши страницы, проверять их работу и улучшать ваш пользовательский опыт, включая релевантный контент и персонализированную рекламу как на наших, так и на сторонних сайтах. Нажимая «Я согласен», вы соглашаетесь на использование cookie и других технологий.',
+    policy: 'Политика конфиденциальности →', accept: 'Я согласен', reject: 'Только необходимые'
+  } : {
+    aria: 'Sīkdatņu piekrišana',
+    text: 'Logu Apkope izmanto sīkdatnes un citas tehnoloģijas, lai mēs varētu droši un uzticami piedāvāt mūsu lapas, pārbaudīt to veiktspēju un uzlabot tavu lietotāja pieredzi, tostarp atbilstošu saturu un personalizētu reklāmu gan mūsu, gan trešo pušu vietnēs. Noklikšķinot uz „Es piekrītu", tu piekrīti sīkdatņu un citu tehnoloģiju izmantošanai.',
+    policy: 'Privātuma politika →', accept: 'Es piekrītu', reject: 'Tikai būtiskās'
+  };
 
   var css = [
     '#ck-banner{',
@@ -79,19 +89,16 @@
   var banner = document.createElement('div');
   banner.id = 'ck-banner';
   banner.setAttribute('role', 'dialog');
-  banner.setAttribute('aria-label', 'Sīkdatņu piekrišana');
+  banner.setAttribute('aria-label', CK.aria);
   banner.innerHTML = [
     '<div class="ck-inner">',
     '  <p class="ck-text">',
-    '    Logu Apkope izmanto sīkdatnes un citas tehnoloģijas, lai mēs varētu droši un uzticami piedāvāt',
-    '    mūsu lapas, pārbaudīt to veiktspēju un uzlabot tavu lietotāja pieredzi, tostarp atbilstošu saturu',
-    '    un personalizētu reklāmu gan mūsu, gan trešo pušu vietnēs.',
-    '    Noklikšķinot uz „Es piekrītu", tu piekrīti sīkdatņu un citu tehnoloģiju izmantošanai.',
-    '    <a href="' + POLICY_URL + '">Privātuma politika →</a>',
+    '    ' + CK.text + ' ',
+    '    <a href="' + POLICY_URL + '">' + CK.policy + '</a>',
     '  </p>',
     '  <div class="ck-actions">',
-    '    <button class="ck-btn ck-btn-accept" id="ckAccept">Es piekrītu</button>',
-    '    <button class="ck-btn ck-btn-reject" id="ckReject">Tikai būtiskās</button>',
+    '    <button class="ck-btn ck-btn-accept" id="ckAccept">' + CK.accept + '</button>',
+    '    <button class="ck-btn ck-btn-reject" id="ckReject">' + CK.reject + '</button>',
     '  </div>',
     '</div>',
   ].join('');
@@ -141,8 +148,9 @@
   }
 })();
 
-// ── Site search index (all LV pages) ─────────────────────────────────────
-const SEARCH_IDX = [
+// ── Site search index (language-aware) ─────────────────────────────────────
+var SITE_LANG = (document.documentElement.lang || 'lv').slice(0, 2).toLowerCase();
+const SEARCH_IDX_LV = [
   { t:'Sākumlapa',              u:'index.html',                      k:'logu remonts apkope latvija pvc koka aluminja moskitu tikli zaluzijas' },
   { t:'Logu un durvju remonts', u:'remonts.html',                    k:'remonts regulesana logs durvis pvc koka alumins' },
   { t:'Logu regulēšana',        u:'remonts-regulesana.html',         k:'regulesana atverams logs pieregulasana' },
@@ -172,6 +180,37 @@ const SEARCH_IDX = [
   { t:'Transporta izmaksas',     u:'transporta-izmaksas.html',        k:'transports brauciens cena arpus rigas pilsetas attālums salaspils jurmala valmiera daugavpils' },
   { t:'Kontakti',               u:'kontakti.html',                   k:'kontakti talrunis epasts adrese riga latgales iela' },
 ];
+const SEARCH_IDX_RU = [
+  { t:'Главная',                     u:'index.html',                            k:'ремонт окон обслуживание латвия пвх дерево алюминий москитные сетки жалюзи' },
+  { t:'Ремонт окон и дверей',        u:'remont.html',                           k:'ремонт регулировка окно дверь пвх дерево алюминий' },
+  { t:'Регулировка окон',            u:'remont-regulirovka.html',               k:'регулировка открывание окно настройка створка' },
+  { t:'Замена стеклопакета',         u:'remont-steklopaket.html',               k:'стеклопакет замена термопакет двойное стекло конденсат запотевание' },
+  { t:'Замена уплотнителя',          u:'remont-uplotnitel.html',                k:'уплотнитель замена тепло шумоизоляция резина сквозняк' },
+  { t:'Замена фурнитуры',            u:'remont-furnitura.html',                 k:'фурнитура ручка петли замок механизм' },
+  { t:'Ремонт дверей',               u:'remont-dverej.html',                    k:'двери ремонт регулировка замок заклинило петли' },
+  { t:'Москитные сетки',             u:'moskitnye-setki.html',                  k:'москитные сетки насекомые мухи комары' },
+  { t:'Рамочные москитные сетки',    u:'moskitnye-setki-ramochnye.html',        k:'рамочные сетки алюминиевая рама стандарт окно заказ' },
+  { t:'Рулонные москитные сетки',    u:'moskitnye-setki-rulonnye.html',         k:'рулонные сетки кассета балкон двери' },
+  { t:'Москитные сетки плиссе',      u:'moskitnye-setki-plisse.html',           k:'плиссе сетки складные элегантные большие окна гармошка' },
+  { t:'Жалюзи',                      u:'zhalyuzi.html',                         k:'жалюзи шторы горизонтальные вертикальные рулонные римские' },
+  { t:'Горизонтальные жалюзи',       u:'zhalyuzi-gorizontalnye.html',           k:'горизонтальные алюминий дерево пластик ламели' },
+  { t:'Рулонные жалюзи',             u:'zhalyuzi-rulonnye.html',                k:'рулонные жалюзи полотно кассета blackout затемнение' },
+  { t:'Жалюзи день-ночь',            u:'zhalyuzi-den-noch.html',                k:'день ночь зебра прозрачный затемнение' },
+  { t:'Римские жалюзи',              u:'zhalyuzi-rimskie.html',                 k:'римские полотно элегантные складки' },
+  { t:'Аксессуары',                  u:'aksessuary.html',                       k:'аксессуары комплектующие ручка проставки уплотнитель' },
+  { t:'Подоконники',                 u:'podokonniki.html',                      k:'подоконники пвх дерево камень мрамор установка' },
+  { t:'Вентиляция',                  u:'ventilyaciya.html',                     k:'вентиляция приточный клапан окно двери свежий воздух' },
+  { t:'Утепление окон',              u:'remont-uteplenie.html',                 k:'утепление уплотнитель герметизация сквозняк холодное окно тепло' },
+  { t:'Модернизация окон',           u:'remont-modernizaciya.html',             k:'модернизация стеклопакет энергоэффективный фурнитура обновление' },
+  { t:'Тепловизор',                  u:'remont-teplovizor.html',                k:'тепловизор термография теплопотери влага диагностика' },
+  { t:'Плёнка',                      u:'plenka.html',                           k:'плёнка оконная солнцезащитная теплоизоляция матовая декоративная уф защита тонировка' },
+  { t:'Статьи',                      u:'stati.html',                            k:'статьи блог советы конденсат регулировка уплотнитель подоконник вентиляция' },
+  { t:'Интернет-магазин',            u:'internet-magazin.html',                 k:'интернет магазин торговля аксессуары покупка заказ' },
+  { t:'Советы и рекомендации',       u:'sovety.html',                           k:'советы рекомендации уход потеют тепло конденсат' },
+  { t:'Транспортные расходы',        u:'transportnye-rashody.html',             k:'транспорт выезд цена за пределами риги города расстояние саласпилс юрмала валмиера даугавпилс' },
+  { t:'Контакты',                    u:'kontakty.html',                         k:'контакты телефон email адрес рига latgales iela' },
+];
+const SEARCH_IDX = (SITE_LANG === 'ru') ? SEARCH_IDX_RU : SEARCH_IDX_LV;
 
 function hlMatch(text, q) {
   const i = text.toLowerCase().indexOf(q.toLowerCase());
@@ -329,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ).slice(0, 6);
 
       if (!hits.length) {
-        searchRes.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „' + q + '"</div>';
+        searchRes.innerHTML = '<div class="sr-empty">' + (SITE_LANG === 'ru' ? 'Нет результатов по „' : 'Nav rezultātu priekš „') + q + '"</div>';
         positionSearchRes();
         searchRes.classList.add('visible');
         return;
@@ -359,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form) {
     form.addEventListener('submit', e => {
       e.preventDefault();
-      const msg = form.getAttribute('data-success') || 'Paldies! Mēs sazināsimies ar Jums.';
+      const msg = form.getAttribute('data-success') || (SITE_LANG === 'ru' ? 'Спасибо! Мы свяжемся с вами.' : 'Paldies! Mēs sazināsimies ar Jums.');
       alert(msg);
       form.reset();
     });

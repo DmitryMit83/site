@@ -188,14 +188,14 @@
    "address": {
     "@type": "PostalAddress",
     "streetAddress": "Latgales iela 130a",
-    "addressLocality": "Rīga",
-    "addressRegion": "Rīga",
+    "addressLocality": "Рига",
+    "addressRegion": "Рига",
     "postalCode": "LV-1003",
     "addressCountry": "LV"
    },
    "areaServed": {
     "@type": "City",
-    "name": "Rīga"
+    "name": "Рига"
    },
    "priceRange": "€€",
    "openingHoursSpecification": [
@@ -237,6 +237,7 @@
 <meta name="twitter:title" content="Ремонт окон и москитные сетки в Риге | SIA Logu Apkope">
 <meta name="twitter:description" content="SIA Logu Apkope — ремонт и регулировка окон и дверей, замена стеклопакетов и уплотнителей, производство москитных сеток плиссе в Риге и Латвии.">
 <meta name="twitter:image" content="https://loguapkope.lv/photo/banner_enhanced.jpg">
+<style>/* ru-nav-bold */ .site-header .snm-link,.site-header .snm-trig{font-weight:700;}</style>
 </head>
 <body>
 <!-- ══ Hero splash (covers full screen on first load, ≥1200px only) ══ -->
@@ -1832,8 +1833,8 @@ function initCarousel(grid){
   /* ── UI elements ── */
   var navEl = document.createElement('div');
   navEl.className = 'svc-mob-nav';
-  navEl.innerHTML = '<button class="svc-mob-arr" aria-label="Iepriekšējā">&#8592;</button>'
-                  + '<button class="svc-mob-arr" aria-label="Nākamā">&#8594;</button>';
+  navEl.innerHTML = '<button class="svc-mob-arr" aria-label="Предыдущая">&#8592;</button>'
+                  + '<button class="svc-mob-arr" aria-label="Следующая">&#8594;</button>';
   grid.appendChild(navEl);
   navEl.children[0].addEventListener('click', function(){ go(cur - 1); });
   navEl.children[1].addEventListener('click', function(){ go(cur + 1); });
@@ -2513,87 +2514,87 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
 <script>
 (function(){
 var PHOTOS = [
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/logu_remonts_1.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/logu_remonts_1.jpg',alt:'Logu regulēšana Rīgā'},
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/IMG_20220419_112153.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/IMG_20220419_112153.jpg',alt:'Logu remonts Rīgā — meistars darba vietā'},
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/2025-03-28.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/2025-03-28.jpg',alt:'Logu regulēšana un apkope Rīgā'},
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_1.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/bliv_maina_1.jpg',alt:'Blīvgumijas maiņa PVC logam Rīgā'},
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_2.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/bliv_maina_2.jpg',alt:'Jauna blīvgumija uzstādīta PVC logā'},
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_3.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/bliv_maina_3.jpg',alt:'Blīvgumijas maiņas process Rīgā'},
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_4.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/bliv_maina_4.jpg',alt:'Gatava blīvgumija pēc maiņas Rīgā'},
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_koka_1.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/bliv_maina_koka_1.jpg',alt:'Blīvgumijas maiņa koka logam Rīgā'},
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/fur_maina_1.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/fur_maina_1.jpg',alt:'Logu furnitūras maiņa Rīgā'},
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/fur_maina_2.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/fur_maina_2.jpg',alt:'Jauna logu furnitūra uzstādīta Rīgā'},
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/logu_remonts_24.PNG',thumb:'../photo/portfolio/logu_remonts/thumbs/logu_remonts_24.jpg',alt:'Logu remonts Rīgā 2024 — PVC loga eņģu regulēšana'},
-  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/siltinasana.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/siltinasana.jpg',alt:'Logu siltināšana Rīgā'},
-  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/2022-01-12.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/2022-01-12.jpg',alt:'Durvju remonts Rīgā'},
-  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/2022-01-13.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/2022-01-13.jpg',alt:'Durvju furnitūras maiņa Rīgā'},
-  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/durvju_remonts_1.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/durvju_remonts_1.jpg',alt:'PVC durvju regulēšana Rīgā'},
-  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/durvju_remonts_2.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/durvju_remonts_2.jpg',alt:'Durvju blīvgumijas maiņa Rīgā'},
-  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_1053.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/IMG_1053.jpg',alt:'Koka durvju remonts Rīgā'},
-  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_4677.JPG',thumb:'../photo/portfolio/durvju_remonts/thumbs/IMG_4677.jpg',alt:'Durvju slēdzenes maiņa Rīgā'},
-  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_4685.JPG',thumb:'../photo/portfolio/durvju_remonts/thumbs/IMG_4685.jpg',alt:'Durvju eņģu maiņa Rīgā'},
-  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_4687.JPG',thumb:'../photo/portfolio/durvju_remonts/thumbs/IMG_4687.jpg',alt:'Balkona durvju remonts Rīgā'},
-  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_8068.JPG',thumb:'../photo/portfolio/durvju_remonts/thumbs/IMG_8068.jpg',alt:'Durvju remonts dzīvoklī Rīgā'},
-  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/durvju_remonts.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/durvju_remonts.jpg',alt:'Durvju remonts Rīgā — balkona PVC durvis'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/2022-07-05.jpg',thumb:'../photo/portfolio/sieti/thumbs/2022-07-05.jpg',alt:'Rāmju moskītu tīkls uzstādīts Rīgā'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/2022-07-05-3.jpg',thumb:'../photo/portfolio/sieti/thumbs/2022-07-05-3.jpg',alt:'Moskītu tīkls balkona logā Rīgā'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/2022-07-05-4.jpg',thumb:'../photo/portfolio/sieti/thumbs/2022-07-05-4.jpg',alt:'Uzstādīts moskītu tīkls dzīvokļa logā'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2117 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_2117 3.jpg',alt:'Plisē harmonika moskītu tīkls logam'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2118 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_2118 3.jpg',alt:'Plisē moskītu tīkls atvērtā stāvoklī'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2119 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_2119 3.jpg',alt:'Plisē moskītu tīkla detaļa'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2120 4.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_2120 4.jpg',alt:'Plisē moskītu tīkls balkona durvīm'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2122 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_2122 3.jpg',alt:'Gatavs plisē moskītu tīkls'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4974 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4974 3.jpg',alt:'Rullu moskītu tīkls uzstādīts logā'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4977 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4977 3.jpg',alt:'Rullu moskītu tīkla kasetne logā'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4988 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4988 3.jpg',alt:'Rullu moskītu tīkls atvērtā stāvoklī'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4992 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4992 3.jpg',alt:'Moskītu tīkla uzstādīšana privātmājā'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4993 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4993 3.jpg',alt:'Rāmju moskītu tīkls uz plastmasas loga'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4995 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4995 3.jpg',alt:'Veiksmīgi uzstādīts moskītu tīkls'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5042 4.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5042 4.jpg',alt:'Bīdāmais moskītu tīkls terasē'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5065 2.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5065 2.jpg',alt:'Durvju moskītu tīkls ar magnētisko aizvēršanu'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5145.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5145.jpg',alt:'Moskītu tīkls koka logam Rīgā'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5791 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5791 3.jpg',alt:'Moskītu tīkls balkona logam'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5794 4.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5794 4.jpg',alt:'Uzstādīti moskītu tīkli vairākiem logiem'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5795 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5795 3.jpg',alt:'Rāmju moskītu tīkla atvēršana'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5843 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5843 3.jpg',alt:'Gatavs moskītu tīkls pēc uzstādīšanas'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/plisse5.jpg',thumb:'../photo/portfolio/sieti/thumbs/plisse5.jpg',alt:'Plisē moskītu tīkls logam'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/plisse6.jpg',thumb:'../photo/portfolio/sieti/thumbs/plisse6.jpg',alt:'Plisē moskītu tīkls uzstādīts'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/plisse7.jpg',thumb:'../photo/portfolio/sieti/thumbs/plisse7.jpg',alt:'Plisē tīkls balkona durvīm Rīgā'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/plisse11.jpg',thumb:'../photo/portfolio/sieti/thumbs/plisse11.jpg',alt:'Plisē moskītu tīkla instalācija Rīgā'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/plisse_logiem3.jpg',thumb:'../photo/portfolio/sieti/thumbs/plisse_logiem3.jpg',alt:'Plisē sieti vairākiem logiem Rīgā'},
-  {cat:'sieti',src:'../photo/portfolio/sieti/ramis_siete4.PNG',thumb:'../photo/portfolio/sieti/thumbs/ramis_siete4.jpg',alt:'Rāmju moskītu tīkls uz loga'},
-  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_1.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_1.jpg',alt:'Rullu žalūzijas uzstādītas logā Rīgā'},
-  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_2.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_2.jpg',alt:'Dienas-nakts žalūzijas logā Rīgā'},
-  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_3.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_3.jpg',alt:'Kasešu žalūzijas uzstādītas logā'},
-  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_4.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_4.jpg',alt:'Horizontālās žalūzijas logā Rīgā'},
-  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_5.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_5.jpg',alt:'Plisē žalūzijas logam Rīgā'},
-  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_6.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_6.jpg',alt:'Vertikālās žalūzijas balkona durvīm'},
-  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi1.gif',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi1.jpg',alt:'Žalūzijas kustībā'},
-  {cat:'aksesuari',src:'../photo/portfolio/aksesuari/bernu_dros.jpg',thumb:'../photo/portfolio/aksesuari/thumbs/bernu_dros.jpg',alt:'Bērnu drošības aksesuāri logiem'},
-  {cat:'aksesuari',src:'../photo/portfolio/aksesuari/durvju.jpg',thumb:'../photo/portfolio/aksesuari/thumbs/durvju.jpg',alt:'Durvju un logu aksesuāri Rīgā'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-02-08.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/2022-02-08.jpg',alt:'Stikla paketes maiņa PVC logā'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-02-08-2.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/2022-02-08-2.jpg',alt:'Jauna stikla pakete uzstādīta'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-05-10.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/2022-05-10.jpg',alt:'Termopaketes uzstādīšana dzīvoklī'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-05-10-2.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/2022-05-10-2.jpg',alt:'Stikla pakete pēc nomaiņas'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-07-06.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/2022-07-06.jpg',alt:'Energoefektīvas stikla paketes'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210202_113252.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210202_113252.jpg',alt:'Stikla paketes nomaiņa PVC logam'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210202_113847.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210202_113847.jpg',alt:'Jaunas stikla paketes montāža logā'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210211_131700.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210211_131700.jpg',alt:'Stikla paketes hermetizācija'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210222_134705.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210222_134705.jpg',alt:'Divkāršā stikla paketes nomaiņa koka logā'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210222_134747.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210222_134747.jpg',alt:'Koka loga stikla paketes nomaiņa'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210227_124340.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210227_124340.jpg',alt:'Stikla paketes uzstādīšana daudzdzīvokļu mājā'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210407_101814.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210407_101814.jpg',alt:'Jauna stikla pakete PVC logā'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210407_122824.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210407_122824.jpg',alt:'PVC loga stikla paketes nomaiņa'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210514_105436.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210514_105436.jpg',alt:'Stikla paketes montāža ofisa telpās'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210805_110158.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210805_110158.jpg',alt:'Stikla paketes nomaiņa vasarā'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20211012_132729.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20211012_132729.jpg',alt:'Stikla paketes nomaiņa rudenī'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20211012_145927.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20211012_145927.jpg',alt:'Pabeigtā stikla paketes nomaiņa'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20211104_122343.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20211104_122343.jpg',alt:'Trīskāršā stikla paketes uzstādīšana'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_4590.JPG',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_4590.jpg',alt:'Stikla paketes nomaiņas process'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_4917.JPG',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_4917.jpg',alt:'Alumīnija loga stikla paketes nomaiņa'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_8326.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_8326.jpg',alt:'Stikla paketes uzstādīšana balkonā'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_8331-2.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_8331-2.jpg',alt:'Panorāmas loga stikla paketes nomaiņa'},
-  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/mansarda_stikls.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/mansarda_stikls.jpg',alt:'Mansardas loga stikla paketes maiņa Rīgā'}
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/logu_remonts_1.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/logu_remonts_1.jpg',alt:'Регулировка окон в Риге'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/IMG_20220419_112153.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/IMG_20220419_112153.jpg',alt:'Ремонт окон в Риге — мастер на объекте'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/2025-03-28.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/2025-03-28.jpg',alt:'Регулировка и обслуживание окон в Риге'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_1.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/bliv_maina_1.jpg',alt:'Замена уплотнителя ПВХ-окна в Риге'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_2.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/bliv_maina_2.jpg',alt:'Новый уплотнитель установлен в ПВХ-окно'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_3.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/bliv_maina_3.jpg',alt:'Процесс замены уплотнителя в Риге'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_4.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/bliv_maina_4.jpg',alt:'Готовый уплотнитель после замены в Риге'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/bliv_maina_koka_1.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/bliv_maina_koka_1.jpg',alt:'Замена уплотнителя деревянного окна в Риге'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/fur_maina_1.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/fur_maina_1.jpg',alt:'Замена оконной фурнитуры в Риге'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/fur_maina_2.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/fur_maina_2.jpg',alt:'Новая оконная фурнитура установлена в Риге'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/logu_remonts_24.PNG',thumb:'../photo/portfolio/logu_remonts/thumbs/logu_remonts_24.jpg',alt:'Ремонт окон в Риге 2024 — регулировка петель ПВХ-окна'},
+  {cat:'logu-remonts',src:'../photo/portfolio/logu_remonts/siltinasana.jpg',thumb:'../photo/portfolio/logu_remonts/thumbs/siltinasana.jpg',alt:'Утепление окон в Риге'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/2022-01-12.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/2022-01-12.jpg',alt:'Ремонт дверей в Риге'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/2022-01-13.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/2022-01-13.jpg',alt:'Замена дверной фурнитуры в Риге'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/durvju_remonts_1.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/durvju_remonts_1.jpg',alt:'Регулировка ПВХ-дверей в Риге'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/durvju_remonts_2.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/durvju_remonts_2.jpg',alt:'Замена дверного уплотнителя в Риге'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_1053.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/IMG_1053.jpg',alt:'Ремонт деревянных дверей в Риге'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_4677.JPG',thumb:'../photo/portfolio/durvju_remonts/thumbs/IMG_4677.jpg',alt:'Замена дверного замка в Риге'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_4685.JPG',thumb:'../photo/portfolio/durvju_remonts/thumbs/IMG_4685.jpg',alt:'Замена дверных петель в Риге'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_4687.JPG',thumb:'../photo/portfolio/durvju_remonts/thumbs/IMG_4687.jpg',alt:'Ремонт балконных дверей в Риге'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/IMG_8068.JPG',thumb:'../photo/portfolio/durvju_remonts/thumbs/IMG_8068.jpg',alt:'Ремонт дверей в квартире в Риге'},
+  {cat:'durvju-remonts',src:'../photo/portfolio/durvju_remonts/durvju_remonts.jpg',thumb:'../photo/portfolio/durvju_remonts/thumbs/durvju_remonts.jpg',alt:'Ремонт дверей в Риге — балконная ПВХ-дверь'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/2022-07-05.jpg',thumb:'../photo/portfolio/sieti/thumbs/2022-07-05.jpg',alt:'Рамочная москитная сетка установлена в Риге'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/2022-07-05-3.jpg',thumb:'../photo/portfolio/sieti/thumbs/2022-07-05-3.jpg',alt:'Москитная сетка на балконном окне в Риге'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/2022-07-05-4.jpg',thumb:'../photo/portfolio/sieti/thumbs/2022-07-05-4.jpg',alt:'Москитная сетка установлена на окне квартиры'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2117 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_2117 3.jpg',alt:'Москитная сетка плиссе (гармошка) для окна'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2118 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_2118 3.jpg',alt:'Москитная сетка плиссе в открытом состоянии'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2119 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_2119 3.jpg',alt:'Деталь москитной сетки плиссе'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2120 4.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_2120 4.jpg',alt:'Москитная сетка плиссе для балконной двери'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_2122 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_2122 3.jpg',alt:'Готовая москитная сетка плиссе'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4974 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4974 3.jpg',alt:'Рулонная москитная сетка установлена на окне'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4977 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4977 3.jpg',alt:'Кассета рулонной москитной сетки на окне'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4988 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4988 3.jpg',alt:'Рулонная москитная сетка в открытом состоянии'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4992 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4992 3.jpg',alt:'Установка москитной сетки в частном доме'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4993 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4993 3.jpg',alt:'Рамочная москитная сетка на пластиковом окне'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_4995 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_4995 3.jpg',alt:'Успешно установленная москитная сетка'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5042 4.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5042 4.jpg',alt:'Раздвижная москитная сетка на террасе'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5065 2.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5065 2.jpg',alt:'Дверная москитная сетка с магнитным закрыванием'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5145.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5145.jpg',alt:'Москитная сетка для деревянного окна в Риге'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5791 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5791 3.jpg',alt:'Москитная сетка для балконного окна'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5794 4.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5794 4.jpg',alt:'Москитные сетки установлены на несколько окон'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5795 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5795 3.jpg',alt:'Открывание рамочной москитной сетки'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/IMG_5843 3.JPG',thumb:'../photo/portfolio/sieti/thumbs/IMG_5843 3.jpg',alt:'Готовая москитная сетка после установки'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/plisse5.jpg',thumb:'../photo/portfolio/sieti/thumbs/plisse5.jpg',alt:'Москитная сетка плиссе для окна'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/plisse6.jpg',thumb:'../photo/portfolio/sieti/thumbs/plisse6.jpg',alt:'Москитная сетка плиссе установлена'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/plisse7.jpg',thumb:'../photo/portfolio/sieti/thumbs/plisse7.jpg',alt:'Сетка плиссе для балконной двери в Риге'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/plisse11.jpg',thumb:'../photo/portfolio/sieti/thumbs/plisse11.jpg',alt:'Установка москитной сетки плиссе в Риге'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/plisse_logiem3.jpg',thumb:'../photo/portfolio/sieti/thumbs/plisse_logiem3.jpg',alt:'Сетки плиссе для нескольких окон в Риге'},
+  {cat:'sieti',src:'../photo/portfolio/sieti/ramis_siete4.PNG',thumb:'../photo/portfolio/sieti/thumbs/ramis_siete4.jpg',alt:'Рамочная москитная сетка на окне'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_1.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_1.jpg',alt:'Рулонные жалюзи установлены на окне в Риге'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_2.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_2.jpg',alt:'Жалюзи день-ночь на окне в Риге'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_3.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_3.jpg',alt:'Кассетные жалюзи установлены на окне'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_4.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_4.jpg',alt:'Горизонтальные жалюзи на окне в Риге'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_5.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_5.jpg',alt:'Жалюзи плиссе для окна в Риге'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi_6.jpg',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi_6.jpg',alt:'Вертикальные жалюзи для балконной двери'},
+  {cat:'zaluzijas',src:'../photo/portfolio/zaluzi/zaluzi1.gif',thumb:'../photo/portfolio/zaluzi/thumbs/zaluzi1.jpg',alt:'Жалюзи в движении'},
+  {cat:'aksesuari',src:'../photo/portfolio/aksesuari/bernu_dros.jpg',thumb:'../photo/portfolio/aksesuari/thumbs/bernu_dros.jpg',alt:'Аксессуары детской безопасности для окон'},
+  {cat:'aksesuari',src:'../photo/portfolio/aksesuari/durvju.jpg',thumb:'../photo/portfolio/aksesuari/thumbs/durvju.jpg',alt:'Аксессуары для дверей и окон в Риге'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-02-08.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/2022-02-08.jpg',alt:'Замена стеклопакета в ПВХ-окне'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-02-08-2.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/2022-02-08-2.jpg',alt:'Новый стеклопакет установлен'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-05-10.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/2022-05-10.jpg',alt:'Установка термопакета в квартире'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-05-10-2.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/2022-05-10-2.jpg',alt:'Стеклопакет после замены'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/2022-07-06.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/2022-07-06.jpg',alt:'Энергоэффективные стеклопакеты'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210202_113252.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210202_113252.jpg',alt:'Замена стеклопакета ПВХ-окна'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210202_113847.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210202_113847.jpg',alt:'Монтаж нового стеклопакета в окне'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210211_131700.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210211_131700.jpg',alt:'Герметизация стеклопакета'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210222_134705.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210222_134705.jpg',alt:'Замена двухкамерного стеклопакета в деревянном окне'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210222_134747.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210222_134747.jpg',alt:'Замена стеклопакета деревянного окна'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210227_124340.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210227_124340.jpg',alt:'Установка стеклопакета в многоквартирном доме'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210407_101814.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210407_101814.jpg',alt:'Новый стеклопакет в ПВХ-окне'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210407_122824.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210407_122824.jpg',alt:'Замена стеклопакета ПВХ-окна'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210514_105436.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210514_105436.jpg',alt:'Монтаж стеклопакета в офисных помещениях'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20210805_110158.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20210805_110158.jpg',alt:'Замена стеклопакета летом'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20211012_132729.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20211012_132729.jpg',alt:'Замена стеклопакета осенью'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20211012_145927.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20211012_145927.jpg',alt:'Завершённая замена стеклопакета'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_20211104_122343.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_20211104_122343.jpg',alt:'Установка трёхкамерного стеклопакета'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_4590.JPG',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_4590.jpg',alt:'Процесс замены стеклопакета'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_4917.JPG',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_4917.jpg',alt:'Замена стеклопакета алюминиевого окна'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_8326.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_8326.jpg',alt:'Установка стеклопакета на балконе'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/IMG_8331-2.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/IMG_8331-2.jpg',alt:'Замена стеклопакета панорамного окна'},
+  {cat:'stikla-paketes',src:'../photo/portfolio/stikla_paketes/mansarda_stikls.jpg',thumb:'../photo/portfolio/stikla_paketes/thumbs/mansarda_stikls.jpg',alt:'Замена стеклопакета мансардного окна в Риге'}
 ];
 var grid     = document.getElementById('mdGrid');
 var tabsEl   = document.getElementById('mdTabs');
@@ -2838,7 +2839,7 @@ grid.addEventListener('mouseup', startTimer);
                item.k.toLowerCase().includes(q.toLowerCase());
       }).slice(0,6);
       if(!hits.length){
-        res.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „'+q+'"</div>';
+        res.innerHTML = '<div class="sr-empty">Нет результатов по „'+q+'"</div>';
       } else {
         res.innerHTML = hits.map(function(item){
           var kw = item.k.split(' ').find(function(w){ return w.toLowerCase().includes(q.toLowerCase()); }) || '';
@@ -2933,7 +2934,7 @@ grid.addEventListener('mouseup', startTimer);
     var open = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', open ? 'false' : 'true');
     btn.querySelector('.map-toggle-label').textContent =
-      open ? 'Rādīt vizītkarti un norādes' : 'Slēpt';
+      open ? 'Показать визитку и указания' : 'Скрыть';
     card.classList.toggle('is-open', !open);
     dir.classList.toggle('is-open', !open);
   });
@@ -3635,10 +3636,10 @@ grid.addEventListener('mouseup', startTimer);
   }
   /* ── Build inner card HTML ── */
   function cardHTML(item){
-    return '<span class="fcs-q-tag">Jautājums</span>'+
+    return '<span class="fcs-q-tag">Вопрос</span>'+
            '<h3>'+esc(item.question)+'</h3>'+
            '<p class="fcs-teaser">'+esc(item.teaser)+'</p>'+
-           '<button class="fcs-read-btn">Lasīt vairāk'+
+           '<button class="fcs-read-btn">Читать далее'+
              '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>'+
            '</button>';
   }
@@ -3666,13 +3667,13 @@ grid.addEventListener('mouseup', startTimer);
     nav.className = 'fcs-nav';
     var btnPrev = document.createElement('button');
     btnPrev.className = 'fcs-nav-btn';
-    btnPrev.setAttribute('aria-label','Iepriekšējais');
+    btnPrev.setAttribute('aria-label','Предыдущий');
     btnPrev.innerHTML = '&#8592;';
     var counter = document.createElement('span');
     counter.className = 'fcs-counter';
     var btnNext = document.createElement('button');
     btnNext.className = 'fcs-nav-btn';
-    btnNext.setAttribute('aria-label','Nākamais');
+    btnNext.setAttribute('aria-label','Следующий');
     btnNext.innerHTML = '&#8594;';
     nav.appendChild(btnPrev);
     nav.appendChild(counter);
