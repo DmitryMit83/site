@@ -612,7 +612,7 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
 .footer-inner{
   max-width:var(--maxw);margin:0 auto;padding:0 24px;
 }
-.site-footer h4{color:#fff;font-size:1rem;margin-bottom:12px}
+.site-footer h3,.site-footer h4{color:#fff;font-size:1rem;margin-bottom:12px}
 .footer-sub-h4{margin-top:20px !important}
 .site-footer a{color:#C9C4B7}
 /* ── Mūsu darbi home grid ──────────────────────────────────────────── */
@@ -2103,7 +2103,7 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--green)}
   .footer-grid img{height:36px;margin-bottom:10px}
   .footer-grid p{font-size:.85rem}
   .footer-grid a{font-size:.88rem;margin-bottom:4px}
-  .site-footer h4{font-size:.92rem;margin-bottom:8px}
+  .site-footer h3,.site-footer h4{font-size:.92rem;margin-bottom:8px}
   .footer-sub-h4{margin-top:16px !important}
   .copyright{font-size:.78rem}
 }

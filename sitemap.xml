@@ -2,32 +2,75 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://loguapkope.lv/lv/aksesuari.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/aksesuari.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/aksesuari.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/darbi-aksesuari.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/darbi-aksesuari.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/darbi-aksesuari.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/darbi-durvis.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/darbi-durvis.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/darbi-durvis.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/darbi-logu-remonts.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/darbi-logu-remonts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/darbi-logu-remonts.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/darbi-moskitu-tikli.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/darbi-moskitu-tikli.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/darbi-moskitu-tikli.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/darbi-stikla-paketes.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/darbi-stikla-paketes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/darbi-stikla-paketes.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/darbi-zaluzijas.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/darbi-zaluzijas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/darbi-zaluzijas.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/darbi.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/darbi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/darbi.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://loguapkope.lv/lv/index.html</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/index.html"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/index.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/index.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/index.html"/>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq><priority>1.0</priority>
   </url>
   <url>
-    <loc>https://loguapkope.lv/lv/remonts.html</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/remonts.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/remont.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/repair.html"/>
-    <changefreq>monthly</changefreq><priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://loguapkope.lv/lv/moskitu-tikli.html</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/moskitu-tikli.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/moskitnye-setki.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/mosquito-nets.html"/>
-    <changefreq>monthly</changefreq><priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://loguapkope.lv/lv/zaluzijas.html</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/zaluzijas.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/zhalyuzi.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/blinds.html"/>
+    <loc>https://loguapkope.lv/lv/interneta-veikals.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/interneta-veikals.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/interneta-veikals.html"/>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq><priority>0.9</priority>
   </url>
   <url>
@@ -35,6 +78,322 @@
     <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/kontakti.html"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/kontakty.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/contacts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/kontakti.html"/>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>yearly</changefreq><priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/logu-remonts-jelgava.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/logu-remonts-jelgava.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/logu-remonts-jelgava.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/logu-remonts-jurmala.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/logu-remonts-jurmala.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/logu-remonts-jurmala.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/logu-remonts-ogre.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/logu-remonts-ogre.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/logu-remonts-ogre.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/logu-remonts-salaspils.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/logu-remonts-salaspils.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/logu-remonts-salaspils.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/logu-remonts-sigulda.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/logu-remonts-sigulda.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/logu-remonts-sigulda.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/moskitu-tikli-durvis.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/moskitu-tikli-durvis.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/moskitu-tikli-durvis.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/moskitu-tikli-magnetiskie.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/moskitu-tikli-magnetiskie.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/moskitnye-setki-magnitnye.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/mosquito-nets-magnetic.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/moskitu-tikli-magnetiskie.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/moskitu-tikli-plise.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/moskitu-tikli-plise.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/moskitnye-setki-plisse.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/mosquito-nets-pleated.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/moskitu-tikli-plise.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/moskitu-tikli-rama.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/moskitu-tikli-rama.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/moskitnye-setki-ramochnye.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/mosquito-nets-frame.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/moskitu-tikli-rama.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/moskitu-tikli-rullu.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/moskitu-tikli-rullu.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/moskitnye-setki-rulonnye.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/mosquito-nets-roll.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/moskitu-tikli-rullu.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/moskitu-tikli-slidamie.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/moskitu-tikli-slidamie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/moskitu-tikli-slidamie.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/moskitu-tikli.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/moskitu-tikli.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/moskitnye-setki.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/mosquito-nets.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/moskitu-tikli.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/padomi.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/padomi.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/sovety.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/tips.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/padomi.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/palodzes.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/palodzes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/palodzes.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/pleve.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/pleve.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/pleve.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/privatuma-politika.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/privatuma-politika.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/privatuma-politika.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq><priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/raksti.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/raksti.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/raksti.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/raksts-kondensats-apkure.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/raksts-kondensats-apkure.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/raksts-kondensats-apkure.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/raksts-stikla-parbaude.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/raksts-stikla-parbaude.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/raksts-stikla-parbaude.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/raksts-termoshok.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/raksts-termoshok.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/raksts-termoshok.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/raksts-vajas-vietas.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/raksts-vajas-vietas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/raksts-vajas-vietas.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/remonts-blivgumija.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/remonts-blivgumija.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/remont-uplotnitel.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/repair-seal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/remonts-blivgumija.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/remonts-durvis.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/remonts-durvis.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/remont-dverej.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/repair-doors.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/remonts-durvis.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/remonts-furnitura.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/remonts-furnitura.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/remont-furnitura.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/repair-hardware.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/remonts-furnitura.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/remonts-modernizacija.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/remonts-modernizacija.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/remonts-modernizacija.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/remonts-regulesana.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/remonts-regulesana.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/remont-regulirovka.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/repair-adjustment.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/remonts-regulesana.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/remonts-siltinasana.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/remonts-siltinasana.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/remonts-siltinasana.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/remonts-stiklu-paketes.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/remonts-stiklu-paketes.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/remont-steklopaket.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/repair-glass-unit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/remonts-stiklu-paketes.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/remonts-termokamera.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/remonts-termokamera.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/remonts-termokamera.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/remonts.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/remonts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/remont.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/repair.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/remonts.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/transporta-izmaksas.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/transporta-izmaksas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/transporta-izmaksas.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/ventilacija.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/ventilacija.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/ventilacija.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/zaluzijas-dienas-nakts.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/zaluzijas-dienas-nakts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/zhalyuzi-den-noch.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/blinds-day-night.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/zaluzijas-dienas-nakts.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/zaluzijas-horizontalas.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/zaluzijas-horizontalas.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/zhalyuzi-gorizontalnye.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/blinds-horizontal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/zaluzijas-horizontalas.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/zaluzijas-kasesu.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/zaluzijas-kasesu.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/zaluzijas-kasesu.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/zaluzijas-plise.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/zaluzijas-plise.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/zaluzijas-plise.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/zaluzijas-romiesu.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/zaluzijas-romiesu.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/zhalyuzi-rimskie.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/blinds-roman.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/zaluzijas-romiesu.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/zaluzijas-rullu.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/zaluzijas-rullu.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/zhalyuzi-rulonnye.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/blinds-roller.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/zaluzijas-rullu.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/zaluzijas-vertikalas.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/zaluzijas-vertikalas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/zaluzijas-vertikalas.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://loguapkope.lv/lv/zaluzijas.html</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://loguapkope.lv/lv/zaluzijas.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://loguapkope.lv/ru/zhalyuzi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loguapkope.lv/en/blinds.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loguapkope.lv/lv/zaluzijas.html"/>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
   </url>
 </urlset>
