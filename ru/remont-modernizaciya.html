@@ -1006,11 +1006,11 @@
       if(q.length < 2){ res.classList.remove('visible'); res.innerHTML=''; return; }
       var idx = (typeof SEARCH_IDX !== 'undefined') ? SEARCH_IDX : [];
       var hits = idx.filter(function(item){
-        return item.t.toLowerCase().includes(q.toLowerCase()) ||
-               item.k.toLowerCase().includes(q.toLowerCase());
+        return searchTextMatches(item.t, q) ||
+               searchTextMatches(item.k, q);
       }).slice(0,6);
       if(!hits.length){
-        res.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „'+q+'“</div>';
+        res.innerHTML = '<div class="sr-empty">Нет результатов по „'+q+'“</div>';
       } else {
         res.innerHTML = hits.map(function(item){
           var kw = item.k.split(' ').find(function(w){ return w.toLowerCase().includes(q.toLowerCase()); }) || '';

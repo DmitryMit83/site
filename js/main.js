@@ -218,6 +218,33 @@ function hlMatch(text, q) {
   return text.slice(0, i) + '<mark>' + text.slice(i, i + q.length) + '</mark>' + text.slice(i + q.length);
 }
 
+// Case-insensitive substring match with a light stemming fallback.
+// Russian (and Latvian) word endings change between singular/plural/case/
+// gender forms (e.g. "сетка"→"сетки", "дверь"→"двери", "окно"→"окна",
+// "москитные"→"москитная"), so a plain .includes() check misses many
+// natural one-word queries. Some of these forms differ by more than one
+// trailing character (e.g. adjective gender endings "-ные"/"-ная"/"-ный"),
+// so for queries of 5+ characters we progressively try the query with its
+// last 1, 2 or 3 characters dropped (never shorter than a 4-character
+// stem) as a word-prefix. This catches the vast majority of inflected
+// forms without needing a full morphological analyzer.
+// We also normalize ё→е, since most Russian speakers type "е" instead of
+// "ё" (e.g. "пленка" instead of "плёнка") and would otherwise get no hits.
+function searchTextMatches(text, q) {
+  const t  = text.toLowerCase().replace(/ё/g, 'е');
+  const ql = q.toLowerCase().replace(/ё/g, 'е');
+  if (t.includes(ql)) return true;
+  if (ql.length < 5) return false;
+  const words   = t.split(/[\s,.\-/]+/);
+  const minStem = 4;
+  const maxDrop = Math.min(3, ql.length - minStem);
+  for (let drop = 1; drop <= maxDrop; drop++) {
+    const stem = ql.slice(0, ql.length - drop);
+    if (words.some(w => w.length >= stem.length && w.indexOf(stem) === 0)) return true;
+  }
+  return false;
+}
+
 // ── Mobile nav toggle + multi-level dropdown support
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.querySelector('.hamburger');
@@ -363,8 +390,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q.length < 4) { searchRes.classList.remove('visible'); searchRes.innerHTML = ''; return; }
 
       const hits = SEARCH_IDX.filter(item =>
-        item.t.toLowerCase().includes(q.toLowerCase()) ||
-        item.k.toLowerCase().includes(q.toLowerCase())
+        searchTextMatches(item.t, q) ||
+        searchTextMatches(item.k, q)
       ).slice(0, 6);
 
       if (!hits.length) {
@@ -375,8 +402,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       searchRes.innerHTML = hits.map(item => {
-        const keyHit = item.k.toLowerCase().includes(q.toLowerCase());
-        const sub    = keyHit ? item.k.split(' ').find(w => w.toLowerCase().includes(q.toLowerCase())) || '' : '';
+        const keyHit = searchTextMatches(item.k, q);
+        const sub    = keyHit ? (item.k.split(' ').find(w => w.toLowerCase().includes(q.toLowerCase())) || item.k.split(' ').find(w => searchTextMatches(w, q)) || '') : '';
         return `<a class="sr-item" href="${basePath}${item.u}">
           <div class="sr-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
           <div>

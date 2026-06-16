@@ -580,20 +580,20 @@
 (function(){
   var CARDS = [
     {
-      title: 'Varianti',
-      body:  '<p>Mēs piedāvājam divus moskītu durvju variantus:</p><ul><li><strong>Budžeta variants</strong> — pieejams, uzticams un praktisks risinājums ikdienas lietošanai.</li><li><strong>Ekskluzīvais variants</strong> — mūsdienīgāks dizains, pastiprināta konstrukcija un uzlabota furnitūra.</li></ul><p>Abi varianti darbojas pēc viena principa — tā ir vērtne ar sieta polotnu, kas atveras pretējā virzienā no pamata durvīm.</p>'
+      title: 'Варианты',
+      body:  '<p>Мы предлагаем два варианта москитных дверей:</p><ul><li><strong>Бюджетный вариант</strong> — доступное, надёжное и практичное решение для повседневного использования.</li><li><strong>Эксклюзивный вариант</strong> — более современный дизайн, усиленная конструкция и улучшенная фурнитура.</li></ul><p>Оба варианта работают по одному принципу — это полотно с сетчатым покрытием, которое открывается в противоположную от основной двери сторону.</p>'
     },
     {
-      title: 'Uzstādīšanas veids',
-      body:  '<p>Moskītu durvis tiek uzstādītas uz eņģēm ar atsperi, kas automātiski atgriež vērtni aizvērtā stāvoklī. Papildus tiek izmantoti magnēti, kas:</p><ul><li>notur durvis aizvērtā stāvoklī;</li><li>neļauj tām atvērties caurvēja laikā;</li><li>nodrošina ērtu un uzticamu lietošanu.</li></ul>'
+      title: 'Способ установки',
+      body:  '<p>Москитные двери устанавливаются на пружинные петли, которые автоматически возвращают полотно в закрытое положение. Дополнительно используются магниты, которые:</p><ul><li>удерживают дверь в закрытом положении;</li><li>не дают ей открыться от сквозняка;</li><li>обеспечивают удобное и надёжное использование.</li></ul>'
     },
     {
-      title: 'Priekšrocības',
-      body:  '<ul><li>ērta pāreja bez nepieciešamības noņemt sietku;</li><li>automātiska aizvēršanās;</li><li>uzticama fiksācija ar magnētiem;</li><li>piemērotas balkoniem, terasēm un privātmājām;</li><li>praktisks risinājums ikdienas lietošanai.</li></ul>'
+      title: 'Преимущества',
+      body:  '<ul><li>удобный проход без необходимости снимать сетку;</li><li>автоматическое закрывание;</li><li>надёжная фиксация магнитами;</li><li>подходят для балконов, террас и частных домов;</li><li>практичное решение для повседневного использования.</li></ul>'
     },
     {
-      title: 'Kur tiek izmantotas',
-      body:  '<p>Moskītu durvis ir ideāls risinājums:</p><ul><li>balkona durvīm daudzdzīvokļu namos;</li><li>ieejas durvīm privātmājās un vasarnīcās;</li><li>terašu atvērumiem;</li><li>jebkurai vietai, kur nepieciešama pastāvīga aizsardzība bez sietkas noņemšanas.</li></ul><p>Automātiskā atgriešanās aizvērtā stāvoklī nodrošina, ka durvis vienmēr paliek aizvērtas pat tad, ja aizmirsāt tās aizcirst.</p>'
+      title: 'Где используются',
+      body:  '<p>Москитные двери — идеальное решение для:</p><ul><li>балконных дверей в многоквартирных домах;</li><li>входных дверей в частных домах и на дачах;</li><li>дверных проёмов террас;</li><li>любого места, где требуется постоянная защита без необходимости снимать сетку.</li></ul><p>Автоматический возврат в закрытое положение гарантирует, что дверь всегда остаётся закрытой, даже если вы забыли её захлопнуть.</p>'
     }
   ];
   var cardFront = document.getElementById('durvisCardFront');
@@ -607,7 +607,7 @@
   CARDS.forEach(function(_, i){
     var d = document.createElement('button');
     d.className = 'at-dot' + (i === 0 ? ' at-dot-active' : '');
-    d.setAttribute('aria-label', 'Kartīte ' + (i + 1));
+    d.setAttribute('aria-label', 'Карточка ' + (i + 1));
     d.addEventListener('click', function(){ goTo(i); });
     dotsEl.appendChild(d);
   });
@@ -929,21 +929,21 @@
 <script>
 (function(){
 var MESH_DATA={
-  standarta:{title:'Standarta tīkls',bg:'linear-gradient(135deg,#e8f4ec,#c8e6d0)',
-    img: '../photo/standartasiete.webp',desc:'Stikla šķiedra ar PVC pārklājumu — viegls, labi caurlaidīgs gaisam, nedārgs. Pieejams pelēkā krāsā.',
-    models:['Rāmju tīkli','Rullu tīkli','Plisē tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['Labākā cena','Laba gaisa caurlaidība','Laba redzamība cauri','UV izturīgs (6–8 gadi)','Viegls svars'],cons:['Viegli bojājas no kaķu nagiem','Nav piemērots alerģiķiem','Rupjāks par antiallergēno']},
-  petscreen:{title:'PetScreen (Kaķu tīkls)',bg:'linear-gradient(135deg,#fef3e8,#fdd9a8)',
-    img: '../photo/PetScreen.webp',desc:'Pastiprināts polimēra audums — 7× izturīgāks par standarta tīklu. Speciāli izstrādāts mājdzīvnieku īpašniekiem.',
-    models:['Rāmju tīkli','Plisē tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['7× izturīgāks par standarta','Iztur kaķu nagus','Piemērots bērniem','Mazgājams','Ilgs kalpošanas laiks'],cons:['Augstāka cena','Nedaudz mazāka gaisa caurlaidība','Smagāks par standarta','Pielaiž mazāk gaismas']},
-  antialerg:{title:'Antiallergēnais tīkls',bg:'linear-gradient(135deg,#e8f0fe,#c5d8fc)',
-    img: '../photo/alirgen.webp',desc:'Smalks poliesteru audums ar blīvu aušanu — aiztur putekļus, ziedputekšņus, spalvas un smalkas daļiņas.',
-    models:['Rāmju tīkli','Bīdāmie tīkli','Durvju tīkli'],pros:['Filtrē ziedputekšņus un putekļus','Ideāls alerģiķiem','Samazina dzīvnieku spalvas telpā','Piemērots bērniem'],cons:['Samazina gaisa caurlaidību','Jātīra biežāk','Augstāka cena','Samazināta izturība — nav piemērots mājdzīvnieku īpašniekiem']},
-  neredzamais:{title:'Neredzamais tīkls',bg:'linear-gradient(135deg,#2a2a2a,#4a4a4a)',
-    img: '../photo/nered.webp',desc:'Plāns stikla šķiedras audums melnā krāsā — praktiski neredzams logā. Laba gaisa caurlaidība un skats uz āru, piešķirot logam elegantu un neuzkrītošu izskatu.',
-    models:['Rāmju tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['Praktiski neredzams no iekšpuses','Lielisks skats uz āru','Standarta gaisa caurlaidība','Moderns izskats'],cons:['Augstāka cena par standarta','Vieglāk uzkrāj putekļus (tumšais tonis)','Samazināta izturība — nav piemērots mājdzīvnieku īpašniekiem']},
-  metala:{title:'Metāla tīkls',bg:'linear-gradient(135deg,#e8e8e8,#c0c0c0)',
-    img: '../photo/metal.webp',desc:'Audums no nerūsējošā tērauda — maksimāla izturība un ilgmūžība jebkuros apstākļos.',
-    models:['Rāmju tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['Ārkārtīgi izturīgs','Iztur intensīvu slodzi','Ugunsizturīgs','Ļoti ilgs kalpošanas laiks','Netiek bojāts no grauzējiem'],cons:['Visaugstākā cena','Smags svars','Mazāka gaisa caurlaidība','Pie bojājuma neatiestājas — paliek saliekumi']}
+  standarta:{title:'Стандартная сетка',bg:'linear-gradient(135deg,#e8f4ec,#c8e6d0)',
+    img: '../photo/standartasiete.webp',desc:'Стекловолокно с ПВХ-покрытием — лёгкое, хорошо пропускает воздух, недорогое. Доступно в серой расцветке.',
+    models:['Рамочные сетки','Рулонные сетки','Сетки плиссе','Дверные сетки','Раздвижные сетки'],pros:['Лучшая цена','Хорошая воздухопроницаемость','Хороший обзор через сетку','УФ-устойчивость (6–8 лет)','Лёгкий вес'],cons:['Легко повреждается кошачьими когтями','Не подходит аллергикам','Грубее антиаллергенной']},
+  petscreen:{title:'PetScreen (для кошек)',bg:'linear-gradient(135deg,#fef3e8,#fdd9a8)',
+    img: '../photo/PetScreen.webp',desc:'Усиленное полимерное полотно — в 7× прочнее стандартной сетки. Разработано специально для владельцев домашних животных.',
+    models:['Рамочные сетки','Сетки плиссе','Дверные сетки','Раздвижные сетки'],pros:['В 7× прочнее стандартной','Выдерживает кошачьи когти','Подходит для детей','Можно мыть','Долгий срок службы'],cons:['Более высокая цена','Немного меньшая воздухопроницаемость','Тяжелее стандартной','Пропускает меньше света']},
+  antialerg:{title:'Антиаллергенная сетка',bg:'linear-gradient(135deg,#e8f0fe,#c5d8fc)',
+    img: '../photo/alirgen.webp',desc:'Тонкое полиэстеровое полотно плотного плетения — задерживает пыль, пыльцу, шерсть и мелкие частицы.',
+    models:['Рамочные сетки','Раздвижные сетки','Дверные сетки'],pros:['Фильтрует пыльцу и пыль','Идеальна для аллергиков','Уменьшает количество шерсти животных в помещении','Подходит для детей'],cons:['Снижает воздухопроницаемость','Требует более частой чистки','Более высокая цена','Сниженная прочность — не подходит для владельцев домашних животных']},
+  neredzamais:{title:'Невидимая сетка',bg:'linear-gradient(135deg,#2a2a2a,#4a4a4a)',
+    img: '../photo/nered.webp',desc:'Тонкое стекловолоконное полотно чёрного цвета — практически незаметно на окне. Хорошая воздухопроницаемость и обзор наружу, придающие окну элегантный и неброский вид.',
+    models:['Рамочные сетки','Дверные сетки','Раздвижные сетки'],pros:['Практически невидима изнутри','Отличный обзор наружу','Стандартная воздухопроницаемость','Современный вид'],cons:['Более высокая цена по сравнению со стандартной','Легче собирает пыль (тёмный оттенок)','Сниженная прочность — не подходит для владельцев домашних животных']},
+  metala:{title:'Металлическая сетка',bg:'linear-gradient(135deg,#e8e8e8,#c0c0c0)',
+    img: '../photo/metal.webp',desc:'Полотно из нержавеющей стали — максимальная прочность и долговечность в любых условиях.',
+    models:['Рамочные сетки','Дверные сетки','Раздвижные сетки'],pros:['Чрезвычайно прочная','Выдерживает интенсивную нагрузку','Огнестойкая','Очень долгий срок службы','Не повреждается грызунами'],cons:['Самая высокая цена','Большой вес','Меньшая воздухопроницаемость','При повреждении не восстанавливается — остаются заломы']}
 };
   window.openMeshModal=function(key){
     var d=MESH_DATA[key]; if(!d)return;
@@ -954,12 +954,12 @@ var MESH_DATA={
       '<div class="modal-mesh-preview" style="background:'+d.bg+'">'+(d.img?'<img src="'+d.img+'" alt="'+d.title+'" style="width:100%;height:100%;object-fit:cover;display:block;">':'')+'</div>'+
       '<div class="modal-h">'+d.title+'</div>'+
       '<p class="modal-sub">'+d.desc+'</p>'+
-      '<div class="modal-section-title">Piemērots konstrukcijām</div>'+
+      '<div class="modal-section-title">Подходит для конструкций</div>'+
       '<div class="modal-models">'+models+'</div>'+
-      '<div class="modal-section-title">Priekšrocības un trūkumi</div>'+
+      '<div class="modal-section-title">Преимущества и недостатки</div>'+
       '<div class="modal-proscons">'+
-        '<div class="pros-box"><h4>✓ Priekšrocības</h4><ul class="pros-list">'+pros+'</ul></div>'+
-        '<div class="cons-box"><h4>✗ Trūkumi</h4><ul class="cons-list">'+cons+'</ul></div>'+
+        '<div class="pros-box"><h4>✓ Преимущества</h4><ul class="pros-list">'+pros+'</ul></div>'+
+        '<div class="cons-box"><h4>✗ Недостатки</h4><ul class="cons-list">'+cons+'</ul></div>'+
       '</div>';
     document.getElementById('meshModalOverlay').classList.add('open');
     document.body.style.overflow='hidden';
@@ -974,23 +974,23 @@ var MESH_DATA={
   });
   var CMP_ATTRS={
     pros:[
-      {label:'Universāls — der visiem logu veidiem',standarta:true,petscreen:false,antialerg:false,neredzamais:false,metala:false},
-      {label:'Izturīgs pret mājdzīvnieku nagiem',standarta:false,petscreen:true,antialerg:false,neredzamais:false,metala:true},
-      {label:'Antiallergēna filtrācija (aiztur putekšņus)',standarta:false,petscreen:false,antialerg:true,neredzamais:false,metala:false},
-      {label:'Gandrīz neredzams no mājas iekšpuses',standarta:false,petscreen:false,antialerg:false,neredzamais:true,metala:false},
-      {label:'Augsta mehāniskā izturība',standarta:false,petscreen:true,antialerg:false,neredzamais:false,metala:true},
-      {label:'Laba gaisa caurlaidība',standarta:true,petscreen:true,antialerg:false,neredzamais:true,metala:false},
-      {label:'Viegla ikdienas tīrīšana',standarta:true,petscreen:true,antialerg:true,neredzamais:true,metala:false},
-      {label:'Pieejamākā cena',standarta:true,petscreen:false,antialerg:false,neredzamais:false,metala:false},
-      {label:'Minimāls svars',standarta:true,petscreen:false,antialerg:true,neredzamais:true,metala:false},
-      {label:'Aizsardzība pret sīkiem insektiem',standarta:false,petscreen:false,antialerg:true,neredzamais:true,metala:false},
+      {label:'Универсальная — подходит для всех типов окон',standarta:true,petscreen:false,antialerg:false,neredzamais:false,metala:false},
+      {label:'Устойчива к когтям домашних животных',standarta:false,petscreen:true,antialerg:false,neredzamais:false,metala:true},
+      {label:'Антиаллергенная фильтрация (задерживает пыль)',standarta:false,petscreen:false,antialerg:true,neredzamais:false,metala:false},
+      {label:'Практически невидима из дома',standarta:false,petscreen:false,antialerg:false,neredzamais:true,metala:false},
+      {label:'Высокая механическая прочность',standarta:false,petscreen:true,antialerg:false,neredzamais:false,metala:true},
+      {label:'Хорошая воздухопроницаемость',standarta:true,petscreen:true,antialerg:false,neredzamais:true,metala:false},
+      {label:'Лёгкая повседневная чистка',standarta:true,petscreen:true,antialerg:true,neredzamais:true,metala:false},
+      {label:'Самая доступная цена',standarta:true,petscreen:false,antialerg:false,neredzamais:false,metala:false},
+      {label:'Минимальный вес',standarta:true,petscreen:false,antialerg:true,neredzamais:true,metala:false},
+      {label:'Защита от мелких насекомых',standarta:false,petscreen:false,antialerg:true,neredzamais:true,metala:false},
     ],
     cons:[
-      {label:'Augsta iegādes cena',standarta:false,petscreen:true,antialerg:true,neredzamais:true,metala:true},
-      {label:'Ierobežots saderīgums ar konstrukcijām',standarta:false,petscreen:true,antialerg:true,neredzamais:true,metala:true},
-      {label:'Liels svars (sarežģī uzstādīšanu)',standarta:false,petscreen:false,antialerg:false,neredzamais:false,metala:true},
-      {label:'Sarežģīta tīrīšana',standarta:false,petscreen:false,antialerg:false,neredzamais:false,metala:true},
-      {label:'Samazināta gaisa caurlaidība',standarta:false,petscreen:false,antialerg:true,neredzamais:false,metala:true},
+      {label:'Высокая стоимость',standarta:false,petscreen:true,antialerg:true,neredzamais:true,metala:true},
+      {label:'Ограниченная совместимость с конструкциями',standarta:false,petscreen:true,antialerg:true,neredzamais:true,metala:true},
+      {label:'Большой вес (усложняет монтаж)',standarta:false,petscreen:false,antialerg:false,neredzamais:false,metala:true},
+      {label:'Сложная чистка',standarta:false,petscreen:false,antialerg:false,neredzamais:false,metala:true},
+      {label:'Сниженная воздухопроницаемость',standarta:false,petscreen:false,antialerg:true,neredzamais:false,metala:true},
     ]
   };
   function icon(y){return y?'<span class="cmp-icon cmp-icon--yes">✓</span>':'<span class="cmp-icon cmp-icon--no">✗</span>';}
@@ -1001,15 +1001,15 @@ var MESH_DATA={
     var w=document.getElementById('cmpTableWrap');
     if(!w||!dA||!dB)return;
     var h='<table class="cmp-table"><thead><tr>';
-    h+='<th class="cmp-th-label">Īpašība</th>';
+    h+='<th class="cmp-th-label">Свойство</th>';
     h+='<th class="cmp-th-mesh"><div class="cmp-th-color" style="background:'+dA.bg+'"></div><div class="cmp-th-name">'+dA.title+'</div></th>';
     h+='<th class="cmp-th-mesh"><div class="cmp-th-color" style="background:'+dB.bg+'"></div><div class="cmp-th-name">'+dB.title+'</div></th>';
     h+='</tr></thead><tbody>';
-    h+='<tr class="cmp-section-row cmp-section-row--pros"><td colspan="3">✓ Priekšrocības</td></tr>';
+    h+='<tr class="cmp-section-row cmp-section-row--pros"><td colspan="3">✓ Преимущества</td></tr>';
     CMP_ATTRS.pros.forEach(function(r,i){
       h+='<tr'+(i%2?' class="cmp-tr-alt"':'')+'><td>'+r.label+'</td><td>'+icon(r[kA])+'</td><td>'+icon(r[kB])+'</td></tr>';
     });
-    h+='<tr class="cmp-section-row cmp-section-row--cons"><td colspan="3">✗ Trūkumi</td></tr>';
+    h+='<tr class="cmp-section-row cmp-section-row--cons"><td colspan="3">✗ Недостатки</td></tr>';
     CMP_ATTRS.cons.forEach(function(r,i){
       h+='<tr'+(i%2?' class="cmp-tr-alt"':'')+'><td>'+r.label+'</td><td>'+icon(!r[kA])+'</td><td>'+icon(!r[kB])+'</td></tr>';
     });
@@ -1058,11 +1058,11 @@ var MESH_DATA={
       if(q.length < 2){ res.classList.remove('visible'); res.innerHTML=''; return; }
       var idx = (typeof SEARCH_IDX !== 'undefined') ? SEARCH_IDX : [];
       var hits = idx.filter(function(item){
-        return item.t.toLowerCase().includes(q.toLowerCase()) ||
-               item.k.toLowerCase().includes(q.toLowerCase());
+        return searchTextMatches(item.t, q) ||
+               searchTextMatches(item.k, q);
       }).slice(0,6);
       if(!hits.length){
-        res.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „'+q+'“</div>';
+        res.innerHTML = '<div class="sr-empty">Нет результатов по „'+q+'“</div>';
       } else {
         res.innerHTML = hits.map(function(item){
           var kw = item.k.split(' ').find(function(w){ return w.toLowerCase().includes(q.toLowerCase()); }) || '';
@@ -1213,11 +1213,11 @@ var MESH_DATA={
 <script>
 (function(){
   var SEGS=[
-    {label:'Rāmju tīkli',   pct:35, base:'#3E7D59'},
-    {label:'Rullu tīkli', pct:14, base:'#6BA58A'},
-    {label:'Plisē tīkli',   pct:30, base:'#9ECAB5'},
-    {label:'Durvju tīkli',  pct:17, base:'#2C5341'},
-    {label:'Bīdāmie tīkli', pct:3,  base:'rgba(200,220,210,0.45)'}
+    {label:'Рамочные сетки',   pct:35, base:'#3E7D59'},
+    {label:'Рулонные сетки', pct:14, base:'#6BA58A'},
+    {label:'Сетки плиссе',   pct:30, base:'#9ECAB5'},
+    {label:'Дверные сетки',  pct:17, base:'#2C5341'},
+    {label:'Раздвижные сетки', pct:3,  base:'rgba(200,220,210,0.45)'}
   ];
   var ACTIVE=3;
   var ACCENT='#D04D1A';

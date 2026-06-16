@@ -592,20 +592,20 @@
 (function(){
   var CARDS = [
     {
-      title: 'Kur tiek izmantoti',
-      body:  '<p>Plisē sietki ir piemērotas:</p><ul><li>logiem;</li><li>balkona durvīm;</li><li>terases un bīdāmajām sistēmām;</li><li>lieliem panorāmas atvērumiem.</li></ul><p>Tās ir ideāls risinājums tur, kur citi tīklu veidi konstruktīvi neder vai ir neērti.</p>'
+      title: 'Где используются',
+      body:  '<p>Сетки плиссе подходят для:</p><ul><li>окон;</li><li>балконных дверей;</li><li>террасных и раздвижных систем;</li><li>больших панорамных проёмов.</li></ul><p>Это идеальное решение там, где другие виды сеток конструктивно не подходят или неудобны.</p>'
     },
     {
-      title: 'Uzstādīšanas veids',
-      body:  '<p>Sistēma tiek uzstādīta atvērumā ar vadotņu un alumīnija konstrukcijas palīdzību. Priekšrocības:</p><ul><li>vienmērīga, gluda atvēršana un aizvēršana;</li><li>kompakta polotna salocīšana;</li><li>piemērota lieliem izmēriem;</li><li>nav nepieciešama pastāvīga noņemšana.</li></ul>'
+      title: 'Способ установки',
+      body:  '<p>Система устанавливается в проём с помощью направляющих и алюминиевой конструкции. Преимущества:</p><ul><li>равномерное, плавное открывание и закрывание;</li><li>компактное складывание полотна;</li><li>подходит для больших размеров;</li><li>не требуется постоянно снимать.</li></ul>'
     },
     {
-      title: 'Varianti un priekšrocības',
-      body:  '<p>Mēs piedāvājam gan budžeta, gan premium plisē sistēmas. Budžeta variants logiem un balkona durvīm ir:</p><ul><li>praktisks ikdienas lietošanā;</li><li>ērts — bīdās ar vienu kustību;</li><li>lētāks par rullu un durvju sistēmām.</li></ul><p>Mēs aktīvi izmantojam šādas sistēmas jau vairākus gadus, un tās lieliski uzrāda sevi ekspluatācijā.</p>'
+      title: 'Варианты и преимущества',
+      body:  '<p>Мы предлагаем как бюджетные, так и премиальные системы плиссе. Бюджетный вариант для окон и балконных дверей:</p><ul><li>практичен в повседневном использовании;</li><li>удобен — сдвигается одним движением;</li><li>дешевле рулонных и дверных систем.</li></ul><p>Мы активно используем такие системы уже несколько лет, и они отлично показывают себя в эксплуатации.</p>'
     },
     {
-      title: 'Kāpēc kļuva populāri',
-      body:  '<p>Plisē sietki ir pieprasītas pateicoties:</p><ul><li>mūsdienīgam izskatam;</li><li>lietošanas ērtumam;</li><li>kompaktumam;</li><li>iespējai aizsegt lielus atvērumus.</li></ul><p>Agrāk galvenais risinājums bija rāmju sietki, bet rullu sistēmas augstākas cenas dēļ uzstādīja retāk. Šodien plisē ir viens no ērtākajiem un mūsdienīgākajiem aizsardzības risinājumiem.</p>'
+      title: 'Почему стали популярны',
+      body:  '<p>Сетки плиссе востребованы благодаря:</p><ul><li>современному внешнему виду;</li><li>удобству использования;</li><li>компактности;</li><li>возможности закрывать большие проёмы.</li></ul><p>Раньше основным решением были рамочные сетки, а рулонные системы из-за более высокой цены устанавливали реже. Сегодня плиссе — одно из самых удобных и современных решений защиты.</p>'
     }
   ];
   var cardFront = document.getElementById('pliseCardFront');
@@ -619,7 +619,7 @@
   CARDS.forEach(function(_, i){
     var d = document.createElement('button');
     d.className = 'at-dot' + (i === 0 ? ' at-dot-active' : '');
-    d.setAttribute('aria-label', 'Kartīte ' + (i + 1));
+    d.setAttribute('aria-label', 'Карточка ' + (i + 1));
     d.addEventListener('click', function(){ goTo(i); });
     dotsEl.appendChild(d);
   });
@@ -849,69 +849,69 @@
   if(!grid || !detail) return;
   /* ─── Data ─── */
   var COLORS = [
-    {bg:'#f2f2f2', border:'#c8c8c8', name:'Balts (RAL 9016)'},
-    {bg:'#2c1a0e', border:'#1a0e04', name:'Tumši brūns (RAL 8019)'},
-    {bg:'#3a3a3a', border:'#222222', name:'Antracīts (RAL 7016)'}
+    {bg:'#f2f2f2', border:'#c8c8c8', name:'Белый (RAL 9016)'},
+    {bg:'#2c1a0e', border:'#1a0e04', name:'Тёмно-коричневый (RAL 8019)'},
+    {bg:'#3a3a3a', border:'#222222', name:'Антрацит (RAL 7016)'}
   ];
   var PF = {
     p18:{
-      badge:'Visbiežāk izvēlas', badgeBg:'#4a9c6a',
-      title:'18 mm profils',
-      desc:'Kompakts alumīnija profils standarta logu ailēm. Tiek piestiprināts tieši pie loga rāmja vai sienas ar skrūvēm — biežākais variants. Alternatīvi rāmi var pielīmēt ar pastiprinātāju divpusējo lenti uz iepriekš attaukošanas virsmas.',
+      badge:'Чаще всего выбирают', badgeBg:'#4a9c6a',
+      title:'Профиль 18 мм',
+      desc:'Компактный алюминиевый профиль для стандартных оконных проёмов. Крепится прямо к оконной раме или стене с помощью шурупов — самый распространённый вариант. Альтернативно рамку можно приклеить на усиленную двустороннюю ленту на предварительно обезжиренную поверхность.',
       features:[
-        'Kompakts profila platums — tikai 18 mm',
-        'Viegls, korozijizturīgs alumīnija sakausējums',
-        'Neierobežo loga atvēršanas platumu',
-        'Horizontāla, vertikāla vai divpusēja atvēršana',
-        'Stiprināšana: skrūves pie rāmja/sienas vai divpusējā lente',
-        'Pieejams 3 standarta krāsās + RAL pēc pasūtījuma'
+        'Компактная ширина профиля — всего 18 мм',
+        'Лёгкий, коррозионностойкий алюминиевый сплав',
+        'Не ограничивает ширину открывания окна',
+        'Горизонтальное, вертикальное или двустороннее открывание',
+        'Крепление: шурупы к раме/стене или двусторонняя лента',
+        'Доступен в 3 стандартных цветах + RAL по заказу'
       ],
-      mounting:'Rāmis tiek piestiprināts ar skrūvēm tieši pie loga rāmja (visbiežāk) vai tieši pie sienas. Alternatīvi — rāmi var pielīmēt ar pastiprinātāju divpusējo lenti: pirms tam virsma rūpīgi jāattauko. Uzstādīšanas laiks — no 15 minūtēm līdz 3 stundām atkarībā no izmēra un uzstādīšanas vietas.',
+      mounting:'Рамка крепится шурупами прямо к оконной раме (чаще всего) или прямо к стене. Альтернативно — рамку можно приклеить на усиленную двустороннюю ленту: перед этим поверхность нужно тщательно обезжирить. Время установки — от 15 минут до 3 часов в зависимости от размера и места установки.',
       minW:300, maxW:3000, minH:400, maxH:2700,
-      maxNote:'Maks. platums <strong>3000 mm</strong> pie maks. augstuma <strong>2700 mm</strong>. Ja augstums ir mazāks, platumu var palielināt — piemēram, pie augstuma 1500 mm platums var sasniegt <strong>4000 mm</strong>. Lielāka kvadratūra palielina sieta svaru un rada risku tam nokārt.',
+      maxNote:'Макс. ширина <strong>3000 мм</strong> при макс. высоте <strong>2700 мм</strong>. Если высота меньше, ширину можно увеличить — например, при высоте 1500 мм ширина может достигать <strong>4000 мм</strong>. Большая площадь увеличивает вес полотна и создаёт риск его провисания.',
       photos:[
-        {src:'../photo/portfolio/sieti/plisse5.jpg',  alt:'Plisē moskītu tīkls ar 18mm profilu — uzstādīts logā'},
-        {src:'../photo/portfolio/sieti/plisse14.PNG',  alt:'Plisē 18mm profils — detaļa'}
+        {src:'../photo/portfolio/sieti/plisse5.jpg',  alt:'Москитная сетка плиссе с профилем 18мм — установлена на окне'},
+        {src:'../photo/portfolio/sieti/plisse14.PNG',  alt:'Профиль плиссе 18мм — деталь'}
       ]
     },
     p18i:{
-      badge:'Montāžai iekšpusē', badgeBg:'#555555',
-      title:'18 mm profils — iekšējais',
-      desc:'18mm profils divās montāžas iespējās: ievietojams loga rāmja iekšpusē ar ātrām stiprinājuma klipšiem, vai fiksējams ārpusē ar āķiem — tāpat kā standarta rāmja sietam. Šis variants netiek pieskrūvēts.',
+      badge:'Для монтажа внутри', badgeBg:'#555555',
+      title:'Профиль 18 мм — внутренний',
+      desc:'Профиль 18мм с двумя вариантами монтажа: вставляется внутрь оконной рамы с быстрыми крепёжными клипсами, либо фиксируется снаружи крючками — так же, как стандартная рамочная сетка. Этот вариант не прикручивается шурупами.',
       features:[
-        'Divas montāžas metodes — iekšpuse vai ārpuse',
-        'Iekšpuse: ātrās stiprinājuma klipšas rāmja iekšienē',
-        'Ārpuse: fiksācija ar āķiem kā standarta rāmja sietam',
-        'Nav nepieciešama skrūvēšana — nav caurumu rāmī',
-        'Horizontāla, vertikāla vai divpusēja atvēršana',
-        'Ātri noņemams tīrīšanai vai ziemā'
+        'Два способа монтажа — внутри или снаружи',
+        'Внутри: быстрые крепёжные клипсы внутри рамы',
+        'Снаружи: фиксация крючками, как у стандартной рамочной сетки',
+        'Не требуется сверление — нет отверстий в раме',
+        'Горизонтальное, вертикальное или двустороннее открывание',
+        'Быстро снимается для чистки или на зиму'
       ],
-      mounting:'Divas uzstādīšanas iespējas: (1) Iekšpusē — rāmis tiek ievietots loga ailes iekšpusē un nostiprināts ar ātrām klipšām, nav nepieciešams pieskrūvēt; (2) Ārpusē — rāmis tiek uzlikts no ārpuses un fiksēts ar āķiem, tāpat kā standarta rāmja moskītu sietam. Abos gadījumos tīklu var ātri noņemt. Uzstādīšanas laiks — līdz 15 minūtēm.',
+      mounting:'Два варианта установки: (1) Внутри — рамка вставляется внутрь оконного проёма и фиксируется быстрыми клипсами, прикручивать не нужно; (2) Снаружи — рамка устанавливается снаружи и фиксируется крючками, так же как стандартная рамочная москитная сетка. В обоих случаях сетку можно быстро снять. Время установки — до 15 минут.',
       minW:300, maxW:1500, minH:400, maxH:1500,
-      maxNote:'Maks. platums un augstums — <strong>1500 mm</strong>. Lielāki izmēri nav ieteicami: ātrās klipšas vai āķi var neizturēt smagāka sieta svaru, kas var izraisīt stiprinājuma atbrīvošanos.',
+      maxNote:'Макс. ширина и высота — <strong>1500 мм</strong>. Большие размеры не рекомендуются: быстрые клипсы или крючки могут не выдержать вес более тяжёлого полотна, что может привести к ослаблению крепления.',
       photos:[
-        {src:'../photo/portfolio/sieti/18mmI1.png', alt:'Plisē moskītu tīkls ar 18mm iekšējo profilu'},
-        {src:'../photo/portfolio/sieti/18mmI2.jpg', alt:'Plisē 18mm iekšējais profils — detaļa'}
+        {src:'../photo/portfolio/sieti/18mmI1.png', alt:'Москитная сетка плиссе с внутренним профилем 18мм'},
+        {src:'../photo/portfolio/sieti/18mmI2.jpg', alt:'Внутренний профиль плиссе 18мм — деталь'}
       ]
     },
     p25:{
-      badge:'Liela aile', badgeBg:'#1a6640',
-      title:'25 mm profils',
-      desc:'Pastiprinātais platais profils lielām logu un balkona durvju ailēm. Tiek piestiprināts ar skrūvēm pie loga rāmja vai sienas; iespējama arī montāža ar pastiprinātāju divpusējo lenti uz attaukošanas virsmas. Pieejama zemā sliekšņa opcija — 10 mm.',
+      badge:'Большой проём', badgeBg:'#1a6640',
+      title:'Профиль 25 мм',
+      desc:'Усиленный широкий профиль для больших оконных и балконных дверных проёмов. Крепится шурупами к оконной раме или стене; также возможен монтаж на усиленную двустороннюю ленту на обезжиренную поверхность. Доступен вариант с низким порогом — 10 мм.',
       features:[
-        'Pastiprinātais 25mm profils — augstāks stingrums',
-        'Piemērots lieliem atvērumiem un balkona durvīm',
-        'Horizontāla, vertikāla vai divpusēja atvēršana',
-        'Zemā sliekšņa opcija — tikai 10 mm augstums',
-        'Stiprināšana: skrūves pie rāmja/sienas vai divpusējā lente',
-        'Pieejams 3 standarta krāsās + RAL pēc pasūtījuma'
+        'Усиленный профиль 25мм — повышенная жёсткость',
+        'Подходит для больших проёмов и балконных дверей',
+        'Горизонтальное, вертикальное или двустороннее открывание',
+        'Вариант с низким порогом — всего 10 мм высотой',
+        'Крепление: шурупы к раме/стене или двусторонняя лента',
+        'Доступен в 3 стандартных цветах + RAL по заказу'
       ],
-      mounting:'Rāmis tiek piestiprināts ar skrūvēm tieši pie loga rāmja (visbiežāk) vai pie sienas. Alternatīvi — rāmi var pielīmēt ar pastiprinātāju divpusējo lenti uz iepriekš attaukošanas virsmas. Pieejama zemā sliekšņa opcija ar augstumu tikai 10 mm — ērta pārvietošanās bez paklupiena riska. Uzstādīšanas laiks — no 15 minūtēm līdz 3 stundām atkarībā no izmēra un uzstādīšanas vietas.',
+      mounting:'Рамка крепится шурупами прямо к оконной раме (чаще всего) или к стене. Альтернативно — рамку можно приклеить на усиленную двустороннюю ленту на предварительно обезжиренную поверхность. Доступен вариант с низким порогом высотой всего 10 мм — удобное перемещение без риска споткнуться. Время установки — от 15 минут до 3 часов в зависимости от размера и места установки.',
       minW:400, maxW:3000, minH:500, maxH:2700,
-      maxNote:'Maks. platums <strong>3000 mm</strong> pie maks. augstuma <strong>2700 mm</strong>. Ja augstums ir mazāks, platumu var palielināt — piemēram, pie augstuma 1500 mm platums var sasniegt <strong>4000 mm</strong>. Lielāka kvadratūra palielina sieta svaru un rada risku tam nokārt.',
+      maxNote:'Макс. ширина <strong>3000 мм</strong> при макс. высоте <strong>2700 мм</strong>. Если высота меньше, ширину можно увеличить — например, при высоте 1500 мм ширина может достигать <strong>4000 мм</strong>. Большая площадь увеличивает вес полотна и создаёт риск его провисания.',
       photos:[
-        {src:'../photo/portfolio/sieti/IMG_2120 4.JPG', alt:'Plisē moskītu tīkls ar 25mm profilu — liela aile'},
-        {src:'../photo/portfolio/sieti/plisse_25mm.webp', alt:'Plisē 25mm profils — detaļa'}
+        {src:'../photo/portfolio/sieti/IMG_2120 4.JPG', alt:'Москитная сетка плиссе с профилем 25мм — большой проём'},
+        {src:'../photo/portfolio/sieti/plisse_25mm.webp', alt:'Профиль плиссе 25мм — деталь'}
       ]
     }
   };
@@ -973,36 +973,36 @@
           +'<div class="pf-gallery-thumbs">'+thumbsHTML+'</div>'
         +'</div>'
         +'<div>'
-          +'<p class="pf-right-title">Par šo profilu</p>'
+          +'<p class="pf-right-title">О данном профиле</p>'
           +'<p class="pf-desc">'+d.desc+'</p>'
           +'<ul class="pf-features">'+featHTML+'</ul>'
         +'</div>'
       +'</div>'
       +'<div class="pf-info-row">'
         +'<div class="pf-info-card">'
-          +'<h5>Montāža</h5>'
+          +'<h5>Монтаж</h5>'
           +'<p>'+d.mounting+'</p>'
         +'</div>'
         +'<div class="pf-info-card">'
-          +'<h5>Minimālie izmēri</h5>'
-          +'<p><strong>Platums:</strong> '+d.minW+' mm<br><strong>Augstums:</strong> '+d.minH+' mm</p>'
+          +'<h5>Минимальные размеры</h5>'
+          +'<p><strong>Ширина:</strong> '+d.minW+' mm<br><strong>Высота:</strong> '+d.minH+' mm</p>'
         +'</div>'
         +'<div class="pf-info-card">'
-          +'<h5>Maksimālie izmēri</h5>'
+          +'<h5>Максимальные размеры</h5>'
           +(d.maxNote
-            ? '<p><strong>Platums:</strong> '+d.maxW+' mm<br><strong>Augstums:</strong> '+d.maxH+' mm</p><p style="font-size:.76rem;color:var(--muted);margin:.5rem 0 0;line-height:1.5;">'+d.maxNote+'</p>'
-            : '<p><strong>Platums:</strong> '+d.maxW+' mm<br><strong>Augstums:</strong> '+d.maxH+' mm</p>'
+            ? '<p><strong>Ширина:</strong> '+d.maxW+' mm<br><strong>Высота:</strong> '+d.maxH+' mm</p><p style="font-size:.76rem;color:var(--muted);margin:.5rem 0 0;line-height:1.5;">'+d.maxNote+'</p>'
+            : '<p><strong>Ширина:</strong> '+d.maxW+' mm<br><strong>Высота:</strong> '+d.maxH+' mm</p>'
           )
         +'</div>'
       +'</div>'
       +'<div class="pf-info-card" style="margin-bottom:.5rem;">'
-        +'<h5>Standarta krāsas</h5>'
+        +'<h5>Стандартные цвета</h5>'
         +'<div class="pf-colors-row" style="margin-top:.5rem;">'+colHTML+'</div>'
-        +'<p class="pf-ral-hint" style="margin-top:.5rem;">+ Jebkura RAL kataloga krāsa (cena +25%)</p>'
+        +'<p class="pf-ral-hint" style="margin-top:.5rem;">+ Любой цвет каталога RAL (цена +25%)</p>'
       +'</div>'
       +'<button class="pf-back" id="pfBack">'
         +'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
-        +'Atpakaļ uz visiem profiliem'
+        +'Назад ко всем профилям'
       +'</button>';
     /* Thumb click handlers */
     detail.querySelectorAll('.pf-thumb').forEach(function(th){
@@ -1090,7 +1090,7 @@
 <img alt="" class="pf-lb-img" id="pfLbImg" src=""/>
 <span class="pf-lb-hint">Нажмите Esc или кликните снаружи, чтобы закрыть</span>
 </div>
-<!-- ══ Tīkla auduma veidi ══ -->
+<!-- ══ Виды сеточного полотна ══ -->
 <section class="container" style="padding-top:3rem;padding-bottom:3rem;">
 <div class="section-head">
 <h2>Вид сеточного полотна</h2>
@@ -1231,21 +1231,21 @@
 <script>
 (function(){
 var MESH_DATA={
-  standarta:{title:'Standarta tīkls',bg:'linear-gradient(135deg,#e8f4ec,#c8e6d0)',
-    img: '../photo/PlisseStandarta.webp',desc:'Stikla šķiedra ar PVC pārklājumu — viegls, labi caurlaidīgs gaisam, nedārgs. Pieejams pelēkā krāsā.',
-    models:['Rāmju tīkli','Rullu tīkli','Plisē tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['Labākā cena','Laba gaisa caurlaidība','Laba redzamība cauri','UV izturīgs (6–8 gadi)','Viegls svars'],cons:['Viegli bojājas no kaķu nagiem','Nav piemērots alerģiķiem','Rupjāks par antiallergēno']},
-  petscreen:{title:'PetScreen (Kaķu tīkls)',bg:'linear-gradient(135deg,#fef3e8,#fdd9a8)',
-    img: '../photo/PlissePetScreen.webp',desc:'Pastiprināts polimēra audums — 7× izturīgāks par standarta tīklu. Speciāli izstrādāts mājdzīvnieku īpašniekiem.',
-    models:['Rāmju tīkli','Plisē tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['7× izturīgāks par standarta','Iztur kaķu nagus','Piemērots bērniem','Mazgājams','Ilgs kalpošanas laiks'],cons:['Augstāka cena','Nedaudz mazāka gaisa caurlaidība','Smagāks par standarta','Pielaiž mazāk gaismas']},
-  antialerg:{title:'Antiallergēnais tīkls',bg:'linear-gradient(135deg,#e8f0fe,#c5d8fc)',
-    img: '../photo/alirgen.webp',desc:'Smalks poliesteru audums ar blīvu aušanu — aiztur putekļus, ziedputekšņus, spalvas un smalkas daļiņas.',
-    models:['Rāmju tīkli','Bīdāmie tīkli','Durvju tīkli'],pros:['Filtrē ziedputekšņus un putekļus','Ideāls alerģiķiem','Samazina dzīvnieku spalvas telpā','Piemērots bērniem'],cons:['Samazina gaisa caurlaidību','Jātīra biežāk','Augstāka cena','Samazināta izturība — nav piemērots mājdzīvnieku īpašniekiem']},
-  neredzamais:{title:'Neredzamais tīkls',bg:'linear-gradient(135deg,#2a2a2a,#4a4a4a)',
-    img: '../photo/nered.webp',desc:'Plāns stikla šķiedras audums melnā krāsā — praktiski neredzams logā. Laba gaisa caurlaidība un skats uz āru, piešķirot logam elegantu un neuzkrītošu izskatu.',
-    models:['Rāmju tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['Praktiski neredzams no iekšpuses','Lielisks skats uz āru','Standarta gaisa caurlaidība','Moderns izskats'],cons:['Augstāka cena par standarta','Vieglāk uzkrāj putekļus (tumšais tonis)','Samazināta izturība — nav piemērots mājdzīvnieku īpašniekiem']},
-  metala:{title:'Metāla tīkls',bg:'linear-gradient(135deg,#e8e8e8,#c0c0c0)',
-    img: '../photo/metal.webp',desc:'Audums no nerūsējošā tērauda — maksimāla izturība un ilgmūžība jebkuros apstākļos.',
-    models:['Rāmju tīkli','Durvju tīkli','Bīdāmie tīkli'],pros:['Ārkārtīgi izturīgs','Iztur intensīvu slodzi','Ugunsizturīgs','Ļoti ilgs kalpošanas laiks','Netiek bojāts no grauzējiem'],cons:['Visaugstākā cena','Smags svars','Mazāka gaisa caurlaidība','Pie bojājuma neatiestājas — paliek saliekumi']}
+  standarta:{title:'Стандартная сетка',bg:'linear-gradient(135deg,#e8f4ec,#c8e6d0)',
+    img: '../photo/PlisseStandarta.webp',desc:'Стекловолокно с ПВХ-покрытием — лёгкое, хорошо пропускает воздух, недорогое. Доступно в серой расцветке.',
+    models:['Рамочные сетки','Рулонные сетки','Сетки плиссе','Дверные сетки','Раздвижные сетки'],pros:['Лучшая цена','Хорошая воздухопроницаемость','Хороший обзор через сетку','УФ-устойчивость (6–8 лет)','Лёгкий вес'],cons:['Легко повреждается кошачьими когтями','Не подходит аллергикам','Грубее антиаллергенной']},
+  petscreen:{title:'PetScreen (для кошек)',bg:'linear-gradient(135deg,#fef3e8,#fdd9a8)',
+    img: '../photo/PlissePetScreen.webp',desc:'Усиленное полимерное полотно — в 7× прочнее стандартной сетки. Разработано специально для владельцев домашних животных.',
+    models:['Рамочные сетки','Сетки плиссе','Дверные сетки','Раздвижные сетки'],pros:['В 7× прочнее стандартной','Выдерживает кошачьи когти','Подходит для детей','Можно мыть','Долгий срок службы'],cons:['Более высокая цена','Немного меньшая воздухопроницаемость','Тяжелее стандартной','Пропускает меньше света']},
+  antialerg:{title:'Антиаллергенная сетка',bg:'linear-gradient(135deg,#e8f0fe,#c5d8fc)',
+    img: '../photo/alirgen.webp',desc:'Тонкое полиэстеровое полотно плотного плетения — задерживает пыль, пыльцу, шерсть и мелкие частицы.',
+    models:['Рамочные сетки','Раздвижные сетки','Дверные сетки'],pros:['Фильтрует пыльцу и пыль','Идеальна для аллергиков','Уменьшает количество шерсти животных в помещении','Подходит для детей'],cons:['Снижает воздухопроницаемость','Требует более частой чистки','Более высокая цена','Сниженная прочность — не подходит для владельцев домашних животных']},
+  neredzamais:{title:'Невидимая сетка',bg:'linear-gradient(135deg,#2a2a2a,#4a4a4a)',
+    img: '../photo/nered.webp',desc:'Тонкое стекловолоконное полотно чёрного цвета — практически незаметно на окне. Хорошая воздухопроницаемость и обзор наружу, придающие окну элегантный и неброский вид.',
+    models:['Рамочные сетки','Дверные сетки','Раздвижные сетки'],pros:['Практически невидима изнутри','Отличный обзор наружу','Стандартная воздухопроницаемость','Современный вид'],cons:['Более высокая цена по сравнению со стандартной','Легче собирает пыль (тёмный оттенок)','Сниженная прочность — не подходит для владельцев домашних животных']},
+  metala:{title:'Металлическая сетка',bg:'linear-gradient(135deg,#e8e8e8,#c0c0c0)',
+    img: '../photo/metal.webp',desc:'Полотно из нержавеющей стали — максимальная прочность и долговечность в любых условиях.',
+    models:['Рамочные сетки','Дверные сетки','Раздвижные сетки'],pros:['Чрезвычайно прочная','Выдерживает интенсивную нагрузку','Огнестойкая','Очень долгий срок службы','Не повреждается грызунами'],cons:['Самая высокая цена','Большой вес','Меньшая воздухопроницаемость','При повреждении не восстанавливается — остаются заломы']}
 };
   window.openMeshModal=function(key){
     var d=MESH_DATA[key]; if(!d)return;
@@ -1256,12 +1256,12 @@ var MESH_DATA={
       '<div class="modal-mesh-preview" style="background:'+d.bg+'">'+(d.img?'<img src="'+d.img+'" alt="'+d.title+'" style="width:100%;height:100%;object-fit:cover;display:block;">':'')+'</div>'+
       '<div class="modal-h">'+d.title+'</div>'+
       '<p class="modal-sub">'+d.desc+'</p>'+
-      '<div class="modal-section-title">Piemērots konstrukcijām</div>'+
+      '<div class="modal-section-title">Подходит для конструкций</div>'+
       '<div class="modal-models">'+models+'</div>'+
-      '<div class="modal-section-title">Priekšrocības un trūkumi</div>'+
+      '<div class="modal-section-title">Преимущества и недостатки</div>'+
       '<div class="modal-proscons">'+
-        '<div class="pros-box"><h4>✓ Priekšrocības</h4><ul class="pros-list">'+pros+'</ul></div>'+
-        '<div class="cons-box"><h4>✗ Trūkumi</h4><ul class="cons-list">'+cons+'</ul></div>'+
+        '<div class="pros-box"><h4>✓ Преимущества</h4><ul class="pros-list">'+pros+'</ul></div>'+
+        '<div class="cons-box"><h4>✗ Недостатки</h4><ul class="cons-list">'+cons+'</ul></div>'+
       '</div>';
     document.getElementById('meshModalOverlay').classList.add('open');
     document.body.style.overflow='hidden';
@@ -1276,23 +1276,23 @@ var MESH_DATA={
   });
   var CMP_ATTRS={
     pros:[
-      {label:'Universāls — der visiem logu veidiem',standarta:true,petscreen:false,antialerg:false,neredzamais:false,metala:false},
-      {label:'Izturīgs pret mājdzīvnieku nagiem',standarta:false,petscreen:true,antialerg:false,neredzamais:false,metala:true},
-      {label:'Antiallergēna filtrācija (aiztur putekšņus)',standarta:false,petscreen:false,antialerg:true,neredzamais:false,metala:false},
-      {label:'Gandrīz neredzams no mājas iekšpuses',standarta:false,petscreen:false,antialerg:false,neredzamais:true,metala:false},
-      {label:'Augsta mehāniskā izturība',standarta:false,petscreen:true,antialerg:false,neredzamais:false,metala:true},
-      {label:'Laba gaisa caurlaidība',standarta:true,petscreen:true,antialerg:false,neredzamais:true,metala:false},
-      {label:'Viegla ikdienas tīrīšana',standarta:true,petscreen:true,antialerg:true,neredzamais:true,metala:false},
-      {label:'Pieejamākā cena',standarta:true,petscreen:false,antialerg:false,neredzamais:false,metala:false},
-      {label:'Minimāls svars',standarta:true,petscreen:false,antialerg:true,neredzamais:true,metala:false},
-      {label:'Aizsardzība pret sīkiem insektiem',standarta:false,petscreen:false,antialerg:true,neredzamais:true,metala:false},
+      {label:'Универсальная — подходит для всех типов окон',standarta:true,petscreen:false,antialerg:false,neredzamais:false,metala:false},
+      {label:'Устойчива к когтям домашних животных',standarta:false,petscreen:true,antialerg:false,neredzamais:false,metala:true},
+      {label:'Антиаллергенная фильтрация (задерживает пыль)',standarta:false,petscreen:false,antialerg:true,neredzamais:false,metala:false},
+      {label:'Практически невидима из дома',standarta:false,petscreen:false,antialerg:false,neredzamais:true,metala:false},
+      {label:'Высокая механическая прочность',standarta:false,petscreen:true,antialerg:false,neredzamais:false,metala:true},
+      {label:'Хорошая воздухопроницаемость',standarta:true,petscreen:true,antialerg:false,neredzamais:true,metala:false},
+      {label:'Лёгкая повседневная чистка',standarta:true,petscreen:true,antialerg:true,neredzamais:true,metala:false},
+      {label:'Самая доступная цена',standarta:true,petscreen:false,antialerg:false,neredzamais:false,metala:false},
+      {label:'Минимальный вес',standarta:true,petscreen:false,antialerg:true,neredzamais:true,metala:false},
+      {label:'Защита от мелких насекомых',standarta:false,petscreen:false,antialerg:true,neredzamais:true,metala:false},
     ],
     cons:[
-      {label:'Augsta iegādes cena',standarta:false,petscreen:true,antialerg:true,neredzamais:true,metala:true},
-      {label:'Ierobežots saderīgums ar konstrukcijām',standarta:false,petscreen:true,antialerg:true,neredzamais:true,metala:true},
-      {label:'Liels svars (sarežģī uzstādīšanu)',standarta:false,petscreen:false,antialerg:false,neredzamais:false,metala:true},
-      {label:'Sarežģīta tīrīšana',standarta:false,petscreen:false,antialerg:false,neredzamais:false,metala:true},
-      {label:'Samazināta gaisa caurlaidība',standarta:false,petscreen:false,antialerg:true,neredzamais:false,metala:true},
+      {label:'Высокая стоимость',standarta:false,petscreen:true,antialerg:true,neredzamais:true,metala:true},
+      {label:'Ограниченная совместимость с конструкциями',standarta:false,petscreen:true,antialerg:true,neredzamais:true,metala:true},
+      {label:'Большой вес (усложняет монтаж)',standarta:false,petscreen:false,antialerg:false,neredzamais:false,metala:true},
+      {label:'Сложная чистка',standarta:false,petscreen:false,antialerg:false,neredzamais:false,metala:true},
+      {label:'Сниженная воздухопроницаемость',standarta:false,petscreen:false,antialerg:true,neredzamais:false,metala:true},
     ]
   };
   function icon(y){return y?'<span class="cmp-icon cmp-icon--yes">✓</span>':'<span class="cmp-icon cmp-icon--no">✗</span>';}
@@ -1303,15 +1303,15 @@ var MESH_DATA={
     var w=document.getElementById('cmpTableWrap');
     if(!w||!dA||!dB)return;
     var h='<table class="cmp-table"><thead><tr>';
-    h+='<th class="cmp-th-label">Īpašība</th>';
+    h+='<th class="cmp-th-label">Свойство</th>';
     h+='<th class="cmp-th-mesh"><div class="cmp-th-color" style="background:'+dA.bg+'"></div><div class="cmp-th-name">'+dA.title+'</div></th>';
     h+='<th class="cmp-th-mesh"><div class="cmp-th-color" style="background:'+dB.bg+'"></div><div class="cmp-th-name">'+dB.title+'</div></th>';
     h+='</tr></thead><tbody>';
-    h+='<tr class="cmp-section-row cmp-section-row--pros"><td colspan="3">✓ Priekšrocības</td></tr>';
+    h+='<tr class="cmp-section-row cmp-section-row--pros"><td colspan="3">✓ Преимущества</td></tr>';
     CMP_ATTRS.pros.forEach(function(r,i){
       h+='<tr'+(i%2?' class="cmp-tr-alt"':'')+'><td>'+r.label+'</td><td>'+icon(r[kA])+'</td><td>'+icon(r[kB])+'</td></tr>';
     });
-    h+='<tr class="cmp-section-row cmp-section-row--cons"><td colspan="3">✗ Trūkumi</td></tr>';
+    h+='<tr class="cmp-section-row cmp-section-row--cons"><td colspan="3">✗ Недостатки</td></tr>';
     CMP_ATTRS.cons.forEach(function(r,i){
       h+='<tr'+(i%2?' class="cmp-tr-alt"':'')+'><td>'+r.label+'</td><td>'+icon(!r[kA])+'</td><td>'+icon(!r[kB])+'</td></tr>';
     });
@@ -1508,11 +1508,11 @@ var MESH_DATA={
       if(q.length < 2){ res.classList.remove('visible'); res.innerHTML=''; return; }
       var idx = (typeof SEARCH_IDX !== 'undefined') ? SEARCH_IDX : [];
       var hits = idx.filter(function(item){
-        return item.t.toLowerCase().includes(q.toLowerCase()) ||
-               item.k.toLowerCase().includes(q.toLowerCase());
+        return searchTextMatches(item.t, q) ||
+               searchTextMatches(item.k, q);
       }).slice(0,6);
       if(!hits.length){
-        res.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „'+q+'“</div>';
+        res.innerHTML = '<div class="sr-empty">Нет результатов по „'+q+'“</div>';
       } else {
         res.innerHTML = hits.map(function(item){
           var kw = item.k.split(' ').find(function(w){ return w.toLowerCase().includes(q.toLowerCase()); }) || '';
@@ -1663,11 +1663,11 @@ var MESH_DATA={
 <script>
 (function(){
   var SEGS=[
-    {label:'Rāmju tīkli',   pct:35, base:'#3E7D59'},
-    {label:'Rullu tīkli', pct:14, base:'#6BA58A'},
-    {label:'Plisē tīkli',   pct:30, base:'#9ECAB5'},
-    {label:'Durvju tīkli',  pct:17, base:'#2C5341'},
-    {label:'Bīdāmie tīkli', pct:3,  base:'rgba(200,220,210,0.45)'}
+    {label:'Рамочные сетки',   pct:35, base:'#3E7D59'},
+    {label:'Рулонные сетки', pct:14, base:'#6BA58A'},
+    {label:'Сетки плиссе',   pct:30, base:'#9ECAB5'},
+    {label:'Дверные сетки',  pct:17, base:'#2C5341'},
+    {label:'Раздвижные сетки', pct:3,  base:'rgba(200,220,210,0.45)'}
   ];
   var ACTIVE=2;
   var ACCENT='#D04D1A';

@@ -439,8 +439,8 @@
       if(q.length < 2){ res.classList.remove('visible'); res.innerHTML=''; return; }
       var idx = (typeof SEARCH_IDX !== 'undefined') ? SEARCH_IDX : [];
       var hits = idx.filter(function(item){
-        return item.t.toLowerCase().includes(q.toLowerCase()) ||
-               item.k.toLowerCase().includes(q.toLowerCase());
+        return searchTextMatches(item.t, q) ||
+               searchTextMatches(item.k, q);
       }).slice(0,6);
       if(!hits.length){
         res.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „'+q+'"</div>';
@@ -540,7 +540,7 @@
 
   var slots = ['gal-s2','gal-s1','gal-main','gal-s1','gal-s2'];
 
-  function idx(offset){ return (cur + offset + n*10) % n; }  }
+  function idx(offset){ return (cur + offset + n*10) % n; }
 
   function render(){
     var items = stage.querySelectorAll('.gal-item');

@@ -629,7 +629,7 @@
       ctx.fillText(t, xs(t), mt + ph + 32);
     });
     ctx.font = '500 20px Poppins,sans-serif';
-    ctx.fillText('gadi', ml + pw / 2, mt + ph + 52);
+    ctx.fillText('лет', ml + pw / 2, mt + ph + 52);
     ctx.textAlign = 'right';
     [0,50,100].forEach(function(q){
       ctx.fillText(q + '%', ml - 9, ys(q) + 7);
@@ -642,10 +642,10 @@
     ctx.fillRect(lx, ly - 3, 26, 5);
     ctx.font = '600 21px Poppins,sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillText('Ar regulāru apkopi', lx + 32, ly + 5);
+    ctx.fillText('С обслуживанием', lx + 32, ly + 5);
     ctx.fillStyle = '#fb923c';
     ctx.fillRect(lx + 300, ly - 3, 26, 5);
-    ctx.fillText('Bez apkopes', lx + 332, ly + 5);
+    ctx.fillText('Без обслуживания', lx + 332, ly + 5);
     ctx.restore();
     /* — Draw lines up to current progress — */
     var maxIdx = Math.min(Math.ceil(progress * STEPS), STEPS);
@@ -702,12 +702,12 @@
       ctx.fillStyle = '#86efac';
       ctx.font = 'bold 22px Poppins,sans-serif';
       ctx.textAlign = 'right';
-      ctx.fillText('20+ gadi', xs(20) - 10, ys(sq) - 12);
+      ctx.fillText('20+ лет', xs(20) - 10, ys(sq) - 12);
       /* Unserviced label — annotate at ~t=10 where it's clearly declining */
       var uq = unservicedQ(9);
       ctx.fillStyle = '#fb923c';
       ctx.textAlign = 'left';
-      ctx.fillText('~10 gadi', xs(9.3) + 6, ys(uq) - 14);
+      ctx.fillText('~10 лет', xs(9.3) + 6, ys(uq) - 14);
       ctx.restore();
     }
   }
@@ -912,11 +912,11 @@
       if(q.length < 2){ res.classList.remove('visible'); res.innerHTML=''; return; }
       var idx = (typeof SEARCH_IDX !== 'undefined') ? SEARCH_IDX : [];
       var hits = idx.filter(function(item){
-        return item.t.toLowerCase().includes(q.toLowerCase()) ||
-               item.k.toLowerCase().includes(q.toLowerCase());
+        return searchTextMatches(item.t, q) ||
+               searchTextMatches(item.k, q);
       }).slice(0,6);
       if(!hits.length){
-        res.innerHTML = '<div class="sr-empty">Nav rezultātu priekš „'+q+'“</div>';
+        res.innerHTML = '<div class="sr-empty">Нет результатов по „'+q+'“</div>';
       } else {
         res.innerHTML = hits.map(function(item){
           var kw = item.k.split(' ').find(function(w){ return w.toLowerCase().includes(q.toLowerCase()); }) || '';
