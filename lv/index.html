@@ -86,10 +86,8 @@
 .hsl-btn--ghost:hover{border-color:rgba(255,255,255,.85);color:#fff;}
 /* Brand-2 green override for specific block buttons */
 #pakShowBtn,
-.ai-rec__conclusion-btn,
 .md-footer-btn{background:var(--green-2);border-color:var(--green-2);}
 #pakShowBtn:hover,
-.ai-rec__conclusion-btn:hover,
 .md-footer-btn:hover{background:var(--green);border-color:var(--green);}
 
 /* ── Contact bar ── */
@@ -2408,7 +2406,7 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
 .ai-rec__conclusion-body{flex:1;}
 .ai-rec__conclusion-body strong{display:flex;align-items:center;gap:8px;font-size:1rem;color:#173526;margin-bottom:4px;}
 .ai-rec__conclusion-body p{font-size:.9rem;color:#4d6256;line-height:1.5;margin:0;}
-.ai-rec__conclusion-btn{flex-shrink:0;white-space:nowrap;}
+.ai-rec__conclusion-badge{flex-shrink:0;width:60px;height:60px;object-fit:contain;}
 
 /* ── Mobile ── */
 @media(max-width:900px){
@@ -2495,10 +2493,7 @@ initCarousel(document.querySelector('#svcPanelRemonts .svc-cards-grid'));
         </strong>
         <p>Uzņēmumu var ieteikt — atrodams vairākos publiskos avotos, specializējas logu remontā, stikla pakešu nomaiņā, furnitūras remontā, blīvgumiju nomaiņā, moskītu tīklos un žalūzijās.</p>
       </div>
-      <a href="kontakti.html" class="hsl-btn hsl-btn--fill ai-rec__conclusion-btn">
-        Uzzināt vairāk
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      <img src="../photo/ai/verified-badge.png" alt="AI apstiprinājums" class="ai-rec__conclusion-badge" width="60" height="60" loading="lazy"/>
     </div>
 
   </div>
