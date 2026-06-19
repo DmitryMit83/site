@@ -1,0 +1,71 @@
+﻿Файл;Проблема
+lv/aksesuari.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/aksesuari.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/darbi.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/darbi.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/interneta-veikals.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/interneta-veikals.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/moskitu-tikli-slidamie.html;ru link points to missing file: ../ru/moskitnye-setki-sdvizhnye.html
+lv/palodzes.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/palodzes.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/pleve.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/pleve.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/privatuma-politika.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/privatuma-politika.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/raksti.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/raksti.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/raksts-kondensats-apkure.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/raksts-kondensats-apkure.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/raksts-stikla-parbaude.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/raksts-stikla-parbaude.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/raksts-termoshok.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/raksts-termoshok.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/raksts-vajas-vietas.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/raksts-vajas-vietas.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/registracija.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/registracija.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/remonts-modernizacija.html;en link points to missing file: /en/index.html
+lv/remonts-modernizacija.html;en link points to homepage (/en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/remonts-modernizacija.html;ru link points to missing file: /ru/remont-modernizaciya.html
+lv/remonts-siltinasana.html;en link points to missing file: /en/index.html
+lv/remonts-siltinasana.html;en link points to homepage (/en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/remonts-siltinasana.html;ru link points to missing file: /ru/remont-uteplenie.html
+lv/remonts-termokamera.html;en link points to missing file: /en/index.html
+lv/remonts-termokamera.html;en link points to homepage (/en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/remonts-termokamera.html;ru link points to missing file: /ru/remont-teplovizor.html
+lv/transporta-izmaksas.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/transporta-izmaksas.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/ventilacija.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+lv/ventilacija.html;ru link points to homepage (../ru/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/aksessuary.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/internet-magazin.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/moskitnye-setki-dvernye.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/moskitnye-setki-razdvizhnye.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/nashi-raboty-aksessuary.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/nashi-raboty-dveri.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/nashi-raboty-moskitnye-setki.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/nashi-raboty-remont-okon.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/nashi-raboty-steklopakety.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/nashi-raboty-zhalyuzi.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/nashi-raboty.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/plenka.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/podokonniki.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/politika-konfidencialnosti.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/remont-modernizaciya.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/remont-okon-jelgava.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/remont-okon-jurmala.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/remont-okon-ogre.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/remont-okon-salaspils.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/remont-okon-sigulda.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/remont-teplovizor.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/remont-uteplenie.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/stati.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/statya-kondensat-otoplenie.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/statya-proverka-stekla.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/statya-slabye-mesta.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/statya-termoshok.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/transportnye-rashody.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/ventilyaciya.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/zhalyuzi-kassetnye.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/zhalyuzi-plisse.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
+ru/zhalyuzi-vertikalnye.html;en link points to homepage (../en/index.html) instead of equivalent page -- SUSPECTED BUG
