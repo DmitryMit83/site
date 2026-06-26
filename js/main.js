@@ -699,6 +699,9 @@ document.addEventListener('DOMContentLoaded', function () {
       'darbi-aksesuari.html':'portfolio','darbi-stikla-paketes.html':'portfolio',
       // Jaunumi
       'padomi.html':'jaunumi','raksti.html':'jaunumi',
+      'raksts-rama-konstrukcijas-maina.html':'jaunumi',
+      'raksts-durvju-atjaunosana.html':'jaunumi',
+      'raksts-stiklapaketu-nomaina.html':'jaunumi',
       // Info
       'kontakti.html':'info','transporta-izmaksas.html':'info',
       'privatuma-politika.html':'info',
@@ -739,6 +742,9 @@ document.addEventListener('DOMContentLoaded', function () {
       'nashi-raboty-steklopakety.html':'portfolio',
       'sovety.html':'jaunumi',
       'stati.html':'jaunumi',
+      'statya-izmenenie-konstrukcii-ramy.html':'jaunumi',
+      'statya-vosstanovlenie-dverej.html':'jaunumi',
+      'statya-zamena-steklopaketov.html':'jaunumi',
       'kontakty.html':'info',
       'transportnye-rashody.html':'info',
       'politika-konfidencialnosti.html':'info',
@@ -779,6 +785,9 @@ document.addEventListener('DOMContentLoaded', function () {
       'our-works-glass-units.html':'portfolio',
       'tips.html':'jaunumi',
       'articles.html':'jaunumi',
+      'article-frame-reconfiguration.html':'jaunumi',
+      'article-door-restoration.html':'jaunumi',
+      'article-glass-unit-replacement.html':'jaunumi',
       'contacts.html':'info',
       'transport-costs.html':'info',
       'privacy-policy.html':'info'

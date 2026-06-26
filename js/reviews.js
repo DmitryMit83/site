@@ -27,32 +27,32 @@
         text:'Ātri, operatīvi. Meistars visu paskaidroja. Ļoti pieklājīgi meistari un par saprātīgu cenu.' }
     ],
     ru: [
-      { author:'Ольга Михайлова',   rating:5, time:'месяц назад',
-        text:'Заменили уплотнители на всех окнах в квартире. Работают аккуратно, убрали за собой. Цены адекватные, приехали в тот же день. Очень довольна!' },
-      { author:'Дмитрий Соколов',   rating:5, time:'3 недели назад',
-        text:'Вызвал мастера для регулировки входной двери. Пришёл точно в назначенное время, сделал быстро и качественно. Рекомендую эту компанию!' },
-      { author:'Наталья Васильева', rating:5, time:'5 недель назад',
-        text:'Заказали москитные сетки на все окна. Замерили, изготовили и установили за два дня. Качество отличное, держатся крепко. Спасибо большое!' },
-      { author:'Сергей Козлов',     rating:4, time:'2 месяца назад',
-        text:'Заменили стеклопакет в большом окне. Работа выполнена качественно, небольшая задержка с доставкой стекла, но мастер предупредил заранее. В целом доволен.' },
-      { author:'Елена Романова',    rating:5, time:'полтора месяца назад',
-        text:'Установили рулонные жалюзи в гостиной и спальне. Мастер помог с выбором ткани и цвета. Результат превзошёл ожидания — очень красиво и функционально!' },
-      { author:'Александр Тихонов', rating:5, time:'6 недель назад',
-        text:'Регулировка пластиковых окон после зимы. Мастер приехал в тот же день, всё отрегулировал и объяснил как правильно ухаживать за фурнитурой. Отличный сервис!' }
+      { author:'Diāna Pudule',    rating:5, time:'pirms 3 nedēļām',
+        text:'Gribēju uzstādīt logiem sietus, lai būtu droši kaķim. Izsaucu meistaru, kurš visu nomērīja un solīja nedēļas laikā sietus izgatavot, taču pēc divām dienām jau sieti bija gatavi, un meistars tos ātri uzstādīja. Esmu ļoti apmierināta.' },
+      { author:'Ģirts Liniņš',    rating:5, time:'pirms mēneša',
+        text:'Ātri, kvalitatīvi, pieklājīgi saveda kārtībā pirms 30 gadiem ieliktus koka pakešu logus. Par to visu arī attiecīgi jāsamaksā, protams. Paldies.' },
+      { author:'Андрей Иванов',   rating:5, time:'pirms 3 mēnešiem',
+        text:'Мастер молодец! Благодарю и рекомендую другим!' },
+      { author:'Inese Maslova',   rating:5, time:'pirms 6 mēnešiem',
+        text:'Ļoti patīkama pieredze, liels paldies! Noteikti iesaku :).' },
+      { author:'Raimonda Kursīte',rating:2, time:'pirms 7 mēnešiem',
+        text:'Atbrauca, visu izdarīja, liekas kā nākas, bet nu attieksme... un cenas arī diezgan kosmiskas.' },
+      { author:'Līga Dukure',     rating:5, time:'pirms gada',
+        text:'Ātri, operatīvi. Meistars visu paskaidroja. Ļoti pieklājīgi meistari un par saprātīgu cenu.' }
     ],
     en: [
-      { author:'Andrew Thompson', rating:5, time:'2 weeks ago',
-        text:'Excellent service! Had a window adjusted the same day I called. The technician arrived on time, explained everything clearly and fixed it perfectly. Highly recommend!' },
-      { author:'Sarah Mitchell',  rating:5, time:'1 month ago',
-        text:'Had mosquito nets made to measure for all windows. Fast, precise installation. The quality is great and the price was very reasonable. Will use again!' },
-      { author:'Michael Brown',   rating:4, time:'3 weeks ago',
-        text:'Got roller blinds installed in two rooms. Good quality product and professional fitting. Slight wait for the materials, but the result is exactly what I wanted.' },
-      { author:'Emma Kalnina',    rating:5, time:'5 weeks ago',
-        text:'Glass unit replacement in my living room window. Quick turnaround, competitive pricing and zero mess left behind. The window looks brand new. Thank you!' },
-      { author:'David Larsson',   rating:5, time:'2 months ago',
-        text:'Our front door was misaligned and difficult to close. The technician fixed it in under 30 minutes. Very professional — I wish I had called sooner!' },
-      { author:'Laura Petersone', rating:5, time:'6 weeks ago',
-        text:'Seal replacement on all apartment windows. The difference is noticeable — much warmer and quieter now. Clean work, fair price. Definitely recommending to friends!' }
+      { author:'Diāna Pudule',    rating:5, time:'pirms 3 nedēļām',
+        text:'Gribēju uzstādīt logiem sietus, lai būtu droši kaķim. Izsaucu meistaru, kurš visu nomērīja un solīja nedēļas laikā sietus izgatavot, taču pēc divām dienām jau sieti bija gatavi, un meistars tos ātri uzstādīja. Esmu ļoti apmierināta.' },
+      { author:'Ģirts Liniņš',    rating:5, time:'pirms mēneša',
+        text:'Ātri, kvalitatīvi, pieklājīgi saveda kārtībā pirms 30 gadiem ieliktus koka pakešu logus. Par to visu arī attiecīgi jāsamaksā, protams. Paldies.' },
+      { author:'Андрей Иванов',   rating:5, time:'pirms 3 mēnešiem',
+        text:'Мастер молодец! Благодарю и рекомендую другим!' },
+      { author:'Inese Maslova',   rating:5, time:'pirms 6 mēnešiem',
+        text:'Ļoti patīkama pieredze, liels paldies! Noteikti iesaku :).' },
+      { author:'Raimonda Kursīte',rating:2, time:'pirms 7 mēnešiem',
+        text:'Atbrauca, visu izdarīja, liekas kā nākas, bet nu attieksme... un cenas arī diezgan kosmiskas.' },
+      { author:'Līga Dukure',     rating:5, time:'pirms gada',
+        text:'Ātri, operatīvi. Meistars visu paskaidroja. Ļoti pieklājīgi meistari un par saprātīgu cenu.' }
     ]
   };
 
