@@ -424,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form[data-contact]');
   if (form) {
     // Access key from https://web3forms.com — tied to the info@loguapkope.lv inbox.
-    const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY';
+    const WEB3FORMS_ACCESS_KEY = 'feab9df0-fe09-4fd9-a690-2e72aa11acd2';
 
     const submitBtn  = form.querySelector('button[type="submit"]');
     const btnDefault = submitBtn ? submitBtn.textContent : '';
