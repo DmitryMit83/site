@@ -420,14 +420,56 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInp.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
   }
 
-  // ── Form submission stub ──────────────────────────────────────────────────
+  // ── Contact form submission (Web3Forms → info@loguapkope.lv) ───────────────
   const form = document.querySelector('form[data-contact]');
   if (form) {
+    // Access key from https://web3forms.com — tied to the info@loguapkope.lv inbox.
+    const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY';
+
+    const submitBtn  = form.querySelector('button[type="submit"]');
+    const btnDefault = submitBtn ? submitBtn.textContent : '';
+
+    const sendingTxt = { lv: 'Nosūta…', ru: 'Отправка…', en: 'Sending…' }[SITE_LANG] || 'Sending…';
+    const errorTxt = {
+      lv: 'Neizdevās nosūtīt. Lūdzu, piezvaniet vai rakstiet uz info@loguapkope.lv.',
+      ru: 'Не удалось отправить заявку. Позвоните нам или напишите на info@loguapkope.lv.',
+      en: 'Sorry, the message could not be sent. Please call us or email info@loguapkope.lv.'
+    }[SITE_LANG] || 'Could not send. Please email info@loguapkope.lv.';
+
     form.addEventListener('submit', e => {
       e.preventDefault();
-      const msg = form.getAttribute('data-success') || (SITE_LANG === 'ru' ? 'Спасибо! Мы свяжемся с вами.' : 'Paldies! Mēs sazināsimies ar Jums.');
-      alert(msg);
-      form.reset();
+
+      // Honeypot — if a bot filled this hidden field, silently drop the submit.
+      const bot = form.querySelector('[name="botcheck"]');
+      if (bot && bot.checked) return;
+
+      const fd = new FormData(form);
+      fd.append('access_key', WEB3FORMS_ACCESS_KEY);
+      fd.append('subject', `Jauns pieprasījums no loguapkope.lv (${SITE_LANG.toUpperCase()})`);
+      fd.append('from_name', 'loguapkope.lv — kontaktforma');
+      fd.append('page_url', window.location.href);
+
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = sendingTxt; }
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: fd
+      })
+        .then(res => res.json().catch(() => ({})))
+        .then(data => {
+          if (data && data.success) {
+            const msg = form.getAttribute('data-success') || (SITE_LANG === 'ru' ? 'Спасибо! Мы свяжемся с вами.' : 'Paldies! Mēs sazināsimies ar Jums.');
+            alert(msg);
+            form.reset();
+          } else {
+            alert(errorTxt);
+          }
+        })
+        .catch(() => alert(errorTxt))
+        .then(() => {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = btnDefault; }
+        });
     });
   }
 
