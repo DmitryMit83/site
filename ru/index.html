@@ -1946,9 +1946,39 @@
     var name  = form.querySelector('[name="name"]').value.trim();
     var phone = form.querySelector('[name="phone"]').value.trim();
     if(!name||!phone){ alert('Пожалуйста, заполните имя и номер телефона.'); return; }
-    form.style.display = 'none';
-    success.style.display = 'block';
-    setTimeout(closeModal, 3200);
+
+    var submitBtn  = form.querySelector('.svc-form-submit');
+    var btnDefault = submitBtn ? submitBtn.textContent : '';
+    if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Отправка…'; }
+
+    var fd = new FormData(form);
+    fd.append('access_key', 'feab9df0-fe09-4fd9-a690-2e72aa11acd2');
+    fd.append('subject', '🔧 Заявка на услугу — loguapkope.lv (RU): ' + (svcLabel.textContent || 'Услуга'));
+    fd.append('from_name', 'loguapkope.lv — заявка на услугу');
+    fd.append('service', svcLabel.textContent || '');
+    fd.append('page_url', window.location.href);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: fd
+    })
+      .then(function(res){ return res.json().catch(function(){ return {}; }); })
+      .then(function(data){
+        if (data && data.success) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          setTimeout(closeModal, 3200);
+        } else {
+          alert('Не удалось отправить заявку. Позвоните нам или напишите на info@loguapkope.lv.');
+        }
+      })
+      .catch(function(){
+        alert('Не удалось отправить заявку. Позвоните нам или напишите на info@loguapkope.lv.');
+      })
+      .then(function(){
+        if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = btnDefault; }
+      });
   });
 })();
 </script>
