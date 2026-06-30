@@ -717,9 +717,9 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
         SOS — Zvanīt
       </a>
-      <a href="kontakti.html" class="sos-btn-write" aria-label="Sazināties rakstiski par logu remontu">
+      <a href="kontakti.html" class="sos-btn-write" data-urgent-trigger aria-label="Iesniegt steidzamu pieteikumu par logu remontu">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Sazināties rakstiski
+        Iesniegt pieteikumu
       </a>
     </div>
   </div>
@@ -739,6 +739,93 @@
 })();
 </script>
 </section>
+<!-- ══ Steidzama (SOS) pieteikuma logs ══════════════════════════════ -->
+<div class="urgent-modal-overlay" id="urgentModalOverlay">
+  <div class="urgent-modal" role="dialog" aria-modal="true" aria-labelledby="urgentModalTitle">
+    <button type="button" class="urgent-modal-close" data-urgent-close aria-label="Aizvērt">&times;</button>
+    <span class="sos-eyebrow" style="background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.35);color:#dc2626;">
+      <svg width="11" height="11" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#dc2626"/></svg>
+      Steidzams remonts
+    </span>
+    <h2 id="urgentModalTitle">Iesniegt steidzamu pieteikumu</h2>
+    <p class="urgent-modal-sub">Aizpildiet formu — sazināsimies ar Jums pirmajā kārtā un vienosimies par meistara apmeklējuma laiku.</p>
+    <form data-contact data-urgent data-subject="🚨 STEIDZAMS PIETEIKUMS — loguapkope.lv (LV)" data-success="Paldies! Šis ir steidzams pieteikums — sazināsimies ar Jums tuvākajā laikā.">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="urgent_request" value="Jā — STEIDZAMI, nepieciešama prioritāra atbilde">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="urgentName">Vārds *</label>
+          <input type="text" id="urgentName" name="name" placeholder="Jūsu vārds" required>
+        </div>
+        <div class="form-group">
+          <label for="urgentPhone">Tālrunis *</label>
+          <input type="tel" id="urgentPhone" name="phone" placeholder="+371 XX XXX XXX" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="urgentContact">Kontaktpersona objektā (ja atšķiras)</label>
+        <input type="text" id="urgentContact" name="contact_person" placeholder="Kontaktpersonas vārds, uzvārds">
+      </div>
+      <div class="form-group">
+        <label for="urgentAddress">Objekta adrese *</label>
+        <input type="text" id="urgentAddress" name="address" placeholder="Iela, māja, dzīvoklis/birojs" required>
+      </div>
+      <div class="form-group">
+        <label for="urgentCity">Pilsēta *</label>
+        <select id="urgentCity" name="city" required>
+          <option value="">— Izvēlieties —</option>
+          <option>Rīga</option>
+          <option>Jūrmala</option>
+          <option>Daugavpils</option>
+          <option>Liepāja</option>
+          <option>Jelgava</option>
+          <option>Ventspils</option>
+          <option>Rēzekne</option>
+          <option>Valmiera</option>
+          <option>Jēkabpils</option>
+          <option>Ogre</option>
+          <option>Salaspils</option>
+          <option>Sigulda</option>
+          <option>Tukums</option>
+          <option>Cēsis</option>
+          <option>Ķekava</option>
+          <option>Olaine</option>
+          <option>Mārupe</option>
+          <option>Ādaži</option>
+          <option>Saulkrasti</option>
+          <option>Kuldīga</option>
+          <option>Saldus</option>
+          <option>Talsi</option>
+          <option>Dobele</option>
+          <option>Bauska</option>
+          <option>Krāslava</option>
+          <option>Limbaži</option>
+          <option>Madona</option>
+          <option>Gulbene</option>
+          <option>Preiļi</option>
+          <option>Aizkraukle</option>
+          <option>Cita pilsēta</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="urgentProblem">Problēmas veids *</label>
+        <select id="urgentProblem" name="problem_type" required>
+          <option value="">— Izvēlieties —</option>
+          <option>Steidzama stikla paketes nomaiņa</option>
+          <option>Steidzama furnitūras nomaiņa</option>
+          <option>Steidzama eņģu nomaiņa</option>
+          <option>Steidzama durvju atvēršana</option>
+          <option>Cits</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="urgentMessage">Īsi aprakstiet problēmu (nav obligāti)</label>
+        <textarea id="urgentMessage" name="message" rows="3" placeholder="Papildu informācija, ja ir..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Nosūtīt steidzamu pieteikumu</button>
+    </form>
+  </div>
+</div>
 
 <div class="pak-outer-wrap">
 <section id="pakalpojumi" class="pak-rounded">

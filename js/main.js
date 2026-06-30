@@ -421,11 +421,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Contact form submission (Web3Forms → info@loguapkope.lv) ───────────────
-  const form = document.querySelector('form[data-contact]');
-  if (form) {
+  // Handles BOTH the regular contact form (kontakty/kontakti/contacts page)
+  // and the urgent SOS request form (homepage modal) — any form[data-contact].
+  document.querySelectorAll('form[data-contact]').forEach(form => {
     // Access key from https://web3forms.com — tied to the info@loguapkope.lv inbox.
     const WEB3FORMS_ACCESS_KEY = 'feab9df0-fe09-4fd9-a690-2e72aa11acd2';
 
+    const isUrgent   = form.hasAttribute('data-urgent');
     const submitBtn  = form.querySelector('button[type="submit"]');
     const btnDefault = submitBtn ? submitBtn.textContent : '';
 
@@ -445,8 +447,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const fd = new FormData(form);
       fd.append('access_key', WEB3FORMS_ACCESS_KEY);
-      fd.append('subject', `Jauns pieprasījums no loguapkope.lv (${SITE_LANG.toUpperCase()})`);
-      fd.append('from_name', 'loguapkope.lv — kontaktforma');
+      const subject = form.getAttribute('data-subject') ||
+        `Jauns pieprasījums no loguapkope.lv (${SITE_LANG.toUpperCase()})`;
+      fd.append('subject', subject);
+      fd.append('from_name', isUrgent ? 'loguapkope.lv — SOS steidzams pieteikums' : 'loguapkope.lv — kontaktforma');
       fd.append('page_url', window.location.href);
 
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = sendingTxt; }
@@ -462,6 +466,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const msg = form.getAttribute('data-success') || (SITE_LANG === 'ru' ? 'Спасибо! Мы свяжемся с вами.' : 'Paldies! Mēs sazināsimies ar Jums.');
             alert(msg);
             form.reset();
+            // If this form lives inside the urgent-request modal, close it.
+            const overlay = form.closest('.urgent-modal-overlay');
+            if (overlay) {
+              overlay.classList.remove('open');
+              document.body.classList.remove('modal-open');
+            }
           } else {
             alert(errorTxt);
           }
@@ -471,7 +481,35 @@ document.addEventListener('DOMContentLoaded', () => {
           if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = btnDefault; }
         });
     });
-  }
+  });
+
+  // ── Urgent request modal (SOS block on the homepage) ────────────────────
+  (function () {
+    const overlay = document.getElementById('urgentModalOverlay');
+    if (!overlay) return;
+    const modal     = overlay.querySelector('.urgent-modal');
+    const triggers  = document.querySelectorAll('[data-urgent-trigger]');
+    let lastFocused = null;
+
+    function openModal(e) {
+      if (e) e.preventDefault();
+      lastFocused = document.activeElement;
+      overlay.classList.add('open');
+      document.body.classList.add('modal-open');
+      const firstField = modal && modal.querySelector('input,select,textarea');
+      if (firstField) firstField.focus();
+    }
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+
+    triggers.forEach(t => t.addEventListener('click', openModal));
+    overlay.querySelectorAll('[data-urgent-close]').forEach(b => b.addEventListener('click', closeModal));
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+  })();
 
   // ── Mobile contact widget (bookmark tab) ───────────────────────────────
   (function () {

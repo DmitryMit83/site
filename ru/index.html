@@ -777,9 +777,9 @@
 <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"></path></svg>
         SOS — Позвонить
       </a>
-<a aria-label="Написать нам по поводу ремонта окон" class="sos-btn-write" href="kontakty.html">
+<a aria-label="Отправить срочную заявку на ремонт окон" class="sos-btn-write" data-urgent-trigger="" href="kontakty.html">
 <svg fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.1" viewbox="0 0 24 24" width="17"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        Написать нам
+        Отправить заявку
       </a>
 </div>
 </div>
@@ -799,6 +799,93 @@
 })();
 </script>
 </section>
+<!-- ══ Urgent (SOS) request modal ══════════════════════════════════ -->
+<div class="urgent-modal-overlay" id="urgentModalOverlay">
+<div aria-labelledby="urgentModalTitle" aria-modal="true" class="urgent-modal" role="dialog">
+<button aria-label="Закрыть" class="urgent-modal-close" data-urgent-close="" type="button">&times;</button>
+<span class="sos-eyebrow" style="background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.35);color:#dc2626;">
+<svg height="11" viewbox="0 0 10 10" width="11"><circle cx="5" cy="5" fill="#dc2626" r="5"></circle></svg>
+      Срочный ремонт
+    </span>
+<h2 id="urgentModalTitle">Оставить срочную заявку</h2>
+<p class="urgent-modal-sub">Заполните форму — свяжемся с вами в первую очередь и обсудим время выезда мастера.</p>
+<form data-contact="" data-subject="🚨 СРОЧНАЯ ЗАЯВКА — loguapkope.lv (RU)" data-success="Спасибо! Это срочная заявка — мы свяжемся с вами как можно скорее." data-urgent="">
+<input autocomplete="off" name="botcheck" style="display:none" tabindex="-1" type="checkbox"/>
+<input name="urgent_request" type="hidden" value="Да — СРОЧНО, требуется приоритетный ответ"/>
+<div class="form-row">
+<div class="form-group">
+<label for="urgentName">Имя *</label>
+<input id="urgentName" name="name" placeholder="Ваше имя" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="urgentPhone">Телефон *</label>
+<input id="urgentPhone" name="phone" placeholder="+371 XX XXX XXX" required="" type="tel"/>
+</div>
+</div>
+<div class="form-group">
+<label for="urgentContact">Контактное лицо на объекте (если отличается)</label>
+<input id="urgentContact" name="contact_person" placeholder="Имя контактного лица" type="text"/>
+</div>
+<div class="form-group">
+<label for="urgentAddress">Адрес объекта *</label>
+<input id="urgentAddress" name="address" placeholder="Улица, дом, квартира/офис" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="urgentCity">Город *</label>
+<select id="urgentCity" name="city" required="">
+<option value="">— Выберите —</option>
+<option>Рига</option>
+<option>Юрмала</option>
+<option>Даугавпилс</option>
+<option>Лиепая</option>
+<option>Елгава</option>
+<option>Вентспилс</option>
+<option>Резекне</option>
+<option>Валмиера</option>
+<option>Екабпилс</option>
+<option>Огре</option>
+<option>Саласпилс</option>
+<option>Сигулда</option>
+<option>Тукумс</option>
+<option>Цесис</option>
+<option>Кекава</option>
+<option>Олайне</option>
+<option>Марупе</option>
+<option>Адажи</option>
+<option>Саулкрасты</option>
+<option>Кулдига</option>
+<option>Салдус</option>
+<option>Талси</option>
+<option>Добеле</option>
+<option>Бауска</option>
+<option>Краслава</option>
+<option>Лимбажи</option>
+<option>Мадона</option>
+<option>Гулбене</option>
+<option>Прейли</option>
+<option>Айзкраукле</option>
+<option>Другой город</option>
+</select>
+</div>
+<div class="form-group">
+<label for="urgentProblem">Тип проблемы *</label>
+<select id="urgentProblem" name="problem_type" required="">
+<option value="">— Выберите —</option>
+<option>Срочная замена стеклопакета</option>
+<option>Срочная замена фурнитуры</option>
+<option>Срочная замена петли</option>
+<option>Срочное открытие двери</option>
+<option>Другое</option>
+</select>
+</div>
+<div class="form-group">
+<label for="urgentMessage">Кратко опишите проблему (необязательно)</label>
+<textarea id="urgentMessage" name="message" placeholder="Дополнительные детали, если есть..." rows="3"></textarea>
+</div>
+<button class="btn btn-primary" style="width:100%" type="submit">Отправить срочную заявку</button>
+</form>
+</div>
+</div>
 <div class="pak-outer-wrap">
 <section class="pak-rounded" id="pakalpojumi">
 <div class="container">
