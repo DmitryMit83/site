@@ -397,7 +397,12 @@
 .skat-qty-btn{width:24px;height:24px;border-radius:50%;border:none;background:#eef5f0;color:#2d6a4f;font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .15s,color .15s;}
 .skat-qty-btn:hover{background:#2d6a4f;color:#fff;}
 .skat-qty-val{min-width:1.4em;text-align:center;font-weight:700;color:#1a1a1a;font-size:.88rem;}
-.skat-more-wrap{text-align:center;margin-top:2rem;}
+.skat-pagination{display:flex;align-items:center;justify-content:center;gap:.4rem;margin-top:2rem;flex-wrap:wrap;}
+.skat-page-btn{min-width:36px;height:36px;padding:0 .5rem;border:1.5px solid #e2e2e2;border-radius:8px;background:#fff;color:#444;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}
+.skat-page-btn:hover:not(:disabled):not(.is-active){border-color:#2d6a4f;color:#2d6a4f;}
+.skat-page-btn.is-active{background:#2d6a4f;border-color:#2d6a4f;color:#fff;cursor:default;}
+.skat-page-btn:disabled{opacity:.35;cursor:default;}
+.skat-page-dots{display:flex;align-items:center;justify-content:center;min-width:24px;color:#aaa;font-size:.85rem;}
 #skatEmpty{text-align:center;padding:3rem 1rem;color:#bbb;font-size:.95rem;display:none;}
 #skatEmpty.visible{display:block;}
 /* Modal */
@@ -506,6 +511,11 @@
       <button class="skat-brand" data-brand="Brevis">Brevis</button>
       <button class="skat-brand" data-brand="greenteQ">greenteQ</button>
       <button class="skat-brand" data-brand="Hermai">Hermai</button>
+      <button class="skat-brand" data-brand="Jasa">Jasa</button>
+      <button class="skat-brand" data-brand="Dormakaba">Dormakaba</button>
+      <button class="skat-brand" data-brand="Roto">Roto</button>
+      <button class="skat-brand" data-brand="Bonaiti">Bonaiti</button>
+      <button class="skat-brand" data-brand="HAFI">HAFI</button>
     </div>
       <button class="skat-arrow left" type="button" aria-label="Ritināt pa kreisi" tabindex="-1"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
       <button class="skat-arrow right" type="button" aria-label="Ritināt pa labi" tabindex="-1"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
@@ -520,9 +530,7 @@
     <!-- Product grid -->
     <div class="skat-grid" id="skatGrid"></div>
     <div id="skatEmpty">Nav atrastu rezultātu. Izmēģiniet citu meklēšanas vārdu.</div>
-    <div class="skat-more-wrap" id="skatMoreWrap" style="display:none;">
-      <button class="btn btn-outline-dark" id="skatMoreBtn">Rādīt vairāk ↓</button>
-    </div>
+    <div class="skat-pagination" id="skatPagination" style="display:none;"></div>
   </div>
 </section>
 
@@ -562,14 +570,14 @@
           <input type="text" id="skatCartName" name="name" placeholder="Jūsu vārds" autocomplete="name">
         </div>
         <div class="skat-cart-field">
-          <label for="skatCartPhone">Tālrunis</label>
+          <label for="skatCartPhone">Tālrunis (nav obligāti)</label>
           <input type="tel" id="skatCartPhone" name="phone" placeholder="+371 XX XXX XXX" autocomplete="tel">
         </div>
         <div class="skat-cart-field">
-          <label for="skatCartEmail">E-pasts</label>
-          <input type="email" id="skatCartEmail" name="email" placeholder="jusu@epasts.lv" autocomplete="email">
+          <label for="skatCartEmail">E-pasts *</label>
+          <input type="email" id="skatCartEmail" name="email" placeholder="jusu@epasts.lv" autocomplete="email" required>
         </div>
-        <div class="skat-cart-error" id="skatCartError" style="display:none;">Lūdzu, norādiet telefona numuru vai e-pastu.</div>
+        <div class="skat-cart-error" id="skatCartError" style="display:none;">Lūdzu, norādiet derīgu e-pasta adresi.</div>
         <button type="submit" class="btn btn-primary" id="skatCartSubmitBtn" style="width:100%;">Nosūtīt pieprasījumu</button>
       </form>
     </div>
@@ -595,10 +603,10 @@ var ICONS={
 var P = window.SKAT_PRODUCTS || [];
 
 var INIT_COUNT=20;
-var activeBrand='',activeCat='',searchQuery='',showAll=false;
+var activeBrand='',activeCat='',searchQuery='',currentPage=1;
 var grid=document.getElementById('skatGrid');
 var empty=document.getElementById('skatEmpty');
-var moreWrap=document.getElementById('skatMoreWrap');
+var pagination=document.getElementById('skatPagination');
 var modal=document.getElementById('skatModal');
 
 function findById(id){
@@ -669,7 +677,7 @@ function cardImg(p){
 
 function modalImg(p){
   if(p.img){
-    return '<img src="'+p.img+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:cover;display:block;">';
+    return '<img src="'+p.img+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:contain;display:block;">';
   }
   return ICONS[p.icon];
 }
@@ -683,12 +691,43 @@ function getFiltered(){
   });
 }
 
+function getPageList(cur,total){
+  var pages=[];
+  if(total<=7){
+    for(var i=1;i<=total;i++) pages.push(i);
+    return pages;
+  }
+  pages.push(1);
+  if(cur>3) pages.push('...');
+  var s=Math.max(2,cur-1), e=Math.min(total-1,cur+1);
+  for(var i=s;i<=e;i++) pages.push(i);
+  if(cur<total-2) pages.push('...');
+  pages.push(total);
+  return pages;
+}
+
+function renderPagination(totalPages){
+  if(totalPages<=1){ pagination.style.display='none'; pagination.innerHTML=''; return; }
+  pagination.style.display='';
+  var html='<button class="skat-page-btn" data-page="'+(currentPage-1)+'"'+(currentPage<=1?' disabled':'')+' aria-label="Iepriekšējā lapa">‹</button>';
+  getPageList(currentPage,totalPages).forEach(function(p){
+    if(p==='...'){ html+='<span class="skat-page-dots">…</span>'; }
+    else{ html+='<button class="skat-page-btn'+(p===currentPage?' is-active':'')+'" data-page="'+p+'">'+p+'</button>'; }
+  });
+  html+='<button class="skat-page-btn" data-page="'+(currentPage+1)+'"'+(currentPage>=totalPages?' disabled':'')+' aria-label="Nākamā lapa">›</button>';
+  pagination.innerHTML=html;
+}
+
 function render(){
   var f=getFiltered();
   grid.innerHTML='';
   empty.classList.toggle('visible',f.length===0);
-  var count=showAll?f.length:Math.min(f.length,INIT_COUNT);
-  for(var i=0;i<count;i++){
+  var totalPages=Math.max(1,Math.ceil(f.length/INIT_COUNT));
+  if(currentPage>totalPages) currentPage=totalPages;
+  if(currentPage<1) currentPage=1;
+  var start=(currentPage-1)*INIT_COUNT;
+  var end=Math.min(f.length,start+INIT_COUNT);
+  for(var i=start;i<end;i++){
     (function(p){
       var el=document.createElement('div');
       el.className='skat-card';
@@ -702,8 +741,18 @@ function render(){
       grid.appendChild(el);
     })(f[i]);
   }
-  moreWrap.style.display=(f.length>INIT_COUNT&&!showAll)?'':'none';
+  renderPagination(totalPages);
 }
+
+pagination.addEventListener('click',function(e){
+  var btn=e.target.closest('button[data-page]');
+  if(!btn||btn.disabled) return;
+  var p=parseInt(btn.dataset.page,10);
+  if(isNaN(p)) return;
+  currentPage=p;
+  render();
+  grid.scrollIntoView({behavior:'smooth',block:'start'});
+});
 
 grid.addEventListener('click',function(e){
   if(handleCartAction(e)) return;
@@ -714,7 +763,7 @@ grid.addEventListener('click',function(e){
 function openModal(id){
   var p=findById(id);if(!p)return;
   var mi=document.getElementById('skatModalImg');
-  mi.style.background=p.bg||'#ddd';
+  mi.style.background=p.img?'#fff':(p.bg||'#ddd');
   mi.innerHTML=modalImg(p);
   document.getElementById('skatModalBrand').textContent=p.brand||'';
   document.getElementById('skatModalTitle').textContent=p.name;
@@ -797,8 +846,9 @@ document.getElementById('skatCartForm').addEventListener('submit',function(e){
   var nameVal=form.querySelector('[name="name"]').value.trim();
   var phoneVal=form.querySelector('[name="phone"]').value.trim();
   var emailVal=form.querySelector('[name="email"]').value.trim();
+  var emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
   var errBox=document.getElementById('skatCartError');
-  if(!phoneVal&&!emailVal){ errBox.style.display='block'; return; }
+  if(!emailOk){ errBox.style.display='block'; return; }
   errBox.style.display='none';
   var ids=Object.keys(cart);
   if(!ids.length) return;
@@ -844,7 +894,7 @@ document.getElementById('skatBrands').addEventListener('click',function(e){
   document.querySelectorAll('.skat-brand').forEach(function(b){b.classList.remove('is-active');});
   btn.classList.add('is-active');
   activeBrand=btn.dataset.brand;
-  showAll=false;render();
+  currentPage=1;render();
 });
 
 document.getElementById('skatCats').addEventListener('click',function(e){
@@ -852,16 +902,12 @@ document.getElementById('skatCats').addEventListener('click',function(e){
   document.querySelectorAll('.skat-cat').forEach(function(b){b.classList.remove('is-active');});
   btn.classList.add('is-active');
   activeCat=btn.dataset.cat;
-  showAll=false;render();
+  currentPage=1;render();
 });
 
 document.getElementById('skatSearch').addEventListener('input',function(e){
   searchQuery=e.target.value.trim().toLowerCase();
-  showAll=false;render();
-});
-
-document.getElementById('skatMoreBtn').addEventListener('click',function(){
-  showAll=true;render();
+  currentPage=1;render();
 });
 
 render();
