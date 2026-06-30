@@ -368,13 +368,10 @@
 .skat-arrow.is-show{opacity:.75;pointer-events:auto;}
 .skat-arrow.is-show:hover{opacity:1;}
 .skat-arrow.is-show:hover svg{stroke:#444;}
-.skat-brand{flex:0 0 auto;position:relative;display:flex;align-items:center;justify-content:center;min-height:48px;padding:.4rem .95rem .7rem;background:none;border:none;font-size:.85rem;font-weight:500;font-family:inherit;color:#9a9a9a;cursor:pointer;white-space:nowrap;transition:color .18s;}
-.skat-brand img{height:24px;width:auto;max-width:104px;object-fit:contain;display:block;filter:grayscale(1);opacity:.5;transition:opacity .18s,filter .18s;}
+.skat-brand{flex:0 0 auto;position:relative;padding:.5rem .9rem .65rem;background:none;border:none;font-size:.85rem;font-weight:500;font-family:inherit;color:#9a9a9a;cursor:pointer;white-space:nowrap;transition:color .18s;}
 .skat-brand::after{content:"";position:absolute;left:50%;bottom:-1px;width:0;height:2px;background:#1a1a1a;border-radius:2px;transform:translateX(-50%);transition:width .2s;}
 .skat-brand:hover{color:#555;}
-.skat-brand:hover img{opacity:.85;filter:grayscale(.4);}
 .skat-brand.is-active{color:#1a1a1a;}
-.skat-brand.is-active img{opacity:1;filter:none;}
 .skat-brand.is-active::after{width:60%;}
 /* Category bar (icon + label, underline active) */
 .skat-cats{display:flex;gap:.3rem;overflow-x:auto;padding:.2rem 0 .3rem;border-bottom:1px solid #ececec;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
@@ -393,10 +390,13 @@
 .skat-card-img svg{width:54px;height:54px;}
 .skat-card-body{padding:.75rem .85rem .9rem;display:flex;flex-direction:column;flex:1;}
 .skat-card-brand{font-size:.68rem;color:#aaa;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.18rem;min-height:.9em;}
-.skat-card-name{font-size:.83rem;font-weight:600;line-height:1.35;color:#1a1a1a;flex:1;margin-bottom:.45rem;}
-.skat-card-price{font-size:.98rem;font-weight:700;color:#2d6a4f;margin-bottom:.6rem;}
+.skat-card-name{font-size:.83rem;font-weight:600;line-height:1.35;color:#1a1a1a;flex:1;margin-bottom:.6rem;}
 .skat-card-btn{width:100%;padding:.42rem;background:transparent;border:1.5px solid #2d6a4f;border-radius:7px;color:#2d6a4f;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .18s;}
 .skat-card-btn:hover{background:#2d6a4f;color:#fff;}
+.skat-qty-row{display:flex;align-items:center;justify-content:center;gap:.6rem;border:1.5px solid #2d6a4f;border-radius:7px;padding:.3rem .5rem;}
+.skat-qty-btn{width:24px;height:24px;border-radius:50%;border:none;background:#eef5f0;color:#2d6a4f;font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .15s,color .15s;}
+.skat-qty-btn:hover{background:#2d6a4f;color:#fff;}
+.skat-qty-val{min-width:1.4em;text-align:center;font-weight:700;color:#1a1a1a;font-size:.88rem;}
 .skat-more-wrap{text-align:center;margin-top:2rem;}
 #skatEmpty{text-align:center;padding:3rem 1rem;color:#bbb;font-size:.95rem;display:none;}
 #skatEmpty.visible{display:block;}
@@ -411,15 +411,38 @@
 .skat-modal-img svg{width:90px;height:90px;}
 .skat-modal-body{padding:1.3rem 1.5rem 1.7rem;}
 .skat-modal-brand{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#aaa;}
-.skat-modal-title{font-size:1.2rem;font-weight:700;margin:.25rem 0 .35rem;color:#1a1a1a;}
-.skat-modal-price{font-size:1.3rem;font-weight:700;color:#2d6a4f;margin-bottom:.85rem;}
+.skat-modal-title{font-size:1.2rem;font-weight:700;margin:.25rem 0 .6rem;color:#1a1a1a;}
 .skat-modal-desc{color:#555;line-height:1.65;margin-bottom:.9rem;font-size:.91rem;}
 .skat-modal-features{list-style:none;padding:0;margin:0 0 1.2rem;display:grid;gap:.38rem;}
 .skat-modal-features li{display:flex;gap:.45rem;font-size:.87rem;color:#444;line-height:1.4;}
 .skat-modal-features li::before{content:"✓";color:#2d6a4f;font-weight:700;flex-shrink:0;}
+.skat-modal-cart-row{margin-bottom:1rem;}
+.skat-modal-cart-row .skat-card-btn{width:auto;padding:.5rem 1.1rem;}
+.skat-modal-cart-row .skat-qty-row{display:inline-flex;}
 @media(max-width:1024px){.skat-grid{grid-template-columns:repeat(4,1fr);}}
 @media(max-width:768px){.skat-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:520px){.skat-grid{grid-template-columns:repeat(2,1fr);}.skat-search-wrap{max-width:100%;}}
+/* Request cart — floating icon + badge */
+.skat-cart-fab{position:fixed;right:1.4rem;bottom:1.4rem;width:58px;height:58px;border-radius:50%;background:#2d6a4f;border:none;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:8500;transition:transform .18s,box-shadow .18s;}
+.skat-cart-fab.visible{display:flex;}
+.skat-cart-fab:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.3);}
+.skat-cart-fab svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.skat-cart-badge{position:absolute;top:-2px;right:-2px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:#d64545;color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1;box-shadow:0 0 0 2px #fff;}
+/* Request cart — itemized list + form */
+.skat-cart-items{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.1rem;max-height:260px;overflow-y:auto;}
+.skat-cart-item{display:flex;align-items:center;justify-content:space-between;gap:.7rem;padding-bottom:.6rem;border-bottom:1px solid #eee;}
+.skat-cart-item-name{font-size:.85rem;color:#333;line-height:1.35;flex:1;}
+.skat-cart-item-brand{color:#999;font-weight:500;}
+.skat-cart-item-ctrl{display:flex;align-items:center;gap:.4rem;flex-shrink:0;}
+.skat-cart-remove{width:22px;height:22px;border:none;background:none;color:#bbb;font-size:.85rem;cursor:pointer;line-height:1;}
+.skat-cart-remove:hover{color:#d64545;}
+.skat-cart-empty{color:#999;font-size:.88rem;text-align:center;padding:1rem 0;}
+.skat-cart-form{display:flex;flex-direction:column;gap:.85rem;}
+.skat-cart-field label{display:block;font-size:.78rem;font-weight:600;color:#555;margin-bottom:.3rem;}
+.skat-cart-field input{width:100%;padding:.55rem .75rem;border:1.5px solid #e5e5e5;border-radius:7px;font-size:.88rem;font-family:inherit;outline:none;transition:border-color .2s;box-sizing:border-box;}
+.skat-cart-field input:focus{border-color:#2d6a4f;}
+.skat-cart-error{color:#d64545;font-size:.83rem;}
+.skat-cart-hint{color:#888;font-size:.85rem;margin:0 0 1rem;}
 </style>
 
 <section id="katalogs" style="padding:3rem 0;">
@@ -476,17 +499,13 @@
     <div class="skat-scroll">
     <div class="skat-brands" id="skatBrands">
       <button class="skat-brand is-active" data-brand="">Visi zīmoli</button>
-      <button class="skat-brand" data-brand="GU" aria-label="GU" title="GU"><img src="../photo/brands/gu.png" alt="GU"></button>
-      <button class="skat-brand" data-brand="Siegenia" aria-label="Siegenia" title="Siegenia"><img src="../photo/brands/si.png" alt="Siegenia"></button>
-      <button class="skat-brand" data-brand="Maco" aria-label="Maco" title="Maco"><img src="../photo/brands/maco.png" alt="Maco"></button>
-      <button class="skat-brand" data-brand="Schüco" aria-label="Schüco" title="Schüco"><img src="../photo/brands/schuco.png" alt="Schüco"></button>
-      <button class="skat-brand" data-brand="Geze" aria-label="Geze" title="Geze"><img src="../photo/brands/geze.png" alt="Geze"></button>
-      <button class="skat-brand" data-brand="Roto" aria-label="Roto" title="Roto"><img src="../photo/brands/roto.png" alt="Roto"></button>
-      <button class="skat-brand" data-brand="Winkhaus" aria-label="Winkhaus" title="Winkhaus"><img src="../photo/brands/winkhaus.png" alt="Winkhaus"></button>
-      <button class="skat-brand" data-brand="Schlegel" aria-label="Schlegel" title="Schlegel"><img src="../photo/brands/schlegel.png" alt="Schlegel"></button>
-      <button class="skat-brand" data-brand="Fapim" aria-label="Fapim" title="Fapim"><img src="../photo/brands/fapim.png" alt="Fapim"></button>
-      <button class="skat-brand" data-brand="REHAU" aria-label="REHAU" title="REHAU"><img src="../photo/brands/rehau.png" alt="REHAU"></button>
-      <button class="skat-brand" data-brand="AERECO" aria-label="AERECO" title="AERECO"><img src="../photo/brands/aereco.png" alt="AERECO"></button>
+      <button class="skat-brand" data-brand="Hoppe">Hoppe</button>
+      <button class="skat-brand" data-brand="Fab&amp;Fix">Fab&amp;Fix</button>
+      <button class="skat-brand" data-brand="Lakma">Lakma</button>
+      <button class="skat-brand" data-brand="FKS">FKS</button>
+      <button class="skat-brand" data-brand="Brevis">Brevis</button>
+      <button class="skat-brand" data-brand="greenteQ">greenteQ</button>
+      <button class="skat-brand" data-brand="Hermai">Hermai</button>
     </div>
       <button class="skat-arrow left" type="button" aria-label="Ritināt pa kreisi" tabindex="-1"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
       <button class="skat-arrow right" type="button" aria-label="Ritināt pa labi" tabindex="-1"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
@@ -515,10 +534,44 @@
     <div class="skat-modal-body">
       <div class="skat-modal-brand" id="skatModalBrand"></div>
       <h3 class="skat-modal-title" id="skatModalTitle"></h3>
-      <div class="skat-modal-price" id="skatModalPrice"></div>
       <p class="skat-modal-desc" id="skatModalDesc"></p>
       <ul class="skat-modal-features" id="skatModalFeatures"></ul>
-      <a class="btn btn-primary" href="kontakti.html">Pieteikties konsultācijai</a>
+      <div class="skat-modal-cart-row" id="skatModalCartCtrl"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Pieprasījuma "groza" ikona — parādās, kad sarakstā ir vismaz 1 prece -->
+<button class="skat-cart-fab" id="skatCartFab" type="button" aria-label="Pieprasījuma sarakts">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M2.5 3h2.4l2.5 12.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L21.5 8H6"></path></svg>
+  <span class="skat-cart-badge" id="skatCartBadge">0</span>
+</button>
+
+<!-- Pieprasījuma forma — sūta uz e-pastu ar izvēlēto preču sarakstu -->
+<div class="skat-modal" id="skatCartModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="skat-modal-box">
+    <button class="skat-modal-close" id="skatCartModalClose" aria-label="Aizvērt">✕</button>
+    <div class="skat-modal-body" style="padding-top:1.8rem;">
+      <h3 class="skat-modal-title" style="margin-top:0;">Pieprasījuma forma</h3>
+      <p class="skat-cart-hint">Aizpildiet kontaktinformāciju — sazināsimies par cenu un pieejamību.</p>
+      <div class="skat-cart-items" id="skatCartItems"></div>
+      <form id="skatCartForm" class="skat-cart-form" novalidate="">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="skat-cart-field">
+          <label for="skatCartName">Vārds (nav obligāti)</label>
+          <input type="text" id="skatCartName" name="name" placeholder="Jūsu vārds" autocomplete="name">
+        </div>
+        <div class="skat-cart-field">
+          <label for="skatCartPhone">Tālrunis</label>
+          <input type="tel" id="skatCartPhone" name="phone" placeholder="+371 XX XXX XXX" autocomplete="tel">
+        </div>
+        <div class="skat-cart-field">
+          <label for="skatCartEmail">E-pasts</label>
+          <input type="email" id="skatCartEmail" name="email" placeholder="jusu@epasts.lv" autocomplete="email">
+        </div>
+        <div class="skat-cart-error" id="skatCartError" style="display:none;">Lūdzu, norādiet telefona numuru vai e-pastu.</div>
+        <button type="submit" class="btn btn-primary" id="skatCartSubmitBtn" style="width:100%;">Nosūtīt pieprasījumu</button>
+      </form>
     </div>
   </div>
 </div>
@@ -553,10 +606,62 @@ function findById(id){
   return null;
 }
 
+// ── Pieprasījuma "grozs" (sessionStorage — tikai šai pārlūka sesijai) ──────
+function loadCart(){
+  try{ return JSON.parse(sessionStorage.getItem('skatCart')||'{}'); }catch(e){ return {}; }
+}
+var cart=loadCart();
+function saveCart(){ sessionStorage.setItem('skatCart',JSON.stringify(cart)); }
+function cartCount(){ var n=0; for(var k in cart){ n+=cart[k]; } return n; }
+function addToCart(id){
+  id=String(id);
+  cart[id]=(cart[id]||0)+1;
+  saveCart(); updateCartUI();
+}
+function setCartQty(id,qty){
+  id=String(id);
+  qty=Math.max(0,Math.min(99,qty|0));
+  if(qty<=0){ delete cart[id]; } else { cart[id]=qty; }
+  saveCart(); updateCartUI();
+}
+function cartCtrlHTML(id){
+  var q=cart[String(id)]||0;
+  if(q<=0){
+    return '<button class="skat-card-btn" type="button" data-action="add" data-id="'+id+'">+ Pievienot pieprasījumam</button>';
+  }
+  return '<div class="skat-qty-row">'
+    +'<button class="skat-qty-btn" type="button" data-action="dec" data-id="'+id+'" aria-label="Samazināt">−</button>'
+    +'<span class="skat-qty-val">'+q+'</span>'
+    +'<button class="skat-qty-btn" type="button" data-action="inc" data-id="'+id+'" aria-label="Palielināt">+</button>'
+    +'</div>';
+}
+function updateCtrlEverywhere(id){
+  document.querySelectorAll('.skat-cart-ctrl[data-id="'+id+'"]').forEach(function(el){
+    el.innerHTML=cartCtrlHTML(id);
+  });
+}
+function handleCartAction(e){
+  var btn=e.target.closest('button[data-action]');
+  if(!btn) return false;
+  var id=btn.dataset.id, action=btn.dataset.action;
+  if(action==='add'||action==='inc') addToCart(id);
+  else if(action==='dec') setCartQty(id,(cart[String(id)]||0)-1);
+  updateCtrlEverywhere(id);
+  return true;
+}
+var cartFab=document.getElementById('skatCartFab');
+var cartBadge=document.getElementById('skatCartBadge');
+function updateCartUI(){
+  var n=cartCount();
+  cartBadge.textContent=n;
+  cartFab.classList.toggle('visible',n>0);
+}
+updateCartUI();
+
 function cardImg(p){
   if(p.img){
-    return '<div class="skat-card-img" style="background:'+(p.bg||'#ddd')+'">'
-      +'<img src="'+p.img+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:cover;display:block;">'
+    return '<div class="skat-card-img" style="background:#fff">'
+      +'<img src="'+p.img+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:contain;display:block;">'
       +'</div>';
   }
   return '<div class="skat-card-img" style="background:'+p.bg+'">'+ICONS[p.icon]+'</div>';
@@ -592,15 +697,19 @@ function render(){
         +'<div class="skat-card-body">'
         +'<div class="skat-card-brand">'+(p.brand||'&nbsp;')+'</div>'
         +'<div class="skat-card-name">'+p.name+'</div>'
-        +'<div class="skat-card-price">'+p.price+'</div>'
-        +'<button class="skat-card-btn">Uzzināt vairāk</button>'
+        +'<div class="skat-cart-ctrl" data-id="'+p.id+'">'+cartCtrlHTML(p.id)+'</div>'
         +'</div>';
-      el.addEventListener('click',function(){ openModal(p.id); });
       grid.appendChild(el);
     })(f[i]);
   }
   moreWrap.style.display=(f.length>INIT_COUNT&&!showAll)?'':'none';
 }
+
+grid.addEventListener('click',function(e){
+  if(handleCartAction(e)) return;
+  var card=e.target.closest('.skat-card');
+  if(card) openModal(parseInt(card.dataset.id,10));
+});
 
 function openModal(id){
   var p=findById(id);if(!p)return;
@@ -609,9 +718,12 @@ function openModal(id){
   mi.innerHTML=modalImg(p);
   document.getElementById('skatModalBrand').textContent=p.brand||'';
   document.getElementById('skatModalTitle').textContent=p.name;
-  document.getElementById('skatModalPrice').textContent=p.price;
   document.getElementById('skatModalDesc').textContent=p.desc;
   document.getElementById('skatModalFeatures').innerHTML=p.features.map(function(f){return'<li>'+f+'</li>';}).join('');
+  var mcc=document.getElementById('skatModalCartCtrl');
+  mcc.classList.add('skat-cart-ctrl');
+  mcc.dataset.id=p.id;
+  mcc.innerHTML=cartCtrlHTML(p.id);
   modal.classList.add('open');
   modal.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
@@ -625,7 +737,107 @@ function closeModal(){
 
 document.getElementById('skatModalClose').addEventListener('click',closeModal);
 modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+document.getElementById('skatModalCartCtrl').addEventListener('click',handleCartAction);
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal();closeCartModal();}});
+
+// ── Pieprasījuma forma (groza modālais logs) ───────────────────────────────
+var cartModal=document.getElementById('skatCartModal');
+function renderCartItems(){
+  var box=document.getElementById('skatCartItems');
+  var ids=Object.keys(cart);
+  if(!ids.length){
+    box.innerHTML='<p class="skat-cart-empty">Pieprasījuma sarakts ir tukšs.</p>';
+    document.getElementById('skatCartSubmitBtn').disabled=true;
+    return;
+  }
+  document.getElementById('skatCartSubmitBtn').disabled=false;
+  box.innerHTML=ids.map(function(id){
+    var p=findById(parseInt(id,10));
+    if(!p) return '';
+    return '<div class="skat-cart-item" data-id="'+id+'">'
+      +'<div class="skat-cart-item-name">'+p.name+(p.brand?' <span class="skat-cart-item-brand">— '+p.brand+'</span>':'')+'</div>'
+      +'<div class="skat-cart-item-ctrl">'
+        +'<button type="button" class="skat-qty-btn" data-action="dec" data-id="'+id+'" aria-label="Samazināt">−</button>'
+        +'<span class="skat-qty-val">'+cart[id]+'</span>'
+        +'<button type="button" class="skat-qty-btn" data-action="inc" data-id="'+id+'" aria-label="Palielināt">+</button>'
+        +'<button type="button" class="skat-cart-remove" data-action="remove" data-id="'+id+'" aria-label="Noņemt">✕</button>'
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
+document.getElementById('skatCartItems').addEventListener('click',function(e){
+  var btn=e.target.closest('button[data-action]');if(!btn)return;
+  var id=btn.dataset.id, action=btn.dataset.action;
+  if(action==='inc') addToCart(id);
+  else if(action==='dec') setCartQty(id,(cart[id]||0)-1);
+  else if(action==='remove') setCartQty(id,0);
+  updateCtrlEverywhere(id);
+  renderCartItems();
+});
+function openCartModal(){
+  renderCartItems();
+  document.getElementById('skatCartError').style.display='none';
+  cartModal.classList.add('open');
+  cartModal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeCartModal(){
+  cartModal.classList.remove('open');
+  cartModal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+cartFab.addEventListener('click',openCartModal);
+document.getElementById('skatCartModalClose').addEventListener('click',closeCartModal);
+cartModal.addEventListener('click',function(e){if(e.target===cartModal)closeCartModal();});
+
+document.getElementById('skatCartForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var form=e.target;
+  var bot=form.querySelector('[name="botcheck"]'); if(bot&&bot.checked) return;
+  var nameVal=form.querySelector('[name="name"]').value.trim();
+  var phoneVal=form.querySelector('[name="phone"]').value.trim();
+  var emailVal=form.querySelector('[name="email"]').value.trim();
+  var errBox=document.getElementById('skatCartError');
+  if(!phoneVal&&!emailVal){ errBox.style.display='block'; return; }
+  errBox.style.display='none';
+  var ids=Object.keys(cart);
+  if(!ids.length) return;
+  var lines=ids.map(function(id){
+    var p=findById(parseInt(id,10));
+    if(!p) return '';
+    return '• '+p.name+(p.brand?' ('+p.brand+')':'')+' — '+cart[id]+' gab.';
+  }).filter(Boolean);
+
+  var fd=new FormData();
+  fd.append('access_key','feab9df0-fe09-4fd9-a690-2e72aa11acd2');
+  fd.append('subject','Jauns piederumu pieprasījums no loguapkope.lv (LV)');
+  fd.append('from_name','loguapkope.lv — aksesuāru pieprasījums');
+  fd.append('page_url',window.location.href);
+  if(nameVal) fd.append('name',nameVal);
+  if(phoneVal) fd.append('phone',phoneVal);
+  if(emailVal) fd.append('email',emailVal);
+  fd.append('message',lines.join('\n'));
+
+  var submitBtn=document.getElementById('skatCartSubmitBtn');
+  var defTxt=submitBtn.textContent;
+  submitBtn.disabled=true; submitBtn.textContent='Nosūta…';
+
+  fetch('https://api.web3forms.com/submit',{method:'POST',headers:{Accept:'application/json'},body:fd})
+    .then(function(res){ return res.json().catch(function(){return {};}); })
+    .then(function(data){
+      if(data&&data.success){
+        alert('Paldies! Jūsu pieprasījums ir nosūtīts. Mēs sazināsimies ar Jums.');
+        cart={}; saveCart(); updateCartUI();
+        document.querySelectorAll('.skat-cart-ctrl').forEach(function(el){ el.innerHTML=cartCtrlHTML(el.dataset.id); });
+        form.reset();
+        closeCartModal();
+      }else{
+        alert('Neizdevās nosūtīt. Lūdzu, piezvaniet vai rakstiet uz info@loguapkope.lv.');
+      }
+    })
+    .catch(function(){ alert('Neizdevās nosūtīt. Lūdzu, piezvaniet vai rakstiet uz info@loguapkope.lv.'); })
+    .then(function(){ submitBtn.disabled=false; submitBtn.textContent=defTxt; });
+});
 
 document.getElementById('skatBrands').addEventListener('click',function(e){
   var btn=e.target.closest('.skat-brand');if(!btn)return;

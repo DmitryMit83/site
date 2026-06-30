@@ -1643,7 +1643,7 @@
   <div class="svc-cards-grid">
 
     <!-- Card 1: ×1 -->
-    <div class="svc-card" data-svc="Plisē moskītu tīkls">
+    <div class="svc-card" data-svc="Plisē moskītu tīkls" data-price="95 €">
       <div class="svc-card-r-title">
         <div class="svc-card-name"><h3 class="svc-card-title">Plisē moskītu tīkls</h3></div>
       </div>
@@ -1673,7 +1673,7 @@
     </div>
 
     <!-- Card 2: ×5 POPULAR -->
-    <div class="svc-card svc-card--popular" data-svc="Plisē moskītu tīkli × 5">
+    <div class="svc-card svc-card--popular" data-svc="Plisē moskītu tīkli × 5" data-price="450 €">
       <div class="svc-popular-badge">Populārākais</div>
       <div class="svc-card-r-title">
         <div class="svc-card-name"><h3 class="svc-card-title">Plisē moskītu tīkli × 5</h3></div>
@@ -1705,7 +1705,7 @@
     </div>
 
     <!-- Card 3: ×11 -->
-    <div class="svc-card" data-svc="Plisē moskītu tīkli × 11">
+    <div class="svc-card" data-svc="Plisē moskītu tīkli × 11" data-price="1150 €">
       <div class="svc-card-r-title">
         <div class="svc-card-name"><h3 class="svc-card-title">Plisē moskītu tīkli × 11</h3></div>
       </div>
@@ -1760,7 +1760,7 @@
   <div class="svc-cards-grid">
 
     <!-- Card R1: × 3 -->
-    <div class="svc-card" data-svc="Logu regulēšana × 3 logi">
+    <div class="svc-card" data-svc="Logu regulēšana × 3 logi" data-price="50 €">
       <div class="svc-card-r-title">
         <div class="svc-card-name"><h3 class="svc-card-title">Regulēšana × 3 logi</h3></div>
       </div>
@@ -1789,7 +1789,7 @@
     </div>
 
     <!-- Card R2: 3 logi + 1 balkona durvis POPULAR -->
-    <div class="svc-card svc-card--popular" data-svc="Pilna apkope × 3 logi + 1 balkona durvis">
+    <div class="svc-card svc-card--popular" data-svc="Pilna apkope × 3 logi + 1 balkona durvis" data-price="320 €">
       <div class="svc-popular-badge">Populārākais</div>
       <div class="svc-card-r-title">
         <div class="svc-card-name"><h3 class="svc-card-title">Pilna apkope 3+1</h3></div>
@@ -1821,7 +1821,7 @@
     </div>
 
     <!-- Card R3: pilna mājas apkope -->
-    <div class="svc-card" data-svc="Pilna mājas apkope">
+    <div class="svc-card" data-svc="Pilna mājas apkope" data-price="999 €">
       <div class="svc-card-r-title">
         <div class="svc-card-name"><h3 class="svc-card-title">Pilna mājas apkope</h3></div>
       </div>
@@ -1929,9 +1929,13 @@
   var svcLabel = document.getElementById('svcModalService');
   var form     = document.getElementById('svcForm');
   var success  = document.getElementById('svcFormSuccess');
+  var svcName  = '';
+  var svcPrice = '';
 
-  function openModal(name){
-    svcLabel.textContent = name;
+  function openModal(name, price){
+    svcName  = name || '';
+    svcPrice = price || '';
+    svcLabel.textContent = svcPrice ? (svcName + ' — ' + svcPrice) : svcName;
     form.style.display = '';
     success.style.display = 'none';
     overlay.classList.add('open');
@@ -1946,7 +1950,8 @@
 
   document.querySelectorAll('#pieteikties .svc-apply-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
-      openModal(btn.closest('.svc-card').dataset.svc || 'Pakalpojums');
+      var card = btn.closest('.svc-card');
+      openModal(card.dataset.svc || 'Pakalpojums', card.dataset.price || '');
     });
   });
 
@@ -1966,9 +1971,10 @@
 
     var fd = new FormData(form);
     fd.append('access_key', 'feab9df0-fe09-4fd9-a690-2e72aa11acd2');
-    fd.append('subject', '🔧 Pakalpojuma pieteikums — loguapkope.lv (LV): ' + (svcLabel.textContent || 'Pakalpojums'));
+    fd.append('subject', '🔧 Pakalpojuma pieteikums — loguapkope.lv (LV): ' + (svcName || 'Pakalpojums') + (svcPrice ? ' (' + svcPrice + ')' : ''));
     fd.append('from_name', 'loguapkope.lv — pakalpojuma pieteikums');
-    fd.append('service', svcLabel.textContent || '');
+    fd.append('service', svcName || '');
+    fd.append('price', svcPrice || '');
     fd.append('page_url', window.location.href);
 
     fetch('https://api.web3forms.com/submit', {

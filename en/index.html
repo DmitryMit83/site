@@ -1651,7 +1651,7 @@
 <!-- 3 cards — 7-row subgrid structure for pixel-perfect alignment -->
 <div class="svc-cards-grid">
 <!-- Card 1: ×1 -->
-<div class="svc-card" data-svc="Pleated mosquito net">
+<div class="svc-card" data-svc="Pleated mosquito net" data-price="95 €">
 <div class="svc-card-r-title">
 <div class="svc-card-name"><h3 class="svc-card-title">Pleated mosquito net</h3></div>
 </div>
@@ -1680,7 +1680,7 @@
 <div class="svc-card-r-foot"><p class="svc-card-footnote">* Max. size: width 1100 mm, height 1500 mm.<br/>* Installation included in Riga only.<br/>* Offer applies to the new 18 mm aluminium profile (2026).</p></div>
 </div>
 <!-- Card 2: ×5 POPULAR -->
-<div class="svc-card svc-card--popular" data-svc="Pleated mosquito nets × 5">
+<div class="svc-card svc-card--popular" data-svc="Pleated mosquito nets × 5" data-price="450 €">
 <div class="svc-popular-badge">Most popular</div>
 <div class="svc-card-r-title">
 <div class="svc-card-name"><h3 class="svc-card-title">Pleated mosquito nets × 5</h3></div>
@@ -1711,7 +1711,7 @@
 <div class="svc-card-r-foot"><p class="svc-card-footnote">* Max. size: width 1100 mm, height 1500 mm.<br/>* Installation included in Riga only.<br/>* Offer applies to the new 18 mm aluminium profile (2026).</p></div>
 </div>
 <!-- Card 3: ×11 -->
-<div class="svc-card" data-svc="Pleated mosquito nets × 11">
+<div class="svc-card" data-svc="Pleated mosquito nets × 11" data-price="1150 €">
 <div class="svc-card-r-title">
 <div class="svc-card-name"><h3 class="svc-card-title">Pleated mosquito nets × 11</h3></div>
 </div>
@@ -1761,7 +1761,7 @@
 </article>
 <div class="svc-cards-grid">
 <!-- Card R1: × 3 -->
-<div class="svc-card" data-svc="Window adjustment × 3 windows">
+<div class="svc-card" data-svc="Window adjustment × 3 windows" data-price="50 €">
 <div class="svc-card-r-title">
 <div class="svc-card-name"><h3 class="svc-card-title">Adjustment × 3 windows</h3></div>
 </div>
@@ -1789,7 +1789,7 @@
 <div class="svc-card-r-foot"><p class="svc-card-footnote">* Call-out included in Riga only. Outside Riga, <a class="svc-footnote-link" href="transport-costs.html">transport costs</a> apply.</p></div>
 </div>
 <!-- Card R2: 3 logi + 1 balkona durvis POPULAR -->
-<div class="svc-card svc-card--popular" data-svc="Full service × 3 windows + 1 balcony door">
+<div class="svc-card svc-card--popular" data-svc="Full service × 3 windows + 1 balcony door" data-price="320 €">
 <div class="svc-popular-badge">Most popular</div>
 <div class="svc-card-r-title">
 <div class="svc-card-name"><h3 class="svc-card-title">Full service 3+1</h3></div>
@@ -1820,7 +1820,7 @@
 <div class="svc-card-r-foot"><p class="svc-card-footnote">* Call-out included in Riga only. Outside Riga, <a class="svc-footnote-link" href="transport-costs.html">transport costs</a> apply.</p></div>
 </div>
 <!-- Card R3: pilna mājas apkope -->
-<div class="svc-card" data-svc="Full home service">
+<div class="svc-card" data-svc="Full home service" data-price="999 €">
 <div class="svc-card-r-title">
 <div class="svc-card-name"><h3 class="svc-card-title">Full home service</h3></div>
 </div>
@@ -1920,8 +1920,12 @@
   var svcLabel = document.getElementById('svcModalService');
   var form     = document.getElementById('svcForm');
   var success  = document.getElementById('svcFormSuccess');
-  function openModal(name){
-    svcLabel.textContent = name;
+  var svcName  = '';
+  var svcPrice = '';
+  function openModal(name, price){
+    svcName  = name || '';
+    svcPrice = price || '';
+    svcLabel.textContent = svcPrice ? (svcName + ' — ' + svcPrice) : svcName;
     form.style.display = '';
     success.style.display = 'none';
     overlay.classList.add('open');
@@ -1935,7 +1939,8 @@
   }
   document.querySelectorAll('#pieteikties .svc-apply-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
-      openModal(btn.closest('.svc-card').dataset.svc || 'Pakalpojums');
+      var card = btn.closest('.svc-card');
+      openModal(card.dataset.svc || 'Service', card.dataset.price || '');
     });
   });
   closeBtn.addEventListener('click', closeModal);
@@ -1953,9 +1958,10 @@
 
     var fd = new FormData(form);
     fd.append('access_key', 'feab9df0-fe09-4fd9-a690-2e72aa11acd2');
-    fd.append('subject', '🔧 Service request — loguapkope.lv (EN): ' + (svcLabel.textContent || 'Service'));
+    fd.append('subject', '🔧 Service request — loguapkope.lv (EN): ' + (svcName || 'Service') + (svcPrice ? ' (' + svcPrice + ')' : ''));
     fd.append('from_name', 'loguapkope.lv — service request');
-    fd.append('service', svcLabel.textContent || '');
+    fd.append('service', svcName || '');
+    fd.append('price', svcPrice || '');
     fd.append('page_url', window.location.href);
 
     fetch('https://api.web3forms.com/submit', {

@@ -414,7 +414,7 @@
 <!-- Badge -->
 <div class="cd-badge">
 <svg fill="none" height="13" stroke="var(--accent)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="13"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-        Открытие 14 июля
+        Открытие 1 сентября
       </div>
 <!-- Cart icon -->
 <div style="margin-bottom:1.2rem;">
@@ -454,8 +454,8 @@
 </section>
 <script>
 (function(){
-  // Target: July 14, 2026 at 09:00 Latvian time (EEST = UTC+3)
-  var TARGET = new Date('2026-07-14T09:00:00+03:00');
+  // Target: September 1, 2026 at 09:00 Latvian time (EEST = UTC+3)
+  var TARGET = new Date('2026-09-01T09:00:00+03:00');
   function pad(n){ return String(n).padStart(2,'0'); }
   function getTimeLeft(){
     var diff = TARGET.getTime() - Date.now();
@@ -514,18 +514,122 @@
   setInterval(tick, 1000);
 })();
 </script>
+<style>
+/* ── Notify modal ── */
+.svc-modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(10,25,16,.58);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .28s ease;}
+.svc-modal-overlay.open{opacity:1;pointer-events:auto;}
+.svc-modal{background:#fff;border-radius:12px;border-top:3px solid var(--accent);box-shadow:0 24px 80px rgba(10,25,16,.25);width:100%;max-width:440px;max-height:90vh;overflow-y:auto;padding:36px 36px 32px;position:relative;transform:translateY(28px) scale(.96);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+.svc-modal-overlay.open .svc-modal{transform:translateY(0) scale(1);}
+.svc-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.3rem;color:#9ca3af;cursor:pointer;padding:4px 6px;transition:color .15s;}
+.svc-modal-close:hover{color:#374151;}
+.svc-modal h3{font-size:1.3rem;font-weight:700;color:var(--green);margin:0 0 20px;line-height:1.3;}
+.svc-form{display:flex;flex-direction:column;gap:12px;}
+.svc-form input{width:100%;box-sizing:border-box;padding:.7rem 1rem;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.88rem;font-family:inherit;color:#111827;background:#f9fafb;transition:border-color .2s,background .2s;outline:none;}
+.svc-form input:focus{border-color:var(--accent);background:#fff;}
+.svc-form input::placeholder{color:#9ca3af;}
+.svc-form-submit{margin-top:8px;background:linear-gradient(to top,#ea580c,#f97316);box-shadow:0 4px 14px rgba(234,88,12,.35);border:1px solid #fb923c;color:#fff;border-radius:10px;padding:.85rem 1.6rem;font-size:.95rem;font-weight:700;font-family:inherit;cursor:pointer;letter-spacing:.02em;transition:opacity .2s,transform .15s;}
+.svc-form-submit:hover{opacity:.9;transform:translateY(-1px);}
+.svc-form-note{font-size:.75rem;color:#9ca3af;margin-top:2px;text-align:center;}
+.svc-form-success{display:none;text-align:center;padding:20px 0 8px;}
+.svc-form-success svg{display:block;margin:0 auto 14px;color:var(--accent);}
+.svc-form-success h3{color:var(--green);font-size:1.05rem;margin:0 0 8px;}
+.svc-form-success p{color:#6b7280;font-size:.88rem;}
+@media(max-width:620px){.svc-modal{padding:28px 20px 24px;}}
+</style>
 <!-- ══ Notify CTA ══ -->
 <section style="padding:64px 0;background:#fff;text-align:center;">
 <div class="container" style="max-width:540px;">
 <h2 style="margin-bottom:.75rem;">Сообщите мне, когда магазин откроется</h2>
-<p style="color:#666;margin-bottom:2rem;">Оставьте свой e-mail или свяжитесь с нами — сообщим, как только интернет-магазин будет готов.</p>
-<a class="btn btn-primary" href="mailto:info@loguapkope.lv?subject=%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD%20%E2%80%94%20%D1%83%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5&amp;body=%D0%9F%D0%BE%D0%B6%D0%B0%D0%BB%D1%83%D0%B9%D1%81%D1%82%D0%B0%2C%20%D1%83%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%B8%D1%82%D0%B5%20%D0%BC%D0%B5%D0%BD%D1%8F%2C%20%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD%20%D0%B1%D1%83%D0%B4%D0%B5%D1%82%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B5%D0%BD%21" style="font-size:1rem;padding:.9rem 2rem;display:inline-flex;align-items:center;gap:.5rem;">
+<p style="color:#666;margin-bottom:2rem;">Оставьте свой e-mail — сообщим, как только интернет-магазин будет готов.</p>
+<button class="btn btn-primary" id="notifyOpenBtn" type="button" style="font-size:1rem;padding:.9rem 2rem;display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer;">
 <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" width="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-      Отправить заявку
-    </a>
+      Сообщить мне
+    </button>
 <p style="margin-top:1.5rem;font-size:.9rem;color:#999;">Или позвоните: <a href="tel:+37128950055" style="color:var(--accent);font-weight:600;">+371 28 950 055</a></p>
 </div>
 </section>
+<!-- ── Notify modal ── -->
+<div aria-modal="true" class="svc-modal-overlay" id="notifyModal" role="dialog">
+<div class="svc-modal">
+<button aria-label="Закрыть" class="svc-modal-close" id="notifyModalClose">✕</button>
+<h3>Уведомить об открытии</h3>
+<div class="svc-form-success" id="notifyFormSuccess">
+<svg fill="none" height="52" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="52"><circle cx="12" cy="12" r="10"></circle><polyline points="9 12 11 14 15 10"></polyline></svg>
+<h3>Заявка отправлена!</h3>
+<p>Мы напишем вам на e-mail, как только интернет-магазин откроется.</p>
+</div>
+<form class="svc-form" id="notifyForm" novalidate="">
+<input autocomplete="given-name" name="name" placeholder="Имя" type="text"/>
+<input autocomplete="email" name="email" placeholder="Ваш e-mail *" required="" type="email"/>
+<button class="svc-form-submit" type="submit">Отправить →</button>
+<p class="svc-form-note">Мы отправим письмо на этот адрес, как только интернет-магазин будет доступен.</p>
+</form>
+</div>
+</div>
+<script>
+(function(){
+  var openBtn  = document.getElementById('notifyOpenBtn');
+  var overlay  = document.getElementById('notifyModal');
+  var closeBtn = document.getElementById('notifyModalClose');
+  var form     = document.getElementById('notifyForm');
+  var success  = document.getElementById('notifyFormSuccess');
+  if(!openBtn || !overlay || !form) return;
+  function openModal(){
+    form.style.display = '';
+    success.style.display = 'none';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ form.querySelector('input').focus(); }, 340);
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function(){ form.reset(); }, 300);
+  }
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && overlay.classList.contains('open')) closeModal(); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = form.querySelector('[name="email"]').value.trim();
+    if(!email){ alert('Пожалуйста, укажите ваш e-mail.'); return; }
+
+    var submitBtn  = form.querySelector('.svc-form-submit');
+    var btnDefault = submitBtn ? submitBtn.textContent : '';
+    if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Отправка…'; }
+
+    var fd = new FormData(form);
+    fd.append('access_key', 'feab9df0-fe09-4fd9-a690-2e72aa11acd2');
+    fd.append('subject', '🛒 Напоминание об открытии интернет-магазина — loguapkope.lv (RU): ' + email);
+    fd.append('from_name', 'loguapkope.lv — напоминание об открытии магазина');
+    fd.append('customer_email', email);
+    fd.append('page_url', window.location.href);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: fd
+    })
+      .then(function(res){ return res.json().catch(function(){ return {}; }); })
+      .then(function(data){
+        if (data && data.success) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          setTimeout(closeModal, 3200);
+        } else {
+          alert('Не удалось отправить заявку. Напишите нам на info@loguapkope.lv.');
+        }
+      })
+      .catch(function(){
+        alert('Не удалось отправить заявку. Напишите нам на info@loguapkope.lv.');
+      })
+      .then(function(){
+        if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = btnDefault; }
+      });
+  });
+})();
+</script>
 </main>
 <!-- ══ Footer search band ═══════════════════════════════════════════ -->
 <section class="fsb-section">
