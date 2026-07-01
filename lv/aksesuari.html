@@ -324,6 +324,12 @@
         <li>Rakstiska garantija 2 gadi visiem montētajiem piederumiem</li>
       </ul>
     </div>
+    <div class="svc-hero-stats" id="skatHeroStats">
+      <div class="svc-stats-item"><div class="svc-stats-num" id="statNewCount">0</div><div class="svc-stats-lbl">jauni šonedēļ</div></div>
+      <div class="svc-stats-div"></div>
+      <div class="svc-stats-item"><div class="svc-stats-num" id="statTotalCount">0</div><div class="svc-stats-lbl">preces katalogā</div></div>
+      <div class="svc-stats-note">Katru nedēļu papildinām katalogu ar jauniem piederumiem</div>
+    </div>
     </div>
   </div>
 </div>
@@ -345,6 +351,33 @@
     }
     setTimeout(triggerHero, 1500);
   }
+// ── New products (Fri–Thu cycle) ──────────────────────────────────
+(function(){
+  function getWeekStart(){
+    var now=new Date();
+    var back=[2,3,4,5,6,0,1][now.getDay()];
+    return new Date(now.getFullYear(),now.getMonth(),now.getDate()-back);
+  }
+  window.SKAT_WEEK_START=getWeekStart();
+})();
+window.isNew=function(p){
+  if(!p.dateAdded)return false;
+  return new Date(p.dateAdded)>=window.SKAT_WEEK_START;
+};
+window.countUp=function(el,target,ms){
+  if(!el)return;
+  var steps=Math.max(1,Math.round(ms/16)),i=0;
+  var t=setInterval(function(){i++;el.textContent=Math.round(target*i/steps);if(i>=steps){el.textContent=target;clearInterval(t);}},16);
+};
+window.addEventListener('load',function(){
+  var newCnt=(window.SKAT_PRODUCTS||[]).filter(isNew).length;
+  var totCnt=(window.SKAT_PRODUCTS||[]).length;
+  countUp(document.getElementById('statNewCount'),newCnt,2500);
+  countUp(document.getElementById('statTotalCount'),totCnt,2500);
+  var badge=document.getElementById('skatNewCnt');
+  if(badge&&newCnt>0)badge.textContent=newCnt;
+  else if(badge)badge.style.display='none';
+});
 })();
 </script>
 
@@ -415,7 +448,9 @@
 .skat-modal-img{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border-radius:16px 16px 0 0;overflow:hidden;flex-shrink:0;}
 .skat-modal-img svg{width:90px;height:90px;}
 .skat-modal-body{padding:1.3rem 1.5rem 1.7rem;}
-.skat-modal-brand{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#aaa;}
+.skat-modal-brand{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#aaa;}.skat-card-sku{font-weight:400;letter-spacing:.02em;color:#bbb;font-size:.95em;}
+.skat-modal-sku{font-size:.7rem;color:#bbb;margin:.08rem 0 .15rem;letter-spacing:.04em;}
+.skat-cart-item-sku{color:#999;font-size:.75rem;font-weight:400;margin-right:.25rem;}
 .skat-modal-title{font-size:1.2rem;font-weight:700;margin:.25rem 0 .6rem;color:#1a1a1a;}
 .skat-modal-desc{color:#555;line-height:1.65;margin-bottom:.9rem;font-size:.91rem;}
 .skat-modal-features{list-style:none;padding:0;margin:0 0 1.2rem;display:grid;gap:.38rem;}
@@ -428,11 +463,17 @@
 @media(max-width:768px){.skat-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:520px){.skat-grid{grid-template-columns:repeat(2,1fr);}.skat-search-wrap{max-width:100%;}}
 /* Request cart — floating icon + badge */
-.skat-cart-fab{position:fixed;right:1.4rem;bottom:1.4rem;width:58px;height:58px;border-radius:50%;background:#2d6a4f;border:none;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:8500;transition:transform .18s,box-shadow .18s;}
+.skat-cart-fab{position:fixed;right:1.4rem;bottom:1.4rem;height:58px;width:58px;border-radius:29px;background:#2d6a4f;border:none;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer;display:none;align-items:center;justify-content:flex-end;padding:0;z-index:8500;overflow:visible;transition:width .32s cubic-bezier(.4,0,.2,1),background .2s,box-shadow .18s;}
 .skat-cart-fab.visible{display:flex;}
-.skat-cart-fab:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.3);}
+.skat-cart-fab-label{color:#1a4030;font-size:.88rem;font-weight:700;white-space:nowrap;max-width:0;overflow:hidden;opacity:0;padding:0;flex-shrink:0;transition:max-width .32s cubic-bezier(.4,0,.2,1),opacity .2s ease .08s,padding .32s cubic-bezier(.4,0,.2,1);pointer-events:none;letter-spacing:.01em;}
+.skat-cart-fab-icon{position:relative;width:58px;height:58px;border-radius:50%;background:#2d6a4f;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .18s;}
 .skat-cart-fab svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.skat-cart-badge{position:absolute;top:-2px;right:-2px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:#d64545;color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1;box-shadow:0 0 0 2px #fff;}
+.skat-cart-badge{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:#d64545;color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1;box-shadow:0 0 0 2px #fff;z-index:1;}
+@media (hover: hover) and (pointer: fine){
+.skat-cart-fab:hover{width:230px;background:#d8ede3;box-shadow:0 8px 24px rgba(0,0,0,.22);}
+.skat-cart-fab:hover .skat-cart-fab-label{max-width:180px;opacity:1;padding:0 .5rem 0 1.1rem;}
+.skat-cart-fab:active{background:#b8deca;}
+.skat-cart-fab:active .skat-cart-fab-icon{background:#1a3d2c;}}
 /* Request cart — itemized list + form */
 .skat-cart-items{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.1rem;max-height:260px;overflow-y:auto;}
 .skat-cart-item{display:flex;align-items:center;justify-content:space-between;gap:.7rem;padding-bottom:.6rem;border-bottom:1px solid #eee;}
@@ -446,8 +487,28 @@
 .skat-cart-field label{display:block;font-size:.78rem;font-weight:600;color:#555;margin-bottom:.3rem;}
 .skat-cart-field input{width:100%;padding:.55rem .75rem;border:1.5px solid #e5e5e5;border-radius:7px;font-size:.88rem;font-family:inherit;outline:none;transition:border-color .2s;box-sizing:border-box;}
 .skat-cart-field input:focus{border-color:#2d6a4f;}
+.skat-cart-field textarea{width:100%;padding:.55rem .75rem;border:1.5px solid #e5e5e5;border-radius:7px;font-size:.88rem;font-family:inherit;outline:none;transition:border-color .2s;box-sizing:border-box;resize:vertical;min-height:72px;}
+.skat-cart-field textarea:focus{border-color:#2d6a4f;}
 .skat-cart-error{color:#d64545;font-size:.83rem;}
 .skat-cart-hint{color:#888;font-size:.85rem;margin:0 0 1rem;}
+
+/* ── New badge + stats ─────────────────────────────────────────── */
+.skat-card.is-new::before{content:'NEW';position:absolute;top:8px;left:8px;background:#e53030;color:#fff;font-size:.55rem;font-weight:800;padding:2px 8px;border-radius:20px;letter-spacing:.1em;z-index:2;pointer-events:none;}
+.skat-new-cnt{display:inline-flex;align-items:center;justify-content:center;background:#e53030;color:#fff;border-radius:8px;font-size:.55rem;font-weight:800;min-width:14px;height:14px;padding:0 4px;margin-left:2px;line-height:1;vertical-align:middle;}
+.svc-hero-inner{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+.svc-hero-body{flex:1;min-width:260px;}
+.svc-hero-stats{background:rgba(255,255,255,.13);border-radius:16px;padding:1.4rem 1.8rem;text-align:center;min-width:160px;max-width:220px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);flex-shrink:0;margin-left:auto;}
+.svc-stats-note{font-size:.65rem;color:rgba(255,255,255,.58);margin-top:.85rem;line-height:1.45;text-align:center;}
+.svc-stats-item{margin:.4rem 0;}
+.svc-stats-num{font-size:2.4rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-.02em;}
+.svc-stats-lbl{font-size:.7rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.07em;margin-top:.2rem;}
+.svc-stats-div{height:1px;background:rgba(255,255,255,.25);margin:.7rem 0;}
+@media(max-width:680px){.svc-hero-stats{display:none;}}
+
+.skat-modal-vent-link{margin-top:.9rem;padding-top:.9rem;border-top:1px solid #efefef;}
+.skat-modal-vent-note{font-size:.8rem;color:#666;margin-bottom:.55rem;line-height:1.4;}
+.skat-modal-vent-btn{display:inline-block;padding:.5rem 1.1rem;border:1.5px solid #2d6a4f;border-radius:8px;color:#2d6a4f;font-size:.85rem;font-weight:600;text-decoration:none;transition:background .15s,color .15s;}
+.skat-modal-vent-btn:hover{background:#2d6a4f;color:#fff;}
 </style>
 
 <section id="katalogs" style="padding:3rem 0;">
@@ -458,7 +519,7 @@
       <p>Pilns piederumu klāsts PVC, koka un alumīnija logiem un durvīm.</p>
     </div>
     <!-- Category bar -->
-    <div class="skat-scroll">
+    <div class="skat-scroll" id="skatCatsScroll">
     <div class="skat-cats" id="skatCats">
       <button class="skat-cat is-active" data-cat="">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
@@ -480,10 +541,7 @@
         <svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/><circle cx="12" cy="15" r="1.3"/></svg>
         <span>Slēdzenes</span>
       </button>
-      <button class="skat-cat" data-cat="starplikas">
-        <svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="3" rx="1.5"/><rect x="4" y="11" width="16" height="3" rx="1.5"/><rect x="4" y="16" width="16" height="3" rx="1.5"/></svg>
-        <span>Starplikas</span>
-      </button>
+
       <button class="skat-cat" data-cat="hermetiki">
         <svg viewBox="0 0 24 24"><rect x="6" y="8" width="9" height="12" rx="1.5"/><path d="M15 11l4-3-1-3"/><path d="M9 8V5h3v3"/></svg>
         <span>Hermētiķi</span>
@@ -494,7 +552,11 @@
       </button>
       <button class="skat-cat" data-cat="apkope">
         <svg viewBox="0 0 24 24"><path d="M14.5 6a3.5 3.5 0 00-4.6 4.4l-5.6 5.6a1.5 1.5 0 002.1 2.1l5.6-5.6A3.5 3.5 0 0018 9.5l-2.5 2.5-2-2L16 7.5A3.5 3.5 0 0014.5 6z"/></svg>
-        <span>Apkope</span>
+        <span>Pap. meh.</span>
+      </button>
+      <button class="skat-cat" data-cat="__new__">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Jaunumi <span class="skat-new-cnt" id="skatNewCnt"></span></span>
       </button>
     </div>
       <button class="skat-arrow left" type="button" aria-label="Ritināt pa kreisi" tabindex="-1"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
@@ -548,18 +610,23 @@
     <div class="skat-modal-img" id="skatModalImg"></div>
     <div class="skat-modal-body">
       <div class="skat-modal-brand" id="skatModalBrand"></div>
+      <div class="skat-modal-sku" id="skatModalSku"></div>
       <h3 class="skat-modal-title" id="skatModalTitle"></h3>
       <p class="skat-modal-desc" id="skatModalDesc"></p>
       <ul class="skat-modal-features" id="skatModalFeatures"></ul>
       <div class="skat-modal-cart-row" id="skatModalCartCtrl"></div>
+      <div class="skat-modal-vent-link" id="skatModalVentLink" style="display:none;"></div>
     </div>
   </div>
 </div>
 
 <!-- Pieprasījuma "groza" ikona — parādās, kad sarakstā ir vismaz 1 prece -->
 <button class="skat-cart-fab" id="skatCartFab" type="button" aria-label="Pieprasījuma sarakts">
-  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M2.5 3h2.4l2.5 12.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L21.5 8H6"></path></svg>
-  <span class="skat-cart-badge" id="skatCartBadge">0</span>
+  <span class="skat-cart-fab-label">Nosūtīt pieprasījumu</span>
+  <span class="skat-cart-fab-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M2.5 3h2.4l2.5 12.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L21.5 8H6"></path></svg>
+    <span class="skat-cart-badge" id="skatCartBadge">0</span>
+  </span>
 </button>
 
 <!-- Pieprasījuma forma — sūta uz e-pastu ar izvēlēto preču sarakstu -->
@@ -583,6 +650,10 @@
         <div class="skat-cart-field">
           <label for="skatCartEmail">E-pasts *</label>
           <input type="email" id="skatCartEmail" name="email" placeholder="jusu@epasts.lv" autocomplete="email" required>
+        </div>
+        <div class="skat-cart-field">
+          <label for="skatCartNote">Komentārs (nav obligāti)</label>
+          <textarea id="skatCartNote" name="note" rows="3" placeholder="Aprakstiet, kas tieši jums nepieciešams — izmērs, krāsa, detaļas…"></textarea>
         </div>
         <div class="skat-cart-error" id="skatCartError" style="display:none;">Lūdzu, norādiet derīgu e-pasta adresi.</div>
         <button type="submit" class="btn btn-primary" id="skatCartSubmitBtn" style="width:100%;">Nosūtīt pieprasījumu</button>
@@ -692,8 +763,8 @@ function modalImg(p){
 function getFiltered(){
   return P.filter(function(p){
     var bOk=!activeBrand||p.brand===activeBrand;
-    var cOk=!activeCat||(p.cats?p.cats.includes(activeCat):p.cat===activeCat);
-    var sOk=!searchQuery||p.name.toLowerCase().includes(searchQuery)||p.brand.toLowerCase().includes(searchQuery);
+    var cOk=!activeCat||(activeCat==='__new__'?isNew(p):(p.cats?p.cats.includes(activeCat):p.cat===activeCat));
+    var sOk=!searchQuery||p.name.toLowerCase().includes(searchQuery)||p.brand.toLowerCase().includes(searchQuery)||(p.sku&&p.sku.includes(searchQuery));
     return bOk&&cOk&&sOk;
   });
 }
@@ -737,11 +808,11 @@ function render(){
   for(var i=start;i<end;i++){
     (function(p){
       var el=document.createElement('div');
-      el.className='skat-card';
+      el.className='skat-card'+(isNew(p)?' is-new':'');
       el.dataset.id=p.id;
       el.innerHTML=cardImg(p)
         +'<div class="skat-card-body">'
-        +'<div class="skat-card-brand">'+(p.brand||'&nbsp;')+'</div>'
+        +'<div class="skat-card-brand">'+(p.brand||'&nbsp;')+(p.sku?' <span class="skat-card-sku">#'+p.sku+'</span>':'')+'</div>'
         +'<div class="skat-card-name">'+p.name+'</div>'
         +'<div class="skat-cart-ctrl" data-id="'+p.id+'">'+cartCtrlHTML(p.id)+'</div>'
         +'</div>';
@@ -758,7 +829,7 @@ pagination.addEventListener('click',function(e){
   if(isNaN(p)) return;
   currentPage=p;
   render();
-  grid.scrollIntoView({behavior:'smooth',block:'start'});
+  document.getElementById('skatCatsScroll').scrollIntoView({behavior:'smooth',block:'start'});
 });
 
 grid.addEventListener('click',function(e){
@@ -773,6 +844,7 @@ function openModal(id){
   mi.style.background=p.img?'#fff':(p.bg||'#ddd');
   mi.innerHTML=modalImg(p);
   document.getElementById('skatModalBrand').textContent=p.brand||'';
+  document.getElementById('skatModalSku').textContent=p.sku?'#'+p.sku:'';
   document.getElementById('skatModalTitle').textContent=p.name;
   document.getElementById('skatModalDesc').textContent=p.desc;
   document.getElementById('skatModalFeatures').innerHTML=p.features.map(function(f){return'<li>'+f+'</li>';}).join('');
@@ -780,6 +852,15 @@ function openModal(id){
   mcc.classList.add('skat-cart-ctrl');
   mcc.dataset.id=p.id;
   mcc.innerHTML=cartCtrlHTML(p.id);
+  var vl=document.getElementById('skatModalVentLink');
+  if(vl){
+    if(p.id>=1&&p.id<=5){
+      vl.innerHTML='<p class="skat-modal-vent-note">Vēlaties uzzināt vairāk par cenu un pasūtīt uzstādīšanu?</p><a class="skat-modal-vent-btn" href="ventilacija.html#ventCardGrid">Uzzināt vairāk par uzstādīšanu →</a>';
+      vl.style.display='';
+    }else{
+      vl.style.display='none';
+    }
+  }
   modal.classList.add('open');
   modal.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
@@ -811,7 +892,7 @@ function renderCartItems(){
     var p=findById(parseInt(id,10));
     if(!p) return '';
     return '<div class="skat-cart-item" data-id="'+id+'">'
-      +'<div class="skat-cart-item-name">'+p.name+(p.brand?' <span class="skat-cart-item-brand">— '+p.brand+'</span>':'')+'</div>'
+      +'<div class="skat-cart-item-name">'+(p.sku?'<span class="skat-cart-item-sku">#'+p.sku+'</span> ':'')+p.name+(p.brand?' <span class="skat-cart-item-brand">— '+p.brand+'</span>':'')+'</div>'
       +'<div class="skat-cart-item-ctrl">'
         +'<button type="button" class="skat-qty-btn" data-action="dec" data-id="'+id+'" aria-label="Samazināt">−</button>'
         +'<span class="skat-qty-val">'+cart[id]+'</span>'
@@ -862,7 +943,7 @@ document.getElementById('skatCartForm').addEventListener('submit',function(e){
   var lines=ids.map(function(id){
     var p=findById(parseInt(id,10));
     if(!p) return '';
-    return '• '+p.name+(p.brand?' ('+p.brand+')':'')+' — '+cart[id]+' gab.';
+    return '• '+(p.sku?'['+p.sku+'] ':'')+p.name+(p.brand?' ('+p.brand+')':'')+' — '+cart[id]+' gab.';
   }).filter(Boolean);
 
   var fd=new FormData();
@@ -873,7 +954,8 @@ document.getElementById('skatCartForm').addEventListener('submit',function(e){
   if(nameVal) fd.append('name',nameVal);
   if(phoneVal) fd.append('phone',phoneVal);
   if(emailVal) fd.append('email',emailVal);
-  fd.append('message',lines.join('\n'));
+  var noteVal=(document.getElementById('skatCartNote')||{}).value||'';
+  fd.append('message',lines.join('\n')+(noteVal?'\n\nKomentārs:\n'+noteVal:''));
 
   var submitBtn=document.getElementById('skatCartSubmitBtn');
   var defTxt=submitBtn.textContent;
@@ -952,7 +1034,7 @@ window.addEventListener('load',function(){
 <section style="background:#f8f8f8;padding:3rem 0;">
   <div class="container work-info-grid">
     <div>
-      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80&auto=format&fit=crop" alt="Aksesuāru uzstādīšana" loading="lazy">
+      <img src="../photo/aksesuari/aksesuari_1.jpg" alt="Aksesuāru uzstādīšana" loading="lazy">
     </div>
     <div>
       <span class="eyebrow">Kā mēs strādājam</span>
@@ -965,10 +1047,7 @@ window.addEventListener('load',function(){
         <li>Strādājam ar PVC, koku un alumīniju</li>
         <li>Garantija 2 gadi uz uzstādītajiem aksesuāriem</li>
       </ul>
-      <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:.25rem;">
-        <a class="btn btn-primary" href="kontakti.html">Pieteikties konsultācijai</a>
-        <a class="btn btn-outline-dark" href="darbi-aksesuari.html">Mūsu darbi →</a>
-      </div>
+
     </div>
   </div>
 </section>
