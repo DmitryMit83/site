@@ -1,0 +1,166 @@
+/* =========================================================
+   Discount Game — "swat the bugs, get a discount" popup
+   Mobile-only mini-game shown on mosquito-net (plisse) pages.
+   Relies on brand CSS variables already defined in styles.css
+   (--accent, --green, --surface, --shadow, --text, --line …)
+   ========================================================= */
+
+html.dg-locked{overflow:hidden;}
+
+/* ── shared overlay + card (intro / results / promo screens) ── */
+.dg-overlay{
+  position:fixed;inset:0;z-index:999995;
+  background:rgba(20,24,20,.6);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  animation:dgOverlayIn .25s ease both;
+}
+@keyframes dgOverlayIn{from{opacity:0}to{opacity:1}}
+
+.dg-card{
+  position:relative;
+  width:100%;max-width:360px;max-height:88vh;overflow-y:auto;
+  background:var(--surface,#fff);
+  border-radius:18px;
+  box-shadow:var(--shadow,0 14px 40px rgba(0,0,0,.3));
+  padding:30px 22px 24px;
+  text-align:center;
+  animation:dgCardIn .3s cubic-bezier(.3,1.3,.4,1) both;
+}
+@keyframes dgCardIn{from{opacity:0;transform:scale(.9) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+
+.dg-close{
+  position:absolute;top:10px;right:10px;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--cream,#F5F2EC);border:none;
+  color:var(--text,#1F2426);font-size:20px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+}
+.dg-close:hover{background:var(--line,#E3DED3);}
+
+.dg-title-1{font-size:1.15rem;font-weight:700;color:var(--text,#1F2426);letter-spacing:.02em;}
+.dg-title-2{font-size:2.1rem;font-weight:800;color:var(--accent,#D04D1A);line-height:1.05;margin:2px 0 10px;}
+.dg-title-3{
+  display:inline-block;background:var(--cream,#F5F2EC);color:var(--text,#1F2426);
+  font-weight:700;font-size:.92rem;border-radius:99px;padding:6px 16px;margin-bottom:14px;
+}
+
+.dg-desc{font-size:.95rem;color:var(--text-2,#4C5458);margin:4px 0 16px;line-height:1.45;}
+
+.dg-bullets{list-style:none;text-align:left;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:10px;}
+.dg-bullets li{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--text,#1F2426);font-weight:600;}
+.dg-bullet-ico{
+  flex:none;width:30px;height:30px;border-radius:50%;
+  background:var(--green,#1E3A2E);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;
+}
+
+.dg-play-btn{
+  width:100%;border:none;border-radius:12px;cursor:pointer;
+  background:var(--accent,#D04D1A);color:#fff;
+  padding:14px 10px 12px;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  box-shadow:0 8px 20px rgba(208,77,26,.35);
+}
+.dg-play-btn:hover{filter:brightness(1.05);}
+.dg-play-main{font-size:1.05rem;font-weight:800;letter-spacing:.03em;}
+.dg-play-sub{font-size:.78rem;font-weight:600;opacity:.92;}
+
+.dg-note{margin-top:12px;font-size:.78rem;color:var(--muted,#7B8287);}
+
+/* ── top HUD bar (visible while playing) ── */
+.dg-hud{
+  position:fixed;top:0;left:0;right:0;z-index:999999;
+  padding:calc(env(safe-area-inset-top,0px) + 10px) 16px 10px;
+  background:linear-gradient(180deg,rgba(30,58,46,.96),rgba(30,58,46,.86));
+  color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 4px 16px rgba(0,0,0,.25);
+}
+.dg-hud-counter{font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:6px;}
+.dg-hud-timer{display:flex;align-items:baseline;gap:4px;font-variant-numeric:tabular-nums;}
+.dg-hud-timer span{font-size:1.5rem;font-weight:800;color:var(--accent,#D04D1A);}
+.dg-hud-timer small{font-size:.72rem;font-weight:600;opacity:.85;}
+.dg-hud-quit{
+  width:30px;height:30px;border-radius:50%;border:none;
+  background:rgba(255,255,255,.14);color:#fff;font-size:18px;line-height:1;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.dg-hud-quit:hover{background:rgba(255,255,255,.24);}
+
+/* ── click/scroll blocker while playing ── */
+.dg-blocker{
+  position:fixed;inset:0;z-index:999980;
+  background:transparent;touch-action:none;
+}
+
+/* ── flying bugs + splat (reused physics look) ── */
+@keyframes dgWingFlap{0%,100%{transform:scaleY(1);opacity:.7}50%{transform:scaleY(.12);opacity:.25}}
+@keyframes dgFadeIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+@keyframes dgSplatPop{0%{transform:scale(0) rotate(var(--dg-rot))}60%{transform:scale(1.25) rotate(var(--dg-rot))}100%{transform:scale(1) rotate(var(--dg-rot))}}
+
+.dg-bug{
+  position:fixed;z-index:999985;
+  pointer-events:auto;touch-action:none;user-select:none;
+  will-change:transform,left,top;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));
+  animation:dgFadeIn .4s cubic-bezier(.3,1.4,.5,1) both;
+}
+.dg-bug .dg-wings{transform-box:fill-box;transform-origin:50% 60%;animation:dgWingFlap .1s linear infinite;}
+
+.dg-splat{
+  position:fixed;z-index:999984;pointer-events:none;
+  animation:dgSplatPop .22s cubic-bezier(.15,1.5,.4,1) both;
+}
+
+/* ── results / discount screen ── */
+.dg-discount-big{font-size:2.6rem;font-weight:800;color:var(--accent,#D04D1A);margin:6px 0 0;line-height:1;}
+.dg-discount-label{font-size:.85rem;color:var(--muted,#7B8287);margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em;}
+
+.dg-email-form{display:flex;flex-direction:column;gap:10px;margin-bottom:12px;}
+.dg-email-label{font-size:.85rem;font-weight:600;color:var(--text,#1F2426);text-align:left;}
+.dg-email-input{
+  width:100%;padding:12px 14px;border-radius:10px;
+  border:1.5px solid var(--line,#E3DED3);font-size:.95rem;
+  background:var(--paper-2,#FAF8F3);color:var(--text,#1F2426);
+}
+.dg-email-input:focus{outline:none;border-color:var(--accent,#D04D1A);}
+.dg-email-error{color:#C0392B;font-size:.8rem;text-align:left;}
+
+.dg-submit-btn{
+  width:100%;border:none;border-radius:12px;cursor:pointer;
+  background:var(--accent,#D04D1A);color:#fff;font-weight:800;font-size:.95rem;
+  padding:13px 10px;letter-spacing:.02em;
+}
+.dg-submit-btn:disabled{opacity:.7;cursor:default;}
+
+.dg-retry-btn{
+  width:100%;border:none;border-radius:12px;cursor:pointer;
+  background:var(--green,#1E3A2E);color:#fff;font-weight:700;font-size:.9rem;
+  padding:12px 10px;margin-top:6px;
+}
+.dg-retry-btn--ghost{
+  background:transparent;color:var(--text-2,#4C5458);
+  border:1.5px solid var(--line,#E3DED3);
+}
+
+.dg-promo-box{
+  border:2px dashed var(--accent,#D04D1A);border-radius:12px;
+  background:var(--cream,#F5F2EC);
+  padding:14px 10px;margin:12px 0 10px;
+  font-size:1.3rem;font-weight:800;letter-spacing:.06em;
+  color:var(--green,#1E3A2E);word-break:break-all;
+}
+.dg-copy-btn{
+  width:100%;border:1.5px solid var(--accent,#D04D1A);border-radius:12px;
+  background:transparent;color:var(--accent,#D04D1A);font-weight:700;font-size:.9rem;
+  padding:11px 10px;margin-bottom:14px;cursor:pointer;
+}
+.dg-copy-btn:hover{background:rgba(208,77,26,.08);}
+
+@media (min-width:901px){
+  /* Game is mobile-only; if a resize ever happens mid-session, keep it usable rather than broken. */
+  .dg-card{max-width:400px;}
+}
