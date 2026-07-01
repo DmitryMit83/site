@@ -556,6 +556,13 @@
 <button class="skat-brand" data-brand="Roto">Roto</button>
 <button class="skat-brand" data-brand="Bonaiti">Bonaiti</button>
 <button class="skat-brand" data-brand="HAFI">HAFI</button>
+<button class="skat-brand" data-brand="Simonswerk">Simonswerk</button>
+<button class="skat-brand" data-brand="Medos">Medos</button>
+<button class="skat-brand" data-brand="Roca">Roca</button>
+<button class="skat-brand" data-brand="TLAV">TLAV</button>
+<button class="skat-brand" data-brand="COSMO">COSMO</button>
+<button class="skat-brand" data-brand="Schlegel">Schlegel</button>
+<button class="skat-brand" data-brand="Deventer">Deventer</button>
 </div>
 <button aria-label="Scroll left" class="skat-arrow left" tabindex="-1" type="button"><svg viewbox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
 <button aria-label="Scroll right" class="skat-arrow right" tabindex="-1" type="button"><svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
@@ -705,7 +712,7 @@ function modalImg(p){
 function getFiltered(){
   return P.filter(function(p){
     var bOk=!activeBrand||p.brand===activeBrand;
-    var cOk=!activeCat||p.cat===activeCat;
+    var cOk=!activeCat||(p.cats?p.cats.includes(activeCat):p.cat===activeCat);
     var sOk=!searchQuery||p.name.toLowerCase().includes(searchQuery)||p.brand.toLowerCase().includes(searchQuery);
     return bOk&&cOk&&sOk;
   });
