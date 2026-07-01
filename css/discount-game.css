@@ -90,10 +90,15 @@ html.dg-locked{overflow:hidden;}
 }
 .dg-hud-quit:hover{background:rgba(255,255,255,.24);}
 
-/* ── click/scroll blocker while playing ── */
+/* ── click/scroll blocker + game backdrop while playing ── */
 .dg-blocker{
   position:fixed;inset:0;z-index:999980;
-  background:transparent;touch-action:none;
+  touch-action:none;
+  background-color:#bfe0f5;
+  background-image:url('../photo/fon-game.webp');
+  background-size:cover;
+  background-position:center;
+  animation:dgFadeIn .35s ease both;
 }
 
 /* ── flying bugs + splat (reused physics look) ── */

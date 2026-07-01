@@ -15,6 +15,7 @@
   if (sessionStorage.getItem(SESSION_KEY)) return;
 
   var WEB3FORMS_ACCESS_KEY = 'feab9df0-fe09-4fd9-a690-2e72aa11acd2'; // same key as the contact form (info@loguapkope.lv)
+  var GAME_BG = '../photo/fon-game.webp'; // sky/net backdrop shown behind the flying bugs during play
   var MAX_DISCOUNT   = 15;   // hard cap, %
   var PER_10_PERCENT = 1;    // 10 squashed bugs = 1%
   var ROUND_SECONDS  = 60;
@@ -192,9 +193,20 @@
   }
 
   /* ---------------- intro modal ---------------- */
+  function preloadGameBg() {
+    if (document.querySelector('link[data-dg-preload]')) return;
+    var link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = GAME_BG;
+    link.setAttribute('data-dg-preload', '1');
+    document.head.appendChild(link);
+  }
+
   function showIntro() {
     try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (e) {}
     lockPage();
+    preloadGameBg();
 
     overlay = el('div', 'dg-overlay');
     card = el('div', 'dg-card');
